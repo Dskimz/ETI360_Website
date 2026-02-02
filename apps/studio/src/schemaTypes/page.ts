@@ -33,6 +33,7 @@ export default defineType({
         {type: 'framingBlockSection'},
         {type: 'capabilityGridSection'},
         {type: 'proofBlockSection'},
+        {type: 'statsSection'},
         {type: 'insightFeedSection'},
         {type: 'ctaBlockSection'},
       ],
@@ -46,4 +47,3 @@ export default defineType({
     },
   },
 })
-

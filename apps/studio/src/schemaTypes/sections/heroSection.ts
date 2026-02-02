@@ -25,6 +25,63 @@ export default defineType({
       validation: (Rule) => Rule.required().max(400),
     }),
     defineField({
+      name: 'media',
+      title: 'Media',
+      type: 'image',
+      options: {hotspot: true},
+    }),
+    defineField({
+      name: 'mediaAlt',
+      title: 'Media alt text',
+      type: 'string',
+      validation: (Rule) => Rule.max(120),
+      hidden: ({parent}) => !parent?.media,
+    }),
+    defineField({
+      name: 'showMediaPlaceholder',
+      title: 'Show media placeholder (if no image)',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'sideCard',
+      title: 'Side card (optional)',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'label',
+          title: 'Label',
+          type: 'string',
+          validation: (Rule) => Rule.max(40),
+        }),
+        defineField({
+          name: 'headline',
+          title: 'Headline',
+          type: 'string',
+          validation: (Rule) => Rule.max(80),
+        }),
+        defineField({
+          name: 'bodyMarkdown',
+          title: 'Body (Markdown)',
+          type: 'text',
+          rows: 5,
+          validation: (Rule) => Rule.max(600),
+        }),
+        defineField({
+          name: 'ctaLabel',
+          title: 'CTA label',
+          type: 'string',
+          validation: (Rule) => Rule.max(40),
+        }),
+        defineField({
+          name: 'ctaHref',
+          title: 'CTA link',
+          type: 'string',
+          validation: (Rule) => Rule.max(200),
+        }),
+      ],
+    }),
+    defineField({
       name: 'primaryCtaLabel',
       title: 'Primary CTA label',
       type: 'string',
@@ -45,4 +102,3 @@ export default defineType({
     prepare: ({title}) => ({title, subtitle: 'Hero'}),
   },
 })
-

@@ -4,6 +4,7 @@ import {FramingBlockSection} from './sections/FramingBlockSection'
 import {CapabilityGridSection} from './sections/CapabilityGridSection'
 import {ProofBlockSection} from './sections/ProofBlockSection'
 import {InsightFeedSection} from './sections/InsightFeedSection'
+import {StatsSection} from './sections/StatsSection'
 
 export type Section = Record<string, any> & {_type: string}
 
@@ -24,6 +25,8 @@ export function SectionRenderer({sections}: {sections: Section[]}) {
             return <ProofBlockSection key={key} value={section} />
           case 'insightFeedSection':
             return <InsightFeedSection key={key} value={section} />
+          case 'statsSection':
+            return <StatsSection key={key} value={section} />
           case 'ctaBlockSection':
             return <CtaBlockSection key={key} value={section} />
           default:
@@ -39,4 +42,3 @@ export function SectionRenderer({sections}: {sections: Section[]}) {
     </>
   )
 }
-
