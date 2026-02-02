@@ -1,5 +1,6 @@
 export const pageBySlugQuery = `
-  *[_type == "page" && slug.current == $slug][0]{
+  *[_type == "page" && slug.current == $slug]
+    | order(_updatedAt desc)[0]{
     _id,
     _type,
     title,
@@ -10,7 +11,8 @@ export const pageBySlugQuery = `
 `
 
 export const insightBySlugQuery = `
-  *[_type == "insight" && slug.current == $slug][0]{
+  *[_type == "insight" && slug.current == $slug]
+    | order(_updatedAt desc)[0]{
     _id,
     _type,
     title,

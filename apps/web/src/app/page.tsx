@@ -20,7 +20,22 @@ export default async function HomePage() {
     )
   }
 
-  const page = await client.fetch(pageBySlugQuery, {slug: 'home'})
+  let page: any = null
+  try {
+    page = await client.fetch(pageBySlugQuery, {slug: 'home'})
+  } catch (error) {
+    return (
+      <main className="mx-auto max-w-5xl px-6 py-20">
+        <h1 className="text-3xl font-semibold tracking-tight">ETI360</h1>
+        <p className="mt-4 text-zinc-600">
+          Unable to fetch content from Sanity right now. Please try again in a moment.
+        </p>
+        <p className="mt-2 text-xs text-zinc-500">
+          {String(error)}
+        </p>
+      </main>
+    )
+  }
   if (!page) {
     return (
       <main className="mx-auto max-w-5xl px-6 py-20">

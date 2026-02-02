@@ -268,12 +268,28 @@ async function main() {
 
   const docs = [
     pageDoc({
-      id: 'page-home',
+      id: 'home-page',
       slug: 'home',
       title: 'Home',
       seoTitle: home.h2 || 'ETI360',
       seoDescription: firstParagraph(home.lead || homeMd),
       sections: homeSections,
+    }),
+    // Prevent duplicate `home` slugs from earlier seeds by moving the old doc off `/`.
+    pageDoc({
+      id: 'page-home',
+      slug: 'home-legacy',
+      title: 'Home (legacy)',
+      seoTitle: 'Home (legacy)',
+      seoDescription: 'Legacy placeholder content (kept only to avoid slug collisions).',
+      sections: [
+        toHero({
+          eyebrow: 'Legacy',
+          headline: 'Home (legacy)',
+          bodyMarkdown:
+            'This document exists to avoid a duplicate `home` slug. It is not linked from navigation.',
+        }),
+      ],
     }),
     pageDoc({
       id: 'page-approach',
@@ -357,4 +373,3 @@ main().catch((error) => {
   console.error(error)
   process.exit(1)
 })
-
