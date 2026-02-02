@@ -1,0 +1,37 @@
+{
+  "_id": "home-page",
+  "_type": "page",
+  "title": "ETI360 Hello World",
+  "slug": {
+    "current": "home"
+  },
+  "seo": {
+    "title": "Hello World | ETI360",
+    "description": "Launching ETI360 with a Hello World story about structured travel decisions."
+  },
+  "sections": [
+    {
+      "_key": "hero-hello",
+      "_type": "heroSection",
+      "eyebrow": "Decision infrastructure starts here",
+      "headline": "Hello world, meet ETI360",
+      "bodyMarkdown": "Hello world from ETI360’s new marketing site. This page proves the Sanity + Next.js build works end-to-end.",
+      "primaryCtaLabel": "Start a conversation",
+      "primaryCtaHref": "/contact"
+    },
+    {
+      "_key": "context-hello",
+      "_type": "framingBlockSection",
+      "headline": "Why Hello World matters",
+      "bodyMarkdown": "Every journey starts with a hello. ETI360 documents how structured preparation builds confident travel decisions for schools."
+    },
+    {
+      "_key": "cta-hello",
+      "_type": "ctaBlockSection",
+      "headline": "Let’s talk",
+      "bodyMarkdown": "Ready for your first hello? Book a conversation and we’ll show how ETI360 keeps governance and mobility aligned.",
+      "primaryCtaLabel": "Start a conversation",
+      "primaryCtaHref": "/contact"
+    }
+  ]
+}
