@@ -1,0 +1,15 @@
+{
+  "name": "eti360-marketing-site",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @eti360/web",
+    "dev:studio": "npm run dev -w @eti360/studio",
+    "build": "npm run build -ws",
+    "lint": "npm run lint -ws"
+  }
+}
+
