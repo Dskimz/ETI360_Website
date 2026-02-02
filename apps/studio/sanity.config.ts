@@ -1,7 +1,7 @@
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
-import Iframe from 'sanity-plugin-iframe-pane'
+import {Iframe} from 'sanity-plugin-iframe-pane'
 
 import {schemaTypes} from './src/schemaTypes'
 import {resolvePreviewUrl} from './src/preview/resolvePreviewUrl'

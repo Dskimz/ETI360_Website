@@ -25,3 +25,10 @@ Draft preview works via Next.js Draft Mode:
 - Set `NEXT_PREVIEW_SECRET` + `SANITY_READ_TOKEN` in `apps/web/.env.local`
 - Set `SANITY_STUDIO_PREVIEW_URL` + `SANITY_STUDIO_PREVIEW_SECRET` in `apps/studio/.env.local`
 - The Studio includes a Preview pane for `page` and `insight` documents
+- The Next.js app exposes `/api/revalidate`, which your Sanity webhook can call after publishes to revalidate the marketing site.
+
+## Sanity webhook (optional but recommended)
+
+- Set `SANITY_WEBHOOK_SECRET` in both Vercel (web project) and your local `.env.local`.
+- Create a webhook in the Sanity project (`projectId=2qx6srf6`, dataset `production`) targeting `https://<your-web-Vercel-domain>/api/revalidate?secret=<your webhook secret>`, firing on publish/update/create for the `page` and `insight` documents.
+- The webhook payload is parsed by `apps/web/src/app/api/revalidate/route.ts`, which validates the secret and revalidates any affected paths (`/`, `/insights`, `/insights/[slug]`, or `/[slug]`), keeping the deployed site in sync with the CMS.
