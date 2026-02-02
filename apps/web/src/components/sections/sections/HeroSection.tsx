@@ -7,9 +7,9 @@ export function HeroSection({value}: {value: any}) {
     <section className="bg-background">
       <div className="mx-auto max-w-5xl px-6 py-20">
         {value.eyebrow ? (
-          <p className="text-sm font-medium tracking-wide text-zinc-600">{value.eyebrow}</p>
+          <p className="text-sm font-medium tracking-wide text-text-tertiary">{value.eyebrow}</p>
         ) : null}
-        <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+        <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-text-secondary sm:text-5xl">
           {value.headline}
         </h1>
         <div className="mt-6 max-w-2xl">
@@ -19,7 +19,7 @@ export function HeroSection({value}: {value: any}) {
           <div className="mt-10">
             <Link
               href={value.primaryCtaHref}
-              className="inline-flex items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background hover:opacity-90"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-white hover:opacity-90"
             >
               {value.primaryCtaLabel ?? 'Start a conversation'}
             </Link>
@@ -29,4 +29,3 @@ export function HeroSection({value}: {value: any}) {
     </section>
   )
 }
-

@@ -6,14 +6,14 @@ export function CapabilityGridSection({value}: {value: any}) {
   return (
     <section className="bg-background">
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+        <h2 className="text-balance text-2xl font-semibold tracking-tight text-text-secondary sm:text-3xl">
           {value.headline}
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {items.map((item: any, index: number) => (
-            <div key={item?._key ?? index} className="rounded-xl border border-zinc-200 p-6">
-              <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-              <div className="mt-3 text-sm text-zinc-700">
+            <div key={item?._key ?? index} className="rounded-xl border border-border bg-background p-6">
+              <h3 className="text-lg font-semibold text-text-secondary">{item.title}</h3>
+              <div className="mt-3 text-sm text-text-primary">
                 <Markdown content={item.bodyMarkdown} />
               </div>
             </div>
@@ -23,4 +23,3 @@ export function CapabilityGridSection({value}: {value: any}) {
     </section>
   )
 }
-

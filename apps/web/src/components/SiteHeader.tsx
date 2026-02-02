@@ -30,7 +30,7 @@ export function SiteHeader() {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200 bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="text-base font-semibold tracking-tight">
           ETI360
@@ -53,7 +53,7 @@ export function SiteHeader() {
               href={item.href}
               className={[
                 'rounded-md px-2 py-1 transition-colors',
-                item.href === activeHref ? 'bg-zinc-100 text-foreground' : 'text-zinc-700 hover:bg-zinc-50',
+                item.href === activeHref ? 'bg-secondary text-text-secondary' : 'text-text-tertiary hover:bg-secondary',
               ].join(' ')}
             >
               {item.label}
@@ -63,7 +63,7 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <nav className="border-t border-zinc-200 bg-background sm:hidden" aria-label="Primary mobile">
+        <nav className="border-t border-border bg-background sm:hidden" aria-label="Primary mobile">
           <div className="mx-auto max-w-5xl px-6 py-3">
             <div className="grid gap-1">
               {navItems.map((item) => (
@@ -73,7 +73,7 @@ export function SiteHeader() {
                   onClick={() => setOpen(false)}
                   className={[
                     'rounded-md px-3 py-2 text-sm transition-colors',
-                    item.href === activeHref ? 'bg-zinc-100 text-foreground' : 'text-zinc-700 hover:bg-zinc-50',
+                    item.href === activeHref ? 'bg-secondary text-text-secondary' : 'text-text-tertiary hover:bg-secondary',
                   ].join(' ')}
                 >
                   {item.label}
@@ -86,4 +86,3 @@ export function SiteHeader() {
     </header>
   )
 }
-
