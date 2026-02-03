@@ -37,10 +37,10 @@ export function SiteHeader() {
           <Image
             src="/eti360-logo.png"
             alt="ETI360"
-            width={132}
-            height={60}
+            width={176}
+            height={80}
             priority
-            className="h-8 w-auto"
+            className="h-11 w-auto"
           />
           <span className="sr-only">ETI360</span>
         </Link>
