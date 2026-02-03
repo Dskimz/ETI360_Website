@@ -16,20 +16,22 @@ function visualFrameClass(style: NonNullable<SectionVisualValue['style']>) {
   }
 
   if (style === 'document') {
-    return 'h-[320px] w-full rounded-2xl border border-border bg-background'
+    return 'h-[220px] w-full rounded-2xl border border-border bg-background sm:h-[320px]'
   }
 
-  return 'h-[320px] w-full rounded-2xl border border-dashed border-border bg-secondary'
+  return 'h-[220px] w-full rounded-2xl border border-dashed border-border bg-secondary sm:h-[320px]'
 }
 
 export function SectionVisual({
   value,
   className,
   size = 'md',
+  frameClassName,
 }: {
   value?: SectionVisualValue | null
   className?: string
   size?: 'sm' | 'md'
+  frameClassName?: string
 }) {
   const style = (value?.style ?? 'diagram') as NonNullable<SectionVisualValue['style']>
   const url =
@@ -39,7 +41,7 @@ export function SectionVisual({
 
   if (!url && !placeholderLine) return null
 
-  const frame = visualFrameClass(style)
+  const frame = frameClassName || visualFrameClass(style)
   const padding = style === 'icon' ? '' : size === 'sm' ? 'p-5' : 'p-6'
 
   return (

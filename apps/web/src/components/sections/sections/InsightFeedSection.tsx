@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function InsightFeedSection({value}: {value: any}) {
   return (
-    <section className="bg-background">
+    <section className="bg-transparent">
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="flex items-baseline justify-between gap-6">
           <h2 className="text-balance text-xl font-semibold tracking-tight text-foreground sm:text-2xl">

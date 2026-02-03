@@ -5,7 +5,7 @@ export function ProofBlockSection({value}: {value: any}) {
   const visual = value.visual
 
   return (
-    <section className="bg-background">
+    <section className="bg-transparent">
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="rounded-2xl border border-border bg-secondary p-8">
           <div className={visual ? 'grid gap-10 lg:grid-cols-12 lg:items-start' : ''}>

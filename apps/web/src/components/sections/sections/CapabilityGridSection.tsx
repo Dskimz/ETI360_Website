@@ -7,7 +7,7 @@ export function CapabilityGridSection({value}: {value: any}) {
   const visual = value.visual
 
   return (
-    <section className="bg-background">
+    <section className="bg-transparent">
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="border-t border-border pt-10">
           <h2 className="text-balance text-xl font-semibold tracking-tight text-text-secondary sm:text-2xl">
@@ -59,8 +59,15 @@ export function CapabilityGridSection({value}: {value: any}) {
         ) : (
           <div className="mt-10 grid gap-x-12 gap-y-10 sm:grid-cols-2">
             {items.map((item: any, index: number) => (
-              <div key={item?._key ?? index} className="flex gap-4">
-                <SectionVisual value={item.icon} className="mt-0.5 shrink-0" size="sm" />
+              <div key={item?._key ?? index} className="grid gap-4">
+                {item.icon?.style === 'diagram' ? (
+                  <SectionVisual
+                    value={item.icon}
+                    frameClassName="h-[180px] w-full rounded-2xl border border-dashed border-border bg-secondary"
+                  />
+                ) : item.icon ? (
+                  <SectionVisual value={item.icon} className="shrink-0" size="sm" />
+                ) : null}
                 <div>
                   <h3 className="text-base font-semibold text-text-secondary">{item.title}</h3>
                   <div className="mt-2 text-sm text-text-primary">

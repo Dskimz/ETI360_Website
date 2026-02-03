@@ -2,7 +2,7 @@ export function StatsSection({value}: {value: any}) {
   const items = Array.isArray(value.items) ? value.items : []
 
   return (
-    <section className="bg-secondary">
+    <section className="bg-transparent">
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="grid gap-6 sm:grid-cols-3">
           {items.map((item: any, index: number) => (

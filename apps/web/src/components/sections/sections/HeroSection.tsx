@@ -16,7 +16,7 @@ export function HeroSection({value}: {value: any}) {
       : value.eyebrow
 
   return (
-    <section className="bg-background">
+    <section className="bg-transparent">
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
@@ -90,7 +90,7 @@ export function HeroSection({value}: {value: any}) {
               </div>
             ) : showPlaceholder ? (
               <div className={sideCard ? 'mt-6' : ''}>
-                <div className="flex min-h-[260px] items-center justify-center rounded-2xl border border-dashed border-border bg-background">
+                <div className="flex h-[220px] items-center justify-center rounded-2xl border border-dashed border-border bg-secondary sm:h-[320px]">
                   <div className="px-6 text-center text-sm text-text-tertiary">
                     <span className="whitespace-pre-line">
                       {'Diagram placeholder\n'}

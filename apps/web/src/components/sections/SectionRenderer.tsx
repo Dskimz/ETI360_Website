@@ -14,33 +14,50 @@ export function SectionRenderer({sections}: {sections: Section[]}) {
     <>
       {sections.map((section, index) => {
         const key = section?._key || `${section?._type ?? 'unknown'}-${index}`
+        const bandClass = index % 2 === 0 ? 'bg-background' : 'bg-band'
+        const dividerClass = index === 0 ? '' : 'border-t border-border'
 
+        let rendered: React.ReactNode = null
         switch (section._type) {
           case 'heroSection':
-            return <HeroSection key={key} value={section} />
+            rendered = <HeroSection value={section} />
+            break
           case 'diagramBlockSection':
-            return <DiagramBlockSection key={key} value={section} />
+            rendered = <DiagramBlockSection value={section} />
+            break
           case 'framingBlockSection':
-            return <FramingBlockSection key={key} value={section} />
+            rendered = <FramingBlockSection value={section} />
+            break
           case 'capabilityGridSection':
-            return <CapabilityGridSection key={key} value={section} />
+            rendered = <CapabilityGridSection value={section} />
+            break
           case 'proofBlockSection':
-            return <ProofBlockSection key={key} value={section} />
+            rendered = <ProofBlockSection value={section} />
+            break
           case 'insightFeedSection':
-            return <InsightFeedSection key={key} value={section} />
+            rendered = <InsightFeedSection value={section} />
+            break
           case 'statsSection':
-            return <StatsSection key={key} value={section} />
+            rendered = <StatsSection value={section} />
+            break
           case 'ctaBlockSection':
-            return <CtaBlockSection key={key} value={section} />
+            rendered = <CtaBlockSection value={section} />
+            break
           default:
-            return (
-              <section key={key} className="mx-auto max-w-5xl px-6 py-16">
+            rendered = (
+              <section className="mx-auto max-w-5xl px-6 py-16">
                 <div className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-900">
                   Unknown section type: <code>{section?._type ?? 'missing _type'}</code>
                 </div>
               </section>
             )
         }
+
+        return (
+          <div key={key} className={`${bandClass} ${dividerClass}`}>
+            {rendered}
+          </div>
+        )
       })}
     </>
   )

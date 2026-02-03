@@ -13,6 +13,7 @@
   /* Theme colors */
   --page-background: #ffffff;
   --border-color: #e5e7eb;
+  --band-background: #f7f7f8;
   --text-primary: #000814;
   --text-secondary: #002b4f;
   --text-tertiary: rgba(0, 8, 20, 0.6);
@@ -24,6 +25,7 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-band: var(--band-background);
   --color-border: var(--border-color);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
@@ -39,7 +41,7 @@ body {
 
 .markdown {
   color: var(--text-primary);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .markdown p {

@@ -59,12 +59,14 @@ function firstParagraph(markdown) {
   return parts[0] ?? ''
 }
 
-function toHero({eyebrow, headline, bodyMarkdown}) {
+function toHero({eyebrow, headline, bodyMarkdown, showMediaPlaceholder, mediaPlaceholderLabel}) {
   return {
     _type: 'heroSection',
     eyebrow: eyebrow || undefined,
     headline: truncate(headline, 90),
     bodyMarkdown: bodyMarkdown?.trim() || ' ',
+    showMediaPlaceholder: Boolean(showMediaPlaceholder),
+    mediaPlaceholderLabel: mediaPlaceholderLabel?.trim() || undefined,
     primaryCtaLabel: 'Start a conversation',
     primaryCtaHref: '/contact',
   }
@@ -78,33 +80,45 @@ function toDiagramBlock({placeholderLabel, diagramCaption}) {
   }
 }
 
-function toFraming({headline, bodyMarkdown}) {
+function toVisualPlaceholder({style = 'diagram', placeholderLabel}) {
+  if (!placeholderLabel) return undefined
+  return {
+    _type: 'sectionVisual',
+    style,
+    placeholderLabel: placeholderLabel.trim(),
+  }
+}
+
+function toFraming({headline, bodyMarkdown, visualPlaceholderLabel}) {
   return {
     _type: 'framingBlockSection',
     headline: truncate(headline, 90),
+    visual: toVisualPlaceholder({style: 'diagram', placeholderLabel: visualPlaceholderLabel}),
     bodyMarkdown: bodyMarkdown?.trim() || ' ',
   }
 }
 
-function toProof({headline, bodyMarkdown}) {
+function toProof({headline, bodyMarkdown, visualPlaceholderLabel}) {
   return {
     _type: 'proofBlockSection',
     headline: truncate(headline, 90),
+    visual: toVisualPlaceholder({style: 'diagram', placeholderLabel: visualPlaceholderLabel}),
     bodyMarkdown: bodyMarkdown?.trim() || ' ',
   }
 }
 
-function toCta({headline, bodyMarkdown}) {
+function toCta({headline, bodyMarkdown, visualPlaceholderLabel}) {
   return {
     _type: 'ctaBlockSection',
     headline: truncate(headline, 90),
+    visual: toVisualPlaceholder({style: 'diagram', placeholderLabel: visualPlaceholderLabel}),
     bodyMarkdown: bodyMarkdown?.trim() || ' ',
     primaryCtaLabel: 'Start a conversation',
     primaryCtaHref: '/contact',
   }
 }
 
-function toCapabilityGrid({headline, bodyMarkdown}) {
+function toCapabilityGrid({headline, bodyMarkdown, layout, iconPlaceholders}) {
   const bullets = bulletsFromMarkdown(bodyMarkdown)
   const items = bullets.slice(0, 12).map((line) => {
     const bold = line.match(/\*\*(.+?)\*\*/)
@@ -113,9 +127,16 @@ function toCapabilityGrid({headline, bodyMarkdown}) {
     return {_type: 'item', title, bodyMarkdown: body || ' '}
   })
 
+  for (let i = 0; i < items.length; i++) {
+    const label = Array.isArray(iconPlaceholders) ? iconPlaceholders[i] : null
+    if (!label) continue
+    items[i].icon = toVisualPlaceholder({style: 'diagram', placeholderLabel: label})
+  }
+
   return {
     _type: 'capabilityGridSection',
     headline: truncate(headline, 90),
+    layout: layout || undefined,
     items:
       items.length >= 2
         ? items
@@ -177,17 +198,24 @@ async function main() {
       eyebrow: home.h1 || 'ETI360',
       headline: home.h2 || home.h1 || 'ETI360',
       bodyMarkdown: home.lead,
-    }),
-  )
-  homeSections.push(
-    toDiagramBlock({
-      placeholderLabel:
-        'From fragmented travel inputs to structured, leadership-ready documentation',
+      showMediaPlaceholder: true,
+      mediaPlaceholderLabel: 'How ETI360 supports leadership review',
     }),
   )
   for (const s of home.sections) {
     if (s.heading.toLowerCase().includes('how eti360 supports')) {
-      homeSections.push(toCapabilityGrid({headline: s.heading, bodyMarkdown: s.body}))
+      homeSections.push(
+        toCapabilityGrid({
+          headline: s.heading,
+          bodyMarkdown: s.body,
+          iconPlaceholders: [
+            'Structured itinerary timeline (activities → locations → timing)',
+            'Review-ready documentation set (packet layout + supporting materials)',
+            'Response checklist structure (roles → triggers → actions)',
+            'Traceability chain (inputs → review → record)',
+          ],
+        }),
+      )
     } else if (s.heading.toLowerCase().includes('built for leadership')) {
       homeSections.push(toProof({headline: s.heading, bodyMarkdown: s.body}))
     } else if (s.heading.toLowerCase().includes('start a conversation')) {
@@ -202,6 +230,8 @@ async function main() {
       eyebrow: 'ETI360',
       headline: approach.h1 || 'ETI360’s approach',
       bodyMarkdown: approach.lead || firstParagraph(approachMd),
+      showMediaPlaceholder: true,
+      mediaPlaceholderLabel: 'Workflow: intake → structuring → expert review → leadership-ready documentation',
     }),
   ]
   for (const s of approach.sections) {
@@ -224,6 +254,20 @@ async function main() {
         }),
       )
     }
+    if (s.heading.toLowerCase().includes('structured, consistently formatted itineraries')) {
+      approachSections.push(
+        toDiagramBlock({
+          placeholderLabel: 'Structured itinerary layout (days → activities → locations → timing)',
+        }),
+      )
+    }
+    if (s.heading.toLowerCase().includes('decision-ready documentation')) {
+      approachSections.push(
+        toDiagramBlock({
+          placeholderLabel: 'Decision-ready packet: itinerary + supporting documentation + review notes',
+        }),
+      )
+    }
   }
 
   const whatWeDoSections = [
@@ -231,6 +275,8 @@ async function main() {
       eyebrow: 'ETI360',
       headline: whatWeDo.h1 || 'What we do',
       bodyMarkdown: whatWeDo.lead || firstParagraph(whatWeDoMd),
+      showMediaPlaceholder: true,
+      mediaPlaceholderLabel: 'Inputs → preparation → review → outputs (service architecture)',
     }),
   ]
   for (const s of whatWeDo.sections) {
@@ -240,6 +286,16 @@ async function main() {
         toDiagramBlock({
           placeholderLabel:
             'Collaborative preparation flow with expert review and documentation outputs',
+        }),
+      )
+      continue
+    }
+    if (s.heading.toLowerCase().includes('expert review and documentation')) {
+      whatWeDoSections.push(
+        toFraming({
+          headline: s.heading,
+          bodyMarkdown: s.body,
+          visualPlaceholderLabel: 'Expert review checkpoints across materials (clarify → verify → compile)',
         }),
       )
       continue
@@ -261,16 +317,31 @@ async function main() {
       headline: about.h1 || 'About',
       bodyMarkdown: about.lead || firstParagraph(aboutMd),
     }),
-    ...about.sections.map((s) => {
-      if (s.heading.toLowerCase().includes('governance')) {
-        return toProof({headline: s.heading, bodyMarkdown: s.body})
-      }
-      if (s.heading.toLowerCase().includes('start a conversation')) {
-        return toCta({headline: s.heading, bodyMarkdown: s.body})
-      }
-      return toFraming({headline: s.heading, bodyMarkdown: s.body})
+    toDiagramBlock({
+      placeholderLabel: 'Decision preparation as governance (clarity → review → record)',
+      diagramCaption: 'Contextual diagram (abstract; grayscale-friendly).',
     }),
   ]
+  for (const s of about.sections) {
+    if (s.heading.toLowerCase().includes('governance')) {
+      aboutSections.push(toProof({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+    if (s.heading.toLowerCase().includes('start a conversation')) {
+      aboutSections.push(toCta({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+
+    aboutSections.push(toFraming({headline: s.heading, bodyMarkdown: s.body}))
+
+    if (s.heading.toLowerCase().includes('how we work')) {
+      aboutSections.push(
+        toDiagramBlock({
+          placeholderLabel: 'Collaboration model: school → ETI360 → leadership review',
+        }),
+      )
+    }
+  }
 
   const contactSections = [
     toHero({
@@ -292,6 +363,10 @@ async function main() {
       headline: insights.h1 || 'Insights',
       bodyMarkdown: insights.lead || firstParagraph(insightsMd),
     }),
+    toDiagramBlock({
+      placeholderLabel: 'Insights support preparation, not decisions',
+      diagramCaption: 'Abstract visual (no photos; no maps; grayscale-friendly).',
+    }),
     ...insights.sections
       .filter((s) => !s.heading.toLowerCase().includes('explore insights'))
       .map((s) => toFraming({headline: s.heading, bodyMarkdown: s.body})),
@@ -308,6 +383,8 @@ async function main() {
       eyebrow: 'TripRisk360',
       headline: tripRisk.h1 || 'TripRisk360',
       bodyMarkdown: tripRisk.lead || firstParagraph(tripRiskMd),
+      showMediaPlaceholder: true,
+      mediaPlaceholderLabel: 'TripRisk360 supports preparation and documentation, not decisions',
     }),
   ]
   for (const s of tripRisk.sections) {
@@ -317,6 +394,11 @@ async function main() {
     }
     if (s.heading.toLowerCase().includes('governance')) {
       tripRiskSections.push(toProof({headline: s.heading, bodyMarkdown: s.body}))
+      tripRiskSections.push(
+        toDiagramBlock({
+          placeholderLabel: 'System boundaries: preparation support vs decision authority',
+        }),
+      )
       continue
     }
     if (s.heading.toLowerCase().includes('start a conversation')) {
