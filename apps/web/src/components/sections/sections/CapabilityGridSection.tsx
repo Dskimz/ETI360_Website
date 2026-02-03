@@ -8,9 +8,9 @@ export function CapabilityGridSection({value}: {value: any}) {
 
   return (
     <section className="bg-background">
-      <div className="mx-auto max-w-5xl px-6 py-16">
+      <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="border-t border-border pt-10">
-          <h2 className="text-balance text-2xl font-semibold tracking-tight text-text-secondary sm:text-3xl">
+          <h2 className="text-balance text-xl font-semibold tracking-tight text-text-secondary sm:text-2xl">
             {value.headline}
           </h2>
         </div>

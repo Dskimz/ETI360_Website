@@ -7,6 +7,9 @@ type SectionVisualValue = {
   placeholderLabel?: string
 }
 
+const DEFAULT_DIAGRAM_PLACEHOLDER =
+  '[Diagram placeholder: structured preparation → review → decision-ready documentation]'
+
 function visualFrameClass(style: NonNullable<SectionVisualValue['style']>) {
   if (style === 'icon') {
     return 'h-11 w-11 rounded-xl border border-border bg-background'
@@ -31,7 +34,8 @@ export function SectionVisual({
   const style = (value?.style ?? 'diagram') as NonNullable<SectionVisualValue['style']>
   const url =
     value?.image && urlFor(value.image)?.width(style === 'icon' ? 96 : 1200).auto('format').url()
-  const label = value?.placeholderLabel
+  const label =
+    value?.placeholderLabel || (style === 'diagram' ? DEFAULT_DIAGRAM_PLACEHOLDER : null)
 
   if (!url && !label) return null
 
@@ -56,4 +60,3 @@ export function SectionVisual({
     </div>
   )
 }
-

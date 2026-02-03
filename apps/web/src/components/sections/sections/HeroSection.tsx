@@ -6,7 +6,9 @@ import {urlFor} from '@/lib/sanity/image'
 export function HeroSection({value}: {value: any}) {
   const mediaUrl = value.media ? urlFor(value.media)?.width(900).height(700).fit('max').auto('format').url() : null
   const showPlaceholder = Boolean(value.showMediaPlaceholder)
-  const placeholderLabel = value.mediaPlaceholderLabel || 'Media placeholder (diagram / contextual image)'
+  const placeholderLabel =
+    value.mediaPlaceholderLabel ||
+    '[Diagram placeholder: structured preparation → review → decision-ready documentation]'
   const sideCard = value.sideCard && (value.sideCard.headline || value.sideCard.bodyMarkdown || value.sideCard.ctaHref)
   const eyebrow =
     typeof value.eyebrow === 'string' && value.eyebrow.trim().toLowerCase() === 'eti360'

@@ -6,10 +6,10 @@ export function FramingBlockSection({value}: {value: any}) {
 
   return (
     <section className="bg-background">
-      <div className="mx-auto max-w-5xl px-6 py-16">
+      <div className="mx-auto max-w-5xl px-6 py-20">
         <div className={visual ? 'grid gap-10 lg:grid-cols-12 lg:items-start' : ''}>
           <div className={visual ? 'lg:col-span-7' : ''}>
-            <h2 className="text-balance text-2xl font-semibold tracking-tight text-text-secondary sm:text-3xl">
+            <h2 className="text-balance text-xl font-semibold tracking-tight text-text-secondary sm:text-2xl">
               {value.headline}
             </h2>
             <div className="mt-4 max-w-3xl">

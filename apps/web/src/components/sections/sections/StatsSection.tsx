@@ -3,11 +3,11 @@ export function StatsSection({value}: {value: any}) {
 
   return (
     <section className="bg-secondary">
-      <div className="mx-auto max-w-5xl px-6 py-10">
+      <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="grid gap-6 sm:grid-cols-3">
           {items.map((item: any, index: number) => (
-            <div key={item?._key ?? index} className="rounded-xl border border-border bg-background p-6">
-              <div className="text-2xl font-semibold tracking-tight text-text-secondary">{item.value}</div>
+            <div key={item?._key ?? index} className="border-l border-border pl-6 first:border-l-0 first:pl-0">
+              <div className="text-xl font-semibold tracking-tight text-text-secondary">{item.value}</div>
               <div className="mt-2 text-sm text-text-tertiary">{item.label}</div>
             </div>
           ))}
@@ -16,4 +16,3 @@ export function StatsSection({value}: {value: any}) {
     </section>
   )
 }
-
