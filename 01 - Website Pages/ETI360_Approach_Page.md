@@ -18,7 +18,7 @@ Travel plans often arrive as:
 - Disconnected materials spread across emails, PDFs, and attachments  
 - Inconsistent levels of detail across activities, trips, and providers  
 
-As a result, leadership teams are asked to review complex travel programs without a single, coherent picture of what students will actually be doing.
+As a result, leadership teams are asked to review complex travel programs without a coherent, decision-ready picture of what students will actually be doing.
 
 ETI360’s approach begins by addressing this preparation gap—before risk discussions or approvals take place.
 
@@ -33,7 +33,7 @@ Activities, locations, transportation needs, and schedules are organized into a 
 - Where activities, accommodations, meals, and movements take place  
 - How the trip progresses over time, including where students are throughout each day  
 
-This structure improves transparency and allows leadership to review trips based on a shared, complete understanding rather than fragmented materials.
+This structure improves transparency and allows leadership to review trips from a shared, complete understanding rather than fragmented materials.
 
 ---
 
@@ -46,9 +46,9 @@ ETI360’s educational travel experts review materials and coordinate with trip 
 - Activity-level risk documentation is complete and appropriate for review  
 - Materials are compiled and structured for meaningful leadership risk discussions  
 
-This work is focused on readiness and clarity—ensuring that what reaches school leadership has been properly prepared for review.
+This work is focused on readiness and clarity—ensuring that what reaches school leadership is prepared for review.
 
-ETI360 does not approve trips or make decisions. The role is to support schools by improving the quality, consistency, and reviewability of the information under consideration.
+ETI360 does not approve trips or make decisions. The role is to improve the quality, consistency, and reviewability of the information under consideration.
 
 ---
 

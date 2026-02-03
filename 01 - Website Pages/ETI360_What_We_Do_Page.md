@@ -22,9 +22,9 @@ Across all contexts, our role is consistent:
 ETI360 supports schools by preparing trips for review and discussion.
 
 This work includes:
-- Creating **structured, consistently formatted itineraries** that clearly show what students will be doing  
+- Producing **structured, consistently formatted itineraries** that leadership can review and discuss  
 - Organizing activities, locations, transportation, and schedules into a coherent picture of the trip  
-- Ensuring supporting materials are complete and ready for review  
+- Packaging supporting documentation so it is complete, consistent, and ready for review  
 
 The goal is to ensure leadership is reviewing well-prepared information, not assembling it.
 
@@ -37,7 +37,7 @@ ETI360’s educational travel experts review materials to ensure they are ready 
 This includes:
 - Coordinating with schools and trip providers to clarify details  
 - Reviewing activity-level documentation for completeness and relevance  
-- Preparing **decision-ready documentation** that supports focused discussion  
+- Delivering a **decision-ready documentation set** that supports focused discussion and approval  
 
 This review supports decision-making. It does not replace leadership judgment.
 

@@ -11,7 +11,7 @@ const routes = [
   '/what-we-do',
   '/triprisk360',
   '/insights',
-  '/insights/hello-world',
+  '/insights/preparation-and-review',
   '/about',
   '/contact',
 ]
@@ -72,4 +72,3 @@ main().catch((err) => {
   console.error(err)
   process.exit(1)
 })
-

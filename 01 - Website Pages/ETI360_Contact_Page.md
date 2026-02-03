@@ -6,9 +6,9 @@ We use initial conversations to understand context, expectations, and review nee
 
 ---
 
-## What to expect
+## What to expect (and how to prepare)
 
-A first conversation is structured and practical.
+A first conversation is structured and practical, and you do not need to prepare materials in advance.
 
 We typically discuss:
 - Your school’s travel program and decision context  
@@ -17,19 +17,6 @@ We typically discuss:
 - Whether ETI360’s expert-led decision-support model applies  
 
 There is no obligation or commitment required to have this conversation.
-
----
-
-## How to prepare
-
-You do not need to prepare materials in advance.
-
-If helpful, you may choose to share:
-- Examples of recent trips or programs  
-- How leadership reviews and approves travel  
-- Any constraints or considerations that shape decision-making  
-
-The goal is understanding, not evaluation.
 
 ---
 

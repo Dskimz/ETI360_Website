@@ -20,7 +20,7 @@ Before decisions are made, leadership teams need a clear understanding of:
 - How trips progress over time  
 - What documentation supports review and oversight  
 
-ETI360 helps bring this information into focus—before risk discussions and approvals occur.
+ETI360 helps bring this information into focus—so leadership is reviewing a coherent, decision-ready picture rather than fragmented materials.
 
 ---
 
@@ -29,10 +29,10 @@ ETI360 helps bring this information into focus—before risk discussions and app
 ETI360’s approach centers on **structured preparation and expert review**.
 
 We help schools by:
-- Creating **structured, consistently formatted itineraries** that make trips easy to understand  
-- Preparing **decision-ready documentation** reviewed by educational travel experts  
-- Documenting **emergency action and response planning** alongside trip materials  
-- Supporting **governance traceability and accountability** through clear documentation  
+- Producing a **structured itinerary pack** that leadership can read and discuss quickly  
+- Preparing a **decision-ready documentation set** reviewed by educational travel experts  
+- Delivering **emergency action and response planning documentation** alongside trip materials  
+- Creating **review-ready, traceable records** that support governance and accountability  
 
 The result is improved clarity at the point of leadership review.
 

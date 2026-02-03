@@ -153,6 +153,7 @@ async function main() {
   const aboutMd = await loadMarkdown('01 - Website Pages/ETI360_About_Page.md')
   const contactMd = await loadMarkdown('01 - Website Pages/ETI360_Contact_Page.md')
   const insightsMd = await loadMarkdown('01 - Website Pages/ETI360_Insights_Page.md')
+  const tripRiskMd = await loadMarkdown('01 - Website Pages/ETI360_TripRisk360_Page.md')
 
   const home = parseMarkdownSections(homeMd)
   const approach = parseMarkdownSections(approachMd)
@@ -160,6 +161,7 @@ async function main() {
   const about = parseMarkdownSections(aboutMd)
   const contact = parseMarkdownSections(contactMd)
   const insights = parseMarkdownSections(insightsMd)
+  const tripRisk = parseMarkdownSections(tripRiskMd)
 
   const homeSections = []
   homeSections.push(
@@ -266,6 +268,26 @@ async function main() {
     }),
   ]
 
+  const tripRiskSections = [
+    toHero({
+      eyebrow: 'TripRisk360',
+      headline: tripRisk.h1 || 'TripRisk360',
+      bodyMarkdown: tripRisk.lead || firstParagraph(tripRiskMd),
+    }),
+    ...tripRisk.sections.map((s) => {
+      if (s.heading.toLowerCase().includes('what triprisk360 produces')) {
+        return toCapabilityGrid({headline: s.heading, bodyMarkdown: s.body})
+      }
+      if (s.heading.toLowerCase().includes('governance')) {
+        return toProof({headline: s.heading, bodyMarkdown: s.body})
+      }
+      if (s.heading.toLowerCase().includes('start a conversation')) {
+        return toCta({headline: s.heading, bodyMarkdown: s.body})
+      }
+      return toFraming({headline: s.heading, bodyMarkdown: s.body})
+    }),
+  ]
+
   const docs = [
     pageDoc({
       id: 'home-page',
@@ -336,28 +358,17 @@ async function main() {
       slug: 'triprisk360',
       title: 'TripRisk360',
       seoTitle: 'TripRisk360',
-      seoDescription:
-        'TripRisk360 supports structured preparation, review, and documentation within the ETI360 workflow.',
-      sections: [
-        toHero({
-          eyebrow: 'TripRisk360',
-          headline: 'TripRisk360',
-          bodyMarkdown:
-            'TripRisk360 supports ETI360’s expert-led preparation and documentation workflow. Content for this page is coming next.',
-        }),
-        toCta({
-          headline: 'Start a conversation',
-          bodyMarkdown: 'Discuss how TripRisk360 supports your program.',
-        }),
-      ],
+      seoDescription: firstParagraph(tripRisk.lead || tripRiskMd),
+      sections: tripRiskSections,
     }),
     insightDoc({
       id: 'insight-hello-world',
-      slug: 'hello-world',
-      title: 'Hello World',
-      excerpt: 'A short test Insight to validate the publishing workflow end-to-end.',
+      slug: 'preparation-and-review',
+      title: 'Preparation and review: what leadership needs',
+      excerpt:
+        'A practical overview of what decision-ready travel documentation should make clear at the point of leadership review.',
       contentMarkdown:
-        '# Hello World\n\nThis is a test Insight used to confirm Sanity → Next.js rendering.\n',
+        '# Preparation and review: what leadership needs\n\nSchool-sponsored travel decisions improve when leadership reviews a coherent, decision-ready picture of the trip.\n\n## What decision-ready materials clarify\n\n- What students will be doing, by day and by activity\n- Where activities, accommodations, meals, and movements take place\n- How the trip progresses over time\n- What documentation supports oversight and contingency planning\n\n## What this enables\n\nDecision-ready documentation helps leadership discuss approvals with clarity, maintain a traceable record of review, and reference decisions after the fact.\n',
       publishedAt: new Date().toISOString(),
     }),
   ]

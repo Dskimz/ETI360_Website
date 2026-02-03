@@ -28,7 +28,8 @@ We believe:
 - Decisions should be informed by clear, well-structured information  
 - Expert review improves the quality of materials under consideration  
 - Documentation matters—for review, accountability, and learning  
-- Responsibility for decisions should remain clear and explicit  
+
+Responsibility for decisions should remain clear and explicit. ETI360 strengthens preparation and documentation so leadership can review with confidence—without shifting authority, judgment, or accountability.
 
 Our role is to support schools by strengthening preparation and review, not by shifting authority or judgment.
 
