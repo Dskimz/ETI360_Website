@@ -16,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <SiteHeader />
+        <div className="h-1 w-full bg-accent" />
         {children}
       </body>
     </html>
