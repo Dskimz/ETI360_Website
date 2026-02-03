@@ -2,6 +2,7 @@ import page from './page'
 import insight from './insight'
 
 import seo from './objects/seo'
+import sectionVisual from './objects/sectionVisual'
 
 import heroSection from './sections/heroSection'
 import framingBlockSection from './sections/framingBlockSection'
@@ -18,6 +19,7 @@ export const schemaTypes = [
 
   // objects
   seo,
+  sectionVisual,
 
   // sections
   heroSection,

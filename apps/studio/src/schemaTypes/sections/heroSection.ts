@@ -44,6 +44,14 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'mediaPlaceholderLabel',
+      title: 'Media placeholder label',
+      type: 'string',
+      description: 'Shown when no image is provided (e.g., "[Diagram: …]").',
+      validation: (Rule) => Rule.max(140),
+      hidden: ({parent}) => !parent?.showMediaPlaceholder,
+    }),
+    defineField({
       name: 'sideCard',
       title: 'Side card (optional)',
       type: 'object',

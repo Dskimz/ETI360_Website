@@ -35,14 +35,23 @@ export default async function InsightsIndex() {
             Exit preview
           </Link>
         </div>
-        <div className="mt-10 grid gap-6">
+        <div className="mt-10 divide-y divide-zinc-200 border-t border-zinc-200">
           {items.map((item: any) => (
-            <article key={item._id} className="rounded-xl border border-zinc-200 p-6">
-              <h2 className="text-xl font-semibold tracking-tight">
+            <article key={item._id} className="py-8">
+              <h2 className="text-xl font-semibold tracking-tight text-text-secondary">
                 <Link href={`/insights/${item.slug}`} className="hover:underline">
                   {item.title}
                 </Link>
               </h2>
+              {item.publishedAt ? (
+                <p className="mt-2 text-xs text-zinc-500">
+                  {new Date(item.publishedAt).toLocaleDateString(undefined, {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </p>
+              ) : null}
               <p className="mt-3 text-sm text-zinc-600">{item.excerpt}</p>
             </article>
           ))}

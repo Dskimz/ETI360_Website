@@ -6,6 +6,7 @@ import {urlFor} from '@/lib/sanity/image'
 export function HeroSection({value}: {value: any}) {
   const mediaUrl = value.media ? urlFor(value.media)?.width(900).height(700).fit('max').auto('format').url() : null
   const showPlaceholder = Boolean(value.showMediaPlaceholder)
+  const placeholderLabel = value.mediaPlaceholderLabel || 'Media placeholder (diagram / contextual image)'
   const sideCard = value.sideCard && (value.sideCard.headline || value.sideCard.bodyMarkdown || value.sideCard.ctaHref)
 
   return (
@@ -85,7 +86,7 @@ export function HeroSection({value}: {value: any}) {
               <div className={sideCard ? 'mt-6' : ''}>
                 <div className="flex min-h-[260px] items-center justify-center rounded-2xl border border-dashed border-border bg-background">
                   <div className="px-6 text-center text-sm text-text-tertiary">
-                    Media placeholder (diagram / contextual image)
+                    {placeholderLabel}
                   </div>
                 </div>
               </div>

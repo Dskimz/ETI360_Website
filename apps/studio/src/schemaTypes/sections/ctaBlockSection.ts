@@ -12,6 +12,11 @@ export default defineType({
       validation: (Rule) => Rule.required().max(90),
     }),
     defineField({
+      name: 'visual',
+      title: 'Visual (optional)',
+      type: 'sectionVisual',
+    }),
+    defineField({
       name: 'bodyMarkdown',
       title: 'Body (Markdown)',
       type: 'text',
@@ -39,4 +44,3 @@ export default defineType({
     prepare: ({title}) => ({title, subtitle: 'CTA block'}),
   },
 })
-
