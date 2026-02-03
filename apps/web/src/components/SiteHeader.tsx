@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useMemo, useState} from 'react'
@@ -32,8 +33,16 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="text-base font-semibold tracking-tight">
-          ETI360
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/eti360-logo.png"
+            alt="ETI360"
+            width={132}
+            height={60}
+            priority
+            className="h-8 w-auto"
+          />
+          <span className="sr-only">ETI360</span>
         </Link>
 
         <button
