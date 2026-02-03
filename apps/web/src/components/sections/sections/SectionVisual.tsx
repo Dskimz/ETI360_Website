@@ -36,6 +36,8 @@ export function SectionVisual({
   const style = (value?.style ?? 'diagram') as NonNullable<SectionVisualValue['style']>
   const url =
     value?.image && urlFor(value.image)?.width(style === 'icon' ? 96 : 1200).auto('format').url()
+  if (style === 'icon' && !url) return null
+
   const placeholderLine =
     value?.placeholderLabel || (style === 'diagram' ? DEFAULT_DIAGRAM_PLACEHOLDER_LINE : null)
 

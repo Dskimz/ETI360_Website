@@ -18,6 +18,7 @@ export default defineType({
       options: {
         list: [
           {title: 'Grid', value: 'grid'},
+          {title: 'Cards', value: 'cards'},
           {title: 'Flow (vertical)', value: 'flow'},
           {title: 'List', value: 'list'},
         ],

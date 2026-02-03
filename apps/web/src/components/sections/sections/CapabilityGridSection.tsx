@@ -1,5 +1,19 @@
 import {Markdown} from '../../Markdown'
 import {SectionVisual} from './SectionVisual'
+import {IconChain, IconChecklist, IconDocuments, IconTimeline} from '@/components/icons/ETIIcons'
+
+function defaultCardIcon(index: number) {
+  switch (index % 4) {
+    case 0:
+      return IconTimeline
+    case 1:
+      return IconDocuments
+    case 2:
+      return IconChecklist
+    default:
+      return IconChain
+  }
+}
 
 export function CapabilityGridSection({value}: {value: any}) {
   const items = Array.isArray(value.items) ? value.items : []
@@ -21,7 +35,31 @@ export function CapabilityGridSection({value}: {value: any}) {
           </div>
         ) : null}
 
-        {layout === 'flow' ? (
+        {layout === 'cards' ? (
+          <div
+            className={[
+              'mt-10 grid gap-6 sm:grid-cols-2',
+              items.length <= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4',
+            ].join(' ')}
+          >
+            {items.map((item: any, index: number) => {
+              const Icon = defaultCardIcon(index)
+              return (
+                <div key={item?._key ?? index} className="rounded-2xl border border-border bg-background p-6">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-text-secondary">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-base font-semibold text-text-secondary">{item.title}</h3>
+                  </div>
+                  <div className="mt-3 text-sm text-text-primary">
+                    <Markdown content={item.bodyMarkdown} />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        ) : layout === 'flow' ? (
           <div className="mt-10">
             <ol className="relative space-y-10 border-l border-border pl-6">
               {items.map((item: any, index: number) => (

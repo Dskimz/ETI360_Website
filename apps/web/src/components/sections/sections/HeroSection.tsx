@@ -39,7 +39,7 @@ export function HeroSection({value}: {value: any}) {
                 </Link>
                 <Link
                   href="/insights"
-                  className="inline-flex items-center justify-center rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-text-secondary hover:bg-secondary"
+                  className="text-sm font-medium text-text-secondary underline underline-offset-4 hover:opacity-80"
                 >
                   Read Insights
                 </Link>
