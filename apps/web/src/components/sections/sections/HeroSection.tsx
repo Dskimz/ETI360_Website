@@ -8,14 +8,18 @@ export function HeroSection({value}: {value: any}) {
   const showPlaceholder = Boolean(value.showMediaPlaceholder)
   const placeholderLabel = value.mediaPlaceholderLabel || 'Media placeholder (diagram / contextual image)'
   const sideCard = value.sideCard && (value.sideCard.headline || value.sideCard.bodyMarkdown || value.sideCard.ctaHref)
+  const eyebrow =
+    typeof value.eyebrow === 'string' && value.eyebrow.trim().toLowerCase() === 'eti360'
+      ? null
+      : value.eyebrow
 
   return (
     <section className="bg-background">
       <div className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
-            {value.eyebrow ? (
-              <p className="text-sm font-medium uppercase tracking-wide text-text-tertiary">{value.eyebrow}</p>
+            {eyebrow ? (
+              <p className="text-sm font-medium uppercase tracking-wide text-text-tertiary">{eyebrow}</p>
             ) : null}
             <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-text-secondary sm:text-5xl">
               {value.headline}
