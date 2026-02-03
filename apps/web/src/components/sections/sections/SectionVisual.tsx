@@ -7,8 +7,8 @@ type SectionVisualValue = {
   placeholderLabel?: string
 }
 
-const DEFAULT_DIAGRAM_PLACEHOLDER =
-  '[Diagram placeholder: structured preparation → review → decision-ready documentation]'
+const DEFAULT_DIAGRAM_PLACEHOLDER_LINE =
+  'Structured preparation → expert review → decision-ready documentation'
 
 function visualFrameClass(style: NonNullable<SectionVisualValue['style']>) {
   if (style === 'icon') {
@@ -16,10 +16,10 @@ function visualFrameClass(style: NonNullable<SectionVisualValue['style']>) {
   }
 
   if (style === 'document') {
-    return 'w-full rounded-2xl border border-border bg-background'
+    return 'h-[320px] w-full rounded-2xl border border-border bg-background'
   }
 
-  return 'w-full rounded-2xl border border-dashed border-border bg-background'
+  return 'h-[320px] w-full rounded-2xl border border-dashed border-border bg-secondary'
 }
 
 export function SectionVisual({
@@ -34,10 +34,10 @@ export function SectionVisual({
   const style = (value?.style ?? 'diagram') as NonNullable<SectionVisualValue['style']>
   const url =
     value?.image && urlFor(value.image)?.width(style === 'icon' ? 96 : 1200).auto('format').url()
-  const label =
-    value?.placeholderLabel || (style === 'diagram' ? DEFAULT_DIAGRAM_PLACEHOLDER : null)
+  const placeholderLine =
+    value?.placeholderLabel || (style === 'diagram' ? DEFAULT_DIAGRAM_PLACEHOLDER_LINE : null)
 
-  if (!url && !label) return null
+  if (!url && !placeholderLine) return null
 
   const frame = visualFrameClass(style)
   const padding = style === 'icon' ? '' : size === 'sm' ? 'p-5' : 'p-6'
@@ -49,12 +49,15 @@ export function SectionVisual({
         <img
           src={url}
           alt={value?.alt ?? ''}
-          className={`${frame} ${style === 'icon' ? 'object-contain p-2' : 'object-cover'} `}
+          className={`${frame} ${style === 'icon' ? 'object-contain p-2' : 'object-contain'} `}
           loading="lazy"
         />
       ) : (
         <div className={`${frame} ${padding} flex items-center justify-center`}>
-          <div className="text-center text-sm text-text-tertiary">{label}</div>
+          <div className="text-center text-sm text-text-tertiary whitespace-pre-line">
+            {'Diagram placeholder\n'}
+            {placeholderLine}
+          </div>
         </div>
       )}
     </div>

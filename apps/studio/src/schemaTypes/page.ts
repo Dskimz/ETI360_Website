@@ -30,6 +30,7 @@ export default defineType({
       type: 'array',
       of: [
         {type: 'heroSection'},
+        {type: 'diagramBlockSection'},
         {type: 'framingBlockSection'},
         {type: 'capabilityGridSection'},
         {type: 'proofBlockSection'},

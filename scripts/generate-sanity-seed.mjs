@@ -70,6 +70,14 @@ function toHero({eyebrow, headline, bodyMarkdown}) {
   }
 }
 
+function toDiagramBlock({placeholderLabel, diagramCaption}) {
+  return {
+    _type: 'diagramBlockSection',
+    placeholderLabel: placeholderLabel?.trim() || undefined,
+    diagramCaption: diagramCaption?.trim() || undefined,
+  }
+}
+
 function toFraming({headline, bodyMarkdown}) {
   return {
     _type: 'framingBlockSection',
@@ -171,6 +179,12 @@ async function main() {
       bodyMarkdown: home.lead,
     }),
   )
+  homeSections.push(
+    toDiagramBlock({
+      placeholderLabel:
+        'From fragmented travel inputs to structured, leadership-ready documentation',
+    }),
+  )
   for (const s of home.sections) {
     if (s.heading.toLowerCase().includes('how eti360 supports')) {
       homeSections.push(toCapabilityGrid({headline: s.heading, bodyMarkdown: s.body}))
@@ -189,16 +203,28 @@ async function main() {
       headline: approach.h1 || 'ETI360’s approach',
       bodyMarkdown: approach.lead || firstParagraph(approachMd),
     }),
-    ...approach.sections.map((s) => {
-      if (s.heading.toLowerCase().includes('governance')) {
-        return toProof({headline: s.heading, bodyMarkdown: s.body})
-      }
-      if (s.heading.toLowerCase().includes('start a conversation')) {
-        return toCta({headline: s.heading, bodyMarkdown: s.body})
-      }
-      return toFraming({headline: s.heading, bodyMarkdown: s.body})
-    }),
   ]
+  for (const s of approach.sections) {
+    if (s.heading.toLowerCase().includes('governance')) {
+      approachSections.push(toProof({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+    if (s.heading.toLowerCase().includes('start a conversation')) {
+      approachSections.push(toCta({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+
+    approachSections.push(toFraming({headline: s.heading, bodyMarkdown: s.body}))
+
+    if (s.heading.toLowerCase().includes('why preparation comes first')) {
+      approachSections.push(
+        toDiagramBlock({
+          placeholderLabel:
+            'Preparation stages: intake → structuring → expert review → leadership review',
+        }),
+      )
+    }
+  }
 
   const whatWeDoSections = [
     toHero({
@@ -206,19 +232,28 @@ async function main() {
       headline: whatWeDo.h1 || 'What we do',
       bodyMarkdown: whatWeDo.lead || firstParagraph(whatWeDoMd),
     }),
-    ...whatWeDo.sections.map((s) => {
-      if (s.heading.toLowerCase().includes('preparing trips')) {
-        return toCapabilityGrid({headline: s.heading, bodyMarkdown: s.body})
-      }
-      if (s.heading.toLowerCase().includes('governance')) {
-        return toProof({headline: s.heading, bodyMarkdown: s.body})
-      }
-      if (s.heading.toLowerCase().includes('start a conversation')) {
-        return toCta({headline: s.heading, bodyMarkdown: s.body})
-      }
-      return toFraming({headline: s.heading, bodyMarkdown: s.body})
-    }),
   ]
+  for (const s of whatWeDo.sections) {
+    if (s.heading.toLowerCase().includes('preparing trips')) {
+      whatWeDoSections.push(toCapabilityGrid({headline: s.heading, bodyMarkdown: s.body}))
+      whatWeDoSections.push(
+        toDiagramBlock({
+          placeholderLabel:
+            'Collaborative preparation flow with expert review and documentation outputs',
+        }),
+      )
+      continue
+    }
+    if (s.heading.toLowerCase().includes('governance')) {
+      whatWeDoSections.push(toProof({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+    if (s.heading.toLowerCase().includes('start a conversation')) {
+      whatWeDoSections.push(toCta({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+    whatWeDoSections.push(toFraming({headline: s.heading, bodyMarkdown: s.body}))
+  }
 
   const aboutSections = [
     toHero({
@@ -274,19 +309,31 @@ async function main() {
       headline: tripRisk.h1 || 'TripRisk360',
       bodyMarkdown: tripRisk.lead || firstParagraph(tripRiskMd),
     }),
-    ...tripRisk.sections.map((s) => {
-      if (s.heading.toLowerCase().includes('what triprisk360 produces')) {
-        return toCapabilityGrid({headline: s.heading, bodyMarkdown: s.body})
-      }
-      if (s.heading.toLowerCase().includes('governance')) {
-        return toProof({headline: s.heading, bodyMarkdown: s.body})
-      }
-      if (s.heading.toLowerCase().includes('start a conversation')) {
-        return toCta({headline: s.heading, bodyMarkdown: s.body})
-      }
-      return toFraming({headline: s.heading, bodyMarkdown: s.body})
-    }),
   ]
+  for (const s of tripRisk.sections) {
+    if (s.heading.toLowerCase().includes('what triprisk360 produces')) {
+      tripRiskSections.push(toCapabilityGrid({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+    if (s.heading.toLowerCase().includes('governance')) {
+      tripRiskSections.push(toProof({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+    if (s.heading.toLowerCase().includes('start a conversation')) {
+      tripRiskSections.push(toCta({headline: s.heading, bodyMarkdown: s.body}))
+      continue
+    }
+
+    tripRiskSections.push(toFraming({headline: s.heading, bodyMarkdown: s.body}))
+
+    if (s.heading.toLowerCase().includes('the system’s role')) {
+      tripRiskSections.push(
+        toDiagramBlock({
+          placeholderLabel: 'TripRisk360 supports preparation and documentation, not decision-making',
+        }),
+      )
+    }
+  }
 
   const docs = [
     pageDoc({

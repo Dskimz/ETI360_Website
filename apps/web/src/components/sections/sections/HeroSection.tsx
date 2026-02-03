@@ -8,7 +8,7 @@ export function HeroSection({value}: {value: any}) {
   const showPlaceholder = Boolean(value.showMediaPlaceholder)
   const placeholderLabel =
     value.mediaPlaceholderLabel ||
-    '[Diagram placeholder: structured preparation → review → decision-ready documentation]'
+    'Structured preparation → expert review → decision-ready documentation'
   const sideCard = value.sideCard && (value.sideCard.headline || value.sideCard.bodyMarkdown || value.sideCard.ctaHref)
   const eyebrow =
     typeof value.eyebrow === 'string' && value.eyebrow.trim().toLowerCase() === 'eti360'
@@ -92,7 +92,10 @@ export function HeroSection({value}: {value: any}) {
               <div className={sideCard ? 'mt-6' : ''}>
                 <div className="flex min-h-[260px] items-center justify-center rounded-2xl border border-dashed border-border bg-background">
                   <div className="px-6 text-center text-sm text-text-tertiary">
-                    {placeholderLabel}
+                    <span className="whitespace-pre-line">
+                      {'Diagram placeholder\n'}
+                      {placeholderLabel}
+                    </span>
                   </div>
                 </div>
               </div>

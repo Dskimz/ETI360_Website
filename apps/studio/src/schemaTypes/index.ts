@@ -11,6 +11,7 @@ import proofBlockSection from './sections/proofBlockSection'
 import insightFeedSection from './sections/insightFeedSection'
 import ctaBlockSection from './sections/ctaBlockSection'
 import statsSection from './sections/statsSection'
+import diagramBlockSection from './sections/diagramBlockSection'
 
 export const schemaTypes = [
   // documents
@@ -29,4 +30,5 @@ export const schemaTypes = [
   insightFeedSection,
   ctaBlockSection,
   statsSection,
+  diagramBlockSection,
 ]

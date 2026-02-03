@@ -5,6 +5,7 @@ import {CapabilityGridSection} from './sections/CapabilityGridSection'
 import {ProofBlockSection} from './sections/ProofBlockSection'
 import {InsightFeedSection} from './sections/InsightFeedSection'
 import {StatsSection} from './sections/StatsSection'
+import {DiagramBlockSection} from './sections/DiagramBlockSection'
 
 export type Section = Record<string, any> & {_type: string}
 
@@ -17,6 +18,8 @@ export function SectionRenderer({sections}: {sections: Section[]}) {
         switch (section._type) {
           case 'heroSection':
             return <HeroSection key={key} value={section} />
+          case 'diagramBlockSection':
+            return <DiagramBlockSection key={key} value={section} />
           case 'framingBlockSection':
             return <FramingBlockSection key={key} value={section} />
           case 'capabilityGridSection':
