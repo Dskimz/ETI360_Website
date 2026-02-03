@@ -5,11 +5,14 @@
     "apps/*",
     "packages/*"
   ],
+  "devDependencies": {
+    "playwright": "^1.51.1"
+  },
   "scripts": {
     "dev": "npm run dev -w @eti360/web",
     "dev:studio": "npm run dev -w @eti360/studio",
     "build": "npm run build -ws",
-    "lint": "npm run lint -ws"
+    "lint": "npm run lint -ws",
+    "screenshots": "node scripts/take-screenshots.mjs"
   }
 }
-
