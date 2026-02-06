@@ -1,7 +1,8 @@
 import {SectionVisual} from '@/components/sections/sections/SectionVisual'
+import type {SanityImageSource} from '@/lib/sanity/image'
 
 type DiagramBlockValue = {
-  image?: any
+  image?: SanityImageSource
   alt?: string
   caption?: string
   placeholderLabel?: string
@@ -32,4 +33,3 @@ export function DiagramBlock({
     </figure>
   )
 }
-

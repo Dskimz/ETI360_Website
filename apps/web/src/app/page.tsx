@@ -3,6 +3,11 @@ import {draftMode} from 'next/headers'
 import {SectionRenderer} from '@/components/sections/SectionRenderer'
 import {getSanityClient} from '@/lib/sanity/client'
 import {pageBySlugQuery} from '@/lib/sanity/queries'
+import type {Section} from '@/components/sections/SectionRenderer'
+
+type CmsPage = {
+  sections?: Section[]
+}
 
 export default async function HomePage() {
   const isDraft = (await draftMode()).isEnabled
@@ -20,9 +25,9 @@ export default async function HomePage() {
     )
   }
 
-  let page: any = null
+  let page: CmsPage | null = null
   try {
-    page = await client.fetch(pageBySlugQuery, {slug: 'home'})
+    page = (await client.fetch(pageBySlugQuery, {slug: 'home'})) as CmsPage | null
   } catch (error) {
     return (
       <main className="mx-auto max-w-5xl px-6 py-20">

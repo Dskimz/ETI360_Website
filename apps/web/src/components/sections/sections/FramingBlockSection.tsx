@@ -1,7 +1,14 @@
 import {Markdown} from '../../Markdown'
 import {SectionVisual} from './SectionVisual'
+import type {SectionVisualValue} from './SectionVisual'
 
-export function FramingBlockSection({value}: {value: any}) {
+export type FramingBlockSectionValue = {
+  headline: string
+  bodyMarkdown: string
+  visual?: SectionVisualValue
+}
+
+export function FramingBlockSection({value}: {value: FramingBlockSectionValue}) {
   const visual = value.visual
 
   return (

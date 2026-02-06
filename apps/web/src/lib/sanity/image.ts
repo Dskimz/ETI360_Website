@@ -2,7 +2,10 @@ import imageUrlBuilder from '@sanity/image-url'
 
 import {getSanityPublicConfig} from './config'
 
-export function urlFor(source: any) {
+type ImageUrlBuilder = ReturnType<typeof imageUrlBuilder>
+export type SanityImageSource = Parameters<ImageUrlBuilder['image']>[0]
+
+export function urlFor(source: SanityImageSource) {
   const cfg = getSanityPublicConfig()
   if (!cfg) return null
 
@@ -13,4 +16,3 @@ export function urlFor(source: any) {
 
   return builder.image(source)
 }
-

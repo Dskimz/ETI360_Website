@@ -1,5 +1,6 @@
 import {Markdown} from '../../Markdown'
 import {SectionVisual} from './SectionVisual'
+import type {SectionVisualValue} from './SectionVisual'
 import {IconChain, IconChecklist, IconDocuments, IconTimeline} from '@/components/icons/ETIIcons'
 
 function defaultCardIcon(index: number) {
@@ -15,7 +16,21 @@ function defaultCardIcon(index: number) {
   }
 }
 
-export function CapabilityGridSection({value}: {value: any}) {
+export type CapabilityGridItem = {
+  _key?: string
+  icon?: SectionVisualValue
+  title: string
+  bodyMarkdown: string
+}
+
+export type CapabilityGridSectionValue = {
+  headline: string
+  layout: 'grid' | 'cards' | 'flow' | 'list'
+  visual?: SectionVisualValue
+  items: CapabilityGridItem[]
+}
+
+export function CapabilityGridSection({value}: {value: CapabilityGridSectionValue}) {
   const items = Array.isArray(value.items) ? value.items : []
   const layout = value.layout ?? 'grid'
   const visual = value.visual
@@ -42,7 +57,7 @@ export function CapabilityGridSection({value}: {value: any}) {
               items.length <= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4',
             ].join(' ')}
           >
-            {items.map((item: any, index: number) => {
+            {items.map((item, index: number) => {
               const Icon = defaultCardIcon(index)
               return (
                 <div key={item?._key ?? index} className="rounded-2xl border border-border bg-background p-6">
@@ -62,7 +77,7 @@ export function CapabilityGridSection({value}: {value: any}) {
         ) : layout === 'flow' ? (
           <div className="mt-10">
             <ol className="relative space-y-10 border-l border-border pl-6">
-              {items.map((item: any, index: number) => (
+              {items.map((item, index: number) => (
                 <li key={item?._key ?? index} className="relative">
                   <div className="absolute -left-[13px] top-0 flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background text-xs font-medium text-text-secondary">
                     {index + 1}
@@ -82,7 +97,7 @@ export function CapabilityGridSection({value}: {value: any}) {
           </div>
         ) : layout === 'list' ? (
           <div className="mt-10 divide-y divide-border rounded-2xl border border-border">
-            {items.map((item: any, index: number) => (
+            {items.map((item, index: number) => (
               <div key={item?._key ?? index} className="flex gap-4 p-6">
                 <SectionVisual value={item.icon} className="mt-0.5 shrink-0" size="sm" />
                 <div>
@@ -96,7 +111,7 @@ export function CapabilityGridSection({value}: {value: any}) {
           </div>
         ) : (
           <div className="mt-10 grid gap-x-12 gap-y-10 sm:grid-cols-2">
-            {items.map((item: any, index: number) => (
+            {items.map((item, index: number) => (
               <div key={item?._key ?? index} className="grid gap-4">
                 {item.icon?.style === 'diagram' ? (
                   <SectionVisual

@@ -1,6 +1,14 @@
 import {DiagramBlock} from '@/components/DiagramBlock'
+import type {SanityImageSource} from '@/lib/sanity/image'
 
-export function DiagramBlockSection({value}: {value: any}) {
+export type DiagramBlockSectionValue = {
+  diagramImage?: SanityImageSource
+  diagramAlt?: string
+  diagramCaption?: string
+  placeholderLabel?: string
+}
+
+export function DiagramBlockSection({value}: {value: DiagramBlockSectionValue}) {
   return (
     <section className="bg-transparent">
       <div className="mx-auto max-w-5xl px-6 py-20">

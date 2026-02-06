@@ -1,13 +1,13 @@
-import {CtaBlockSection} from './sections/CtaBlockSection'
-import {HeroSection} from './sections/HeroSection'
-import {FramingBlockSection} from './sections/FramingBlockSection'
-import {CapabilityGridSection} from './sections/CapabilityGridSection'
-import {ProofBlockSection} from './sections/ProofBlockSection'
-import {InsightFeedSection} from './sections/InsightFeedSection'
-import {StatsSection} from './sections/StatsSection'
-import {DiagramBlockSection} from './sections/DiagramBlockSection'
+import {CtaBlockSection, type CtaBlockSectionValue} from './sections/CtaBlockSection'
+import {HeroSection, type HeroSectionValue} from './sections/HeroSection'
+import {FramingBlockSection, type FramingBlockSectionValue} from './sections/FramingBlockSection'
+import {CapabilityGridSection, type CapabilityGridSectionValue} from './sections/CapabilityGridSection'
+import {ProofBlockSection, type ProofBlockSectionValue} from './sections/ProofBlockSection'
+import {InsightFeedSection, type InsightFeedSectionValue} from './sections/InsightFeedSection'
+import {StatsSection, type StatsSectionValue} from './sections/StatsSection'
+import {DiagramBlockSection, type DiagramBlockSectionValue} from './sections/DiagramBlockSection'
 
-export type Section = Record<string, any> & {_type: string}
+export type Section = Record<string, unknown> & {_type: string; _key?: string}
 
 export function SectionRenderer({sections}: {sections: Section[]}) {
   return (
@@ -20,28 +20,28 @@ export function SectionRenderer({sections}: {sections: Section[]}) {
         let rendered: React.ReactNode = null
         switch (section._type) {
           case 'heroSection':
-            rendered = <HeroSection value={section} />
+            rendered = <HeroSection value={section as unknown as HeroSectionValue} />
             break
           case 'diagramBlockSection':
-            rendered = <DiagramBlockSection value={section} />
+            rendered = <DiagramBlockSection value={section as unknown as DiagramBlockSectionValue} />
             break
           case 'framingBlockSection':
-            rendered = <FramingBlockSection value={section} />
+            rendered = <FramingBlockSection value={section as unknown as FramingBlockSectionValue} />
             break
           case 'capabilityGridSection':
-            rendered = <CapabilityGridSection value={section} />
+            rendered = <CapabilityGridSection value={section as unknown as CapabilityGridSectionValue} />
             break
           case 'proofBlockSection':
-            rendered = <ProofBlockSection value={section} />
+            rendered = <ProofBlockSection value={section as unknown as ProofBlockSectionValue} />
             break
           case 'insightFeedSection':
-            rendered = <InsightFeedSection value={section} />
+            rendered = <InsightFeedSection value={section as unknown as InsightFeedSectionValue} />
             break
           case 'statsSection':
-            rendered = <StatsSection value={section} />
+            rendered = <StatsSection value={section as unknown as StatsSectionValue} />
             break
           case 'ctaBlockSection':
-            rendered = <CtaBlockSection value={section} />
+            rendered = <CtaBlockSection value={section as unknown as CtaBlockSectionValue} />
             break
           default:
             rendered = (

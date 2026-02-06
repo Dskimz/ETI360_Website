@@ -2,8 +2,17 @@ import Link from 'next/link'
 
 import {Markdown} from '../../Markdown'
 import {SectionVisual} from './SectionVisual'
+import type {SectionVisualValue} from './SectionVisual'
 
-export function CtaBlockSection({value}: {value: any}) {
+export type CtaBlockSectionValue = {
+  headline: string
+  bodyMarkdown: string
+  visual?: SectionVisualValue
+  primaryCtaLabel: string
+  primaryCtaHref: string
+}
+
+export function CtaBlockSection({value}: {value: CtaBlockSectionValue}) {
   const visual = value.visual
 
   return (
@@ -32,7 +41,7 @@ export function CtaBlockSection({value}: {value: any}) {
                 href={value.primaryCtaHref}
                 className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-white hover:opacity-90"
               >
-                {value.primaryCtaLabel ?? 'Start a conversation'}
+                {value.primaryCtaLabel}
               </Link>
             </div>
           ) : null}

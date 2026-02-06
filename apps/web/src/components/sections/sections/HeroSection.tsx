@@ -2,18 +2,48 @@ import Link from 'next/link'
 
 import {Markdown} from '../../Markdown'
 import {urlFor} from '@/lib/sanity/image'
+import type {SanityImageSource} from '@/lib/sanity/image'
 
-export function HeroSection({value}: {value: any}) {
+export type HeroSideCard = {
+  label?: string
+  headline?: string
+  bodyMarkdown?: string
+  ctaLabel?: string
+  ctaHref?: string
+}
+
+export type HeroSectionValue = {
+  eyebrow?: string
+  headline: string
+  bodyMarkdown: string
+  media?: SanityImageSource
+  mediaAlt?: string
+  showMediaPlaceholder?: boolean
+  mediaPlaceholderLabel?: string
+  sideCard?: HeroSideCard
+  primaryCtaLabel: string
+  primaryCtaHref: string
+  secondaryCtaLabel?: string
+  secondaryCtaHref?: string
+}
+
+export function HeroSection({value}: {value: HeroSectionValue}) {
   const mediaUrl = value.media ? urlFor(value.media)?.width(900).height(700).fit('max').auto('format').url() : null
   const showPlaceholder = Boolean(value.showMediaPlaceholder)
-  const placeholderLabel =
-    value.mediaPlaceholderLabel ||
-    'Structured preparation → expert review → decision-ready documentation'
+  const placeholderLabel = typeof value.mediaPlaceholderLabel === 'string' ? value.mediaPlaceholderLabel.trim() : ''
   const sideCard = value.sideCard && (value.sideCard.headline || value.sideCard.bodyMarkdown || value.sideCard.ctaHref)
   const eyebrow =
     typeof value.eyebrow === 'string' && value.eyebrow.trim().toLowerCase() === 'eti360'
       ? null
       : value.eyebrow
+  const secondaryCtaHref =
+    typeof value.secondaryCtaHref === 'string' && value.secondaryCtaHref.trim().length > 0
+      ? value.secondaryCtaHref
+      : null
+  const secondaryCtaLabel =
+    typeof value.secondaryCtaLabel === 'string' && value.secondaryCtaLabel.trim().length > 0
+      ? value.secondaryCtaLabel
+      : null
 
   return (
     <section className="bg-transparent">
@@ -35,14 +65,16 @@ export function HeroSection({value}: {value: any}) {
                   href={value.primaryCtaHref}
                   className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-white hover:opacity-90"
                 >
-                  {value.primaryCtaLabel ?? 'Start a conversation'}
+                  {value.primaryCtaLabel}
                 </Link>
-                <Link
-                  href="/insights"
-                  className="text-sm font-medium text-text-secondary underline underline-offset-4 hover:opacity-80"
-                >
-                  Read Insights
-                </Link>
+                {secondaryCtaHref && secondaryCtaLabel ? (
+                  <Link
+                    href={secondaryCtaHref}
+                    className="text-sm font-medium text-text-secondary underline underline-offset-4 hover:opacity-80"
+                  >
+                    {secondaryCtaLabel}
+                  </Link>
+                ) : null}
               </div>
             ) : null}
           </div>
@@ -65,13 +97,13 @@ export function HeroSection({value}: {value: any}) {
                     <Markdown content={value.sideCard.bodyMarkdown} />
                   </div>
                 ) : null}
-                {value.sideCard?.ctaHref ? (
+                {value.sideCard?.ctaHref && value.sideCard?.ctaLabel ? (
                   <div className="mt-5">
                     <Link
                       href={value.sideCard.ctaHref}
                       className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
                     >
-                      {value.sideCard.ctaLabel ?? 'Learn more'}
+                      {value.sideCard.ctaLabel}
                     </Link>
                   </div>
                 ) : null}
@@ -88,14 +120,11 @@ export function HeroSection({value}: {value: any}) {
                   loading="lazy"
                 />
               </div>
-            ) : showPlaceholder ? (
+            ) : showPlaceholder && placeholderLabel ? (
               <div className={sideCard ? 'mt-6' : ''}>
                 <div className="flex h-[220px] items-center justify-center rounded-2xl border border-dashed border-border bg-secondary sm:h-[320px]">
                   <div className="px-6 text-center text-sm text-text-tertiary">
-                    <span className="whitespace-pre-line">
-                      {'Diagram placeholder\n'}
-                      {placeholderLabel}
-                    </span>
+                    <span className="whitespace-pre-line">{placeholderLabel}</span>
                   </div>
                 </div>
               </div>

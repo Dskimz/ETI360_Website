@@ -4,6 +4,19 @@ import {draftMode} from 'next/headers'
 import {SectionRenderer} from '@/components/sections/SectionRenderer'
 import {getSanityClient} from '@/lib/sanity/client'
 import {latestInsightsQuery, pageBySlugQuery} from '@/lib/sanity/queries'
+import type {Section} from '@/components/sections/SectionRenderer'
+
+type CmsPage = {
+  sections?: Section[]
+}
+
+type InsightListItem = {
+  _id: string
+  title: string
+  slug: string
+  excerpt?: string
+  publishedAt?: string
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -22,8 +35,8 @@ export default async function InsightsIndex() {
     )
   }
 
-  const cmsPage = await client.fetch(pageBySlugQuery, {slug: 'insights'})
-  const items = await client.fetch(latestInsightsQuery, {limit: 30})
+  const cmsPage = (await client.fetch(pageBySlugQuery, {slug: 'insights'})) as CmsPage | null
+  const items = (await client.fetch(latestInsightsQuery, {limit: 30})) as InsightListItem[]
 
   return (
     <>
@@ -36,7 +49,7 @@ export default async function InsightsIndex() {
           </Link>
         </div>
         <div className="mt-10 divide-y divide-zinc-200 border-t border-zinc-200">
-          {items.map((item: any) => (
+          {items.map((item) => (
             <article key={item._id} className="py-8">
               <h2 className="text-xl font-semibold tracking-tight text-text-secondary">
                 <Link href={`/insights/${item.slug}`} className="hover:underline">

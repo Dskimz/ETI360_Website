@@ -1,7 +1,14 @@
 import {Markdown} from '../../Markdown'
 import {SectionVisual} from './SectionVisual'
+import type {SectionVisualValue} from './SectionVisual'
 
-export function ProofBlockSection({value}: {value: any}) {
+export type ProofBlockSectionValue = {
+  headline: string
+  bodyMarkdown: string
+  visual?: SectionVisualValue
+}
+
+export function ProofBlockSection({value}: {value: ProofBlockSectionValue}) {
   const visual = value.visual
   const isGovernance =
     typeof value.headline === 'string' && value.headline.toLowerCase().includes('governance')

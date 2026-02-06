@@ -1,14 +1,12 @@
 import {urlFor} from '@/lib/sanity/image'
+import type {SanityImageSource} from '@/lib/sanity/image'
 
-type SectionVisualValue = {
+export type SectionVisualValue = {
   style?: 'diagram' | 'document' | 'illustration' | 'icon'
-  image?: any
+  image?: SanityImageSource
   alt?: string
   placeholderLabel?: string
 }
-
-const DEFAULT_DIAGRAM_PLACEHOLDER_LINE =
-  'Structured preparation → expert review → decision-ready documentation'
 
 function visualFrameClass(style: NonNullable<SectionVisualValue['style']>) {
   if (style === 'icon') {
@@ -38,10 +36,9 @@ export function SectionVisual({
     value?.image && urlFor(value.image)?.width(style === 'icon' ? 96 : 1200).auto('format').url()
   if (style === 'icon' && !url) return null
 
-  const placeholderLine =
-    value?.placeholderLabel || (style === 'diagram' ? DEFAULT_DIAGRAM_PLACEHOLDER_LINE : null)
+  const placeholderLabel = value?.placeholderLabel?.trim() || null
 
-  if (!url && !placeholderLine) return null
+  if (!url && !placeholderLabel) return null
 
   const frame = frameClassName || visualFrameClass(style)
   const padding = style === 'icon' ? '' : size === 'sm' ? 'p-5' : 'p-6'
@@ -58,10 +55,7 @@ export function SectionVisual({
         />
       ) : (
         <div className={`${frame} ${padding} flex items-center justify-center`}>
-          <div className="text-center text-sm text-text-tertiary whitespace-pre-line">
-            {'Diagram placeholder\n'}
-            {placeholderLine}
-          </div>
+          <div className="whitespace-pre-line text-center text-sm text-text-tertiary">{placeholderLabel}</div>
         </div>
       )}
     </div>

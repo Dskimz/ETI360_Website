@@ -1,6 +1,10 @@
 import Link from 'next/link'
 
-export function InsightFeedSection({value}: {value: any}) {
+export type InsightFeedSectionValue = {
+  headline: string
+}
+
+export function InsightFeedSection({value}: {value: InsightFeedSectionValue}) {
   return (
     <section className="bg-transparent">
       <div className="mx-auto max-w-5xl px-6 py-20">
