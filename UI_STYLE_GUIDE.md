@@ -3,7 +3,8 @@
 Use this document to keep internal apps visually consistent with the public ETI360 site.
 
 ## Where the UI is defined (in this repo)
-- Theme tokens + typography: `apps/web/src/app/globals.css`
+- Design tokens + baseline UI CSS (source of truth): `@eti360/design-system` (`eti360.css`)
+- Marketing site global CSS: `apps/web/src/app/globals.css` (imports the design system + maps tokens into Tailwind)
 - Header/navigation: `apps/web/src/components/SiteHeader.tsx`
 - Section layout patterns: `apps/web/src/components/sections/SectionRenderer.tsx`
 - Diagram/visual placeholders: `apps/web/src/components/DiagramBlock.tsx` and `apps/web/src/components/sections/sections/SectionVisual.tsx`
@@ -15,6 +16,7 @@ Use this document to keep internal apps visually consistent with the public ETI3
 - Avoid visual urgency: no flashing, no bright gradients, no aggressive shadows.
 
 ## Design tokens (copy into another project)
+Preferred: import `@eti360/design-system/eti360.css` and use the tokens directly.
 
 ### Colors (core)
 - Primary (navy): `#002b4f`
@@ -101,4 +103,3 @@ Visual treatment:
 - Use the same max content width and spacing.
 - Reuse the same button styles for actions.
 - Use DiagramBlocks wherever you explain a workflow.
-

@@ -1,23 +1,5 @@
 @import "tailwindcss";
-
-:root {
-  /* Typography */
-  --font-sans: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Helvetica Neue", Arial, sans-serif;
-
-  /* Brand colors (from eti360-frontend) */
-  --primary: #002b4f;
-  --secondary: rgba(0, 43, 79, 0.12);
-  --accent: #ffc300;
-
-  /* Theme colors */
-  --page-background: #ffffff;
-  --border-color: #e5e7eb;
-  --band-background: #f7f7f8;
-  --text-primary: #000814;
-  --text-secondary: #002b4f;
-  --text-tertiary: rgba(0, 8, 20, 0.6);
-}
+@import "@eti360/design-system/eti360.css";
 
 @theme inline {
   --color-background: var(--page-background);
@@ -31,12 +13,6 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
   --font-sans: var(--font-sans);
-}
-
-body {
-  background: var(--page-background);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
 }
 
 .markdown {
