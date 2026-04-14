@@ -54,7 +54,7 @@ export const homePage = {
         "Compliance alignment and gap analysis",
         "Destination intelligence and provider credentials",
       ],
-      cta: { label: "Learn more", href: "/for-providers" },
+      cta: { label: "Learn more", href: "/contact" },
     },
   },
   documentShowcase: {
