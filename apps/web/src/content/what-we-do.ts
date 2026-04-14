@@ -9,49 +9,120 @@ export const whatWeDoPage = {
   stages: [
     {
       eyebrow: "STAGE 1 — PLANNING & ASSESSMENT",
-      intro: "Structured evaluation of the proposed trip before any commitment is made.",
+      statement: "Structured evaluation before any commitment is made.",
       cards: [
-        { title: "Trip Options Brief.", body: "A one-page structured overview: activity risk scores across seven dimensions, provider credentials, location intelligence, and identified gaps. Built for the person who signs off." },
-        { title: "Itinerary Normalization.", body: "The proposed itinerary converted into a structured activity ledger. Gaps, overlaps, and missing information are flagged before assessment begins." },
+        {
+          title: "Trip Options Brief.",
+          outputs: [
+            "Activity risk scores across seven dimensions",
+            "Provider credentials and location intelligence",
+            "Identified gaps and assumptions",
+          ],
+        },
+        {
+          title: "Itinerary Normalization.",
+          outputs: [
+            "Itinerary converted to structured activity ledger",
+            "Gaps, overlaps, and missing information flagged",
+          ],
+        },
       ],
     },
     {
       eyebrow: "STAGE 2 — RISK & OPERATIONS",
-      intro: "Comprehensive risk documentation and compliance alignment for approved trips.",
+      statement: "Comprehensive risk documentation and compliance alignment.",
       cards: [
-        { title: "Operations Playbook.", body: "RAMS documentation grouped by activity cluster. Hazard identification, control measures, and residual risk scores. Built for operational staff and governance committees." },
-        { title: "Compliance Assessment.", body: "ISO 31031 alignment review and SOP coverage analysis. Score pills flag gaps. The school sees exactly where policies meet the standard and where they do not." },
-        { title: "Trip Stress Test.", body: "Monte Carlo simulation of trip scenarios. Probability-weighted outcomes, daily risk curves, and time-to-definitive-care calculations for each activity location." },
+        {
+          title: "Operations Playbook.",
+          outputs: [
+            "RAMS documentation grouped by activity cluster",
+            "Hazard identification and control measures",
+            "Residual risk scores",
+          ],
+        },
+        {
+          title: "Compliance Assessment.",
+          outputs: [
+            "ISO 31031 alignment review",
+            "SOP coverage analysis with score pills",
+          ],
+        },
+        {
+          title: "Trip Stress Test.",
+          outputs: [
+            "Monte Carlo simulation of trip scenarios",
+            "Probability-weighted outcomes and daily risk curves",
+            "Time-to-definitive-care calculations",
+          ],
+        },
       ],
     },
     {
       eyebrow: "STAGE 3 — PRE-DEPARTURE",
-      intro: "Operational preparation documents for staff, parents, and participants.",
+      statement: "Operational preparation for staff, parents, and participants.",
       cards: [
-        { title: "Emergency Action Plan.", body: "Location-specific emergency protocols, embassy contacts, hospital routes, and escalation procedures. Designed for high-stress situations where clarity matters most." },
-        { title: "Participant Briefing.", body: "Destination intelligence, cultural context, health advisories, and safety protocols. Written for the trip participants and their families." },
+        {
+          title: "Emergency Action Plan.",
+          outputs: [
+            "Location-specific emergency protocols",
+            "Embassy contacts and hospital routes",
+            "Escalation procedures for high-stress situations",
+          ],
+        },
+        {
+          title: "Participant Briefing.",
+          outputs: [
+            "Destination intelligence and cultural context",
+            "Health advisories and safety protocols",
+          ],
+        },
       ],
     },
     {
       eyebrow: "STAGE 4 — LIVE OPERATIONS",
-      intro: "Real-time oversight tools for active trips.",
+      statement: "Real-time oversight for active trips.",
       cards: [
-        { title: "Live Operations Dashboard.", body: "Real-time check-in tracking, incident logging, escalation coordination, and forward-window risk monitoring. The duty manager's operational center." },
-        { title: "Incident Management.", body: "Structured incident logging with severity classification, action tracking, and resolution documentation. Every decision recorded in real time." },
+        {
+          title: "Live Operations Dashboard.",
+          outputs: [
+            "Real-time check-in tracking",
+            "Forward-window risk monitoring",
+            "Escalation coordination",
+          ],
+        },
+        {
+          title: "Incident Management.",
+          outputs: [
+            "Structured incident logging with severity classification",
+            "Action tracking and resolution documentation",
+          ],
+        },
       ],
     },
     {
       eyebrow: "STAGE 5 — POST-TRIP REVIEW",
-      intro: "Structured review and institutional learning after the trip concludes.",
+      statement: "Structured review and institutional learning.",
       cards: [
-        { title: "Post-Trip Review.", body: "Structured review of trip outcomes against planned risk assessments. Incident analysis, near-miss identification, and recommendations for future trips." },
-        { title: "Governance Archive.", body: "Complete document trail for institutional records. Every assessment, decision, and outcome documented and traceable." },
+        {
+          title: "Post-Trip Review.",
+          outputs: [
+            "Outcomes reviewed against planned risk assessments",
+            "Incident analysis and near-miss identification",
+          ],
+        },
+        {
+          title: "Governance Archive.",
+          outputs: [
+            "Complete document trail for institutional records",
+            "Every assessment, decision, and outcome documented",
+          ],
+        },
       ],
     },
   ],
   cta: {
-    headline: "Start a conversation.",
-    body: "Schools adopt the stages they need. Start with Stage 1 and one trip.",
+    headline: "Start with Stage 1.",
+    body: "One trip. One set of documents. Schools adopt the stages they need.",
     cta: { label: "Start a conversation", href: "/contact" },
   },
 };

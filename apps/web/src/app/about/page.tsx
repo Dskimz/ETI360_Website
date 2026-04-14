@@ -24,21 +24,21 @@ function HeroSection({
           <div className="absolute inset-0 bg-[var(--brand-navy)]/80" />
         </div>
       )}
-      <div className={`relative section-padding ${image ? "py-24 md:py-32" : ""}`}>
+      <div className={`relative section-padding ${image ? "py-28 md:py-36" : ""}`}>
         <div className="container-narrow">
           {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
           <h1 className={`heading-display max-w-3xl ${image ? "text-white" : ""}`}>
             {headline}
           </h1>
           <p
-            className={`mt-6 max-w-2xl text-lg leading-relaxed ${
+            className={`mt-6 max-w-2xl text-xl leading-relaxed ${
               image ? "text-white/80" : "body-text-secondary"
             }`}
           >
             {subhead}
           </p>
           {cta && (
-            <div className="mt-8">
+            <div className="mt-10">
               <Link href={cta.href} className="btn-primary">
                 {cta.label}
               </Link>
@@ -50,27 +50,34 @@ function HeroSection({
   );
 }
 
-function FramingBlock({
+function OutputPanel({
   eyebrow,
   headline,
-  body,
+  statement,
+  outputs,
   accent,
 }: {
   eyebrow?: string;
   headline?: string;
-  body: string;
+  statement: string;
+  outputs: string[];
   accent?: boolean;
 }) {
   return (
-    <section className={`section-padding ${accent ? "bg-[var(--accent-surface)]" : ""}`}>
-      <div className="container-narrow max-w-3xl">
-        {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-        {headline && <h2 className="heading-section mb-4">{headline}</h2>}
-        {body.split("\n\n").map((p, i) => (
-          <p key={i} className="body-text mt-4">
-            {p}
-          </p>
-        ))}
+    <section className={`section-padding ${accent ? "bg-[var(--band-background)]" : ""}`}>
+      <div className="container-narrow">
+        <div className="max-w-3xl">
+          {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+          {headline && <h2 className="heading-section mb-5">{headline}</h2>}
+          <p className="statement mb-8">{statement}</p>
+          <div className="output-panel">
+            <ul>
+              {outputs.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -89,7 +96,7 @@ function CtaBlock({
     <section className="section-padding" style={{ background: "var(--brand-navy)" }}>
       <div className="container-narrow text-center">
         <h2 className="text-3xl font-semibold text-white mb-4">{headline}</h2>
-        <p className="text-white/70 max-w-xl mx-auto mb-8">{body}</p>
+        <p className="text-white/70 text-lg max-w-xl mx-auto mb-10">{body}</p>
         <Link
           href={cta.href}
           className="btn-primary"
@@ -108,18 +115,21 @@ export default function AboutPage() {
   return (
     <main>
       <HeroSection {...aboutPage.hero} />
-      <FramingBlock
+      <OutputPanel
         eyebrow={aboutPage.definition.eyebrow}
-        body={aboutPage.definition.body}
+        statement={aboutPage.definition.statement}
+        outputs={aboutPage.definition.outputs}
       />
-      <FramingBlock
+      <OutputPanel
         eyebrow={aboutPage.independence.eyebrow}
-        body={aboutPage.independence.body}
+        statement={aboutPage.independence.statement}
+        outputs={aboutPage.independence.outputs}
         accent
       />
-      <FramingBlock
+      <OutputPanel
         eyebrow={aboutPage.standards.eyebrow}
-        body={aboutPage.standards.body}
+        statement={aboutPage.standards.statement}
+        outputs={aboutPage.standards.outputs}
       />
       <CtaBlock {...aboutPage.cta} />
     </main>

@@ -1,47 +1,83 @@
 export const forSchoolsPage = {
   hero: {
     eyebrow: "FOR SCHOOLS",
-    headline: "If something goes wrong, can you demonstrate you did everything right?",
-    subhead: "ETI360 produces the governance documentation that answers that question before it is asked.",
+    headline: "Governance documentation built for the person who signs off.",
+    subhead: "Structured assessments, traceable evidence, and decision-ready reports for every stage of the trip lifecycle.",
     cta: { label: "Start a conversation", href: "/contact" },
     image: "/images/hero-schools.png",
   },
   challenge: {
     eyebrow: "THE GOVERNANCE GAP",
-    body: "School leadership teams approve international trips on the basis of documents they receive from trip coordinators and providers. Those documents vary in format, rigor, and completeness. A Head of School signing off on a trip to rural Morocco and a weekend trip to a European capital may receive the same generic risk assessment for both.\n\nETI360 closes this gap. Every trip is assessed against consistent standards and documented to institutional quality.",
+    statement: "Leadership teams approve trips on documents that vary in format, rigor, and completeness.",
+    outputs: [
+      "Risk assessments written by coordinators, reviewed by people who have never visited the destination",
+      "Generic templates applied to trips with fundamentally different risk profiles",
+      "Approval decisions based on trust in the organizer rather than structured evidence about the trip",
+    ],
   },
-  outcome: {
-    body: "After ETI360, the basis for every approval decision is documented, traceable, and structured to institutional standards. Leadership teams approve trips on structured evidence instead of trust.",
-  },
-  capabilities: {
+  whatYouReceive: {
     eyebrow: "WHAT YOU RECEIVE",
-    intro: "Structured documents for each stage of the governance cycle. Every output is designed for the person who reads it.",
+    statement: "Structured documents for each stage of the governance cycle.",
     cards: [
-      { title: "Trip Options Brief.", body: "A one-page structured overview of the proposed trip. Activity risk scores, provider data, location intelligence, and identified gaps. Built for leadership approval decisions." },
-      { title: "Compliance Assessment.", body: "ISO 31031 alignment review and SOP coverage analysis. Score pills flag gaps. The school sees exactly where policies meet the standard and where they do not." },
-      { title: "Operations Playbook.", body: "RAMS documentation grouped by activity cluster. Stress test results with probability metrics. Emergency action cards built for high-stress situations." },
-      { title: "Live Operations Dashboard.", body: "Real-time check-in tracking, incident management, and escalation coordination for active trips." },
+      {
+        title: "Trip Options Brief.",
+        outputs: [
+          "Activity risk scores across seven dimensions",
+          "Provider credentials and location intelligence",
+          "Identified gaps and assumptions",
+        ],
+      },
+      {
+        title: "Operations Playbook.",
+        outputs: [
+          "RAMS documentation grouped by activity cluster",
+          "Stress test results with probability metrics",
+          "Emergency action cards for high-stress situations",
+        ],
+      },
+      {
+        title: "Compliance Assessment.",
+        outputs: [
+          "ISO 31031 alignment review",
+          "SOP coverage analysis with score pills",
+          "Policy gap identification",
+        ],
+      },
+      {
+        title: "Live Operations Dashboard.",
+        outputs: [
+          "Real-time check-in tracking",
+          "Incident management and escalation",
+          "Forward-window risk monitoring",
+        ],
+      },
     ],
   },
   process: {
     eyebrow: "THE PROCESS",
     headline: "From trip proposal to post-trip review.",
     steps: [
-      { number: 1, title: "Submit.", body: "Upload trip documents: provider proposals, draft itineraries, policy documents. Any format." },
-      { number: 2, title: "Normalize.", body: "ETI360 normalizes the itinerary into a structured activity ledger. Gaps, overlaps, and missing information are flagged." },
-      { number: 3, title: "Assess.", body: "Activities are scored across seven risk dimensions. Location intelligence, provider data, and compliance alignment are layered in." },
-      { number: 4, title: "Document.", body: "Branded, decision-ready PDFs: Trip Options Brief, RAMS, compliance scorecards, and emergency documentation." },
-      { number: 5, title: "Operate.", body: "During the trip, the LiveOps dashboard provides real-time oversight. After the trip, a structured review closes the cycle." },
+      { number: 1, title: "Submit.", body: "Upload trip documents — provider proposals, itineraries, policy documents. Any format." },
+      { number: 2, title: "Normalize.", body: "Itinerary converted to a structured activity ledger. Gaps and missing information flagged." },
+      { number: 3, title: "Assess.", body: "Activities scored across seven risk dimensions. Location intelligence and compliance alignment layered in." },
+      { number: 4, title: "Document.", body: "Branded, decision-ready PDFs delivered: Trip Options Brief, RAMS, compliance scorecards." },
+      { number: 5, title: "Operate.", body: "LiveOps dashboard for real-time oversight. Post-trip review closes the cycle." },
     ],
   },
   evidenceTrail: {
     eyebrow: "GOVERNANCE FRAMING",
     headline: "Structured for accountability.",
-    body: "Every ETI360 document is designed so the school can demonstrate the basis on which decisions were made. The Trip Options Brief records what was assessed. RAMS documents record what risks were identified and what controls were put in place. The compliance scorecard records alignment against recognized standards. This is structured evidence that the institution exercised due diligence.",
+    statement: "Every document demonstrates the basis on which decisions were made.",
+    outputs: [
+      "Trip Options Brief records what was assessed",
+      "RAMS documents record risks identified and controls in place",
+      "Compliance scorecard records alignment against recognized standards",
+      "Structured evidence of institutional due diligence",
+    ],
   },
   cta: {
     headline: "Start a conversation.",
-    body: "If your school approves international trips and the governance documentation could be stronger, we should talk.",
+    body: "One trip. One set of documents. See what structured governance looks like.",
     cta: { label: "Start a conversation", href: "/contact" },
   },
 };
