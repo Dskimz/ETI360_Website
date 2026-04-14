@@ -143,36 +143,10 @@ const stats = [
   { value: "100%", label: "Coverage" },
 ];
 
-const tabs = ["Calendar", "Itinerary", "Route & Elevation", "Location Map"] as const;
+const tabs = ["Calendar", "Itinerary", "Route & Elevation", "Location Intelligence", "Transport", "Weather"] as const;
 type Tab = (typeof tabs)[number];
 
-/* ── Location map pins ── */
-interface MapPin {
-  label: string;
-  type: "activity" | "accommodation" | "hospital";
-  x: number; // % from left
-  y: number; // % from top
-  detail?: string;
-}
-
-const mapPins: MapPin[] = [
-  { label: "Kinabalu NP", type: "activity", x: 62, y: 18, detail: "Silau Silau Trail, Canopy walkway" },
-  { label: "Kiulu River", type: "activity", x: 52, y: 30, detail: "White-water rafting Gr. III" },
-  { label: "Weston Wetlands", type: "activity", x: 25, y: 72, detail: "Wetlands exploration" },
-  { label: "Manukan Island", type: "activity", x: 22, y: 45, detail: "Snorkeling & beach" },
-  { label: "Shangri-La Tanjung Aru", type: "accommodation", x: 38, y: 48, detail: "6 nights" },
-  { label: "Queen Elizabeth Hospital", type: "hospital", x: 44, y: 42, detail: "6.1km from hotel" },
-  { label: "Kinabalu NP Clinic", type: "hospital", x: 68, y: 24, detail: "On-site medical" },
-];
-
-const locationCards = [
-  { name: "Kinabalu National Park", tag: "Activity", dist: "83km from hotel", time: "1hr 45min" },
-  { name: "Kiulu River", tag: "Activity", dist: "72km from hotel", time: "1hr 30min" },
-  { name: "Weston Wetlands", tag: "Activity", dist: "112km from hotel", time: "2hr" },
-  { name: "Manukan Island", tag: "Activity", dist: "4km + ferry", time: "45min total" },
-  { name: "Shangri-La Tanjung Aru", tag: "Accommodation", dist: "8.2km from BKI", time: "18min" },
-  { name: "Queen Elizabeth Hospital", tag: "Hospital", dist: "6.1km from hotel", time: "12min" },
-];
+/* ── (location data moved to LocationIntelView below) ── */
 
 /* ══════════════════════════════════════════════════
    MAIN COMPONENT
@@ -280,7 +254,9 @@ export function TripViews() {
         {activeTab === "Calendar" && <CalendarView />}
         {activeTab === "Itinerary" && <ItineraryView />}
         {activeTab === "Route & Elevation" && <RouteView />}
-        {activeTab === "Location Map" && <LocationMapView />}
+        {activeTab === "Location Intelligence" && <LocationIntelView />}
+        {activeTab === "Transport" && <TransportView />}
+        {activeTab === "Weather" && <WeatherView />}
       </div>
     </div>
   );
@@ -760,19 +736,44 @@ function RouteView() {
 }
 
 /* ══════════════════════════════════════════════════
-   VIEW 4 — LOCATION MAP
+   VIEW 4 — LOCATION INTELLIGENCE
+   All trip locations + hospitals with drive times
    ══════════════════════════════════════════════════ */
 
-function LocationMapView() {
-  const pinColors: Record<string, string> = {
-    activity: "var(--brand-navy)",
-    accommodation: "#1d9e75",
-    hospital: "#dc3545",
+const locationIntelCards: {
+  name: string;
+  tag: "Activity" | "Accommodation" | "Hospital" | "Airport";
+  day?: string;
+  arp?: string;
+  arpColor?: string;
+  nearestHospital?: string;
+  driveTime?: string;
+  distance?: string;
+}[] = [
+  { name: "Shangri-La Tanjung Aru", tag: "Accommodation", day: "D1–D7", nearestHospital: "Queen Elizabeth Hospital", driveTime: "12 min", distance: "6.1 km" },
+  { name: "BKI International Airport", tag: "Airport", day: "D1, D7", nearestHospital: "Queen Elizabeth Hospital", driveTime: "15 min", distance: "8.2 km" },
+  { name: "Kinabalu National Park", tag: "Activity", day: "D2", arp: "18/35", arpColor: "#e6a817", nearestHospital: "Kinabalu District Hospital", driveTime: "45 min", distance: "38 km" },
+  { name: "Poring Hot Springs", tag: "Activity", day: "D2", arp: "15/35", arpColor: "#e6a817", nearestHospital: "Kinabalu District Hospital", driveTime: "55 min", distance: "42 km" },
+  { name: "Gaya Street Market", tag: "Activity", day: "D3", arp: "8/35", arpColor: "#1d9e75", nearestHospital: "Queen Elizabeth Hospital", driveTime: "8 min", distance: "3.2 km" },
+  { name: "Kiulu River", tag: "Activity", day: "D4", arp: "25/35", arpColor: "#dc3545", nearestHospital: "Queen Elizabeth Hospital", driveTime: "62 min", distance: "42 km" },
+  { name: "Weston Wetlands", tag: "Activity", day: "D5", arp: "20/35", arpColor: "#e6a817", nearestHospital: "Beaufort District Hospital", driveTime: "35 min", distance: "28 km" },
+  { name: "Manukan Island", tag: "Activity", day: "D6", arp: "23/35", arpColor: "#dc3545", nearestHospital: "Queen Elizabeth Hospital", driveTime: "45 min (inc. ferry)", distance: "8 km" },
+  { name: "Queen Elizabeth Hospital", tag: "Hospital", nearestHospital: "—", driveTime: "—", distance: "6.1 km from hotel" },
+  { name: "Kinabalu District Hospital", tag: "Hospital", nearestHospital: "—", driveTime: "—", distance: "93 km from hotel" },
+  { name: "Beaufort District Hospital", tag: "Hospital", nearestHospital: "—", driveTime: "—", distance: "91 km from hotel" },
+];
+
+function LocationIntelView() {
+  const tagStyles: Record<string, { color: string; bg: string }> = {
+    Activity: { color: "var(--brand-navy)", bg: "rgba(13,53,88,0.08)" },
+    Accommodation: { color: "#1d9e75", bg: "rgba(29,158,117,0.08)" },
+    Hospital: { color: "#dc3545", bg: "rgba(220,53,69,0.08)" },
+    Airport: { color: "#3498db", bg: "rgba(52,152,219,0.08)" },
   };
 
   return (
     <div style={{ padding: "20px" }}>
-      {/* Location map — Mapbox rendered */}
+      {/* Map */}
       <div
         style={{
           borderRadius: "8px",
@@ -782,27 +783,46 @@ function LocationMapView() {
         }}
       >
         <img
-          src="/images/itoshima-location-map.png"
-          alt="Itoshima peninsula — activity locations, stops, and points of interest"
+          src="/images/borneo-location-intel.png"
+          alt="Borneo trip — all locations including hospitals and emergency facilities"
           style={{ width: "100%", height: "auto", display: "block" }}
         />
       </div>
 
-      {/* Location cards grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-          gap: "10px",
-        }}
-      >
-        {locationCards.map((loc) => {
-          const tagColor =
-            loc.tag === "Activity"
-              ? "var(--brand-navy)"
-              : loc.tag === "Accommodation"
-                ? "#1d9e75"
-                : "#dc3545";
+      {/* Legend */}
+      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "16px" }}>
+        {[
+          { label: "Activity", color: "#C9A24D" },
+          { label: "Accommodation", color: "#0d3558" },
+          { label: "Hospital", color: "#DC2626" },
+          { label: "Airport", color: "#3498DB" },
+        ].map((item) => (
+          <div key={item.label} style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "11.5px", color: "var(--text-tertiary)" }}>
+            <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: item.color, flexShrink: 0 }} />
+            {item.label}
+          </div>
+        ))}
+      </div>
+
+      {/* Summary stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px", marginBottom: "20px" }}>
+        {[
+          { value: "14", label: "Locations" },
+          { value: "3", label: "Hospitals mapped" },
+          { value: "12 min", label: "Fastest TTDC" },
+          { value: "62 min", label: "Longest TTDC" },
+        ].map((s) => (
+          <div key={s.label} style={{ background: "var(--band-background)", borderRadius: "8px", padding: "12px", textAlign: "center" }}>
+            <div style={{ fontSize: "18px", fontWeight: 700, color: "var(--brand-navy)", letterSpacing: "-0.02em" }}>{s.value}</div>
+            <div style={{ fontSize: "10px", color: "var(--text-tertiary)", marginTop: "2px" }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Location cards with hospital info */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+        {locationIntelCards.map((loc) => {
+          const style = tagStyles[loc.tag] || tagStyles.Activity;
           return (
             <div
               key={loc.name}
@@ -810,54 +830,413 @@ function LocationMapView() {
                 border: "1px solid var(--border-color)",
                 borderRadius: "8px",
                 padding: "12px 14px",
+                display: "grid",
+                gridTemplateColumns: "1fr auto",
+                gap: "8px",
+                alignItems: "center",
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: "6px",
-                }}
-              >
-                <span
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+                  <span style={{ fontWeight: 600, fontSize: "12.5px", color: "var(--text-primary)" }}>{loc.name}</span>
+                  <span style={{ fontSize: "10px", fontWeight: 600, color: style.color, background: style.bg, padding: "2px 7px", borderRadius: "8px" }}>{loc.tag}</span>
+                  {loc.arp && (
+                    <span style={{ fontSize: "10px", fontWeight: 600, color: loc.arpColor, background: `${loc.arpColor}15`, padding: "2px 7px", borderRadius: "8px" }}>
+                      ARP {loc.arp}
+                    </span>
+                  )}
+                  {loc.day && <span style={{ fontSize: "10px", color: "var(--text-tertiary)" }}>{loc.day}</span>}
+                </div>
+                {loc.tag !== "Hospital" && loc.nearestHospital !== "—" && (
+                  <div style={{ fontSize: "11px", color: "var(--text-tertiary)", display: "flex", gap: "6px", alignItems: "center" }}>
+                    <span style={{ color: "#dc3545", fontWeight: 600 }}>+</span>
+                    <span>{loc.nearestHospital}</span>
+                    <span style={{ color: "var(--text-tertiary)", fontWeight: 500 }}>·</span>
+                    <span style={{ fontWeight: 600, color: Number(loc.driveTime?.replace(/\D/g, "")) > 30 ? "#dc3545" : "#1d9e75" }}>
+                      {loc.driveTime}
+                    </span>
+                    <span style={{ color: "var(--text-tertiary)" }}>{loc.distance}</span>
+                  </div>
+                )}
+                {loc.tag === "Hospital" && (
+                  <div style={{ fontSize: "11px", color: "var(--text-tertiary)" }}>
+                    Emergency department · {loc.distance}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════
+   VIEW 5 — TRANSPORT ROUTES
+   Daily transport segments with distances and times
+   ══════════════════════════════════════════════════ */
+
+const transportDays: {
+  day: number;
+  label: string;
+  color: string;
+  segments: { from: string; to: string; mode: string; distance: string; time: string }[];
+}[] = [
+  {
+    day: 1, label: "Arrival", color: "#4a90c4",
+    segments: [
+      { from: "BKI Airport", to: "Shangri-La Tanjung Aru", mode: "Coach", distance: "8.2 km", time: "18 min" },
+    ],
+  },
+  {
+    day: 2, label: "Kinabalu NP", color: "#0d3558",
+    segments: [
+      { from: "Hotel", to: "Kinabalu NP", mode: "Coach", distance: "93 km", time: "2hr 3min" },
+      { from: "Kinabalu NP", to: "Poring Hot Springs", mode: "Coach", distance: "36 km", time: "1hr" },
+      { from: "Poring Hot Springs", to: "Hotel", mode: "Coach", distance: "124 km", time: "2hr 52min" },
+    ],
+  },
+  {
+    day: 3, label: "KK City", color: "#4c5968",
+    segments: [
+      { from: "Hotel", to: "Gaya Street", mode: "Walk", distance: "2.4 km", time: "30 min" },
+      { from: "Gaya Street", to: "Hotel", mode: "Walk", distance: "2.4 km", time: "30 min" },
+    ],
+  },
+  {
+    day: 4, label: "Kiulu River", color: "#C9A24D",
+    segments: [
+      { from: "Hotel", to: "Kiulu River", mode: "Coach", distance: "42 km", time: "1hr 2min" },
+      { from: "Kiulu River", to: "Hotel", mode: "Coach", distance: "41 km", time: "1hr 3min" },
+    ],
+  },
+  {
+    day: 5, label: "Weston", color: "#1d9e75",
+    segments: [
+      { from: "Hotel", to: "Weston Wetlands", mode: "Coach", distance: "91 km", time: "1hr 51min" },
+      { from: "Weston Wetlands", to: "Hotel", mode: "Coach", distance: "88 km", time: "1hr 49min" },
+    ],
+  },
+  {
+    day: 6, label: "Manukan Island", color: "#1F4E79",
+    segments: [
+      { from: "Hotel", to: "Jesselton Point", mode: "Coach", distance: "4 km", time: "12 min" },
+      { from: "Jesselton Point", to: "Manukan Island", mode: "Speedboat", distance: "6 km", time: "20 min" },
+      { from: "Manukan Island", to: "Jesselton Point", mode: "Speedboat", distance: "6 km", time: "20 min" },
+      { from: "Jesselton Point", to: "Hotel", mode: "Coach", distance: "4 km", time: "12 min" },
+    ],
+  },
+  {
+    day: 7, label: "Departure", color: "#4a90c4",
+    segments: [
+      { from: "Hotel", to: "BKI Airport", mode: "Coach", distance: "8.2 km", time: "18 min" },
+    ],
+  },
+];
+
+function TransportView() {
+  const totalDistance = "558 km";
+  const totalSegments = transportDays.reduce((sum, d) => sum + d.segments.length, 0);
+  const longestDay = "D2 — 253 km";
+
+  return (
+    <div style={{ padding: "20px" }}>
+      {/* Transport routes map */}
+      <div style={{ borderRadius: "8px", overflow: "hidden", marginBottom: "20px", border: "1px solid var(--border-color)" }}>
+        <img
+          src="/images/borneo-transport-routes.png"
+          alt="Borneo trip transport routes — daily routes from Kota Kinabalu"
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
+      </div>
+
+      {/* Route legend */}
+      <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", marginBottom: "16px" }}>
+        {[
+          { label: "Day 2 — Kinabalu NP", color: "#0d3558" },
+          { label: "Day 4 — Kiulu River", color: "#C9A24D" },
+          { label: "Day 5 — Weston", color: "#1d9e75" },
+        ].map((item) => (
+          <div key={item.label} style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "11.5px", color: "var(--text-tertiary)" }}>
+            <span style={{ width: "16px", height: "3px", borderRadius: "2px", background: item.color, flexShrink: 0 }} />
+            {item.label}
+          </div>
+        ))}
+      </div>
+
+      {/* Summary stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px", marginBottom: "24px" }}>
+        {[
+          { value: totalDistance, label: "Total distance" },
+          { value: String(totalSegments), label: "Segments" },
+          { value: longestDay, label: "Longest day" },
+        ].map((s) => (
+          <div key={s.label} style={{ background: "var(--band-background)", borderRadius: "8px", padding: "14px", textAlign: "center" }}>
+            <div style={{ fontSize: "18px", fontWeight: 700, color: "var(--brand-navy)", letterSpacing: "-0.02em" }}>{s.value}</div>
+            <div style={{ fontSize: "10px", color: "var(--text-tertiary)", marginTop: "2px" }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Daily segment table */}
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "12px" }}>
+          <thead>
+            <tr>
+              {["Day", "From", "To", "Mode", "Distance", "Time"].map((h) => (
+                <th
+                  key={h}
                   style={{
+                    textAlign: "left",
+                    padding: "8px",
                     fontWeight: 600,
-                    fontSize: "12.5px",
-                    color: "var(--text-primary)",
+                    color: "var(--brand-navy)",
+                    borderBottom: "2px solid var(--border-color)",
+                    fontSize: "11px",
+                    whiteSpace: "nowrap",
                   }}
                 >
-                  {loc.name}
-                </span>
-                <span
-                  style={{
-                    fontSize: "10px",
-                    fontWeight: 600,
-                    color: tagColor,
-                    background:
-                      loc.tag === "Activity"
-                        ? "rgba(13,53,88,0.08)"
-                        : loc.tag === "Accommodation"
-                          ? "rgba(29,158,117,0.08)"
-                          : "rgba(220,53,69,0.08)",
-                    padding: "2px 7px",
-                    borderRadius: "8px",
-                  }}
-                >
-                  {loc.tag}
-                </span>
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {transportDays.map((day) => (
+              <>
+                {/* Day header row */}
+                <tr key={`dh-${day.day}`}>
+                  <td
+                    colSpan={6}
+                    style={{
+                      background: day.color,
+                      color: "#fff",
+                      fontWeight: 600,
+                      fontSize: "12px",
+                      padding: "7px 8px",
+                    }}
+                  >
+                    Day {day.day} — {day.label}
+                  </td>
+                </tr>
+                {day.segments.map((seg, i) => (
+                  <tr key={`${day.day}-${i}`}>
+                    <td style={{ padding: "6px 8px", borderBottom: "0.5px solid var(--border-color)", color: "var(--text-tertiary)", fontSize: "11px" }}>
+                      D{day.day}
+                    </td>
+                    <td style={{ padding: "6px 8px", borderBottom: "0.5px solid var(--border-color)" }}>{seg.from}</td>
+                    <td style={{ padding: "6px 8px", borderBottom: "0.5px solid var(--border-color)" }}>{seg.to}</td>
+                    <td style={{ padding: "6px 8px", borderBottom: "0.5px solid var(--border-color)" }}>
+                      <span
+                        style={{
+                          fontSize: "10px",
+                          fontWeight: 600,
+                          padding: "2px 7px",
+                          borderRadius: "4px",
+                          background: seg.mode === "Coach" ? "rgba(13,53,88,0.08)" : seg.mode === "Speedboat" ? "rgba(52,152,219,0.08)" : "rgba(76,89,104,0.08)",
+                          color: seg.mode === "Coach" ? "var(--brand-navy)" : seg.mode === "Speedboat" ? "#3498db" : "#4c5968",
+                        }}
+                      >
+                        {seg.mode}
+                      </span>
+                    </td>
+                    <td style={{ padding: "6px 8px", borderBottom: "0.5px solid var(--border-color)", fontVariantNumeric: "tabular-nums", fontWeight: 500 }}>{seg.distance}</td>
+                    <td style={{ padding: "6px 8px", borderBottom: "0.5px solid var(--border-color)", fontVariantNumeric: "tabular-nums" }}>{seg.time}</td>
+                  </tr>
+                ))}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════
+   VIEW 6 — WEATHER INTELLIGENCE
+   15-year climate analysis for trip destination
+   ══════════════════════════════════════════════════ */
+
+const weatherData = {
+  destination: "Kota Kinabalu, Sabah",
+  period: "14–20 March",
+  yearsAnalyzed: 15,
+  summary: "Tropical maritime climate with consistent heat and humidity. March is in the dry(er) inter-monsoon period — expect afternoon showers on 4–5 of 7 days, typically clearing by evening. UV index very high year-round.",
+  daily: [
+    { day: "D1", date: "14 Mar", high: 32, low: 24, rain: 45, condition: "Partly cloudy", uvIndex: 11, humidity: 78 },
+    { day: "D2", date: "15 Mar", high: 31, low: 24, rain: 55, condition: "PM showers", uvIndex: 10, humidity: 82 },
+    { day: "D3", date: "16 Mar", high: 33, low: 25, rain: 30, condition: "Mostly sunny", uvIndex: 12, humidity: 74 },
+    { day: "D4", date: "17 Mar", high: 32, low: 24, rain: 60, condition: "Thunderstorms", uvIndex: 9, humidity: 85 },
+    { day: "D5", date: "18 Mar", high: 31, low: 24, rain: 50, condition: "PM showers", uvIndex: 10, humidity: 80 },
+    { day: "D6", date: "19 Mar", high: 32, low: 25, rain: 40, condition: "Partly cloudy", uvIndex: 11, humidity: 76 },
+    { day: "D7", date: "20 Mar", high: 31, low: 24, rain: 35, condition: "Mostly sunny", uvIndex: 11, humidity: 75 },
+  ],
+  concerns: [
+    { label: "Heat stress", severity: "high", detail: "Sustained 31–33°C with high humidity. Mandatory hydration breaks during outdoor activities." },
+    { label: "UV exposure", severity: "high", detail: "UV index 9–12 (very high). Sunscreen, hats, and shade breaks essential for all outdoor activities." },
+    { label: "Afternoon storms", severity: "moderate", detail: "60% chance of PM thunderstorms on D4 (rafting day). Lightning protocol required for water activities." },
+    { label: "Flash flooding", severity: "low", detail: "River levels can rise rapidly after heavy rain. Kiulu River operator monitors conditions in real-time." },
+  ],
+  climate: {
+    avgHigh: 32,
+    avgLow: 24,
+    avgRainDays: 12,
+    avgHumidity: 79,
+    sunrise: "06:12",
+    sunset: "18:18",
+    daylightHours: "12h 06m",
+  },
+};
+
+function WeatherView() {
+  const severityColors: Record<string, { color: string; bg: string }> = {
+    high: { color: "#dc3545", bg: "rgba(220,53,69,0.08)" },
+    moderate: { color: "#e6a817", bg: "rgba(230,168,23,0.08)" },
+    low: { color: "#1d9e75", bg: "rgba(29,158,117,0.08)" },
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      {/* Header */}
+      <div style={{ marginBottom: "20px" }}>
+        <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--brand-gold)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "4px" }}>
+          15-Year Climate Analysis
+        </div>
+        <div style={{ fontSize: "14px", fontWeight: 600, color: "var(--brand-navy)", marginBottom: "4px" }}>
+          {weatherData.destination} · {weatherData.period}
+        </div>
+        <div style={{ fontSize: "12px", color: "var(--text-tertiary)", lineHeight: 1.5 }}>
+          {weatherData.summary}
+        </div>
+      </div>
+
+      {/* Climate overview stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px", marginBottom: "24px" }}>
+        {[
+          { value: `${weatherData.climate.avgHigh}°C`, label: "Avg. high" },
+          { value: `${weatherData.climate.avgLow}°C`, label: "Avg. low" },
+          { value: `${weatherData.climate.avgRainDays}`, label: "Rain days/mo" },
+          { value: weatherData.climate.daylightHours, label: "Daylight" },
+        ].map((s) => (
+          <div key={s.label} style={{ background: "var(--band-background)", borderRadius: "8px", padding: "12px", textAlign: "center" }}>
+            <div style={{ fontSize: "18px", fontWeight: 700, color: "var(--brand-navy)" }}>{s.value}</div>
+            <div style={{ fontSize: "10px", color: "var(--text-tertiary)", marginTop: "2px" }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Temperature chart (SVG bar chart) */}
+      <div style={{ background: "var(--band-background)", borderRadius: "8px", padding: "16px 20px", marginBottom: "20px" }}>
+        <div style={{ fontSize: "12px", fontWeight: 600, color: "var(--brand-navy)", marginBottom: "12px" }}>
+          Daily temperature & precipitation probability
+        </div>
+        <svg width="100%" height="180" viewBox="0 0 700 180" preserveAspectRatio="xMidYMid meet">
+          {/* Grid lines */}
+          {[0, 45, 90, 135].map((y) => (
+            <line key={y} x1="40" y1={y + 10} x2="680" y2={y + 10} stroke="rgba(0,0,0,0.06)" strokeWidth="1" />
+          ))}
+          {/* Y axis labels */}
+          <text x="36" y="14" fontSize="9" fill="var(--text-tertiary)" textAnchor="end">35°C</text>
+          <text x="36" y="59" fontSize="9" fill="var(--text-tertiary)" textAnchor="end">30°C</text>
+          <text x="36" y="104" fontSize="9" fill="var(--text-tertiary)" textAnchor="end">25°C</text>
+          <text x="36" y="149" fontSize="9" fill="var(--text-tertiary)" textAnchor="end">20°C</text>
+
+          {weatherData.daily.map((d, i) => {
+            const x = 60 + i * 90;
+            const barWidth = 32;
+            // Scale: 20°C = y:145, 35°C = y:10
+            const scale = (temp: number) => 145 - ((temp - 20) / 15) * 135;
+            const highY = scale(d.high);
+            const lowY = scale(d.low);
+
+            return (
+              <g key={d.day}>
+                {/* Temperature range bar */}
+                <rect x={x - barWidth / 2} y={highY} width={barWidth} height={lowY - highY} rx="4" fill="rgba(13,53,88,0.15)" />
+                {/* High dot */}
+                <circle cx={x} cy={highY} r="4" fill="var(--brand-navy)" />
+                <text x={x} y={highY - 7} fontSize="10" fontWeight="600" fill="var(--brand-navy)" textAnchor="middle">{d.high}°</text>
+                {/* Low dot */}
+                <circle cx={x} cy={lowY} r="3" fill="var(--brand-gold)" />
+                <text x={x} y={lowY + 14} fontSize="9" fill="var(--brand-gold)" textAnchor="middle">{d.low}°</text>
+                {/* Rain probability pill */}
+                <rect x={x - 16} y={156} width={32} height={16} rx="8" fill={d.rain > 50 ? "rgba(52,152,219,0.15)" : "rgba(52,152,219,0.08)"} />
+                <text x={x} y={168} fontSize="9" fontWeight="600" fill="#3498db" textAnchor="middle">{d.rain}%</text>
+                {/* Day label */}
+                <text x={x} y={155} fontSize="9" fill="var(--text-tertiary)" textAnchor="middle">{d.day}</text>
+              </g>
+            );
+          })}
+
+          {/* Legend */}
+          <circle cx="540" cy="10" r="4" fill="var(--brand-navy)" />
+          <text x="548" y="14" fontSize="9" fill="var(--text-tertiary)">High</text>
+          <circle cx="590" cy="10" r="3" fill="var(--brand-gold)" />
+          <text x="598" y="14" fontSize="9" fill="var(--text-tertiary)">Low</text>
+          <rect x="630" y="5" width="12" height="10" rx="3" fill="rgba(52,152,219,0.15)" />
+          <text x="646" y="14" fontSize="9" fill="var(--text-tertiary)">Rain %</text>
+        </svg>
+      </div>
+
+      {/* Daily conditions table */}
+      <div style={{ overflowX: "auto", marginBottom: "24px" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "12px" }}>
+          <thead>
+            <tr>
+              {["Day", "Conditions", "High", "Low", "Rain %", "UV Index", "Humidity"].map((h) => (
+                <th key={h} style={{ textAlign: "left", padding: "8px", fontWeight: 600, color: "var(--brand-navy)", borderBottom: "2px solid var(--border-color)", fontSize: "11px" }}>
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {weatherData.daily.map((d) => (
+              <tr key={d.day}>
+                <td style={{ padding: "7px 8px", borderBottom: "0.5px solid var(--border-color)", fontWeight: 600, color: "var(--brand-navy)", fontSize: "11px" }}>{d.day}</td>
+                <td style={{ padding: "7px 8px", borderBottom: "0.5px solid var(--border-color)" }}>{d.condition}</td>
+                <td style={{ padding: "7px 8px", borderBottom: "0.5px solid var(--border-color)", fontVariantNumeric: "tabular-nums", fontWeight: 500 }}>{d.high}°C</td>
+                <td style={{ padding: "7px 8px", borderBottom: "0.5px solid var(--border-color)", fontVariantNumeric: "tabular-nums" }}>{d.low}°C</td>
+                <td style={{ padding: "7px 8px", borderBottom: "0.5px solid var(--border-color)", fontVariantNumeric: "tabular-nums" }}>
+                  <span style={{ fontWeight: d.rain > 50 ? 600 : 400, color: d.rain > 50 ? "#3498db" : "inherit" }}>{d.rain}%</span>
+                </td>
+                <td style={{ padding: "7px 8px", borderBottom: "0.5px solid var(--border-color)" }}>
+                  <span style={{ fontWeight: 600, color: d.uvIndex >= 11 ? "#dc3545" : d.uvIndex >= 8 ? "#e6a817" : "#1d9e75" }}>{d.uvIndex}</span>
+                  <span style={{ fontSize: "10px", color: "var(--text-tertiary)", marginLeft: "4px" }}>
+                    {d.uvIndex >= 11 ? "Extreme" : d.uvIndex >= 8 ? "Very high" : "High"}
+                  </span>
+                </td>
+                <td style={{ padding: "7px 8px", borderBottom: "0.5px solid var(--border-color)", fontVariantNumeric: "tabular-nums" }}>{d.humidity}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Weather concerns */}
+      <div style={{ fontSize: "12px", fontWeight: 600, color: "var(--brand-navy)", marginBottom: "10px" }}>
+        Operational weather concerns
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        {weatherData.concerns.map((c) => {
+          const sev = severityColors[c.severity] || severityColors.moderate;
+          return (
+            <div
+              key={c.label}
+              style={{
+                border: "1px solid var(--border-color)",
+                borderRadius: "8px",
+                padding: "12px 14px",
+                borderLeft: `3px solid ${sev.color}`,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+                <span style={{ fontWeight: 600, fontSize: "12.5px", color: "var(--text-primary)" }}>{c.label}</span>
+                <span style={{ fontSize: "10px", fontWeight: 600, color: sev.color, background: sev.bg, padding: "2px 7px", borderRadius: "8px", textTransform: "capitalize" }}>{c.severity}</span>
               </div>
-              <div
-                style={{
-                  fontSize: "11.5px",
-                  color: "var(--text-tertiary)",
-                  display: "flex",
-                  gap: "12px",
-                }}
-              >
-                <span>{loc.dist}</span>
-                <span style={{ fontWeight: 500 }}>{loc.time}</span>
-              </div>
+              <div style={{ fontSize: "11.5px", color: "var(--text-tertiary)", lineHeight: 1.5 }}>{c.detail}</div>
             </div>
           );
         })}
