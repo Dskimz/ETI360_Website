@@ -18,6 +18,36 @@ This repo contains:
 3. Run the site: `npm run dev`
 4. Run the CMS: `npm run dev:studio`
 
+## Local-first workflow (Codex + manual ship)
+
+Use this workflow to keep development fast and local, then deploy only on command:
+
+1. Work locally with `npm run dev`.
+2. Save progress locally only:
+   - `npm run checkpoint -- "feat: your message"`
+3. Push/deploy only when you choose:
+   - `npm run ship`
+
+What these commands do:
+
+- `checkpoint`: stages + commits locally; never pushes.
+- `ship`: requires a clean working tree, runs `@eti360/web` lint + build, then pushes the current branch to `origin`.
+
+If `ship` says the tree is not clean, run `checkpoint` first.
+
+## Mini runbook
+
+- Install: `npm install`
+- Dev: `npm run dev` (web), `npm run dev:studio` (Sanity Studio)
+- Test: no test suite configured yet
+- Lint/typecheck: `npm run lint`, plus `npm run build -w @eti360/web` as integration safety check
+- Common gotchas:
+  - `ship` will fail until all local edits are committed.
+  - Render deploy only starts after the `git push` done by `ship`.
+- Env expectations:
+  - Web: `apps/web/.env.local` from `apps/web/.env.local.example`
+  - Studio: `apps/studio/.env.local` from `apps/studio/.env.local.example`
+
 ## Draft preview
 
 Draft preview works via Next.js Draft Mode:

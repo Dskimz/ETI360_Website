@@ -10,9 +10,10 @@
   },
   "scripts": {
     "dev": "npm run dev -w @eti360/web",
-    "dev:studio": "npm run dev -w @eti360/studio",
-    "build": "npm run build -ws",
-    "lint": "npm run lint -ws",
-    "screenshots": "node scripts/take-screenshots.mjs"
+    "build": "npm run build -w @eti360/web",
+    "lint": "npm run lint -w @eti360/web",
+    "screenshots": "node scripts/take-screenshots.mjs",
+    "checkpoint": "bash scripts/checkpoint.sh",
+    "ship": "bash scripts/ship.sh"
   }
 }

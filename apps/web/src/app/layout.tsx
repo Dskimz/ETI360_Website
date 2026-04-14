@@ -1,23 +1,22 @@
-import type {Metadata} from 'next'
-import './globals.css'
-import {SiteHeader} from '@/components/SiteHeader'
+import type { Metadata } from "next";
+import "./globals.css";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: 'ETI360',
-  description: 'ETI360 marketing website',
-}
+  title: "ETI360 — Educational Travel Intelligence",
+  description: "Structured governance documentation and operational tools for international school trips.",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <SiteHeader />
-        <div className="h-1 w-full bg-accent" />
-        {children}
+        <main>{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

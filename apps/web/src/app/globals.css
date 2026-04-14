@@ -1,65 +1,207 @@
 @import "tailwindcss";
-@import "@eti360/design-system/eti360.css";
+
+/* ── IBM Plex Sans (self-hosted) ── */
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Design Tokens ── */
+:root {
+  --brand-navy: #0d3558;
+  --brand-gold: #C9A24D;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+
+  --page-background: #ffffff;
+  --band-background: #f7f7f8;
+  --border-color: #e5e7eb;
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #0d3558;
+  --text-tertiary: rgba(13, 53, 88, 0.6);
+
+  --accent-surface: rgba(201, 162, 77, 0.08);
+  --accent-border: rgba(201, 162, 77, 0.3);
+}
 
 @theme inline {
   --color-background: var(--page-background);
   --color-foreground: var(--text-primary);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
+  --color-navy: var(--brand-navy);
+  --color-gold: var(--brand-gold);
   --color-band: var(--band-background);
   --color-border: var(--border-color);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+  --color-accent-surface: var(--accent-surface);
+  --color-accent-border: var(--accent-border);
   --font-sans: var(--font-sans);
 }
 
-.markdown {
+/* ── Base ── */
+body {
+  background: var(--page-background);
   color: var(--text-primary);
-  line-height: 1.8;
-  max-width: 44rem; /* ~704px */
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-.markdown p + p {
-  margin-top: 0.9rem;
+/* ── Utility classes ── */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .section-padding { padding: 6rem 2rem; }
 }
 
-.markdown h1,
-.markdown h2,
-.markdown h3 {
-  color: var(--text-secondary);
+.container-narrow {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+}
+
+.heading-display {
+  font-size: 2.5rem;
   font-weight: 600;
+  line-height: 1.15;
   letter-spacing: -0.02em;
+  color: var(--brand-navy);
+}
+@media (min-width: 768px) {
+  .heading-display { font-size: 3.25rem; }
 }
 
-.markdown h1 {
-  font-size: 2rem;
-  line-height: 2.5rem;
-  margin-top: 2rem;
+.heading-section {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--brand-navy);
+}
+
+.body-text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-primary);
+}
+
+.body-text-secondary {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+}
+
+.gold-rule {
+  width: 3rem;
+  height: 3px;
+  background: var(--brand-gold);
+  border: none;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--brand-navy);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  text-decoration: none;
+}
+.btn-primary:hover { background: #0a2a47; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: var(--brand-navy);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  border-color: var(--brand-navy);
+  background: rgba(13, 53, 88, 0.04);
+}
+
+/* ── Card ── */
+.card {
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  background: var(--page-background);
+}
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--brand-navy);
   margin-bottom: 0.75rem;
 }
 
+/* ── Markdown (Insights) ── */
+.markdown {
+  color: var(--text-primary);
+  line-height: 1.8;
+  max-width: 44rem;
+}
+.markdown p + p { margin-top: 0.9rem; }
 .markdown h2 {
   font-size: 1.5rem;
-  line-height: 2rem;
+  font-weight: 600;
+  color: var(--text-secondary);
   margin-top: 1.75rem;
   margin-bottom: 0.6rem;
 }
-
-.markdown h3 {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .markdown ul {
   margin-top: 0.75rem;
   margin-left: 1.25rem;
   list-style: disc;
 }
-
-.markdown li + li {
-  margin-top: 0.35rem;
-}
+.markdown li + li { margin-top: 0.35rem; }

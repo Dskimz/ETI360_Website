@@ -3,26 +3,6 @@ import path from 'node:path'
 
 import {createClient} from '@sanity/client'
 
-async function loadEnvFile(relPath) {
-  try {
-    const filePath = path.join(process.cwd(), relPath)
-    const content = await readFile(filePath, 'utf8')
-    for (const rawLine of content.split('\n')) {
-      const line = rawLine.trim()
-      if (!line || line.startsWith('#')) continue
-      const idx = line.indexOf('=')
-      if (idx === -1) continue
-      const key = line.slice(0, idx).trim()
-      const value = line.slice(idx + 1).trim()
-      if (!key) continue
-      if (process.env[key]) continue
-      process.env[key] = value
-    }
-  } catch {
-    // ignore missing env files
-  }
-}
-
 function truncate(value, max) {
   const v = (value ?? '').trim().replace(/\s+/g, ' ')
   if (v.length <= max) return v
@@ -166,9 +146,6 @@ function insightDoc({id, slug, title, excerpt, contentMarkdown, publishedAt}) {
 }
 
 async function main() {
-  await loadEnvFile('apps/web/.env.local')
-  await loadEnvFile('apps/studio/.env.local')
-
   const projectId =
     process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.SANITY_STUDIO_PROJECT_ID
   const dataset =
