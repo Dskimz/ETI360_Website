@@ -22,6 +22,14 @@ const TripViews = dynamic(
   () => import("@/components/interactive/TripViews").then((m) => m.TripViews),
   { ssr: false }
 );
+const WeatherIntelligence = dynamic(
+  () => import("@/components/interactive/WeatherIntelligence").then((m) => m.WeatherIntelligence),
+  { ssr: false }
+);
+const SingaporeLocations = dynamic(
+  () => import("@/components/interactive/SingaporeLocations").then((m) => m.SingaporeLocations),
+  { ssr: false }
+);
 
 export default function DemoPage() {
   return (
@@ -78,6 +86,28 @@ export default function DemoPage() {
             Raw provider itineraries converted to structured, verified activity ledgers.
           </p>
           <Standardisation />
+        </div>
+      </section>
+
+      {/* Weather Intelligence */}
+      <section className="section-padding section-band">
+        <div className="container-narrow">
+          <h2 className="heading-section mb-4">Weather Intelligence</h2>
+          <p className="body-text-secondary mb-8">
+            15-year historical climate analysis. Daily conditions, UV index, precipitation probability, and operational weather concerns.
+          </p>
+          <WeatherIntelligence />
+        </div>
+      </section>
+
+      {/* Singapore Location Intelligence */}
+      <section className="section-padding">
+        <div className="container-narrow">
+          <h2 className="heading-section mb-4">Location Intelligence — Singapore</h2>
+          <p className="body-text-secondary mb-8">
+            Every location on the trip mapped with nearest emergency facility and drive time. A different trip, the same standard.
+          </p>
+          <SingaporeLocations />
         </div>
       </section>
     </main>

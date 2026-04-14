@@ -24,6 +24,14 @@ const Standardisation = dynamic(
   () => import("@/components/interactive/Standardisation").then((m) => m.Standardisation),
   { ssr: false }
 );
+const WeatherIntelligence = dynamic(
+  () => import("@/components/interactive/WeatherIntelligence").then((m) => m.WeatherIntelligence),
+  { ssr: false }
+);
+const SingaporeLocations = dynamic(
+  () => import("@/components/interactive/SingaporeLocations").then((m) => m.SingaporeLocations),
+  { ssr: false }
+);
 
 const NAV_ITEMS = [
   { id: "activity-risk-profile", label: "Activity Risk Profile" },
@@ -31,6 +39,8 @@ const NAV_ITEMS = [
   { id: "stress-test", label: "Stress Test" },
   { id: "compliance", label: "Compliance" },
   { id: "standardisation", label: "Standardisation" },
+  { id: "weather", label: "Weather" },
+  { id: "singapore", label: "Singapore" },
 ] as const;
 
 export default function SeeItPage() {
@@ -216,6 +226,38 @@ export default function SeeItPage() {
             ledgers.
           </p>
           <Standardisation />
+        </div>
+      </section>
+
+      {/* Weather Intelligence */}
+      <section
+        id="weather"
+        ref={(el) => { sectionRefs.current["weather"] = el; }}
+        className="section-padding section-band"
+      >
+        <div className="container-narrow">
+          <h2 className="heading-section mb-4">Weather Intelligence</h2>
+          <p className="body-text-secondary mb-8">
+            15-year historical climate analysis. Daily conditions, UV index,
+            precipitation probability, and operational weather concerns.
+          </p>
+          <WeatherIntelligence />
+        </div>
+      </section>
+
+      {/* Singapore Location Intelligence */}
+      <section
+        id="singapore"
+        ref={(el) => { sectionRefs.current["singapore"] = el; }}
+        className="section-padding"
+      >
+        <div className="container-narrow">
+          <h2 className="heading-section mb-4">Location Intelligence — Singapore</h2>
+          <p className="body-text-secondary mb-8">
+            A different trip, the same standard. Every location mapped with
+            nearest emergency facility and drive time calculations.
+          </p>
+          <SingaporeLocations />
         </div>
       </section>
 
