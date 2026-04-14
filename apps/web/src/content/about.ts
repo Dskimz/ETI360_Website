@@ -1,9 +1,13 @@
 export const aboutPage = {
   hero: {
-    eyebrow: "ABOUT",
-    headline: "Educational Travel Intelligence.",
+    eyebrow: "ABOUT ETI360",
+    headlineParts: [
+      { text: "Educational Travel", gold: false },
+      { text: "Intelligence.", gold: true },
+    ],
     subhead: "Structured governance documentation for international school trips.",
     cta: null,
+    ctaSecondary: null,
     image: "/images/hero-about.png",
   },
   definition: {

@@ -1,28 +1,5 @@
+import { HeroSection } from "@/components/HeroSection";
 import { insightsPage } from "@/content/insights";
-
-/* ── Shared Section Components ── */
-
-function HeroSection({
-  eyebrow,
-  headline,
-  subhead,
-}: {
-  eyebrow?: string | null;
-  headline: string;
-  subhead: string;
-}) {
-  return (
-    <section className="section-padding">
-      <div className="container-narrow">
-        {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
-        <h1 className="heading-display max-w-3xl">{headline}</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed body-text-secondary">
-          {subhead}
-        </p>
-      </div>
-    </section>
-  );
-}
 
 /* ── Page ── */
 

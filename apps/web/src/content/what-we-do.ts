@@ -1,9 +1,13 @@
 export const whatWeDoPage = {
   hero: {
     eyebrow: "WHAT WE DO",
-    headline: "Structured intelligence across the full trip lifecycle.",
+    headlineParts: [
+      { text: "Structured Intelligence", gold: false },
+      { text: "Across the Full Trip Lifecycle.", gold: true },
+    ],
     subhead: "Five governance stages. Each produces specific documents. Schools adopt the stages they need.",
     cta: null,
+    ctaSecondary: null,
     image: "/images/hero-whatwedo.png",
   },
   stages: [

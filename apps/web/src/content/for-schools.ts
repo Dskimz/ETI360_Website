@@ -1,9 +1,13 @@
 export const forSchoolsPage = {
   hero: {
     eyebrow: "FOR SCHOOLS",
-    headline: "Governance documentation built for the person who signs off.",
+    headlineParts: [
+      { text: "Governance Documentation", gold: false },
+      { text: "Built for Leadership.", gold: true },
+    ],
     subhead: "Structured assessments, traceable evidence, and decision-ready reports for every stage of the trip lifecycle.",
-    cta: { label: "Start a conversation", href: "/contact" },
+    cta: { label: "What You Receive", href: "#what-you-receive" },
+    ctaSecondary: { label: "Start a Conversation", href: "/contact" },
     image: "/images/hero-schools.png",
   },
   challenge: {

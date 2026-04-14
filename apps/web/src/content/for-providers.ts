@@ -1,9 +1,13 @@
 export const forProvidersPage = {
   hero: {
     eyebrow: "FOR TRIP PROVIDERS",
-    headline: "Documentation that meets institutional governance requirements.",
-    subhead: "Structured evidence for risk committees, governance boards, and leadership teams reviewing your proposals.",
-    cta: { label: "Start a conversation", href: "/contact" },
+    headlineParts: [
+      { text: "Institutional", gold: false },
+      { text: "Evidence.", gold: true },
+    ],
+    subhead: "Structured documentation for risk committees, governance boards, and leadership teams reviewing your proposals.",
+    cta: { label: "What You Receive", href: "#what-you-receive" },
+    ctaSecondary: { label: "Start a Conversation", href: "/contact" },
     image: "/images/hero-providers.png",
   },
   challenge: {

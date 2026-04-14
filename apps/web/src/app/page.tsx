@@ -1,56 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { HeroSection } from "@/components/HeroSection";
 import { homePage } from "@/content/home";
 import { documents } from "@/content/documents";
 
 /* ── Shared Section Components ── */
-
-function HeroSection({
-  eyebrow,
-  headline,
-  subhead,
-  cta,
-  image,
-}: {
-  eyebrow?: string | null;
-  headline: string;
-  subhead: string;
-  cta?: { label: string; href: string } | null;
-  image?: string | null;
-}) {
-  return (
-    <section className="relative overflow-hidden">
-      {image && (
-        <div className="absolute inset-0">
-          <img src={image} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-[var(--brand-navy)]/80" />
-        </div>
-      )}
-      <div className={`relative section-padding ${image ? "py-28 md:py-36" : ""}`}>
-        <div className="container-narrow">
-          {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
-          <h1 className={`heading-display max-w-3xl ${image ? "text-white" : ""}`}>
-            {headline}
-          </h1>
-          <p
-            className={`mt-6 max-w-2xl text-xl leading-relaxed ${
-              image ? "text-white/80" : "body-text-secondary"
-            }`}
-          >
-            {subhead}
-          </p>
-          {cta && (
-            <div className="mt-10">
-              <Link href={cta.href} className="btn-primary">
-                {cta.label}
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function OutputPanel({
   eyebrow,

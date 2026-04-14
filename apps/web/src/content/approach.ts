@@ -1,9 +1,13 @@
 export const approachPage = {
   hero: {
-    eyebrow: "APPROACH",
-    headline: "Traceable methods. Sourced scores. No black boxes.",
-    subhead: "Every assessment is documented. Every score identifies its basis.",
+    eyebrow: "THE METHODOLOGY",
+    headlineParts: [
+      { text: "Traceable Methods.", gold: false },
+      { text: "Sourced Scores.", gold: true },
+    ],
+    subhead: "Every assessment is documented. Every score identifies its basis. No black boxes.",
     cta: null,
+    ctaSecondary: null,
     image: "/images/hero-approach.png",
   },
   currentState: {

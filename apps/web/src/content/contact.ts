@@ -1,9 +1,13 @@
 export const contactPage = {
   hero: {
     eyebrow: "CONTACT",
-    headline: "Start a conversation.",
+    headlineParts: [
+      { text: "Start a", gold: false },
+      { text: "Conversation.", gold: true },
+    ],
     subhead: "One trip. One set of documents. See what structured governance looks like for your institution.",
     cta: null,
+    ctaSecondary: null,
     image: "/images/hero-contact.png",
   },
   form: {

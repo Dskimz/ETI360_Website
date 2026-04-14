@@ -1,9 +1,13 @@
 export const homePage = {
   hero: {
-    eyebrow: null,
-    headline: "Structured governance documentation for international school trips.",
+    eyebrow: "EDUCATIONAL TRAVEL INTELLIGENCE",
+    headlineParts: [
+      { text: "Structured Governance", gold: false },
+      { text: "Documentation.", gold: true },
+    ],
     subhead: "Decision-ready reports, traceable assessments, and operational tools — built for the person who signs off.",
-    cta: { label: "Start a conversation", href: "/contact" },
+    cta: { label: "Access Reports", href: "/what-we-do" },
+    ctaSecondary: { label: "The Methodology", href: "/approach" },
     image: "/images/hero-home.png",
   },
   wedge: {
