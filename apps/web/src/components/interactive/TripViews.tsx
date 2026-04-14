@@ -611,75 +611,27 @@ function ItineraryView() {
 
 function RouteView() {
   const routeStats = [
-    { value: "412 km", label: "Total distance" },
-    { value: "1,520 m", label: "Max elevation" },
-    { value: "14", label: "Activity locations" },
+    { value: "28.4 km", label: "Total distance" },
+    { value: "186 m", label: "Max elevation" },
+    { value: "5", label: "Stops" },
   ];
 
   return (
     <div style={{ padding: "20px" }}>
-      {/* Map placeholder */}
+      {/* Route map — Mapbox rendered */}
       <div
         style={{
-          background: "linear-gradient(145deg, #e8ecf0 0%, #d0d8e0 50%, #c5cdd6 100%)",
           borderRadius: "8px",
-          height: "280px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
           overflow: "hidden",
           marginBottom: "20px",
+          border: "1px solid var(--border-color)",
         }}
       >
-        {/* Decorative route SVG */}
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 600 280"
-          preserveAspectRatio="none"
-          style={{ position: "absolute", top: 0, left: 0 }}
-        >
-          <path
-            d="M 50 200 C 100 180, 140 120, 200 140 S 280 200, 340 160 S 420 80, 480 120 S 540 160, 570 140"
-            fill="none"
-            stroke="var(--brand-navy)"
-            strokeWidth="3"
-            strokeDasharray="8,4"
-            opacity="0.35"
-          />
-          {/* Waypoint dots */}
-          {[
-            [50, 200],
-            [200, 140],
-            [340, 160],
-            [480, 120],
-            [570, 140],
-          ].map(([cx, cy], i) => (
-            <circle
-              key={i}
-              cx={cx}
-              cy={cy}
-              r="5"
-              fill="var(--brand-gold)"
-              stroke="#fff"
-              strokeWidth="2"
-            />
-          ))}
-        </svg>
-        <div
-          style={{
-            position: "relative",
-            textAlign: "center",
-            color: "var(--text-tertiary)",
-            fontSize: "13px",
-          }}
-        >
-          <div style={{ fontWeight: 600, marginBottom: "4px", color: "var(--brand-navy)" }}>
-            Route map placeholder
-          </div>
-          <div>Mapbox integration pending</div>
-        </div>
+        <img
+          src="/images/itoshima-route-map.png"
+          alt="Itoshima cycling route — Chikuzen-Maebaru to Keya no Ohto loop"
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
       </div>
 
       {/* Stats */}
@@ -761,42 +713,45 @@ function RouteView() {
               strokeWidth="1"
             />
           ))}
-          {/* Elevation area */}
+          {/* Elevation area — Itoshima coastal profile (max ~80m) */}
           <path
-            d="M 0 110 L 40 108 L 100 95 L 180 60 L 250 30 L 300 15 L 340 35 L 400 70 L 440 85 L 500 75 L 540 55 L 580 70 L 640 90 L 700 105 L 700 120 L 0 120 Z"
+            d="M 0 100 L 37 95 L 74 82 L 111 62 L 148 30 L 185 48 L 222 78 L 259 88 L 296 72 L 333 52 L 370 38 L 407 58 L 444 80 L 481 92 L 518 98 L 555 88 L 592 78 L 629 88 L 666 92 L 700 100 L 700 120 L 0 120 Z"
             fill="rgba(13,53,88,0.08)"
           />
           {/* Elevation line */}
           <path
-            d="M 0 110 L 40 108 L 100 95 L 180 60 L 250 30 L 300 15 L 340 35 L 400 70 L 440 85 L 500 75 L 540 55 L 580 70 L 640 90 L 700 105"
+            d="M 0 100 L 37 95 L 74 82 L 111 62 L 148 30 L 185 48 L 222 78 L 259 88 L 296 72 L 333 52 L 370 38 L 407 58 L 444 80 L 481 92 L 518 98 L 555 88 L 592 78 L 629 88 L 666 92 L 700 100"
             fill="none"
             stroke="var(--brand-navy)"
             strokeWidth="2"
           />
-          {/* Peak marker */}
-          <circle cx="300" cy="15" r="4" fill="var(--brand-gold)" stroke="#fff" strokeWidth="2" />
+          {/* Peak marker — Sakurai Futamigaura hills */}
+          <circle cx="148" cy="30" r="4" fill="var(--brand-gold)" stroke="#fff" strokeWidth="2" />
           <text
-            x="300"
-            y="8"
+            x="148"
+            y="22"
             textAnchor="middle"
             fontSize="9"
             fill="var(--brand-navy)"
             fontWeight="600"
           >
-            1,520m
+            80m
           </text>
-          {/* Labels */}
+          {/* Labels — Itoshima stops */}
           <text x="0" y="118" fontSize="9" fill="var(--text-tertiary)">
-            KK
+            Station
           </text>
-          <text x="250" y="118" fontSize="9" fill="var(--text-tertiary)" textAnchor="middle">
-            Kinabalu NP
+          <text x="148" y="118" fontSize="9" fill="var(--text-tertiary)" textAnchor="middle">
+            Futamigaura
           </text>
-          <text x="500" y="118" fontSize="9" fill="var(--text-tertiary)" textAnchor="middle">
-            Kiulu
+          <text x="370" y="118" fontSize="9" fill="var(--text-tertiary)" textAnchor="middle">
+            Keya no Ohto
+          </text>
+          <text x="555" y="118" fontSize="9" fill="var(--text-tertiary)" textAnchor="middle">
+            Nogita
           </text>
           <text x="695" y="118" fontSize="9" fill="var(--text-tertiary)" textAnchor="end">
-            KK
+            Station
           </text>
         </svg>
       </div>
@@ -817,120 +772,20 @@ function LocationMapView() {
 
   return (
     <div style={{ padding: "20px" }}>
-      {/* Map area */}
+      {/* Location map — Mapbox rendered */}
       <div
         style={{
-          background: "linear-gradient(155deg, #dde4ec 0%, #c8d4e0 40%, #bbc9d7 100%)",
           borderRadius: "8px",
-          height: "340px",
-          position: "relative",
           overflow: "hidden",
           marginBottom: "20px",
+          border: "1px solid var(--border-color)",
         }}
       >
-        {/* Coastline hint */}
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 600 340"
-          preserveAspectRatio="none"
-          style={{ position: "absolute", top: 0, left: 0 }}
-        >
-          <path
-            d="M 0 180 C 60 170, 100 200, 160 190 S 240 150, 300 170 S 380 210, 440 190 S 520 160, 600 180"
-            fill="none"
-            stroke="rgba(13,53,88,0.12)"
-            strokeWidth="2"
-          />
-          {/* South China Sea label */}
-          <text x="80" y="260" fontSize="11" fill="rgba(13,53,88,0.2)" fontStyle="italic">
-            South China Sea
-          </text>
-        </svg>
-
-        {/* Pins */}
-        {mapPins.map((pin) => (
-          <div
-            key={pin.label}
-            title={`${pin.label}: ${pin.detail}`}
-            style={{
-              position: "absolute",
-              left: `${pin.x}%`,
-              top: `${pin.y}%`,
-              transform: "translate(-50%, -100%)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              cursor: "default",
-            }}
-          >
-            {/* Label */}
-            <div
-              style={{
-                background: "#fff",
-                border: `1px solid ${pinColors[pin.type]}`,
-                borderRadius: "4px",
-                padding: "2px 6px",
-                fontSize: "10px",
-                fontWeight: 600,
-                color: pinColors[pin.type],
-                whiteSpace: "nowrap",
-                marginBottom: "2px",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-              }}
-            >
-              {pin.label}
-            </div>
-            {/* Pin dot */}
-            <svg width="12" height="16" viewBox="0 0 12 16">
-              <path
-                d="M6 0C2.7 0 0 2.7 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.3-2.7-6-6-6z"
-                fill={pinColors[pin.type]}
-              />
-              <circle cx="6" cy="6" r="2.5" fill="#fff" />
-            </svg>
-          </div>
-        ))}
-
-        {/* Legend */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "12px",
-            right: "12px",
-            background: "rgba(255,255,255,0.92)",
-            borderRadius: "6px",
-            padding: "8px 12px",
-            display: "flex",
-            gap: "12px",
-            fontSize: "10.5px",
-          }}
-        >
-          {(
-            [
-              ["Activity", "var(--brand-navy)"],
-              ["Accommodation", "#1d9e75"],
-              ["Hospital", "#dc3545"],
-            ] as const
-          ).map(([label, color]) => (
-            <div
-              key={label}
-              style={{ display: "flex", alignItems: "center", gap: "4px" }}
-            >
-              <span
-                style={{
-                  width: "8px",
-                  height: "8px",
-                  borderRadius: "50%",
-                  background: color,
-                }}
-              />
-              <span style={{ color: "var(--text-tertiary)", fontWeight: 500 }}>
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
+        <img
+          src="/images/itoshima-location-map.png"
+          alt="Itoshima peninsula — activity locations, stops, and points of interest"
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
       </div>
 
       {/* Location cards grid */}
