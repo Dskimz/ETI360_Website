@@ -5,3 +5,4 @@ export { Standardisation } from "./Standardisation";
 export { TripViews } from "./TripViews";
 export { WeatherIntelligence } from "./WeatherIntelligence";
 export { SingaporeLocations } from "./SingaporeLocations";
+export { SingaporeDayView } from "./SingaporeDayView";

@@ -32,6 +32,10 @@ const SingaporeLocations = dynamic(
   () => import("@/components/interactive/SingaporeLocations").then((m) => m.SingaporeLocations),
   { ssr: false }
 );
+const SingaporeDayView = dynamic(
+  () => import("@/components/interactive/SingaporeDayView").then((m) => m.SingaporeDayView),
+  { ssr: false }
+);
 
 const NAV_ITEMS = [
   { id: "activity-risk-profile", label: "Activity Risk Profile" },
@@ -254,10 +258,10 @@ export default function SeeItPage() {
         <div className="container-narrow">
           <h2 className="heading-section mb-4">Location Intelligence — Singapore</h2>
           <p className="body-text-secondary mb-8">
-            A different trip, the same standard. Every location mapped with
-            nearest emergency facility and drive time calculations.
+            A different trip, the same standard. Filter by day to see each
+            location with nearest emergency facility and drive time.
           </p>
-          <SingaporeLocations />
+          <SingaporeDayView />
         </div>
       </section>
 

@@ -30,6 +30,10 @@ const SingaporeLocations = dynamic(
   () => import("@/components/interactive/SingaporeLocations").then((m) => m.SingaporeLocations),
   { ssr: false }
 );
+const SingaporeDayView = dynamic(
+  () => import("@/components/interactive/SingaporeDayView").then((m) => m.SingaporeDayView),
+  { ssr: false }
+);
 
 export default function DemoPage() {
   return (
@@ -100,14 +104,14 @@ export default function DemoPage() {
         </div>
       </section>
 
-      {/* Singapore Location Intelligence */}
+      {/* Singapore Day-by-Day Location Intelligence */}
       <section className="section-padding">
         <div className="container-narrow">
           <h2 className="heading-section mb-4">Location Intelligence — Singapore</h2>
           <p className="body-text-secondary mb-8">
-            Every location on the trip mapped with nearest emergency facility and drive time. A different trip, the same standard.
+            A different trip, the same standard. Filter by day to see each location with nearest emergency facility and drive time.
           </p>
-          <SingaporeLocations />
+          <SingaporeDayView />
         </div>
       </section>
     </main>
