@@ -155,7 +155,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.875rem 2rem;
+  padding: 1rem 2.25rem;
   background: var(--brand-navy);
   color: #ffffff;
   font-size: 0.875rem;
@@ -173,7 +173,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.875rem 2rem;
+  padding: 1rem 2.25rem;
   background: transparent;
   color: var(--brand-navy);
   font-size: 0.875rem;
@@ -190,10 +190,228 @@ body {
   background: rgba(13, 53, 88, 0.04);
 }
 
+/* ── Section Intro ── */
+.section-intro {
+  margin-bottom: 3rem;
+}
+.section-intro .eyebrow {
+  margin-bottom: 0.75rem;
+}
+.section-intro .heading-section {
+  margin-bottom: 1rem;
+}
+.section-intro-lead {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  max-width: 40rem;
+  margin: 0;
+}
+
+/* ── Output Card ── */
+.output-card {
+  background: var(--page-background);
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--brand-gold);
+  padding: 2rem;
+}
+.output-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+  margin-bottom: 1rem;
+}
+.output-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.output-card li {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  padding-left: 1.25rem;
+  position: relative;
+}
+.output-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-gold);
+}
+.output-card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .output-card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .output-card-grid--3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Process Steps ── */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.process-steps::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-border);
+}
+.process-step {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  background: var(--band-background);
+  padding: 1.5rem 2rem;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+}
+.process-step:last-child {
+  border-bottom: none;
+}
+.process-step-number {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  background: var(--page-background);
+  border: 2px solid var(--accent-border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.process-step-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+  margin-bottom: 0.25rem;
+}
+.process-step-body {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+}
+
+/* ── Comparison Table ── */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.comparison-table th {
+  text-align: left;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--brand-navy);
+}
+.comparison-table td {
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  line-height: 1.5;
+}
+.comparison-table tr:nth-child(even) td {
+  background: var(--band-background);
+}
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+.comparison-table .col-before {
+  color: var(--text-tertiary);
+}
+.comparison-table .col-after {
+  color: var(--brand-navy);
+  font-weight: 600;
+}
+
+/* ── Data Table ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.data-table th {
+  text-align: left;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--brand-navy);
+}
+.data-table td {
+  padding: 0.875rem 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  line-height: 1.5;
+}
+.data-table tr:last-child td { border-bottom: none; }
+
+/* ── Stage Table ── */
+.stage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.stage-table th {
+  text-align: left;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--brand-navy);
+}
+.stage-table td {
+  padding: 0.875rem 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  line-height: 1.5;
+  vertical-align: top;
+}
+.stage-table tr:nth-child(even) td {
+  background: var(--band-background);
+}
+.stage-table tr:last-child td { border-bottom: none; }
+.stage-table .stage-label {
+  font-weight: 600;
+  color: var(--brand-navy);
+  white-space: nowrap;
+}
+
 /* ── Card ── */
 .card {
-  padding: 2rem;
+  padding: 2.25rem;
   border: 1px solid var(--border-color);
+  border-top: 3px solid var(--brand-gold);
   background: var(--page-background);
 }
 .card-title {
@@ -206,8 +424,8 @@ body {
 /* ── Output Panel ── */
 .output-panel {
   padding: 2rem 2.5rem;
-  background: var(--band-background);
-  border-left: 3px solid var(--brand-gold);
+  background: #f5f7fa;
+  border-top: 3px solid var(--brand-gold);
 }
 .output-panel .eyebrow { margin-bottom: 1rem; }
 .output-panel ul {
@@ -236,39 +454,6 @@ body {
   background: var(--brand-gold);
 }
 
-/* ── Process Step ── */
-.process-step {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 1.5rem;
-  align-items: start;
-}
-.process-step-number {
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--brand-navy);
-  background: var(--accent-surface);
-  border: 1px solid var(--accent-border);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.process-step-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--brand-navy);
-  margin-bottom: 0.25rem;
-}
-.process-step-body {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--text-tertiary);
-}
-
 /* ── Statement Block ── */
 .statement {
   font-size: 1.25rem;
@@ -277,29 +462,72 @@ body {
   max-width: 42rem;
 }
 
-/* ── Table ── */
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 1rem;
+/* ── Section Band ── */
+.section-band {
+  background: var(--band-background);
 }
-.data-table th {
-  text-align: left;
-  padding: 0.75rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  border-bottom: 2px solid var(--border-color);
+.section-band-dark {
+  background: var(--brand-navy);
+  color: #ffffff;
 }
-.data-table td {
-  padding: 0.875rem 1rem;
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--border-color);
-  line-height: 1.5;
+.section-band-dark .eyebrow {
+  color: var(--brand-gold);
 }
-.data-table tr:last-child td { border-bottom: none; }
+.section-band-dark .heading-section {
+  color: #ffffff;
+}
+.section-band-dark .body-text {
+  color: rgba(255, 255, 255, 0.85);
+}
+.section-band-dark .body-text-secondary {
+  color: rgba(255, 255, 255, 0.65);
+}
+.section-band-dark .section-intro-lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+.section-band-dark .card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-top-color: var(--brand-gold);
+}
+.section-band-dark .card-title {
+  color: #ffffff;
+}
+.section-band-dark .output-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-top-color: var(--brand-gold);
+}
+.section-band-dark .output-card-title {
+  color: #ffffff;
+}
+.section-band-dark .output-card li {
+  color: rgba(255, 255, 255, 0.85);
+}
+.section-band-dark .process-step {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.section-band-dark .process-steps::before {
+  background: rgba(201, 162, 77, 0.4);
+}
+.section-band-dark .process-step-number {
+  background: var(--brand-navy);
+  border-color: var(--brand-gold);
+  color: var(--brand-gold);
+}
+.section-band-dark .process-step-title {
+  color: #ffffff;
+}
+.section-band-dark .process-step-body {
+  color: rgba(255, 255, 255, 0.65);
+}
+.section-band-dark .statement {
+  color: rgba(255, 255, 255, 0.9);
+}
+.section-band-dark .gold-rule {
+  opacity: 0.8;
+}
 
 /* ── Markdown (Insights) ── */
 .markdown {

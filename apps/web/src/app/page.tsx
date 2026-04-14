@@ -1,80 +1,23 @@
 import React from "react";
 import Link from "next/link";
 import { HeroSection } from "@/components/HeroSection";
+import {
+  SectionIntro,
+  OutputPanel,
+  OutputCardGrid,
+  CtaBlock,
+} from "@/components/Blocks";
 import { homePage } from "@/content/home";
 import { documents } from "@/content/documents";
 
-/* ── Shared Section Components ── */
-
-function OutputPanel({
-  eyebrow,
-  headline,
-  statement,
-  outputs,
-  accent,
-}: {
-  eyebrow?: string;
-  headline?: string;
-  statement: string;
-  outputs: string[];
-  accent?: boolean;
-}) {
-  return (
-    <section className={`section-padding ${accent ? "bg-[var(--band-background)]" : ""}`}>
-      <div className="container-narrow">
-        <div className="max-w-3xl">
-          {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-          {headline && <h2 className="heading-section mb-5">{headline}</h2>}
-          <p className="statement mb-8">{statement}</p>
-          <div className="output-panel">
-            <ul>
-              {outputs.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CtaBlock({
-  headline,
-  body,
-  cta,
-}: {
-  headline: string;
-  body: string;
-  cta: { label: string; href: string };
-}) {
-  return (
-    <section className="section-padding" style={{ background: "var(--brand-navy)" }}>
-      <div className="container-narrow text-center">
-        <h2 className="text-3xl font-semibold text-white mb-4">{headline}</h2>
-        <p className="text-white/70 text-lg max-w-xl mx-auto mb-10">{body}</p>
-        <Link
-          href={cta.href}
-          className="btn-primary"
-          style={{ background: "var(--brand-gold)", color: "var(--brand-navy)" }}
-        >
-          {cta.label}
-        </Link>
-      </div>
-    </section>
-  );
-}
-
-/* ── Page-specific Sections ── */
+/* ── Governance Cycle — page-specific visual ── */
 
 function GovernanceCycle() {
   const { eyebrow, headline, statement, stages } = homePage.governanceCycle;
   return (
-    <section className="section-padding bg-[var(--band-background)]">
+    <section className="section-padding section-band">
       <div className="container-narrow">
-        <p className="eyebrow mb-3">{eyebrow}</p>
-        <h2 className="heading-section mb-4">{headline}</h2>
-        <p className="statement">{statement}</p>
+        <SectionIntro eyebrow={eyebrow} headline={headline} lead={statement} />
         <div className="mt-12 flex items-center justify-center gap-3 md:gap-6 flex-wrap">
           {stages.map((stage, i) => (
             <React.Fragment key={stage.number}>
@@ -118,6 +61,8 @@ function GovernanceCycle() {
   );
 }
 
+/* ── Audience Routing — page-specific cards ── */
+
 function AudienceRouting() {
   const { schools, providers } = homePage.audienceRouting;
   return (
@@ -125,29 +70,48 @@ function AudienceRouting() {
       <div className="container-narrow">
         <div className="grid gap-8 md:grid-cols-2">
           {[schools, providers].map((audience) => (
-            <div key={audience.eyebrow} className="card">
+            <div key={audience.eyebrow} className="output-card">
               <p className="eyebrow mb-4">{audience.eyebrow}</p>
-              <p className="statement mb-6" style={{ fontSize: "1.125rem" }}>
+              <p
+                className="statement mb-6"
+                style={{ fontSize: "1.125rem" }}
+              >
                 {audience.statement}
               </p>
-              <ul className="space-y-2 mb-6">
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
                 {audience.outputs.map((item, i) => (
-                  <li key={i} className="body-text-secondary flex gap-3">
-                    <span
-                      className="flex-shrink-0 mt-2 w-1.5 h-1.5 rounded-full"
-                      style={{ background: "var(--brand-gold)" }}
-                    />
+                  <li
+                    key={i}
+                    style={{
+                      fontSize: "1rem",
+                      lineHeight: 1.5,
+                      color: "var(--text-primary)",
+                      paddingLeft: "1.25rem",
+                      position: "relative" as const,
+                    }}
+                  >
                     {item}
                   </li>
                 ))}
               </ul>
-              <Link
-                href={audience.cta.href}
-                className="text-sm font-semibold"
-                style={{ color: "var(--brand-navy)" }}
-              >
-                {audience.cta.label} &rarr;
-              </Link>
+              <div className="mt-6">
+                <Link
+                  href={audience.cta.href}
+                  className="text-sm font-semibold"
+                  style={{ color: "var(--brand-navy)" }}
+                >
+                  {audience.cta.label} &rarr;
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -156,19 +120,22 @@ function AudienceRouting() {
   );
 }
 
+/* ── Document Showcase — page-specific cards ── */
+
 function DocumentShowcase() {
   const { eyebrow, headline, linkLabel, linkHref } = homePage.documentShowcase;
   const showcase = documents.slice(0, 4);
   return (
-    <section className="section-padding bg-[var(--band-background)]">
+    <section className="section-padding section-band">
       <div className="container-narrow">
-        <p className="eyebrow mb-3">{eyebrow}</p>
-        <h2 className="heading-section mb-10">{headline}</h2>
+        <SectionIntro eyebrow={eyebrow} headline={headline} />
         <div className="grid gap-6 md:grid-cols-2">
           {showcase.map((doc) => (
-            <div key={doc.title} className="card">
+            <div key={doc.title} className="output-card">
               <div className="flex items-center gap-3 mb-3">
-                <h3 className="card-title mb-0">{doc.title}</h3>
+                <h3 className="output-card-title mb-0" style={{ marginBottom: 0 }}>
+                  {doc.title}
+                </h3>
                 <span
                   className="text-xs font-semibold px-2 py-0.5 rounded-sm whitespace-nowrap"
                   style={{
@@ -217,6 +184,7 @@ export default function HomePage() {
         eyebrow={homePage.independence.eyebrow}
         statement={homePage.independence.statement}
         outputs={homePage.independence.outputs}
+        band
       />
       <CtaBlock {...homePage.cta} />
     </main>
