@@ -35,7 +35,7 @@ export function HeroSection({
               <p className="eyebrow">{eyebrow}</p>
             </div>
           )}
-          <h1 className={`heading-display max-w-4xl ${image ? "text-white" : ""}`}>
+          <h1 className="heading-display max-w-4xl">
             {headlineParts
               ? headlineParts.map((part, i) => (
                   <span key={i}>
@@ -43,12 +43,12 @@ export function HeroSection({
                     {part.gold ? (
                       <span className="gold">{part.text}</span>
                     ) : (
-                      part.text
+                      <span className={image ? "white" : ""}>{part.text}</span>
                     )}
                     {i < headlineParts.length - 1 && <br />}
                   </span>
                 ))
-              : headline}
+              : <span className={image ? "white" : ""}>{headline}</span>}
           </h1>
           <p
             className={`mt-7 max-w-2xl text-xl leading-relaxed ${

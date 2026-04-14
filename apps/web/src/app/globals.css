@@ -118,6 +118,10 @@ body {
 .heading-display .gold {
   color: var(--brand-gold);
 }
+.heading-display .white {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
 
 .heading-section {
   font-size: 2rem;
