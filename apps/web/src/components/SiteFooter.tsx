@@ -3,13 +3,11 @@ import Link from 'next/link'
 const platformLinks = [
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
-  {href: '/what-we-do', label: 'What We Do'},
-  {href: '/approach', label: 'Approach'},
+  {href: '/methodology', label: 'Methodology'},
 ]
 
 const companyLinks = [
   {href: '/about', label: 'About'},
-  {href: '/insights', label: 'Insights'},
   {href: '/contact', label: 'Contact'},
 ]
 

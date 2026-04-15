@@ -6,3 +6,5 @@ export { TripViews } from "./TripViews";
 export { WeatherIntelligence } from "./WeatherIntelligence";
 export { SingaporeLocations } from "./SingaporeLocations";
 export { SingaporeDayView } from "./SingaporeDayView";
+export { WorkflowDiagram } from "./WorkflowDiagram";
+export { RAMSPreview } from "./RAMSPreview";
