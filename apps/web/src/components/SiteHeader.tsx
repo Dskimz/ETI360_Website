@@ -7,6 +7,7 @@ import {useState} from 'react'
 type NavItem = {href: string; label: string}
 
 const navItems: NavItem[] = [
+  {href: '/see-it', label: 'See It'},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
   {href: '/methodology', label: 'Methodology'},

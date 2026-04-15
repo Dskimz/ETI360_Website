@@ -1,185 +1,127 @@
 "use client";
 
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
-/* ── Dynamic imports (no SSR — canvas/SVG components) ── */
+/* ── Proof card data ── */
 
-const Standardisation = dynamic(
-  () => import("@/components/interactive/Standardisation").then((m) => m.Standardisation),
-  { ssr: false, loading: () => <ComponentLoader /> }
-);
-const ActivityRiskProfile = dynamic(
-  () => import("@/components/interactive/ActivityRiskProfile").then((m) => m.ActivityRiskProfile),
-  { ssr: false, loading: () => <ComponentLoader /> }
-);
-const RAMSPreview = dynamic(
-  () => import("@/components/interactive/RAMSPreview").then((m) => m.RAMSPreview),
-  { ssr: false, loading: () => <ComponentLoader /> }
-);
-const TripViews = dynamic(
-  () => import("@/components/interactive/TripViews").then((m) => m.TripViews),
-  { ssr: false, loading: () => <ComponentLoader /> }
-);
-const StressTest = dynamic(
-  () => import("@/components/interactive/StressTest").then((m) => m.StressTest),
-  { ssr: false, loading: () => <ComponentLoader /> }
-);
-const ComplianceScorecard = dynamic(
-  () => import("@/components/interactive/ComplianceScorecard").then((m) => m.ComplianceScorecard),
-  { ssr: false, loading: () => <ComponentLoader /> }
-);
+const proofCards = [
+  {
+    label: "Program structure",
+    sentence: "See how time is allocated across transit, activity, and rest.",
+    visual: "calendar",
+    href: "/see-it#standardisation",
+  },
+  {
+    label: "Risk identification",
+    sentence: "See where exposure points are — across activities, transitions, and locations.",
+    visual: "radar",
+    href: "/see-it#risk-profiling",
+  },
+  {
+    label: "Route and location context",
+    sentence: "See travel paths, distances, and how remote each location is.",
+    visual: "map",
+    href: "/see-it#trip-views",
+  },
+  {
+    label: "Medical access",
+    sentence: "See how far each location is from emergency care — and what the plan is.",
+    visual: "hospital",
+    href: "/see-it#trip-views",
+  },
+  {
+    label: "Environmental context",
+    sentence: "See weather patterns, terrain, and timing incorporated into preparation.",
+    visual: "weather",
+    href: "/see-it#trip-views",
+  },
+  {
+    label: "Program comparison",
+    sentence: "See how one provider\u2019s program compares with another using the same structure.",
+    visual: "compare",
+    href: "/see-it#standardisation",
+  },
+];
 
-/* ── Loading placeholder ── */
+/* ── Visual icons for proof cards ── */
 
-function ComponentLoader() {
-  return (
-    <div
-      style={{
-        minHeight: 320,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "var(--band-background)",
-        border: "1px solid var(--border-color)",
-        color: "var(--text-tertiary)",
-        fontSize: "0.875rem",
-      }}
-    >
-      Loading...
-    </div>
-  );
-}
+function ProofVisual({ type }: { type: string }) {
+  const iconStyle: React.CSSProperties = {
+    width: 56,
+    height: 56,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "50%",
+    background: "rgba(201, 162, 77, 0.1)",
+    border: "1px solid rgba(201, 162, 77, 0.25)",
+    flexShrink: 0,
+  };
 
-/* ── Narrative section wrapper ── */
+  const svgProps = {
+    width: 24,
+    height: 24,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#C9A24D",
+    strokeWidth: 1.5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
 
-function NarrativeSection({
-  id,
-  orient,
-  frame,
-  bridge,
-  bridgeNote,
-  children,
-  band,
-}: {
-  id: string;
-  orient: string;
-  frame: string;
-  bridge?: string;
-  bridgeNote?: string;
-  children: React.ReactNode;
-  band?: boolean;
-}) {
-  return (
-    <section id={id} className={band ? "section-padding section-band" : "section-padding"}>
-      <div className="container-narrow">
-        {/* Orient */}
-        <p
-          style={{
-            fontSize: "1.125rem",
-            lineHeight: 1.7,
-            color: "var(--text-tertiary)",
-            maxWidth: "44rem",
-            marginBottom: "1rem",
-            fontStyle: "italic",
-          }}
-        >
-          {orient}
-        </p>
+  const icons: Record<string, React.ReactNode> = {
+    calendar: (
+      <svg {...svgProps}>
+        <rect x="3" y="4" width="18" height="18" rx="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+        <rect x="6" y="13" width="3" height="2" fill="#C9A24D" stroke="none" />
+        <rect x="10.5" y="13" width="3" height="2" fill="#0d3558" stroke="none" />
+        <rect x="15" y="13" width="3" height="2" fill="#C9A24D" stroke="none" />
+      </svg>
+    ),
+    radar: (
+      <svg {...svgProps}>
+        <polygon points="12,3 20,9 18,18 6,18 4,9" strokeDasharray="2 2" />
+        <polygon points="12,7 16,10 15,15 9,15 8,10" fill="rgba(201,162,77,0.2)" />
+        <polygon points="12,5 18,9.5 16.5,16.5 7.5,16.5 6,9.5" fill="rgba(13,53,88,0.15)" />
+      </svg>
+    ),
+    map: (
+      <svg {...svgProps}>
+        <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z" />
+        <line x1="9" y1="3" x2="9" y2="18" />
+        <line x1="15" y1="6" x2="15" y2="21" />
+      </svg>
+    ),
+    hospital: (
+      <svg {...svgProps}>
+        <rect x="4" y="6" width="16" height="14" rx="2" />
+        <path d="M12 10v6M9 13h6" stroke="#C9A24D" strokeWidth="2" />
+        <path d="M9 6V4a3 3 0 016 0v2" />
+      </svg>
+    ),
+    weather: (
+      <svg {...svgProps}>
+        <circle cx="12" cy="10" r="4" />
+        <path d="M12 2v2M12 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        <path d="M6 20h12" strokeDasharray="2 3" />
+      </svg>
+    ),
+    compare: (
+      <svg {...svgProps}>
+        <rect x="2" y="5" width="8" height="14" rx="1" />
+        <rect x="14" y="5" width="8" height="14" rx="1" />
+        <line x1="5" y1="9" x2="8" y2="9" />
+        <line x1="5" y1="12" x2="8" y2="12" />
+        <line x1="17" y1="9" x2="20" y2="9" />
+        <line x1="17" y1="12" x2="20" y2="12" />
+      </svg>
+    ),
+  };
 
-        {/* Frame */}
-        <p
-          style={{
-            fontSize: "1.125rem",
-            lineHeight: 1.65,
-            color: "var(--text-primary)",
-            maxWidth: "44rem",
-            marginBottom: "2.5rem",
-          }}
-        >
-          {frame}
-        </p>
-
-        {/* Present — the component */}
-        {children}
-
-        {/* Bridge */}
-        {bridge && (
-          <p
-            style={{
-              marginTop: "2.5rem",
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1rem",
-            }}
-          >
-            {bridge}
-          </p>
-        )}
-        {bridgeNote && (
-          <p
-            style={{
-              marginTop: "0.75rem",
-              fontSize: "0.9375rem",
-              lineHeight: 1.5,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              paddingLeft: "1rem",
-            }}
-          >
-            {bridgeNote}
-          </p>
-        )}
-      </div>
-    </section>
-  );
-}
-
-/* ── Section heading ── */
-
-function SectionLabel({ number, title }: { number: string; title: string }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.75rem",
-        marginBottom: "1.5rem",
-      }}
-    >
-      <span
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "2rem",
-          height: "2rem",
-          borderRadius: "50%",
-          background: "var(--brand-navy)",
-          color: "#ffffff",
-          fontSize: "0.75rem",
-          fontWeight: 700,
-        }}
-      >
-        {number}
-      </span>
-      <span
-        style={{
-          fontSize: "0.75rem",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "var(--brand-gold)",
-        }}
-      >
-        {title}
-      </span>
-    </div>
-  );
+  return <div style={iconStyle}>{icons[type]}</div>;
 }
 
 /* ════════════════════════════════════════════════════
@@ -189,27 +131,15 @@ function SectionLabel({ number, title }: { number: string; title: string }) {
 export default function HomePage() {
   return (
     <main>
-      {/* ── HERO ── */}
+      {/* ── 1. HERO ── */}
       <section
         style={{
           background: "var(--brand-navy)",
           color: "#ffffff",
-          padding: "6rem 1.5rem 5rem",
+          padding: "7rem 1.5rem 6rem",
         }}
       >
-        <div className="container-narrow">
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.6)",
-              maxWidth: "36rem",
-              marginBottom: "2rem",
-              fontStyle: "italic",
-            }}
-          >
-            A teacher writes a risk assessment. A head of school signs it off. Neither has visited the destination.
-          </p>
+        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
           <h1
             style={{
               fontSize: "3.25rem",
@@ -217,420 +147,208 @@ export default function HomePage() {
               lineHeight: 1.08,
               letterSpacing: "-0.02em",
               color: "#ffffff",
-              maxWidth: "48rem",
-              marginBottom: "1.5rem",
+              marginBottom: "1.75rem",
             }}
           >
-            The standard for educational travel intelligence.
+            Trip decisions need structured evidence.
           </h1>
           <p
             style={{
               fontSize: "1.25rem",
-              lineHeight: 1.55,
+              lineHeight: 1.6,
               color: "rgba(255,255,255,0.7)",
-              maxWidth: "40rem",
               marginBottom: "2.5rem",
             }}
           >
-            Structured evidence for every trip — from a raw itinerary to a fully assessed, compliance-checked, stress-tested programme.
+            School trip documentation is rarely prepared for the person who has to approve, oversee, and answer for the trip. ETI360 structures that information for review.
           </p>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <a
-              href="#standardisation"
+          <Link
+            href="/contact"
+            className="btn-primary"
+            style={{
+              background: "var(--brand-gold)",
+              color: "var(--brand-navy)",
+            }}
+          >
+            Start a conversation &rarr;
+          </Link>
+        </div>
+      </section>
+
+      {/* ── 2. THE PROBLEM ── */}
+      <section className="section-padding">
+        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
+          <h2
+            style={{
+              fontSize: "2rem",
+              fontWeight: 600,
+              lineHeight: 1.2,
+              letterSpacing: "-0.015em",
+              color: "var(--brand-navy)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            The problem is not missing information.
+          </h2>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.7,
+              color: "var(--text-primary)",
+              marginBottom: "1rem",
+            }}
+          >
+            Schools receive itineraries, provider materials, internal notes, and supporting documents in different formats and levels of detail. Leadership still has to decide whether the trip is appropriate to run.
+          </p>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.7,
+              color: "var(--text-primary)",
+            }}
+          >
+            The issue is not volume. It is that the information is not structured for the decision it needs to support.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 3. THE BRIDGE ── */}
+      <section className="section-padding section-band">
+        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
+          <h2
+            style={{
+              fontSize: "2rem",
+              fontWeight: 600,
+              lineHeight: 1.2,
+              letterSpacing: "-0.015em",
+              color: "var(--brand-navy)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            What structured evidence changes.
+          </h2>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.7,
+              color: "var(--text-primary)",
+              marginBottom: "1rem",
+            }}
+          >
+            ETI360 converts fragmented trip documentation into structured evidence: a consistent view of activities, locations, timings, and logistics prepared for review.
+          </p>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.7,
+              color: "var(--text-primary)",
+            }}
+          >
+            Once the program is structured, leadership can review it more clearly. Time allocation, route context, medical access, environmental conditions, and provider differences become easier to assess because the underlying information has been normalized into one format.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 4. PROOF VISUALS ── */}
+      <section className="section-padding">
+        <div className="container-narrow">
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.6,
+              color: "var(--text-tertiary)",
+              maxWidth: "44rem",
+              marginBottom: "3rem",
+            }}
+          >
+            These outputs are not separate layers added afterward. They follow from structuring the trip properly.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--border-color)",
+              border: "1px solid var(--border-color)",
+            }}
+            className="proof-grid"
+          >
+            {proofCards.map((card) => (
+              <Link
+                key={card.label}
+                href={card.href}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "1.25rem",
+                  padding: "1.75rem 2rem",
+                  background: "var(--page-background)",
+                  textDecoration: "none",
+                  transition: "background 0.15s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "var(--band-background)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "var(--page-background)";
+                }}
+              >
+                <ProofVisual type={card.visual} />
+                <div>
+                  <p
+                    style={{
+                      fontSize: "0.9375rem",
+                      fontWeight: 600,
+                      color: "var(--brand-navy)",
+                      marginBottom: "0.375rem",
+                    }}
+                  >
+                    {card.label}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.9375rem",
+                      lineHeight: 1.55,
+                      color: "var(--text-tertiary)",
+                      margin: 0,
+                    }}
+                  >
+                    {card.sentence}
+                  </p>
+                </div>
+                <span
+                  style={{
+                    marginLeft: "auto",
+                    color: "var(--brand-gold)",
+                    fontSize: "1.125rem",
+                    flexShrink: 0,
+                    alignSelf: "center",
+                  }}
+                >
+                  &rarr;
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "2rem", textAlign: "center" }}>
+            <Link
+              href="/see-it"
               className="btn-primary"
               style={{
-                background: "var(--brand-gold)",
-                color: "var(--brand-navy)",
-              }}
-            >
-              Scroll to explore &darr;
-            </a>
-            <Link
-              href="/contact"
-              className="btn-secondary"
-              style={{
-                borderColor: "rgba(255,255,255,0.3)",
+                background: "var(--brand-navy)",
                 color: "#ffffff",
               }}
             >
-              Start with one trip &rarr;
+              See the full interactive assessment &rarr;
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── TRIP CONTEXT BAR ── */}
-      <div
-        style={{
-          background: "var(--page-background)",
-          borderBottom: "1px solid var(--border-color)",
-          padding: "1rem 1.5rem",
-          position: "sticky",
-          top: "calc(4rem + 3px)",
-          zIndex: 40,
-        }}
-      >
-        <div
-          className="container-narrow"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.75rem",
-            flexWrap: "wrap",
-          }}
-        >
-          <span
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "var(--text-tertiary)",
-            }}
-          >
-            Sample trips:
-          </span>
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              padding: "0.375rem 0.875rem",
-              background: "var(--brand-navy)",
-              color: "#ffffff",
-              fontSize: "0.8125rem",
-              fontWeight: 600,
-              borderRadius: "2px",
-            }}
-          >
-            Borneo Rainforest Expedition
-            <span
-              style={{
-                fontSize: "0.6875rem",
-                fontWeight: 500,
-                color: "var(--brand-gold)",
-              }}
-            >
-              High exposure
-            </span>
-          </span>
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              padding: "0.375rem 0.875rem",
-              background: "var(--band-background)",
-              color: "var(--brand-navy)",
-              fontSize: "0.8125rem",
-              fontWeight: 600,
-              border: "1px solid var(--border-color)",
-              borderRadius: "2px",
-            }}
-          >
-            Active Singapore Adventure
-            <span
-              style={{
-                fontSize: "0.6875rem",
-                fontWeight: 500,
-                color: "var(--text-tertiary)",
-              }}
-            >
-              Low exposure
-            </span>
-          </span>
-        </div>
-      </div>
-
-      {/* ── SECTION 1: PROGRAM STANDARDISATION ── */}
-      <section id="standardisation" className="section-padding">
-        <div className="container-narrow">
-          <SectionLabel number="01" title="Program Standardisation" />
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              marginBottom: "1rem",
-              fontStyle: "italic",
-            }}
-          >
-            A trip provider sends a PDF. It&rsquo;s 12 pages of narrative, photos, and promises. Somewhere in there is a schedule.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-              marginBottom: "2.5rem",
-            }}
-          >
-            Program Standardisation converts whatever arrives into a structured activity ledger — every minute accounted for, every location resolved, every gap flagged. This ledger feeds everything that follows.
-          </p>
-          <Standardisation />
-          <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column", gap: "0.75rem", maxWidth: "44rem" }}>
-            <p style={{ fontSize: "0.9375rem", lineHeight: 1.6, color: "var(--text-tertiary)" }}>
-              <strong style={{ color: "var(--brand-navy)" }}>Borneo:</strong> The provider sent a 4-page PDF. Arrival times were vague. Transport between locations wasn&rsquo;t specified. Three hours on Day 2 were unaccounted for.
-            </p>
-            <p style={{ fontSize: "0.9375rem", lineHeight: 1.6, color: "var(--text-tertiary)" }}>
-              <strong style={{ color: "var(--brand-navy)" }}>Singapore:</strong> The provider sent a detailed day-by-day schedule — but meal locations were unspecified, MRT routes weren&rsquo;t confirmed, and no emergency hospitals were identified for any district.
-            </p>
-          </div>
-          <p
-            style={{
-              marginTop: "2rem",
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1rem",
-            }}
-          >
-            With a structured ledger, every activity can now be scored.
-          </p>
-        </div>
-      </section>
-
-      {/* ── SECTION 2: ACTIVITY RISK PROFILE ── */}
-      <section id="risk-profiling" className="section-padding section-band">
-        <div className="container-narrow">
-          <SectionLabel number="02" title="Activity Risk Profile" />
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              marginBottom: "1rem",
-              fontStyle: "italic",
-            }}
-          >
-            A cooking class and white-water rafting are both &lsquo;activities&rsquo; on an itinerary. A flat list treats them the same.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-              marginBottom: "2.5rem",
-            }}
-          >
-            The Activity Risk Profile scores each one across seven dimensions. Toggle activities on and off to compare their risk shapes. Activities above a composite threshold of 14 trigger full RAMS documentation.
-          </p>
-          <ActivityRiskProfile />
-          <p style={{ marginTop: "2rem", fontSize: "0.9375rem", lineHeight: 1.6, color: "var(--text-tertiary)", maxWidth: "44rem" }}>
-            The Borneo trip has three activities above threshold — rafting, snorkelling, and kayaking. The Singapore trip has none. The system is proportionate — a heritage walk in Kampong Gelam doesn&rsquo;t trigger the same documentation as a Grade III rapid.
-          </p>
-          <p
-            style={{
-              marginTop: "2rem",
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1rem",
-            }}
-          >
-            Three activities on the Borneo trip crossed the threshold. Here&rsquo;s what happens to them.
-          </p>
-        </div>
-      </section>
-
-      {/* ── SECTION 3: RAMS ── */}
-      <section id="rams" className="section-padding">
-        <div className="container-narrow">
-          <SectionLabel number="03" title="RAMS Documentation" />
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              marginBottom: "1rem",
-              fontStyle: "italic",
-            }}
-          >
-            Activities above threshold don&rsquo;t just get flagged — they get full risk documentation. Hazard identification. Specific controls. Residual risk scoring.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-              marginBottom: "2.5rem",
-            }}
-          >
-            Each control starts with a verified action verb — require, brief, assign, halt, inspect. No vague language. No &lsquo;ensure appropriate measures.&rsquo; Each control is observable and verifiable.
-          </p>
-          <RAMSPreview />
-          <p
-            style={{
-              marginTop: "2.5rem",
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1rem",
-            }}
-          >
-            The same structured data — 42 activities, 14 locations, 7 days — can be viewed through multiple lenses.
-          </p>
-        </div>
-      </section>
-
-      {/* ── SECTION 4: TRIP VIEWS ── */}
-      <section id="trip-views" className="section-padding section-band">
-        <div className="container-narrow">
-          <SectionLabel number="04" title="Trip Views" />
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              marginBottom: "1rem",
-              fontStyle: "italic",
-            }}
-          >
-            A trip leader needs the minute-by-minute schedule. A head of school needs the day-by-day shape. Operations needs the map with hospitals. Parents need to know their child is accounted for at every point.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-              marginBottom: "2.5rem",
-            }}
-          >
-            One ledger, multiple views. Each designed for a different decision. Click through the tabs.
-          </p>
-          <TripViews />
-          <p
-            style={{
-              marginTop: "2.5rem",
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1rem",
-            }}
-          >
-            The trip is planned. The activities are scored. The views are built. But what actually happens when 28 students are on that river?
-          </p>
-        </div>
-      </section>
-
-      {/* ── SECTION 5: STRESS TEST ── */}
-      <section id="stress-test" className="section-padding">
-        <div className="container-narrow">
-          <SectionLabel number="05" title="Trip Stress Test" />
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              marginBottom: "1rem",
-              fontStyle: "italic",
-            }}
-          >
-            Risk assessments describe what could go wrong. Stress tests describe what probably will go wrong — and how often.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-              marginBottom: "2.5rem",
-            }}
-          >
-            1,000 simulated iterations of this specific trip. The P50 tab shows the realistic scenario — the trip most school groups would experience. The P90 shows a statistically bad trip — not the worst case, but what happens when several things go wrong in the same week.
-          </p>
-          <StressTest />
-          <p style={{ marginTop: "2rem", fontSize: "0.9375rem", lineHeight: 1.6, color: "var(--text-tertiary)", maxWidth: "44rem" }}>
-            The Borneo P90 includes a raft capsize, a GI outbreak, and a modified programme. The Singapore P90 includes a thunderstorm disruption, an MRT delay, and a student medical incident at a market. Different risks. Same structured response.
-          </p>
-          <p
-            style={{
-              marginTop: "2rem",
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1rem",
-            }}
-          >
-            The stress test reveals which days carry the most exposure. The compliance assessment checks whether the school&rsquo;s governance framework covers what those days require.
-          </p>
-        </div>
-      </section>
-
-      {/* ── SECTION 6: COMPLIANCE ── */}
-      <section id="compliance" className="section-padding section-band">
-        <div className="container-narrow">
-          <SectionLabel number="06" title="Compliance Assessment" />
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              marginBottom: "1rem",
-              fontStyle: "italic",
-            }}
-          >
-            ISO 31031 is the international standard for managing risk in youth and school travel. Most schools have never mapped their policies against it.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-              marginBottom: "2.5rem",
-            }}
-          >
-            Green means covered. Amber means partial. Red means a gap. The assessment makes the current state visible so decisions can be made.
-          </p>
-          <ComplianceScorecard />
-          <p style={{ marginTop: "2rem", fontSize: "0.9375rem", lineHeight: 1.6, color: "var(--text-tertiary)", maxWidth: "44rem" }}>
-            Both trips are assessed against the same ten dimensions. The Borneo trip exposes gaps in dynamic risk assessment. The Singapore trip scores higher — but reveals a gap in post-trip review that applies to the entire programme.
-          </p>
-          <p
-            style={{
-              marginTop: "2rem",
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1rem",
-            }}
-          >
-            This is what structured trip intelligence looks like — from a raw itinerary to a fully assessed, compliance-checked, stress-tested programme. The same standard, applied proportionately.
-          </p>
-        </div>
-      </section>
-
-      {/* ── SECTION 7: DUAL-AUDIENCE FORK ── */}
-      <section className="section-padding">
+      {/* ── 5. DUAL-AUDIENCE FORK ── */}
+      <section className="section-padding section-band">
         <div className="container-narrow">
           <div
             style={{
@@ -656,20 +374,20 @@ export default function HomePage() {
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--brand-navy)",
-                  marginBottom: "1rem",
+                  marginBottom: "1.25rem",
                 }}
               >
-                For the person who signs off
+                For Schools
               </p>
               <p
                 style={{
-                  fontSize: "1.125rem",
+                  fontSize: "1.0625rem",
                   lineHeight: 1.65,
                   color: "var(--text-primary)",
-                  marginBottom: "2rem",
+                  marginBottom: "1.75rem",
                 }}
               >
-                You just saw a trip move from a raw provider PDF to structured, scored, stress-tested intelligence. Every document you&rsquo;d receive is designed for governance — traceable evidence for the decision you need to make.
+                How structured evidence changes what&rsquo;s on the table when you sign off.
               </p>
               <Link
                 href="/for-schools"
@@ -682,7 +400,7 @@ export default function HomePage() {
                   textTransform: "uppercase",
                 }}
               >
-                How schools use ETI360 &rarr;
+                For Schools &rarr;
               </Link>
             </div>
 
@@ -702,20 +420,20 @@ export default function HomePage() {
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "#1a5c3a",
-                  marginBottom: "1rem",
+                  marginBottom: "1.25rem",
                 }}
               >
-                For the team proposing the trip
+                For Providers
               </p>
               <p
                 style={{
-                  fontSize: "1.125rem",
+                  fontSize: "1.0625rem",
                   lineHeight: 1.65,
                   color: "var(--text-primary)",
-                  marginBottom: "2rem",
+                  marginBottom: "1.75rem",
                 }}
               >
-                You just saw your itinerary become institutional-quality documentation. Activity scores, compliance alignment, structured views — the evidence school governance boards are looking for.
+                How structured evidence strengthens the proposals you submit.
               </p>
               <Link
                 href="/for-providers"
@@ -728,14 +446,14 @@ export default function HomePage() {
                   textTransform: "uppercase",
                 }}
               >
-                How providers use ETI360 &rarr;
+                For Providers &rarr;
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 8: INDEPENDENCE + CTA ── */}
+      {/* ── 6. INDEPENDENCE + CTA ── */}
       <section
         className="section-padding"
         style={{
@@ -744,58 +462,42 @@ export default function HomePage() {
         }}
       >
         <div className="container-narrow" style={{ maxWidth: "44rem" }}>
-          <h2
-            style={{
-              fontSize: "2rem",
-              fontWeight: 600,
-              lineHeight: 1.2,
-              color: "#ffffff",
-              marginBottom: "1.5rem",
-            }}
-          >
-            ETI360 structures evidence. Schools make decisions.
-          </h2>
           <p
             style={{
-              fontSize: "1.0625rem",
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.7)",
-              marginBottom: "2rem",
-            }}
-          >
-            Every assessment is traceable. Every score is sourced. Every document identifies the basis on which conclusions were reached. ETI360 does not approve trips, certify providers, or guarantee outcomes.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
+              fontSize: "1.375rem",
+              lineHeight: 1.5,
               color: "rgba(255,255,255,0.85)",
               marginBottom: "2.5rem",
-              fontStyle: "italic",
             }}
           >
-            The next trip your school approves — or the next proposal your team submits — could have structured evidence behind it.
+            The school keeps every decision. ETI360 structures the evidence those decisions rest on.
           </p>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <Link
-              href="/contact"
-              className="btn-primary"
-              style={{
-                background: "var(--brand-gold)",
-                color: "var(--brand-navy)",
-              }}
-            >
-              Start with one trip &rarr;
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="btn-primary"
+            style={{
+              background: "var(--brand-gold)",
+              color: "var(--brand-navy)",
+            }}
+          >
+            Start a conversation &rarr;
+          </Link>
         </div>
       </section>
 
-      {/* ── Responsive grid helper ── */}
+      {/* ── Responsive styles ── */}
       <style>{`
         @media (min-width: 768px) {
           .md-grid-2 {
             grid-template-columns: 1fr 1fr !important;
+          }
+          .proof-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .proof-grid {
+            grid-template-columns: 1fr 1fr 1fr !important;
           }
         }
       `}</style>

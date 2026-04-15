@@ -21,16 +21,21 @@ export default function ForProvidersPage() {
               fontSize: "1.125rem",
               lineHeight: 1.7,
               color: "rgba(255,255,255,0.6)",
-              maxWidth: "36rem",
+              maxWidth: "44rem",
               marginBottom: "2rem",
               fontStyle: "italic",
             }}
           >
-            A school&rsquo;s risk committee reviews your proposal alongside two others. One includes a narrative risk summary. Yours includes seven-dimension activity scoring, ISO&nbsp;31031 alignment, and a structured activity ledger. The committee isn&rsquo;t comparing trips. They&rsquo;re comparing evidence.
+            A school&rsquo;s risk committee reviews your proposal alongside two
+            others. One includes a narrative risk summary. Yours includes
+            structured activity scoring, compliance alignment, and a verified
+            activity ledger with every location mapped to the nearest emergency
+            hospital. The committee isn&rsquo;t comparing trips. They&rsquo;re
+            comparing evidence.
           </p>
           <h1
             style={{
-              fontSize: "3.25rem",
+              fontSize: "2.75rem",
               fontWeight: 700,
               lineHeight: 1.08,
               letterSpacing: "-0.02em",
@@ -41,16 +46,6 @@ export default function ForProvidersPage() {
           >
             Position your proposals with structured evidence.
           </h1>
-          <p
-            style={{
-              fontSize: "1.25rem",
-              lineHeight: 1.55,
-              color: "rgba(255,255,255,0.7)",
-              maxWidth: "40rem",
-            }}
-          >
-            Schools increasingly look for institutional-quality documentation in trip proposals. ETI360 intelligence gives you that documentation&nbsp;&mdash; independently assessed, standards-aligned, and formatted for governance boards.
-          </p>
         </div>
       </section>
 
@@ -63,71 +58,28 @@ export default function ForProvidersPage() {
               lineHeight: 1.65,
               color: "var(--text-primary)",
               maxWidth: "44rem",
-              marginBottom: "2.5rem",
+              marginBottom: "2rem",
             }}
           >
-            Before ETI360, your proposal is a PDF with photos, narrative, and promises. After ETI360, your proposal includes:
+            ETI360 transforms your trip documentation into
+            institutional-quality evidence. Your itinerary becomes a structured
+            activity ledger &mdash; every activity timestamped, every location
+            resolved, every gap identified. Your risk management becomes
+            visible: scored, specific, and independently assessed.
           </p>
-
-          <div
+          <p
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.5rem",
+              fontSize: "1.125rem",
+              lineHeight: 1.65,
+              color: "var(--brand-navy)",
+              fontWeight: 500,
               maxWidth: "44rem",
+              borderLeft: "3px solid var(--brand-gold)",
+              paddingLeft: "1.25rem",
             }}
           >
-            {[
-              {
-                href: "/#standardisation",
-                text: "A structured activity ledger showing operational thoroughness\u00a0\u2014 every minute, every location, every transport leg.",
-              },
-              {
-                href: "/#risk-profiling",
-                text: "Activity Risk Profiles showing you\u2019ve assessed your own programme independently\u00a0\u2014 not self-reported, methodology-driven.",
-              },
-              {
-                href: "/#compliance",
-                text: "ISO\u00a031031 compliance alignment showing your programme meets recognised international standards.",
-              },
-              {
-                href: "/#trip-views",
-                text: "Multiple views of the itinerary\u00a0\u2014 calendar, map, route profiles\u00a0\u2014 presented as professional operations documentation.",
-              },
-            ].map((item, i) => (
-              <Link
-                key={i}
-                href={item.href}
-                style={{
-                  display: "flex",
-                  gap: "0.75rem",
-                  textDecoration: "none",
-                  lineHeight: 1.65,
-                }}
-              >
-                <span
-                  style={{
-                    flexShrink: 0,
-                    color: "var(--brand-gold)",
-                    fontWeight: 700,
-                    fontSize: "1.125rem",
-                    marginTop: "0.05em",
-                  }}
-                >
-                  &rarr;
-                </span>
-                <span
-                  style={{
-                    fontSize: "1.0625rem",
-                    color: "var(--brand-navy)",
-                    fontWeight: 500,
-                  }}
-                >
-                  {item.text}
-                </span>
-              </Link>
-            ))}
-          </div>
+            Schools see operational thoroughness, not narrative promises.
+          </p>
         </div>
       </section>
 
@@ -138,14 +90,26 @@ export default function ForProvidersPage() {
             style={{
               fontSize: "1.125rem",
               lineHeight: 1.7,
-              color: "var(--text-tertiary)",
+              color: "var(--text-primary)",
               maxWidth: "44rem",
-              marginBottom: "1rem",
-              fontStyle: "italic",
             }}
           >
-            Your cultural programme in Singapore doesn&rsquo;t need the same documentation as a Grade&nbsp;III rafting expedition in Borneo. The system is proportionate.
+            <span style={{ fontStyle: "italic" }}>
+              Your cultural programme in Singapore doesn&rsquo;t need the same
+              documentation as a Grade&nbsp;III rafting expedition in Borneo.
+              The system is proportionate.
+            </span>{" "}
+            Activities below the risk threshold are scored, documented, and
+            filed &mdash; not inflated. Schools see that your programme has
+            been properly evaluated. They also see that the evaluation is
+            calibrated, not fear-driven.
           </p>
+        </div>
+      </section>
+
+      {/* ── SECTION 3: THE DEEPER VALUE ── */}
+      <section className="section-padding">
+        <div className="container-narrow">
           <p
             style={{
               fontSize: "1.125rem",
@@ -154,41 +118,30 @@ export default function ForProvidersPage() {
               maxWidth: "44rem",
             }}
           >
-            Activities below the risk threshold get scored but don&rsquo;t trigger full RAMS. A heritage walk in Kampong Gelam is assessed, documented, and filed&nbsp;&mdash; not inflated into a 30-page risk assessment. Schools see that your programme has been properly evaluated. They also see that the evaluation is calibrated, not fear-driven.
+            Structured evidence doesn&rsquo;t just strengthen the proposal. It
+            strengthens the operation. Your team gets the same intelligence the
+            school gets &mdash; structured views of the itinerary, location
+            context, weather preparation, emergency access. The documentation
+            that wins the proposal also helps you run the trip.
           </p>
         </div>
       </section>
 
-      {/* ── SECTION 3: COMPETITIVE ADVANTAGE ── */}
-      <section className="section-padding">
+      {/* ── SECTION 4: COMPETITIVE ADVANTAGE ── */}
+      <section className="section-padding section-band">
         <div className="container-narrow">
-          <div
+          <p
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.5rem",
+              fontSize: "1.125rem",
+              lineHeight: 1.65,
+              color: "var(--text-primary)",
               maxWidth: "44rem",
             }}
           >
-            <p
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: 1.65,
-                color: "var(--text-primary)",
-              }}
-            >
-              Providers who include ETI360 intelligence in their proposals aren&rsquo;t just meeting requirements&nbsp;&mdash; they&rsquo;re setting the standard that schools will expect from every proposal that follows.
-            </p>
-            <p
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: 1.65,
-                color: "var(--text-primary)",
-              }}
-            >
-              When a school receives ETI360 documentation attached to your proposal, every other provider they&rsquo;re comparing you against looks unstructured by contrast.
-            </p>
-          </div>
+            Providers who include ETI360 intelligence aren&rsquo;t just meeting
+            requirements. They&rsquo;re setting the standard schools will
+            expect from every proposal that follows.
+          </p>
         </div>
       </section>
 
@@ -209,18 +162,37 @@ export default function ForProvidersPage() {
               marginBottom: "2.5rem",
             }}
           >
-            Start with one trip. One itinerary. See what structured documentation does for your next proposal.
+            Start with one trip. One itinerary.
           </p>
-          <Link
-            href="/contact"
-            className="btn-primary"
+          <div
             style={{
-              background: "var(--brand-gold)",
-              color: "var(--brand-navy)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "1rem",
             }}
           >
-            Start a conversation &rarr;
-          </Link>
+            <Link
+              href="/contact"
+              className="btn-primary"
+              style={{
+                background: "var(--brand-gold)",
+                color: "var(--brand-navy)",
+              }}
+            >
+              Start a conversation &rarr;
+            </Link>
+            <Link
+              href="/see-it"
+              style={{
+                color: "rgba(255,255,255,0.7)",
+                fontSize: "1rem",
+                textDecoration: "none",
+              }}
+            >
+              See the complete interactive assessment &rarr;
+            </Link>
+          </div>
         </div>
       </section>
     </main>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 const platformLinks = [
+  {href: '/see-it', label: 'See It'},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
   {href: '/methodology', label: 'Methodology'},
