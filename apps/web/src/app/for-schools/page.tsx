@@ -8,6 +8,8 @@ const WorkflowDiagram = dynamic(
   { ssr: false }
 );
 
+const SERIF = `"Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif`;
+
 /* ════════════════════════════════════════════════════
    FOR SCHOOLS
    ════════════════════════════════════════════════════ */
@@ -43,14 +45,49 @@ export default function ForSchoolsPage() {
           }}
         />
         <div className="container-narrow" style={{ position: "relative" }}>
+          <div
+            style={{
+              width: "3.5rem",
+              height: "0.25rem",
+              background: "var(--brand-gold)",
+              marginBottom: "2rem",
+            }}
+          />
           <p
             style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.6)",
-              maxWidth: "44rem",
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--brand-gold)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            For Schools
+          </p>
+          <h1
+            style={{
+              fontFamily: SERIF,
+              fontSize: "3.25rem",
+              fontWeight: 600,
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
+              color: "#ffffff",
+              maxWidth: "48rem",
               marginBottom: "2rem",
+            }}
+          >
+            Structured evidence for the person who signs off.
+          </h1>
+          <p
+            style={{
+              fontFamily: SERIF,
+              fontSize: "1.25rem",
+              lineHeight: 1.55,
+              color: "rgba(255,255,255,0.85)",
+              maxWidth: "44rem",
               fontStyle: "italic",
+              fontWeight: 400,
             }}
           >
             You approve trips based on documents that weren&rsquo;t written for
@@ -59,19 +96,6 @@ export default function ForSchoolsPage() {
             find the evidence inside the enthusiasm &mdash; under time pressure,
             with full accountability.
           </p>
-          <h1
-            style={{
-              fontSize: "2.75rem",
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              color: "#ffffff",
-              maxWidth: "48rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Structured evidence for the person who signs off.
-          </h1>
         </div>
       </section>
 

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const SERIF = `"Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif`;
+
 /* ════════════════════════════════════════════════════
    FOR PROVIDERS
    ════════════════════════════════════════════════════ */
@@ -35,14 +37,49 @@ export default function ForProvidersPage() {
           }}
         />
         <div className="container-narrow" style={{ position: "relative" }}>
+          <div
+            style={{
+              width: "3.5rem",
+              height: "0.25rem",
+              background: "var(--brand-gold)",
+              marginBottom: "2rem",
+            }}
+          />
           <p
             style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.6)",
-              maxWidth: "44rem",
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--brand-gold)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            For Providers
+          </p>
+          <h1
+            style={{
+              fontFamily: SERIF,
+              fontSize: "3.25rem",
+              fontWeight: 600,
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
+              color: "#ffffff",
+              maxWidth: "48rem",
               marginBottom: "2rem",
+            }}
+          >
+            Position your proposals with structured evidence.
+          </h1>
+          <p
+            style={{
+              fontFamily: SERIF,
+              fontSize: "1.25rem",
+              lineHeight: 1.55,
+              color: "rgba(255,255,255,0.85)",
+              maxWidth: "44rem",
               fontStyle: "italic",
+              fontWeight: 400,
             }}
           >
             A school&rsquo;s risk committee reviews your proposal alongside two
@@ -52,19 +89,6 @@ export default function ForProvidersPage() {
             hospital. The committee isn&rsquo;t comparing trips. They&rsquo;re
             comparing evidence.
           </p>
-          <h1
-            style={{
-              fontSize: "2.75rem",
-              fontWeight: 700,
-              lineHeight: 1.08,
-              letterSpacing: "-0.02em",
-              color: "#ffffff",
-              maxWidth: "48rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Position your proposals with structured evidence.
-          </h1>
         </div>
       </section>
 

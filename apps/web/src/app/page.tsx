@@ -2,127 +2,55 @@
 
 import Link from "next/link";
 
+/* ── Serif font stack (Source Serif 4 via Google Fonts) ── */
+const SERIF = `"Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif`;
+
 /* ── Proof card data ── */
 
 const proofCards = [
   {
+    number: "01",
     label: "Program structure",
+    question: "Where is the time actually going?",
     sentence: "See how time is allocated across transit, activity, and rest.",
-    visual: "calendar",
     href: "/see-it#standardisation",
   },
   {
+    number: "02",
     label: "Risk identification",
-    sentence: "See where exposure points are — across activities, transitions, and locations.",
-    visual: "radar",
+    question: "Where are the real exposure points?",
+    sentence: "See where exposure exists across activities, transitions, and locations.",
     href: "/see-it#risk-profiling",
   },
   {
-    label: "Route and location context",
-    sentence: "See travel paths, distances, and how remote each location is.",
-    visual: "map",
+    number: "03",
+    label: "Route and location",
+    question: "How remote is each location?",
+    sentence: "See travel paths, distances, and isolation context for every venue.",
     href: "/see-it#trip-views",
   },
   {
+    number: "04",
     label: "Medical access",
-    sentence: "See how far each location is from emergency care — and what the plan is.",
-    visual: "hospital",
+    question: "How far to emergency care?",
+    sentence: "See how far each location is from definitive medical care \u2014 and what the plan is.",
     href: "/see-it#trip-views",
   },
   {
+    number: "05",
     label: "Environmental context",
-    sentence: "See weather patterns, terrain, and timing incorporated into preparation.",
-    visual: "weather",
+    question: "What conditions will we face?",
+    sentence: "See weather patterns, terrain, and seasonal timing built into preparation.",
     href: "/see-it#trip-views",
   },
   {
+    number: "06",
     label: "Program comparison",
-    sentence: "See how one provider\u2019s program compares with another using the same structure.",
-    visual: "compare",
+    question: "How does this provider compare?",
+    sentence: "See one provider\u2019s program against another using identical structure.",
     href: "/see-it#standardisation",
   },
 ];
-
-/* ── Visual icons for proof cards ── */
-
-function ProofVisual({ type }: { type: string }) {
-  const iconStyle: React.CSSProperties = {
-    width: 56,
-    height: 56,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "50%",
-    background: "rgba(201, 162, 77, 0.1)",
-    border: "1px solid rgba(201, 162, 77, 0.25)",
-    flexShrink: 0,
-  };
-
-  const svgProps = {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "#C9A24D",
-    strokeWidth: 1.5,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-
-  const icons: Record<string, React.ReactNode> = {
-    calendar: (
-      <svg {...svgProps}>
-        <rect x="3" y="4" width="18" height="18" rx="2" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-        <rect x="6" y="13" width="3" height="2" fill="#C9A24D" stroke="none" />
-        <rect x="10.5" y="13" width="3" height="2" fill="#0d3558" stroke="none" />
-        <rect x="15" y="13" width="3" height="2" fill="#C9A24D" stroke="none" />
-      </svg>
-    ),
-    radar: (
-      <svg {...svgProps}>
-        <polygon points="12,3 20,9 18,18 6,18 4,9" strokeDasharray="2 2" />
-        <polygon points="12,7 16,10 15,15 9,15 8,10" fill="rgba(201,162,77,0.2)" />
-        <polygon points="12,5 18,9.5 16.5,16.5 7.5,16.5 6,9.5" fill="rgba(13,53,88,0.15)" />
-      </svg>
-    ),
-    map: (
-      <svg {...svgProps}>
-        <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z" />
-        <line x1="9" y1="3" x2="9" y2="18" />
-        <line x1="15" y1="6" x2="15" y2="21" />
-      </svg>
-    ),
-    hospital: (
-      <svg {...svgProps}>
-        <rect x="4" y="6" width="16" height="14" rx="2" />
-        <path d="M12 10v6M9 13h6" stroke="#C9A24D" strokeWidth="2" />
-        <path d="M9 6V4a3 3 0 016 0v2" />
-      </svg>
-    ),
-    weather: (
-      <svg {...svgProps}>
-        <circle cx="12" cy="10" r="4" />
-        <path d="M12 2v2M12 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        <path d="M6 20h12" strokeDasharray="2 3" />
-      </svg>
-    ),
-    compare: (
-      <svg {...svgProps}>
-        <rect x="2" y="5" width="8" height="14" rx="1" />
-        <rect x="14" y="5" width="8" height="14" rx="1" />
-        <line x1="5" y1="9" x2="8" y2="9" />
-        <line x1="5" y1="12" x2="8" y2="12" />
-        <line x1="17" y1="9" x2="20" y2="9" />
-        <line x1="17" y1="12" x2="20" y2="12" />
-      </svg>
-    ),
-  };
-
-  return <div style={iconStyle}>{icons[type]}</div>;
-}
 
 /* ════════════════════════════════════════════════════
    HOMEPAGE
@@ -158,12 +86,22 @@ export default function HomePage() {
             background: "rgba(13, 53, 88, 0.88)",
           }}
         />
-        <div className="container-narrow" style={{ maxWidth: "44rem", position: "relative" }}>
+        <div className="container-narrow" style={{ maxWidth: "48rem", position: "relative" }}>
+          {/* Gold accent rectangle */}
+          <div
+            style={{
+              width: "3.5rem",
+              height: "0.25rem",
+              background: "var(--brand-gold)",
+              marginBottom: "2rem",
+            }}
+          />
           <h1
             style={{
-              fontSize: "3.25rem",
-              fontWeight: 700,
-              lineHeight: 1.08,
+              fontFamily: SERIF,
+              fontSize: "3.75rem",
+              fontWeight: 600,
+              lineHeight: 1.05,
               letterSpacing: "-0.02em",
               color: "#ffffff",
               marginBottom: "1.75rem",
@@ -177,6 +115,7 @@ export default function HomePage() {
               lineHeight: 1.6,
               color: "rgba(255,255,255,0.7)",
               marginBottom: "2.5rem",
+              maxWidth: "40rem",
             }}
           >
             School trip documentation is rarely prepared for the person who has to approve, oversee, and answer for the trip. ETI360 structures that information for review.
@@ -197,14 +136,27 @@ export default function HomePage() {
       {/* ── 2. THE PROBLEM ── */}
       <section className="section-padding">
         <div className="container-narrow" style={{ maxWidth: "44rem" }}>
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--brand-gold)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            The Problem
+          </p>
           <h2
             style={{
-              fontSize: "2rem",
+              fontFamily: SERIF,
+              fontSize: "2.5rem",
               fontWeight: 600,
-              lineHeight: 1.2,
+              lineHeight: 1.15,
               letterSpacing: "-0.015em",
               color: "var(--brand-navy)",
-              marginBottom: "1.25rem",
+              marginBottom: "1.75rem",
             }}
           >
             The problem is not missing information.
@@ -231,17 +183,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 3. THE BRIDGE ── */}
+      {/* ── 3. GOLD ANCHOR STRIP ── */}
+      <section
+        style={{
+          background: "var(--brand-gold)",
+          padding: "2.25rem 1.5rem",
+        }}
+      >
+        <div className="container-narrow" style={{ textAlign: "center" }}>
+          <p
+            style={{
+              fontFamily: SERIF,
+              fontSize: "1.25rem",
+              fontStyle: "italic",
+              lineHeight: 1.4,
+              color: "var(--brand-navy)",
+              maxWidth: "44rem",
+              margin: "0 auto",
+              fontWeight: 500,
+            }}
+          >
+            &ldquo;The standard for evidence in international school travel.&rdquo;
+          </p>
+        </div>
+      </section>
+
+      {/* ── 4. THE BRIDGE ── */}
       <section className="section-padding section-band">
         <div className="container-narrow" style={{ maxWidth: "44rem" }}>
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--brand-gold)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            What Changes
+          </p>
           <h2
             style={{
-              fontSize: "2rem",
+              fontFamily: SERIF,
+              fontSize: "2.5rem",
               fontWeight: 600,
-              lineHeight: 1.2,
+              lineHeight: 1.15,
               letterSpacing: "-0.015em",
               color: "var(--brand-navy)",
-              marginBottom: "1.25rem",
+              marginBottom: "1.75rem",
             }}
           >
             What structured evidence changes.
@@ -268,59 +258,90 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 4. PROOF VISUALS ── */}
+      {/* ── 5. PROOF GRID (numbered editorial cards) ── */}
       <section className="section-padding">
         <div className="container-narrow">
-          <p
-            style={{
-              fontSize: "1.0625rem",
-              lineHeight: 1.6,
-              color: "var(--text-tertiary)",
-              maxWidth: "44rem",
-              marginBottom: "3rem",
-            }}
-          >
-            These outputs are not separate layers added afterward. They follow from structuring the trip properly.
-          </p>
-
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: "1px",
-              background: "var(--border-color)",
-              border: "1px solid var(--border-color)",
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+              marginBottom: "2.5rem",
+              borderTop: "2px solid var(--brand-gold)",
+              paddingTop: "2rem",
             }}
-            className="proof-grid"
           >
+            <h2
+              style={{
+                fontFamily: SERIF,
+                fontSize: "1.75rem",
+                fontWeight: 600,
+                lineHeight: 1.2,
+                color: "var(--brand-navy)",
+                letterSpacing: "-0.01em",
+                margin: 0,
+                maxWidth: "32rem",
+              }}
+            >
+              Six questions every approver should be able to answer.
+            </h2>
+            <p
+              style={{
+                fontSize: "0.9375rem",
+                lineHeight: 1.55,
+                color: "var(--text-tertiary)",
+                margin: 0,
+                maxWidth: "20rem",
+                fontStyle: "italic",
+              }}
+            >
+              Outputs follow from structuring the trip properly &mdash; not added afterward.
+            </p>
+          </div>
+
+          <div className="proof-grid">
             {proofCards.map((card) => (
               <Link
-                key={card.label}
+                key={card.number}
                 href={card.href}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "1.25rem",
-                  padding: "1.75rem 2rem",
-                  background: "var(--page-background)",
-                  textDecoration: "none",
-                  transition: "background 0.15s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "var(--band-background)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "var(--page-background)";
-                }}
+                className="proof-card"
               >
-                <ProofVisual type={card.visual} />
-                <div>
+                <div className="proof-card-inner">
                   <p
                     style={{
-                      fontSize: "0.9375rem",
-                      fontWeight: 600,
+                      fontFamily: SERIF,
+                      fontSize: "0.875rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.08em",
+                      color: "var(--brand-gold)",
+                      marginBottom: "1.25rem",
+                    }}
+                  >
+                    {card.number}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: SERIF,
+                      fontSize: "1.375rem",
+                      fontStyle: "italic",
+                      lineHeight: 1.3,
                       color: "var(--brand-navy)",
-                      marginBottom: "0.375rem",
+                      marginBottom: "1rem",
+                      fontWeight: 500,
+                    }}
+                  >
+                    &ldquo;{card.question}&rdquo;
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.75rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--text-tertiary)",
+                      marginBottom: "0.625rem",
                     }}
                   >
                     {card.label}
@@ -329,29 +350,31 @@ export default function HomePage() {
                     style={{
                       fontSize: "0.9375rem",
                       lineHeight: 1.55,
-                      color: "var(--text-tertiary)",
+                      color: "var(--text-primary)",
                       margin: 0,
                     }}
                   >
                     {card.sentence}
                   </p>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      marginTop: "1.25rem",
+                      color: "var(--brand-gold)",
+                      fontSize: "0.875rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    See it &rarr;
+                  </span>
                 </div>
-                <span
-                  style={{
-                    marginLeft: "auto",
-                    color: "var(--brand-gold)",
-                    fontSize: "1.125rem",
-                    flexShrink: 0,
-                    alignSelf: "center",
-                  }}
-                >
-                  &rarr;
-                </span>
               </Link>
             ))}
           </div>
 
-          <div style={{ marginTop: "2rem", textAlign: "center" }}>
+          <div style={{ marginTop: "3rem", textAlign: "center" }}>
             <Link
               href="/see-it"
               className="btn-primary"
@@ -366,14 +389,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 5. DUAL-AUDIENCE FORK ── */}
+      {/* ── 6. DUAL-AUDIENCE FORK ── */}
       <section className="section-padding section-band">
         <div className="container-narrow">
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--brand-gold)",
+              marginBottom: "1rem",
+              textAlign: "center",
+            }}
+          >
+            Two Audiences. One Standard.
+          </p>
+          <h2
+            style={{
+              fontFamily: SERIF,
+              fontSize: "2rem",
+              fontWeight: 600,
+              lineHeight: 1.2,
+              letterSpacing: "-0.015em",
+              color: "var(--brand-navy)",
+              marginBottom: "3rem",
+              textAlign: "center",
+              maxWidth: "44rem",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Built for the people who decide and the people who deliver.
+          </h2>
+
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "1fr",
-              gap: "2rem",
+              gap: "1.5rem",
             }}
             className="md-grid-2"
           >
@@ -382,10 +436,18 @@ export default function HomePage() {
               style={{
                 background: "var(--page-background)",
                 border: "1px solid var(--border-color)",
-                borderTop: "3px solid var(--brand-navy)",
                 padding: "2.5rem",
+                position: "relative",
               }}
             >
+              <div
+                style={{
+                  width: "2.5rem",
+                  height: "0.25rem",
+                  background: "var(--brand-gold)",
+                  marginBottom: "1.5rem",
+                }}
+              />
               <p
                 style={{
                   fontSize: "0.75rem",
@@ -393,20 +455,33 @@ export default function HomePage() {
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--brand-navy)",
-                  marginBottom: "1.25rem",
+                  marginBottom: "1rem",
                 }}
               >
                 For Schools
               </p>
+              <h3
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: "1.625rem",
+                  fontWeight: 600,
+                  lineHeight: 1.25,
+                  letterSpacing: "-0.01em",
+                  color: "var(--brand-navy)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Evidence on the table when you sign off.
+              </h3>
               <p
                 style={{
-                  fontSize: "1.0625rem",
+                  fontSize: "1rem",
                   lineHeight: 1.65,
                   color: "var(--text-primary)",
                   marginBottom: "1.75rem",
                 }}
               >
-                How structured evidence changes what&rsquo;s on the table when you sign off.
+                Activity scoring, compliance alignment, location intelligence, and stress-tested outcomes &mdash; produced by a methodology, not by the person organizing the trip.
               </p>
               <Link
                 href="/for-schools"
@@ -428,38 +503,59 @@ export default function HomePage() {
               style={{
                 background: "var(--page-background)",
                 border: "1px solid var(--border-color)",
-                borderTop: "3px solid #1a5c3a",
                 padding: "2.5rem",
+                position: "relative",
               }}
             >
+              <div
+                style={{
+                  width: "2.5rem",
+                  height: "0.25rem",
+                  background: "var(--brand-gold)",
+                  marginBottom: "1.5rem",
+                }}
+              />
               <p
                 style={{
                   fontSize: "0.75rem",
                   fontWeight: 700,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "#1a5c3a",
-                  marginBottom: "1.25rem",
+                  color: "var(--brand-navy)",
+                  marginBottom: "1rem",
                 }}
               >
                 For Providers
               </p>
+              <h3
+                style={{
+                  fontFamily: SERIF,
+                  fontSize: "1.625rem",
+                  fontWeight: 600,
+                  lineHeight: 1.25,
+                  letterSpacing: "-0.01em",
+                  color: "var(--brand-navy)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Position your proposals with structured evidence.
+              </h3>
               <p
                 style={{
-                  fontSize: "1.0625rem",
+                  fontSize: "1rem",
                   lineHeight: 1.65,
                   color: "var(--text-primary)",
                   marginBottom: "1.75rem",
                 }}
               >
-                How structured evidence strengthens the proposals you submit.
+                Your itinerary becomes a verified activity ledger. Your risk management becomes visible: scored, specific, independently assessed.
               </p>
               <Link
                 href="/for-providers"
                 style={{
                   fontSize: "0.875rem",
                   fontWeight: 600,
-                  color: "#1a5c3a",
+                  color: "var(--brand-navy)",
                   textDecoration: "none",
                   letterSpacing: "0.04em",
                   textTransform: "uppercase",
@@ -472,24 +568,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 6. INDEPENDENCE + CTA ── */}
+      {/* ── 7. INDEPENDENCE + CTA (Foundation panel) ── */}
       <section
-        className="section-padding"
         style={{
           background: "var(--brand-navy)",
           color: "#ffffff",
+          padding: "5rem 1.5rem",
+          textAlign: "center",
         }}
       >
-        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
+        <div className="container-narrow" style={{ maxWidth: "42rem" }}>
+          <div
+            style={{
+              width: "2.5rem",
+              height: "0.25rem",
+              background: "var(--brand-gold)",
+              margin: "0 auto 2rem",
+            }}
+          />
+          <h2
+            style={{
+              fontFamily: SERIF,
+              fontSize: "2rem",
+              fontWeight: 600,
+              lineHeight: 1.25,
+              color: "#ffffff",
+              marginBottom: "1.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            The school keeps every decision.
+          </h2>
           <p
             style={{
-              fontSize: "1.375rem",
-              lineHeight: 1.5,
-              color: "rgba(255,255,255,0.85)",
+              fontSize: "1.25rem",
+              lineHeight: 1.55,
+              color: "rgba(255,255,255,0.75)",
               marginBottom: "2.5rem",
             }}
           >
-            The school keeps every decision. ETI360 structures the evidence those decisions rest on.
+            ETI360 structures the evidence those decisions rest on.
           </p>
           <Link
             href="/contact"
@@ -506,17 +624,54 @@ export default function HomePage() {
 
       {/* ── Responsive styles ── */}
       <style>{`
+        .proof-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0;
+          border-bottom: 1px solid var(--border-color);
+        }
+        .proof-card {
+          display: block;
+          background: var(--page-background);
+          text-decoration: none;
+          border-top: 1px solid var(--border-color);
+          transition: background 0.15s ease;
+        }
+        .proof-card:hover {
+          background: var(--band-background);
+        }
+        .proof-card-inner {
+          padding: 2rem 1.75rem;
+        }
         @media (min-width: 768px) {
           .md-grid-2 {
             grid-template-columns: 1fr 1fr !important;
           }
           .proof-grid {
-            grid-template-columns: 1fr 1fr !important;
+            grid-template-columns: 1fr 1fr;
+          }
+          .proof-card {
+            border-left: 1px solid var(--border-color);
+          }
+          .proof-card:nth-child(2n+1) {
+            border-left: none;
           }
         }
         @media (min-width: 1024px) {
           .proof-grid {
-            grid-template-columns: 1fr 1fr 1fr !important;
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+          .proof-card {
+            border-left: 1px solid var(--border-color);
+          }
+          .proof-card:nth-child(2n+1) {
+            border-left: 1px solid var(--border-color);
+          }
+          .proof-card:nth-child(3n+1) {
+            border-left: none;
+          }
+          .proof-card-inner {
+            padding: 2.25rem 2rem;
           }
         }
       `}</style>

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
+const SERIF = `"Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif`;
+
 /* ── Dynamic imports (no SSR — canvas/SVG components) ── */
 
 const Standardisation = dynamic(
@@ -216,46 +218,58 @@ export default function SeeItPage() {
             background: "rgba(13, 53, 88, 0.88)",
           }}
         />
-        <div className="container-narrow" style={{ maxWidth: "44rem", position: "relative" }}>
+        <div className="container-narrow" style={{ maxWidth: "48rem", position: "relative" }}>
+          <div
+            style={{
+              width: "3.5rem",
+              height: "0.25rem",
+              background: "var(--brand-gold)",
+              marginBottom: "2rem",
+            }}
+          />
           <p
             style={{
               fontSize: "0.75rem",
               fontWeight: 700,
-              letterSpacing: "0.12em",
+              letterSpacing: "0.18em",
               textTransform: "uppercase",
               color: "var(--brand-gold)",
-              marginBottom: "1.5rem",
+              marginBottom: "1.25rem",
             }}
           >
-            Interactive assessment
+            Interactive Assessment
           </p>
           <h1
             style={{
-              fontSize: "2.5rem",
-              fontWeight: 700,
-              lineHeight: 1.15,
+              fontFamily: SERIF,
+              fontSize: "3rem",
+              fontWeight: 600,
+              lineHeight: 1.08,
               letterSpacing: "-0.02em",
               color: "#ffffff",
-              marginBottom: "1.5rem",
+              marginBottom: "1.75rem",
             }}
           >
             See the complete assessment.
           </h1>
           <p
             style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.75)",
-              marginBottom: "1.5rem",
+              fontFamily: SERIF,
+              fontSize: "1.25rem",
+              lineHeight: 1.55,
+              color: "rgba(255,255,255,0.85)",
+              marginBottom: "1.25rem",
+              fontStyle: "italic",
+              fontWeight: 400,
             }}
           >
-            This is a complete assessment of the Borneo Rainforest Expedition — a 7-day Year 10 trip with 28 students. Everything below was produced from the same stack of documents every school trip generates.
+            This is a complete assessment of the Borneo Rainforest Expedition &mdash; a 7-day Year 10 trip with 28 students. Everything below was produced from the same stack of documents every school trip generates.
           </p>
           <p
             style={{
-              fontSize: "1.0625rem",
+              fontSize: "1rem",
               lineHeight: 1.6,
-              color: "rgba(255,255,255,0.6)",
+              color: "rgba(255,255,255,0.65)",
             }}
           >
             Toggle to the Singapore trip to see how the same system adapts to a completely different risk profile.
