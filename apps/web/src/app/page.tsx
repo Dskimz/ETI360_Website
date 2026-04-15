@@ -134,12 +134,31 @@ export default function HomePage() {
       {/* ── 1. HERO ── */}
       <section
         style={{
-          background: "var(--brand-navy)",
+          position: "relative",
+          overflow: "hidden",
           color: "#ffffff",
           padding: "7rem 1.5rem 6rem",
         }}
       >
-        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
+        <img
+          src="/images/hero-home.png"
+          alt=""
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(13, 53, 88, 0.88)",
+          }}
+        />
+        <div className="container-narrow" style={{ maxWidth: "44rem", position: "relative" }}>
           <h1
             style={{
               fontSize: "3.25rem",

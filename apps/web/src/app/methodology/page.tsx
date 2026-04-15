@@ -134,12 +134,31 @@ export default function MethodologyPage() {
       {/* ── HERO ── */}
       <section
         style={{
-          background: "var(--brand-navy)",
+          position: "relative",
+          overflow: "hidden",
           color: "#ffffff",
           padding: "6rem 1.5rem 5rem",
         }}
       >
-        <div className="container-narrow">
+        <img
+          src="/images/hero-approach.png"
+          alt=""
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(13, 53, 88, 0.88)",
+          }}
+        />
+        <div className="container-narrow" style={{ position: "relative" }}>
           <h1
             style={{
               fontSize: "3.25rem",
