@@ -640,6 +640,136 @@ section.tight { padding: 72px 0; }
   line-height: 1.55;
 }
 
+/* ── Artifact wall (what-each-artifact-decides) ── */
+.artifact-wall {
+  background: var(--parchment);
+  padding: 48px 0 8px;
+}
+.artifact-entry {
+  max-width: 1120px;
+  margin: 0 auto 72px;
+  padding: 0;
+}
+.artifact-entry:last-child { margin-bottom: 40px; }
+
+.artifact-image {
+  max-width: 920px;
+  margin: 0 auto 40px;
+  padding: 0 32px;
+}
+.artifact-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 18px 52px rgba(13, 53, 88, 0.14);
+  border: 1px solid var(--hairline);
+  background: #fff;
+}
+
+.artifact-copy {
+  padding: 0 32px;
+}
+.artifact-stage {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 14px;
+}
+.artifact-decision {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: var(--font-3xl);
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  max-width: 720px;
+  padding-left: 20px;
+  position: relative;
+}
+.artifact-decision::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.12em;
+  width: var(--rule);
+  height: 0.9em;
+  background: var(--gold);
+}
+.artifact-doc-name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--ink-mid);
+  margin-bottom: 24px;
+  padding-left: 20px;
+}
+.artifact-copy p {
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: var(--font-md);
+}
+
+.artifact-reader {
+  margin-top: 28px;
+  padding: 12px 16px;
+  background: var(--parchment-2);
+  border-left: 2px solid var(--gold);
+  font-size: var(--font-sm);
+  color: var(--ink-mid);
+}
+.artifact-reader-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold-dark);
+  margin-right: 8px;
+}
+
+.artifact-decides {
+  margin-top: 24px;
+  padding: 20px 22px;
+  background: var(--navy-deep);
+  color: var(--muted-light);
+  border-left: 2px solid var(--gold);
+  list-style: none;
+}
+.artifact-decides-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(250, 248, 243, 0.14);
+}
+.artifact-decides li:not(.artifact-decides-label) {
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  margin-bottom: 6px;
+  padding-left: 18px;
+  position: relative;
+}
+.artifact-decides li:not(.artifact-decides-label)::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.65em;
+  width: 6px; height: 6px;
+  background: var(--gold);
+}
+.artifact-decides li:last-child { margin-bottom: 0; }
+
+@media (max-width: 640px) {
+  .artifact-decision { font-size: var(--font-2xl); }
+  .artifact-entry { margin-bottom: 48px; }
+}
+
 /* ── Boundary callout ── */
 .boundary-callout {
   background: var(--navy-deep);

@@ -27,6 +27,18 @@ export default function PerspectiveIndexPage() {
         <div className="container">
           <div className="perspective-index-grid">
             <Link
+              href="/perspective/what-each-artifact-decides"
+              className="article-card"
+            >
+              <span className="card-label ui">Decision support</span>
+              <h3>What each artifact decides.</h3>
+              <p>
+                Six documents. Six decisions. A walk through the key artifacts of the
+                governance cycle and the specific decision each one exists to support.
+              </p>
+              <span className="read-arrow ui">Read &rarr;</span>
+            </Link>
+            <Link
               href="/perspective/trip-approval-is-not-trip-governance"
               className="article-card"
             >
