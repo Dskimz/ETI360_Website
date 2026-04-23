@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ETI360 — OFFSEAS 2026 Booth Loop</title>
+<style>
+  /* ========== FONTS (self-contained, no CDN) ========== */
+  @font-face {
+    font-family: 'IBMPlexSans';
+    src: url('assets/fonts/IBMPlexSans-400-normal.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: 'IBMPlexSans';
+    src: url('assets/fonts/IBMPlexSans-500-normal.woff2') format('woff2');
+    font-weight: 500; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: 'IBMPlexSans';
+    src: url('assets/fonts/IBMPlexSans-600-normal.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: 'SourceSerif4';
+    src: url('assets/fonts/SourceSerif4-400-normal.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: 'SourceSerif4';
+    src: url('assets/fonts/SourceSerif4-600-normal.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: block;
+  }
+
+  /* ========== TOKENS ========== */
+  :root {
+    --navy: #0a2a45;
+    --navy-ink: #0a2a45;
+    --gold: #C9A24D;
+    --white: #ffffff;
+    --white-ghost: rgba(255,255,255,0.75);
+    --white-mute: rgba(255,255,255,0.55);
+    --font-display: 'SourceSerif4', 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    --font-sans: 'IBMPlexSans', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Fluid scale: calibrated for 1920x1080 target.
+       vmin ≈ 10.8px at 1080p → use vmin for type so it scales to 2K/4K cleanly. */
+    --size-display-xl: 11vmin;   /* ~120px @ 1080 */
+    --size-display-lg: 7.4vmin;  /* ~80px  @ 1080 */
+    --size-display-md: 6vmin;    /* ~65px  @ 1080 */
+    --size-stage-name: 5vmin;    /* ~54px  @ 1080 */
+    --size-stage-desc: 2.6vmin;  /* ~28px  @ 1080 */
+    --size-stage-label: 2.2vmin; /* ~24px  @ 1080 */
+    --size-cycle-stage: 4.4vmin; /* ~48px  @ 1080 */
+    --size-caption: 3vmin;       /* ~32px  @ 1080 */
+    --size-corner: 2vmin;        /* ~22px  @ 1080 */
+    --size-invite: 2.6vmin;      /* ~28px  @ 1080 */
+  }
+
+  /* ========== RESET / STAGE ========== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: var(--navy); }
+  body {
+    font-family: var(--font-sans);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: none;
+  }
+  .stage {
+    position: fixed; inset: 0;
+    background: var(--navy);
+    overflow: hidden;
+  }
+
+  /* ========== Persistent Logo (top-right, always visible) ========== */
+  .persistent-logo {
+    position: absolute;
+    top: 3.2vmin; right: 3.2vmin;
+    width: 9vmin; max-width: 108px;
+    z-index: 20;
+    opacity: 0.92;
+    pointer-events: none;
+  }
+  .persistent-logo img { width: 100%; height: auto; display: block; }
+
+  /* Every scene overlays the full stage. Default hidden; .active fades in. */
+  .scene {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+  .scene.active { opacity: 1; }
+
+  /* ========== M1 — The Question ========== */
+  #m1-question {
+    text-align: center;
+  }
+  .question-text {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--size-display-xl);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--white);
+  }
+
+  /* ========== M2 — The Cycle ========== */
+  .m2-stage-wrap {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4vmin;
+  }
+  .m2-row {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    gap: 3.2vmin;
+    flex-wrap: nowrap;
+    padding: 0 6vmin;
+  }
+  .m2-stage {
+    position: relative;
+    opacity: 0;
+    transition: opacity 700ms ease;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--size-cycle-stage);
+    letter-spacing: 0.01em;
+    color: var(--white);
+    white-space: nowrap;
+  }
+  .m2-stage.active { opacity: 1; }
+  .m2-stage + .m2-stage::before {
+    content: '';
+    position: absolute;
+    left: -2vmin; top: 50%;
+    width: 0.8vmin; height: 0.8vmin;
+    transform: translateY(-50%);
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 400ms ease;
+    border-radius: 50%;
+  }
+  /* When the connecting line is active, reveal the inter-stage dots */
+  #m2-line.active ~ .m2-stage-wrap .m2-stage.active + .m2-stage.active::before { opacity: 1; }
+  /* Simpler approach: dots are tied to m2-line scene */
+  .m2-dots-visible .m2-stage.active + .m2-stage.active::before { opacity: 1; }
+
+  .m2-caption {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--size-caption);
+    color: var(--white-ghost);
+    letter-spacing: 0.01em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 500ms ease;
+  }
+  .m2-caption.active { opacity: 1; }
+
+  /* ========== M3 — Stage Cards ========== */
+  .stage-card {
+    background: var(--navy);
+  }
+  .stage-card-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+  .stage-card.active .stage-card-bg { opacity: 0.78; }
+  .stage-card-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg,
+        rgba(10,42,69,0.90) 0%,
+        rgba(10,42,69,0.78) 28%,
+        rgba(10,42,69,0.35) 58%,
+        rgba(10,42,69,0.08) 90%,
+        rgba(10,42,69,0.00) 100%);
+  }
+  .stage-card-inner {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: flex-start;
+    padding: 0 10vmin;
+    max-width: 90vmin;
+  }
+  .stage-card-rule {
+    width: 8vmin; height: 0.4vmin;
+    background: var(--gold);
+    margin-bottom: 3vmin;
+  }
+  .stage-card-no {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--size-stage-label);
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5vmin;
+  }
+  .stage-card-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--size-display-lg);
+    letter-spacing: -0.01em;
+    line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 2.4vmin;
+  }
+  .stage-card-desc {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--size-stage-desc);
+    line-height: 1.35;
+    color: var(--white-ghost);
+    max-width: 60vmin;
+  }
+
+  /* ========== M3 — Document Frames ========== */
+  .doc-frame {
+    background: var(--navy);
+  }
+  .doc-wrap {
+    position: relative;
+    height: 82vh;
+    max-height: 82vmin;  /* allow portrait A4 scaling */
+    aspect-ratio: 1697 / 2400;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff;
+    box-shadow: 0 1.5vmin 4vmin rgba(0,0,0,0.55);
+    overflow: hidden;
+  }
+  .doc-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .corner-label {
+    position: absolute;
+    right: 4vmin; bottom: 4vmin;
+    z-index: 5;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--size-corner);
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    background: rgba(10,42,69,0.82);
+    padding: 1.4vmin 2vmin;
+    border-left: 0.35vmin solid var(--gold);
+  }
+
+  /* ========== M4 — Proof ========== */
+  .proof {
+    background: var(--navy);
+  }
+  .proof-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    filter: grayscale(0.7) contrast(0.95);
+    opacity: 0;
+    transition: opacity 500ms ease;
+  }
+  .proof.active .proof-bg { opacity: 0.32; }
+  .proof-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,42,69,0.55) 0%, rgba(10,42,69,0.35) 50%, rgba(10,42,69,0.65) 100%);
+  }
+  .proof-inner {
+    position: relative; z-index: 2;
+    max-width: 80vmin;
+    text-align: center;
+  }
+  .proof-text {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--size-display-lg);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  .proof-rule {
+    width: 6vmin; height: 0.3vmin;
+    background: var(--gold);
+    margin: 0 auto 3vmin;
+    opacity: 0.9;
+  }
+
+  /* ========== M5 — Final Frame ========== */
+  .final {
+    background: var(--navy);
+  }
+  .final-inner {
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 4.5vmin;
+  }
+  .final-headline {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--size-display-md);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--white);
+    max-width: 80vmin;
+  }
+  .final-logo {
+    width: 30vmin;
+    max-width: 360px;
+    height: auto;
+    display: block;
+  }
+  .final-invite {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--size-invite);
+    color: var(--white-mute);
+    letter-spacing: 0.01em;
+  }
+
+  /* ========== Debug (hidden unless ?debug=1) ========== */
+  .debug-readout {
+    position: fixed; left: 1.2vmin; bottom: 1.2vmin; z-index: 999;
+    font-family: monospace; font-size: 11px; color: rgba(255,255,255,0.4);
+    background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 3px;
+    display: none;
+  }
+  body.debug-on .debug-readout { display: block; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- Persistent ETI360 logo, top-right on every frame -->
+  <div class="persistent-logo"><img src="assets/logo-reverse.png" alt="ETI360" /></div>
+
+  <!-- ========= M1 — THE QUESTION ========= -->
+  <div class="scene" id="m1-question">
+    <div class="question-text">Should this trip proceed?</div>
+  </div>
+
+  <!-- ========= M2 — THE CYCLE ========= -->
+  <div class="scene" id="m2-frame" style="opacity:1;">
+    <div class="m2-stage-wrap">
+      <div class="m2-row" id="m2-row">
+        <span class="m2-stage" id="m2-s1">Selection</span>
+        <span class="m2-stage" id="m2-s2">Audit</span>
+        <span class="m2-stage" id="m2-s3">Define</span>
+        <span class="m2-stage" id="m2-s4">Set terms</span>
+        <span class="m2-stage" id="m2-s5">Assess</span>
+        <span class="m2-stage" id="m2-s6">Control</span>
+        <span class="m2-stage" id="m2-s7">Operate</span>
+        <span class="m2-stage" id="m2-s8">Review</span>
+      </div>
+      <div class="m2-caption" id="m2-caption">One structured cycle for every trip.</div>
+    </div>
+  </div>
+  <!-- The m2 row dots are only visible when m2-line scene is active. We use a JS-driven body class instead of a CSS sibling combinator (more robust across browsers). -->
+
+  <!-- ========= M3 — STAGE CARDS ========= -->
+  <!-- Card template: navy + hero-image bg + overlay + number/name/description -->
+
+  <div class="scene stage-card" id="s01-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-1.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">01 · Selection</div>
+      <div class="stage-card-name">Selection</div>
+      <div class="stage-card-desc">What options are available, and the evidence for each.</div>
+    </div>
+  </div>
+
+  <div class="scene stage-card" id="s02-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-11.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">02 · Audit</div>
+      <div class="stage-card-name">Audit</div>
+      <div class="stage-card-desc">Reviewed against ISO 31031 before decisions are confirmed.</div>
+    </div>
+  </div>
+
+  <div class="scene stage-card" id="s03-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-15.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">03 · Define</div>
+      <div class="stage-card-name">Define</div>
+      <div class="stage-card-desc">A confirmed itinerary that all providers work from.</div>
+    </div>
+  </div>
+
+  <div class="scene stage-card" id="s04-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-19.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">04 · Set terms</div>
+      <div class="stage-card-name">Set terms</div>
+      <div class="stage-card-desc">Commercial and operational terms defined and documented.</div>
+    </div>
+  </div>
+
+  <div class="scene stage-card" id="s05-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-24.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">05 · Assess</div>
+      <div class="stage-card-name">Assess</div>
+      <div class="stage-card-desc">All activities assessed using a consistent risk framework.</div>
+    </div>
+  </div>
+
+  <div class="scene stage-card" id="s06-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-28.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">06 · Control</div>
+      <div class="stage-card-name">Control</div>
+      <div class="stage-card-desc">Control measures defined as clear, operational actions.</div>
+    </div>
+  </div>
+
+  <div class="scene stage-card" id="s07-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-6.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">07 · Operate</div>
+      <div class="stage-card-name">Operate</div>
+      <div class="stage-card-desc">Information used by staff, duty managers, and providers during the trip.</div>
+    </div>
+  </div>
+
+  <div class="scene stage-card" id="s08-card">
+    <div class="stage-card-bg" style="background-image: url('assets/hero/hero-36.png');"></div>
+    <div class="stage-card-overlay"></div>
+    <div class="stage-card-inner">
+      <div class="stage-card-rule"></div>
+      <div class="stage-card-no">08 · Review</div>
+      <div class="stage-card-name">Review</div>
+      <div class="stage-card-desc">Outcomes reviewed and recorded to inform future trips.</div>
+    </div>
+  </div>
+
+  <!-- ========= M3 — DOCUMENT FRAMES ========= -->
+
+  <div class="scene doc-frame" id="d-options">
+    <div class="doc-wrap"><img src="assets/docs/01-selection-options.png" alt="" /></div>
+    <div class="corner-label">01 · Selection · Trip options</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-weather">
+    <div class="doc-wrap"><img src="assets/docs/01-selection-weather.png" alt="" /></div>
+    <div class="corner-label">01 · Selection · Weather brief</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-iso">
+    <div class="doc-wrap"><img src="assets/docs/02-audit-iso.png" alt="" /></div>
+    <div class="corner-label">02 · Audit · ISO 31031</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-calendar">
+    <div class="doc-wrap"><img src="assets/docs/03-lock-calendar.png" alt="" /></div>
+    <div class="corner-label">03 · Define · Calendar view</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-route">
+    <div class="doc-wrap"><img src="assets/docs/03-lock-route.png" alt="" /></div>
+    <div class="corner-label">03 · Define · Route brief</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-fieldtrip">
+    <div class="doc-wrap"><img src="assets/docs/03-lock-fieldtrip.png" alt="" /></div>
+    <div class="corner-label">03 · Define · Field trip brief</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-provider">
+    <div class="doc-wrap"><img src="assets/docs/04-agree-provider-p2.png" alt="" /></div>
+    <div class="corner-label">04 · Set terms · Provider agreement</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-arpfunnel">
+    <div class="doc-wrap"><img src="assets/docs/05-assess-arpfunnel.png" alt="" /></div>
+    <div class="corner-label">05 · Assess · ARP funnel</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-rams">
+    <div class="doc-wrap"><img src="assets/docs/05-assess-rams-p2.png" alt="" /></div>
+    <div class="corner-label">05 · Assess · RAMS</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-location">
+    <div class="doc-wrap"><img src="assets/docs/07-run-location-p4.png" alt="" /></div>
+    <div class="corner-label">07 · Operate · Location audit</div>
+  </div>
+
+  <div class="scene doc-frame" id="d-hospital">
+    <div class="doc-wrap"><img src="assets/docs/07-run-hospital.png" alt="" /></div>
+    <div class="corner-label">07 · Operate · Hospital reference</div>
+  </div>
+
+  <!-- ========= M4 — PROOF ========= -->
+
+  <div class="scene proof" id="m4-s1">
+    <div class="proof-bg" style="background-image: url('assets/hero/hero-3.png');"></div>
+    <div class="proof-overlay"></div>
+    <div class="proof-inner">
+      <div class="proof-rule"></div>
+      <div class="proof-text">Structured evidence for every trip.</div>
+    </div>
+  </div>
+
+  <div class="scene proof" id="m4-s2">
+    <div class="proof-bg" style="background-image: url('assets/hero/hero-20.png');"></div>
+    <div class="proof-overlay"></div>
+    <div class="proof-inner">
+      <div class="proof-rule"></div>
+      <div class="proof-text">Decisions supported by documented evidence.</div>
+    </div>
+  </div>
+
+  <div class="scene proof" id="m4-s3">
+    <div class="proof-bg" style="background-image: url('assets/hero/hero-30.png');"></div>
+    <div class="proof-overlay"></div>
+    <div class="proof-inner">
+      <div class="proof-rule"></div>
+      <div class="proof-text">Records that carry forward into future trips.</div>
+    </div>
+  </div>
+
+  <!-- ========= M5 — FINAL FRAME ========= -->
+
+  <div class="scene final" id="m5">
+    <div class="final-inner">
+      <div class="final-headline">Decision support for school travel.</div>
+      <img class="final-logo" src="assets/logo-reverse.png" alt="ETI360" />
+      <div class="final-invite">Discuss how this applies to your trips.</div>
+    </div>
+  </div>
+
+  <div class="debug-readout" id="debug"></div>
+</div>
+
+<script>
+  "use strict";
+
+  // ========== TIMELINE (seconds) ==========
+  const LOOP_MS = 96500;
+
+  const SCENES = [
+    // M1 — Question (0–6s)
+    { id: 'm1-question', start: 0.5,  end: 5.5 },
+
+    // M2 — Cycle (6–21s). Each stage stays visible once it fades in.
+    { id: 'm2-s1',   start: 6.0,  end: 20.5 },
+    { id: 'm2-s2',   start: 7.2,  end: 20.5 },
+    { id: 'm2-s3',   start: 8.4,  end: 20.5 },
+    { id: 'm2-s4',   start: 9.6,  end: 20.5 },
+    { id: 'm2-s5',   start: 10.8, end: 20.5 },
+    { id: 'm2-s6',   start: 12.0, end: 20.5 },
+    { id: 'm2-s7',   start: 13.2, end: 20.5 },
+    { id: 'm2-s8',   start: 14.4, end: 20.5 },
+    { id: 'm2-caption', start: 16.0, end: 20.5 },
+    // Body-class flag to show gold dots between m2 stages
+    { id: '__body:dots', start: 15.4, end: 20.5, bodyClass: 'm2-dots-visible' },
+
+    // M3 — Stage cards + docs (21–71s, 50s)
+    { id: 's01-card',   start: 21.0, end: 22.5 },
+    { id: 'd-options',  start: 22.5, end: 26.0 },
+    { id: 'd-weather',  start: 26.0, end: 29.5 },
+
+    { id: 's02-card',   start: 29.5, end: 31.0 },
+    { id: 'd-iso',      start: 31.0, end: 34.5 },
+
+    { id: 's03-card',   start: 34.5, end: 36.0 },
+    { id: 'd-calendar', start: 36.0, end: 39.5 },
+    { id: 'd-route',    start: 39.5, end: 43.0 },
+    { id: 'd-fieldtrip',start: 43.0, end: 46.5 },
+
+    { id: 's04-card',   start: 46.5, end: 48.0 },
+    { id: 'd-provider', start: 48.0, end: 51.5 },
+
+    { id: 's05-card',    start: 51.5, end: 53.0 },
+    { id: 'd-arpfunnel', start: 53.0, end: 56.5 },
+    { id: 'd-rams',      start: 56.5, end: 60.0 },
+
+    { id: 's06-card',   start: 60.0, end: 63.0 }, // alone, 3s
+
+    { id: 's07-card',   start: 63.0, end: 64.5 },
+    { id: 'd-location', start: 64.5, end: 68.0 },
+    { id: 'd-hospital', start: 68.0, end: 71.5 },
+
+    { id: 's08-card',   start: 71.5, end: 74.5 }, // alone, 3s
+
+    // M4 — Proof (74.5–88s)
+    { id: 'm4-s1', start: 74.5, end: 79.0 },
+    { id: 'm4-s2', start: 79.0, end: 83.5 },
+    { id: 'm4-s3', start: 83.5, end: 88.0 },
+
+    // M5 — Final (88–96.5s)
+    { id: 'm5', start: 88.5, end: 96.0 },
+  ];
+
+  // ========== PRELOAD ==========
+  function preload() {
+    const srcs = [];
+    document.querySelectorAll('img').forEach(img => srcs.push(img.src));
+    document.querySelectorAll('[style*="background-image"]').forEach(el => {
+      const m = el.style.backgroundImage.match(/url\(['"]?([^'")]+)['"]?\)/);
+      if (m) srcs.push(m[1]);
+    });
+    let loaded = 0;
+    return new Promise(resolve => {
+      if (srcs.length === 0) return resolve();
+      srcs.forEach(src => {
+        const img = new Image();
+        img.onload = img.onerror = () => { if (++loaded === srcs.length) resolve(); };
+        img.src = src;
+      });
+    });
+  }
+
+  // ========== TICK LOOP ==========
+  const el = {};
+  SCENES.forEach(s => {
+    if (s.id.startsWith('__body:')) return;
+    el[s.id] = document.getElementById(s.id);
+  });
+  const debug = document.getElementById('debug');
+  const DEBUG = new URLSearchParams(location.search).has('debug');
+  if (DEBUG) document.body.classList.add('debug-on');
+
+  let t0 = performance.now();
+
+  function tick(now) {
+    const ms = (now - t0) % LOOP_MS;
+    const s = ms / 1000;
+
+    for (const scene of SCENES) {
+      const active = s >= scene.start && s < scene.end;
+      if (scene.id.startsWith('__body:')) {
+        document.body.classList.toggle(scene.bodyClass, active);
+      } else {
+        const node = el[scene.id];
+        if (!node) continue;
+        if (active) {
+          if (!node.classList.contains('active')) node.classList.add('active');
+        } else {
+          if (node.classList.contains('active')) node.classList.remove('active');
+        }
+      }
+    }
+
+    if (DEBUG) {
+      debug.textContent = `t=${s.toFixed(1)}s / ${(LOOP_MS/1000).toFixed(0)}s`;
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  // ========== BOOT ==========
+  // Hide m2 frame wrapper — we animate its children individually; the wrapper stays visible
+  // throughout M2 but we don't need a .scene.active toggle on it.
+  document.getElementById('m2-frame').style.opacity = '1';
+
+  preload().then(() => {
+    t0 = performance.now();
+    requestAnimationFrame(tick);
+  });
+
+  // Reset timer if tab is hidden/shown to prevent drift after long idle
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      t0 = performance.now();
+    }
+  });
+</script>
+</body>
+</html>
