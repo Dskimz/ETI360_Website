@@ -110,39 +110,23 @@ export default function HomePage() {
         className="hero"
         style={{ ["--hero-bg" as string]: "url('/marketing/hero/home.jpg')" } as React.CSSProperties}
       >
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <span className="label ui">Decision support for school trips</span>
-            <h1>
-              Trip decisions need
-              <br />
-              <em>structured evidence.</em>
-            </h1>
-            <p className="subhead">
-              Every school trip runs a governance cycle &mdash; from selection to
-              post-trip review. ETI360 produces the structured intelligence each
-              stage of that cycle requires. This page shows the cycle, the documents
-              it produces, and how schools and providers engage.
-            </p>
-            <div className="hero-actions">
-              <a className="cta-button ui" href="#cycle">See the cycle</a>
-              <a className="cta-link ui" href="#documents">See the documents &rarr;</a>
-            </div>
+        <div className="hero-inner">
+          <span className="label ui">Decision support for school trips</span>
+          <h1>
+            Trip decisions need
+            <br />
+            <em>structured evidence.</em>
+          </h1>
+          <p className="subhead">
+            Every school trip runs a governance cycle &mdash; from selection to
+            post-trip review. ETI360 produces the structured intelligence each
+            stage of that cycle requires. This page shows the cycle, the documents
+            it produces, and how schools and providers engage.
+          </p>
+          <div className="hero-actions">
+            <a className="cta-button ui" href="#cycle">See the cycle</a>
+            <a className="cta-link ui" href="#documents">See the documents &rarr;</a>
           </div>
-
-          <aside className="hero-panel" aria-label="Cycle preview">
-            <div className="panel-label ui">Governance cycle preview</div>
-            <div className="mini-loop">
-              <span>Selection</span>
-              <span>Audit</span>
-              <span>Lock</span>
-              <span>Agree</span>
-              <span>Assess</span>
-              <span>Control</span>
-              <span>Run</span>
-              <span>Review</span>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -187,7 +171,7 @@ export default function HomePage() {
 
           <div className="doc-cards">
             {documents.map((d) => (
-              <a key={d.slug} className="doc-card" href="#">
+              <article key={d.slug} className="doc-card doc-card-static">
                 <div className="doc-preview">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -200,10 +184,15 @@ export default function HomePage() {
                   <div className="doc-meta ui">{d.meta}</div>
                   <h3>{d.title}</h3>
                   <p>{d.desc}</p>
-                  <span className="doc-link-inline ui">Open document &rarr;</span>
                 </div>
-              </a>
+              </article>
             ))}
+          </div>
+
+          <div className="docs-contact-cta">
+            <a className="cta-button ui" href="mailto:hello@eti360.com?subject=ETI360%20%E2%80%94%20Learn%20more">
+              Contact us to learn more
+            </a>
           </div>
 
           <p className="bridge-line">
