@@ -1,680 +1,329 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 
-/* ── Serif font stack (Source Serif 4 via Google Fonts) ── */
-const SERIF = `"Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif`;
+export const metadata: Metadata = {
+  title: "ETI360 — Decision support for school trips",
+  description:
+    "The governance cycle produces eight structured artifacts. This page shows what each stage delivers.",
+  openGraph: {
+    title: "ETI360 — Decision support for school trips",
+    description:
+      "The governance cycle produces eight structured artifacts. This page shows what each stage delivers.",
+    type: "website",
+  },
+};
 
-/* ── Proof card data ── */
-
-const proofCards = [
+const stages = [
   {
-    number: "01",
-    label: "Program structure",
-    question: "Where is the time actually going?",
-    sentence: "See how time is allocated across transit, activity, and rest.",
-    href: "/see-it#standardisation",
+    num: "Stage 01",
+    name: "Selection",
+    desc: "Shortlist of trips and providers against the school's own selection criteria.",
+    doc: "Trip Options Brief",
   },
   {
-    number: "02",
-    label: "Risk identification",
-    question: "Where are the real exposure points?",
-    sentence: "See where exposure exists across activities, transitions, and locations.",
-    href: "/see-it#risk-profiling",
+    num: "Stage 02",
+    name: "Audit",
+    desc: "Provider assessed against ISO 31031 or another framework the school holds to.",
+    doc: "ISO 31031 Audit",
   },
   {
-    number: "03",
-    label: "Route and location",
-    question: "How remote is each location?",
-    sentence: "See travel paths, distances, and isolation context for every venue.",
-    href: "/see-it#trip-views",
+    num: "Stage 03",
+    name: "Lock",
+    desc: "Itinerary confirmed as the single source of truth the trip is built against.",
+    doc: "Itinerary Confirmation",
   },
   {
-    number: "04",
-    label: "Medical access",
-    question: "How far to emergency care?",
-    sentence: "See how far each location is from definitive medical care \u2014 and what the plan is.",
-    href: "/see-it#trip-views",
+    num: "Stage 04",
+    name: "Agree",
+    desc: "Provider agreement structured around the operational reality of this specific trip.",
+    doc: "Provider Agreement",
   },
   {
-    number: "05",
-    label: "Environmental context",
-    question: "What conditions will we face?",
-    sentence: "See weather patterns, terrain, and seasonal timing built into preparation.",
-    href: "/see-it#trip-views",
+    num: "Stage 05",
+    name: "Assess",
+    desc: "Activity Risk Profile surfaces the activities that will need closer control.",
+    doc: "Activity Risk Profile",
   },
   {
-    number: "06",
-    label: "Program comparison",
-    question: "How does this provider compare?",
-    sentence: "See one provider\u2019s program against another using identical structure.",
-    href: "/see-it#standardisation",
+    num: "Stage 06",
+    name: "Control",
+    desc: "RAMS built with school and provider together around the identified risks.",
+    doc: "RAMS",
+  },
+  {
+    num: "Stage 07",
+    name: "Run",
+    desc: "Operational intelligence supports leaders during the trip itself \u2014 location, place and weather.",
+    docLines: ["Location Audit", "Place Audit", "Weather Brief"],
+  },
+  {
+    num: "Stage 08",
+    name: "Review",
+    desc: "Post-trip data returns to the system and informs the next cycle.",
+    doc: "Post-Trip Review",
   },
 ];
 
-/* ════════════════════════════════════════════════════
-   HOMEPAGE
-   ════════════════════════════════════════════════════ */
+const documents = [
+  {
+    slug: "trip-options-brief",
+    meta: "Stage 01 \u00B7 Selection",
+    title: "Trip Options Brief",
+    desc: "Should this trip go ahead? A structured shortlist against the school's selection criteria.",
+  },
+  {
+    slug: "iso-31031-audit",
+    meta: "Stage 02 \u00B7 Audit",
+    title: "ISO 31031 Audit",
+    desc: "Does the provider meet the standards the school holds to itself?",
+  },
+  {
+    slug: "itinerary-confirmation",
+    meta: "Stage 03 \u00B7 Lock",
+    title: "Itinerary Confirmation",
+    desc: "Is this the itinerary every party is working from, without drift?",
+  },
+  {
+    slug: "location-audit",
+    meta: "Stage 07 \u00B7 Run",
+    title: "Location Audit",
+    desc: "Where are students at every point during the trip?",
+  },
+  {
+    slug: "place-audit",
+    meta: "Stage 07 \u00B7 Run",
+    title: "Place Audit",
+    desc: "What medical and operational capability exists at each location?",
+  },
+  {
+    slug: "weather-brief",
+    meta: "Stage 07 \u00B7 Run",
+    title: "Weather Brief",
+    desc: "What conditions should trip leaders prepare for, day by day?",
+  },
+];
 
 export default function HomePage() {
   return (
-    <main>
-      {/* ── 1. HERO ── */}
+    <>
       <section
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          color: "#ffffff",
-          padding: "7rem 1.5rem 6rem",
-        }}
+        className="hero"
+        style={{ ["--hero-bg" as string]: "url('/marketing/hero/home.jpg')" } as React.CSSProperties}
       >
-        <img
-          src="/images/hero-home.png"
-          alt=""
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(13, 53, 88, 0.88)",
-          }}
-        />
-        <div className="container-narrow" style={{ maxWidth: "48rem", position: "relative" }}>
-          {/* Gold accent rectangle */}
-          <div
-            style={{
-              width: "3.5rem",
-              height: "0.25rem",
-              background: "var(--brand-gold)",
-              marginBottom: "2rem",
-            }}
-          />
-          <h1
-            style={{
-              fontFamily: SERIF,
-              fontSize: "3.75rem",
-              fontWeight: 600,
-              lineHeight: 1.05,
-              letterSpacing: "-0.02em",
-              color: "#ffffff",
-              marginBottom: "1.75rem",
-            }}
-          >
-            Trip decisions need structured evidence.
-          </h1>
-          <p
-            style={{
-              fontSize: "1.25rem",
-              lineHeight: 1.6,
-              color: "rgba(255,255,255,0.7)",
-              marginBottom: "2.5rem",
-              maxWidth: "40rem",
-            }}
-          >
-            School trip documentation is rarely prepared for the person who has to approve, oversee, and answer for the trip. ETI360 structures that information for review.
-          </p>
-          <Link
-            href="/contact"
-            className="btn-primary"
-            style={{
-              background: "var(--brand-gold)",
-              color: "var(--brand-navy)",
-            }}
-          >
-            Start a conversation &rarr;
-          </Link>
-        </div>
-      </section>
-
-      {/* ── 2. THE PROBLEM ── */}
-      <section className="section-padding">
-        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
-          <p
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "var(--brand-gold)",
-              marginBottom: "1.25rem",
-            }}
-          >
-            The Problem
-          </p>
-          <h2
-            style={{
-              fontFamily: SERIF,
-              fontSize: "2.5rem",
-              fontWeight: 600,
-              lineHeight: 1.15,
-              letterSpacing: "-0.015em",
-              color: "var(--brand-navy)",
-              marginBottom: "1.75rem",
-            }}
-          >
-            The problem is not missing information.
-          </h2>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-primary)",
-              marginBottom: "1rem",
-            }}
-          >
-            Schools receive itineraries, provider materials, internal notes, and supporting documents in different formats and levels of detail. Leadership still has to decide whether the trip is appropriate to run.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-primary)",
-            }}
-          >
-            The issue is not volume. It is that the information is not structured for the decision it needs to support.
-          </p>
-        </div>
-      </section>
-
-      {/* ── 3. GOLD ANCHOR STRIP ── */}
-      <section
-        style={{
-          background: "var(--brand-gold)",
-          padding: "2.25rem 1.5rem",
-        }}
-      >
-        <div className="container-narrow" style={{ textAlign: "center" }}>
-          <p
-            style={{
-              fontFamily: SERIF,
-              fontSize: "1.25rem",
-              fontStyle: "italic",
-              lineHeight: 1.4,
-              color: "var(--brand-navy)",
-              maxWidth: "44rem",
-              margin: "0 auto",
-              fontWeight: 500,
-            }}
-          >
-            &ldquo;The standard for evidence in international school travel.&rdquo;
-          </p>
-        </div>
-      </section>
-
-      {/* ── 4. THE BRIDGE ── */}
-      <section className="section-padding section-band">
-        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
-          <p
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "var(--brand-gold)",
-              marginBottom: "1.25rem",
-            }}
-          >
-            What Changes
-          </p>
-          <h2
-            style={{
-              fontFamily: SERIF,
-              fontSize: "2.5rem",
-              fontWeight: 600,
-              lineHeight: 1.15,
-              letterSpacing: "-0.015em",
-              color: "var(--brand-navy)",
-              marginBottom: "1.75rem",
-            }}
-          >
-            What structured evidence changes.
-          </h2>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-primary)",
-              marginBottom: "1rem",
-            }}
-          >
-            ETI360 converts fragmented trip documentation into structured evidence: a consistent view of activities, locations, timings, and logistics prepared for review.
-          </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-primary)",
-            }}
-          >
-            Once the program is structured, leadership can review it more clearly. Time allocation, route context, medical access, environmental conditions, and provider differences become easier to assess because the underlying information has been normalized into one format.
-          </p>
-        </div>
-      </section>
-
-      {/* ── 5. PROOF GRID (numbered editorial cards) ── */}
-      <section className="section-padding">
-        <div className="container-narrow">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "baseline",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "1rem",
-              marginBottom: "2.5rem",
-              borderTop: "2px solid var(--brand-gold)",
-              paddingTop: "2rem",
-            }}
-          >
-            <h2
-              style={{
-                fontFamily: SERIF,
-                fontSize: "1.75rem",
-                fontWeight: 600,
-                lineHeight: 1.2,
-                color: "var(--brand-navy)",
-                letterSpacing: "-0.01em",
-                margin: 0,
-                maxWidth: "32rem",
-              }}
-            >
-              Six questions every approver should be able to answer.
-            </h2>
-            <p
-              style={{
-                fontSize: "0.9375rem",
-                lineHeight: 1.55,
-                color: "var(--text-tertiary)",
-                margin: 0,
-                maxWidth: "20rem",
-                fontStyle: "italic",
-              }}
-            >
-              Outputs follow from structuring the trip properly &mdash; not added afterward.
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <span className="label ui">Decision support for school trips</span>
+            <h1>
+              Trip decisions need
+              <br />
+              <em>structured evidence.</em>
+            </h1>
+            <p className="subhead">
+              Every school trip runs a governance cycle &mdash; from selection to
+              post-trip review. ETI360 produces the structured intelligence each
+              stage of that cycle requires. This page shows the cycle, the documents
+              it produces, and how schools and providers engage.
             </p>
+            <div className="hero-actions">
+              <a className="cta-button ui" href="#cycle">See the cycle</a>
+              <a className="cta-link ui" href="#documents">See the documents &rarr;</a>
+            </div>
           </div>
 
-          <div className="proof-grid">
-            {proofCards.map((card) => (
-              <Link
-                key={card.number}
-                href={card.href}
-                className="proof-card"
-              >
-                <div className="proof-card-inner">
-                  <p
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: "0.875rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.08em",
-                      color: "var(--brand-gold)",
-                      marginBottom: "1.25rem",
-                    }}
-                  >
-                    {card.number}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: "1.375rem",
-                      fontStyle: "italic",
-                      lineHeight: 1.3,
-                      color: "var(--brand-navy)",
-                      marginBottom: "1rem",
-                      fontWeight: 500,
-                    }}
-                  >
-                    &ldquo;{card.question}&rdquo;
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "var(--text-tertiary)",
-                      marginBottom: "0.625rem",
-                    }}
-                  >
-                    {card.label}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "0.9375rem",
-                      lineHeight: 1.55,
-                      color: "var(--text-primary)",
-                      margin: 0,
-                    }}
-                  >
-                    {card.sentence}
-                  </p>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      marginTop: "1.25rem",
-                      color: "var(--brand-gold)",
-                      fontSize: "0.875rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.04em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    See it &rarr;
-                  </span>
-                </div>
-              </Link>
+          <aside className="hero-panel" aria-label="Cycle preview">
+            <div className="panel-label ui">Governance cycle preview</div>
+            <div className="mini-loop">
+              <span>Selection</span>
+              <span>Audit</span>
+              <span>Lock</span>
+              <span>Agree</span>
+              <span>Assess</span>
+              <span>Control</span>
+              <span>Run</span>
+              <span>Review</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="cycle" className="cycle-section">
+        <div className="container">
+          <h2 className="section-heading section-heading-lg rule-gold">The cycle.</h2>
+          <p className="section-lead">Eight stages. One sequence. Every trip.</p>
+
+          <div className="cycle-grid">
+            {stages.map((s) => (
+              <article key={s.num} className="stage">
+                <div className="stage-num ui">{s.num}</div>
+                <h3>{s.name}</h3>
+                <p>{s.desc}</p>
+                <span className={"stage-doc ui" + (s.docLines ? " multi" : "")}>
+                  {s.docLines
+                    ? s.docLines.map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          {i < (s.docLines as string[]).length - 1 && <br />}
+                        </span>
+                      ))
+                    : s.doc}
+                </span>
+              </article>
             ))}
           </div>
 
-          <div style={{ marginTop: "3rem", textAlign: "center" }}>
-            <Link
-              href="/see-it"
-              className="btn-primary"
-              style={{
-                background: "var(--brand-navy)",
-                color: "#ffffff",
-              }}
-            >
-              See the full interactive assessment &rarr;
+          <p className="bridge-line">
+            Each stage produces a structured document. The six below are representative.
+          </p>
+        </div>
+      </section>
+
+      <section id="documents" className="documents-section">
+        <div className="container">
+          <p className="label ui">Documents</p>
+          <h2 className="section-heading section-heading-lg rule-gold">The artifacts.</h2>
+          <p className="section-lead">
+            Real pages from real engagements. Click any card to view the full document.
+          </p>
+
+          <div className="doc-cards">
+            {documents.map((d) => (
+              <a key={d.slug} className="doc-card" href="#">
+                <div className="doc-preview">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/marketing/previews/${d.slug}.png`}
+                    alt={`${d.title} \u2014 sample first page`}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="doc-body">
+                  <div className="doc-meta ui">{d.meta}</div>
+                  <h3>{d.title}</h3>
+                  <p>{d.desc}</p>
+                  <span className="doc-link-inline ui">Open document &rarr;</span>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <p className="bridge-line">
+            The work is structured around two audiences. See how the cycle fits each.
+          </p>
+        </div>
+      </section>
+
+      <section id="audiences" className="about-strip">
+        <div className="container">
+          <p className="label ui">Who we work with</p>
+          <h2 className="section-heading rule-gold">
+            The same cycle. Different operational realities.
+          </h2>
+
+          <div className="audience-cards">
+            <article className="audience-card">
+              <p className="label ui">For Schools</p>
+              <h3>Governance and oversight.</h3>
+              <p>
+                International schools engage ETI360 for governance audits, compliance
+                alignment reviews against ISO 31031, and ongoing advisory support for
+                trip portfolios. The work covers the full cycle &mdash; from intelligence
+                gathering before approval through post-trip review &mdash; and produces
+                the structured documentation governance bodies need to do their work well.
+              </p>
+              <Link href="/for-schools" className="cta-link ui">
+                How we engage with schools &rarr;
+              </Link>
+            </article>
+
+            <article className="audience-card">
+              <p className="label ui">For Providers</p>
+              <h3>Proposal and operations.</h3>
+              <p>
+                Trip providers engage ETI360 to structure their proposal documentation
+                once, align their operational records to the standards their school clients
+                hold them to, and surface the intelligence that distinguishes well-documented
+                providers from those performing compliance theater.
+              </p>
+              <Link href="/for-providers" className="cta-link ui">
+                How we engage with providers &rarr;
+              </Link>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="perspective">
+        <div className="container">
+          <p className="label label-light ui">Perspective</p>
+          <h2 className="section-heading rule-gold">
+            How we think about trip governance.
+          </h2>
+          <div className="perspective-grid">
+            <Link href="/perspective/trip-approval-is-not-trip-governance" className="article-card">
+              <span className="card-label ui">Governance</span>
+              <h3>Trip approval is not trip governance.</h3>
+              <p>
+                The signature satisfies the formal requirement. It does not, on its own,
+                structure the evidence the decision is supposed to rest on.
+              </p>
+              <span className="read-arrow ui">Read &rarr;</span>
+            </Link>
+            <Link href="/perspective/emergency-documentation-for-educational-travel" className="article-card">
+              <span className="card-label ui">Emergency Documentation</span>
+              <h3>Emergency documentation for educational travel.</h3>
+              <p>
+                The documents prepared before a trip are not the documents a trip leader
+                can use during one.
+              </p>
+              <span className="read-arrow ui">Read &rarr;</span>
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* ── 6. DUAL-AUDIENCE FORK ── */}
-      <section className="section-padding section-band">
-        <div className="container-narrow">
-          <p
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "var(--brand-gold)",
-              marginBottom: "1rem",
-              textAlign: "center",
-            }}
-          >
-            Two Audiences. One Standard.
+          <p className="perspective-see-all">
+            <Link href="/perspective" className="cta-link ui">See all perspective &rarr;</Link>
           </p>
-          <h2
-            style={{
-              fontFamily: SERIF,
-              fontSize: "2rem",
-              fontWeight: 600,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              color: "var(--brand-navy)",
-              marginBottom: "3rem",
-              textAlign: "center",
-              maxWidth: "44rem",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            Built for the people who decide and the people who deliver.
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: "1.5rem",
-            }}
-            className="md-grid-2"
-          >
-            {/* Schools */}
-            <div
-              style={{
-                background: "var(--page-background)",
-                border: "1px solid var(--border-color)",
-                padding: "2.5rem",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  width: "2.5rem",
-                  height: "0.25rem",
-                  background: "var(--brand-gold)",
-                  marginBottom: "1.5rem",
-                }}
-              />
-              <p
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--brand-navy)",
-                  marginBottom: "1rem",
-                }}
-              >
-                For Schools
-              </p>
-              <h3
-                style={{
-                  fontFamily: SERIF,
-                  fontSize: "1.625rem",
-                  fontWeight: 600,
-                  lineHeight: 1.25,
-                  letterSpacing: "-0.01em",
-                  color: "var(--brand-navy)",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                Evidence on the table when you sign off.
-              </h3>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  lineHeight: 1.65,
-                  color: "var(--text-primary)",
-                  marginBottom: "1.75rem",
-                }}
-              >
-                Activity scoring, compliance alignment, location intelligence, and stress-tested outcomes &mdash; produced by a methodology, not by the person organizing the trip.
-              </p>
-              <Link
-                href="/for-schools"
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: 600,
-                  color: "var(--brand-navy)",
-                  textDecoration: "none",
-                  letterSpacing: "0.04em",
-                  textTransform: "uppercase",
-                }}
-              >
-                For Schools &rarr;
-              </Link>
-            </div>
-
-            {/* Providers */}
-            <div
-              style={{
-                background: "var(--page-background)",
-                border: "1px solid var(--border-color)",
-                padding: "2.5rem",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  width: "2.5rem",
-                  height: "0.25rem",
-                  background: "var(--brand-gold)",
-                  marginBottom: "1.5rem",
-                }}
-              />
-              <p
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--brand-navy)",
-                  marginBottom: "1rem",
-                }}
-              >
-                For Providers
-              </p>
-              <h3
-                style={{
-                  fontFamily: SERIF,
-                  fontSize: "1.625rem",
-                  fontWeight: 600,
-                  lineHeight: 1.25,
-                  letterSpacing: "-0.01em",
-                  color: "var(--brand-navy)",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                Position your proposals with structured evidence.
-              </h3>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  lineHeight: 1.65,
-                  color: "var(--text-primary)",
-                  marginBottom: "1.75rem",
-                }}
-              >
-                Your itinerary becomes a verified activity ledger. Your risk management becomes visible: scored, specific, independently assessed.
-              </p>
-              <Link
-                href="/for-providers"
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: 600,
-                  color: "var(--brand-navy)",
-                  textDecoration: "none",
-                  letterSpacing: "0.04em",
-                  textTransform: "uppercase",
-                }}
-              >
-                For Providers &rarr;
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* ── 7. INDEPENDENCE + CTA (Foundation panel) ── */}
-      <section
-        style={{
-          background: "var(--brand-navy)",
-          color: "#ffffff",
-          padding: "5rem 1.5rem",
-          textAlign: "center",
-        }}
-      >
-        <div className="container-narrow" style={{ maxWidth: "42rem" }}>
-          <div
-            style={{
-              width: "2.5rem",
-              height: "0.25rem",
-              background: "var(--brand-gold)",
-              margin: "0 auto 2rem",
-            }}
-          />
-          <h2
-            style={{
-              fontFamily: SERIF,
-              fontSize: "2rem",
-              fontWeight: 600,
-              lineHeight: 1.25,
-              color: "#ffffff",
-              marginBottom: "1.5rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            The school keeps every decision.
+      <section className="about-strip">
+        <div className="container measure">
+          <p className="label ui">About</p>
+          <h2 className="section-heading rule-gold">
+            An advisory firm in the governance of educational travel.
           </h2>
-          <p
-            style={{
-              fontSize: "1.25rem",
-              lineHeight: 1.55,
-              color: "rgba(255,255,255,0.75)",
-              marginBottom: "2.5rem",
-            }}
-          >
-            ETI360 structures the evidence those decisions rest on.
+          <p>
+            ETI360 is an advisory firm working in the governance of educational travel.
+            The firm advises international schools and trip providers on structuring the
+            evidence, intelligence, and documentation that adequate trip governance now
+            requires.
           </p>
-          <Link
-            href="/contact"
-            className="btn-primary"
-            style={{
-              background: "var(--brand-gold)",
-              color: "var(--brand-navy)",
-            }}
-          >
-            Start a conversation &rarr;
-          </Link>
+          <p>
+            The firm&apos;s positioning is specific. ETI360 covers trip governance &mdash;
+            risk assessment, provider vetting, compliance alignment, emergency documentation,
+            post-trip review. The firm does not cover safeguarding, on-campus health and
+            safety, or liability management; these are distinct disciplines served by other
+            specialist firms.
+          </p>
+          <p>
+            The work is delivered through structured engagements, but the output is not
+            advice alone. It is documented, defensible evidence that supports decisions
+            across the full governance cycle.
+          </p>
+          <p>
+            <Link href="/about" className="cta-link ui">More about ETI360 &rarr;</Link>
+          </p>
         </div>
       </section>
 
-      {/* ── Responsive styles ── */}
-      <style>{`
-        .proof-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 0;
-          border-bottom: 1px solid var(--border-color);
-        }
-        .proof-card {
-          display: block;
-          background: var(--page-background);
-          text-decoration: none;
-          border-top: 1px solid var(--border-color);
-          transition: background 0.15s ease;
-        }
-        .proof-card:hover {
-          background: var(--band-background);
-        }
-        .proof-card-inner {
-          padding: 2rem 1.75rem;
-        }
-        @media (min-width: 768px) {
-          .md-grid-2 {
-            grid-template-columns: 1fr 1fr !important;
-          }
-          .proof-grid {
-            grid-template-columns: 1fr 1fr;
-          }
-          .proof-card {
-            border-left: 1px solid var(--border-color);
-          }
-          .proof-card:nth-child(2n+1) {
-            border-left: none;
-          }
-        }
-        @media (min-width: 1024px) {
-          .proof-grid {
-            grid-template-columns: 1fr 1fr 1fr;
-          }
-          .proof-card {
-            border-left: 1px solid var(--border-color);
-          }
-          .proof-card:nth-child(2n+1) {
-            border-left: 1px solid var(--border-color);
-          }
-          .proof-card:nth-child(3n+1) {
-            border-left: none;
-          }
-          .proof-card-inner {
-            padding: 2.25rem 2rem;
-          }
-        }
-      `}</style>
-    </main>
+      <section className="cta-section">
+        <div className="container measure">
+          <h2>Arrange a briefing.</h2>
+          <p>
+            A structured conversation about your current trip governance and where the
+            cycle can support it. We respond within two business days.
+          </p>
+          <Link href="/contact" className="cta-button ui">Get in touch</Link>
+        </div>
+      </section>
+    </>
   );
 }

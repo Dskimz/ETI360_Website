@@ -1,243 +1,104 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-const SERIF = `"Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif`;
-
-/* ════════════════════════════════════════════════════
-   FOR PROVIDERS
-   ════════════════════════════════════════════════════ */
+export const metadata: Metadata = {
+  title: "For Providers — ETI360",
+  description:
+    "Documentation and intelligence for trip providers — proposal reviews, operational alignment, ongoing advisory support.",
+};
 
 export default function ForProvidersPage() {
   return (
-    <main>
-      {/* ── HERO ── */}
+    <>
       <section
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          color: "#ffffff",
-          padding: "6rem 1.5rem 5rem",
-        }}
+        className="hero hero-inner-page"
+        style={{ ["--hero-bg" as string]: "url('/marketing/hero/for-providers.jpg')" } as React.CSSProperties}
       >
-        <img
-          src="/images/hero-providers.png"
-          alt=""
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(13, 53, 88, 0.88)",
-          }}
-        />
-        <div className="container-narrow" style={{ position: "relative" }}>
-          <div
-            style={{
-              width: "3.5rem",
-              height: "0.25rem",
-              background: "var(--brand-gold)",
-              marginBottom: "2rem",
-            }}
-          />
-          <p
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "var(--brand-gold)",
-              marginBottom: "1.25rem",
-            }}
-          >
-            For Providers
-          </p>
-          <h1
-            style={{
-              fontFamily: SERIF,
-              fontSize: "3.25rem",
-              fontWeight: 600,
-              lineHeight: 1.08,
-              letterSpacing: "-0.02em",
-              color: "#ffffff",
-              maxWidth: "48rem",
-              marginBottom: "2rem",
-            }}
-          >
-            Position your proposals with structured evidence.
-          </h1>
-          <p
-            style={{
-              fontFamily: SERIF,
-              fontSize: "1.25rem",
-              lineHeight: 1.55,
-              color: "rgba(255,255,255,0.85)",
-              maxWidth: "44rem",
-              fontStyle: "italic",
-              fontWeight: 400,
-            }}
-          >
-            A school&rsquo;s risk committee reviews your proposal alongside two
-            others. One includes a narrative risk summary. Yours includes
-            structured activity scoring, compliance alignment, and a verified
-            activity ledger with every location mapped to the nearest emergency
-            hospital. The committee isn&rsquo;t comparing trips. They&rsquo;re
-            comparing evidence.
+        <div className="hero-inner">
+          <p className="label label-light ui">For Providers</p>
+          <h1>Documentation and intelligence for trip providers.</h1>
+          <p className="subhead">
+            Trip providers operate in a market where their school clients are increasingly
+            evaluating providers on documentation quality, not just safety record. ETI360
+            works with providers to structure the documentation their school clients now
+            expect.
           </p>
         </div>
       </section>
 
-      {/* ── SECTION 1: WHAT CHANGES ── */}
-      <section className="section-padding">
-        <div className="container-narrow">
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-              marginBottom: "2rem",
-            }}
-          >
-            ETI360 transforms your trip documentation into
-            institutional-quality evidence. Your itinerary becomes a structured
-            activity ledger &mdash; every activity timestamped, every location
-            resolved, every gap identified. Your risk management becomes
-            visible: scored, specific, and independently assessed.
+      <section className="article-body">
+        <div className="container measure">
+          <p className="lead">
+            ETI360 aligns operational records to the standards schools hold providers to,
+            and surfaces the intelligence that distinguishes well-prepared providers from
+            those that have not caught up to the shift.
           </p>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--brand-navy)",
-              fontWeight: 500,
-              maxWidth: "44rem",
-              borderLeft: "3px solid var(--brand-gold)",
-              paddingLeft: "1.25rem",
-            }}
-          >
-            Schools see operational thoroughness, not narrative promises.
-          </p>
-        </div>
-      </section>
 
-      {/* ── SECTION 2: PROPORTIONALITY ── */}
-      <section className="section-padding section-band">
-        <div className="container-narrow">
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.7,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-            }}
-          >
-            <span style={{ fontStyle: "italic" }}>
-              Your cultural programme in Singapore doesn&rsquo;t need the same
-              documentation as a Grade&nbsp;III rafting expedition in Borneo.
-              The system is proportionate.
-            </span>{" "}
-            Activities below the risk threshold are scored, documented, and
-            filed &mdash; not inflated. Schools see that your programme has
-            been properly evaluated. They also see that the evaluation is
-            calibrated, not fear-driven.
-          </p>
-        </div>
-      </section>
+          <h2>Engagement types</h2>
+          <p>ETI360 engages providers in three principal forms.</p>
 
-      {/* ── SECTION 3: THE DEEPER VALUE ── */}
-      <section className="section-padding">
-        <div className="container-narrow">
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-            }}
-          >
-            Structured evidence doesn&rsquo;t just strengthen the proposal. It
-            strengthens the operation. Your team gets the same intelligence the
-            school gets &mdash; structured views of the itinerary, location
-            context, weather preparation, emergency access. The documentation
-            that wins the proposal also helps you run the trip.
+          <h2>Proposal documentation review</h2>
+          <p>
+            A structured review of how the provider currently presents trips to school
+            clients &mdash; what information is included, what information is missing, how
+            the documentation aligns to what serious school clients are now asking for. The
+            review produces a written report with findings and structured recommendations on
+            what to add, what to restructure, and what to drop.
           </p>
-        </div>
-      </section>
 
-      {/* ── SECTION 4: COMPETITIVE ADVANTAGE ── */}
-      <section className="section-padding section-band">
-        <div className="container-narrow">
-          <p
-            style={{
-              fontSize: "1.125rem",
-              lineHeight: 1.65,
-              color: "var(--text-primary)",
-              maxWidth: "44rem",
-            }}
-          >
-            Providers who include ETI360 intelligence aren&rsquo;t just meeting
-            requirements. They&rsquo;re setting the standard schools will
-            expect from every proposal that follows.
+          <h2>Operational alignment review</h2>
+          <p>
+            A review of the provider&apos;s operational documentation &mdash; risk assessments,
+            emergency procedures, staff qualifications, provider compliance records &mdash;
+            against the standards their school clients reference. ISO 31031 features in most
+            reviews; adjacent standards depending on the activities and destinations the
+            provider operates. The review produces a structured comparison document showing
+            alignment and gaps.
           </p>
-        </div>
-      </section>
 
-      {/* ── CTA ── */}
-      <section
-        className="section-padding"
-        style={{
-          background: "var(--brand-navy)",
-          color: "#ffffff",
-        }}
-      >
-        <div className="container-narrow" style={{ maxWidth: "44rem" }}>
-          <p
-            style={{
-              fontSize: "1.25rem",
-              lineHeight: 1.55,
-              color: "rgba(255,255,255,0.85)",
-              marginBottom: "2.5rem",
-            }}
-          >
-            Start with one trip. One itinerary.
+          <h2>Ongoing advisory support</h2>
+          <p>
+            For providers operating across multiple destinations or activity types, ETI360
+            provides ongoing support on documentation architecture, intelligence work for
+            new destinations, and structured updates to operational records as standards
+            and expectations shift. Delivered as consulting engagement supported by the firm&apos;s
+            documentation and intelligence infrastructure.
           </p>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "1rem",
-            }}
-          >
-            <Link
-              href="/contact"
-              className="btn-primary"
-              style={{
-                background: "var(--brand-gold)",
-                color: "var(--brand-navy)",
-              }}
-            >
-              Start a conversation &rarr;
-            </Link>
-            <Link
-              href="/see-it"
-              style={{
-                color: "rgba(255,255,255,0.7)",
-                fontSize: "1rem",
-                textDecoration: "none",
-              }}
-            >
-              See the complete interactive assessment &rarr;
-            </Link>
+
+          <h2>Why this matters now</h2>
+          <p>
+            The schools that constitute the market for substantial trip providers have changed
+            how they evaluate provider quality. A decade ago a provider&apos;s safety record
+            and a willingness to provide a generic risk assessment was, for most schools,
+            sufficient evidence. The current bar is substantially higher &mdash; structured
+            risk documentation, ISO 31031 alignment, calibrated emergency procedures, current
+            intelligence on destinations and activities, and the ability to respond to school
+            due diligence with the kind of documentation a school&apos;s risk committee can
+            present to its governing body. Providers that have not adapted to this shift find
+            their proposals being passed over for providers that have, often without explicit
+            feedback on why.
+          </p>
+
+          <div className="boundary-callout">
+            <h3>What ETI360 does not do</h3>
+            <p>
+              ETI360 advises providers on documentation, intelligence, and compliance alignment.
+              The firm does not operate trips, certify providers, or substitute its judgment
+              for the provider&apos;s own operational decisions. The work is consultative &mdash;
+              what the provider does with the recommendations, and how the provider runs its
+              operations, remains the provider&apos;s responsibility.
+            </p>
           </div>
         </div>
       </section>
-    </main>
+
+      <section className="cta-section">
+        <div className="container measure">
+          <h2>Arrange a briefing.</h2>
+          <p>Briefings are conversations, not sales calls. We respond within two business days.</p>
+          <Link href="/contact" className="cta-button ui">Get in touch</Link>
+        </div>
+      </section>
+    </>
   );
 }
