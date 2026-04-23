@@ -53,8 +53,8 @@ const stages = [
   {
     num: "Stage 07",
     name: "Run",
-    desc: "Operational intelligence supports leaders during the trip itself \u2014 location, place and weather.",
-    docLines: ["Location Audit", "Place Audit", "Weather Brief"],
+    desc: "Operational intelligence supports leaders during the trip itself \u2014 location, route and weather.",
+    docLines: ["Location Audit", "Route Audit", "Weather Brief"],
   },
   {
     num: "Stage 08",
@@ -90,10 +90,10 @@ const documents = [
     desc: "Where are students at every point during the trip?",
   },
   {
-    slug: "place-audit",
+    slug: "route-audit",
     meta: "Stage 07 \u00B7 Run",
-    title: "Place Audit",
-    desc: "What medical and operational capability exists at each location?",
+    title: "Route Audit",
+    desc: "What terrain, hospitals and hazards does the stated route actually involve?",
   },
   {
     slug: "weather-brief",
