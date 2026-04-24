@@ -1,0 +1,194 @@
+{
+  "docs": [
+    {
+      "slug": "00-iso31031-audit-dsct",
+      "title": "ISO 31031 Audit",
+      "variant": "DSCT",
+      "pdf": "pdfs/00-iso31031-audit-dsct.pdf",
+      "thumb": "thumbs/00-iso31031-audit-dsct.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 14
+    },
+    {
+      "slug": "01-trip-options",
+      "title": "Trip Options",
+      "variant": null,
+      "pdf": "pdfs/01-trip-options.pdf",
+      "thumb": "thumbs/01-trip-options.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "01-1-weather-brief-london",
+      "title": "Weather Brief",
+      "variant": "London",
+      "pdf": "pdfs/01-1-weather-brief-london.pdf",
+      "thumb": "thumbs/01-1-weather-brief-london.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "01-1-weather-brief-sydney",
+      "title": "Weather Brief",
+      "variant": "Sydney",
+      "pdf": "pdfs/01-1-weather-brief-sydney.pdf",
+      "thumb": "thumbs/01-1-weather-brief-sydney.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "01-1-weather-brief-tokyo",
+      "title": "Weather Brief",
+      "variant": "Tokyo",
+      "pdf": "pdfs/01-1-weather-brief-tokyo.pdf",
+      "thumb": "thumbs/01-1-weather-brief-tokyo.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "02-school-provider-agreement",
+      "title": "School Provider Agreement",
+      "variant": null,
+      "pdf": "pdfs/02-school-provider-agreement.pdf",
+      "thumb": "thumbs/02-school-provider-agreement.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 9
+    },
+    {
+      "slug": "02-1-calendar-view",
+      "title": "Calendar View",
+      "variant": null,
+      "pdf": "pdfs/02-1-calendar-view.pdf",
+      "thumb": "thumbs/02-1-calendar-view.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 2
+    },
+    {
+      "slug": "02-2-location-audit",
+      "title": "Location Audit",
+      "variant": null,
+      "pdf": "pdfs/02-2-location-audit.pdf",
+      "thumb": "thumbs/02-2-location-audit.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 8
+    },
+    {
+      "slug": "02-3-itoshima-route",
+      "title": "Route Brief",
+      "variant": "Itoshima",
+      "pdf": "pdfs/02-3-itoshima-route.pdf",
+      "thumb": "thumbs/02-3-itoshima-route.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 2
+    },
+    {
+      "slug": "02-3-phakding-route",
+      "title": "Route Brief",
+      "variant": "Phakding",
+      "pdf": "pdfs/02-3-phakding-route.pdf",
+      "thumb": "thumbs/02-3-phakding-route.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 2
+    },
+    {
+      "slug": "03-hospital-report",
+      "title": "Hospital Report",
+      "variant": null,
+      "pdf": "pdfs/03-hospital-report.pdf",
+      "thumb": "thumbs/03-hospital-report.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "04-rams-report",
+      "title": "RAMS Report",
+      "variant": null,
+      "pdf": "pdfs/04-rams-report.pdf",
+      "thumb": "thumbs/04-rams-report.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 17
+    },
+    {
+      "slug": "05-field-trip-brief",
+      "title": "Field Trip Brief",
+      "variant": null,
+      "pdf": "pdfs/05-field-trip-brief.pdf",
+      "thumb": "thumbs/05-field-trip-brief.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "06-location-map",
+      "title": "Location Map",
+      "variant": null,
+      "pdf": "pdfs/06-location-map.pdf",
+      "thumb": "thumbs/06-location-map.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "08-arp-heatmap",
+      "title": "ARP Heatmap",
+      "variant": null,
+      "pdf": "pdfs/08-arp-heatmap.pdf",
+      "thumb": "thumbs/08-arp-heatmap.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 1
+    },
+    {
+      "slug": "a1-contact-card",
+      "title": "Contact Card",
+      "variant": null,
+      "pdf": "pdfs/a1-contact-card.pdf",
+      "thumb": "thumbs/a1-contact-card.png",
+      "width": 705,
+      "height": 1001,
+      "pages": 1
+    },
+    {
+      "slug": "itinerary",
+      "title": "Itinerary",
+      "variant": null,
+      "pdf": "pdfs/itinerary.pdf",
+      "thumb": "thumbs/itinerary.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 4
+    },
+    {
+      "slug": "liveops",
+      "title": "LiveOps Dashboard",
+      "variant": null,
+      "pdf": "pdfs/liveops.pdf",
+      "thumb": "thumbs/liveops.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 3
+    },
+    {
+      "slug": "rams",
+      "title": "RAMS (Sample)",
+      "variant": null,
+      "pdf": "pdfs/rams.pdf",
+      "thumb": "thumbs/rams.png",
+      "width": 708,
+      "height": 1000,
+      "pages": 15
+    }
+  ]
+}
