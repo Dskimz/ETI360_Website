@@ -85,6 +85,24 @@
   }
   .persistent-logo img { width: 100%; height: auto; display: block; }
 
+  /* ========== Persistent Contact Card (bottom-right, always visible) ========== */
+  .persistent-contact {
+    position: absolute;
+    bottom: 3.2vmin; right: 3.2vmin;
+    width: 30vmin; max-width: 360px;
+    aspect-ratio: 148 / 210;
+    z-index: 20;
+    pointer-events: none;
+    box-shadow: 0 1.6vmin 3.6vmin rgba(0,0,0,0.55);
+    border: 1px solid rgba(201, 162, 77, 0.25);
+    background: #faf8f3;
+  }
+  .persistent-contact img {
+    width: 100%; height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
   /* Every scene overlays the full stage. Default hidden; .active fades in. */
   .scene {
     position: absolute; inset: 0;
@@ -241,7 +259,7 @@
   }
   .corner-label {
     position: absolute;
-    right: 4vmin; bottom: 4vmin;
+    left: 4vmin; bottom: 4vmin;
     z-index: 5;
     font-family: var(--font-sans);
     font-weight: 500;
@@ -250,7 +268,7 @@
     color: var(--gold);
     background: rgba(10,42,69,0.82);
     padding: 1.4vmin 2vmin;
-    border-left: 0.35vmin solid var(--gold);
+    border-right: 0.35vmin solid var(--gold);
   }
 
   /* ========== M4 — Proof ========== */
@@ -337,6 +355,9 @@
 
   <!-- Persistent ETI360 logo, top-right on every frame -->
   <div class="persistent-logo"><img src="assets/logo-reverse.png" alt="ETI360" /></div>
+
+  <!-- Persistent contact card with QR, bottom-right on every frame -->
+  <div class="persistent-contact"><img src="assets/contact-card.png" alt="Contact ETI360 — eti360.com/contact" /></div>
 
   <!-- ========= M3 — STAGE CARDS ========= -->
   <!-- Card template: navy + hero-image bg + overlay + number/name/description -->
