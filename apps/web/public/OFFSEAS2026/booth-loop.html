@@ -338,29 +338,6 @@
   <!-- Persistent ETI360 logo, top-right on every frame -->
   <div class="persistent-logo"><img src="assets/logo-reverse.png" alt="ETI360" /></div>
 
-  <!-- ========= M1 — THE QUESTION ========= -->
-  <div class="scene" id="m1-question">
-    <div class="question-text">Should this trip proceed?</div>
-  </div>
-
-  <!-- ========= M2 — THE CYCLE ========= -->
-  <div class="scene" id="m2-frame" style="opacity:1;">
-    <div class="m2-stage-wrap">
-      <div class="m2-row" id="m2-row">
-        <span class="m2-stage" id="m2-s1">Selection</span>
-        <span class="m2-stage" id="m2-s2">Audit</span>
-        <span class="m2-stage" id="m2-s3">Define</span>
-        <span class="m2-stage" id="m2-s4">Set terms</span>
-        <span class="m2-stage" id="m2-s5">Assess</span>
-        <span class="m2-stage" id="m2-s6">Control</span>
-        <span class="m2-stage" id="m2-s7">Operate</span>
-        <span class="m2-stage" id="m2-s8">Review</span>
-      </div>
-      <div class="m2-caption" id="m2-caption">One structured cycle for every trip.</div>
-    </div>
-  </div>
-  <!-- The m2 row dots are only visible when m2-line scene is active. We use a JS-driven body class instead of a CSS sibling combinator (more robust across browsers). -->
-
   <!-- ========= M3 — STAGE CARDS ========= -->
   <!-- Card template: navy + hero-image bg + overlay + number/name/description -->
 
@@ -504,11 +481,6 @@
     <div class="corner-label">07 · Operate · Location audit</div>
   </div>
 
-  <div class="scene doc-frame" id="d-hospital">
-    <div class="doc-wrap"><img src="assets/docs/07-run-hospital.png" alt="" /></div>
-    <div class="corner-label">07 · Operate · Hospital reference</div>
-  </div>
-
   <!-- ========= M4 — PROOF ========= -->
 
   <div class="scene proof" id="m4-s1">
@@ -555,60 +527,43 @@
   "use strict";
 
   // ========== TIMELINE (seconds) ==========
-  const LOOP_MS = 96500;
+  const LOOP_MS = 71000;
 
   const SCENES = [
-    // M1 — Question (0–6s)
-    { id: 'm1-question', start: 0.5,  end: 5.5 },
+    // M5 — Opener (0–7.5s): "Decision support for school travel."
+    { id: 'm5', start: 0.0, end: 7.5 },
 
-    // M2 — Cycle (6–21s). Each stage stays visible once it fades in.
-    { id: 'm2-s1',   start: 6.0,  end: 20.5 },
-    { id: 'm2-s2',   start: 7.2,  end: 20.5 },
-    { id: 'm2-s3',   start: 8.4,  end: 20.5 },
-    { id: 'm2-s4',   start: 9.6,  end: 20.5 },
-    { id: 'm2-s5',   start: 10.8, end: 20.5 },
-    { id: 'm2-s6',   start: 12.0, end: 20.5 },
-    { id: 'm2-s7',   start: 13.2, end: 20.5 },
-    { id: 'm2-s8',   start: 14.4, end: 20.5 },
-    { id: 'm2-caption', start: 16.0, end: 20.5 },
-    // Body-class flag to show gold dots between m2 stages
-    { id: '__body:dots', start: 15.4, end: 20.5, bodyClass: 'm2-dots-visible' },
+    // M3 — Stage cards + docs (7.5–57.5s)
+    { id: 's01-card',   start: 7.5,  end: 9.0 },
+    { id: 'd-options',  start: 9.0,  end: 12.5 },
+    { id: 'd-weather',  start: 12.5, end: 16.0 },
 
-    // M3 — Stage cards + docs (21–71s, 50s)
-    { id: 's01-card',   start: 21.0, end: 22.5 },
-    { id: 'd-options',  start: 22.5, end: 26.0 },
-    { id: 'd-weather',  start: 26.0, end: 29.5 },
+    { id: 's02-card',   start: 16.0, end: 17.5 },
+    { id: 'd-iso',      start: 17.5, end: 21.0 },
 
-    { id: 's02-card',   start: 29.5, end: 31.0 },
-    { id: 'd-iso',      start: 31.0, end: 34.5 },
+    { id: 's03-card',   start: 21.0, end: 22.5 },
+    { id: 'd-calendar', start: 22.5, end: 26.0 },
+    { id: 'd-route',    start: 26.0, end: 29.5 },
+    { id: 'd-fieldtrip',start: 29.5, end: 33.0 },
 
-    { id: 's03-card',   start: 34.5, end: 36.0 },
-    { id: 'd-calendar', start: 36.0, end: 39.5 },
-    { id: 'd-route',    start: 39.5, end: 43.0 },
-    { id: 'd-fieldtrip',start: 43.0, end: 46.5 },
+    { id: 's04-card',   start: 33.0, end: 34.5 },
+    { id: 'd-provider', start: 34.5, end: 38.0 },
 
-    { id: 's04-card',   start: 46.5, end: 48.0 },
-    { id: 'd-provider', start: 48.0, end: 51.5 },
+    { id: 's05-card',    start: 38.0, end: 39.5 },
+    { id: 'd-arpfunnel', start: 39.5, end: 43.0 },
+    { id: 'd-rams',      start: 43.0, end: 46.5 },
 
-    { id: 's05-card',    start: 51.5, end: 53.0 },
-    { id: 'd-arpfunnel', start: 53.0, end: 56.5 },
-    { id: 'd-rams',      start: 56.5, end: 60.0 },
+    { id: 's06-card',   start: 46.5, end: 49.5 }, // alone, 3s
 
-    { id: 's06-card',   start: 60.0, end: 63.0 }, // alone, 3s
+    { id: 's07-card',   start: 49.5, end: 51.0 },
+    { id: 'd-location', start: 51.0, end: 54.5 },
 
-    { id: 's07-card',   start: 63.0, end: 64.5 },
-    { id: 'd-location', start: 64.5, end: 68.0 },
-    { id: 'd-hospital', start: 68.0, end: 71.5 },
+    { id: 's08-card',   start: 54.5, end: 57.5 }, // alone, 3s
 
-    { id: 's08-card',   start: 71.5, end: 74.5 }, // alone, 3s
-
-    // M4 — Proof (74.5–88s)
-    { id: 'm4-s1', start: 74.5, end: 79.0 },
-    { id: 'm4-s2', start: 79.0, end: 83.5 },
-    { id: 'm4-s3', start: 83.5, end: 88.0 },
-
-    // M5 — Final (88–96.5s)
-    { id: 'm5', start: 88.5, end: 96.0 },
+    // M4 — Proof (57.5–71s)
+    { id: 'm4-s1', start: 57.5, end: 62.0 },
+    { id: 'm4-s2', start: 62.0, end: 66.5 },
+    { id: 'm4-s3', start: 66.5, end: 71.0 },
   ];
 
   // ========== PRELOAD ==========
@@ -669,10 +624,6 @@
   }
 
   // ========== BOOT ==========
-  // Hide m2 frame wrapper — we animate its children individually; the wrapper stays visible
-  // throughout M2 but we don't need a .scene.active toggle on it.
-  document.getElementById('m2-frame').style.opacity = '1';
-
   preload().then(() => {
     t0 = performance.now();
     requestAnimationFrame(tick);
