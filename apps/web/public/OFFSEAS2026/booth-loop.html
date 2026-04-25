@@ -244,8 +244,10 @@
   }
   .doc-wrap {
     position: relative;
-    height: 82vh;
-    max-height: 82vmin;  /* allow portrait A4 scaling */
+    /* Fill the viewport as much as possible while preserving A4 portrait
+       aspect ratio (1697:2400). Take the smaller of: 95% width, or the
+       width that yields 95% height. Works for both monitor orientations. */
+    width: min(95vw, calc(94vh * 1697 / 2400));
     aspect-ratio: 1697 / 2400;
     display: flex; align-items: center; justify-content: center;
     background: #fff;
