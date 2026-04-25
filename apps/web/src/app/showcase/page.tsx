@@ -8,6 +8,7 @@ type Doc = {
   variant: string | null;
   pdf: string;
   thumb: string;
+  pageImages: string[];
   width: number;
   height: number;
   pages: number;
@@ -92,6 +93,7 @@ export default function ShowcasePage() {
             <div className="lightbox-title">
               {openDoc.title}
               {openDoc.variant && <span className="lightbox-variant"> · {openDoc.variant}</span>}
+              {openDoc.pages > 1 && <span className="lightbox-pagecount"> · {openDoc.pages} pages</span>}
             </div>
             <button
               className="lightbox-close"
@@ -101,12 +103,21 @@ export default function ShowcasePage() {
               ✕
             </button>
           </div>
-          <iframe
-            className="lightbox-frame"
-            src={`${BASE}/${openDoc.pdf}#toolbar=0&navpanes=0`}
-            title={openDoc.title}
-            onClick={(e) => e.stopPropagation()}
-          />
+          <div className="lightbox-scroll" onClick={(e) => e.stopPropagation()}>
+            {openDoc.pageImages.map((src, i) => (
+              <img
+                key={src}
+                className="lightbox-page"
+                src={`${BASE}/${src}`}
+                alt={`${openDoc.title} — page ${i + 1}`}
+                loading={i === 0 ? "eager" : "lazy"}
+                draggable={false}
+              />
+            ))}
+            <div className="lightbox-end" onClick={() => setOpenDoc(null)}>
+              Tap to close
+            </div>
+          </div>
         </div>
       )}
 
@@ -206,6 +217,9 @@ export default function ShowcasePage() {
           color: #fff; font-size: 15px; font-weight: 500; letter-spacing: 0.01em;
         }
         .lightbox-variant { color: #C9A24D; font-weight: 400; }
+        .lightbox-pagecount {
+          color: rgba(255,255,255,0.5); font-weight: 400; font-size: 13px;
+        }
         .lightbox-close {
           appearance: none; -webkit-appearance: none;
           background: rgba(201,162,77,0.12);
@@ -217,8 +231,29 @@ export default function ShowcasePage() {
           display: flex; align-items: center; justify-content: center;
         }
         .lightbox-close:active { background: rgba(201,162,77,0.22); }
-        .lightbox-frame {
-          flex: 1; width: 100%; border: 0; background: #2b2b2b;
+        .lightbox-scroll {
+          flex: 1; width: 100%;
+          overflow-y: auto; overflow-x: hidden;
+          -webkit-overflow-scrolling: touch;
+          padding: 18px 0 60px;
+          display: flex; flex-direction: column; align-items: center;
+          gap: 14px;
+          background: rgba(8, 24, 38, 0.5);
+        }
+        .lightbox-page {
+          display: block;
+          width: min(96%, 1100px);
+          height: auto;
+          background: #fff;
+          box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+          border-radius: 2px;
+          user-select: none; -webkit-user-select: none;
+        }
+        .lightbox-end {
+          color: rgba(201,162,77,0.6);
+          font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+          padding: 16px 20px; cursor: pointer;
+          touch-action: manipulation;
         }
       `}</style>
     </div>

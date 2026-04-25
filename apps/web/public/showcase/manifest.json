@@ -6,6 +6,22 @@
       "variant": "DSCT",
       "pdf": "pdfs/00-iso31031-audit-dsct.pdf",
       "thumb": "thumbs/00-iso31031-audit-dsct.png",
+      "pageImages": [
+        "pages/00-iso31031-audit-dsct/1.png",
+        "pages/00-iso31031-audit-dsct/2.png",
+        "pages/00-iso31031-audit-dsct/3.png",
+        "pages/00-iso31031-audit-dsct/4.png",
+        "pages/00-iso31031-audit-dsct/5.png",
+        "pages/00-iso31031-audit-dsct/6.png",
+        "pages/00-iso31031-audit-dsct/7.png",
+        "pages/00-iso31031-audit-dsct/8.png",
+        "pages/00-iso31031-audit-dsct/9.png",
+        "pages/00-iso31031-audit-dsct/10.png",
+        "pages/00-iso31031-audit-dsct/11.png",
+        "pages/00-iso31031-audit-dsct/12.png",
+        "pages/00-iso31031-audit-dsct/13.png",
+        "pages/00-iso31031-audit-dsct/14.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 14
@@ -16,6 +32,9 @@
       "variant": null,
       "pdf": "pdfs/01-trip-options.pdf",
       "thumb": "thumbs/01-trip-options.png",
+      "pageImages": [
+        "pages/01-trip-options/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -26,6 +45,9 @@
       "variant": "London",
       "pdf": "pdfs/01-1-weather-brief-london.pdf",
       "thumb": "thumbs/01-1-weather-brief-london.png",
+      "pageImages": [
+        "pages/01-1-weather-brief-london/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -36,6 +58,9 @@
       "variant": "Sydney",
       "pdf": "pdfs/01-1-weather-brief-sydney.pdf",
       "thumb": "thumbs/01-1-weather-brief-sydney.png",
+      "pageImages": [
+        "pages/01-1-weather-brief-sydney/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -46,6 +71,9 @@
       "variant": "Tokyo",
       "pdf": "pdfs/01-1-weather-brief-tokyo.pdf",
       "thumb": "thumbs/01-1-weather-brief-tokyo.png",
+      "pageImages": [
+        "pages/01-1-weather-brief-tokyo/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -56,6 +84,17 @@
       "variant": null,
       "pdf": "pdfs/02-school-provider-agreement.pdf",
       "thumb": "thumbs/02-school-provider-agreement.png",
+      "pageImages": [
+        "pages/02-school-provider-agreement/1.png",
+        "pages/02-school-provider-agreement/2.png",
+        "pages/02-school-provider-agreement/3.png",
+        "pages/02-school-provider-agreement/4.png",
+        "pages/02-school-provider-agreement/5.png",
+        "pages/02-school-provider-agreement/6.png",
+        "pages/02-school-provider-agreement/7.png",
+        "pages/02-school-provider-agreement/8.png",
+        "pages/02-school-provider-agreement/9.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 9
@@ -66,6 +105,10 @@
       "variant": null,
       "pdf": "pdfs/02-1-calendar-view.pdf",
       "thumb": "thumbs/02-1-calendar-view.png",
+      "pageImages": [
+        "pages/02-1-calendar-view/1.png",
+        "pages/02-1-calendar-view/2.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 2
@@ -76,6 +119,16 @@
       "variant": null,
       "pdf": "pdfs/02-2-location-audit.pdf",
       "thumb": "thumbs/02-2-location-audit.png",
+      "pageImages": [
+        "pages/02-2-location-audit/1.png",
+        "pages/02-2-location-audit/2.png",
+        "pages/02-2-location-audit/3.png",
+        "pages/02-2-location-audit/4.png",
+        "pages/02-2-location-audit/5.png",
+        "pages/02-2-location-audit/6.png",
+        "pages/02-2-location-audit/7.png",
+        "pages/02-2-location-audit/8.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 8
@@ -86,6 +139,10 @@
       "variant": "Itoshima",
       "pdf": "pdfs/02-3-itoshima-route.pdf",
       "thumb": "thumbs/02-3-itoshima-route.png",
+      "pageImages": [
+        "pages/02-3-itoshima-route/1.png",
+        "pages/02-3-itoshima-route/2.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 2
@@ -96,6 +153,10 @@
       "variant": "Phakding",
       "pdf": "pdfs/02-3-phakding-route.pdf",
       "thumb": "thumbs/02-3-phakding-route.png",
+      "pageImages": [
+        "pages/02-3-phakding-route/1.png",
+        "pages/02-3-phakding-route/2.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 2
@@ -106,6 +167,9 @@
       "variant": null,
       "pdf": "pdfs/03-hospital-report.pdf",
       "thumb": "thumbs/03-hospital-report.png",
+      "pageImages": [
+        "pages/03-hospital-report/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -116,6 +180,25 @@
       "variant": null,
       "pdf": "pdfs/04-rams-report.pdf",
       "thumb": "thumbs/04-rams-report.png",
+      "pageImages": [
+        "pages/04-rams-report/1.png",
+        "pages/04-rams-report/2.png",
+        "pages/04-rams-report/3.png",
+        "pages/04-rams-report/4.png",
+        "pages/04-rams-report/5.png",
+        "pages/04-rams-report/6.png",
+        "pages/04-rams-report/7.png",
+        "pages/04-rams-report/8.png",
+        "pages/04-rams-report/9.png",
+        "pages/04-rams-report/10.png",
+        "pages/04-rams-report/11.png",
+        "pages/04-rams-report/12.png",
+        "pages/04-rams-report/13.png",
+        "pages/04-rams-report/14.png",
+        "pages/04-rams-report/15.png",
+        "pages/04-rams-report/16.png",
+        "pages/04-rams-report/17.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 17
@@ -126,6 +209,9 @@
       "variant": null,
       "pdf": "pdfs/05-field-trip-brief.pdf",
       "thumb": "thumbs/05-field-trip-brief.png",
+      "pageImages": [
+        "pages/05-field-trip-brief/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -136,6 +222,9 @@
       "variant": null,
       "pdf": "pdfs/06-location-map.pdf",
       "thumb": "thumbs/06-location-map.png",
+      "pageImages": [
+        "pages/06-location-map/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -146,6 +235,9 @@
       "variant": null,
       "pdf": "pdfs/08-arp-heatmap.pdf",
       "thumb": "thumbs/08-arp-heatmap.png",
+      "pageImages": [
+        "pages/08-arp-heatmap/1.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 1
@@ -156,6 +248,9 @@
       "variant": null,
       "pdf": "pdfs/a1-contact-card.pdf",
       "thumb": "thumbs/a1-contact-card.png",
+      "pageImages": [
+        "pages/a1-contact-card/1.png"
+      ],
       "width": 705,
       "height": 1001,
       "pages": 1
@@ -166,6 +261,12 @@
       "variant": null,
       "pdf": "pdfs/itinerary.pdf",
       "thumb": "thumbs/itinerary.png",
+      "pageImages": [
+        "pages/itinerary/1.png",
+        "pages/itinerary/2.png",
+        "pages/itinerary/3.png",
+        "pages/itinerary/4.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 4
@@ -176,6 +277,11 @@
       "variant": null,
       "pdf": "pdfs/liveops.pdf",
       "thumb": "thumbs/liveops.png",
+      "pageImages": [
+        "pages/liveops/1.png",
+        "pages/liveops/2.png",
+        "pages/liveops/3.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 3
@@ -186,6 +292,23 @@
       "variant": null,
       "pdf": "pdfs/rams.pdf",
       "thumb": "thumbs/rams.png",
+      "pageImages": [
+        "pages/rams/1.png",
+        "pages/rams/2.png",
+        "pages/rams/3.png",
+        "pages/rams/4.png",
+        "pages/rams/5.png",
+        "pages/rams/6.png",
+        "pages/rams/7.png",
+        "pages/rams/8.png",
+        "pages/rams/9.png",
+        "pages/rams/10.png",
+        "pages/rams/11.png",
+        "pages/rams/12.png",
+        "pages/rams/13.png",
+        "pages/rams/14.png",
+        "pages/rams/15.png"
+      ],
       "width": 708,
       "height": 1000,
       "pages": 15

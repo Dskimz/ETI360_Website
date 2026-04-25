@@ -1,7 +1,7 @@
 // Showcase service worker — cache-first for PDFs + thumbs, so a tap opens instantly.
 // Bump CACHE_VERSION whenever showcase content changes.
 
-const CACHE_VERSION = "showcase-v1";
+const CACHE_VERSION = "showcase-v2";  // bump when pageImages set changes
 const BASE = "/showcase/";
 
 self.addEventListener("install", (event) => {
@@ -15,7 +15,9 @@ self.addEventListener("install", (event) => {
         const urls = [];
         for (const d of docs) {
           urls.push(BASE + d.thumb);
-          urls.push(BASE + d.pdf);
+          if (Array.isArray(d.pageImages)) {
+            for (const p of d.pageImages) urls.push(BASE + p);
+          }
         }
         await Promise.all(urls.map((u) => cache.add(u).catch(() => null)));
       } catch (_) { /* swallow — page still works online */ }
