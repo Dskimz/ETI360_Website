@@ -87,7 +87,6 @@
       "pdf": "pdfs/04-rams-report.pdf",
       "thumb": "thumbs/04-rams-report.png",
       "pageImages": [
-        "pages/04-rams-report/2.png",
         "pages/04-rams-report/3.png",
         "pages/04-rams-report/4.png",
         "pages/04-rams-report/5.png",
@@ -106,9 +105,9 @@
       ],
       "width": 708,
       "height": 1000,
-      "pages": 16,
+      "pages": 15,
       "totalPages": 17,
-      "startPage": 2
+      "startPage": 3
     },
     {
       "slug": "02-1-calendar-view",
@@ -133,8 +132,6 @@
       "pdf": "pdfs/02-2-location-audit.pdf",
       "thumb": "thumbs/02-2-location-audit.png",
       "pageImages": [
-        "pages/02-2-location-audit/2.png",
-        "pages/02-2-location-audit/3.png",
         "pages/02-2-location-audit/4.png",
         "pages/02-2-location-audit/5.png",
         "pages/02-2-location-audit/6.png",
@@ -143,9 +140,9 @@
       ],
       "width": 708,
       "height": 1000,
-      "pages": 7,
+      "pages": 5,
       "totalPages": 8,
-      "startPage": 2
+      "startPage": 4
     },
     {
       "slug": "02-3-itoshima-route",
