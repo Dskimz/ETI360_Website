@@ -1,0 +1,25 @@
+{
+  "name": "ETI360 — Document Showcase",
+  "short_name": "ETI360 Showcase",
+  "description": "The document set behind every ETI360 trip decision.",
+  "start_url": "/showcase",
+  "scope": "/showcase/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a2a45",
+  "theme_color": "#0a2a45",
+  "icons": [
+    {
+      "src": "/showcase/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/showcase/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

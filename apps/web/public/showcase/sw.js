@@ -1,8 +1,8 @@
-// Booth library service worker — cache-first for PDFs + thumbs, so a tap opens instantly.
-// Bump CACHE_VERSION whenever gallery content changes.
+// Showcase service worker — cache-first for PDFs + thumbs, so a tap opens instantly.
+// Bump CACHE_VERSION whenever showcase content changes.
 
-const CACHE_VERSION = "offseas2026-gallery-v1";
-const BASE = "/OFFSEAS2026/gallery/";
+const CACHE_VERSION = "showcase-v1";
+const BASE = "/showcase/";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -17,7 +17,6 @@ self.addEventListener("install", (event) => {
           urls.push(BASE + d.thumb);
           urls.push(BASE + d.pdf);
         }
-        // addAll fails if any single resource fails — add individually
         await Promise.all(urls.map((u) => cache.add(u).catch(() => null)));
       } catch (_) { /* swallow — page still works online */ }
       self.skipWaiting();
@@ -39,9 +38,7 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
-  // Only intercept our own gallery assets
   if (!url.pathname.startsWith(BASE)) return;
-  // Don't cache the page shell — let Next handle navigation
   if (url.pathname === BASE || url.pathname === BASE.replace(/\/$/, "")) return;
 
   event.respondWith(
