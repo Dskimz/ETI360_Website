@@ -280,11 +280,12 @@ export default function HomePage() {
               <p className="label ui">For Schools</p>
               <h3>Governance and oversight.</h3>
               <p>
-                International schools engage ETI360 for governance audits, compliance
-                alignment reviews against ISO 31031, and ongoing advisory support for
-                trip portfolios. The work covers the full cycle &mdash; from intelligence
-                gathering before approval through post-trip review &mdash; and produces
-                the structured documentation governance bodies need to do their work well.
+                Trip approval shouldn&rsquo;t rest on one person&rsquo;s judgement or a
+                folder of inconsistent paperwork. ETI360 structures the evidence a
+                governing board, safeguarding lead, or insurer actually asks for &mdash;
+                organisational standing, trip-specific risk assessment, and a clear
+                sign-off record. It replaces ad hoc trip files with a governance record
+                built the same way, every time.
               </p>
               <Link href="/for-schools" className="cta-link ui">
                 How we engage with schools &rarr;
@@ -295,10 +296,12 @@ export default function HomePage() {
               <p className="label ui">For Providers</p>
               <h3>Proposal and operations.</h3>
               <p>
-                Trip providers engage ETI360 to structure their proposal documentation
-                once, align their operational records to the standards their school clients
-                hold them to, and surface the intelligence that distinguishes well-documented
-                providers from those performing compliance theater.
+                Schools increasingly ask providers to demonstrate governance before
+                they&rsquo;ll book &mdash; and assembling that evidence trip by trip, by
+                hand, is slow and inconsistent. ETI360 gives providers a structured way to
+                produce the same organisational and trip evidence schools are asking for,
+                to a consistent standard every time. The evidence pack you already assemble
+                by hand &mdash; structured, produced, and rendered for you.
               </p>
               <Link href="/for-providers" className="cta-link ui">
                 How we engage with providers &rarr;

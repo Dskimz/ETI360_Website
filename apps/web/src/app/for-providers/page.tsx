@@ -29,9 +29,12 @@ export default function ForProvidersPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            ETI360 aligns operational records to the standards schools hold providers to,
-            and surfaces the intelligence that distinguishes well-prepared providers from
-            those that have not caught up to the shift.
+            Schools increasingly ask providers to demonstrate governance before they&rsquo;ll
+            book &mdash; and assembling that evidence trip by trip, by hand, is slow and
+            inconsistent. ETI360 gives providers a structured way to produce the same
+            organisational and trip evidence schools are asking for, to a consistent
+            standard every time. The evidence pack you already assemble by hand &mdash;
+            structured, produced, and rendered for you.
           </p>
 
           <h2>Engagement types</h2>
