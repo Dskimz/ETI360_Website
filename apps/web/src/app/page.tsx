@@ -118,10 +118,8 @@ export default function HomePage() {
             <em>structured evidence.</em>
           </h1>
           <p className="subhead">
-            Every school trip runs a governance cycle &mdash; from selection to
-            post-trip review. ETI360 produces the structured intelligence each
-            stage of that cycle requires. This page shows the cycle, the documents
-            it produces, and how schools and providers engage.
+            Most trip risk isn&rsquo;t hidden &mdash; it&rsquo;s just never
+            structured enough to act on.
           </p>
           <div className="hero-actions">
             <a className="cta-button ui" href="#cycle">See the cycle</a>
