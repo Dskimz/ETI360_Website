@@ -1245,3 +1245,58 @@ section.tight { padding: 72px 0; }
   .cycle-flow { grid-template-columns: 1fr; }
   .pull-quote { font-size: var(--font-xl); }
 }
+
+/* ── Home: how you engage (scopes) ── */
+.engage-section { background: #fff; }
+.engage-section .section-lead { max-width: var(--measure); }
+.binding-line {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-top: 28px;
+}
+.scope-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+.scope-card {
+  padding: 32px;
+  background: var(--parchment);
+  border: 1px solid var(--hairline);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.scope-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 24px; bottom: 24px;
+  width: var(--rule);
+  background: var(--gold);
+}
+.scope-card h3 {
+  font-size: var(--font-xl);
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+}
+.scope-card p {
+  color: var(--ink-mid);
+  font-size: var(--font-sm);
+  line-height: 1.65;
+}
+.scope-cadence { font-style: italic; }
+.scope-card .scope-stages {
+  margin-top: auto;
+  color: var(--gold-dark);
+  font-size: var(--font-xs);
+  letter-spacing: 0.02em;
+}
+@media (max-width: 960px) {
+  .scope-cards { grid-template-columns: 1fr; gap: 24px; }
+}

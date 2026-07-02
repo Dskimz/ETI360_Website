@@ -154,7 +154,76 @@ export default function HomePage() {
           </div>
 
           <p className="bridge-line">
-            Each stage produces a structured document. The six below are representative.
+            One programme carries the cycle. Here is how you engage it.
+          </p>
+        </div>
+      </section>
+
+      <section id="engage" className="engage-section">
+        <div className="container">
+          <p className="label ui">How you engage</p>
+          <h2 className="section-heading section-heading-lg rule-gold">One programme. Three scopes.</h2>
+          <p className="section-lead">
+            Educational travel risk rarely comes from one bad decision &mdash; it comes
+            from the gap between what a school approved and what actually happens on the
+            ground. ETI360 structures evidence across the full lifecycle of a trip, not
+            at a single checkpoint.
+          </p>
+          <p className="binding-line">
+            Prove the organisation once, prove each trip, equip the field.
+          </p>
+
+          <div className="scope-cards">
+            <article className="scope-card">
+              <h3>Organisational Assurance</h3>
+              <p className="scope-cadence">
+                Annual &mdash; established once, carried across every trip that follows.
+              </p>
+              <p>
+                Organisational Assurance structures the evidence that a school&rsquo;s or
+                provider&rsquo;s governing framework &mdash; policy, competence, escalation,
+                prior incident learning &mdash; is documented and ready for scrutiny before
+                any individual trip is considered. The outcome is a standing evidence base
+                a board, insurer, or regulator can review without re-litigating it trip by
+                trip. It is set once a year and referenced continually, not repeated.
+              </p>
+              <p className="scope-stages ui">Carries the Selection and Audit stages of the cycle.</p>
+            </article>
+
+            <article className="scope-card">
+              <h3>Trip Assurance</h3>
+              <p className="scope-cadence">
+                Per trip &mdash; the primary point of engagement.
+              </p>
+              <p>
+                Trip Assurance is where governance meets a specific itinerary: a named
+                destination, a named group, named dates. It structures the risk evidence,
+                the sign-off record, and the control measures a school needs to approve
+                that trip on its own merits. This is the scope most schools and providers
+                engage ETI360 for, trip by trip, throughout the season.
+              </p>
+              <p className="scope-stages ui">Carries the Lock, Agree, Assess, and Control stages of the cycle.</p>
+            </article>
+
+            <article className="scope-card">
+              <h3>Field Assurance</h3>
+              <p className="scope-cadence">
+                Per trip &mdash; for operators equipping leaders on the ground.
+              </p>
+              <p>
+                Field Assurance extends the approved trip record into the hands of the
+                people running it: duty-of-care documentation, briefing materials, and
+                live-trip reference built from the same evidence base, not a separate one.
+                It gives field staff the documentation to operate in line with what was
+                assessed and agreed.
+              </p>
+              <p className="scope-stages ui">Carries the Run and Review stages of the cycle.</p>
+            </article>
+          </div>
+
+          <p className="bridge-line">
+            One programme, three compounding scopes. Each produces structured documents
+            &mdash; the six below are representative.
           </p>
         </div>
       </section>
