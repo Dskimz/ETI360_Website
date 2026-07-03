@@ -133,6 +133,21 @@ export default function HomePage() {
           <h2 className="section-heading section-heading-lg rule-gold">The cycle.</h2>
           <p className="section-lead">Eight stages. One sequence. Every trip.</p>
 
+          <p className="cycle-provenance">
+            Beneath the cycle sits ETI360&rsquo;s three-tier risk framework &mdash; built
+            from field experience and aligned to recognised international standards,
+            ISO 31031 among them. Standing organisational evidence, per-trip evidence,
+            and live field evidence compound in that order. The eight stages below are
+            the framework in operation.
+          </p>
+          <figure className="framework-figure">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/marketing/diagrams/method-00-three-tier-framework.svg"
+              alt="The three-tier risk framework: Organisational Assurance as the annual foundation, Trip Assurance before departure, Field Assurance during travel — evidence compounds upward"
+            />
+          </figure>
+
           <div className="cycle-grid">
             {stages.map((s) => (
               <article key={s.num} className="stage">

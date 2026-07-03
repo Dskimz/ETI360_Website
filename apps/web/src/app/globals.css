@@ -1300,3 +1300,19 @@ section.tight { padding: 72px 0; }
 @media (max-width: 960px) {
   .scope-cards { grid-template-columns: 1fr; gap: 24px; }
 }
+
+/* ── Home: framework provenance + figure ── */
+.cycle-provenance {
+  max-width: var(--measure);
+  color: var(--ink-mid);
+  font-size: var(--font-base);
+  line-height: 1.65;
+  margin-top: 16px;
+}
+.framework-figure { margin: 40px 0 8px; }
+.framework-figure img {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  border: 1px solid var(--hairline);
+}

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 408">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d3558"/>
+    </marker>
+    <marker id="arr-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a72c"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4c5968"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="408" fill="#fafbfc"/>
+  <rect x="0" y="0" width="800" height="4" fill="#d4a72c"/>
+  <text x="24" y="28" font-family="'Source Serif 4', Georgia, serif" font-size="18" font-weight="700" fill="#0d3558">The three-tier risk framework.</text>
+  <text x="24" y="46" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">The theoretical structure beneath the programme &#8212; each layer rests on the one below</text>
+
+  <!-- Layer 3 (top): Field Assurance -->
+  <rect x="24" y="84" width="560" height="88" rx="2" fill="#2a6090"/>
+  <text x="44" y="120" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Field Assurance</text>
+  <text x="44" y="144" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#ffffff" opacity="0.75">Dynamic operations &#8212; live evidence while the trip runs</text>
+  <text x="600" y="128" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#4c5968">DURING TRAVEL</text>
+
+  <!-- Layer 2 (middle): Trip Assurance -->
+  <rect x="24" y="180" width="560" height="88" rx="2" fill="#1a4a72"/>
+  <text x="44" y="216" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Trip Assurance</text>
+  <text x="44" y="240" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#ffffff" opacity="0.75">The per-trip evidence base &#8212; each trip assessed on its merits</text>
+  <text x="600" y="224" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#4c5968">BEFORE DEPARTURE</text>
+
+  <!-- Layer 1 (foundation): Organisational Assurance -->
+  <rect x="24" y="276" width="560" height="88" rx="2" fill="#0d3558"/>
+  <text x="44" y="312" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Organisational Assurance</text>
+  <text x="44" y="336" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#ffffff" opacity="0.75">Standing capability &#8212; the foundation every trip rests on</text>
+  <text x="600" y="320" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#4c5968">ANNUAL</text>
+
+  <!-- Compounding arrow -->
+  <line x1="744" y1="352" x2="744" y2="100" stroke="#d4a72c" stroke-width="1.5" marker-end="url(#arr-gold)"/>
+  <text x="762" y="226" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968" transform="rotate(-90 762 226)" text-anchor="middle">evidence compounds upward</text>
+
+  <text x="792" y="402" text-anchor="end" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="10" fill="#4c5968" opacity="0.5">ETI360</text>
+</svg>
