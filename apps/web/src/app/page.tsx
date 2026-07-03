@@ -144,7 +144,7 @@ export default function HomePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/marketing/diagrams/method-00-three-tier-framework.svg"
-              alt="The three-tier risk framework: Organisational Assurance as the annual foundation, Trip Assurance before departure, Field Assurance during travel — evidence compounds upward"
+              alt="The three-tier risk framework: Tier 1 Organisational Baseline (annual), Tier 2 Trip Risk Review (before departure), Tier 3 Dynamic Risk Operations (during travel) — evidence compounds tier by tier"
             />
           </figure>
 
