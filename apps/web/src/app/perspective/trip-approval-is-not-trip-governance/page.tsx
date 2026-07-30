@@ -34,9 +34,9 @@ const cycleStages = [
   },
   {
     num: "Stage 04",
-    name: "LiveOps",
+    name: "Dynamic Risk Operations",
     desc: "The duty-manager position established. Visibility into where students are. Incident procedures at hand.",
-    artifact: "Live Operational Log",
+    artifact: "Duty Manager Dashboard record",
   },
   {
     num: "Stage 05",

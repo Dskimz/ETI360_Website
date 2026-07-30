@@ -26,13 +26,13 @@ export default function ContactPage() {
         const err = await resp.json().catch(() => ({}));
         setStatus({
           kind: "error",
-          msg: err.error || "Something went wrong. Please email hello@eti360.com directly.",
+          msg: err.error || "Something went wrong. Please email danskimin@eti360.com directly.",
         });
       }
     } catch {
       setStatus({
         kind: "error",
-        msg: "Network error. Please email hello@eti360.com directly.",
+        msg: "Network error. Please email danskimin@eti360.com directly.",
       });
     }
   }
@@ -75,6 +75,12 @@ export default function ContactPage() {
             <textarea id="discuss" name="discuss" required />
 
             <button type="submit" className="cta-button">Send</button>
+
+            <p className="form-consent ui">
+              We use these details only to answer your enquiry. They are sent to us by
+              email and are not added to a mailing list or shared with anyone else.
+              See our <Link href="/privacy">privacy notice</Link>.
+            </p>
           </form>
 
           <div
@@ -88,7 +94,7 @@ export default function ContactPage() {
           </div>
 
           <p className="contact-email">
-            Prefer email? Write to <Link href="mailto:hello@eti360.com">hello@eti360.com</Link>.
+            Prefer email? Write to <Link href="mailto:danskimin@eti360.com">danskimin@eti360.com</Link>.
           </p>
         </div>
       </section>

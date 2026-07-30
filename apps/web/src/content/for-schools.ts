@@ -65,7 +65,7 @@ export const forSchoolsPage = {
       { number: 2, title: "Normalize.", body: "Itinerary converted to a structured activity ledger. Gaps and missing information flagged." },
       { number: 3, title: "Assess.", body: "Activities scored across seven risk dimensions. Location intelligence and compliance alignment layered in." },
       { number: 4, title: "Document.", body: "Branded, decision-ready PDFs delivered: Trip Options Brief, RAMS, compliance scorecards." },
-      { number: 5, title: "Operate.", body: "LiveOps dashboard for real-time oversight. Post-trip review closes the cycle." },
+      { number: 5, title: "Operate.", body: "The Duty Manager Dashboard carries the trip while it runs. Post-trip review closes the cycle." },
     ],
   },
   evidenceTrail: {

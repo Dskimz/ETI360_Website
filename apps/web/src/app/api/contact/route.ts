@@ -4,7 +4,7 @@ import { Resend } from "resend";
 /**
  * Contact-form submissions.
  *
- * Delivers to hello@eti360.com via Resend when RESEND_API_KEY is set.
+ * Delivers to danskimin@eti360.com via Resend when RESEND_API_KEY is set.
  * Falls back to console logging when it isn't (so the form keeps working
  * during local dev / preview deploys without credentials).
  *
@@ -13,11 +13,11 @@ import { Resend } from "resend";
  *   RESEND_FROM           — optional; defaults to "ETI360 Website
  *                            <onboarding@resend.dev>" which works out of
  *                            the box without domain verification. Replace
- *                            with e.g. "ETI360 <hello@eti360.com>" once
+ *                            with e.g. "ETI360 <danskimin@eti360.com>" once
  *                            the eti360.com domain is verified in Resend.
  */
 
-const TO = "hello@eti360.com";
+const TO = "danskimin@eti360.com";
 const DEFAULT_FROM = "ETI360 Website <onboarding@resend.dev>";
 const REQUIRED = ["name", "organization", "role", "email", "discuss"];
 
@@ -120,7 +120,7 @@ export async function POST(req: NextRequest) {
     if (error) {
       console.error("[contact] resend error", error);
       return NextResponse.json(
-        { error: "Mail delivery failed. Please email hello@eti360.com directly." },
+        { error: "Mail delivery failed. Please email danskimin@eti360.com directly." },
         { status: 502 },
       );
     }
@@ -128,7 +128,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("[contact] resend exception", err);
     return NextResponse.json(
-      { error: "Mail delivery failed. Please email hello@eti360.com directly." },
+      { error: "Mail delivery failed. Please email danskimin@eti360.com directly." },
       { status: 502 },
     );
   }

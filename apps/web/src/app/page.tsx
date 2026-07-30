@@ -190,12 +190,12 @@ export default function HomePage() {
 
           <div className="scope-cards">
             <article className="scope-card">
-              <h3>Organisational Assurance</h3>
+              <h3>Tier 1 &mdash; Organisational Baseline</h3>
               <p className="scope-cadence">
                 Annual &mdash; established once, carried across every trip that follows.
               </p>
               <p>
-                Organisational Assurance structures the evidence that a school&rsquo;s or
+                The Organisational Baseline structures the evidence that a school&rsquo;s or
                 provider&rsquo;s governing framework &mdash; policy, competence, escalation,
                 prior incident learning &mdash; is documented and ready for scrutiny before
                 any individual trip is considered. The outcome is a standing evidence base
@@ -206,12 +206,12 @@ export default function HomePage() {
             </article>
 
             <article className="scope-card">
-              <h3>Trip Assurance</h3>
+              <h3>Tier 2 &mdash; Trip Risk Review</h3>
               <p className="scope-cadence">
                 Per trip &mdash; the primary point of engagement.
               </p>
               <p>
-                Trip Assurance is where governance meets a specific itinerary: a named
+                The Trip Risk Review is where governance meets a specific itinerary: a named
                 destination, a named group, named dates. It structures the risk evidence,
                 the sign-off record, and the control measures a school needs to approve
                 that trip on its own merits. This is the scope most schools and providers
@@ -221,12 +221,12 @@ export default function HomePage() {
             </article>
 
             <article className="scope-card">
-              <h3>Field Assurance</h3>
+              <h3>Tier 3 &mdash; Dynamic Risk Operations</h3>
               <p className="scope-cadence">
                 Per trip &mdash; for operators equipping leaders on the ground.
               </p>
               <p>
-                Field Assurance extends the approved trip record into the hands of the
+                Dynamic Risk Operations extends the approved trip record into the hands of the
                 people running it: duty-of-care documentation, briefing materials, and
                 live-trip reference built from the same evidence base, not a separate one.
                 It gives field staff the documentation to operate in line with what was
@@ -248,7 +248,7 @@ export default function HomePage() {
           <p className="label ui">Documents</p>
           <h2 className="section-heading section-heading-lg rule-gold">The artifacts.</h2>
           <p className="section-lead">
-            Real pages from real engagements. Click any card to view the full document.
+            Real rendered pages, shown at the standard we produce them.
           </p>
 
           <div className="doc-cards">

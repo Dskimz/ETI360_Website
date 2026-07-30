@@ -41,7 +41,11 @@
   --navy-mid:      #1F4E79;
   --navy-deep:     #0a2a45;
   --gold:          #C9A24D;
-  --gold-dark:     #b28b2f;
+  /* --gold-dark is a TEXT-ONLY token (every usage is `color:`, including the
+     base link rule). #b28b2f measured 3.17:1 on white — below WCAG AA's 4.5:1.
+     #8a6c1f is 4.95:1 on white and 4.66:1 on parchment. Use --gold for fills,
+     rules and type on navy, where it already passes at 5.25–6.12:1. */
+  --gold-dark:     #8a6c1f;
   --gold-surface:  #f5edda;
   --parchment:     #faf8f3;
   --parchment-2:   #f3efe4;
@@ -187,7 +191,10 @@ strong { font-weight: 600; color: var(--navy); }
   white-space: nowrap;
 }
 .brand-mark .eti { color: var(--navy); }
-.brand-mark .three-sixty { color: var(--gold-dark); }
+/* The wordmark sits on navy in both the header and the footer, so it takes
+   --gold (5.25:1 on --navy, 6.12:1 on --navy-deep). --gold-dark is for type
+   on light surfaces and measures 2.55:1 here. */
+.brand-mark .three-sixty { color: var(--gold); }
 
 .site-nav ul {
   list-style: none;
@@ -866,6 +873,17 @@ section.tight { padding: 72px 0; }
 }
 .contact-email a { color: var(--navy); border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
 .contact-email a:hover { text-decoration: none; border-bottom-color: var(--navy); }
+
+/* Data-use line under the submit button — what we do with what the form collects. */
+.form-consent {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+.form-consent a { color: var(--navy); border-bottom: 1px solid var(--gold); padding-bottom: 1px; }
+.form-consent a:hover { text-decoration: none; border-bottom-color: var(--navy); }
 
 .form-status {
   max-width: 560px;

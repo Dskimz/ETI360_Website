@@ -1,0 +1,18 @@
+import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        // OFFSEAS2026 is an event booth asset and already carries a noindex
+        // meta tag; /api is machinery. Neither belongs in search results.
+        disallow: ["/api/", "/OFFSEAS2026"],
+      },
+    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
+  };
+}
