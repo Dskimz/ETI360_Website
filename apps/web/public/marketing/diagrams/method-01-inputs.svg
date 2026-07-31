@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 264">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d3558"/>
+    </marker>
+    <marker id="arr-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a72c"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4c5968"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="264" fill="#fafbfc"/>
+  <rect x="0" y="0" width="1000" height="4" fill="#d4a72c"/>
+  <text x="24" y="28" font-family="'Source Serif 4', Georgia, serif" font-size="18" font-weight="700" fill="#0d3558">Where the method comes from.</text>
+  <text x="24" y="46" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Field experience and recognised standards behind the ETI360 Risk Framework</text>
+
+  <!-- Group headers -->
+  <text x="172" y="84" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.8" fill="#4c5968">FIELD EXPERIENCE</text>
+  <text x="668" y="84" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.8" fill="#4c5968">RECOGNISED STANDARDS</text>
+
+  <!-- Card 1: Field operations -->
+  <rect x="20" y="96" width="144" height="128" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
+  <rect x="20" y="96" width="144" height="4" fill="#0d3558"/>
+  <circle cx="92" cy="136" r="20" fill="#dce8f5"/>
+  <circle cx="92" cy="131" r="6" stroke="#0d3558" stroke-width="1.5" fill="none"/>
+  <path d="M 82 146 A 10 10 0 0 1 102 146" stroke="#0d3558" stroke-width="1.5" fill="none"/>
+  <text x="92" y="176" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0d3558">Field operations</text>
+  <text x="92" y="194" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">School-trip operations</text>
+  <text x="92" y="208" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">and assessment</text>
+
+  <!-- Card 2: Incident learning -->
+  <rect x="180" y="96" width="144" height="128" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
+  <rect x="180" y="96" width="144" height="4" fill="#0d3558"/>
+  <circle cx="252" cy="136" r="20" fill="#dce8f5"/>
+  <circle cx="249" cy="133" r="7" stroke="#0d3558" stroke-width="1.5" fill="none"/>
+  <line x1="254" y1="138" x2="262" y2="146" stroke="#0d3558" stroke-width="1.5"/>
+  <text x="252" y="176" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0d3558">Incident learning</text>
+  <text x="252" y="194" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Prior incident and</text>
+  <text x="252" y="208" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">near-miss review</text>
+
+  <!-- Card 3: ISO 31031 (gold accent) -->
+  <rect x="356" y="96" width="144" height="128" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
+  <rect x="356" y="96" width="144" height="4" fill="#d4a72c"/>
+  <circle cx="428" cy="136" r="20" fill="#f5edda"/>
+  <path d="M 428 124 L 438 128 L 438 138 Q 438 146 428 150 Q 418 146 418 138 L 418 128 Z" stroke="#0d3558" stroke-width="1.5" fill="none"/>
+  <text x="428" y="176" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0d3558">ISO 31031</text>
+  <text x="428" y="194" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Youth and school trip</text>
+  <text x="428" y="208" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">risk management</text>
+
+  <!-- Card 4: ISO 31030 -->
+  <rect x="516" y="96" width="144" height="128" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
+  <rect x="516" y="96" width="144" height="4" fill="#0d3558"/>
+  <circle cx="588" cy="136" r="20" fill="#dce8f5"/>
+  <circle cx="588" cy="136" r="9" stroke="#0d3558" stroke-width="1.5" fill="none"/>
+  <ellipse cx="588" cy="136" rx="4" ry="9" stroke="#0d3558" stroke-width="1.2" fill="none"/>
+  <line x1="579" y1="136" x2="597" y2="136" stroke="#0d3558" stroke-width="1.2"/>
+  <text x="588" y="176" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0d3558">ISO 31030</text>
+  <text x="588" y="194" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Travel risk</text>
+  <text x="588" y="208" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">management</text>
+
+  <!-- Card 5: ISO 21101 -->
+  <rect x="676" y="96" width="144" height="128" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
+  <rect x="676" y="96" width="144" height="4" fill="#0d3558"/>
+  <circle cx="748" cy="136" r="20" fill="#dce8f5"/>
+  <path d="M 736 145 L 744 130 L 749 138 L 754 127 L 760 145 Z" stroke="#0d3558" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+  <text x="748" y="176" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0d3558">ISO 21101</text>
+  <text x="748" y="194" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Adventure tourism</text>
+  <text x="748" y="208" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">safety management</text>
+
+  <!-- Card 6: BS 8848 / SS 710 -->
+  <rect x="836" y="96" width="144" height="128" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
+  <rect x="836" y="96" width="144" height="4" fill="#0d3558"/>
+  <circle cx="908" cy="136" r="20" fill="#dce8f5"/>
+  <line x1="901" y1="126" x2="901" y2="148" stroke="#0d3558" stroke-width="1.5"/>
+  <path d="M 901 127 L 916 130 L 901 136 Z" stroke="#0d3558" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+  <text x="908" y="176" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0d3558">BS 8848 &#183; SS 710</text>
+  <text x="908" y="194" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Visits &amp; expeditions (UK)</text>
+  <text x="908" y="208" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Travel risk (SG)</text>
+
+  <text x="992" y="258" text-anchor="end" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="10" fill="#4c5968" opacity="0.5">ETI360</text>
+</svg>

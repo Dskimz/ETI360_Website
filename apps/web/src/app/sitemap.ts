@@ -5,6 +5,8 @@ import { SITE_URL } from "@/lib/site";
 // own ranking of them. /OFFSEAS2026 is deliberately absent — it is noindexed.
 const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" | "monthly" }> = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
+  { path: "/framework", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/documents", priority: 0.9, changeFrequency: "monthly" },
   { path: "/for-schools", priority: 0.9, changeFrequency: "monthly" },
   { path: "/for-providers", priority: 0.8, changeFrequency: "monthly" },
   { path: "/showcase", priority: 0.8, changeFrequency: "monthly" },
