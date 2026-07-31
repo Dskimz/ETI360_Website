@@ -272,7 +272,7 @@ export default function HomePage() {
           </div>
 
           <div className="docs-contact-cta">
-            <a className="cta-button ui" href="mailto:hello@eti360.com?subject=ETI360%20%E2%80%94%20Learn%20more">
+            <a className="cta-button ui" href="mailto:danskimin@eti360.com?subject=ETI360%20%E2%80%94%20Learn%20more">
               Contact us to learn more
             </a>
           </div>
