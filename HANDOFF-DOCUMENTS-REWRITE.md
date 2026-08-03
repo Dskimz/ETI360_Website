@@ -12,8 +12,15 @@ raise the documents' prominence across the site. The campaign doctrine this serv
 
 ## 1. The wireframe you are translating
 
-`/Users/danskimin/00 - eti360-rebuild/dev/schools-email/arm-c-catalogue.html` (arm C, v7)
-is the approved structure, refined through seven rounds with Dan tonight. Its order:
+`/Users/danskimin/00 - eti360-rebuild/dev/schools-email/arm-c-catalogue.html` is the
+approved structure — **the file is canonical and still evolving under Dan's passes
+(v9.1 at handoff time); read its head comment first.** Since the v7 order below: T1 is a
+single baseline entry (Brightside image cut, copy covers schools and trip providers);
+T2 reordered to Trip Overview → itineraries → Discovery Map → Route Intelligence → RAMS →
+Field Trip Report (one-day trips) → Trip Risk Register (portal screen); the gallery sits
+between T2 and T3 and includes the Teacher Operational Guide; T3 is Duty Manager
+Dashboard + Post-Trip Feedback Loop (Simulation cut from the email). v7's fuller order,
+for orientation:
 
 1. Intro: 30+ combined years, 10,000+ students, the 3-Tier Risk Management Framework
 2. **Tier 1 — Organizational Baseline**: school baseline (Harborview, 71%) PAIRED with
