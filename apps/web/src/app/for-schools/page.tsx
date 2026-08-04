@@ -31,7 +31,7 @@ export default function ForSchoolsPage() {
           <p className="lead">
             Trip approval shouldn&rsquo;t rest on one person&rsquo;s judgement or a folder
             of inconsistent paperwork. ETI360 structures the evidence a governing board,
-            safeguarding lead, or insurer actually asks for &mdash; organisational standing,
+            safeguarding lead, or insurer actually asks for &mdash; organizational standing,
             trip-specific risk assessment, and a clear sign-off record. It replaces ad hoc
             trip files with a governance record built the same way, every time.
           </p>

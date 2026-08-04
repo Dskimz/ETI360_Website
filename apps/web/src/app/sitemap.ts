@@ -7,6 +7,7 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/framework", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/documents/trip-risk-register", priority: 0.6, changeFrequency: "monthly" },
   { path: "/for-schools", priority: 0.9, changeFrequency: "monthly" },
   { path: "/for-providers", priority: 0.8, changeFrequency: "monthly" },
   { path: "/showcase", priority: 0.8, changeFrequency: "monthly" },

@@ -136,7 +136,7 @@ export default function HomePage() {
           <p className="cycle-provenance">
             Beneath the cycle sits ETI360&rsquo;s three-tier risk framework &mdash; built
             from field experience and aligned to recognised international standards,
-            ISO 31031 among them. Standing organisational evidence, per-trip evidence,
+            ISO 31031 among them. Standing organizational evidence, per-trip evidence,
             and live field evidence compound in that order. The eight stages below are
             the framework in operation.
           </p>
@@ -144,7 +144,7 @@ export default function HomePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/marketing/diagrams/method-00-three-tier-framework.svg"
-              alt="The three-tier risk framework: Tier 1 Organisational Baseline (annual), Tier 2 Trip Risk Review (before departure), Tier 3 Dynamic Risk Operations (during travel) — evidence compounds tier by tier"
+              alt="The three-tier risk framework: Tier 1 Organizational Baseline (annual), Tier 2 Trip Risk Review (before departure), Tier 3 Dynamic Risk Operations (during travel) — evidence compounds tier by tier"
             />
           </figure>
 
@@ -169,7 +169,7 @@ export default function HomePage() {
           </div>
 
           <p className="bridge-line">
-            One programme carries the cycle. Here is how you engage it.
+            One program carries the cycle. Here is how you engage it.
           </p>
         </div>
       </section>
@@ -177,7 +177,7 @@ export default function HomePage() {
       <section id="engage" className="engage-section">
         <div className="container">
           <p className="label ui">How you engage</p>
-          <h2 className="section-heading section-heading-lg rule-gold">One programme. Three scopes.</h2>
+          <h2 className="section-heading section-heading-lg rule-gold">One program. Three scopes.</h2>
           <p className="section-lead">
             Educational travel risk rarely comes from one bad decision &mdash; it comes
             from the gap between what a school approved and what actually happens on the
@@ -185,17 +185,17 @@ export default function HomePage() {
             at a single checkpoint.
           </p>
           <p className="binding-line">
-            Prove the organisation once, prove each trip, equip the field.
+            Prove the organization once, prove each trip, equip the field.
           </p>
 
           <div className="scope-cards">
             <article className="scope-card">
-              <h3>Tier 1 &mdash; Organisational Baseline</h3>
+              <h3>Tier 1 &mdash; Organizational Baseline</h3>
               <p className="scope-cadence">
                 Annual &mdash; established once, carried across every trip that follows.
               </p>
               <p>
-                The Organisational Baseline structures the evidence that a school&rsquo;s or
+                The Organizational Baseline structures the evidence that a school&rsquo;s or
                 provider&rsquo;s governing framework &mdash; policy, competence, escalation,
                 prior incident learning &mdash; is documented and ready for scrutiny before
                 any individual trip is considered. The outcome is a standing evidence base
@@ -237,7 +237,7 @@ export default function HomePage() {
           </div>
 
           <p className="bridge-line">
-            One programme, three compounding scopes. Each produces structured documents
+            One program, three compounding scopes. Each produces structured documents
             &mdash; the six below are representative.
           </p>
         </div>
@@ -298,7 +298,7 @@ export default function HomePage() {
                 Trip approval shouldn&rsquo;t rest on one person&rsquo;s judgement or a
                 folder of inconsistent paperwork. ETI360 structures the evidence a
                 governing board, safeguarding lead, or insurer actually asks for &mdash;
-                organisational standing, trip-specific risk assessment, and a clear
+                organizational standing, trip-specific risk assessment, and a clear
                 sign-off record. It replaces ad hoc trip files with a governance record
                 built the same way, every time.
               </p>
@@ -314,7 +314,7 @@ export default function HomePage() {
                 Schools increasingly ask providers to demonstrate governance before
                 they&rsquo;ll book &mdash; and assembling that evidence trip by trip, by
                 hand, is slow and inconsistent. ETI360 gives providers a structured way to
-                produce the same organisational and trip evidence schools are asking for,
+                produce the same organizational and trip evidence schools are asking for,
                 to a consistent standard every time. The evidence pack you already assemble
                 by hand &mdash; structured, produced, and rendered for you.
               </p>

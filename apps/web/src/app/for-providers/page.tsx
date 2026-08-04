@@ -32,7 +32,7 @@ export default function ForProvidersPage() {
             Schools increasingly ask providers to demonstrate governance before they&rsquo;ll
             book &mdash; and assembling that evidence trip by trip, by hand, is slow and
             inconsistent. ETI360 gives providers a structured way to produce the same
-            organisational and trip evidence schools are asking for, to a consistent
+            organizational and trip evidence schools are asking for, to a consistent
             standard every time. The evidence pack you already assemble by hand &mdash;
             structured, produced, and rendered for you.
           </p>

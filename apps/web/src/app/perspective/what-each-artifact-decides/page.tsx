@@ -32,7 +32,7 @@ const artifacts: Artifact[] = [
     reader: "Risk committee · Head of school · Trip approval meeting",
     decides: [
       "Whether the provider matches the school's governance standards",
-      "Whether the destination's operational profile fits the programme",
+      "Whether the destination's operational profile fits the program",
       "Whether the trip passes baseline selection before deeper work begins",
     ],
     body: [

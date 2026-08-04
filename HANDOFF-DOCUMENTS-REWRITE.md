@@ -115,12 +115,24 @@ Sources for re-export, all in `/Users/danskimin/00 - eti360-rebuild`:
 
 ## 7. Scope
 
-**In:** `/documents` rebuilt on the v7 story; the eleven anchors; document prominence in
-nav/homepage touchpoints (propose before bulldozing — the homepage scopes work shipped
+**In:** `/documents` rebuilt on the arm C story; the eleven anchors; document prominence
+in nav/homepage touchpoints (propose before bulldozing — the homepage scopes work shipped
 days ago and is Dan-approved); image pipeline for crisp page renders.
-**Out (phase 2, separate sessions):** the `/perspective` blog series (five planned posts,
-one per document — skeleton lives in the email program plan); `/sample-trip-pack`;
-anything in the email files themselves (`dev/schools-email/` is the email sprint's lane).
+**Out (phase 2, separate sessions):** the `/perspective` blog series (posts exist —
+three are live; more come later); `/sample-trip-pack`; anything in the email files
+themselves (`dev/schools-email/` is the email sprint's lane).
+
+**Explainer layer (Dan approved 2026-08-04) — coordinate, don't build:** each document
+type gets a blog-format page at `/documents/<slug>` (canonical product pages, undated).
+Dan's stamped decisions: placement is `/documents/<slug>`; the Duty Manager Simulation
+gets a page even though it is cut from the email; Parent Itinerary and Itinerary Report
+are **separate** pages. The first page is already live: `/documents/trip-risk-register`
+(built 2026-08-04, tone-gated, images at `public/marketing/library/trip-risk-register*.png`).
+When you rebuild the hub, link its Trip Risk Register entry to that page, and leave the
+`/documents/trip-risk-register/` directory alone — later explainer pages follow the same
+pattern and are not your lane. The tone standard for all site copy:
+`content/vault/Operations/Governance/ETI360-Tone-And-Voice-Report-2026-08.html` in the
+rebuild repo (verb discipline, claims boundaries, CTA posture — read it before writing).
 
 ## 8. Process
 

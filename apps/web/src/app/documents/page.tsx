@@ -5,11 +5,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "The Documents",
   description:
-    "What your school receives: the document library across Tier 1 Organisational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages from a complete sample pack.",
+    "What your school receives: the document library across Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages from a complete sample pack.",
   openGraph: {
     title: "The Documents — ETI360",
     description:
-      "What your school receives: the document library across Tier 1 Organisational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages from a complete sample pack.",
+      "What your school receives: the document library across Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages from a complete sample pack.",
     type: "website",
   },
 };
@@ -171,11 +171,11 @@ export default function DocumentsPage() {
       <section id="baseline" className="about-strip tight">
         <div className="container">
           <h2 className="section-heading rule-gold">
-            Tier 1 &middot; Organisational Baseline
+            Tier 1 &middot; Organizational Baseline
           </h2>
           <div className="force-tile">
             <span className="force-num">Read by: Head · Board · Risk Committee</span>
-            <h3>Organisational Baseline Report</h3>
+            <h3>Organizational Baseline Report</h3>
             <p>
               The school&rsquo;s travel governance reviewed against the ISO 31031
               framework: per-area maturity scores, evidence found, gaps identified.

@@ -5,11 +5,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "The Framework",
   description:
-    "Three questions every school answers about travel. One framework: Tier 1 Organisational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations.",
+    "Three questions every school answers about travel. One framework: Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations.",
   openGraph: {
     title: "The Framework — ETI360",
     description:
-      "Three questions every school answers about travel. One framework: Tier 1 Organisational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations.",
+      "Three questions every school answers about travel. One framework: Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations.",
     type: "website",
   },
 };
@@ -26,13 +26,13 @@ type Tier = {
 
 const tiers: Tier[] = [
   {
-    stage: "Tier 1 · Organisational Baseline — documented once, maintained",
+    stage: "Tier 1 · Organizational Baseline — documented once, maintained",
     question: "Where does our travel governance stand?",
     body: "The school’s standing position: policies, procedures, and evidence reviewed and mapped against the ISO 31031 framework, area by area, with strengths and gaps identified. Not a trip document — the foundation every trip stands on.",
     components:
       "Document review · framework mapping · per-area maturity scoring · evidence register · gap identification",
     receives:
-      "The Organisational Baseline Report — per-area scores, evidence found, gaps identified. Written to be read by a board in one sitting.",
+      "The Organizational Baseline Report — per-area scores, evidence found, gaps identified. Written to be read by a board in one sitting.",
     anchor: "/documents#baseline",
   },
   {
@@ -154,7 +154,7 @@ export default function FrameworkPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/marketing/diagrams/method-02-framework.svg"
-              alt="The three-tier framework: Tier 1 Organisational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations"
+              alt="The three-tier framework: Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations"
             />
           </figure>
         </div>
@@ -175,7 +175,7 @@ export default function FrameworkPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/marketing/diagrams/method-03-documents.svg"
-              alt="The documents each tier produces, from the Organisational Baseline Report through the trip document pack to the operational record"
+              alt="The documents each tier produces, from the Organizational Baseline Report through the trip document pack to the operational record"
             />
           </figure>
           <p className="bridge-line ui">
