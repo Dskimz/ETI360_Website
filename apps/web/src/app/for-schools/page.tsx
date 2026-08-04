@@ -1,17 +1,225 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DocEntry, DocMarquee, DocRow, TierBand } from "../../components/DocShowcase";
 
 export const metadata: Metadata = {
   title: "For Schools",
   description:
-    "How the ETI360 document library carries a school trip from the annual Organizational Baseline through the Tier 2 Trip Risk Review pack to Tier 3 Dynamic Risk Operations — shown as real rendered pages.",
+    "The three tiers of the ETI360 framework as a school lives them — the annual Organizational Baseline, the Tier 2 Trip Risk Review pack, and Tier 3 Dynamic Risk Operations — every document openable as a real PDF.",
   openGraph: {
     title: "For Schools — ETI360",
     description:
-      "How the ETI360 document library carries a school trip from the annual Organizational Baseline through the Tier 2 Trip Risk Review pack to Tier 3 Dynamic Risk Operations — shown as real rendered pages.",
+      "The three tiers of the ETI360 framework as a school lives them — the annual Organizational Baseline, the Tier 2 Trip Risk Review pack, and Tier 3 Dynamic Risk Operations — every document openable as a real PDF.",
     type: "website",
   },
 };
+
+const tier1: DocEntry[] = [
+  {
+    anchor: "baseline",
+    pdf: "/docs/organizational-baseline-evaluation.pdf",
+    stage: "T1 · Schools and trip providers",
+    name: "Organizational Baseline Evaluation",
+    reader: "Head · Board · Risk committee",
+    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, mapped against ISO 31031 and refreshed annually.",
+    image: {
+      src: "/email/spread-school-baseline.png",
+      alt: "Organizational Baseline Evaluation cover page for Harborview International School, with ten scored areas",
+    },
+  },
+];
+
+const tier2: DocEntry[] = [
+  {
+    anchor: "trip-overview",
+    pdf: "/docs/trip-overview.pdf",
+    stage: "T2 · The first read",
+    name: "Trip Overview",
+    reader: "Head · Approving committee",
+    desc: "The trip on one page: program, dates, group, and logistics at a glance, for the first read before the detail.",
+    image: {
+      src: "/email/page-overview.png",
+      alt: "Trip Overview one-pager for the Cherry Blossom Tokyo sample trip",
+    },
+  },
+  {
+    anchor: "parent-itinerary",
+    pdf: "/docs/parent-itinerary.pdf",
+    stage: "T2 · For families",
+    name: "Parent Itinerary",
+    reader: "Parents",
+    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know — with the full risk assessment staying school-side, deliberately.",
+    image: {
+      src: "/email/card-parent.png",
+      alt: "Parent Itinerary day pages with photographs and day-by-day plans",
+    },
+  },
+  {
+    anchor: "itinerary-report",
+    pdf: "/showcase/pdfs/02-1-calendar-view.pdf",
+    stage: "T2 · The operational record",
+    name: "Itinerary Report",
+    reader: "Coordinator · Trip staff",
+    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included.",
+    image: {
+      src: "/marketing/library/itinerary-report.png",
+      alt: "Itinerary Report calendar view: four trip days as hour-by-hour blocks covering activities, meals, transport, and accommodation",
+    },
+  },
+  {
+    anchor: "trip-discovery-map",
+    pdf: "/docs/trip-discovery-map.pdf",
+    stage: "T2 · The trip on one sheet",
+    name: "Trip Discovery Map",
+    reader: "Coordinator · Parents evening",
+    desc: "Stops, routes, and the shape of each day on one visual sheet, with the day-by-day companion page alongside.",
+    image: {
+      src: "/email/spread-map-1.jpg",
+      alt: "Trip Discovery Map for Cherry Blossom Tokyo: numbered stops, routes, and photo callouts on one sheet",
+    },
+    wide: true,
+  },
+  {
+    anchor: "route-intelligence",
+    pdf: "/docs/route-intelligence.pdf",
+    stage: "T2 · Outdoor activities",
+    name: "Route Intelligence",
+    reader: "Coordinator · Duty manager",
+    desc: "Distance, gradient, pacing, sun, terrain cover, and escape points, recorded for outdoor activities such as cycling, trekking, and river sports.",
+    image: {
+      src: "/email/spread-itoshima-2.png",
+      alt: "Route Intelligence page for the Big Itoshima ride: elevation profile, waypoint register, sun and terrain cover",
+    },
+    wide: true,
+  },
+  {
+    anchor: "weather",
+    pdf: "/showcase/pdfs/01-1-weather-brief-sydney.pdf",
+    stage: "T2 · Conditions",
+    name: "Weather Brief",
+    reader: "Coordinator · Trip staff",
+    desc: "Month-specific conditions for the destination and dates, built on fifteen years of historical data: temperature ranges, rain probability by day, daylight, and what the pattern means for the plan.",
+    image: {
+      src: "/showcase/pages/01-1-weather-brief-sydney/1.png",
+      alt: "Weather Brief for a March trip window: fifteen-year temperature overview, daily outlook, and planning notes",
+    },
+  },
+  {
+    anchor: "activity-risk-profile",
+    pdf: "/docs/activity-risk-profile.pdf",
+    stage: "T2 · Every activity scored",
+    name: "Activity Risk Profile",
+    reader: "Risk lead · Coordinator",
+    desc: "Every activity scored across seven dimensions, with the policy gate separating the activities that receive full RAMS coverage from those recorded at routine level.",
+    image: {
+      src: "/marketing/library/arp-summary.png",
+      alt: "Activity Risk Profile summary page with the seven-dimension radar chart and per-dimension score table",
+    },
+  },
+  {
+    anchor: "risk-assessment",
+    pdf: "/showcase/pdfs/04-rams-report.pdf",
+    stage: "T2 · The decision record",
+    name: "Trip Risk Assessment & RAMS",
+    reader: "Risk lead · Trip staff · Provider",
+    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one assessment per activity group.",
+    image: {
+      src: "/marketing/library/rams-report.png",
+      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
+    },
+  },
+  {
+    anchor: "leadership-deck",
+    pdf: "/docs/leadership-deck.pdf",
+    stage: "T2 · For the approval meeting",
+    name: "Leadership Deck",
+    reader: "Head presenting to board or parents",
+    desc: "The trip's evidence base as a short presentation, for the internal meeting where the trip is discussed and decided.",
+    image: {
+      src: "/marketing/library/leadership-deck.png",
+      alt: "Leadership Deck title slide: the trip in 30 seconds, with days, students, activities, destination, and dates",
+    },
+    wide: true,
+  },
+  {
+    anchor: "field-trip-report",
+    pdf: "/showcase/pdfs/05-field-trip-brief.pdf",
+    stage: "T2 · One-day trips",
+    name: "Field Trip Report",
+    reader: "Parents · Trip coordinator",
+    desc: "The same discipline for a single day out: departure and return times, a timed itinerary, the route and hospital mapped, and notes for families, on one page.",
+    image: {
+      src: "/email/page-fieldtrip.png",
+      alt: "Field Trip Report for a one-day trip: timed itinerary, route map, and hospital map on one page",
+    },
+  },
+  {
+    anchor: "trip-risk-register",
+    stage: "T2 · Before departure",
+    name: "Trip Risk Register",
+    reader: "Coordinator · Risk lead · Leadership",
+    desc: "A pre-trip view of the school's trips in one place: departures, seasonal risk signals, and RAMS status across the year, connected to each trip's documents.",
+    image: {
+      src: "/marketing/library/trip-risk-register.png",
+      alt: "The Trip Risk Register in the school portal: scheduled trips month by month with seasonal risk signals and RAMS status",
+    },
+    wide: true,
+    pageHref: "/documents/trip-risk-register",
+  },
+];
+
+const tier3: DocEntry[] = [
+  {
+    anchor: "teacher-guide",
+    pdf: "/docs/teacher-operational-guide.pdf",
+    stage: "T3 · In the leader's hand",
+    name: "Teacher Operational Guide",
+    reader: "Trip leader · Trip staff",
+    desc: "One page per day, built for the trip leader: timing, movements, contacts, and the day's attention points.",
+    image: {
+      src: "/email/page-teacher.png",
+      alt: "Teacher Operational Guide day page with the run sheet, movements, and contacts",
+    },
+  },
+  {
+    anchor: "duty-manager-dashboard",
+    stage: "T3 · During the trip",
+    name: "Duty Manager Dashboard",
+    reader: "The school's own duty manager",
+    desc: "The working view while groups travel — operated by your duty manager, never by us: trip context, location, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure.",
+    image: {
+      src: "/email/screen-dmd-v3.png",
+      alt: "The Duty Manager Dashboard with a trip open: trip context, location map with the routed hospital, check-ins, and messages",
+    },
+    wide: true,
+  },
+  {
+    anchor: "duty-manager-simulation",
+    stage: "T3 · Rehearsal",
+    name: "Duty Manager Simulation",
+    reader: "Duty manager · Trip leadership",
+    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    image: {
+      src: "/email/screen-simulation.png",
+      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
+    },
+    wide: true,
+  },
+  {
+    anchor: "post-trip-feedback-loop",
+    pdf: "/docs/post-trip-feedback-loop.pdf",
+    stage: "T3 · After the trip",
+    name: "Post-Trip Feedback Loop",
+    reader: "Head · Board · Next year's coordinator",
+    desc: "Staff observations recorded after each trip and carried into the next annual baseline, so the record the trip produced is the starting point the next review reads. The feedback system is in development.",
+    image: {
+      src: "/email/card-posttrip.png",
+      alt: "Front page of the Post-Trip Intelligence Report specimen",
+    },
+  },
+];
+
+const allDocs = [...tier1, ...tier2, ...tier3];
 
 export default function ForSchoolsPage() {
   return (
@@ -27,8 +235,8 @@ export default function ForSchoolsPage() {
           <h1>How a trip comes together.</h1>
           <p className="subtitle">
             From the annual baseline to the day the group returns, each stage of
-            a school trip has its own document. This page walks that arc in
-            order, with real pages from the library.
+            a school trip has its own document. This page walks the three tiers
+            in order &mdash; open any thumbnail to read the document itself.
           </p>
         </div>
       </section>
@@ -44,285 +252,51 @@ export default function ForSchoolsPage() {
             trip&rsquo;s own data, so that each one can be discussed with the
             evidence in front of it.
           </p>
-
           <p className="artifact-reader ui">
-            The pages shown are from a fully worked example for Harborview
+            The documents shown are from a fully worked example for Harborview
             International School. It is fictitious by design, so every page can
             be shown in full &mdash; no real school&rsquo;s or provider&rsquo;s
             documents are ever shown.
           </p>
+        </div>
 
-          <h2>Before any trip: the Organizational Baseline</h2>
-          <p>
-            Tier 1 &middot; Organizational Baseline is annual, not per-trip. The
-            same ten-area review is applied to your school and to each trip
-            provider who serves it &mdash; policies, roles, and standing
-            arrangements on both sides of every trip, mapped against ISO 31031
-            and refreshed each year. Every trip that follows starts from that
-            documented standing rather than from a blank page.
-          </p>
-          <div className="artifact-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/email/spread-school-baseline.png"
-              alt="Organizational Baseline Evaluation cover page for Harborview International School, with ten scored areas"
-            />
-          </div>
-          <p className="artifact-reader ui">
-            The Organizational Baseline Evaluation for Harborview International
-            School: ten scored areas, refreshed annually.
-          </p>
-          <p>
-            <Link href="/documents#baseline" className="cta-link ui">
-              The Organizational Baseline in the library &rarr;
-            </Link>
-          </p>
+        <TierBand
+          n={1}
+          eyebrow="Tier One · Annual"
+          name="Organizational Baseline"
+          desc="A documented review of organizational readiness, applied to schools and to trip providers: policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
+        />
+        <div className="doc-rows">
+          {tier1.map((e) => (
+            <DocRow key={e.anchor} e={e} eager />
+          ))}
+        </div>
 
-          <h2>A trip is proposed: the first read</h2>
-          <p>
-            Tier 2 &middot; Trip Risk Review begins when a specific trip is on
-            the table. The Trip Overview puts the program, dates, group, and
-            logistics on one page &mdash; the first read for a head or approving
-            committee, before anyone opens the detail.
-          </p>
-          <div className="artifact-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/email/page-overview.png"
-              alt="Trip Overview one-pager for the Cherry Blossom Tokyo sample trip"
-              loading="lazy"
-            />
-          </div>
-          <p className="artifact-reader ui">
-            The Trip Overview for the Cherry Blossom Tokyo sample trip: the
-            whole program on one page.
-          </p>
-          <p>
-            <Link href="/documents#trip-overview" className="cta-link ui">
-              The Trip Overview in the library &rarr;
-            </Link>
-          </p>
+        <TierBand
+          n={2}
+          eyebrow="Tier Two · Every trip"
+          name="Trip Risk Review"
+          desc="A consistent set of documents for the school's review and decision, from the trip overview to the information parents receive."
+        />
+        <div className="doc-rows">
+          {tier2.map((e) => (
+            <DocRow key={e.anchor} e={e} />
+          ))}
+        </div>
 
-          <h2>The journey, written for each reader</h2>
-          <p>
-            The same journey is then written for the people who will read it.
-            The Parent Itinerary tells families the days, meals, accommodation,
-            and what to know, in the school&rsquo;s own voice &mdash; with the
-            full risk assessment staying school-side, deliberately. The
-            Itinerary Report is the operational record: every activity,
-            transfer, meal, and overnight in hour-by-hour blocks, transit
-            included. And the Trip Discovery Map puts stops, routes, and the
-            shape of each day on one visual sheet, as useful at a parents
-            evening as on a planning desk.
-          </p>
-          <div className="artifact-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/email/spread-map-1.jpg"
-              alt="Trip Discovery Map for Cherry Blossom Tokyo: numbered stops, routes, and photo callouts on one sheet"
-              loading="lazy"
-            />
-          </div>
-          <p className="artifact-reader ui">
-            The Trip Discovery Map: numbered stops, routes, and photo callouts
-            on one sheet.
-          </p>
-          <p>
-            <Link href="/documents#parent-itinerary" className="cta-link ui">
-              Parent Itinerary &rarr;
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/documents#itinerary-report" className="cta-link ui">
-              Itinerary Report &rarr;
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/documents#trip-discovery-map" className="cta-link ui">
-              Trip Discovery Map &rarr;
-            </Link>
-          </p>
+        <TierBand
+          n={3}
+          eyebrow="Tier Three · During and after"
+          name="Dynamic Risk Operations"
+          desc="The working views for the days the group is away, and the record the trip carries home into next year's planning."
+        />
+        <div className="doc-rows">
+          {tier3.map((e) => (
+            <DocRow key={e.anchor} e={e} />
+          ))}
+        </div>
 
-          <h2>The conditions the trip will meet</h2>
-          <p>
-            Two documents record what the destination itself brings. Route
-            Intelligence covers outdoor activities such as cycling, trekking,
-            and river sports: distance, gradient, pacing, sun, terrain cover,
-            and escape points, recorded for each route. The Weather Brief sets
-            out month-specific conditions for the destination and dates, built
-            on fifteen years of historical data &mdash; temperature ranges, rain
-            probability by day, daylight, and what the pattern means for the
-            plan.
-          </p>
-          <div className="artifact-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/email/spread-itoshima-2.png"
-              alt="Route Intelligence page for the Big Itoshima ride: elevation profile, waypoint register, sun and terrain cover"
-              loading="lazy"
-            />
-          </div>
-          <p className="artifact-reader ui">
-            Route Intelligence for the Big Itoshima ride: elevation profile,
-            waypoint register, sun and terrain cover.
-          </p>
-          <p>
-            <Link href="/documents#route-intelligence" className="cta-link ui">
-              Route Intelligence &rarr;
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/documents#weather" className="cta-link ui">
-              Weather Brief &rarr;
-            </Link>
-          </p>
-
-          <h2>The risk work: scored, assessed, decided</h2>
-          <p>
-            The Activity Risk Profile scores every activity across seven
-            dimensions, and its policy gate separates the activities that
-            receive full RAMS coverage from those recorded at routine level. The
-            Trip Risk Assessment &amp; RAMS is the decision record that follows:
-            hazards, controls, who holds each control, and residual risk in
-            plain language, grouped the way the trip runs &mdash; one assessment
-            per activity group, prepared for your school&rsquo;s review and
-            decision.
-          </p>
-          <p>
-            For the meeting where the trip is discussed and decided, the
-            Leadership Deck compresses the trip&rsquo;s evidence base into a
-            short presentation.
-          </p>
-          <div className="artifact-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/marketing/library/rams-report.png"
-              alt="RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions"
-              loading="lazy"
-            />
-          </div>
-          <p className="artifact-reader ui">
-            The RAMS risk register page: named risks with inherent and residual
-            scores, controls, and emergency actions.
-          </p>
-          <p>
-            <Link
-              href="/documents#activity-risk-profile"
-              className="cta-link ui"
-            >
-              Activity Risk Profile &rarr;
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/documents#risk-assessment" className="cta-link ui">
-              Trip Risk Assessment &amp; RAMS &rarr;
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/documents#leadership-deck" className="cta-link ui">
-              Leadership Deck &rarr;
-            </Link>
-          </p>
-
-          <h2>One-day trips, the same discipline</h2>
-          <p>
-            Not every departure is a week abroad. The Field Trip Report applies
-            the same structure to a single day out: departure and return times,
-            a timed itinerary, the route and hospital mapped, and notes for
-            families, on one page.
-          </p>
-          <p>
-            <Link href="/documents#field-trip-report" className="cta-link ui">
-              The Field Trip Report in the library &rarr;
-            </Link>
-          </p>
-
-          <h2>The year in one register</h2>
-          <p>
-            Each trip&rsquo;s pack has a home. The Trip Risk Register holds your
-            school&rsquo;s year on one screen &mdash; every scheduled trip in
-            departure order, with seasonal risk signals and RAMS status visible
-            before any group leaves. It is the bridge between the standing Tier
-            1 review above it and each trip&rsquo;s Tier 2 pack below.
-          </p>
-          <div className="artifact-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/marketing/library/trip-risk-register.png"
-              alt="The Trip Risk Register in the school portal: scheduled trips month by month with seasonal risk signals and RAMS status"
-              loading="lazy"
-            />
-          </div>
-          <p className="artifact-reader ui">
-            The Trip Risk Register for Harborview International School: 31
-            scheduled trips across the academic year.
-          </p>
-          <p>
-            <Link href="/documents/trip-risk-register" className="cta-link ui">
-              Read the full overview &rarr;
-            </Link>
-          </p>
-
-          <h2>While the group travels: Dynamic Risk Operations</h2>
-          <p>
-            Tier 3 &middot; Dynamic Risk Operations is the trip in motion. The
-            Teacher Operational Guide puts one page per day in the trip
-            leader&rsquo;s hand: timing, movements, contacts, and the
-            day&rsquo;s attention points. The Duty Manager Dashboard is the
-            working view while groups travel &mdash; operated by your own duty
-            manager, never by us: trip context, location, check-ins, weather
-            flags, incidents, contacts, and the escalation path agreed before
-            departure.
-          </p>
-          <p>
-            Before the first departure, your duty manager rehearses the role in
-            the Duty Manager Simulation: a facilitated ninety-minute session
-            inside the dashboard, working through a realistic scenario based on
-            one of your school&rsquo;s own trips.
-          </p>
-          <div className="artifact-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/email/screen-dmd-v3.png"
-              alt="The Duty Manager Dashboard with a trip open: trip context, location map with the routed hospital, check-ins, and messages"
-              loading="lazy"
-            />
-          </div>
-          <p className="artifact-reader ui">
-            The Duty Manager Dashboard with a trip open: trip context, location
-            map with the routed hospital, check-ins, and messages.
-          </p>
-          <p>
-            <Link
-              href="/documents#duty-manager-dashboard"
-              className="cta-link ui"
-            >
-              Duty Manager Dashboard &rarr;
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/documents#teacher-guide" className="cta-link ui">
-              Teacher Operational Guide &rarr;
-            </Link>{" "}
-            &middot;{" "}
-            <Link
-              href="/documents#duty-manager-simulation"
-              className="cta-link ui"
-            >
-              Duty Manager Simulation &rarr;
-            </Link>
-          </p>
-
-          <h2>After the trip: what next year reads</h2>
-          <p>
-            Staff observations are recorded after each trip and carried into the
-            next annual baseline, so the record one trip produced is the
-            starting point the next review reads. The feedback system is in
-            development.
-          </p>
-          <p>
-            <Link
-              href="/documents#post-trip-feedback-loop"
-              className="cta-link ui"
-            >
-              The Post-Trip Feedback Loop in the library &rarr;
-            </Link>
-          </p>
-
+        <div className="container measure">
           <div className="boundary-callout">
             <h3>What ETI360 does not do</h3>
             <p>
@@ -332,11 +306,20 @@ export default function ForSchoolsPage() {
               specialist firms. Within trip governance, ETI360 prepares,
               structures, and documents the evidence. It does not approve trips,
               certify schools or providers, or substitute its judgment for that
-              of your governing bodies. The documents inform leadership discussion; the
-              decision stays with the school.
+              of your governing bodies. The documents inform leadership
+              discussion; the decision stays with the school.
             </p>
           </div>
         </div>
+
+        <div className="container measure">
+          <h2>The documents, end to end</h2>
+          <p>
+            Every document above, in one passing view &mdash; the strip pauses
+            when your cursor is over it, and any page opens in full.
+          </p>
+        </div>
+        <DocMarquee items={allDocs} label="The ETI360 documents for schools" />
       </section>
 
       <section className="cta-section">
@@ -350,11 +333,6 @@ export default function ForSchoolsPage() {
           <p>
             <Link href="/contact" className="cta-button ui">
               Get in touch
-            </Link>
-          </p>
-          <p>
-            <Link href="/documents" className="cta-link ui">
-              Browse the full library &rarr;
             </Link>
           </p>
         </div>

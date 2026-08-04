@@ -1379,3 +1379,74 @@ a.doc-row-thumb:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
   .doc-row-thumb, .doc-row-thumb.wide { flex-basis: auto; width: 200px; }
   .doc-row-thumb.wide { width: 100%; max-width: 330px; }
 }
+
+/* ── Email-style tier bands (colors mirror the campaign email) ── */
+.tier-band { padding: 34px 0; }
+.tier-band-1 { background: #0B2B47; }
+.tier-band-2 { background: #1D6A95; }
+.tier-band-3 { background: #3182AC; }
+.tier-band-inner {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.tier-band-numeral {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 700;
+}
+.tier-band-1 .tier-band-numeral, .tier-band-1 .tier-band-eyebrow { color: var(--gold); }
+.tier-band-2 .tier-band-numeral, .tier-band-2 .tier-band-eyebrow { color: #FFE2A0; }
+.tier-band-3 .tier-band-numeral, .tier-band-3 .tier-band-eyebrow { color: #ffffff; }
+.tier-band-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+.tier-band h2 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  letter-spacing: -0.015em;
+}
+.tier-band-desc { color: #E8F2F8; margin: 0; max-width: 600px; }
+.tier-band + .doc-rows { padding-top: 40px; }
+.doc-rows { padding-bottom: 8px; }
+
+/* ── Auto-scrolling document strip ── */
+.doc-marquee { overflow: hidden; padding: 10px 0 40px; }
+.doc-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: doc-marquee 75s linear infinite;
+}
+.doc-marquee:hover .doc-marquee-track,
+.doc-marquee:focus-within .doc-marquee-track { animation-play-state: paused; }
+.doc-marquee-half { display: flex; gap: 28px; padding-right: 28px; }
+.doc-marquee-item { display: block; flex: none; }
+.doc-marquee-item img {
+  display: block;
+  height: 190px;
+  width: auto;
+  border: 1px solid var(--hairline);
+  background: #fff;
+  transition: box-shadow 0.18s;
+}
+a.doc-marquee-item:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
+@keyframes doc-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .doc-marquee { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .doc-marquee-track { animation: none; width: auto; }
+  .doc-marquee-half[aria-hidden="true"] { display: none; }
+}
