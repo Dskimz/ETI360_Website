@@ -295,7 +295,7 @@ export default function HomePage() {
               <p className="label ui">For Schools</p>
               <h3>Governance and oversight.</h3>
               <p>
-                Trip approval shouldn&rsquo;t rest on one person&rsquo;s judgement or a
+                Trip approval shouldn&rsquo;t rest on one person&rsquo;s judgment or a
                 folder of inconsistent paperwork. ETI360 structures the evidence a
                 governing board, safeguarding lead, or insurer actually asks for &mdash;
                 organizational standing, trip-specific risk assessment, and a clear
