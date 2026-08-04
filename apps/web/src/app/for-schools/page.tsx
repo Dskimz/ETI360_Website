@@ -62,8 +62,8 @@ const tier2: DocEntry[] = [
     reader: "Coordinator · Trip staff",
     desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included.",
     image: {
-      src: "/marketing/library/itinerary-report.png",
-      alt: "Itinerary Report calendar view: four trip days as hour-by-hour blocks covering activities, meals, transport, and accommodation",
+      src: "/showcase/pages/02-1-calendar-view/2.png",
+      alt: "Itinerary Report calendar view, page two of the Cherry Blossom Tokyo sample trip: days five through eight as hour-by-hour blocks covering activities, meals, transport, and accommodation",
     },
   },
   {
