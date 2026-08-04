@@ -158,7 +158,7 @@ const tier2: DocEntry[] = [
     stage: "T2 · Before departure",
     name: "Trip Risk Register",
     reader: "Coordinator · Risk lead · Leadership",
-    desc: "A pre-trip view of the school's trips in one place: departures, seasonal risk signals, and RAMS status across the year, connected to each trip's documents.",
+    desc: "The home view of the school's TripRisk360 portal, where the documents live: every scheduled trip for the year in one register — departures, seasonal risk signals, and RAMS status, connected to each trip's documents.",
     image: {
       src: "/marketing/library/trip-risk-register.png",
       alt: "The Trip Risk Register in the school portal: scheduled trips month by month with seasonal risk signals and RAMS status",

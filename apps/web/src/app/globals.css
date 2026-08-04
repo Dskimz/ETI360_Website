@@ -796,6 +796,8 @@ section.tight { padding: 72px 0; }
   margin-bottom: 0;
   line-height: 1.65;
   font-size: var(--font-base);
+  /* .article-body p would otherwise force dark ink onto the navy card */
+  color: var(--muted-light);
 }
 
 /* ── About strip ── */
@@ -1374,8 +1376,11 @@ section.tight { padding: 72px 0; }
 a.doc-row-thumb:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
 .doc-row-body { min-width: 0; }
 .doc-row-body .artifact-reader { margin-top: 16px; }
+/* Thumbnails alternate sides down the page */
+.doc-rows .doc-row:nth-child(even) { flex-direction: row-reverse; }
 @media (max-width: 640px) {
-  .doc-row { flex-direction: column; gap: 18px; }
+  .doc-row,
+  .doc-rows .doc-row:nth-child(even) { flex-direction: column; gap: 18px; }
   .doc-row-thumb, .doc-row-thumb.wide { flex-basis: auto; width: 200px; }
   .doc-row-thumb.wide { width: 100%; max-width: 330px; }
 }
