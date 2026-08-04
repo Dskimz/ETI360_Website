@@ -1,5 +1,19 @@
 # Handoff — Website Rewrite: Documents Become the Focus
 
+> **STATUS 2026-08-04 (later the same day): the core mission below is DONE.** Dan
+> redirected the hub rebuild into the email session directly: `/documents` is now the
+> blog-style library (16 entries, real render each, all eleven email anchors live as
+> per-entry ids, plus `#tier2`/`#tier3`), the first explainer page ships at
+> `/documents/trip-risk-register`, Perspective is demoted (nav/footer/homepage/sitemap;
+> URLs still live), the site-wide American-English sweep landed, the root canonical bug
+> is fixed, and the real-org DSCT audit was REMOVED from the public showcase (real
+> assessments never appear on marketing surfaces). Remaining open lanes: the rest of the
+> explainer pages (`/documents/<slug>` — batches, tone gate each), the For Schools /
+> For Providers rework (spawned as its own task, needs Dan's input on the provider
+> proposal service), re-rendering the Weather Brief and calendar-view Itinerary under
+> HIS ids (both carry legacy HIA ids in pixels), and any homepage documents-prominence
+> pass. The context below remains accurate as background.
+
 **For:** a fresh Claude Code session opened in this repo
 (`/Users/danskimin/ETI360/documents/04 - ETI360 - Knowledge Base/04 - Website`)
 **From:** the schools-email build session, 2026-08-04

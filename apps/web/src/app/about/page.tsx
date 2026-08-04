@@ -30,13 +30,12 @@ export default function AboutPage() {
             requires.
           </p>
 
-          <h2>Positioning</h2>
+          <h2>What we cover</h2>
           <p>
-            The firm&apos;s positioning is specific. ETI360 covers trip governance &mdash;
-            risk assessment, provider vetting, compliance alignment, emergency documentation,
-            post-trip review. The firm does not cover safeguarding, on-campus health and
-            safety, or liability management; these are distinct disciplines served by other
-            specialist firms.
+            ETI360 works in trip governance &mdash; risk assessment, provider review,
+            emergency documentation, and post-trip review. We do not cover safeguarding,
+            on-campus health and safety, or liability management; those are distinct
+            disciplines served by other specialist firms.
           </p>
           <p>
             Within trip governance, the firm structures and supports work the school or provider

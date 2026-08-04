@@ -1,145 +1,243 @@
-/* DRAFT: pending eti360-tone-review gate before ship */
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "The Documents",
   description:
-    "What your school receives: the document library across Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages from a complete sample pack.",
+    "The ETI360 document library: what your school receives across Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages, shown in full.",
   openGraph: {
     title: "The Documents — ETI360",
     description:
-      "What your school receives: the document library across Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages from a complete sample pack.",
+      "The ETI360 document library: what your school receives across Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, and Tier 3 Dynamic Risk Operations — real rendered pages, shown in full.",
     type: "website",
   },
 };
 
-type Doc = {
+type Entry = {
+  anchor: string;
+  stage: string;
   name: string;
-  readBy: string;
+  reader: string;
   desc: string;
-  why: string;
-  image?: { src: string; alt: string };
+  image: { src: string; alt: string };
+  pageHref?: string;
 };
 
-const tier2Docs: Doc[] = [
+const tier1: Entry[] = [
   {
-    name: "Itinerary Report",
-    readBy: "Coordinator · Trip staff",
-    desc: "The provider’s itinerary rebuilt as a gap-free, hour-by-hour ledger — every activity, location, transfer, and supervision context accounted for, with what couldn’t be verified marked honestly.",
-    why: "Every other document stands on this one. Schools have never seen their trip written down this completely.",
+    anchor: "baseline",
+    stage: "Tier 1 · Annual",
+    name: "Organizational Baseline Evaluation",
+    reader: "Head · Board · Risk committee",
+    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, mapped against ISO 31031 and refreshed annually.",
     image: {
-      src: "/marketing/library/itinerary-report.png",
-      alt: "Itinerary Report — a rendered calendar-view page: four trip days as hour-by-hour blocks covering activities, meals, transport, free time, and accommodation",
-    },
-  },
-  {
-    name: "One-Page Program Summary",
-    readBy: "Head · Approving committee",
-    desc: "The whole trip on a single page: dates, destination, group, program shape, headline risk context.",
-    why: "The document that circulates. Committees forward one-pagers; they file binders.",
-  },
-  {
-    name: "Activity Risk Profile Summary",
-    readBy: "Risk lead · Coordinator",
-    desc: "Every activity scored across seven dimensions — physical intensity, supervision, location exposure, emergency access, skill required, environment, equipment — with the policy gate showing which activities warrant a RAMS and which sit within routine school procedure.",
-    why: "The sorting logic in the open. A museum visit and a mountain transfer are treated differently, and the school can see why.",
-    image: {
-      src: "/marketing/library/arp-summary.png",
-      alt: "Activity Risk Profile Summary — a rendered page with the seven-dimension radar chart and per-dimension score table across 105 scored activities",
-    },
-  },
-  {
-    name: "RAMS Report — one per activity group",
-    readBy: "Risk lead · Trip staff · Provider",
-    desc: "For the activities that warrant it: risk scenarios with the local specifics, inherent and residual scores, controls, and emergency actions — grouped the way the trip runs. A five-day trek is one assessment, not five forms.",
-    why: "The page a risk lead turns to first, and the clearest evidence of produced work versus filled-in templates.",
-    image: {
-      src: "/marketing/library/rams-report.png",
-      alt: "RAMS Report — a rendered risk register page: named risks with consequence, inherent and residual scores, controls and mitigations, and numbered emergency actions",
-    },
-  },
-  {
-    name: "Medical Access Brief",
-    readBy: "Duty manager · Trip staff · School nurse",
-    desc: "Emergency facilities mapped for where the group will actually be — travel times per activity location, entry procedures, capability context, with provider-named hospitals verified.",
-    why: "“How far is help” answered per location, per day — the question every parent evening surfaces and most trip files can’t answer.",
-  },
-  {
-    name: "Weather & Climate Briefing",
-    readBy: "Coordinator · Trip staff",
-    desc: "Month-specific conditions for the destination and dates — temperatures, rain, wind, seasonal patterns — feeding the risk work rather than sitting beside it.",
-    why: "It shows the risk work is seasonal, not generic. A March assessment that knows it’s March builds trust in everything else.",
-    image: {
-      src: "/marketing/library/weather-briefing.png",
-      alt: "Weather & Climate Briefing — a rendered page with the travel-window temperature ranges, precipitation table, sunrise and sunset times, and weather distribution for the trip dates",
-    },
-  },
-  {
-    name: "Route Intelligence Summary",
-    readBy: "Coordinator · Duty manager",
-    desc: "The trip’s movements examined: transfers, corridors, timing, the day-by-day geography of the group.",
-    why: "Trips go wrong between venues more often than at them. Schools recognize that truth the moment they see movement treated as seriously as activities.",
-  },
-  {
-    name: "Location Audit Pack / Site Briefs",
-    readBy: "Coordinator · Trip staff",
-    desc: "Venue-by-venue verification: what each location is, where it sits, what the provider declared, what could and couldn’t be confirmed.",
-    why: "“Verified” with receipts. The honest “could not be confirmed — raised with provider” entries do more for credibility than the confirmed ones.",
-    image: {
-      src: "/marketing/library/location-audit.png",
-      alt: "Location Audit Pack — a rendered verification page: the trip’s named hospitals with full local-language addresses and phone numbers",
-    },
-  },
-  {
-    name: "Provider Intelligence Brief",
-    readBy: "Head · Business manager",
-    desc: "What documentation the provider supplied and what it declares — insurance, accreditations, safety systems — presented as declared practice, reviewed but not certified.",
-    why: "A structured view of who the school is contracting with, worded with the discipline that protects everyone.",
-  },
-  {
-    name: "Parent Information Pack",
-    readBy: "Parents",
-    desc: "The trip explained for families: program, logistics, supervision approach, and how the trip is looked after — controls summarized in plain language. The full risk assessment stays school-side, deliberately.",
-    why: "Parent communication is where trip anxiety actually lives. A calm, complete pack lowers the temperature of every parent evening.",
-    image: {
-      src: "/marketing/library/parent-pack.png",
-      alt: "Parent Information Pack — a rendered plain-language page covering communication during the trip and emergency procedures for families",
+      src: "/email/spread-school-baseline.png",
+      alt: "Organizational Baseline Evaluation cover page for Harborview International School, with ten scored areas",
     },
   },
 ];
 
-const tier3Docs: Doc[] = [
+const tier2: Entry[] = [
   {
-    name: "Daily Briefing",
-    readBy: "Duty manager · Trip staff",
-    desc: "Each day’s operational card: the day’s movements, weather, contacts, and attention points.",
-    why: "It converts the pack from shelf document to working document — the day held on one card.",
+    anchor: "trip-overview",
+    stage: "Tier 2 · The first read",
+    name: "Trip Overview",
+    reader: "Head · Approving committee",
+    desc: "The trip on one page: program, dates, group, and logistics at a glance, for the first read before the detail.",
+    image: {
+      src: "/email/page-overview.png",
+      alt: "Trip Overview one-pager for the Cherry Blossom Tokyo sample trip",
+    },
   },
   {
-    name: "RESPOND Card",
-    readBy: "Everyone on the trip",
-    desc: "The emergency action card: triggers, first moves, contacts — written to be read under pressure.",
-    why: "The document schools hope never to use is the one they most want to have seen in advance.",
+    anchor: "parent-itinerary",
+    stage: "Tier 2 · For families",
+    name: "Parent Itinerary",
+    reader: "Parents",
+    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know — with the full risk assessment staying school-side, deliberately.",
+    image: {
+      src: "/email/card-parent.png",
+      alt: "Parent Itinerary day pages with photographs and day-by-day plans",
+    },
   },
   {
-    name: "Incident Report",
-    readBy: "Head · Risk committee · Insurers where relevant",
-    desc: "A formal record per incident: what happened, severity, response, communications — compiled from the live record, not reconstructed from memory.",
-    why: "Written at the time, not after. Anyone who has assembled an incident narrative three weeks late understands instantly.",
+    anchor: "itinerary-report",
+    stage: "Tier 2 · The operational record",
+    name: "Itinerary Report",
+    reader: "Coordinator · Trip staff",
+    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included.",
+    image: {
+      src: "/marketing/library/itinerary-report.png",
+      alt: "Itinerary Report calendar view: four trip days as hour-by-hour blocks covering activities, meals, transport, and accommodation",
+    },
   },
   {
-    name: "Post-Trip Report",
-    readBy: "Head · Board · Next year’s coordinator",
-    desc: "The trip’s operational record compiled: outcomes, check-ins, incidents and their handling, flags, the day-by-day account.",
-    why: "It closes the loop — the record the post-trip review reads, and the institutional memory the next trip starts from.",
+    anchor: "trip-discovery-map",
+    stage: "Tier 2 · The trip on one sheet",
+    name: "Trip Discovery Map",
+    reader: "Coordinator · Parents evening",
+    desc: "Stops, routes, and the shape of each day on one visual sheet, with the day-by-day companion page alongside.",
+    image: {
+      src: "/email/spread-map-1.jpg",
+      alt: "Trip Discovery Map for Cherry Blossom Tokyo: numbered stops, routes, and photo callouts on one sheet",
+    },
+  },
+  {
+    anchor: "route-intelligence",
+    stage: "Tier 2 · Outdoor activities",
+    name: "Route Intelligence",
+    reader: "Coordinator · Duty manager",
+    desc: "Distance, gradient, pacing, sun, terrain cover, and escape points, recorded for outdoor activities such as cycling, trekking, and river sports.",
+    image: {
+      src: "/email/spread-itoshima-2.png",
+      alt: "Route Intelligence page for the Big Itoshima ride: elevation profile, waypoint register, sun and terrain cover",
+    },
+  },
+  {
+    anchor: "weather",
+    stage: "Tier 2 · Conditions",
+    name: "Weather Brief",
+    reader: "Coordinator · Trip staff",
+    desc: "Month-specific conditions for the destination and dates, built on fifteen years of historical data: temperature ranges, rain probability by day, daylight, and what the pattern means for the plan.",
+    image: {
+      src: "/showcase/pages/01-1-weather-brief-sydney/1.png",
+      alt: "Weather Brief for a March trip window: fifteen-year temperature overview, daily outlook, and planning notes",
+    },
+  },
+  {
+    anchor: "activity-risk-profile",
+    stage: "Tier 2 · Every activity scored",
+    name: "Activity Risk Profile",
+    reader: "Risk lead · Coordinator",
+    desc: "Every activity scored across seven dimensions, with the policy gate separating the activities that receive full RAMS coverage from those recorded at routine level.",
+    image: {
+      src: "/marketing/library/arp-summary.png",
+      alt: "Activity Risk Profile summary page with the seven-dimension radar chart and per-dimension score table",
+    },
+  },
+  {
+    anchor: "risk-assessment",
+    stage: "Tier 2 · The decision record",
+    name: "Trip Risk Assessment & RAMS",
+    reader: "Risk lead · Trip staff · Provider",
+    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one assessment per activity group. The same structure is available as built-in RAMS forms your team can work in directly.",
+    image: {
+      src: "/marketing/library/rams-report.png",
+      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
+    },
+  },
+  {
+    anchor: "leadership-deck",
+    stage: "Tier 2 · For the approval meeting",
+    name: "Leadership Deck",
+    reader: "Head presenting to board or parents",
+    desc: "The trip's evidence base as a short presentation, for the internal meeting where the trip is discussed and decided.",
+    image: {
+      src: "/marketing/library/leadership-deck.png",
+      alt: "Leadership Deck title slide: the trip in 30 seconds, with days, students, activities, destination, and dates",
+    },
+  },
+  {
+    anchor: "field-trip-report",
+    stage: "Tier 2 · One-day trips",
+    name: "Field Trip Report",
+    reader: "Parents · Trip coordinator",
+    desc: "The same discipline for a single day out: departure and return times, a timed itinerary, the route and hospital mapped, and notes for families, on one page.",
+    image: {
+      src: "/email/page-fieldtrip.png",
+      alt: "Field Trip Report for a one-day trip: timed itinerary, route map, and hospital map on one page",
+    },
+  },
+  {
+    anchor: "trip-risk-register",
+    stage: "Tier 2 · Before departure",
+    name: "Trip Risk Register",
+    reader: "Coordinator · Risk lead · Leadership",
+    desc: "A pre-trip view of the school's trips in one place: departures, seasonal risk signals, and RAMS status across the year, connected to each trip's documents.",
+    image: {
+      src: "/marketing/library/trip-risk-register.png",
+      alt: "The Trip Risk Register in the school portal: scheduled trips month by month with seasonal risk signals and RAMS status",
+    },
+    pageHref: "/documents/trip-risk-register",
   },
 ];
+
+const tier3: Entry[] = [
+  {
+    anchor: "teacher-guide",
+    stage: "Tier 3 · In the leader's hand",
+    name: "Teacher Operational Guide",
+    reader: "Trip leader · Trip staff",
+    desc: "One page per day, built for the trip leader: timing, movements, contacts, and the day's attention points.",
+    image: {
+      src: "/email/page-teacher.png",
+      alt: "Teacher Operational Guide day page with the run sheet, movements, and contacts",
+    },
+  },
+  {
+    anchor: "duty-manager-dashboard",
+    stage: "Tier 3 · During the trip",
+    name: "Duty Manager Dashboard",
+    reader: "The school's own duty manager",
+    desc: "The working view while groups travel — operated by your duty manager, never by us: trip context, location, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure.",
+    image: {
+      src: "/email/screen-dmd-v3.png",
+      alt: "The Duty Manager Dashboard with a trip open: trip context, location map with the routed hospital, check-ins, and messages",
+    },
+  },
+  {
+    anchor: "duty-manager-simulation",
+    stage: "Tier 3 · Rehearsal",
+    name: "Duty Manager Simulation",
+    reader: "Duty manager · Trip leadership",
+    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    image: {
+      src: "/email/screen-simulation.png",
+      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
+    },
+  },
+  {
+    anchor: "post-trip-feedback-loop",
+    stage: "Tier 3 · After the trip",
+    name: "Post-Trip Feedback Loop",
+    reader: "Head · Board · Next year's coordinator",
+    desc: "Staff observations recorded after each trip and carried into the next annual baseline, so the record the trip produced is the starting point the next review reads. The feedback system is in development.",
+    image: {
+      src: "/email/card-posttrip.png",
+      alt: "Front page of the Post-Trip Intelligence Report specimen",
+    },
+  },
+];
+
+function EntryBlock({ e, eager }: { e: Entry; eager?: boolean }) {
+  return (
+    <section id={e.anchor} className="artifact-entry">
+      <div className="artifact-image">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={e.image.src} alt={e.image.alt} loading={eager ? undefined : "lazy"} />
+      </div>
+      <div className="artifact-copy container measure">
+        <p className="artifact-stage ui">{e.stage}</p>
+        <h2 className="artifact-decision">{e.name}</h2>
+        <p>{e.desc}</p>
+        <p className="artifact-reader ui">
+          <span className="artifact-reader-label">Read by</span> {e.reader}
+        </p>
+        {e.pageHref && (
+          <p>
+            <Link href={e.pageHref} className="cta-link ui">
+              Read the full overview &rarr;
+            </Link>
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
 
 export default function DocumentsPage() {
   return (
     <>
-      {/* DRAFT: pending eti360-tone-review gate before ship */}
       <section
         className="article-header"
         style={{
@@ -150,167 +248,72 @@ export default function DocumentsPage() {
           <p className="label label-light ui">The Documents</p>
           <h1>What your school receives.</h1>
           <p className="subtitle">
-            Every engagement produces documents &mdash; built from your trip&rsquo;s
-            own data, not templates. These are real pages from a complete sample pack,
-            produced for a fictitious school and a fictitious trip so we can show you
-            everything.
+            Every engagement produces documents, built from your trip&rsquo;s own
+            data. One entry per document, in the order the work happens &mdash;
+            each shown as a real rendered page.
           </p>
         </div>
       </section>
 
-      <section className="tight">
+      <article className="article-body">
         <div className="container measure">
           <p className="artifact-reader ui">
-            The documents shown are from a fully worked example for Harborview
-            International School &mdash; a fictitious school built on real venues and
-            real method, so every page can be shown in full.
+            The pages shown are from a fully worked example for Harborview
+            International School. It is fictitious by design, so every page can
+            be shown in full &mdash; no real school&rsquo;s or provider&rsquo;s
+            documents are ever shown.
           </p>
         </div>
-      </section>
 
-      <section id="baseline" className="about-strip tight">
-        <div className="container">
+        <div className="container" style={{ marginTop: "3em" }}>
           <h2 className="section-heading rule-gold">
             Tier 1 &middot; Organizational Baseline
           </h2>
-          <div className="force-tile">
-            <span className="force-num">Read by: Head · Board · Risk Committee</span>
-            <h3>Organizational Baseline Report</h3>
-            <p>
-              The school&rsquo;s travel governance reviewed against the ISO 31031
-              framework: per-area maturity scores, evidence found, gaps identified.
-            </p>
-            <p>
-              <em>Why it earns its place:</em> it answers the board&rsquo;s question
-              before it&rsquo;s asked, and turns &ldquo;we should look at our trip
-              governance&rdquo; into a scored, specific starting point.
-            </p>
-            <p>
-              <em>Sample render in preparation.</em>
-            </p>
-          </div>
         </div>
-      </section>
+        <div className="artifact-wall">
+          {tier1.map((e) => (
+            <EntryBlock key={e.anchor} e={e} eager />
+          ))}
+        </div>
 
-      <section id="tier2" className="documents-section">
-        <div className="container">
-          <p className="label ui">Every trip, on its merits, before departure</p>
+        <div className="container" id="tier2">
           <h2 className="section-heading rule-gold">
-            Tier 2 &middot; Trip Risk Review &mdash; the trip document pack
+            Tier 2 &middot; Trip Risk Review
           </h2>
-          <p className="section-lead">
-            The per-trip evidence base, produced from the trip&rsquo;s own data. The
-            approval conversation starts with evidence already organized.
-          </p>
-
-          <div className="doc-cards">
-            {tier2Docs.map((d) => (
-              <article key={d.name} className="doc-card doc-card-static">
-                {d.image && (
-                  <div className="doc-preview">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={d.image.src} alt={d.image.alt} loading="lazy" />
-                  </div>
-                )}
-                <div className="doc-body">
-                  <div className="doc-meta ui">Read by: {d.readBy}</div>
-                  <h3>{d.name}</h3>
-                  <p>{d.desc}</p>
-                  <p>
-                    <em>Why it earns its place:</em> {d.why}
-                  </p>
-                  {!d.image && (
-                    <p>
-                      <em>Sample render in preparation.</em>
-                    </p>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <article className="doc-card doc-card-static perspective-see-all">
-            <div className="artifact-image">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/marketing/library/leadership-deck.png"
-                alt="Leadership Briefing Deck — a rendered slide: the trip in 30 seconds, with days, students, activities, destination, dates, and risk groups identified"
-                loading="lazy"
-              />
-            </div>
-            <div className="doc-body">
-              <div className="doc-meta ui">
-                Read by: Head presenting to board or parents
-              </div>
-              <h3>Leadership Briefing Deck</h3>
-              <p>
-                The trip&rsquo;s evidence base as a short presentation &mdash; for the
-                internal meeting where the trip is actually approved.
-              </p>
-              <p>
-                <em>Why it earns its place:</em> we do the school&rsquo;s internal
-                selling for them. The coordinator who doesn&rsquo;t have to build a
-                deck is the coordinator who champions the renewal.
-              </p>
-            </div>
-          </article>
-
-          <p className="bridge-line ui">
-            <Link href="/showcase" className="cta-link ui">
-              See the full sample pack &rarr;
-            </Link>
-          </p>
         </div>
-      </section>
+        <div className="artifact-wall">
+          {tier2.map((e) => (
+            <EntryBlock key={e.anchor} e={e} />
+          ))}
+        </div>
 
-      <section id="tier3" className="about-strip tight">
-        <div className="container">
+        <div className="container" id="tier3">
           <h2 className="section-heading rule-gold">
             Tier 3 &middot; Dynamic Risk Operations
           </h2>
-          <p className="cycle-provenance">
-            Live operational evidence, on a surface the school&rsquo;s own duty manager
-            operates. When the trip ends, the record already exists.
-          </p>
+        </div>
+        <div className="artifact-wall">
+          {tier3.map((e) => (
+            <EntryBlock key={e.anchor} e={e} />
+          ))}
+        </div>
 
-          <div className="forces-grid">
-            {tier3Docs.map((d) => (
-              <div key={d.name} className="force-tile">
-                <span className="force-num">Read by: {d.readBy}</span>
-                <h3>{d.name}</h3>
-                <p>{d.desc}</p>
-                <p>
-                  <em>Why it earns its place:</em> {d.why}
-                </p>
-                <p>
-                  <em>Sample render in preparation.</em>
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="boundary-callout">
-            <h3>The Duty Manager Dashboard</h3>
-            <p>
-              The Tier 3 surface, not a document &mdash; operated by your duty manager,
-              never by us. The day&rsquo;s timeline, the map, weather and medical
-              access for where the group is, check-ins, messages, incidents.
-            </p>
-          </div>
-
-          <p className="bridge-line ui">
-            <Link href="/showcase" className="cta-link ui">
-              See the full sample pack &rarr;
-            </Link>
+        <div className="container measure">
+          <p>
+            Around these, each engagement carries its working documents &mdash;
+            daily briefings, incident records, site briefs, and provider
+            documentation reviews &mdash; inside the packs they belong to. Each
+            document can be prepared around the school&rsquo;s policies,
+            templates, parent audience, and brand.
           </p>
         </div>
-      </section>
+      </article>
 
       <section className="cta-section">
         <div className="container measure">
           <h2>Every page, shown in full.</h2>
           <p>
-            A complete worked example &mdash; every document above, walkable end to
+            A complete worked example &mdash; the sample pack, walkable end to
             end, produced the way yours would be.
           </p>
           <p>

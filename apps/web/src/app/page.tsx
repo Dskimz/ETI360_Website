@@ -326,38 +326,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="perspective">
-        <div className="container">
-          <p className="label label-light ui">Perspective</p>
-          <h2 className="section-heading rule-gold">
-            How we think about trip governance.
-          </h2>
-          <div className="perspective-grid">
-            <Link href="/perspective/trip-approval-is-not-trip-governance" className="article-card">
-              <span className="card-label ui">Governance</span>
-              <h3>Trip approval is not trip governance.</h3>
-              <p>
-                The signature satisfies the formal requirement. It does not, on its own,
-                structure the evidence the decision is supposed to rest on.
-              </p>
-              <span className="read-arrow ui">Read &rarr;</span>
-            </Link>
-            <Link href="/perspective/emergency-documentation-for-educational-travel" className="article-card">
-              <span className="card-label ui">Emergency Documentation</span>
-              <h3>Emergency documentation for educational travel.</h3>
-              <p>
-                The documents prepared before a trip are not the documents a trip leader
-                can use during one.
-              </p>
-              <span className="read-arrow ui">Read &rarr;</span>
-            </Link>
-          </div>
-          <p className="perspective-see-all">
-            <Link href="/perspective" className="cta-link ui">See all perspective &rarr;</Link>
-          </p>
-        </div>
-      </section>
-
       <section className="about-strip">
         <div className="container measure">
           <p className="label ui">About</p>
@@ -371,11 +339,10 @@ export default function HomePage() {
             requires.
           </p>
           <p>
-            The firm&apos;s positioning is specific. ETI360 covers trip governance &mdash;
-            risk assessment, provider vetting, compliance alignment, emergency documentation,
-            post-trip review. The firm does not cover safeguarding, on-campus health and
-            safety, or liability management; these are distinct disciplines served by other
-            specialist firms.
+            ETI360 works in trip governance &mdash; risk assessment, provider review,
+            emergency documentation, and post-trip review. We do not cover safeguarding,
+            on-campus health and safety, or liability management; those are distinct
+            disciplines served by other specialist firms.
           </p>
           <p>
             The work is delivered through structured engagements, but the output is not

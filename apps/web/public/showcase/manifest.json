@@ -1,34 +1,6 @@
 {
   "docs": [
     {
-      "slug": "00-iso31031-audit-dsct",
-      "title": "ISO 31031 Audit",
-      "variant": "DSCT",
-      "pdf": "pdfs/00-iso31031-audit-dsct.pdf",
-      "thumb": "thumbs/00-iso31031-audit-dsct.png",
-      "pageImages": [
-        "pages/00-iso31031-audit-dsct/1.png",
-        "pages/00-iso31031-audit-dsct/2.png",
-        "pages/00-iso31031-audit-dsct/3.png",
-        "pages/00-iso31031-audit-dsct/4.png",
-        "pages/00-iso31031-audit-dsct/5.png",
-        "pages/00-iso31031-audit-dsct/6.png",
-        "pages/00-iso31031-audit-dsct/7.png",
-        "pages/00-iso31031-audit-dsct/8.png",
-        "pages/00-iso31031-audit-dsct/9.png",
-        "pages/00-iso31031-audit-dsct/10.png",
-        "pages/00-iso31031-audit-dsct/11.png",
-        "pages/00-iso31031-audit-dsct/12.png",
-        "pages/00-iso31031-audit-dsct/13.png",
-        "pages/00-iso31031-audit-dsct/14.png"
-      ],
-      "width": 708,
-      "height": 1000,
-      "pages": 14,
-      "totalPages": 14,
-      "startPage": 1
-    },
-    {
       "slug": "01-trip-options",
       "title": "Trip Options",
       "variant": null,
@@ -256,7 +228,7 @@
     },
     {
       "slug": "liveops",
-      "title": "LiveOps Dashboard",
+      "title": "Duty Manager Dashboard",
       "variant": null,
       "pdf": "pdfs/liveops.pdf",
       "thumb": "thumbs/liveops.png",
