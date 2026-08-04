@@ -33,7 +33,7 @@ const tiers: Tier[] = [
       "Document review · framework mapping · per-area maturity scoring · evidence register · gap identification",
     receives:
       "The Organizational Baseline Report — per-area scores, evidence found, gaps identified. Written to be read by a board in one sitting.",
-    anchor: "/documents#baseline",
+    anchor: "/for-schools#baseline",
   },
   {
     stage: "Tier 2 · Trip Risk Review — every trip, on its merits, before departure",
@@ -43,7 +43,7 @@ const tiers: Tier[] = [
       "Itinerary normalization · location verification · Activity Risk Profiles (7 dimensions) · RAMS by activity group · medical access mapping · weather & climate briefing · route intelligence · provider documentation review",
     receives:
       "The trip document pack — produced from the trip’s own data. The approval conversation starts with evidence already organized.",
-    anchor: "/documents#tier2",
+    anchor: "/for-schools#tier2",
     image: {
       src: "/marketing/library/itinerary-report.png",
       alt: "Itinerary Report — a rendered calendar-view page from the sample pack: four days of the trip as hour-by-hour blocks covering activities, meals, transport, free time, and accommodation",
@@ -57,7 +57,7 @@ const tiers: Tier[] = [
       "Duty Manager Dashboard · daily briefings · RESPOND cards · check-in record · incident reports · post-trip report",
     receives:
       "The operational record — every check-in, incident, and communication compiled into the Post-Trip Report the school’s own review reads.",
-    anchor: "/documents#tier3",
+    anchor: "/for-schools#tier3",
   },
 ];
 
@@ -179,7 +179,7 @@ export default function FrameworkPage() {
             />
           </figure>
           <p className="bridge-line ui">
-            <Link href="/documents" className="cta-link ui">
+            <Link href="/for-schools" className="cta-link ui">
               See every document &rarr;
             </Link>{" "}
             &nbsp;&middot;&nbsp;{" "}
@@ -196,7 +196,7 @@ export default function FrameworkPage() {
             Three tiers. Three questions. Every answer on paper your board can read.
           </h2>
           <p>
-            <Link href="/documents" className="cta-button ui">
+            <Link href="/showcase" className="cta-button ui">
               See the sample pack
             </Link>
           </p>

@@ -2,7 +2,6 @@ import Link from 'next/link'
 
 const footerLinks = [
   {href: '/framework', label: 'Framework'},
-  {href: '/documents', label: 'Documents'},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
   {href: '/about', label: 'About'},

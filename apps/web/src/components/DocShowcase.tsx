@@ -22,14 +22,16 @@ export function TierBand({
   eyebrow,
   name,
   desc,
+  id,
 }: {
   n: 1 | 2 | 3;
   eyebrow: string;
   name: string;
   desc: string;
+  id?: string;
 }) {
   return (
-    <section className={`tier-band tier-band-${n}`}>
+    <section id={id} className={`tier-band tier-band-${n}`}>
       <div className="tier-band-inner">
         <span className="tier-band-numeral" aria-hidden="true">
           {n}

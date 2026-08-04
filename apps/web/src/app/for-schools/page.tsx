@@ -262,6 +262,7 @@ export default function ForSchoolsPage() {
 
         <TierBand
           n={1}
+          id="tier1"
           eyebrow="Tier One · Annual"
           name="Organizational Baseline"
           desc="A documented review of organizational readiness, applied to schools and to trip providers: policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
@@ -274,6 +275,7 @@ export default function ForSchoolsPage() {
 
         <TierBand
           n={2}
+          id="tier2"
           eyebrow="Tier Two · Every trip"
           name="Trip Risk Review"
           desc="A consistent set of documents for the school's review and decision, from the trip overview to the information parents receive."
@@ -286,6 +288,7 @@ export default function ForSchoolsPage() {
 
         <TierBand
           n={3}
+          id="tier3"
           eyebrow="Tier Three · During and after"
           name="Dynamic Risk Operations"
           desc="The working views for the days the group is away, and the record the trip carries home into next year's planning."
