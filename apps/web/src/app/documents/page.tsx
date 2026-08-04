@@ -20,12 +20,15 @@ type Entry = {
   reader: string;
   desc: string;
   image: { src: string; alt: string };
+  pdf?: string;
+  wide?: boolean;
   pageHref?: string;
 };
 
 const tier1: Entry[] = [
   {
     anchor: "baseline",
+    pdf: "/docs/organizational-baseline-evaluation.pdf",
     stage: "Tier 1 · Annual",
     name: "Organizational Baseline Evaluation",
     reader: "Head · Board · Risk committee",
@@ -40,6 +43,7 @@ const tier1: Entry[] = [
 const tier2: Entry[] = [
   {
     anchor: "trip-overview",
+    pdf: "/docs/trip-overview.pdf",
     stage: "Tier 2 · The first read",
     name: "Trip Overview",
     reader: "Head · Approving committee",
@@ -51,6 +55,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "parent-itinerary",
+    pdf: "/docs/parent-itinerary.pdf",
     stage: "Tier 2 · For families",
     name: "Parent Itinerary",
     reader: "Parents",
@@ -62,6 +67,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "itinerary-report",
+    pdf: "/showcase/pdfs/02-1-calendar-view.pdf",
     stage: "Tier 2 · The operational record",
     name: "Itinerary Report",
     reader: "Coordinator · Trip staff",
@@ -73,6 +79,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "trip-discovery-map",
+    pdf: "/docs/trip-discovery-map.pdf",
     stage: "Tier 2 · The trip on one sheet",
     name: "Trip Discovery Map",
     reader: "Coordinator · Parents evening",
@@ -84,6 +91,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "route-intelligence",
+    pdf: "/docs/route-intelligence.pdf",
     stage: "Tier 2 · Outdoor activities",
     name: "Route Intelligence",
     reader: "Coordinator · Duty manager",
@@ -95,6 +103,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "weather",
+    pdf: "/showcase/pdfs/01-1-weather-brief-sydney.pdf",
     stage: "Tier 2 · Conditions",
     name: "Weather Brief",
     reader: "Coordinator · Trip staff",
@@ -106,6 +115,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "activity-risk-profile",
+    pdf: "/docs/activity-risk-profile.pdf",
     stage: "Tier 2 · Every activity scored",
     name: "Activity Risk Profile",
     reader: "Risk lead · Coordinator",
@@ -117,6 +127,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "risk-assessment",
+    pdf: "/showcase/pdfs/04-rams-report.pdf",
     stage: "Tier 2 · The decision record",
     name: "Trip Risk Assessment & RAMS",
     reader: "Risk lead · Trip staff · Provider",
@@ -128,6 +139,8 @@ const tier2: Entry[] = [
   },
   {
     anchor: "leadership-deck",
+    wide: true,
+    pdf: "/docs/leadership-deck.pdf",
     stage: "Tier 2 · For the approval meeting",
     name: "Leadership Deck",
     reader: "Head presenting to board or parents",
@@ -139,6 +152,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "field-trip-report",
+    pdf: "/showcase/pdfs/05-field-trip-brief.pdf",
     stage: "Tier 2 · One-day trips",
     name: "Field Trip Report",
     reader: "Parents · Trip coordinator",
@@ -150,6 +164,7 @@ const tier2: Entry[] = [
   },
   {
     anchor: "trip-risk-register",
+    wide: true,
     stage: "Tier 2 · Before departure",
     name: "Trip Risk Register",
     reader: "Coordinator · Risk lead · Leadership",
@@ -165,6 +180,7 @@ const tier2: Entry[] = [
 const tier3: Entry[] = [
   {
     anchor: "teacher-guide",
+    pdf: "/docs/teacher-operational-guide.pdf",
     stage: "Tier 3 · In the leader's hand",
     name: "Teacher Operational Guide",
     reader: "Trip leader · Trip staff",
@@ -176,6 +192,7 @@ const tier3: Entry[] = [
   },
   {
     anchor: "duty-manager-dashboard",
+    wide: true,
     stage: "Tier 3 · During the trip",
     name: "Duty Manager Dashboard",
     reader: "The school's own duty manager",
@@ -187,6 +204,7 @@ const tier3: Entry[] = [
   },
   {
     anchor: "duty-manager-simulation",
+    wide: true,
     stage: "Tier 3 · Rehearsal",
     name: "Duty Manager Simulation",
     reader: "Duty manager · Trip leadership",
@@ -198,6 +216,7 @@ const tier3: Entry[] = [
   },
   {
     anchor: "post-trip-feedback-loop",
+    pdf: "/docs/post-trip-feedback-loop.pdf",
     stage: "Tier 3 · After the trip",
     name: "Post-Trip Feedback Loop",
     reader: "Head · Board · Next year's coordinator",
@@ -210,19 +229,38 @@ const tier3: Entry[] = [
 ];
 
 function EntryBlock({ e, eager }: { e: Entry; eager?: boolean }) {
+  const thumbClass = `doc-row-thumb${e.wide ? " wide" : ""}`;
+  const img = (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={e.image.src} alt={e.image.alt} loading={eager ? undefined : "lazy"} />
+  );
   return (
-    <section id={e.anchor} className="artifact-entry">
-      <div className="artifact-image">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={e.image.src} alt={e.image.alt} loading={eager ? undefined : "lazy"} />
-      </div>
-      <div className="artifact-copy container measure">
+    <section id={e.anchor} className="doc-row">
+      {e.pdf ? (
+        <a href={e.pdf} target="_blank" rel="noopener" className={thumbClass} aria-label={`Open the ${e.name} PDF`}>
+          {img}
+        </a>
+      ) : e.pageHref ? (
+        <Link href={e.pageHref} className={thumbClass} aria-label={`Read the ${e.name} overview`}>
+          {img}
+        </Link>
+      ) : (
+        <div className={thumbClass}>{img}</div>
+      )}
+      <div className="doc-row-body">
         <p className="artifact-stage ui">{e.stage}</p>
-        <h2 className="artifact-decision">{e.name}</h2>
+        <h3 style={{ marginTop: 0 }}>{e.name}</h3>
         <p>{e.desc}</p>
         <p className="artifact-reader ui">
           <span className="artifact-reader-label">Read by</span> {e.reader}
         </p>
+        {e.pdf && (
+          <p>
+            <a href={e.pdf} target="_blank" rel="noopener" className="cta-link ui">
+              Open the PDF &rarr;
+            </a>
+          </p>
+        )}
         {e.pageHref && (
           <p>
             <Link href={e.pageHref} className="cta-link ui">

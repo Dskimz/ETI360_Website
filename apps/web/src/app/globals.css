@@ -1347,3 +1347,35 @@ section.tight { padding: 72px 0; }
   padding-left: 0;
 }
 .article-body h2.section-heading.rule-gold { padding-left: 20px; }
+
+/* Compact document rows on the library page — email-scale thumbnails,
+   click-through to the rendered PDF. */
+.doc-row {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 860px;
+  margin: 0 auto 56px;
+  padding: 0 32px;
+}
+.doc-row-thumb {
+  flex: 0 0 220px;
+  display: block;
+}
+.doc-row-thumb.wide { flex-basis: 330px; }
+.doc-row-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  background: #fff;
+  transition: box-shadow 0.18s;
+}
+a.doc-row-thumb:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
+.doc-row-body { min-width: 0; }
+.doc-row-body .artifact-reader { margin-top: 16px; }
+@media (max-width: 640px) {
+  .doc-row { flex-direction: column; gap: 18px; }
+  .doc-row-thumb, .doc-row-thumb.wide { flex-basis: auto; width: 200px; }
+  .doc-row-thumb.wide { width: 100%; max-width: 330px; }
+}
