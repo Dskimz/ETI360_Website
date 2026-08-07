@@ -26,8 +26,7 @@ export default function AboutPage() {
         <div className="container measure">
           <p className="lead">
             ETI360 advises international schools and trip providers on structuring the
-            evidence, intelligence, and documentation that adequate trip governance now
-            requires.
+            evidence, intelligence, and documentation that trip governance rests on.
           </p>
 
           <h2>What we cover</h2>

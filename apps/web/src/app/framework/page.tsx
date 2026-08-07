@@ -162,12 +162,12 @@ export default function FrameworkPage() {
 
       <section className="cycle-section tight">
         <div className="container">
-          <p className="label ui">The cycle</p>
+          <p className="label ui">Across the tiers</p>
           <h2 className="section-heading rule-gold">The framework in motion.</h2>
           <p className="cycle-provenance">
-            A single trip travels a governance cycle across the tiers: proposed against
-            the standing baseline, assessed and documented before departure, run on the
-            live surface, closed into the record. Each stage produces its documents
+            A single trip travels the tiers in order: proposed against the standing
+            baseline, assessed and documented before departure, run on the live
+            surface, closed into the record. Each tier produces its documents
             &mdash; which is why the clearest way to understand the framework is to
             read what it produces.
           </p>

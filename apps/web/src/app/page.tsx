@@ -1,107 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DocMarquee, DocRow, TierBand } from "../components/DocShowcase";
+import { schoolDocs } from "../components/docLibrary";
 
 export const metadata: Metadata = {
   title: "ETI360 — Decision support for school trips",
   description:
-    "The governance cycle produces eight structured artifacts. This page shows what each stage delivers.",
+    "The 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
   openGraph: {
     title: "ETI360 — Decision support for school trips",
     description:
-      "The governance cycle produces eight structured artifacts. This page shows what each stage delivers.",
+      "The 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
     type: "website",
   },
 };
 
-const stages = [
-  {
-    num: "Stage 01",
-    name: "Selection",
-    desc: "Shortlist of trips and providers against the school's own selection criteria.",
-    doc: "Trip Options Brief",
-  },
-  {
-    num: "Stage 02",
-    name: "Audit",
-    desc: "Provider assessed against ISO 31031 or another framework the school holds to.",
-    doc: "ISO 31031 Audit",
-  },
-  {
-    num: "Stage 03",
-    name: "Lock",
-    desc: "Itinerary confirmed as the single source of truth the trip is built against.",
-    doc: "Itinerary Confirmation",
-  },
-  {
-    num: "Stage 04",
-    name: "Agree",
-    desc: "Provider agreement structured around the operational reality of this specific trip.",
-    doc: "Provider Agreement",
-  },
-  {
-    num: "Stage 05",
-    name: "Assess",
-    desc: "Activity Risk Profile surfaces the activities that will need closer control.",
-    doc: "Activity Risk Profile",
-  },
-  {
-    num: "Stage 06",
-    name: "Control",
-    desc: "RAMS built with school and provider together around the identified risks.",
-    doc: "RAMS",
-  },
-  {
-    num: "Stage 07",
-    name: "Run",
-    desc: "Operational intelligence supports leaders during the trip itself \u2014 location, route and weather.",
-    docLines: ["Location Audit", "Route Audit", "Weather Brief"],
-  },
-  {
-    num: "Stage 08",
-    name: "Review",
-    desc: "Post-trip data returns to the system and informs the next cycle.",
-    doc: "Post-Trip Review",
-  },
-];
-
-const documents = [
-  {
-    slug: "trip-options-brief",
-    meta: "Stage 01 \u00B7 Selection",
-    title: "Trip Options Brief",
-    desc: "Should this trip go ahead? A structured shortlist against the school's selection criteria.",
-  },
-  {
-    slug: "iso-31031-audit",
-    meta: "Stage 02 \u00B7 Audit",
-    title: "ISO 31031 Audit",
-    desc: "Does the provider meet the standards the school holds to itself?",
-  },
-  {
-    slug: "itinerary-confirmation",
-    meta: "Stage 03 \u00B7 Lock",
-    title: "Itinerary Confirmation",
-    desc: "Is this the itinerary every party is working from, without drift?",
-  },
-  {
-    slug: "location-audit",
-    meta: "Stage 07 \u00B7 Run",
-    title: "Location Audit",
-    desc: "Where are students at every point during the trip?",
-  },
-  {
-    slug: "route-audit",
-    meta: "Stage 07 \u00B7 Run",
-    title: "Route Audit",
-    desc: "What terrain, hospitals and hazards does the stated route actually involve?",
-  },
-  {
-    slug: "weather-brief",
-    meta: "Stage 07 \u00B7 Run",
-    title: "Weather Brief",
-    desc: "What conditions should trip leaders prepare for, day by day?",
-  },
-];
+const featured = ["route-intelligence", "risk-assessment", "duty-manager-dashboard"]
+  .map((anchor) => schoolDocs.find((d) => d.anchor === anchor)!)
+  .map((d) => ({ ...d, anchor: `featured-${d.anchor}` }));
 
 export default function HomePage() {
   return (
@@ -118,167 +34,82 @@ export default function HomePage() {
             <em>structured evidence.</em>
           </h1>
           <p className="subhead">
-            Most trip risk isn&rsquo;t hidden &mdash; it&rsquo;s just never
-            structured enough to act on.
+            Most trip risk is already visible. Structure turns it into evidence
+            a leadership team can review and act on.
           </p>
           <div className="hero-actions">
-            <a className="cta-button ui" href="#cycle">See the cycle</a>
-            <a className="cta-link ui" href="#documents">See the documents &rarr;</a>
+            <a className="cta-button ui" href="#framework">See the framework</a>
+            <a className="cta-link ui" href="#work">See the documents &rarr;</a>
           </div>
         </div>
       </section>
 
-      <section id="cycle" className="cycle-section">
+      <section id="framework" className="about-strip">
         <div className="container">
-          <h2 className="section-heading section-heading-lg rule-gold">The cycle.</h2>
-          <p className="section-lead">Eight stages. One sequence. Every trip.</p>
-
-          <p className="cycle-provenance">
-            Beneath the cycle sits ETI360&rsquo;s three-tier risk framework &mdash; built
-            from field experience and aligned to recognised international standards,
-            ISO 31031 among them. Standing organizational evidence, per-trip evidence,
-            and live field evidence compound in that order. The eight stages below are
-            the framework in operation.
-          </p>
-          <figure className="framework-figure">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/marketing/diagrams/method-00-three-tier-framework.svg"
-              alt="The three-tier risk framework: Tier 1 Organizational Baseline (annual), Tier 2 Trip Risk Review (before departure), Tier 3 Dynamic Risk Operations (during travel) — evidence compounds tier by tier"
-            />
-          </figure>
-
-          <div className="cycle-grid">
-            {stages.map((s) => (
-              <article key={s.num} className="stage">
-                <div className="stage-num ui">{s.num}</div>
-                <h3>{s.name}</h3>
-                <p>{s.desc}</p>
-                <span className={"stage-doc ui" + (s.docLines ? " multi" : "")}>
-                  {s.docLines
-                    ? s.docLines.map((line, i) => (
-                        <span key={i}>
-                          {line}
-                          {i < (s.docLines as string[]).length - 1 && <br />}
-                        </span>
-                      ))
-                    : s.doc}
-                </span>
-              </article>
-            ))}
-          </div>
-
-          <p className="bridge-line">
-            One program carries the cycle. Here is how you engage it.
-          </p>
-        </div>
-      </section>
-
-      <section id="engage" className="engage-section">
-        <div className="container">
-          <p className="label ui">How you engage</p>
-          <h2 className="section-heading section-heading-lg rule-gold">One program. Three scopes.</h2>
+          <p className="label ui">The framework</p>
+          <h2 className="section-heading section-heading-lg rule-gold">
+            The 3-Tier Risk Framework.
+          </h2>
           <p className="section-lead">
-            Educational travel risk rarely comes from one bad decision &mdash; it comes
-            from the gap between what a school approved and what actually happens on the
-            ground. ETI360 structures evidence across the full lifecycle of a trip, not
-            at a single checkpoint.
+            Built from field experience and aligned to international standards,
+            ISO 31031 among them. Standing organizational evidence, per-trip
+            evidence, and live field evidence compound in that order: document
+            the organization annually, document each trip, equip the field.
           </p>
-          <p className="binding-line">
-            Prove the organization once, prove each trip, equip the field.
-          </p>
-
-          <div className="scope-cards">
-            <article className="scope-card">
-              <h3>Tier 1 &mdash; Organizational Baseline</h3>
-              <p className="scope-cadence">
-                Annual &mdash; established once, carried across every trip that follows.
-              </p>
-              <p>
-                The Organizational Baseline structures the evidence that a school&rsquo;s or
-                provider&rsquo;s governing framework &mdash; policy, competence, escalation,
-                prior incident learning &mdash; is documented and ready for scrutiny before
-                any individual trip is considered. The outcome is a standing evidence base
-                a board, insurer, or regulator can review without re-litigating it trip by
-                trip. It is set once a year and referenced continually, not repeated.
-              </p>
-              <p className="scope-stages ui">Carries the Selection and Audit stages of the cycle.</p>
-            </article>
-
-            <article className="scope-card">
-              <h3>Tier 2 &mdash; Trip Risk Review</h3>
-              <p className="scope-cadence">
-                Per trip &mdash; the primary point of engagement.
-              </p>
-              <p>
-                The Trip Risk Review is where governance meets a specific itinerary: a named
-                destination, a named group, named dates. It structures the risk evidence,
-                the sign-off record, and the control measures a school needs to approve
-                that trip on its own merits. This is the scope most schools and providers
-                engage ETI360 for, trip by trip, throughout the season.
-              </p>
-              <p className="scope-stages ui">Carries the Lock, Agree, Assess, and Control stages of the cycle.</p>
-            </article>
-
-            <article className="scope-card">
-              <h3>Tier 3 &mdash; Dynamic Risk Operations</h3>
-              <p className="scope-cadence">
-                Per trip &mdash; for operators equipping leaders on the ground.
-              </p>
-              <p>
-                Dynamic Risk Operations extends the approved trip record into the hands of the
-                people running it: duty-of-care documentation, briefing materials, and
-                live-trip reference built from the same evidence base, not a separate one.
-                It gives field staff the documentation to operate in line with what was
-                assessed and agreed.
-              </p>
-              <p className="scope-stages ui">Carries the Run and Review stages of the cycle.</p>
-            </article>
-          </div>
-
-          <p className="bridge-line">
-            One program, three compounding scopes. Each produces structured documents
-            &mdash; the six below are representative.
+        </div>
+      </section>
+      <TierBand
+        n={1}
+        eyebrow="Tier One · Annual"
+        name="Organizational Baseline"
+        desc="A documented review of organizational readiness, applied to schools and to trip providers: policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
+      />
+      <TierBand
+        n={2}
+        eyebrow="Tier Two · Every trip"
+        name="Trip Risk Review"
+        desc="A consistent set of documents for the school's review and decision, from the trip overview to the information parents receive."
+      />
+      <TierBand
+        n={3}
+        eyebrow="Tier Three · During and after"
+        name="Dynamic Risk Operations"
+        desc="The working views for the days the group is away, and the record the trip carries home into next year's planning."
+      />
+      <section className="about-strip tight">
+        <div className="container">
+          <p className="bridge-line ui">
+            <Link href="/framework" className="cta-link ui">
+              How the framework works &rarr;
+            </Link>
           </p>
         </div>
       </section>
 
-      <section id="documents" className="documents-section">
+      <section id="work" className="about-strip">
         <div className="container">
-          <p className="label ui">Documents</p>
-          <h2 className="section-heading section-heading-lg rule-gold">The artifacts.</h2>
+          <p className="label ui">The work</p>
+          <h2 className="section-heading section-heading-lg rule-gold">
+            The documents.
+          </h2>
           <p className="section-lead">
-            Real rendered pages, shown at the standard we produce them.
+            Real rendered pages from our reference school, Harborview
+            International School &mdash; fictitious by design, so every page can
+            be shown in full. The documents open as complete PDFs; the live
+            operations screens are shown as working views.
           </p>
-
-          <div className="doc-cards">
-            {documents.map((d) => (
-              <article key={d.slug} className="doc-card doc-card-static">
-                <div className="doc-preview">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/marketing/previews/${d.slug}.png`}
-                    alt={`${d.title} \u2014 sample first page`}
-                    loading="lazy"
-                  />
-                </div>
-                <div className="doc-body">
-                  <div className="doc-meta ui">{d.meta}</div>
-                  <h3>{d.title}</h3>
-                  <p>{d.desc}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="docs-contact-cta">
-            <a className="cta-button ui" href="mailto:danskimin@eti360.com?subject=ETI360%20%E2%80%94%20Learn%20more">
-              Contact us to learn more
-            </a>
-          </div>
-
-          <p className="bridge-line">
-            The work is structured around two audiences. See how the cycle fits each.
+        </div>
+        <div className="doc-rows">
+          {featured.map((e, i) => (
+            <DocRow key={e.anchor} e={e} eager={i === 0} />
+          ))}
+        </div>
+        <DocMarquee items={schoolDocs} label="The ETI360 document library" />
+        <div className="container">
+          <p className="bridge-line ui">
+            <Link href="/for-schools#tier1" className="cta-link ui">
+              The full library, tier by tier &rarr;
+            </Link>
           </p>
         </div>
       </section>
@@ -287,20 +118,20 @@ export default function HomePage() {
         <div className="container">
           <p className="label ui">Who we work with</p>
           <h2 className="section-heading rule-gold">
-            The same cycle. Different operational realities.
+            The same framework. Two operational realities.
           </h2>
 
           <div className="audience-cards">
             <article className="audience-card">
-              <p className="label ui">For Schools</p>
+              <p className="label ui">For schools</p>
               <h3>Governance and oversight.</h3>
               <p>
-                Trip approval shouldn&rsquo;t rest on one person&rsquo;s judgment or a
-                folder of inconsistent paperwork. ETI360 structures the evidence a
-                governing board, safeguarding lead, or insurer actually asks for &mdash;
-                organizational standing, trip-specific risk assessment, and a clear
-                sign-off record. It replaces ad hoc trip files with a governance record
-                built the same way, every time.
+                When a governing board, safeguarding lead, or insurer reviews a
+                trip, they ask for specific evidence: organizational standing, a
+                trip-specific risk assessment, and a clear sign-off record.
+                ETI360 structures that evidence into a governance record built
+                the same way, every time &mdash; prepared for the school&rsquo;s
+                review and decision.
               </p>
               <Link href="/for-schools" className="cta-link ui">
                 How we engage with schools &rarr;
@@ -308,15 +139,15 @@ export default function HomePage() {
             </article>
 
             <article className="audience-card">
-              <p className="label ui">For Providers</p>
+              <p className="label ui">For providers</p>
               <h3>Proposal and operations.</h3>
               <p>
-                Schools increasingly ask providers to demonstrate governance before
-                they&rsquo;ll book &mdash; and assembling that evidence trip by trip, by
-                hand, is slow and inconsistent. ETI360 gives providers a structured way to
-                produce the same organizational and trip evidence schools are asking for,
-                to a consistent standard every time. The evidence pack you already assemble
-                by hand &mdash; structured, produced, and rendered for you.
+                Schools ask providers to demonstrate governance before they book.
+                ETI360 gives providers a structured way to produce the same
+                organizational and trip evidence schools review, to a consistent
+                standard for every departure &mdash; the evidence pack a school
+                expects, produced through a documented process and ready for
+                their review.
               </p>
               <Link href="/for-providers" className="cta-link ui">
                 How we engage with providers &rarr;
@@ -335,8 +166,7 @@ export default function HomePage() {
           <p>
             ETI360 is an advisory firm working in the governance of educational travel.
             The firm advises international schools and trip providers on structuring the
-            evidence, intelligence, and documentation that adequate trip governance now
-            requires.
+            evidence, intelligence, and documentation that trip governance rests on.
           </p>
           <p>
             ETI360 works in trip governance &mdash; risk assessment, provider review,
@@ -347,7 +177,7 @@ export default function HomePage() {
           <p>
             The work is delivered through structured engagements, but the output is not
             advice alone. It is documented, defensible evidence that supports decisions
-            across the full governance cycle.
+            across the trip&rsquo;s full life.
           </p>
           <p>
             <Link href="/about" className="cta-link ui">More about ETI360 &rarr;</Link>
@@ -359,8 +189,8 @@ export default function HomePage() {
         <div className="container measure">
           <h2>Arrange a briefing.</h2>
           <p>
-            A structured conversation about your current trip governance and where the
-            cycle can support it. We respond within two business days.
+            A structured conversation about your current trip governance and where
+            the documents can support it. We respond within two business days.
           </p>
           <Link href="/contact" className="cta-button ui">Get in touch</Link>
         </div>

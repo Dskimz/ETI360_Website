@@ -158,8 +158,8 @@ export default function TripApprovalPage() {
             </div>
 
             <p className="cycle-caption">
-              Each macro-stage breaks down further into the operational stages shown on the{" "}
-              <Link href="/#cycle">home page cycle grid</Link>. The approval moment still happens
+              Each macro-stage breaks down further on the{" "}
+              <Link href="/framework">3-Tier Risk Framework page</Link>. The approval moment still happens
               &mdash; it now sits inside a cycle that has already produced the evidence it is
               supposed to certify.
             </p>
