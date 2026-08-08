@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     "The home view of a school's TripRisk360 portal: every scheduled trip for the year in one register, with seasonal risk signals and RAMS status ahead of each departure.",
   alternates: { canonical: "/documents/trip-risk-register" },
   openGraph: {
+    images: ["/marketing/og-default.png"],
     title: "Trip Risk Register — ETI360",
     description:
       "The home view of a school's TripRisk360 portal: every scheduled trip for the year in one register, with seasonal risk signals and RAMS status ahead of each departure.",

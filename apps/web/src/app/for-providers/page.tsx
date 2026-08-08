@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     "For trip providers: the documents schools ask for — organizational standing, trip due diligence, and the pack families read — prepared once from your program's data, then adjusted for each school, trip, and set of dates.",
   alternates: { canonical: "/for-providers" },
   openGraph: {
+    images: ["/marketing/og-default.png"],
     title: "For Providers — ETI360",
     description:
       "For trip providers: the documents schools ask for — organizational standing, trip due diligence, and the pack families read — prepared once from your program's data, then adjusted for each school, trip, and set of dates.",

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "The three tiers of the ETI360 framework as a school lives them — the annual Organizational Baseline, the Tier 2 Trip Risk Review pack, and Tier 3 Dynamic Risk Operations — every document openable as a real PDF.",
   alternates: { canonical: "/for-schools" },
   openGraph: {
+    images: ["/marketing/og-default.png"],
     title: "For Schools — ETI360",
     description:
       "The three tiers of the ETI360 framework as a school lives them — the annual Organizational Baseline, the Tier 2 Trip Risk Review pack, and Tier 3 Dynamic Risk Operations — every document openable as a real PDF.",

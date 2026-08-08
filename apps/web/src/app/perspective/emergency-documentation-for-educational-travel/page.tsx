@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "The documents prepared before a trip are not the documents a trip leader can use during one. A three-tier architecture for emergency documentation.",
   openGraph: {
+    images: ["/marketing/og-default.png"],
     title: "Emergency documentation for educational travel",
     description:
       "The documents prepared before a trip are not the documents a trip leader can use during one.",
