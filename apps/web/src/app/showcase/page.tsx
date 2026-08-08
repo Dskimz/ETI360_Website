@@ -54,6 +54,11 @@ export default function ShowcasePage() {
         <div className="tag">Document showcase</div>
       </header>
 
+      <p className="showcase-note">
+        Example work for an example school &mdash; Harborview International School
+        &mdash; so every page can be shown in full.
+      </p>
+
       {docs === null ? (
         <div className="loading">Loading…</div>
       ) : docs.length === 0 ? (

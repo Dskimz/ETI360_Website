@@ -13,12 +13,12 @@
 
   <rect x="0" y="0" width="800" height="464" fill="#fafbfc"/>
   <rect x="0" y="0" width="800" height="4" fill="#d4a72c"/>
-  <text x="24" y="28" font-family="'Source Serif 4', Georgia, serif" font-size="18" font-weight="700" fill="#0d3558">One programme. Three tiers.</text>
+  <text x="24" y="28" font-family="'Source Serif 4', Georgia, serif" font-size="18" font-weight="700" fill="#0d3558">One program. Three tiers.</text>
   <text x="24" y="46" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">The ETI360 Risk Framework carrying the eight-stage governance cycle</text>
 
-  <!-- Band 1: Tier 1 — Organisational Baseline -->
+  <!-- Band 1: Tier 1 — Organizational Baseline -->
   <rect x="24" y="84" width="752" height="96" rx="2" fill="#0d3558"/>
-  <text x="44" y="122" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Tier 1 &#8212; Organisational Baseline</text>
+  <text x="44" y="122" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Tier 1 &#8212; Organizational Baseline</text>
   <text x="44" y="146" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#ffffff" opacity="0.75">Annual &#8212; standing evidence, referenced by every trip rather than repeated</text>
   <rect x="708" y="120" width="56" height="24" rx="2" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="1"/>
   <text x="736" y="132" text-anchor="middle" dominant-baseline="central" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#ffffff">Audit</text>
@@ -48,7 +48,7 @@
   <text x="738" y="356" text-anchor="middle" dominant-baseline="central" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#ffffff">Review</text>
 
   <!-- Binding sentence -->
-  <text x="24" y="440" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#0d3558">Prove the organisation once, prove each trip, equip the field.</text>
+  <text x="24" y="440" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#0d3558">Prove the organization once, prove each trip, equip the field.</text>
 
   <text x="792" y="458" text-anchor="end" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="10" fill="#4c5968" opacity="0.5">ETI360</text>
 </svg>

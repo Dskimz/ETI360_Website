@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/site";
 
 const TITLE = "ETI360 — Decision support for school trips";
 const DESCRIPTION =
-  "ETI360 produces the structured intelligence each stage of the trip governance cycle requires — for international schools and trip providers.";
+  "ETI360 structures the evidence behind school-trip decisions — the 3-Tier Risk Framework and the documents it produces, for international schools and trip providers.";
 
 export const metadata: Metadata = {
   // metadataBase resolves every relative OG and canonical URL in the app.
@@ -23,8 +23,9 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: "/",
     locale: "en",
+    images: [{ url: "/marketing/og-default.png", width: 1200, height: 630, alt: "ETI360 — Educational Travel Insights" }],
   },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/marketing/og-default.png"] },
 };
 
 // GA4 loads only when the measurement ID is set, so local and preview builds
@@ -45,8 +46,9 @@ export default function RootLayout({
         />
       </head>
       <body className="dark-bg">
+        <a className="skip-link" href="#main">Skip to main content</a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <SiteFooter />
         {/* Vercel Analytics is cookieless and edge-measured, so it survives the
             ad blockers and school networks that eat a large share of GA events.

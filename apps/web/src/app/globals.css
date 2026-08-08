@@ -744,13 +744,13 @@ section.tight { padding: 72px 0; }
   border-left: 2px solid var(--gold);
   list-style: none;
 }
-.artifact-decides-label {
+.artifact-decides-label { /* gold-dark for AA on parchment */
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-dark);
   margin-bottom: 10px;
   display: block;
   padding-bottom: 6px;
@@ -1486,3 +1486,48 @@ a.doc-marquee-item:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
   .doc-marquee-track { animation: none; width: auto; }
   .doc-marquee-half[aria-hidden="true"] { display: none; }
 }
+
+
+/* Skip link: visually hidden until focused (WCAG 2.4.1). */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 10px 18px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 14px;
+}
+.skip-link:focus { left: 12px; top: 12px; }
+
+/* Tier-band text stays light inside any section context (the audience
+   pages wrap bands in article flows whose paragraph color overrode it). */
+.tier-band .tier-band-desc { color: #E8F2F8; }
+.tier-band-3 .tier-band-desc { color: #ffffff; }
+.tier-band h2 { color: #ffffff; }
+
+/* Showcase provenance note. */
+.showcase-note {
+  max-width: 720px;
+  margin: 18px auto 0;
+  padding: 0 24px;
+  color: #5f6c7b;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Marquee pause control (WCAG 2.2.2). */
+.doc-marquee-controls { text-align: center; margin: 0 0 10px; }
+.doc-marquee-pause {
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dark, #8a6c1f);
+  background: none;
+  border: 1px solid var(--hairline, #d8dee6);
+  padding: 6px 14px;
+  cursor: pointer;
+}
+.doc-marquee.is-paused .doc-marquee-track { animation-play-state: paused; }

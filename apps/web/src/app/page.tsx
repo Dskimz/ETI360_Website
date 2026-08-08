@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "ETI360 — Decision support for school trips",
   description:
     "ETI360’s 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "ETI360 — Decision support for school trips",
     description:

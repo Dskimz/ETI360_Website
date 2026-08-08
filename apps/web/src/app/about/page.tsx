@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About — ETI360",
+  title: "About",
   description: "ETI360 is an advisory firm working in the governance of educational travel.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -56,11 +57,10 @@ export default function AboutPage() {
 
           <h2>Origin</h2>
           <p>
-            ETI360 was founded to address a gap that has become structural in the educational
-            travel sector. As trip portfolios have grown more complex and the standards governing
-            them have become more rigorous, the work of trip governance has outgrown what most
-            schools and providers can do without specialist support. The firm exists to do that
-            work.
+            As trip portfolios have grown more complex and the standards governing
+            them have become more rigorous, trip governance has become a specialist
+            discipline in its own right. ETI360 exists to do that work alongside
+            schools and providers.
           </p>
         </div>
       </section>

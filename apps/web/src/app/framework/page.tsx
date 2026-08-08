@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "ETI360’s 3-Tier Risk Framework",
   description:
     "Three questions every school answers about travel. One framework: Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations.",
+  alternates: { canonical: "/framework" },
   openGraph: {
     title: "ETI360’s 3-Tier Risk Framework",
     description:

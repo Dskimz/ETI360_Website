@@ -44,7 +44,7 @@ export default function PrivacyPage() {
           <p>
             <strong>The briefing form.</strong> When you use the contact form we collect your
             name, organization, role, email address, country, and what you would like to
-            discuss. We use these details only to answer your enquiry and to arrange a
+            discuss. We use these details only to answer your inquiry and to arrange a
             briefing if you want one. The lawful basis is our legitimate interest in
             responding to someone who has asked us to get in touch.
           </p>
@@ -69,9 +69,9 @@ export default function PrivacyPage() {
 
           <h2>How long we keep it</h2>
           <p>
-            Enquiries are kept for two years from our last exchange with you, so that we have
+            Inquiries are kept for two years from our last exchange with you, so that we have
             the context of a prior conversation, then deleted. Aggregate analytics are retained
-            for fourteen months. Ask us at any point and we will delete your enquiry sooner.
+            for fourteen months. Ask us at any point and we will delete your inquiry sooner.
           </p>
 
           <h2>Where it goes</h2>

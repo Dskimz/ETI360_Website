@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 /* Shared presentation for the audience pages: email-style tier bands,
    compact document rows with PDF click-through, and the auto-scrolling
@@ -80,7 +83,13 @@ export function DocRow({ e, eager }: { e: DocEntry; eager?: boolean }) {
         </p>
         {e.pdf && (
           <p>
-            <a href={e.pdf} target="_blank" rel="noopener" className="cta-link ui">
+            <a
+              href={e.pdf}
+              target="_blank"
+              rel="noopener"
+              className="cta-link ui"
+              aria-label={`Open the ${e.name} PDF (opens in new tab)`}
+            >
               Open the PDF &rarr;
             </a>
           </p>
@@ -101,6 +110,7 @@ export function DocRow({ e, eager }: { e: DocEntry; eager?: boolean }) {
    each thumbnail opens its document. Under prefers-reduced-motion the
    strip stops and becomes a normal horizontal scroller. */
 export function DocMarquee({ items, label }: { items: DocEntry[]; label: string }) {
+  const [paused, setPaused] = useState(false);
   const half = (hidden: boolean) => (
     <div className="doc-marquee-half" aria-hidden={hidden || undefined}>
       {items.map((e) =>
@@ -127,7 +137,17 @@ export function DocMarquee({ items, label }: { items: DocEntry[]; label: string 
     </div>
   );
   return (
-    <div className="doc-marquee" role="region" aria-label={label}>
+    <div className={`doc-marquee${paused ? " is-paused" : ""}`} role="region" aria-label={label}>
+      <div className="doc-marquee-controls">
+        <button
+          type="button"
+          className="doc-marquee-pause"
+          aria-pressed={paused}
+          onClick={() => setPaused((v) => !v)}
+        >
+          {paused ? "Play" : "Pause"} the document strip
+        </button>
+      </div>
       <div className="doc-marquee-track">
         {half(false)}
         {half(true)}

@@ -156,6 +156,19 @@ export const schoolTier2: DocEntry[] = [
     wide: true,
     pageHref: "/documents/trip-risk-register",
   },
+
+  {
+    anchor: "duty-manager-simulation",
+    stage: "T2 · Rehearsal",
+    name: "Duty Manager Simulation",
+    reader: "Duty manager · Trip leadership",
+    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    image: {
+      src: "/email/screen-simulation.png",
+      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
+    },
+    wide: true,
+  },
 ];
 
 export const schoolTier3: DocEntry[] = [
@@ -180,18 +193,6 @@ export const schoolTier3: DocEntry[] = [
     image: {
       src: "/email/screen-dmd-v3.png",
       alt: "The Duty Manager Dashboard with a trip open: trip context, location map with the routed hospital, check-ins, and messages",
-    },
-    wide: true,
-  },
-  {
-    anchor: "duty-manager-simulation",
-    stage: "T3 · Rehearsal",
-    name: "Duty Manager Simulation",
-    reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
-    image: {
-      src: "/email/screen-simulation.png",
-      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
     },
     wide: true,
   },

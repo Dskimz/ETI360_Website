@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Two early essays built on the retired stage taxonomy (Dan,
+        // 2026-08-04: "Retire"). Redirect to the framework story.
+        source: "/perspective/what-each-artifact-decides",
+        destination: "/framework",
+        permanent: true,
+      },
+      {
+        source: "/perspective/trip-approval-is-not-trip-governance",
+        destination: "/framework",
+        permanent: true,
+      },
+      {
         // Interim client door. Flips to https://app.eti360.com once the
         // Render custom domain + CNAME exist. Non-permanent on purpose so
         // the flip is not cached forever by browsers.

@@ -77,7 +77,7 @@ export default function ContactPage() {
             <button type="submit" className="cta-button">Send</button>
 
             <p className="form-consent ui">
-              We use these details only to answer your enquiry. They are sent to us by
+              We use these details only to answer your inquiry. They are sent to us by
               email and are not added to a mailing list or shared with anyone else.
               See our <Link href="/privacy">privacy notice</Link>.
             </p>

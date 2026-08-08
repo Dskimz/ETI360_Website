@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Perspective — ETI360",
+  title: "Perspective",
   description:
     "ETI360 perspective on the governance of educational travel — position pieces and operational frameworks.",
 };
@@ -18,7 +18,7 @@ export default function PerspectiveIndexPage() {
           <p className="label label-light ui">Perspective</p>
           <h1>How ETI360 thinks about trip governance.</h1>
           <p className="subhead">
-            Position pieces and operational frameworks on the governance of educational travel.
+            Essays on the governance of educational travel.
           </p>
         </div>
       </section>
@@ -26,30 +26,6 @@ export default function PerspectiveIndexPage() {
       <section className="perspective-light">
         <div className="container">
           <div className="perspective-index-grid">
-            <Link
-              href="/perspective/what-each-artifact-decides"
-              className="article-card"
-            >
-              <span className="card-label ui">Decision support</span>
-              <h3>What each artifact decides.</h3>
-              <p>
-                Six documents. Six decisions. A walk through the key artifacts of the
-                governance cycle and the specific decision each one exists to support.
-              </p>
-              <span className="read-arrow ui">Read &rarr;</span>
-            </Link>
-            <Link
-              href="/perspective/trip-approval-is-not-trip-governance"
-              className="article-card"
-            >
-              <span className="card-label ui">Governance</span>
-              <h3>Trip approval is not trip governance.</h3>
-              <p>
-                The signature satisfies the formal requirement. It does not, on its own,
-                structure the evidence the decision is supposed to rest on.
-              </p>
-              <span className="read-arrow ui">Read &rarr;</span>
-            </Link>
             <Link
               href="/perspective/emergency-documentation-for-educational-travel"
               className="article-card"

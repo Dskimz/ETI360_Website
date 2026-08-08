@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "For Providers",
   description:
     "For trip providers: the documents schools ask for — organizational standing, trip due diligence, and the pack families read — prepared once from your program's data, then adjusted for each school, trip, and set of dates.",
+  alternates: { canonical: "/for-providers" },
   openGraph: {
     title: "For Providers — ETI360",
     description:
@@ -170,7 +171,7 @@ export default function ForProvidersPage() {
       >
         <div className="container measure">
           <p className="label label-light ui">For Providers</p>
-          <h1>Do them once and our system updates them.</h1>
+          <h1>Document a program once. The system carries the updates.</h1>
           <p className="subtitle">
             The documents schools ask providers for &mdash; organizational
             standing, trip due diligence, and the pack families read &mdash;
