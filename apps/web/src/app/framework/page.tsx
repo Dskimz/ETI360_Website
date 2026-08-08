@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "The Framework",
+  title: "ETI360’s 3-Tier Risk Framework",
   description:
     "Three questions every school answers about travel. One framework: Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations.",
   openGraph: {
-    title: "The Framework — ETI360",
+    title: "ETI360’s 3-Tier Risk Framework",
     description:
       "Three questions every school answers about travel. One framework: Tier 1 Organizational Baseline, Tier 2 Trip Risk Review, Tier 3 Dynamic Risk Operations.",
     type: "website",

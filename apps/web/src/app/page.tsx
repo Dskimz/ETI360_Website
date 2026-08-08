@@ -6,11 +6,11 @@ import { schoolDocs } from "../components/docLibrary";
 export const metadata: Metadata = {
   title: "ETI360 — Decision support for school trips",
   description:
-    "The 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
+    "ETI360’s 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
   openGraph: {
     title: "ETI360 — Decision support for school trips",
     description:
-      "The 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
+      "ETI360’s 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
     type: "website",
   },
 };
@@ -48,7 +48,7 @@ export default function HomePage() {
         <div className="container">
           <p className="label ui">The framework</p>
           <h2 className="section-heading section-heading-lg rule-gold">
-            The 3-Tier Risk Framework.
+            ETI360&rsquo;s 3-Tier Risk Framework.
           </h2>
           <p className="section-lead">
             Built from field experience and aligned to international standards,

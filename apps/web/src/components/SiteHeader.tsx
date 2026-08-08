@@ -6,7 +6,7 @@ import {usePathname} from 'next/navigation'
 type NavItem = {href: string; label: string}
 
 const navItems: NavItem[] = [
-  {href: '/framework', label: '3-Tier Risk Framework'},
+  {href: '/framework', label: "ETI360's 3-Tier Risk Framework"},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
   {href: '/about', label: 'About'},

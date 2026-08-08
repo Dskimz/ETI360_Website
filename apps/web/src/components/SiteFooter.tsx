@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const exploreLinks = [
-  {href: '/framework', label: '3-Tier Risk Framework'},
+  {href: '/framework', label: "ETI360's 3-Tier Risk Framework"},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
   {href: '/showcase', label: 'Sample Pack'},
