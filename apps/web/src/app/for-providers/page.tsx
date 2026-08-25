@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocEntry, DocMarquee, DocRow, TierBand } from "../../components/DocShowcase";
+import { DocRowsExpander } from "../../components/DocRowsExpander";
+import { QABlock, type QAEntry } from "../../components/QASection";
 
 export const metadata: Metadata = {
   title: "For Providers",
@@ -19,14 +21,14 @@ export const metadata: Metadata = {
 const tier1: DocEntry[] = [
   {
     anchor: "baseline",
-    pdf: "/docs/organizational-baseline-evaluation.pdf",
+    pdf: "/docs/organizational-baseline-evaluation-v2.pdf",
     stage: "T1 · Your organization",
     name: "Organizational Baseline Evaluation",
     reader: "School risk committees · Your leadership",
     desc: "The same ten-area review schools receive, applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure, mapped against ISO 31031 and refreshed annually — your standing documented in the same form schools use for their own baseline.",
     image: {
-      src: "/email/spread-partner-baseline.png",
-      alt: "Organizational Baseline Evaluation applied to a trip provider, with ten scored areas",
+      src: "/email/spread-partner-baseline-v2.png",
+      alt: "Organizational Baseline Evaluation applied to a trip provider: each of ten areas marked at standard or progressing",
     },
   },
 ];
@@ -45,18 +47,6 @@ const tier2: DocEntry[] = [
     },
   },
   {
-    anchor: "parent-itinerary",
-    pdf: "/docs/parent-itinerary.pdf",
-    stage: "T2 · For families",
-    name: "Parent Itinerary",
-    reader: "Parents",
-    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know — the document that gets parents ready for the trip.",
-    image: {
-      src: "/email/card-parent.png",
-      alt: "Parent Itinerary day pages with photographs and day-by-day plans",
-    },
-  },
-  {
     anchor: "itinerary-report",
     pdf: "/showcase/pdfs/02-1-calendar-view.pdf",
     stage: "T2 · The operational record",
@@ -66,6 +56,30 @@ const tier2: DocEntry[] = [
     image: {
       src: "/showcase/pages/02-1-calendar-view/2.png",
       alt: "Itinerary Report calendar view, page two of the Cherry Blossom Tokyo sample trip: days five through eight as hour-by-hour blocks covering activities, meals, transport, and accommodation",
+    },
+  },
+  {
+    anchor: "risk-assessment",
+    pdf: "/showcase/pdfs/04-rams-report.pdf",
+    stage: "T2 · The decision record",
+    name: "Trip Risk Assessment & RAMS",
+    reader: "Risk lead · Trip staff · Provider",
+    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — the due diligence file a school's risk committee can put in front of its board.",
+    image: {
+      src: "/marketing/library/rams-report.png",
+      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
+    },
+  },
+  {
+    anchor: "parent-itinerary",
+    pdf: "/docs/parent-itinerary.pdf",
+    stage: "T2 · For families",
+    name: "Parent Itinerary",
+    reader: "Parents",
+    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know — the document that gets parents ready for the trip.",
+    image: {
+      src: "/email/card-parent.png",
+      alt: "Parent Itinerary day pages with photographs and day-by-day plans",
     },
   },
   {
@@ -81,6 +95,21 @@ const tier2: DocEntry[] = [
     },
     wide: true,
   },
+  {
+    anchor: "duty-manager-simulation",
+    stage: "T2 · Rehearsal",
+    name: "Duty Manager Simulation",
+    reader: "Duty manager · Trip leadership",
+    desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions practiced in advance.",
+    image: {
+      src: "/email/screen-simulation.png",
+      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
+    },
+    wide: true,
+  },
+];
+
+const tier2More: DocEntry[] = [
   {
     anchor: "weather",
     pdf: "/showcase/pdfs/01-1-weather-brief-sydney.pdf",
@@ -109,38 +138,14 @@ const tier2: DocEntry[] = [
   {
     anchor: "activity-risk-profile",
     pdf: "/docs/activity-risk-profile.pdf",
-    stage: "T2 · Every activity scored",
+    stage: "T2 · Behind the RAMS",
     name: "Activity Risk Profile",
-    reader: "Risk lead · Coordinator",
-    desc: "Every activity scored across seven dimensions, with the policy gate separating the activities that receive full RAMS coverage from those recorded at routine level.",
+    reader: "Risk lead",
+    desc: "The working layer beneath the RAMS: every activity profiled across seven dimensions, deciding which activities carry a full assessment and which are recorded at routine level.",
     image: {
       src: "/marketing/library/arp-summary.png",
       alt: "Activity Risk Profile summary page with the seven-dimension radar chart and per-dimension score table",
     },
-  },
-  {
-    anchor: "risk-assessment",
-    pdf: "/showcase/pdfs/04-rams-report.pdf",
-    stage: "T2 · The decision record",
-    name: "Trip Risk Assessment & RAMS",
-    reader: "Risk lead · Trip staff · Provider",
-    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — the due diligence file a school's risk committee can put in front of its board.",
-    image: {
-      src: "/marketing/library/rams-report.png",
-      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
-    },
-  },
-  {
-    anchor: "duty-manager-simulation",
-    stage: "T2 · Rehearsal",
-    name: "Duty Manager Simulation",
-    reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions practiced in advance.",
-    image: {
-      src: "/email/screen-simulation.png",
-      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
-    },
-    wide: true,
   },
 ];
 
@@ -159,7 +164,69 @@ const tier3: DocEntry[] = [
   },
 ];
 
-const allDocs = [...tier1, ...tier2, ...tier3];
+const allDocs = [...tier1, ...tier2, ...tier2More, ...tier3];
+
+const qaAsked: QAEntry[] = [
+  {
+    q: "A school's risk committee asks in the first meeting: what evidence can you show of how your organization manages risk?",
+    needs:
+      "A complete answer needs a documented review of your standing, in the form school committees already read.",
+    how: "The ten-area review, mapped against ISO 31031 and refreshed annually, is the same structure schools apply to themselves, so your documentation arrives in a form their leadership recognizes.",
+    bridge: { label: "Organizational Baseline Evaluation", href: "#baseline" },
+  },
+  {
+    q: "Three days before their board meeting, the school asks: can you send the full risk assessment for this itinerary?",
+    needs:
+      "A complete answer needs hazards, controls, who holds each control, and residual risk, in a form a board can read.",
+    how: "ETI360 profiles the trip's activities and supplies the structured evidence, grouped the way the trip runs. You author and sign your operational controls; the assessment is prepared for the school's own review.",
+    bridge: { label: "Trip Risk Assessment & RAMS", href: "#risk-assessment" },
+  },
+  {
+    q: "The school asks: what can we hand to families about your program?",
+    needs:
+      "A complete answer needs the journey written for families, consistent with the operational record behind it.",
+    how: "The parent version is produced from the same trip ledger as the operational documents, in the school's own voice, so what families read matches what staff run.",
+    bridge: { label: "Parent Itinerary", href: "#parent-itinerary" },
+  },
+  {
+    q: "A school wants your March program in October instead: what changes with the dates?",
+    needs:
+      "A complete answer needs month-specific conditions for the new window and the destination's calendar checked against the new dates.",
+    how: "The Weather Brief is rebuilt for the travel month from fifteen years of historical data, and holidays, closures, and seasonal events are flagged as a booking checklist for you to verify before anything is confirmed.",
+    bridge: { label: "Weather Brief", href: "#weather" },
+  },
+  {
+    q: "The school's duty manager asks: what exactly is the cycling day, kilometer by kilometer?",
+    needs:
+      "A complete answer needs the route recorded: distance, gradient, pacing, sun, terrain cover, and escape points.",
+    how: "Outdoor activities such as cycling, trekking, and river sports carry their own route record, prepared once for the program and reissued with each proposal that includes the activity.",
+    bridge: { label: "Route Intelligence", href: "#route-intelligence" },
+  },
+];
+
+const qaProcess: QAEntry[] = [
+  {
+    q: "Operators ask first: how much of our time does documenting a program take?",
+    needs:
+      "A complete start needs only the program information you already hold: the itinerary, the venues, the transport.",
+    how: "Send it in whatever form it exists. ETI360 structures it once into the program's ledger, and from then on each proposal is an adjustment, not a rebuild.",
+    bridge: { label: "Itinerary Report, the record proposals adjust from", href: "#itinerary-report" },
+  },
+  {
+    q: "A school wants a proposal for your program on their dates: what does that involve on your side?",
+    needs:
+      "A complete answer needs the documented program and one line: this school, this trip, these dates.",
+    how: "The itinerary is re-dated, the overview and parent pack re-prepared for the school, and the conditions rebuilt for the travel month. You verify the bookings before anything is confirmed.",
+    bridge: { label: "Trip Overview, the first page of the proposal", href: "#trip-overview" },
+  },
+  {
+    q: "Your own leadership asks: whose name is on these documents?",
+    needs:
+      "A complete answer needs a clear line between structured evidence and signed judgment.",
+    how: "ETI360 prepares and structures the evidence. You author and sign your operational controls, the assessment is prepared for each school's own review, and the decision to run the trip stays with the school.",
+    bridge: { label: "Trip Risk Assessment & RAMS", href: "#risk-assessment" },
+  },
+];
 
 export default function ForProvidersPage() {
   return (
@@ -243,6 +310,10 @@ export default function ForProvidersPage() {
             <DocRow key={e.anchor} e={e} />
           ))}
         </div>
+        <DocRowsExpander
+          items={tier2More}
+          label="See three more Tier 2 documents"
+        />
 
         <TierBand
           n={3}
@@ -279,6 +350,24 @@ export default function ForProvidersPage() {
           </p>
         </div>
         <DocMarquee items={allDocs} label="The ETI360 documents for trip providers" />
+
+        <div className="container measure qa-section">
+          <h2 className="section-heading rule-gold">
+            The questions a proposal must answer.
+          </h2>
+          <p>
+            Every proposal generates questions: from school risk committees and
+            boards during due diligence, from families before departure, and
+            from your own leadership. Each answer below names the document that
+            carries it.
+          </p>
+          <QABlock
+            label="Questions schools ask you"
+            entries={qaAsked}
+            expandFirst={2}
+          />
+          <QABlock label="Working with ETI360" entries={qaProcess} />
+        </div>
       </section>
 
       <section className="cta-section">

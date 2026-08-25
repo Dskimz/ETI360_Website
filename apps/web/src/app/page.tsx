@@ -31,17 +31,16 @@ export default function HomePage() {
         <div className="hero-inner">
           <span className="label ui">Decision support for school trips</span>
           <h1>
-            Trip decisions need
+            Every trip,
             <br />
-            <em>structured evidence.</em>
+            <em>decision-ready.</em>
           </h1>
           <p className="subhead">
-            Most trip risk is already visible. Structure turns it into evidence
-            a leadership team can review and act on.
+            A clear, consistent evidence file for each trip.
           </p>
           <div className="hero-actions">
             <a className="cta-button ui" href="#framework">See the framework</a>
-            <a className="cta-link ui" href="#work">See the documents &rarr;</a>
+            <a className="cta-link ui" href="#work">See what a school receives &rarr;</a>
           </div>
         </div>
       </section>
@@ -64,19 +63,19 @@ export default function HomePage() {
         n={1}
         eyebrow="Tier One · Annual"
         name="Organizational Baseline"
-        desc="A documented review of organizational readiness, applied to schools and to trip providers: policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
+        desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
       />
       <TierBand
         n={2}
         eyebrow="Tier Two · Every trip"
         name="Trip Risk Review"
-        desc="A consistent set of documents for the school's review and decision, from the trip overview to the information parents receive."
+        desc="What leadership sees before a trip is approved: a consistent set of documents for review and decision, from the trip overview to the information parents receive."
       />
       <TierBand
         n={3}
         eyebrow="Tier Three · During and after"
         name="Dynamic Risk Operations"
-        desc="The working views for the days the group is away, and the record the trip carries home into next year's planning."
+        desc="How the school stays connected while a group travels: the working views for the days away, and the record the trip carries home into next year's planning."
       />
       <section className="about-strip tight">
         <div className="container">
@@ -92,7 +91,7 @@ export default function HomePage() {
         <div className="container">
           <p className="label ui">The work</p>
           <h2 className="section-heading section-heading-lg rule-gold">
-            The documents.
+            What a school receives.
           </h2>
           <p className="section-lead">
             Real rendered pages from our reference school, Harborview

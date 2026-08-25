@@ -40,9 +40,9 @@ const tiers: Tier[] = [
   {
     stage: "Tier 2 · Trip Risk Review — every trip, on its merits, before departure",
     question: "Is this trip ready?",
-    body: "The per-trip evidence base. The provider’s itinerary is normalized into a gap-free, hour-by-hour record; every location verified; every activity risk-profiled across seven dimensions; the activities that warrant a RAMS get one — grouped the way the trip actually runs. Around that core: medical access, seasonal weather, route intelligence, site briefs.",
+    body: "The per-trip evidence base. The provider’s itinerary is normalized into a gap-free, hour-by-hour record; every location verified; the activities that warrant a RAMS get one — grouped the way the trip actually runs, with each activity profiled behind the scenes to decide where full assessment belongs. Around that core: medical access, seasonal weather, route intelligence, site briefs.",
     components:
-      "Itinerary normalization · location verification · Activity Risk Profiles (7 dimensions) · RAMS by activity group · medical access mapping · weather & climate briefing · route intelligence · provider documentation review",
+      "Itinerary normalization · location verification · RAMS by activity group · Activity Risk Profiles · medical access mapping · weather & climate briefing · route intelligence · provider documentation review",
     receives:
       "The trip document pack — produced from the trip’s own data. The approval conversation starts with evidence already organized.",
     anchor: "/for-schools#tier2",

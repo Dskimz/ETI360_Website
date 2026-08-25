@@ -1409,6 +1409,70 @@ a.doc-row-thumb:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
 .doc-row-body .artifact-reader { margin-top: 16px; }
 /* Thumbnails alternate sides down the page */
 .doc-rows .doc-row:nth-child(even) { flex-direction: row-reverse; }
+/* Collapsed continuation of a tier's doc rows */
+.doc-rows-more { max-width: 860px; margin: 0 auto; padding: 8px 32px 40px; text-align: center; }
+.doc-rows-toggle {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--hairline);
+  border-bottom: 2px solid var(--gold);
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.doc-rows-toggle:hover { background: rgba(201, 162, 77, 0.08); }
+
+/* ── Q&A section ── */
+.qa-section { padding-top: 48px; }
+.qa-block { margin-top: 32px; }
+.qa-block-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.qa-entry { border-bottom: 1px solid var(--hairline); }
+.qa-entry:first-of-type { border-top: 1px solid var(--hairline); }
+.qa-q {
+  appearance: none;
+  background: none;
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+  text-align: left;
+  padding: 16px 0;
+  cursor: pointer;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.4;
+}
+.qa-marker {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--gold);
+  flex: 0 0 auto;
+}
+.qa-body { padding: 0 0 18px; }
+.qa-body p { margin: 0 0 10px; max-width: 62ch; }
+.qa-bridge {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.qa-bridge a { color: var(--navy); border-bottom: 2px solid var(--gold); text-decoration: none; }
+.qa-bridge a:hover { background: rgba(201, 162, 77, 0.12); }
 @media (max-width: 640px) {
   .doc-row,
   .doc-rows .doc-row:nth-child(even) { flex-direction: column; gap: 18px; }

@@ -96,7 +96,7 @@ export default function TripRiskRegisterPage() {
             </li>
             <li>
               <strong>The Tier 1 connection.</strong> The school&rsquo;s
-              Organizational Baseline score sits at the top of the register,
+              Organizational Baseline sits at the top of the register,
               keeping the standing review visible above the year it covers.
             </li>
           </ul>

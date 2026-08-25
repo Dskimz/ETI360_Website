@@ -7,14 +7,14 @@ import type { DocEntry } from "./DocShowcase";
 export const schoolTier1: DocEntry[] = [
   {
     anchor: "baseline",
-    pdf: "/docs/organizational-baseline-evaluation.pdf",
+    pdf: "/docs/organizational-baseline-evaluation-v2.pdf",
     stage: "T1 · Schools and trip providers",
     name: "Organizational Baseline Evaluation",
     reader: "Head · Board · Risk committee",
     desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, mapped against ISO 31031 and refreshed annually.",
     image: {
-      src: "/email/spread-school-baseline.png",
-      alt: "Organizational Baseline Evaluation cover page for Harborview International School, with ten scored areas",
+      src: "/email/spread-school-baseline-v2.png",
+      alt: "Organizational Baseline Evaluation for Harborview International School: each of ten areas marked at standard or progressing",
     },
   },
 ];
@@ -33,6 +33,30 @@ export const schoolTier2: DocEntry[] = [
     },
   },
   {
+    anchor: "itinerary-report",
+    pdf: "/showcase/pdfs/02-1-calendar-view.pdf",
+    stage: "T2 · The operational record",
+    name: "Itinerary Report",
+    reader: "Coordinator · Trip staff",
+    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included.",
+    image: {
+      src: "/showcase/pages/02-1-calendar-view/2.png",
+      alt: "Itinerary Report calendar view, page two of the Cherry Blossom Tokyo sample trip: days five through eight as hour-by-hour blocks covering activities, meals, transport, and accommodation",
+    },
+  },
+  {
+    anchor: "risk-assessment",
+    pdf: "/showcase/pdfs/04-rams-report.pdf",
+    stage: "T2 · The decision record",
+    name: "Trip Risk Assessment & RAMS",
+    reader: "Risk lead · Trip staff · Provider",
+    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one assessment per activity group.",
+    image: {
+      src: "/marketing/library/rams-report.png",
+      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
+    },
+  },
+  {
     anchor: "parent-itinerary",
     pdf: "/docs/parent-itinerary.pdf",
     stage: "T2 · For families",
@@ -45,16 +69,29 @@ export const schoolTier2: DocEntry[] = [
     },
   },
   {
-    anchor: "itinerary-report",
-    pdf: "/showcase/pdfs/02-1-calendar-view.pdf",
-    stage: "T2 · The operational record",
-    name: "Itinerary Report",
-    reader: "Coordinator · Trip staff",
-    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included.",
+    anchor: "leadership-deck",
+    pdf: "/docs/leadership-deck.pdf",
+    stage: "T2 · For the approval meeting",
+    name: "Leadership Deck",
+    reader: "Head presenting to board or parents",
+    desc: "The trip's evidence base as a short presentation, for the internal meeting where the trip is discussed and decided.",
     image: {
-      src: "/showcase/pages/02-1-calendar-view/2.png",
-      alt: "Itinerary Report calendar view, page two of the Cherry Blossom Tokyo sample trip: days five through eight as hour-by-hour blocks covering activities, meals, transport, and accommodation",
+      src: "/marketing/library/leadership-deck.png",
+      alt: "Leadership Deck title slide: the trip in 30 seconds, with days, students, activities, destination, and dates",
     },
+    wide: true,
+  },
+  {
+    anchor: "duty-manager-simulation",
+    stage: "T2 · Rehearsal",
+    name: "Duty Manager Simulation",
+    reader: "Duty manager · Trip leadership",
+    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    image: {
+      src: "/email/screen-simulation.png",
+      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
+    },
+    wide: true,
   },
   {
     anchor: "trip-discovery-map",
@@ -95,43 +132,6 @@ export const schoolTier2: DocEntry[] = [
     },
   },
   {
-    anchor: "activity-risk-profile",
-    pdf: "/docs/activity-risk-profile.pdf",
-    stage: "T2 · Every activity scored",
-    name: "Activity Risk Profile",
-    reader: "Risk lead · Coordinator",
-    desc: "Every activity scored across seven dimensions, with the policy gate separating the activities that receive full RAMS coverage from those recorded at routine level.",
-    image: {
-      src: "/marketing/library/arp-summary.png",
-      alt: "Activity Risk Profile summary page with the seven-dimension radar chart and per-dimension score table",
-    },
-  },
-  {
-    anchor: "risk-assessment",
-    pdf: "/showcase/pdfs/04-rams-report.pdf",
-    stage: "T2 · The decision record",
-    name: "Trip Risk Assessment & RAMS",
-    reader: "Risk lead · Trip staff · Provider",
-    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one assessment per activity group.",
-    image: {
-      src: "/marketing/library/rams-report.png",
-      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
-    },
-  },
-  {
-    anchor: "leadership-deck",
-    pdf: "/docs/leadership-deck.pdf",
-    stage: "T2 · For the approval meeting",
-    name: "Leadership Deck",
-    reader: "Head presenting to board or parents",
-    desc: "The trip's evidence base as a short presentation, for the internal meeting where the trip is discussed and decided.",
-    image: {
-      src: "/marketing/library/leadership-deck.png",
-      alt: "Leadership Deck title slide: the trip in 30 seconds, with days, students, activities, destination, and dates",
-    },
-    wide: true,
-  },
-  {
     anchor: "field-trip-report",
     pdf: "/showcase/pdfs/05-field-trip-brief.pdf",
     stage: "T2 · One-day trips",
@@ -156,18 +156,17 @@ export const schoolTier2: DocEntry[] = [
     wide: true,
     pageHref: "/documents/trip-risk-register",
   },
-
   {
-    anchor: "duty-manager-simulation",
-    stage: "T2 · Rehearsal",
-    name: "Duty Manager Simulation",
-    reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    anchor: "activity-risk-profile",
+    pdf: "/docs/activity-risk-profile.pdf",
+    stage: "T2 · Behind the RAMS",
+    name: "Activity Risk Profile",
+    reader: "Risk lead",
+    desc: "The working layer beneath the RAMS: every activity profiled across seven dimensions, deciding which activities carry a full assessment and which are recorded at routine level.",
     image: {
-      src: "/email/screen-simulation.png",
-      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
+      src: "/marketing/library/arp-summary.png",
+      alt: "Activity Risk Profile summary page with the seven-dimension radar chart and per-dimension score table",
     },
-    wide: true,
   },
 ];
 
@@ -209,5 +208,9 @@ export const schoolTier3: DocEntry[] = [
     },
   },
 ];
+
+/* For Schools shows the decision-path six; the rest sit behind "See more". */
+export const schoolTier2Featured: DocEntry[] = schoolTier2.slice(0, 6);
+export const schoolTier2More: DocEntry[] = schoolTier2.slice(6);
 
 export const schoolDocs: DocEntry[] = [...schoolTier1, ...schoolTier2, ...schoolTier3];
