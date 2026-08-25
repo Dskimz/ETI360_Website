@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 
-const TITLE = "ETI360 — Decision support for school trips";
+const TITLE = "ETI360 — Risk intelligence for school trips";
 const DESCRIPTION =
   "ETI360 structures the evidence behind school-trip decisions — the 3-Tier Risk Framework and the documents it produces, for international schools and trip providers.";
 

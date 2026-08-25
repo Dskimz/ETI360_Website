@@ -4,13 +4,13 @@ import { DocMarquee, DocRow, TierBand } from "../components/DocShowcase";
 import { schoolDocs } from "../components/docLibrary";
 
 export const metadata: Metadata = {
-  title: "ETI360 — Decision support for school trips",
+  title: "ETI360 — Risk intelligence for school trips",
   description:
     "ETI360’s 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
   alternates: { canonical: "/" },
   openGraph: {
     images: ["/marketing/og-default.png"],
-    title: "ETI360 — Decision support for school trips",
+    title: "ETI360 — Risk intelligence for school trips",
     description:
       "ETI360’s 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
     type: "website",
@@ -29,7 +29,7 @@ export default function HomePage() {
         style={{ ["--hero-bg" as string]: "url('/marketing/hero/home.jpg')" } as React.CSSProperties}
       >
         <div className="hero-inner">
-          <span className="label ui">Decision support for school trips</span>
+          <span className="label ui">Risk intelligence for school trips</span>
           <h1>
             Every trip,
             <br />

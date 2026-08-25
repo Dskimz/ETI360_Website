@@ -372,7 +372,7 @@ export default function ForProvidersPage() {
 
       <section className="cta-section">
         <div className="container measure">
-          <h2>Start with one program.</h2>
+          <h2>See it on your own program.</h2>
           <p>
             Bring the program you propose most often. A conversation covers what
             documenting it involves and what each proposal after that looks

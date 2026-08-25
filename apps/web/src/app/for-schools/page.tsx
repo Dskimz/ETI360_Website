@@ -223,7 +223,7 @@ export default function ForSchoolsPage() {
 
       <section className="cta-section">
         <div className="container measure">
-          <h2>Start with one trip.</h2>
+          <h2>See it on your own trip.</h2>
           <p>
             The clearest way to see how the documents would read for your school
             is a conversation about one upcoming trip. Briefings are
