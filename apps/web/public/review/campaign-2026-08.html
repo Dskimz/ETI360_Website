@@ -96,9 +96,17 @@ details .inner{padding:10px 16px}
 .limock .mbar span{padding:8px 10px}
 .mockwrap{margin:18px 0}
 .mockwrap .mocklabel{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.topnav{display:none;position:sticky;top:0;z-index:40;background:var(--navy);border-bottom:3px solid var(--gold);
+overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+.topnav::-webkit-scrollbar{height:0}
+.topnav a{display:inline-flex;gap:7px;align-items:baseline;padding:11px 14px;color:rgba(255,255,255,.85);text-decoration:none;
+font-size:12.5px;border-bottom:3px solid transparent;margin-bottom:-3px}
+.topnav a .n{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:var(--gold)}
+.topnav a.on{background:rgba(201,162,77,.16);border-bottom-color:var(--gold);color:#fff}
 @media (max-width:1023px){
  .sidenav{display:none}
  .page{margin-left:0}
+ .topnav{display:block}
 }
 @media (max-width:720px){.post .vis{flex-basis:100%;border-right:0;border-bottom:1px solid var(--line)}.hero h1{font-size:27px}}
 </style></head><body>
@@ -112,6 +120,15 @@ details .inner{padding:10px 16px}
 <a href="#s7" data-sec="s7"><span class="n">07</span><span>Approval</span></a>
 </div><div class="navfoot">Unlisted page.<br>Shared by URL only.</div></nav>
 <div class="page">
+<div class="topnav">
+<a href="#s1" data-sec="s1"><span class="n">01</span><span>At a glance</span></a>
+<a href="#s2" data-sec="s2"><span class="n">02</span><span>Tone and voice</span></a>
+<a href="#s3" data-sec="s3"><span class="n">03</span><span>The three emails</span></a>
+<a href="#s4" data-sec="s4"><span class="n">04</span><span>The story on social</span></a>
+<a href="#s5" data-sec="s5"><span class="n">05</span><span>The first fifty schools</span></a>
+<a href="#s6" data-sec="s6"><span class="n">06</span><span>How the pieces run</span></a>
+<a href="#s7" data-sec="s7"><span class="n">07</span><span>Approval</span></a>
+</div>
 <div class="hero"><div class="shell"><h1>The campaign, on one page.</h1><p>Prepared for Seb, August 2026. Everything the schools campaign will say and show, in one place for review: the three emails with every link verified, the eight-post story for LinkedIn and Facebook, the tone rules they follow, the first fifty schools, and how the pieces run. Approval notes go straight back to Dan.</p><span class="note">Unlisted page: not indexed, not linked from the site, shared by URL only.</span></div></div>
 <main class="shell">
 <section id="s1"><h2><span class="knum">01</span>The campaign at a glance</h2><div class="rule"></div>
@@ -450,7 +467,7 @@ The page shown is from our reference school, Harborview International School, fi
 <div class="foot"><div class="shell">ETI360 PTE. LTD. · 1010 Dover Road, #01-360V, Singapore 139658 · UEN 202302514C<br>Campaign review, August 2026. Unlisted; please do not share the URL outside the team. Questions to <a href="mailto:danskimin@eti360.com">danskimin@eti360.com</a>.</div></div>
 <script>
 (function(){
- var links=[].slice.call(document.querySelectorAll('.sidenav a[data-sec]'));
+ var links=[].slice.call(document.querySelectorAll('.sidenav a[data-sec], .topnav a[data-sec]'));
  var secs=links.map(function(a){return document.getElementById(a.getAttribute('data-sec'))});
  function spy(){
   var y=window.scrollY+140, cur=secs[0];
