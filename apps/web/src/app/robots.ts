@@ -8,8 +8,9 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
         // OFFSEAS2026 is an event booth asset and already carries a noindex
-        // meta tag; /api is machinery. Neither belongs in search results.
-        disallow: ["/api/", "/OFFSEAS2026"],
+        // meta tag; /api is machinery; /review holds unlisted internal review
+        // pages (noindex meta as well). None belong in search results.
+        disallow: ["/api/", "/OFFSEAS2026", "/review/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
