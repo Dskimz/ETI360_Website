@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ETI360 Launch Action Plan | Round 2</title>
+<meta name="description" content="Round 2 launch action plan for ETI360, reconciling both Round 1 agency reports under the founder's rulings. Unlisted internal review document.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+:root{
+  --navy:#0d3558; --navy-deep:#0a2a45; --gold:#C9A24D; --gold-dark:#8a6c1f;
+  --parchment:#faf8f3; --parchment-2:#f3efe4; --ink:#1f2732; --ink-mid:rgba(31,39,50,.72);
+  --hairline:rgba(13,53,88,.16); --white:#fff;
+  --measure:74ch; --container:1120px;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--parchment);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.66;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 28px}
+.masthead{background:var(--navy);color:var(--white);padding:52px 0 40px;border-bottom:3px solid var(--gold)}
+.masthead .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 16px}
+.masthead h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.2vw,46px);line-height:1.12;margin:0 0 14px;letter-spacing:-.01em}
+.masthead h1 em{font-style:italic;color:var(--gold)}
+.masthead .standfirst{font-size:17.5px;line-height:1.6;color:rgba(255,255,255,.86);max-width:68ch;margin:0 0 24px}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px 26px;border-top:1px solid rgba(255,255,255,.2);padding-top:18px;font-size:13px}
+.meta-grid dt{color:var(--gold);letter-spacing:.09em;text-transform:uppercase;font-size:11px;font-weight:600;margin-bottom:3px}
+.meta-grid dd{margin:0;color:rgba(255,255,255,.9)}
+nav.toc{position:sticky;top:0;z-index:40;background:var(--navy-deep);border-bottom:1px solid rgba(201,162,77,.35);overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav.toc ol{display:flex;gap:0;list-style:none;margin:0 auto;padding:0;max-width:var(--container)}
+nav.toc a{display:block;padding:11px 13px;color:rgba(255,255,255,.72);text-decoration:none;font-size:12px;font-weight:500;white-space:nowrap;border-bottom:2px solid transparent}
+nav.toc a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+section.chapter{padding:48px 0 8px;border-top:1px solid var(--hairline)}
+section.chapter:first-of-type{border-top:none}
+.chapter-num{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:0 0 8px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(23px,3vw,32px);line-height:1.16;margin:0 0 6px;letter-spacing:-.01em}
+h2::after{content:"";display:block;width:52px;height:3px;background:var(--gold);margin-top:13px}
+h3{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.25;margin:30px 0 8px}
+h4{font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--navy);margin:24px 0 6px}
+p{margin:0 0 14px;max-width:var(--measure)}
+ul,ol{max-width:var(--measure);margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+a{color:var(--gold-dark)}
+strong{font-weight:600;color:var(--navy)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--parchment-2);padding:1px 5px;border:1px solid var(--hairline);overflow-wrap:anywhere;word-break:break-word}
+.tag{display:inline-block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;padding:2px 7px;border:1px solid;margin-right:6px;vertical-align:1.5px;white-space:nowrap}
+.ruled{color:#14532d;border-color:#14532d;background:rgba(20,83,45,.07)}
+.codex{color:#1e3a8a;border-color:#1e3a8a;background:rgba(30,58,138,.07)}
+.cb{color:var(--gold-dark);border-color:var(--gold-dark);background:rgba(138,108,31,.08)}
+.newx{color:#7c2d12;border-color:#7c2d12;background:rgba(124,45,18,.07)}
+.ask{color:#7f1d1d;border-color:#7f1d1d;background:rgba(127,29,29,.08)}
+.tablewrap{overflow-x:auto;margin:0 0 20px;border:1px solid var(--hairline);background:var(--white)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:620px}
+th{background:var(--navy);color:var(--white);text-align:left;padding:9px 12px;font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;vertical-align:bottom}
+td{padding:9px 12px;border-top:1px solid var(--hairline);vertical-align:top;line-height:1.5}
+tbody tr:nth-child(even){background:var(--parchment)}
+td.num{text-align:center;font-weight:700;white-space:nowrap}
+.box{background:var(--white);border:1px solid var(--hairline);border-left:3px solid var(--gold);padding:20px 22px;margin:0 0 22px}
+.box h4{margin-top:0}
+.box.dark{background:var(--navy);color:rgba(255,255,255,.9);border-left-color:var(--gold);border-color:var(--navy)}
+.box.dark h3,.box.dark h4{color:var(--white)}
+.box.dark strong{color:var(--gold)}
+.box.alarm{border-left-color:#7f1d1d}
+.callout-lead{font-family:var(--serif);font-size:19px;line-height:1.45;color:var(--navy);max-width:64ch}
+.copy-example{background:var(--parchment-2);border:1px solid var(--hairline);padding:14px 16px;margin:0 0 16px;font-family:var(--serif);font-size:16px;line-height:1.5;max-width:var(--measure)}
+.copy-example span.lbl{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:6px}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 34px}
+.cols2 p,.cols2 ul{max-width:none}
+.footnote{font-size:13px;color:var(--ink-mid);max-width:var(--measure)}
+footer.rep{background:var(--navy);color:rgba(255,255,255,.75);padding:34px 0;margin-top:52px;font-size:13px;border-top:3px solid var(--gold)}
+footer.rep p{max-width:none}
+@media(max-width:640px){body{font-size:16px}.wrap{padding:0 18px}}
+@media print{nav.toc{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Round 2 &middot; Launch action plan &middot; Both reports reconciled</p>
+    <h1>One position. One paid product.<br><em>Launch this week.</em></h1>
+    <p class="standfirst">The action plan that gets the schools campaign out the door, built from your rulings of 25 August, the winning Candidate B strategy, and the best of the Candidate A report. Everything here is either already built, a bounded edit to something built, or a page-length build.</p>
+    <dl class="meta-grid">
+      <div><dt>Prepared for</dt><dd>Dan Skimin</dd></div>
+      <div><dt>Date</dt><dd>25 August 2026</dd></div>
+      <div><dt>Supersedes</dt><dd>Both Round 1 reports where they conflict</dd></div>
+      <div><dt>Status</dt><dd>Unlisted, noindex, internal</dd></div>
+    </dl>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Plan contents">
+  <ol>
+    <li><a href="#p1">1 Settled strategy</a></li>
+    <li><a href="#p2">2 Your rulings, applied</a></li>
+    <li><a href="#p3">3 From the Codex report</a></li>
+    <li><a href="#p4">4 Launch gates</a></li>
+    <li><a href="#p5">5 The eight posts, revised</a></li>
+    <li><a href="#p6">6 Content bank</a></li>
+    <li><a href="#p7">7 Providers and TSCT</a></li>
+    <li><a href="#p8">8 Measurement sheet</a></li>
+    <li><a href="#p9">9 Trimmed and dropped</a></li>
+    <li><a href="#p10">10 Your calls</a></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+<section class="chapter" id="p1">
+  <p class="chapter-num">Section 1</p>
+  <h2>The settled strategy, on one screen.</h2>
+  <p class="callout-lead" style="margin-top:16px">Readiness is the benefit. The framework is the method. The reports and working views are the product. The Duty Manager Simulation is the paid entry engagement. The Decision File is the campaign that shows it.</p>
+  <p class="footnote">The five-sentence map is adapted from the Candidate A report, which compressed the simplified offer better than we did. Tags: <span class="tag ruled">Ruled</span> decided by you on 25 August &middot; <span class="tag cb">Cand. B</span> from our Round 1 report &middot; <span class="tag codex">Cand. A</span> adopted from the Codex report &middot; <span class="tag newx">New</span> required by your rulings but in neither report &middot; <span class="tag ask">Your call</span> needs your word, collected in section 10.</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th style="width:24%">Element</th><th>Decision</th><th style="width:12%">Source</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Descriptor</strong></td><td>"ETI360 is the independent trip-governance service for international schools and the providers." One sentence, every surface, the other nine retired. New product names frozen for 90 days.</td><td><span class="tag ruled">Ruled</span></td></tr>
+      <tr><td><strong>Positioning statement</strong></td><td>The Candidate B formal statement, with the descriptor trimmed as you ruled. "Educational travel readiness" survives as territory language in strategy documents, not as the category noun.</td><td><span class="tag ruled">Ruled</span></td></tr>
+      <tr><td><strong>Campaign platform</strong></td><td><strong>The Decision File.</strong> Every asset shows one real artifact, names the decision moment it supports, and routes to one next step. Headline: "The trip file leadership can review." It celebrates finished work, carries no fear framing, and gives the eight-post story its commercial spine.</td><td><span class="tag codex">Cand. A</span> <span class="tag ask">Your call</span></td></tr>
+      <tr><td><strong>Commitment</strong></td><td>Ninety days, one position, one paid entry motion: schools first, the Duty Manager Simulation as the single thing a school books by name. Providers wait behind the 90 days except for the TSCT-style service copy on /for-providers, which ships now.</td><td><span class="tag codex">Cand. A</span> <span class="tag ask">Your call</span></td></tr>
+      <tr><td><strong>Primary audience</strong></td><td>The school-side operational approver: Head, Deputy Head, Director of Operations, whoever owns the trip-review process. The coordinator becomes the equipped influencer, not the target. A $3,000 entry product (the pilot price you set on 31 July) needs the budget holder.</td><td><span class="tag codex">Cand. A</span></td></tr>
+      <tr><td><strong>Commercial ladder</strong></td><td>Sample trip file (ungated, on the site) &rarr; trip-readiness briefing (a 20-minute conversation about one upcoming trip; a sales call, never labeled a free offer, no production work promised) &rarr; paid Duty Manager Simulation (price in the proposal, not on the site) &rarr; Tier 2 work scoped from the After-Action Report's gap ledger. Nothing free anywhere in the copy.</td><td><span class="tag ruled">Ruled</span> <span class="tag ask">Your call</span></td></tr>
+      <tr><td><strong>Channels</strong></td><td>Founder-reviewed email at 50 schools a week, Latin America first as you set it. Founder LinkedIn carries reach; the company page is the archive; Facebook gets the pinned identity post plus the four cuts, then nothing. Navigation as approved in Round 1, with the header action relabeled "Arrange a briefing."</td><td><span class="tag ruled">Ruled</span> <span class="tag cb">Cand. B</span></td></tr>
+      <tr><td><strong>Proof posture</strong></td><td>No case studies. Sample proof, labeled as sample proof, everywhere: the Harborview file shown in full with its fictitious-by-design disclosure. The governing line: the proof is visible in the artifacts, not asserted in adjectives.</td><td><span class="tag ruled">Ruled</span> <span class="tag codex">Cand. A</span></td></tr>
+      <tr><td><strong>Launch rule</strong></td><td>Do not delay the launch to create more artifacts. Delay only for inaccurate claims, broken conversion, or an unresolved paid offer.</td><td><span class="tag codex">Cand. A</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The campaign line</h3>
+  <p>Codex's campaign sentence opens on "Every trip reaches a series of decisions," which sits one step from the decisions-as-pressure line you rejected. Same idea, opened on the finished work instead:</p>
+  <div class="copy-example"><span class="lbl">Recommended campaign line, under the standing hero</span>One trip file, prepared for every reader and every decision.</div>
+  <p class="footnote">"Every trip, decision-ready." stays the hero. "Risk intelligence for school trips" stays the gold eyebrow. The campaign line is the sentence under them that names what the campaign shows. Section 10 asks for a yes or no on it.</p>
+</section>
+
+<section class="chapter" id="p2">
+  <p class="chapter-num">Section 2</p>
+  <h2>Your rulings, applied.</h2>
+  <p>Each ruling from your review, and exactly what it changes. This section exists so the whole working set can be checked against it before anything ships.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th style="width:30%">Your ruling</th><th>What changes</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Paid products only. "We charge from the start."</strong></td><td>The free one-trip review is dead everywhere: the planned /one-trip page is cancelled, all three email arms lose their "no cost" offer paragraphs, social Post 8 is rewritten, and the campaign review page's offer line is corrected. The briefing is presented as an ordinary first conversation, never as an offer. The commercial-dilution argument, from the Codex report, is worth keeping for the record: a complete no-cost file trains the buyer to value a costly output at zero and obscures the paid Simulation.</td></tr>
+      <tr><td><strong>No fear framing; celebrate the work and the trip.</strong></td><td>The Questions platform, the six company-post concepts, the 21:40 scene, and the "sequence of decisions" sentence are all withdrawn. A find-and-replace pass runs across all Round 1 copy for that sentence and for the extended avoid list (add: defensible, end-to-end, real-time, seamless, integrated, 360-degree, best practice, AI-powered). Our own Round 1 report used "defensible" twice; it goes.</td></tr>
+      <tr><td><strong>School focus simplifies the products.</strong></td><td>Agreed, and carried as the 90-day commitment in section 1, pending your word in section 10. My Round 1 memo recommended a dual schools-signal, providers-revenue motion; your leaning and Codex's clarity-over-breadth argument point the same way, and I think they are right at this stage: one buyer, one product, one story is what a one-person sales motion can actually run. The provider economics argument survives intact for the quarter after.</td></tr>
+      <tr><td><strong>Latin America first stands.</strong></td><td>The wave-reorder recommendation is withdrawn. The UTM campaign value <code>latam-w1</code> already matches.</td></tr>
+      <tr><td><strong>No case studies.</strong></td><td>All case-study planning is deleted from both reports' material. Proof is the labeled sample file. The only permission ask that survives is naming TSCT for the provider service story, and service is never conditioned on publicity.</td></tr>
+      <tr><td><strong>Conference is over.</strong></td><td>All conference items deleted: the banner mockup, the booth rebuild, the leave-behinds, and the roughly 45 percent conference line in my Round 1 budget; our recommendation is to re-point it at sales operations, legal review, and measurement.</td></tr>
+      <tr><td><strong>Trim the mockups and the page-by-page list.</strong></td><td>Mockups cut from nine surfaces to five (homepage, LinkedIn post, carousel, downloadable brief, email). Page-by-page verdicts cut from thirteen to five. Section 9 lists exactly what was dropped.</td></tr>
+      <tr><td><strong>Automatic acknowledgment.</strong></td><td>Built into the contact endpoint, not a manual step. Spec and template in section 4, Gate B. The site already sends mail through Resend, so this is a small addition to the existing route, plus the same pattern on the briefing intake.</td></tr>
+      <tr><td><strong>Measurement needs a report, not a spec.</strong></td><td>Round 1 had the framework (report section 17) but no artifact. Section 8 of this plan is the artifact: the weekly sheet, the monthly one-page report merged from both Round 1 designs, the event set, and the single UTM dictionary. First monthly issue lands at the end of launch month 1.</td></tr>
+      <tr><td><strong>TSCT sold as a live service.</strong></td><td>Written as an offered-now service on /for-providers, which matches the pattern you set on 4 August (offered now, cost silent, no turnaround claim). Section 7 has the copy and one honesty boundary on how it is phrased.</td></tr>
+      <tr><td><strong>Navigation approved.</strong></td><td>Ships as recommended, with one addition from Codex: the persistent header action, relabeled "Arrange a briefing."</td></tr>
+      <tr><td><strong>Destination intelligence stays out of public content.</strong></td><td>Confirmed. Destination artifacts keep their descriptive names (Weather Brief, Route Intelligence, Location Intelligence) as client deliverables, no sub-brand, no public pillar.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="chapter" id="p3">
+  <p class="chapter-num">Section 3</p>
+  <h2>What the Codex report contributes.</h2>
+  <p>Reviewed at your direction, with three analysts over its twenty sections and a reconciliation against our report and your rulings. It duplicates most of our audit at lower resolution and its landscape and risk work adds nothing, but it is genuinely better in four places, and those four now sit at the center of this plan.</p>
+
+  <h3>The four big adoptions</h3>
+  <ol>
+    <li><strong>The Decision File campaign platform.</strong> With our Questions platform rejected, this is the strongest surviving concept in either report, and it is better suited to your celebration ruling than anything we proposed: the artifact is the hero, the moment is named, and nothing is sold on anxiety. It also gives the eight-post story a spine rather than replacing it.</li>
+    <li><strong>The eight-post story audit.</strong> Post-by-post decisions instead of new concepts, including a boundary catch we missed: Post 5 says "the page recommends" a pacing, which crosses the never-advises line; it becomes "the page records a planning pace of 1.5 to 2.0 km/h."</li>
+    <li><strong>The approver-first audience.</strong> Our coordinator-first choice was built on the free offer; with the free offer dead and a $3,000 entry, the commercial CTA must reach the budget holder. Coordinators stay in the plan as the people the assets equip.</li>
+    <li><strong>The paid-side funnel mechanics.</strong> The Simulation-to-Tier-2 bridge (scope follow-on work from the After-Action Report's gap ledger, nothing else), the proposal contents list (price, roles, data, boundary, AAR timing, terms), loss-reason and stage-age tracking, and the sales-readiness gate: scope, price, availability, proposal, contract boundary, and AAR timing ready before qualified replies arrive.</li>
+  </ol>
+
+  <h3>Smaller adoptions folded into this plan</h3>
+  <ul>
+    <li>The 90-day freeze on new product names, and the one-entry-product architecture: one thing a school books by name, everything else a descriptive document name.</li>
+    <li>Replacement vocabulary for the banned advisory register: specialist work, engagement, review, briefing.</li>
+    <li>Messaging replacements for our banned copy: Codex's value proposition and LinkedIn company description open on what schools already hold, not on what they lack, and are used nearly as-is in section 6.</li>
+    <li>The reader-map device: every artifact shown with its reader and the decision moment it serves. One artifact per frame, three labels. This is the production template for every campaign asset.</li>
+    <li>"Do not gate the proof ETI360 most needs people to see." The sample file stays ungated, permanently.</li>
+    <li>The guided sample file: rename Showcase to Sample Trip (a descriptive label under the naming architecture, not a new product name), organize it as one trip walked reader by reader, label every artifact Sample / In development / Available.</li>
+    <li>The gatekeeper enablement note: a one-page scope and data-handling note that answers legal, IT, and insurer questions before they stall a Simulation sale.</li>
+    <li>Launch review instruments: verbatim objection logging from the first briefing, the week-8 review of all 150 accounts by response category and role, the week-12 offer-fit review of the $3,000 price point, and the null-result rule: silence is a result, not a reason to make more content.</li>
+    <li>Second-touch discipline: follow up only with prior clickers and repliers, personally; no blanket re-sends.</li>
+    <li>The anchor asset that replaces our dead pattern report: "What leadership reviews before a trip decision," an article plus a six-page ungated approval-meeting brief whose final page explains the Simulation. Needs no customers and no free work.</li>
+    <li>The production displacement rule: a new substantial asset displaces an existing commitment; it does not stack on top.</li>
+  </ul>
+
+  <h3>Not taken, in one line each</h3>
+  <p class="footnote">Codex's category descriptor (yours is ruled), its positioning statement (opens on "scattered information," which opens on what a school lacks), its "When the Question Arrives" option (the rejected platform by another name), its own 21:40 post concept (same scene you rejected), all its case-study and conference planning (your rulings), its Facebook cadence (heavier than the four-posts-then-stop verdict), its navigation order (yours is approved), its campaign sentence's opening clause (reworked in section 1), and its audit, landscape, and risk sections (ours carry the file-level evidence). Full reconciliation register available if you want the item-by-item version.</p>
+</section>
+
+<section class="chapter" id="p4">
+  <p class="chapter-num">Section 4</p>
+  <h2>Launch gates: what happens, in order.</h2>
+  <p>Three gates, then the send. With AI assistance on the builds and your review on the copy, the gates are a working week. The governing rule: do not delay the launch to create more artifacts; delay only for inaccurate claims, broken conversion, or an unresolved paid offer. Everything below is one of those three.</p>
+
+  <h3>Gate A &middot; Truth: the claims sweep <span class="footnote">(days 1 to 2)</span></h3>
+  <ol>
+    <li><strong>Naming-law sweep across the live site.</strong> Remove the external-standard references from the eleven surfaces our audit lists; the framework presents as the ETI360 Operational Capability Framework. Remove "per-area maturity scoring" and "per-area scores" from /framework. Strip the two public TripRisk360 references from /documents/trip-risk-register.</li>
+    <li><strong>Serve the right Tier 1 artifact.</strong> Swap the one-page April PDF titled with the standard name for the eight-page 24 August baseline v3 on all three pages that link it.</li>
+    <li><strong>Prune the stale showcase tiles.</strong> The tile publishing the two retired terms comes down now; the nine documents carrying the retired school identifier get re-rendered, RAMS first because the homepage and arm C feature it.</li>
+    <li><strong>One founder-history claim.</strong> Arm C says thirty-plus combined years and ten thousand students; the March strategy says 13+ years and 12,000. One version is chosen (your call 4); it becomes the only version, everywhere.</li>
+    <li><strong>Banned-copy pass.</strong> Find and replace across all working copy: the "sequence of decisions" sentence, "defensible," and the extended avoid list. Then add the mechanical gate: a build-time check that fails on any customer-facing route containing a retired term, merged with the second-reader rule and document metadata (issue date, source date, owner, amendment log) on client-bound artifacts.</li>
+  </ol>
+
+  <h3>Gate B &middot; The paid offer <span class="footnote">(days 2 to 4)</span></h3>
+  <ol>
+    <li><strong>Rework the three email arms.</strong> The structure, personalization, and Gmail-drafts model all stay. Only the offer paragraphs change. Current and replacement:
+      <div class="copy-example"><span class="lbl">Arm A, replacing "Send an itinerary... No cost."</span>If it would be useful, reply with one upcoming trip and we can set up a short briefing on the decision it is heading for, who will read its file, and what its file would need to contain. It comes straight to me.</div>
+      <div class="copy-example"><span class="lbl">Arm B, replacing "Send me an itinerary... No cost. We take these in the order they arrive."</span>If you have a trip like this coming up, reply and we can talk through what a file for that trip would contain: the route pages, the assessment, the version families read. Or use the form and it reaches me directly.</div>
+      <div class="copy-example"><span class="lbl">Arm C, replacing "Or start with one trip: reply with an upcoming itinerary and we will show you what its reviewed file would look like."</span>Or reply with an upcoming trip, and we will arrange a briefing on the decision it is heading for and the file it would need. It comes straight to me, Dan Skimin.</div>
+    </li>
+    <li><strong>Rewrite social Post 8</strong> per the table in section 5: the record closes the story, the Simulation is the named next step, the briefing is the ask, nothing is free.</li>
+    <li><strong>Correct the campaign review page</strong> offer line and the approval item that references it, so what Seb approves matches what sends.</li>
+    <li><strong>Build /duty-manager-simulation.</strong> Who it is for; the 90-minute structure; what the school supplies; what happens in the room; the After-Action Report it leaves behind; "Arrange a briefing" as the CTA. Price stays off the page, in the proposal, consistent with the standing no-public-pricing rule.</li>
+    <li><strong>Build the briefing page.</strong> One page replacing the cancelled free-offer page: what a trip-readiness briefing is (20 minutes, one upcoming trip, the decision and the readers), the intake form (which trip, roughly when, which decision is next), and the sample-file link. Primary CTA sitewide: "Arrange a briefing." Secondary: "See the sample trip file."</li>
+    <li><strong>The Simulation sales kit, one document each.</strong> The merged scope-and-proposal one-pager (structure, required inputs, deliverable and AAR timing, price, roles, data boundary, terms, availability); the reply script; the qualification frame (participants, trip, date, decision); the gatekeeper scope and data-handling note. These exist before the first qualified reply arrives, not after.</li>
+    <li><strong>The automatic acknowledgment.</strong> The contact route already delivers through Resend; add the second send, to the submitter, on both forms:
+      <div class="copy-example"><span class="lbl">Auto-acknowledgment template (both forms)</span>Thank you. Your note has reached us, and we respond within two business days. If it concerns an upcoming trip, the rough dates and the next decision on it are helpful; you can reply to this message. ETI360 PTE. LTD., Singapore.</div>
+      One build task, roughly an hour, and it removes the manual step you flagged. Replies to the founder's Gmail arms stay personal, as they should.</li>
+    <li><strong>Homepage conversion pass.</strong> The two same-page anchor CTAs become "Arrange a briefing" and "See the sample trip file"; a Simulation band joins the page above the About strip; the header carries the persistent action. Everything else on the homepage stays.</li>
+  </ol>
+
+  <h3>Gate C &middot; Measurement <span class="footnote">(days 3 to 5, parallel with B)</span></h3>
+  <ol>
+    <li><strong>One UTM dictionary.</strong> <code>utm_source=school-outreach|founder-linkedin|company-linkedin|facebook</code> &middot; <code>utm_medium=email|social</code> &middot; <code>utm_campaign=latam-w1</code>, then <code>w2</code>, <code>w3</code> &middot; <code>utm_content=arm-a|arm-b|arm-c|post-1..8|car-1..3</code> &middot; <code>utm_term=school-slug</code>, never a person. The tier-code convention in the analytics doc is retired and the exception documented. Retag all arms and all posts; verify the parameters surface in analytics before the first send.</li>
+    <li><strong>Wire the events.</strong> <code>sample_file_open</code>, <code>artifact_open</code> (with artifact name), <code>simulation_view</code>, <code>briefing_start</code>, <code>contact_submit</code>. Pipeline stages (<code>email_reply</code>, <code>briefing_held</code>, <code>simulation_scoped</code>, <code>proposal_sent</code>, <code>paid_simulation</code>) live in the manual tracker in section 8, not in analytics.</li>
+    <li><strong>Source capture on both forms</strong>, carried into the notification email, plus the optional "How did you hear about us?" field.</li>
+    <li><strong>Delivery verified end to end.</strong> One real submission on each form arriving in the inbox, with its auto-acknowledgment received on the other side.</li>
+  </ol>
+
+  <h3>Send <span class="footnote">(end of week 1)</span></h3>
+  <ul>
+    <li>Seb's approval on the corrected campaign page. Wave 1: the 50 Latin America drafts written, reviewed by you, sent.</li>
+    <li>Posts 1 and 2 publish: company page as the archive, your profile carrying each with a one-line personal framing. The launch never waits on the company page; if the handle and banner are not ready, your profile publishes on schedule anyway.</li>
+    <li>Facebook: the pinned identity post (descriptor, sample disclosure, site, contact) plus the Post 1 cut.</li>
+  </ul>
+
+  <h3>Weeks 2 to 13, compressed</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>When</th><th>What</th><th>Watch</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Week 2</strong></td><td>Wave 2. Posts 3 and 4. First briefings from wave-1 replies; objections logged verbatim from the first one.</td><td>Replies by arm; briefings booked</td></tr>
+      <tr><td><strong>Week 3</strong></td><td>Wave 3. Posts 5 and 6. Simulation proposed to every qualified briefing, individually; price in the proposal.</td><td>Briefings held; proposals out</td></tr>
+      <tr><td><strong>Week 4</strong></td><td>Posts 7 and 8 close the story. Follow-ups only to clickers and repliers, personally.</td><td>Proposals; first scope conversations</td></tr>
+      <tr><td><strong>Weeks 5 to 7</strong></td><td>The anchor piece ships: "What leadership reviews before a trip decision," article plus the six-page ungated approval-meeting brief, repurposed as carousel and founder posts. First paid Simulations delivered; each one's After-Action Report scopes its own Tier 2 follow-on.</td><td>Brief opens by role; paid sessions</td></tr>
+      <tr><td><strong>Week 8</strong></td><td>The mid-campaign review: all 150 accounts by response category and role. No vanity recap. Decide which message continues and which arm retires.</td><td>The decision, recorded</td></tr>
+      <tr><td><strong>Weeks 9 to 12</strong></td><td>Waves continue through the directory at 50 a week if week 8 says continue. Carousels 2 and 3. Week 12: the offer-fit review of the $3,000 price, procurement friction, and scheduling; change scope only with evidence. Five provider conversations from existing relationships, TSCT first, using the section 7 service story.</td><td>Stage age; loss reasons</td></tr>
+      <tr><td><strong>Week 13</strong></td><td>The 90-day gate you set with the business plan's dates: paid Simulations delivered, proposals open, qualified pipeline, losses and why. Continue school-first, open the provider motion, or revise the offer. Silence is a result, not a reason to make more content.</td><td>The gate decision</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="chapter" id="p5">
+  <p class="chapter-num">Section 5</p>
+  <h2>The eight posts, revised.</h2>
+  <p>Codex's audit of the existing story, which you preferred, merged with our naming-law fix and your paid-only ruling. The story ships as the campaign's opening month; nothing here needs new material, only edits.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th style="width:20%">Post</th><th style="width:12%">Decision</th><th>The change</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 &middot; Introducing ETI360</strong></td><td>Rewrite one line</td><td>The self-description becomes the ruled descriptor: "ETI360 is the independent trip-governance service for international schools and the providers." The artifact-first promise and the Harborview disclosure stay.</td></tr>
+      <tr><td><strong>2 &middot; The framework</strong></td><td>Tighten</td><td>Keep the three questions; present the framework as the method behind the Decision File, not as the product.</td></tr>
+      <tr><td><strong>3 &middot; Organizational Baseline</strong></td><td>Rewrite one line</td><td>"Mapped against ISO 31031" becomes "reviewed across ten areas of operational capability." States stay At standard / Progressing; no scores.</td></tr>
+      <tr><td><strong>4 &middot; The trip file</strong></td><td>Retain, reframe</td><td>Frame as the Decision File. RAMS stays ahead of the Activity Risk Profile. Add the plain closing line: "The first step is a briefing about an upcoming trip."</td></tr>
+      <tr><td><strong>5 &middot; The measured route day</strong></td><td>One boundary fix</td><td>"The page recommends holding 1.5 to 2.0 km/h" becomes "the page records a planning pace of 1.5 to 2.0 km/h." ETI360 records; it does not advise. Everything else in the strongest post of the eight stays.</td></tr>
+      <tr><td><strong>6 &middot; The Parent Pack</strong></td><td>Retain</td><td>Link to the specific artifact rather than the page. Add the same plain closing line as Post 4.</td></tr>
+      <tr><td><strong>7 &middot; The Duty Manager Dashboard</strong></td><td>Retain, add one sentence</td><td>"The Duty Manager Simulation is practice inside this dashboard: a facilitated ninety-minute session for your duty manager, on a realistic scenario, before the group departs." Links to the new Simulation page.</td></tr>
+      <tr><td><strong>8 &middot; The record, and the close</strong></td><td>Rewrite</td><td>The free-file offer is out. The post celebrates what the record carries home, names the Duty Manager Simulation as the entry engagement, and closes: "The first step is a briefing about an upcoming trip. We will discuss the decision it is heading for, the readers its file serves, and what working with us looks like. The decision, as always, stays with the school."</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="chapter" id="p6">
+  <p class="chapter-num">Section 6</p>
+  <h2>The content bank after the story.</h2>
+  <p>Replaces the six rejected concepts. Every item celebrates a finished artifact, a reader, or a boundary; none opens on an emergency. Production template for all of them, from Codex: one artifact per frame, three labels only: the reader, the decision moment, the artifact's role.</p>
+
+  <h3>Company page, one per week from week 5</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Concept</th><th>Audience</th><th>Purpose</th><th>CTA</th></tr></thead>
+    <tbody>
+      <tr><td><strong>The first page leadership reads.</strong> The Trip Overview with three annotations: decision, reader, source.</td><td>Approvers</td><td>Establish the Decision File</td><td>See the sample trip file</td></tr>
+      <tr><td><strong>One trip, two depths.</strong> The Leadership Deck and the Parent Itinerary from the same trip, side by side.</td><td>Approvers, coordinators</td><td>Prove one record serves every reader</td><td>See how the views connect</td></tr>
+      <tr><td><strong>Behind the RAMS.</strong> The assessment first, then how activity profiling decides proportional depth.</td><td>Risk leads</td><td>Show the method without leading on ARP</td><td>Review the evidence method</td></tr>
+      <tr><td><strong>What returns with the group.</strong> The post-trip record and what next year's planning reads.</td><td>Leadership</td><td>Celebrate the trip completing well</td><td>See the post-trip record</td></tr>
+      <tr><td><strong>What ETI360 does not decide.</strong> Four rows: ETI360 structures; the school reviews; the provider authors its controls; the school decides.</td><td>Risk leads, gatekeepers</td><td>Trust through boundaries</td><td>Read the method and boundaries</td></tr>
+      <tr><td><strong>Practice before travel.</strong> The Simulation described as rehearsal: roles, communication, the record it leaves. No scenario drama.</td><td>Heads, duty managers</td><td>Demand for the paid product</td><td>Discuss a Duty Manager Simulation</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Founder posts, two per week</h3>
+  <ul>
+    <li><strong>Why I stopped leading with the platform.</strong> The buyer needs the file, not the instrument. One artifact that made the point.</li>
+    <li><strong>Moderate coastal ride, measured.</strong> 11.1 km, 882 m of ascent, and the route day the numbers describe. Craft, celebrated.</li>
+    <li><strong>The parent version is not the risk assessment.</strong> Why one trip carries different depths without becoming inconsistent.</li>
+    <li><strong>What a duty manager should practice.</strong> Communication, role clarity, escalation. Explicitly not dramatic scenarios.</li>
+    <li><strong>A boundary that improves the work.</strong> Why not certifying anything makes the work adoptable.</li>
+    <li><strong>What we changed after reviewing our own campaign.</strong> From ten descriptions and nine product names to one sentence and one product. Disciplined brand leadership, told in first person.</li>
+  </ul>
+  <p class="footnote">Founder surface rules, adopted from Codex: no incident fear stories, no unsupported market claims, no generic leadership reflection, no customer implication without permission, no AI-build commentary. And no post duplicated word for word between the page and the profile; the re-share always carries its own first line.</p>
+
+  <h3>Carousels and the anchor</h3>
+  <ul>
+    <li><strong>Carousel: The Decision File.</strong> Seven pages, first read to post-trip record. The evergreen pinned asset.</li>
+    <li><strong>Carousel: One trip, five readers.</strong> Leadership, coordinator, teacher, parent, duty manager; the same trip at each depth.</li>
+    <li><strong>Carousel: Inside a Duty Manager Simulation.</strong> Timeline, roles, the dashboard, the After-Action Report. The paid product explained.</li>
+    <li><strong>Anchor piece: "What leadership reviews before a trip decision."</strong> A 1,500-word article plus the six-page ungated approval-meeting brief, final page explaining the Simulation. One production effort, six surfaces: site page, carousel, two founder posts, Facebook cut, and the leave-behind for any briefing.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="p7">
+  <p class="chapter-num">Section 7</p>
+  <h2>Providers and the TSCT service.</h2>
+  <p>School-first for ninety days means the provider motion waits, with two exceptions that cost nothing: the /for-providers copy ships the college-tour service now, and week 12 holds five exploratory conversations from existing relationships, TSCT first. No provider campaign, no provider wave lists, until the week-13 gate says so.</p>
+
+  <h3>The service, written for /for-providers</h3>
+  <div class="copy-example"><span class="lbl">Draft copy &middot; the college-tour proposal service</span>For college-tour providers, the program-on-file model prepares the whole proposal cycle. When a school requests a tour, the itinerary and its reports are re-dated for the school's dates. Coordination emails for the hotels, restaurants, and transport around the tour are drafted from the same record. And the requests to each college for tour times are prepared, ready for you to review and send. Once the program is on file, every proposal after that is an adjustment, not a rebuild.</div>
+  <p>This matches the pattern you set on 4 August for the provider re-run service: offered now, cost silent in copy, no turnaround claim, and you verify bookings before anything is confirmed.</p>
+  <div class="box alarm">
+    <h4>One honesty boundary</h4>
+    <p style="margin-bottom:0">Selling this as a live offering is clean: the moment it is on the page, it is offered; the re-dating machinery exists, and the two email-drafting components are a bounded build completed before the first order. What the copy should not do is claim TSCT already receives it, because they do not yet, and a one-line check from them would undo the credibility the rest of the site is built on. So the copy above sells the service in present tense without naming a client; the week-12 TSCT conversation asks two things: first order, and written permission to name them. Service is never conditioned on the permission.</p>
+  </div>
+
+  <h3>The five conversations, week 12</h3>
+  <ul>
+    <li>Existing relationships only, TSCT first. Not a campaign, not a list build.</li>
+    <li>Script: the college-tour service above, plus the both-sides argument already on the site: the same ten-area review a school holds, applied to the provider, in the form school committees already read.</li>
+    <li>Log what they say verbatim. Their objections decide whether the provider motion opens in the next quarter.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="p8">
+  <p class="chapter-num">Section 8</p>
+  <h2>The measurement report.</h2>
+  <p>Your question was whether a measurement report exists. It did not; both Round 1 reports specified frameworks. This section is the artifact, merged from the two designs: our one-page layout plus Codex's Learning panel and its question-per-panel discipline. The weekly sheet is ten minutes; the monthly report is thirty. First monthly issue: end of launch month 1, produced as a page in this same /review/ folder so it lives where the campaign documents live.</p>
+
+  <h3>The weekly sheet, ten minutes every Friday</h3>
+  <p class="footnote">It lives as a page in this /review/ folder, created at Gate C alongside the events it reads; you fill it Fridays until you hand it off. The monthly report is compiled from it.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Row</th><th>This week</th><th>Total</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Emails sent (by arm a / b / c)</td><td>&middot;</td><td>&middot;</td><td>&middot;</td></tr>
+      <tr><td>Replies (by arm), qualified replies</td><td>&middot;</td><td>&middot;</td><td>who, and what they said</td></tr>
+      <tr><td>Sessions by source (email / founder / company / facebook / direct)</td><td>&middot;</td><td>&middot;</td><td>&middot;</td></tr>
+      <tr><td>Sample file opens &middot; Simulation page views &middot; briefing starts</td><td>&middot;</td><td>&middot;</td><td>&middot;</td></tr>
+      <tr><td>Form submits, with source</td><td>&middot;</td><td>&middot;</td><td>&middot;</td></tr>
+      <tr><td>Briefings held &middot; Simulations proposed &middot; Simulations booked</td><td>&middot;</td><td>&middot;</td><td>&middot;</td></tr>
+      <tr><td>Median time to first reply</td><td>&middot;</td><td>&middot;</td><td>target: one business day</td></tr>
+      <tr><td>Objections heard this week, verbatim</td><td colspan="3">&middot;</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The monthly report, one page, five panels</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th style="width:18%">Panel</th><th>Holds</th><th>The question it answers</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Source quality</strong></td><td>Qualified visits and inquiries by email arm, founder LinkedIn, company page, Facebook, direct, referral</td><td>Which source introduces the right schools?</td></tr>
+      <tr><td><strong>Proof use</strong></td><td>Sample file opens, artifact opens by name, return visits, carousel saves from target roles</td><td>Which proof helps a buyer understand the offer?</td></tr>
+      <tr><td><strong>Intent</strong></td><td>Briefing starts, submissions, replies, meetings held</td><td>Where does interest become evaluation?</td></tr>
+      <tr><td><strong>Pipeline</strong></td><td>Qualified inquiries, Simulations scoped, proposals sent, paid Simulations, follow-on Tier 2 scope, stage age, loss reasons</td><td>Is marketing producing commercial opportunities?</td></tr>
+      <tr><td><strong>Learning</strong></td><td>Top objections verbatim, loss reasons, missing evidence, requested capabilities, claim questions</td><td>What should change in positioning, proof, or delivery?</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Rules that govern the numbers</h3>
+  <ul>
+    <li>Impressions, followers, and likes are recorded nowhere on either sheet. At a new company page's distribution they mean nothing, and they crowd out the numbers that decide things.</li>
+    <li>At fifty sends a week, most numbers are too small for statistics. Treat them as a record of what happened; decide on direction and on what repliers actually said. The week-8 and week-13 reviews read these sheets, not analytics dashboards.</li>
+    <li>The events feeding the sheets are the Gate C set; the pipeline rows are manual. Google Analytics stays dormant until you choose to change the cookie posture; the cookieless setup plus these sheets is sufficient for the whole ninety days.</li>
+    <li>Cadence: sheet weekly, report monthly, positioning audit at six months. The six-month audit asks one question: does every surface still say the one sentence?</li>
+  </ul>
+</section>
+
+<section class="chapter" id="p9">
+  <p class="chapter-num">Section 9</p>
+  <h2>Trimmed and dropped.</h2>
+  <p>What came out, so the record is explicit.</p>
+  <div class="cols2">
+    <div>
+      <h4>From our Round 1 report</h4>
+      <ul>
+        <li>The Questions campaign platform and the eight question pages. The search job they carried moves to three quieter topic pages later (readiness, approval evidence, duty-manager preparation) plus crawlable summaries of the sample PDFs; none of it gates the launch.</li>
+        <li>The six company-post concepts and the 21:40 scene.</li>
+        <li>The free one-trip offer, its /one-trip page, and the month-3 pattern report that depended on free reviews. Its replacement: a research brief in months 10 to 12 built from paid engagement records, if the sample is good enough.</li>
+        <li>The coordinator-facing evidence checklist, replaced by the leadership-facing approval-meeting brief.</li>
+        <li>The wave-reorder recommendation, withdrawn per your ruling.</li>
+        <li>The dual schools-and-providers motion from our decision memo.</li>
+        <li>The conference budget line and booth rebuild.</li>
+        <li>The "sequence of decisions" sentence and "defensible," everywhere they appear in our copy.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Page-by-page, cut from thirteen verdicts to five</h4>
+      <ul>
+        <li><strong>Keep:</strong> the claims sweep (Gate A) &middot; the baseline v3 swap &middot; the showcase prune now and the guided Sample Trip rebuild in weeks 5 to 8 &middot; contact instrumentation with the auto-acknowledgment &middot; sitemap completeness plus the /login fix: pull the footer link now, which is minutes; finishing app.eti360.com is a post-launch task, not a launch gate.</li>
+        <li><strong>Dropped or deferred:</strong> the About rewrite beyond its first sentence &middot; folding the register page (just strip the platform name) &middot; the perspective expansion &middot; structured-data work beyond the basics &middot; everything cosmetic.</li>
+      </ul>
+      <h4>Mockups, cut from nine to five</h4>
+      <p>Homepage &middot; LinkedIn post &middot; LinkedIn carousel &middot; the approval-meeting brief &middot; email. Conference banner and case study deleted per your rulings; report cover already ships correct; Facebook reuses the LinkedIn asset.</p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="p10">
+  <p class="chapter-num">Section 10</p>
+  <h2>Your calls, then we send.</h2>
+  <p>Everything above executes without further discussion except these. A one-line reply on each is enough.</p>
+  <ol>
+    <li><strong>The commitment.</strong> Ninety days, schools first, the Duty Manager Simulation as the single paid entry product. This is the one decision both reports converged on and your note leaned toward. Yes ratifies the whole plan's shape.</li>
+    <li><strong>The campaign platform.</strong> The Decision File, adopted from the Codex report, with the campaign line "One trip file, prepared for every reader and every decision." A yes covers both; say the word if you want a different line. Codex's original sentence opened on decisions-as-pressure, so we reworked it rather than offering it.</li>
+    <li><strong>The briefing.</strong> We read "paid only" as: no free work product, ever, and the 20-minute briefing survives as an ordinary sales conversation, cost-silent, with no production work promised. Confirm that reading, because if the briefing is also out, the emails must ask directly for a Simulation conversation, which is a colder ask.</li>
+    <li><strong>The founder-history claim.</strong> Which version stands: the years, the students, the trips. It becomes the only version, on every surface.</li>
+    <li><strong>Simulation price surface.</strong> The $3,000 pilot price itself is your 31 July decision and stands. We recommend it lives in the proposal only, per the standing no-public-pricing rule; say the word if you want it on the page instead.</li>
+    <li><strong>TSCT.</strong> The service copy in section 7 ships in present tense without naming them; the week-12 conversation asks for the first order and for naming permission. Confirm you are comfortable not naming them until then.</li>
+    <li><strong>The auto-acknowledgment template</strong> in Gate B, as written or with your edits.</li>
+  </ol>
+  <div class="box dark">
+    <h3 style="margin-top:0">Then the sequence is</h3>
+    <p style="margin-bottom:0">Gate A truth sweep, Gate B paid offer, Gate C measurement, Seb's approval on the corrected campaign page, wave 1 to Latin America, posts 1 and 2, and the first briefing on the calendar. With your calls back by tomorrow, the first send goes this week. Own the position in words. Prove it in the file. Convert it through practice.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="rep">
+  <div class="wrap">
+    <p style="margin:0 0 8px"><strong style="color:#fff">ETI360 launch action plan</strong> &middot; Round 2 &middot; 25 August 2026</p>
+    <p style="margin:0">Unlisted internal document. Sources: the founder's rulings of 25 August 2026, the Candidate B report (this branch, /review/gtm-report.html), and the Candidate A report (reviewed at the founder's direction). Example copy obeys the naming laws and tone rules as they stand; items needing the founder's word are collected in section 10.</p>
+  </div>
+</footer>
+
+</body>
+</html>
