@@ -1627,9 +1627,7 @@ a.doc-marquee-item:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
 .ft-stop-lbl { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
 
 .ft-tiers { display: grid; grid-template-columns: 1fr 1.55fr 1.05fr; gap: 0; margin-top: 22px; }
-.ft-tier { padding: 0 24px 6px; border-left: 1px solid var(--hairline); min-width: 0; }
-.ft-tier:first-child { padding-left: 0; border-left: 0; }
-.ft-tier:last-child { padding-right: 0; }
+.ft-tier { min-width: 0; }
 .ft-eyebrow { font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); font-weight: 700; margin: 0 0 7px; }
 .ft-name { font-family: var(--font-display, "Source Serif 4", Georgia, serif); font-size: clamp(19px, 1.8vw, 24px); font-weight: 600; color: var(--navy); margin: 0 0 7px; line-height: 1.15; }
 .ft-sub { font-size: 13.5px; line-height: 1.5; color: var(--ink-mid); margin: 0 0 16px; }
@@ -1670,12 +1668,90 @@ a.doc-marquee-item:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
 @media (max-width: 900px) {
   .ft-stops { grid-template-columns: 1fr 1fr 1fr; }
   .ft-tiers { grid-template-columns: 1fr; }
-  .ft-tier { padding: 20px 0 6px; border-left: 0; border-top: 1px solid var(--hairline); }
-  .ft-tier:first-child { border-top: 0; padding-top: 0; }
+  
   .ft-sim { max-width: 100%; grid-template-columns: 1fr; }
   .ft-loop { grid-template-columns: 1fr; gap: 10px; }
 }
 @media (max-width: 560px) {
   .ft-chips { grid-template-columns: repeat(2, 1fr); }
   .ft-stop-lbl { font-size: 9.5px; }
+}
+
+/* ── On-page section nav ── */
+.section-nav {
+  position: sticky;
+  top: 57px; /* directly under the sticky site header */
+  z-index: 15;
+  background: rgba(250, 248, 243, 0.94);
+  backdrop-filter: blur(6px) saturate(120%);
+  border-bottom: 1px solid var(--hairline);
+}
+.section-nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.section-nav-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 12px 0;
+}
+.section-nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.section-nav a {
+  display: block;
+  padding: 12px 12px 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+.section-nav a:hover { color: var(--navy); }
+.section-nav a.active { color: var(--navy); border-bottom-color: var(--gold); font-weight: 600; }
+@media (max-width: 640px) { .section-nav-label { display: none; } .section-nav-inner { padding: 0 14px; } }
+
+/* ── Scroll reveal (enabled only when html.fx is set by ScrollEffects) ── */
+html.fx [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+html.fx [data-reveal="2"] { transition-delay: 0.12s; }
+html.fx [data-reveal="3"] { transition-delay: 0.24s; }
+html.fx [data-reveal].revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.fx [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Alternating section band ── */
+.about-strip.band { background: var(--parchment-2); }
+
+/* ── FrameworkTimeline v2: boxed tier modules per the wireframe ── */
+.ft-tiers { gap: 22px; }
+.ft-tier {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-top: 3px solid var(--gold);
+  box-shadow: 0 6px 18px rgba(13, 53, 88, 0.07);
+  padding: 22px 22px 20px;
+}
+.ft-tier:first-child { padding-left: 22px; }
+.ft-tier:last-child { padding-right: 22px; }
+.ft-card { box-shadow: none; }
+.ft-chip { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.ft-chip:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(13, 53, 88, 0.14); }
+@media (max-width: 900px) {
+  .ft-tier { border-top: 3px solid var(--gold); padding: 20px 18px 18px; }
+  .ft-tier:first-child { padding-top: 20px; }
 }

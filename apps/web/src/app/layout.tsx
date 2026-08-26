@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SourceCapture } from "@/components/SourceCapture";
+import { ScrollEffects } from "@/components/ScrollEffects";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body className="dark-bg">
         <a className="skip-link" href="#main">Skip to main content</a>
         <SourceCapture />
+        <ScrollEffects />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

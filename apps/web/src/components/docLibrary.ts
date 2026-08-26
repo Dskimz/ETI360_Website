@@ -13,8 +13,8 @@ export const schoolTier1: DocEntry[] = [
     reader: "Head · Board · Risk committee",
     desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, recorded across the ETI360 Operational Capability Framework and refreshed annually.",
     image: {
-      src: "/email/spread-school-baseline-v2.png",
-      alt: "Organizational Baseline Evaluation for Harborview International School: each of ten areas marked at standard or progressing",
+      src: "/email/spread-school-baseline-v3.png",
+      alt: "Organizational Baseline Evaluation for Harborview International School: ten areas of operational capability, each marked at standard or progressing",
     },
   },
 ];

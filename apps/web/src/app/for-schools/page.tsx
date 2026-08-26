@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocMarquee, DocRow, TierBand } from "../../components/DocShowcase";
+import { SectionNav } from "../../components/SectionNav";
 import { DocRowsExpander } from "../../components/DocRowsExpander";
 import { QABlock, type QAEntry } from "../../components/QASection";
 import {
@@ -113,6 +114,16 @@ export default function ForSchoolsPage() {
         </div>
       </section>
 
+      <SectionNav
+        items={[
+          { href: "#tier1", label: "Tier 1 · Baseline" },
+          { href: "#tier2", label: "Tier 2 · Trip Risk Review" },
+          { href: "#tier3", label: "Tier 3 · Operations" },
+          { href: "#questions", label: "The questions" },
+          { href: "#briefing", label: "Arrange a briefing" },
+        ]}
+      />
+
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
@@ -202,7 +213,7 @@ export default function ForSchoolsPage() {
         </div>
         <DocMarquee items={allDocs} label="The ETI360 documents for schools" />
 
-        <div className="container measure qa-section">
+        <div id="questions" className="container measure qa-section">
           <h2 className="section-heading rule-gold">
             The questions a trip must answer.
           </h2>
@@ -221,7 +232,7 @@ export default function ForSchoolsPage() {
         </div>
       </section>
 
-      <section className="cta-section">
+      <section id="briefing" className="cta-section">
         <div className="container measure">
           <h2>See it on your own trip.</h2>
           <p>

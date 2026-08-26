@@ -40,7 +40,7 @@ export function FrameworkTimeline() {
         </div>
 
         <div className="ft-tiers">
-          <div className="ft-tier">
+          <div className="ft-tier" data-reveal="">
             <p className="ft-eyebrow ui">Tier 1 &middot; Annual</p>
             <h3 className="ft-name">Organizational Baseline</h3>
             <p className="ft-sub">
@@ -51,14 +51,14 @@ export function FrameworkTimeline() {
             <div className="ft-card">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/email/spread-school-baseline-v2.png"
-                alt="Organizational Baseline Evaluation spread: ten areas of operational capability, each marked at standard or progressing"
+                src="/email/spread-school-baseline-v3.png"
+                alt="Organizational Baseline Evaluation: ten areas of operational capability, OC01 to OC10, each marked at standard or progressing"
                 loading="lazy"
               />
             </div>
           </div>
 
-          <div className="ft-tier ft-tier-mid">
+          <div className="ft-tier ft-tier-mid" data-reveal="2">
             <p className="ft-eyebrow ui">Tier 2 &middot; Per trip</p>
             <h3 className="ft-name">Trip Risk Review</h3>
             <p className="ft-sub">
@@ -77,7 +77,7 @@ export function FrameworkTimeline() {
             </div>
           </div>
 
-          <div className="ft-tier">
+          <div className="ft-tier" data-reveal="3">
             <p className="ft-eyebrow ui">Tier 3 &middot; During travel</p>
             <h3 className="ft-name">Dynamic Risk Operations</h3>
             <p className="ft-sub">
@@ -100,7 +100,7 @@ export function FrameworkTimeline() {
           </div>
         </div>
 
-        <div className="ft-sim">
+        <div className="ft-sim" data-reveal="">
           <span className="ft-sim-k ui">Duty Manager Simulation</span>
           <span className="ft-sim-d">
             Once a school&rsquo;s trips are in the system, a facilitated session
@@ -113,7 +113,7 @@ export function FrameworkTimeline() {
           </span>
         </div>
 
-        <div className="ft-loop">
+        <div className="ft-loop" data-reveal="">
           <div className="ft-loop-arrow" aria-hidden="true" />
           <div>
             <p className="ft-loop-k ui">Review &middot; Learn &middot; Carry forward</p>

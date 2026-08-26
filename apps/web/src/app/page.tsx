@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DocMarquee, DocRow } from "../components/DocShowcase";
 import { FrameworkTimeline } from "../components/FrameworkTimeline";
+import { SectionNav } from "../components/SectionNav";
 import { schoolDocs } from "../components/docLibrary";
 
 export const metadata: Metadata = {
@@ -46,10 +47,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionNav
+        items={[
+          { href: "#framework", label: "The framework" },
+          { href: "#work", label: "What a school receives" },
+          { href: "#audiences", label: "Who we work with" },
+          { href: "#about", label: "About" },
+          { href: "#briefing", label: "Arrange a briefing" },
+        ]}
+      />
+
       <FrameworkTimeline />
 
-      <section id="work" className="about-strip">
-        <div className="container">
+      <section id="work" className="about-strip band">
+        <div className="container" data-reveal="">
           <p className="label ui">The work</p>
           <h2 className="section-heading section-heading-lg rule-gold">
             What a school receives.
@@ -77,7 +88,7 @@ export default function HomePage() {
       </section>
 
       <section id="audiences" className="about-strip">
-        <div className="container">
+        <div className="container" data-reveal="">
           <p className="label ui">Who we work with</p>
           <h2 className="section-heading rule-gold">
             The same framework. Two operational realities.
@@ -119,7 +130,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="about-strip">
+      <section id="about" className="about-strip band">
         <div className="container measure">
           <p className="label ui">About</p>
           <h2 className="section-heading rule-gold">
@@ -151,7 +162,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="cta-section">
+      <section id="briefing" className="cta-section">
         <div className="container measure">
           <h2>Arrange a briefing.</h2>
           <p>

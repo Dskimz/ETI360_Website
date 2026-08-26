@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocEntry, DocMarquee, DocRow, TierBand } from "../../components/DocShowcase";
+import { SectionNav } from "../../components/SectionNav";
 import { DocRowsExpander } from "../../components/DocRowsExpander";
 import { QABlock, type QAEntry } from "../../components/QASection";
 
@@ -27,8 +28,8 @@ const tier1: DocEntry[] = [
     reader: "School risk committees · Your leadership",
     desc: "The same ten-area review schools receive, applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded across the ETI360 Operational Capability Framework and refreshed annually — your standing documented in the same form schools use for their own baseline.",
     image: {
-      src: "/email/spread-partner-baseline-v2.png",
-      alt: "Organizational Baseline Evaluation applied to a trip provider: each of ten areas marked at standard or progressing",
+      src: "/email/spread-school-baseline-v3.png",
+      alt: "The ten-area Organizational Baseline Evaluation format, shown on the school edition: each area marked at standard or progressing",
     },
   },
 ];
@@ -249,6 +250,16 @@ export default function ForProvidersPage() {
         </div>
       </section>
 
+      <SectionNav
+        items={[
+          { href: "#tier1", label: "Tier 1 · Baseline" },
+          { href: "#tier2", label: "Tier 2 · Every proposal" },
+          { href: "#tier3", label: "Tier 3 · During the trip" },
+          { href: "#questions", label: "The questions" },
+          { href: "#briefing", label: "Arrange a briefing" },
+        ]}
+      />
+
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
@@ -270,6 +281,7 @@ export default function ForProvidersPage() {
 
         <TierBand
           n={1}
+          id="tier1"
           eyebrow="Tier One · Annual"
           name="Organizational Baseline"
           desc="A documented review of your practices — the same ten-area review applied to schools and to trip providers, recorded across the ETI360 Operational Capability Framework, with your documentation kept in order and refreshed annually."
@@ -282,6 +294,7 @@ export default function ForProvidersPage() {
 
         <TierBand
           n={2}
+          id="tier2"
           eyebrow="Tier Two · Every proposal"
           name="Trip Risk Review"
           desc="The due diligence documentation school leadership asks for, the documents that get students and parents ready for the trip, and a rehearsal of the trip before it runs."
@@ -317,6 +330,7 @@ export default function ForProvidersPage() {
 
         <TierBand
           n={3}
+          id="tier3"
           eyebrow="Tier Three · During the trip"
           name="Dynamic Risk Operations"
           desc="A working view for managing trip issues while groups travel — operated by the school's or the provider's own duty manager, never staffed by ETI360."
@@ -351,7 +365,7 @@ export default function ForProvidersPage() {
         </div>
         <DocMarquee items={allDocs} label="The ETI360 documents for trip providers" />
 
-        <div className="container measure qa-section">
+        <div id="questions" className="container measure qa-section">
           <h2 className="section-heading rule-gold">
             The questions a proposal must answer.
           </h2>
@@ -370,7 +384,7 @@ export default function ForProvidersPage() {
         </div>
       </section>
 
-      <section className="cta-section">
+      <section id="briefing" className="cta-section">
         <div className="container measure">
           <h2>See it on your own program.</h2>
           <p>
