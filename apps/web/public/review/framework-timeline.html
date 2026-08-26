@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ETI360 Framework Timeline | Campaign Spine Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+:root{
+  --navy:#0d3558; --navy-deep:#0a2a45; --gold:#C9A24D; --gold-dark:#8a6c1f;
+  --parchment:#faf8f3; --parchment-2:#f3efe4; --ink:#1f2732; --ink-mid:rgba(31,39,50,.72);
+  --hairline:rgba(13,53,88,.16); --white:#fff;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--parchment);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1400px;margin:0 auto;padding:0 32px}
+
+/* mockup chrome */
+.mock-bar{background:var(--navy-deep);color:rgba(255,255,255,.75);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:9px 0;border-bottom:1px solid rgba(201,162,77,.35)}
+.mock-bar strong{color:var(--gold);font-weight:600}
+
+/* the section as it would sit on the site */
+.spine-section{padding:64px 0 72px}
+.eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:0 0 14px}
+.descriptor{font-family:var(--serif);font-size:clamp(22px,2.7vw,31px);line-height:1.3;color:var(--navy);margin:0 0 12px;max-width:30ch;font-weight:600}
+.descriptor .lede{color:var(--gold-dark);font-style:italic}
+.how{font-size:16.5px;color:var(--ink-mid);max-width:62ch;margin:0 0 40px}
+
+/* the cycle: a circuit around the three tiers */
+.cycle{position:relative;border:2px solid var(--gold);border-top-width:2px;padding:34px 30px 30px;margin:0 0 18px;background:transparent}
+/* arrowhead travelling right along the top */
+.cycle::before{content:"";position:absolute;top:-9px;right:-2px;border-left:14px solid var(--gold);border-top:8px solid transparent;border-bottom:8px solid transparent}
+/* arrowhead returning left along the bottom */
+.cycle::after{content:"";position:absolute;bottom:-9px;left:-2px;border-right:14px solid var(--gold);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.return-label{position:absolute;bottom:-13px;left:50%;transform:translateX(-50%);background:var(--parchment);padding:0 16px;font-size:12.5px;letter-spacing:.05em;color:var(--gold-dark);font-weight:600;white-space:nowrap}
+
+.tiers{display:grid;grid-template-columns:1fr 3fr 2fr;gap:0}
+.tier{padding:0 26px;border-left:1px solid var(--hairline)}
+.tier:first-child{padding-left:0;border-left:0}
+.tier:last-child{padding-right:0}
+.tier-eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:0 0 5px}
+.tier-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);margin:0 0 4px;line-height:1.2;min-height:2.4em}
+.tier-verb{font-size:13.5px;color:var(--ink-mid);margin:0 0 20px;line-height:1.45;min-height:2.9em}
+.tier-verb em{font-style:normal;color:var(--navy);font-weight:600}
+
+.docs{display:grid;gap:20px 18px}
+.t1 .docs{grid-template-columns:1fr}
+.t2 .docs{grid-template-columns:repeat(3,1fr)}
+.t3 .docs{grid-template-columns:repeat(2,1fr)}
+
+.doc{margin:0}
+.doc figure{margin:0}
+.doc .thumb{display:block;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--white);border:1px solid var(--hairline);box-shadow:0 3px 10px rgba(13,53,88,.10)}
+.doc .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.doc h4{font-size:13px;font-weight:600;color:var(--navy);margin:10px 0 3px;line-height:1.3}
+.doc p{font-size:12.5px;line-height:1.45;color:var(--ink-mid);margin:0}
+
+.disclosure{font-size:12.5px;color:var(--ink-mid);max-width:70ch;margin:26px 0 0;padding-top:16px;border-top:1px solid var(--hairline)}
+
+/* mockup notes */
+.notes{background:var(--white);border-top:1px solid var(--hairline);padding:44px 0 60px}
+.notes h2{font-family:var(--serif);font-size:22px;color:var(--navy);margin:0 0 14px;font-weight:600}
+.notes h3{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-dark);margin:26px 0 8px;font-weight:700}
+.notes p,.notes li{max-width:74ch;font-size:15px;color:var(--ink)}
+.notes ul{padding-left:20px}
+.notes li{margin-bottom:7px}
+
+@media(max-width:1080px){
+  .tiers{grid-template-columns:1fr}
+  .tier{padding:0;border-left:0;border-top:1px solid var(--hairline);padding-top:26px;margin-top:26px}
+  .tier:first-child{border-top:0;margin-top:0;padding-top:0}
+  .tier-verb{min-height:0}
+  .tier-name{min-height:0}
+  .t2 .docs,.t3 .docs{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:680px){
+  .wrap{padding:0 18px}
+  .cycle{padding:26px 18px 26px}
+  .t2 .docs,.t3 .docs,.t1 .docs{grid-template-columns:repeat(2,1fr)}
+  .return-label{font-size:11px;white-space:normal;width:80%;text-align:center;background:var(--parchment)}
+}
+</style>
+</head>
+<body>
+
+<div class="mock-bar"><div class="wrap"><strong>Mockup</strong> &nbsp;&middot;&nbsp; Campaign spine, from Dan's wireframe &nbsp;&middot;&nbsp; 26 August 2026 &nbsp;&middot;&nbsp; unlisted</div></div>
+
+<section class="spine-section">
+  <div class="wrap">
+    <p class="eyebrow">How the work runs</p>
+    <p class="descriptor">ETI360 is the <span class="lede">independent trip-governance service</span> for international schools and the providers.</p>
+    <p class="how">The service runs on one framework across the school year. The organization is established once a year, each trip is reviewed on its own merits before departure, and the school's own teams are equipped for the days a group is away. When the group comes home, the record opens the next year.</p>
+
+    <div class="cycle">
+      <div class="tiers">
+
+        <div class="tier t1">
+          <p class="tier-eyebrow">Tier One &middot; Once a year</p>
+          <h3 class="tier-name">Organizational Baseline</h3>
+          <p class="tier-verb"><em>Establish</em> organizational readiness.</p>
+          <div class="docs">
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/spread-school-baseline-v2.png" alt="Organizational Baseline Evaluation for the reference school, showing ten areas marked at standard or progressing" loading="lazy"></span>
+              <h4>Organizational Baseline Evaluation</h4>
+              <p>Where the school stands across ten areas of operational capability, reviewed once a year.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/spread-partner-baseline-v2.png" alt="Organizational Baseline Evaluation applied to a trip provider, showing the same ten areas" loading="lazy"></span>
+              <h4>Provider Baseline Evaluation</h4>
+              <p>The same ten-area review, applied to each provider the school travels with.</p>
+            </figure></article>
+          </div>
+        </div>
+
+        <div class="tier t2">
+          <p class="tier-eyebrow">Tier Two &middot; Every trip</p>
+          <h3 class="tier-name">Trip Risk Review</h3>
+          <p class="tier-verb"><em>Review</em> each trip on its own merits.</p>
+          <div class="docs">
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/page-overview.png" alt="Trip Overview one-page summary" loading="lazy"></span>
+              <h4>Trip Overview</h4>
+              <p>The trip on one page: program, dates, group, and logistics for the first read.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/marketing/library/itinerary-report.png" alt="Itinerary Report calendar view with hour-by-hour blocks" loading="lazy"></span>
+              <h4>Itinerary Report</h4>
+              <p>Every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/marketing/library/rams-report.png" alt="Trip Risk Assessment and RAMS register page" loading="lazy"></span>
+              <h4>Trip Risk Assessment &amp; RAMS</h4>
+              <p>Hazards, controls, who holds each control, and residual risk in plain language.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/spread-itoshima-2.png" alt="Route Intelligence page with elevation profile and waypoint register" loading="lazy"></span>
+              <h4>Route Intelligence</h4>
+              <p>Distance, gradient, pacing, sun, and terrain cover recorded for outdoor days.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/card-parent.png" alt="Parent Itinerary day pages" loading="lazy"></span>
+              <h4>Parent Itinerary</h4>
+              <p>The journey written for families, in the school's own voice.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/screen-simulation.png" alt="The Duty Manager Simulation running inside the dashboard" loading="lazy"></span>
+              <h4>Duty Manager Simulation</h4>
+              <p>A facilitated ninety-minute session in which the school's duty manager works a realistic scenario before departure.</p>
+            </figure></article>
+          </div>
+        </div>
+
+        <div class="tier t3">
+          <p class="tier-eyebrow">Tier Three &middot; During and after</p>
+          <h3 class="tier-name">Dynamic Risk Operations</h3>
+          <p class="tier-verb"><em>Equip</em> the school's own teams for dynamic operations.</p>
+          <div class="docs">
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/page-teacher.png" alt="Teacher Operational Guide day page with run sheet and contacts" loading="lazy"></span>
+              <h4>Teacher Operational Guide</h4>
+              <p>One page per day for the trip leader: timing, movements, contacts, and the day's attention points.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/screen-dmd-v3.png" alt="The Duty Manager Dashboard with a trip open" loading="lazy"></span>
+              <h4>Duty Manager Dashboard</h4>
+              <p>The working view while a group travels, operated by the school's own duty manager.</p>
+            </figure></article>
+            <article class="doc"><figure>
+              <span class="thumb"><img src="/email/card-posttrip.png" alt="Post-Trip Feedback Loop report front page" loading="lazy"></span>
+              <h4>Post-Trip Feedback Loop</h4>
+              <p>Staff observations recorded after the trip and carried into next year's planning.</p>
+            </figure></article>
+          </div>
+        </div>
+
+      </div>
+      <span class="return-label">The record returns and opens the next year&rsquo;s baseline</span>
+    </div>
+
+    <p class="disclosure">The pages shown are from a fully worked example for Harborview International School, fictitious by design, so every page can be shown in full. For your school, every document is produced the same way: in your branding and your voice, from your trip&rsquo;s own data.</p>
+  </div>
+</section>
+
+<section class="notes">
+  <div class="wrap">
+    <h2>Notes on the mockup</h2>
+    <p>Built from your wireframe: the descriptor at the top, the three tiers running left to right, the work shown in each, and the line returning along the bottom to open the next year.</p>
+
+    <h3>What the loop does for us</h3>
+    <p>It answers the objection that started this. A file is delivered and finished; this returns to the start, which is only something a service can do. The feedback loop is the annual relationship drawn rather than claimed, so nothing in the copy has to argue for it.</p>
+
+    <h3>Your sentence is doing the labeling</h3>
+    <p>Each tier carries one clause of it: establish, review, equip. Read the three verb lines across and you have your sentence back. That ties the words you approved to the picture without a slogan anywhere on the page.</p>
+
+    <h3>Proportions are honest</h3>
+    <p>Tier 2 is the widest band because that is where most of the work happens, once per trip. Tier 1 is one review a year applied to two kinds of organization. Tier 3 is what the school&rsquo;s own people hold while a group is away. The widths tell the truth about the service before anyone reads a word.</p>
+
+    <h3>Where it goes</h3>
+    <ul>
+      <li><strong>Homepage.</strong> Replaces the three stacked tier bands with one screen that shows the whole service. The bands become the deep version on /framework.</li>
+      <li><strong>/framework.</strong> The same spine at full depth, each document opening its real PDF.</li>
+      <li><strong>Email.</strong> Arm C is already a three-tier catalogue; this becomes its visual spine.</li>
+      <li><strong>LinkedIn.</strong> The spine is the carousel: one slide per tier, one slide per document, closing on the loop.</li>
+      <li><strong>Sales.</strong> One page in front of a Head that shows the year without a deck.</li>
+    </ul>
+
+    <h3>Open items for you</h3>
+    <ul>
+      <li>Twelve documents shown here. Say the word if you want fewer per tier, or the Weather Brief, Leadership Deck, and Trip Risk Register added back.</li>
+      <li>The Duty Manager Simulation sits in Tier 2, following the document library. If it is the first thing a school buys, it may deserve visual weight the grid does not currently give it.</li>
+      <li>One sentence per document is drafted here. These are the twelve lines that will get repeated everywhere, so they are worth your pen.</li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>
