@@ -242,10 +242,8 @@ export default function ForProvidersPage() {
           <p className="label label-light ui">For Providers</p>
           <h1>Document a program once. The system carries the updates.</h1>
           <p className="subtitle">
-            The documents schools ask providers for &mdash; organizational
-            standing, trip due diligence, and the pack families read &mdash;
-            prepared from your program&rsquo;s own data, then adjusted for each
-            school, each trip, and each set of dates.
+            We create your program&rsquo;s documents in your branding. Then we
+            update them for each school, each trip, and each set of dates.
           </p>
         </div>
       </section>
@@ -264,13 +262,9 @@ export default function ForProvidersPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            Schools evaluate a provider through its documents: the
-            organizational standing behind the program, the due diligence file
-            their leadership reviews, and the itineraries and briefings their
-            families receive. This page walks those documents through the same
-            three tiers schools use &mdash; open any thumbnail to read the
-            document itself. Once they exist for one of your programs, the next
-            school&rsquo;s proposal is an adjustment, not a rebuild.
+            Schools decide with documents. We make yours, and we know what
+            schools need to see. Open any thumbnail on this page to read a
+            document in full.
           </p>
           <p className="artifact-reader ui">
             The documents shown are from a fully worked example for Harborview
@@ -284,14 +278,12 @@ export default function ForProvidersPage() {
           <div className="container">
             <p className="label ui">How it runs</p>
             <h2 className="section-heading section-heading-lg rule-gold">
-              One program on file. Every proposal from it.
+              What we do for trip providers.
             </h2>
             <p className="section-lead">
-              Producing a fresh pack for every school&rsquo;s request is where a
-              provider&rsquo;s evenings go. ETI360 runs the proposal cycle from
-              one record instead: your program documented once, each request
-              answered by adjustment, and your review before anything is sent
-              or confirmed.
+              Two things. We build the documents for your program, in your
+              branding, from your plans. Then we build the system that updates
+              them for every school that books it.
             </p>
           </div>
 
@@ -299,12 +291,11 @@ export default function ForProvidersPage() {
             <div className="pw-step" data-reveal="">
               <div className="pw-num ui">Once</div>
               <div className="pw-body">
-                <h3>The program goes on file.</h3>
+                <h3>We build your documents.</h3>
                 <p>
-                  Send the program as it exists &mdash; itinerary, venues,
-                  transport, activities, in whatever form you hold them. ETI360
-                  structures it into one record: the master everything else is
-                  produced from.
+                  The itinerary, the calendar, the overview, the risk
+                  assessment, the parent pack. In your branding, from your
+                  plans. Send them in whatever form they exist.
                 </p>
               </div>
               <figure className="pw-art">
@@ -314,7 +305,7 @@ export default function ForProvidersPage() {
                   alt="The program's Itinerary Report as an hour-by-hour calendar: the structured record every proposal is produced from"
                   loading="lazy"
                 />
-                <figcaption className="ui">The program&rsquo;s record</figcaption>
+                <figcaption className="ui">Your program, documented</figcaption>
               </figure>
             </div>
 
@@ -324,21 +315,19 @@ export default function ForProvidersPage() {
                 dates.&rdquo;
               </p>
               <p className="pw-trigger-sub ui">
-                A new request begins in one line. From there:
+                When a new school books, that one line is all it takes:
               </p>
             </div>
 
             <div className="pw-step" data-reveal="">
               <div className="pw-num ui">1</div>
               <div className="pw-body">
-                <h3>The system re-dates.</h3>
+                <h3>We change the dates.</h3>
                 <p>
-                  The itinerary and calendar move to the school&rsquo;s dates.
-                  The Weather Brief is rebuilt for the travel month from fifteen
-                  years of data, and the destination&rsquo;s calendar is checked
-                  against the new window &mdash; holidays, closures, and
-                  seasonal events flagged as a booking checklist for you to
-                  verify.
+                  The itinerary and calendar move to the new school&rsquo;s
+                  dates. The safety documents update for the time of year:
+                  weather, seasonal conditions, daylight. Holidays and closures
+                  get flagged for you to check.
                 </p>
               </div>
               <figure className="pw-art">
@@ -348,19 +337,19 @@ export default function ForProvidersPage() {
                   alt="Weather Brief rebuilt for the proposal's travel month"
                   loading="lazy"
                 />
-                <figcaption className="ui">Rebuilt for the travel month</figcaption>
+                <figcaption className="ui">Updated for the time of year</figcaption>
               </figure>
             </div>
 
             <div className="pw-step" data-reveal="">
               <div className="pw-num ui">2</div>
               <div className="pw-body">
-                <h3>The pack is re-prepared.</h3>
+                <h3>We update the content for the school.</h3>
                 <p>
-                  The Trip Overview and Parent Itinerary are re-prepared for the
-                  school, in the school&rsquo;s own voice. The risk assessment
-                  and RAMS are prepared for the school&rsquo;s own review; your
-                  operational controls stay yours to author and sign.
+                  The educational focus adjusts to the school. The overview and
+                  parent pack are rewritten in the school&rsquo;s voice. The
+                  risk assessment is prepared for their review; your controls
+                  stay yours to sign.
                 </p>
               </div>
               <figure className="pw-art">
@@ -370,19 +359,18 @@ export default function ForProvidersPage() {
                   alt="Parent Itinerary re-prepared in the requesting school's voice"
                   loading="lazy"
                 />
-                <figcaption className="ui">In the school&rsquo;s voice</figcaption>
+                <figcaption className="ui">Rewritten for the school</figcaption>
               </figure>
             </div>
 
             <div className="pw-step" data-reveal="">
               <div className="pw-num ui">3</div>
               <div className="pw-body">
-                <h3>The correspondence is drafted.</h3>
+                <h3>We help draft the emails.</h3>
                 <p>
-                  Coordination emails for the hotels, restaurants, and transport
-                  around the tour are drafted from the same record. For college
-                  tours, the requests to each college for visit times are
-                  prepared alongside &mdash; every draft ready for your review.
+                  To your hotels, restaurants, and transport. For college
+                  tours, to each college for visit times. Ready for you to read
+                  and send.
                 </p>
                 <p className="pw-chips ui">
                   <span>Hotels</span>
@@ -396,12 +384,11 @@ export default function ForProvidersPage() {
             <div className="pw-step" data-reveal="">
               <div className="pw-num ui">4</div>
               <div className="pw-body">
-                <h3>You review, send, and confirm.</h3>
+                <h3>You hand the school its documents.</h3>
                 <p>
-                  Every draft is yours to edit and send; every booking is yours
-                  to confirm before anything is fixed. The system prepares, you
-                  decide &mdash; and the school receives the same documented
-                  standard, proposal after proposal.
+                  You check the drafts, confirm the bookings, and give the
+                  final pack to the school. We know what schools need to see,
+                  and the pack gives it to them.
                 </p>
               </div>
             </div>
@@ -412,8 +399,8 @@ export default function ForProvidersPage() {
                 described without naming the client. */}
             <p className="pw-close" data-reveal="">
               Once the program is on file, every proposal after that is an
-              adjustment, not a rebuild. The documents below are what each
-              proposal is assembled from.
+              adjustment, not a rebuild. The documents below are what the
+              school receives.
             </p>
           </div>
         </div>
