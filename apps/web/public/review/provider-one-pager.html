@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ETI360 for Trip Providers | One-Page Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,500&display=swap">
+<style>
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+:root{
+  --navy:#0d3558; --navy-deep:#0a2a45; --gold:#C9A24D; --gold-dark:#8a6c1f;
+  --parchment:#faf8f3; --parchment-2:#f3efe4; --ink:#1f2732; --ink-mid:rgba(31,39,50,.72);
+  --hairline:rgba(13,53,88,.16);
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#e9e6dd;font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;padding:26px 14px}
+.sheet{max-width:1360px;margin:0 auto;background:var(--parchment);border:1px solid var(--hairline);box-shadow:0 14px 40px rgba(13,53,88,.14);display:flex;flex-direction:column}
+
+/* header */
+.head{background:var(--navy);color:#fff;padding:30px 44px 26px;display:grid;grid-template-columns:auto 1fr;gap:8px 46px;align-items:end}
+.brand{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1}
+.brand span{color:var(--gold)}
+.head .eyebrow{grid-column:1/-1;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.head h1{font-family:var(--serif);font-size:clamp(22px,2.6vw,32px);font-weight:600;margin:0;line-height:1.15;letter-spacing:-.01em}
+.head p{margin:6px 0 0;font-size:13.5px;color:rgba(255,255,255,.85);max-width:64ch;line-height:1.5}
+.gold-rule{height:3px;background:var(--gold)}
+
+/* main grid */
+.main{display:grid;grid-template-columns:1.05fr .95fr 1.05fr;gap:0;padding:28px 44px 10px;align-items:stretch}
+.col{min-width:0;display:flex;flex-direction:column}
+.col-mid{padding:0 26px;border-left:1px dashed rgba(13,53,88,.25);border-right:1px dashed rgba(13,53,88,.25);margin:0 26px}
+.k{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:0 0 6px}
+.h{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);margin:0 0 6px;line-height:1.2}
+.s{font-size:12.5px;color:var(--ink-mid);line-height:1.5;margin:0 0 16px}
+
+/* left: the master set */
+.docgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.doc{background:#fff;border:1px solid var(--hairline);box-shadow:0 3px 9px rgba(13,53,88,.09)}
+.doc img{display:block;width:100%;aspect-ratio:1/1.15;object-fit:cover;object-position:top center;border-bottom:1px solid var(--hairline)}
+.doc b{display:block;font-size:10px;font-weight:600;color:var(--navy);line-height:1.25;padding:6px 7px}
+.badge{margin-top:14px;background:var(--parchment-2);border:1px solid var(--hairline);border-left:3px solid var(--gold);padding:10px 13px;font-size:12px;color:var(--ink);line-height:1.5}
+.badge b{color:var(--navy)}
+
+/* middle: the update engine */
+.trigger{font-family:var(--serif);font-style:italic;font-size:17.5px;font-weight:500;color:var(--navy);line-height:1.35;margin:0 0 4px}
+.trigger-sub{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:0 0 14px}
+.updates{display:flex;flex-direction:column;gap:9px}
+.upd{background:#fff;border:1px solid var(--hairline);padding:9px 12px 8px;position:relative}
+.upd::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}
+.upd b{display:block;font-size:12px;color:var(--navy);font-weight:600;line-height:1.3}
+.upd i{display:block;font-style:normal;font-size:11px;color:var(--ink-mid);line-height:1.4;margin-top:2px}
+.emails{margin-top:9px;background:var(--navy);color:#fff;padding:10px 12px 9px;border-left:3px solid var(--gold)}
+.emails b{display:block;font-size:12px;font-weight:600;color:#fff;line-height:1.3}
+.emails .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.emails .chips span{font-size:9.5px;font-weight:600;letter-spacing:.04em;color:var(--gold);border:1px solid rgba(201,162,77,.55);padding:3px 7px}
+.arrow-row{display:flex;align-items:center;gap:6px;margin:14px 0 0;justify-content:center}
+.arrow-row .line{flex:1;height:1px;background:var(--gold)}
+.arrow-row .tip{border-left:9px solid var(--gold);border-top:5px solid transparent;border-bottom:5px solid transparent}
+
+/* right: the per-school packs */
+.packs{position:relative;display:flex;flex-direction:column;gap:12px}
+.pack{background:#fff;border:1px solid var(--hairline);box-shadow:0 4px 12px rgba(13,53,88,.09);padding:12px 14px 11px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:center}
+.pack .who{font-family:var(--serif);font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.2}
+.pack .what{grid-column:2;font-size:10.5px;color:var(--ink-mid);line-height:1.45}
+.pack .mini{grid-row:1/3;display:flex}
+.pack .mini span{width:26px;height:34px;background:var(--parchment-2);border:1px solid var(--hairline);border-top:2px solid var(--gold);margin-right:-9px;box-shadow:1px 1px 3px rgba(13,53,88,.10)}
+.pack .mini span:last-child{margin-right:8px}
+.pack.dim{opacity:.82}
+.pack.dimmer{opacity:.64}
+.handoff{margin-top:14px;background:var(--parchment-2);border:1px solid var(--hairline);border-left:3px solid var(--gold);padding:11px 13px;font-size:12px;line-height:1.5}
+.handoff b{color:var(--navy)}
+
+/* footer */
+.disclose{padding:6px 44px 14px;font-size:10px;color:var(--ink-mid)}
+.foot{background:var(--navy-deep);color:rgba(255,255,255,.92);text-align:center;padding:11px 26px;font-size:11.5px;font-weight:600}
+
+@media(max-width:1020px){
+  .main{grid-template-columns:1fr;padding:24px 24px 8px}
+  .col-mid{border:0;margin:22px 0;padding:22px 0;border-top:1px dashed rgba(13,53,88,.25);border-bottom:1px dashed rgba(13,53,88,.25)}
+  .head{padding:24px 24px 20px;grid-template-columns:1fr}
+  .disclose{padding:6px 24px 14px}
+}
+@media print{
+  body{background:#fff;padding:0}
+  .sheet{box-shadow:none;border:0;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <header class="head">
+    <p class="eyebrow">ETI360 for trip providers</p>
+    <div>
+      <div class="brand">ETI<span>360</span></div>
+      <h1>Your documents, made once.<br>Updated for every school.</h1>
+    </div>
+    <p>We create your program&rsquo;s documents in your branding, from your plans. Then we update them for each school, each trip, and each set of dates, and help draft the emails that go with them. We know what schools need to see, and the pack gives it to them.</p>
+  </header>
+  <div class="gold-rule"></div>
+
+  <div class="main">
+
+    <div class="col">
+      <p class="k">First, once</p>
+      <h2 class="h">We build your documents.</h2>
+      <p class="s">In your branding, from your plans. Send them in whatever form they exist.</p>
+      <div class="docgrid">
+        <span class="doc"><img src="/email/page-overview.png" alt="Trip Overview"><b>Trip Overview</b></span>
+        <span class="doc"><img src="/marketing/library/itinerary-report.png" alt="Itinerary and calendar"><b>Itinerary &amp; Calendar</b></span>
+        <span class="doc"><img src="/marketing/library/rams-report.png" alt="Risk assessment and RAMS"><b>Risk Assessment &amp; RAMS</b></span>
+        <span class="doc"><img src="/email/spread-itoshima-2.png" alt="Route intelligence"><b>Route Intelligence</b></span>
+        <span class="doc"><img src="/email/card-parent.png" alt="Parent itinerary"><b>Parent Itinerary</b></span>
+        <span class="doc"><img src="/marketing/library/weather-briefing.png" alt="Weather brief"><b>Weather Brief</b></span>
+      </div>
+      <p class="badge"><b>Your branding, your program.</b> One documented master set. This is the work you stop rebuilding.</p>
+    </div>
+
+    <div class="col col-mid">
+      <p class="k">Then, every booking</p>
+      <p class="trigger">&ldquo;A proposal for this school, on this trip, on these dates.&rdquo;</p>
+      <p class="trigger-sub">One line starts the update</p>
+      <div class="updates">
+        <div class="upd"><b>The dates change.</b><i>Itinerary and calendar move to the school&rsquo;s dates.</i></div>
+        <div class="upd"><b>The safety documents update for the time of year.</b><i>Weather, seasonal conditions, daylight. Holidays flagged for you to check.</i></div>
+        <div class="upd"><b>The educational focus adjusts to the school.</b><i>And the parent pack is rewritten in the school&rsquo;s voice.</i></div>
+      </div>
+      <div class="emails">
+        <b>We help draft the emails.</b>
+        <div class="chips"><span>HOTELS</span><span>RESTAURANTS</span><span>TRANSPORT</span><span>THE COLLEGES</span></div>
+      </div>
+      <div class="arrow-row"><span class="line"></span><span class="tip"></span></div>
+    </div>
+
+    <div class="col">
+      <p class="k">The result</p>
+      <h2 class="h">Each school gets its pack.</h2>
+      <p class="s">The same documents, re-prepared for that school. You check the drafts, confirm the bookings, and hand it over.</p>
+      <div class="packs">
+        <div class="pack">
+          <span class="mini"><span></span><span></span><span></span><span></span></span>
+          <span class="who">The first school</span>
+          <span class="what">Its dates, its season, its focus, its voice.</span>
+        </div>
+        <div class="pack dim">
+          <span class="mini"><span></span><span></span><span></span><span></span></span>
+          <span class="who">The next school</span>
+          <span class="what">An adjustment, not a rebuild.</span>
+        </div>
+        <div class="pack dimmer">
+          <span class="mini"><span></span><span></span><span></span><span></span></span>
+          <span class="who">Every school after</span>
+          <span class="what">Same standard, every time.</span>
+        </div>
+      </div>
+      <p class="handoff"><b>You hand the school its documents.</b> We know what schools need to see, and the pack gives it to them.</p>
+    </div>
+
+  </div>
+
+  <p class="disclose">Document pages shown are from a fully worked example for Harborview International School, fictitious by design, so every page can be shown in full. For your program, every document is produced in your branding, from your plans.</p>
+
+  <div class="foot">The school keeps the decision. The provider keeps the relationship. ETI360 keeps the documents current.</div>
+
+</div>
+
+</body>
+</html>
