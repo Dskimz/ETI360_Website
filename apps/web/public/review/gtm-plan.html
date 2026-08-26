@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>ETI360 Go-to-Market Plan | Final</title>
+<meta name="description" content="The finalized ETI360 go-to-market plan. Unlisted internal review document.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
@@ -16,71 +17,134 @@
 :root{
   --navy:#0d3558; --navy-deep:#0a2a45; --gold:#C9A24D; --gold-dark:#8a6c1f;
   --parchment:#faf8f3; --parchment-2:#f3efe4; --ink:#1f2732; --ink-mid:rgba(31,39,50,.72);
-  --hairline:rgba(13,53,88,.16); --white:#fff; --measure:72ch;
+  --hairline:rgba(13,53,88,.16); --white:#fff;
+  --measure:74ch; --container:1120px;
   --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--parchment);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
-.wrap{max-width:960px;margin:0 auto;padding:0 30px}
-header.mast{background:var(--navy);color:#fff;padding:46px 0 38px;border-bottom:3px solid var(--gold)}
-.mast .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 14px}
-.mast h1{font-family:var(--serif);font-size:clamp(28px,4vw,42px);line-height:1.12;margin:0 0 12px;font-weight:600}
-.mast p{margin:0;color:rgba(255,255,255,.86);max-width:66ch;font-size:16.5px}
-section{padding:40px 0 4px;border-top:1px solid var(--hairline)}
-section:first-of-type{border-top:0}
-h2{font-family:var(--serif);font-size:25px;line-height:1.2;margin:0 0 6px;color:var(--navy);font-weight:600}
-h2::after{content:"";display:block;width:46px;height:3px;background:var(--gold);margin-top:11px}
-h3{font-family:var(--serif);font-size:18px;margin:24px 0 6px;color:var(--navy);font-weight:600}
-p,li{max-width:var(--measure)}
-p{margin:0 0 13px}
-ul,ol{padding-left:20px;margin:0 0 14px}
-li{margin-bottom:6px}
-strong{color:var(--navy);font-weight:600}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--parchment);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.66;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 28px}
+
+/* masthead */
+.masthead{background:var(--navy);color:var(--white);padding:52px 0 40px;border-bottom:3px solid var(--gold)}
+.masthead .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 16px}
+.masthead h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.2vw,46px);line-height:1.12;margin:0 0 14px;letter-spacing:-.01em}
+.masthead h1 em{font-style:italic;color:var(--gold)}
+.masthead .standfirst{font-size:17.5px;line-height:1.6;color:rgba(255,255,255,.86);max-width:68ch;margin:0 0 24px}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px 26px;border-top:1px solid rgba(255,255,255,.2);padding-top:18px;font-size:13px}
+.meta-grid dt{color:var(--gold);letter-spacing:.09em;text-transform:uppercase;font-size:11px;font-weight:600;margin-bottom:3px}
+.meta-grid dd{margin:0;color:rgba(255,255,255,.9)}
+
+/* left nav + content layout */
+.layout{display:grid;grid-template-columns:236px minmax(0,1fr);max-width:1400px;margin:0 auto}
+nav.side{background:var(--navy-deep);border-right:1px solid rgba(201,162,77,.35);position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:22px 0}
+nav.side .nav-label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;padding:0 22px 12px}
+nav.side ol{list-style:none;margin:0;padding:0}
+nav.side a{display:block;padding:10px 22px;color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;font-weight:500;line-height:1.35;border-left:3px solid transparent}
+nav.side a:hover{color:var(--gold);border-left-color:var(--gold);background:rgba(201,162,77,.06)}
+main{min-width:0}
+
+/* sections */
+section.chapter{padding:46px 0 8px;border-top:1px solid var(--hairline)}
+section.chapter:first-of-type{border-top:none}
+.chapter-num{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:0 0 8px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(23px,3vw,32px);line-height:1.16;margin:0 0 6px;letter-spacing:-.01em;color:var(--navy)}
+h2::after{content:"";display:block;width:52px;height:3px;background:var(--gold);margin-top:13px}
+h3{font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.25;margin:28px 0 8px;color:var(--navy)}
+p{margin:0 0 14px;max-width:var(--measure)}
+ul,ol{max-width:var(--measure);margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
 a{color:var(--gold-dark)}
-.lede{font-family:var(--serif);font-size:20px;line-height:1.45;color:var(--navy);max-width:60ch}
-.tablewrap{overflow-x:auto;margin:0 0 16px;border:1px solid var(--hairline);background:var(--white)}
+strong{font-weight:600;color:var(--navy)}
+.callout-lead{font-family:var(--serif);font-size:20px;line-height:1.45;color:var(--navy);max-width:64ch}
+.footnote{font-size:13px;color:var(--ink-mid);max-width:var(--measure)}
+
+/* tables */
+.tablewrap{overflow-x:auto;margin:0 0 20px;border:1px solid var(--hairline);background:var(--white)}
 table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
-th{background:var(--navy);color:#fff;text-align:left;padding:8px 12px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
-td{padding:8px 12px;border-top:1px solid var(--hairline);vertical-align:top;line-height:1.5}
+th{background:var(--navy);color:var(--white);text-align:left;padding:9px 12px;font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;vertical-align:bottom}
+td{padding:9px 12px;border-top:1px solid var(--hairline);vertical-align:top;line-height:1.5}
 tbody tr:nth-child(even){background:var(--parchment)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
-.two p,.two ul{max-width:none}
-.box{background:var(--white);border:1px solid var(--hairline);border-left:3px solid var(--gold);padding:16px 20px;margin:0 0 18px}
+
+/* boxes and stats */
+.box{background:var(--white);border:1px solid var(--hairline);border-left:3px solid var(--gold);padding:18px 22px;margin:0 0 20px}
 .box p:last-child{margin-bottom:0}
-.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);margin:0 0 18px}
-.stat div{background:var(--white);padding:14px 16px}
-.stat .n{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--navy);line-height:1;display:block;margin-bottom:5px}
-.stat .l{font-size:12px;line-height:1.4;color:var(--ink-mid)}
-footer{background:var(--navy);color:rgba(255,255,255,.75);padding:28px 0;margin-top:46px;font-size:13px;border-top:3px solid var(--gold)}
-footer p{max-width:none;margin:0}
-@media(max-width:640px){.wrap{padding:0 18px}}
-@media print{body{background:#fff}}
+.copy-example{background:var(--parchment-2);border:1px solid var(--hairline);padding:16px 18px;margin:0 0 16px;font-family:var(--serif);font-size:17px;line-height:1.55;max-width:var(--measure)}
+.copy-example span.lbl{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:7px}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);margin:0 0 20px}
+.stat-row div{background:var(--white);padding:15px 16px}
+.stat-row .n{font-family:var(--serif);font-size:27px;font-weight:600;color:var(--navy);line-height:1;display:block;margin-bottom:5px}
+.stat-row .l{font-size:12px;line-height:1.4;color:var(--ink-mid)}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 34px}
+.cols2 p,.cols2 ul{max-width:none}
+
+footer.rep{background:var(--navy);color:rgba(255,255,255,.75);padding:30px 0;margin-top:48px;font-size:13px;border-top:3px solid var(--gold)}
+footer.rep p{max-width:none;margin:0}
+
+@media(max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  nav.side{position:sticky;top:0;height:auto;overflow-x:auto;overflow-y:hidden;padding:0;z-index:40;border-right:0;border-bottom:1px solid rgba(201,162,77,.35)}
+  nav.side .nav-label{display:none}
+  nav.side ol{display:flex}
+  nav.side a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;padding:11px 13px;font-size:12px}
+  nav.side a:hover{border-bottom-color:var(--gold);background:none}
+}
+@media(max-width:640px){body{font-size:16px}.wrap{padding:0 18px}}
+@media print{nav.side{display:none}.layout{grid-template-columns:1fr}body{background:#fff}}
 </style>
 </head>
 <body>
 
-<header class="mast">
+<header class="masthead">
   <div class="wrap">
-    <p class="eyebrow">Final &middot; supersedes the Round 1 reports and the Round 2 action plan where they differ &middot; 26 August 2026</p>
-    <h1>ETI360 go-to-market plan</h1>
-    <p>One position, one framework, one pricing model, one launch sequence. Depth lives in the linked working documents; this page is the plan.</p>
+    <p class="eyebrow">Final &middot; supersedes the Round 1 reports and the Round 2 action plan where they differ</p>
+    <h1>One position. One framework.<br><em>One plan.</em></h1>
+    <p class="standfirst">The finalized ETI360 go-to-market plan: the position, the money, the campaign, the market, the launch, and the numbers, on one page. Depth lives in the linked working documents.</p>
+    <dl class="meta-grid">
+      <div><dt>Prepared for</dt><dd>Dan Skimin &middot; Seb</dd></div>
+      <div><dt>Date</dt><dd>26 August 2026</dd></div>
+      <div><dt>Execution detail</dt><dd>/review/gtm-action-plan.html</dd></div>
+      <div><dt>Status</dt><dd>Unlisted, noindex, internal</dd></div>
+    </dl>
   </div>
 </header>
 
+<div class="layout">
+
+<nav class="side" aria-label="Plan contents">
+  <p class="nav-label">Contents</p>
+  <ol>
+    <li><a href="#p1">1 &middot; The position</a></li>
+    <li><a href="#p2">2 &middot; The money</a></li>
+    <li><a href="#p3">3 &middot; The campaign</a></li>
+    <li><a href="#p4">4 &middot; The market</a></li>
+    <li><a href="#p5">5 &middot; The launch</a></li>
+    <li><a href="#p6">6 &middot; The numbers</a></li>
+    <li><a href="#p7">7 &middot; Decided and open</a></li>
+  </ol>
+</nav>
+
+<main>
 <div class="wrap">
 
-<section>
-  <h2>1 &middot; The position</h2>
-  <p class="lede">ETI360 is the independent trip-governance service for international schools and the providers.</p>
-  <p>ETI360 helps schools establish organizational readiness, review each trip on its own merits, and equip their own teams for dynamic operations. The school retains the decision and the duty of care; ETI360 structures the evidence and the operating framework.</p>
-  <p>These three sentences are the entire message. They appear together on the homepage, the LinkedIn profiles, the emails, and the sales conversation, identically. No slogan exists anywhere in the campaign.</p>
+<section class="chapter" id="p1">
+  <p class="chapter-num">Section 1</p>
+  <h2>The position.</h2>
+  <p class="callout-lead" style="margin-top:14px">ETI360 is the independent trip-governance service for international schools and the providers.</p>
+  <div class="copy-example">
+    <span class="lbl">Positioning statement</span>
+    For international schools and the trip providers who serve them, ETI360 is the independent trip-governance service that structures the evidence behind every trip decision, because the same documented framework is applied to the organization once a year, to each trip before departure, and to the trip while it runs, producing complete documents the school can read and hold, unlike provider-written paperwork, approval software that records a decision without producing its evidence, and enterprise assistance services priced for corporate travel.
+  </div>
+  <p>The short descriptor opens every surface; the full statement is the standard it compresses. Together they are the entire message, used identically on the homepage, the LinkedIn profiles, the emails, and in the sales conversation. No slogan exists anywhere in the campaign.</p>
 </section>
 
-<section>
-  <h2>2 &middot; The money</h2>
-  <p class="lede">The first trip is not the win. A school with fifty trips is.</p>
-  <div class="stat">
+<section class="chapter" id="p2">
+  <p class="chapter-num">Section 2</p>
+  <h2>The money.</h2>
+  <p class="callout-lead" style="margin-top:14px">The first trip is not the win. A school with fifty trips is.</p>
+  <div class="stat-row">
     <div><span class="n">~$750</span><span class="l">per reviewed trip, the working ballpark</span></div>
     <div><span class="n">$37,500</span><span class="l">a year from one fifty-trip school</span></div>
     <div><span class="n">$750</span><span class="l">annual Organizational Baseline; offered cheaply as the door-opener for non-clients</span></div>
@@ -97,16 +161,18 @@ footer p{max-width:none;margin:0}
   </ol>
 </section>
 
-<section>
-  <h2>3 &middot; The campaign</h2>
+<section class="chapter" id="p3">
+  <p class="chapter-num">Section 3</p>
+  <h2>The campaign.</h2>
   <p>The campaign is the 3-Tier framework itself, drawn as a timeline with the feedback loop: the annual foundation, each individual trip producing its Decision File, the school&rsquo;s own team while trips are underway, and the findings carried back into next year. The centerpiece graphic is built with real Harborview documents at <a href="/review/framework-timeline.html">framework-timeline.html</a>, and it becomes the homepage band, the spine of /framework, the visual structure of arm C, and the standing LinkedIn carousel.</p>
   <p>Content is the framework walked tier by tier through finished artifacts: the eight-post story first, with its recorded corrections, then one artifact-led post per week. Founder posts carry reach in first person; the company page holds the record; Facebook gets the pinned identity post and the four cuts, then nothing. Every asset ends at the same door: a trip-readiness briefing.</p>
   <p>Voice, unchanged and binding: celebrate the trip and the craft, plain working prose, no fear framing, no urgency, no slogans, and the boundary stated proudly rather than buried.</p>
 </section>
 
-<section>
-  <h2>4 &middot; The market</h2>
-  <div class="two">
+<section class="chapter" id="p4">
+  <p class="chapter-num">Section 4</p>
+  <h2>The market.</h2>
+  <div class="cols2">
     <div>
       <p><strong>Who.</strong> International schools with substantial trip programs; the account thesis makes program size the first qualifier. The directory holds 510 schools, 165 with documented trip programs; within each wave, schools with the strongest program evidence go first.</p>
       <p><strong>Order.</strong> Latin America first, then the world, 50 schools a week, as ruled. School-first for 90 days; providers follow once the first school is signed, and are then sold the same services, paying for their own baselines.</p>
@@ -118,8 +184,9 @@ footer p{max-width:none;margin:0}
   </div>
 </section>
 
-<section>
-  <h2>5 &middot; The launch</h2>
+<section class="chapter" id="p5">
+  <p class="chapter-num">Section 5</p>
+  <h2>The launch.</h2>
   <p>Three gates, then the send. Do not delay for anything except inaccurate claims, broken conversion, or an unresolved offer.</p>
   <div class="tablewrap">
   <table>
@@ -135,8 +202,9 @@ footer p{max-width:none;margin:0}
   <p><strong>The weekly rhythm after launch:</strong> 50 personalized emails, two founder posts, one company post, every reply answered inside a business day, briefings held, proposals out, and the Friday sheet filled in ten minutes. Week 8: review all 150 contacted accounts by response and role, retire the weakest arm. Week 13: the 90-day review against the gates already set in the business plan.</p>
 </section>
 
-<section>
-  <h2>6 &middot; The numbers we watch</h2>
+<section class="chapter" id="p6">
+  <p class="chapter-num">Section 6</p>
+  <h2>The numbers we watch.</h2>
   <div class="tablewrap">
   <table>
     <thead><tr><th>Metric</th><th>Why it is the one that matters</th></tr></thead>
@@ -153,13 +221,14 @@ footer p{max-width:none;margin:0}
   <p>Working targets for the 90 days, proposed for you and Seb to confirm since no baseline exists: 150 schools contacted, ten briefings held, four first sales (trips or baselines), and one school moving from its first trip toward its calendar. Impressions and followers are recorded nowhere.</p>
 </section>
 
-<section>
-  <h2>7 &middot; Decided, and still open</h2>
-  <div class="two">
+<section class="chapter" id="p7">
+  <p class="chapter-num">Section 7</p>
+  <h2>Decided, and still open.</h2>
+  <div class="cols2">
     <div>
       <h3>Decided</h3>
       <ul>
-        <li>The descriptor and the three-verb sentence, everywhere, identically.</li>
+        <li>The descriptor and the positioning statement, everywhere, identically.</li>
         <li>The campaign is the framework timeline with the loop. No slogan.</li>
         <li>Paid only; the demonstration is the first sale.</li>
         <li>Pricing per unit of work; ~$750 a trip; program over project.</li>
@@ -174,10 +243,10 @@ footer p{max-width:none;margin:0}
     <div>
       <h3>Still open</h3>
       <ul>
-        <li>The door-opener baseline price (proposed $350 against the $750 standard) &mdash; with Seb.</li>
-        <li>The menu fine pass &mdash; with Seb.</li>
+        <li>The door-opener baseline price (proposed $350 against the $750 standard), with Seb.</li>
+        <li>The menu fine pass, with Seb.</li>
         <li>The Simulation playability date; until it exists, the session is described but never dated in public.</li>
-        <li>The 90-day working targets above &mdash; confirm or adjust.</li>
+        <li>The 90-day working targets above: confirm or adjust.</li>
         <li>Putting /review/ behind access control before this branch merges, since these documents deploy with the site.</li>
       </ul>
     </div>
@@ -185,8 +254,10 @@ footer p{max-width:none;margin:0}
 </section>
 
 </div>
+</main>
+</div>
 
-<footer>
+<footer class="rep">
   <div class="wrap">
     <p><strong style="color:#fff">ETI360 go-to-market plan</strong> &middot; final &middot; 26 August 2026 &middot; working documents: the framework graphic (/review/framework-timeline.html), the pricing menu (PRICING-MENU.html, internal), the acknowledgment email (/review/emails/acknowledgment.html), and the Round 2 action plan for execution detail (/review/gtm-action-plan.html).</p>
   </div>
