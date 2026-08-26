@@ -1616,28 +1616,6 @@ a.doc-marquee-item:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
 .ft-section { background: var(--parchment); padding: 72px 0 56px; }
 .ft-wrap { margin-top: 8px; }
 
-.ft-rail { position: relative; padding: 18px 0 4px; }
-.ft-line { position: absolute; left: 0; right: 0; top: 25px; height: 1px; background: rgba(13, 53, 88, 0.3); }
-.ft-line::after {
-  content: ""; position: absolute; right: -1px; top: -5px;
-  border-left: 9px solid rgba(13, 53, 88, 0.45);
-  border-top: 5px solid transparent; border-bottom: 5px solid transparent;
-}
-.ft-stops { display: grid; grid-template-columns: 1fr 1.55fr 1.05fr; position: relative; }
-.ft-dot {
-  display: block; width: 15px; height: 15px; border-radius: 50%;
-  border: 2px solid var(--gold); background: var(--parchment);
-  position: relative; margin-bottom: 8px;
-}
-.ft-dot::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--gold); }
-.ft-stop-lbl { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
-
-.ft-tiers { display: grid; grid-template-columns: 1fr 1.55fr 1.05fr; gap: 0; margin-top: 22px; }
-.ft-tier { min-width: 0; }
-.ft-eyebrow { font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); font-weight: 700; margin: 0 0 7px; }
-.ft-name { font-family: var(--font-display, "Source Serif 4", Georgia, serif); font-size: clamp(19px, 1.8vw, 24px); font-weight: 600; color: var(--navy); margin: 0 0 7px; line-height: 1.15; }
-.ft-sub { font-size: 13.5px; line-height: 1.5; color: var(--ink-mid); margin: 0 0 16px; }
-
 .ft-card { background: #fff; border: 1px solid var(--hairline); box-shadow: 0 4px 12px rgba(13, 53, 88, 0.10); }
 .ft-card img { display: block; width: 100%; height: auto; }
 
@@ -1744,23 +1722,8 @@ html.fx [data-reveal].revealed { opacity: 1; transform: none; }
 .about-strip.band { background: var(--parchment-2); }
 
 /* ── FrameworkTimeline v2: boxed tier modules per the wireframe ── */
-.ft-tiers { gap: 22px; }
-.ft-tier {
-  background: #fff;
-  border: 1px solid var(--hairline);
-  border-top: 3px solid var(--gold);
-  box-shadow: 0 6px 18px rgba(13, 53, 88, 0.07);
-  padding: 22px 22px 20px;
-}
-.ft-tier:first-child { padding-left: 22px; }
-.ft-tier:last-child { padding-right: 22px; }
-.ft-card { box-shadow: none; }
 .ft-chip { transition: transform 0.25s ease, box-shadow 0.25s ease; }
 .ft-chip:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(13, 53, 88, 0.14); }
-@media (max-width: 900px) {
-  .ft-tier { border-top: 3px solid var(--gold); padding: 20px 18px 18px; }
-  .ft-tier:first-child { padding-top: 20px; }
-}
 
 /* ── Width scale, wide-screen step-up ──
    Large displays get more of the page without stretching reading lines:
@@ -1859,4 +1822,108 @@ html.fx [data-reveal].revealed { opacity: 1; transform: none; }
   .pw-num { width: 36px; height: 36px; font-size: 11px; margin-left: 8px; }
   .pw-step { grid-template-columns: 48px minmax(0, 1fr); gap: 0 14px; }
   .pw-trigger, .pw-close { padding-left: 0; }
+}
+
+/* ── Framework sequence: each tier is pinned for one screen of scrolling ──
+   Copy scrolls on the left, its documents stay put on the right, then the
+   next tier takes over. CSS position:sticky only, no scroll listeners. */
+.ft-intro { margin-bottom: 8px; }
+
+.ft-seq-item {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 72px;
+  align-items: start;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.ft-seq-copy {
+  padding: 34vh 0 36vh;
+  position: relative;
+}
+.ft-seq-item:first-child .ft-seq-copy { padding-top: 16vh; }
+.ft-seq-item:last-child .ft-seq-copy { padding-bottom: 20vh; }
+.ft-seq-numeral {
+  display: block;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 54px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.ft-seq-copy .ft-name { font-size: clamp(24px, 2.4vw, 34px); margin-bottom: 12px; }
+.ft-seq-copy .ft-sub { font-size: 16px; line-height: 1.65; margin: 0; }
+
+/* The pinned side. Clears the sticky site header plus the section nav. */
+.ft-seq-visual {
+  position: sticky;
+  top: 112px;
+  align-self: start;
+}
+/* The pinned art always fits the screen, so a tall document page never
+   runs off the bottom while it is held in place. */
+.ft-seq-visual .ft-card { display: flex; justify-content: center; background: transparent; border: 0; }
+.ft-seq-visual .ft-card img {
+  max-height: 62vh;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--hairline);
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(13, 53, 88, 0.12);
+}
+.ft-seq-visual .ft-chips { max-height: 62vh; }
+
+@media (max-width: 900px) {
+  .ft-seq-item {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 0 20px;
+  }
+  .ft-seq-copy,
+  .ft-seq-item:first-child .ft-seq-copy,
+  .ft-seq-item:last-child .ft-seq-copy { padding: 34px 0 0; }
+  .ft-seq-visual { position: static; padding-bottom: 40px; }
+  .ft-seq-visual .ft-card img, .ft-seq-visual .ft-chips { max-height: none; }
+  .ft-seq-numeral { font-size: 40px; margin-bottom: 10px; }
+}
+
+/* ── Active-tier highlighting ──
+   The tier holding the pinned slot reads at full strength; the others recede.
+   This is what makes a long scrolling section legible: exactly one tier owns
+   the stage at any moment. Applied only once SequenceHighlight has run
+   (html.seq), so the copy is never dimmed when JavaScript is unavailable. */
+html.seq .ft-seq-copy,
+html.seq .ft-seq-visual { transition: opacity 0.5s ease; }
+html.seq .ft-seq-item[data-active="false"] .ft-seq-copy { opacity: 0.3; }
+html.seq .ft-seq-item[data-active="false"] .ft-seq-visual { opacity: 0.5; }
+html.seq .ft-seq-item[data-active="true"] .ft-seq-copy,
+html.seq .ft-seq-item[data-active="true"] .ft-seq-visual { opacity: 1; }
+
+/* The Tier 2 grid scales with viewport height so the pinned documents always
+   fit the screen, on a laptop as well as a large display. */
+.ft-seq-visual .ft-chips { max-height: none; }
+.ft-seq-visual .ft-chip img { aspect-ratio: auto; height: clamp(110px, 20vh, 230px); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.seq .ft-seq-copy,
+  html.seq .ft-seq-visual { opacity: 1 !important; transition: none; }
+}
+@media (max-width: 900px) {
+  html.seq .ft-seq-item[data-active="false"] .ft-seq-copy,
+  html.seq .ft-seq-item[data-active="false"] .ft-seq-visual { opacity: 1; }
+  .ft-seq-visual .ft-chip img { aspect-ratio: 1 / 1.05; height: auto; }
+}
+
+/* ── Pinned art: reserve the box before it loads, never distort it ──
+   Both rules derive the box from the intrinsic width/height on the <img>,
+   so the sticky column has its full height on first paint rather than
+   collapsing and then jumping when a lazy image arrives. Portrait document
+   pages are bounded by height; landscape screens are bounded by width. */
+.ft-seq-visual .ft-card img { max-height: none; }
+.ft-seq-visual .ft-card--portrait img { height: min(58vh, 600px); width: auto; }
+.ft-seq-visual .ft-card--landscape img { width: 100%; height: auto; }
+@media (max-width: 900px) {
+  .ft-seq-visual .ft-card--portrait img { height: auto; width: 100%; }
 }

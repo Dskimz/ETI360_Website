@@ -1,8 +1,42 @@
 import Link from "next/link";
+import { SequenceHighlight } from "./SequenceHighlight";
 
-/* The campaign centerpiece: the 3-Tier framework as a timeline with the
-   feedback loop, from Dan's wireframe (2026-08-26). Full-size version:
-   /review/framework-timeline.html. Real Harborview pages, disclosed below. */
+/* The campaign centerpiece: the 3-Tier framework as a pinned side-by-side
+   sequence. Each tier owns roughly one screen of scrolling: its copy moves
+   on the left while its documents stay pinned on the right, then the next
+   tier takes over. Pure CSS position:sticky, no scroll listeners.
+
+   The static three-column version of the same content lives at
+   /review/framework-timeline.html and stays the exportable asset for email,
+   carousels and print. Real Harborview pages, disclosed at the foot. */
+
+type Tier = {
+  n: 1 | 2 | 3;
+  eyebrow: string;
+  name: string;
+  desc: string;
+};
+
+const tiers: Tier[] = [
+  {
+    n: 1,
+    eyebrow: "Tier 1 · Annual foundation",
+    name: "Organizational Baseline",
+    desc: "A standing view of governance, responsibilities, procedures, and capabilities that every trip review can reference. The same ten-area review is applied to the school and to each provider it travels with, and refreshed each year.",
+  },
+  {
+    n: 2,
+    eyebrow: "Tier 2 · Each individual trip",
+    name: "Trip Risk Review",
+    desc: "Each trip is reviewed on its own merits, producing a complete file for leadership review. Every document is produced from the trip's single record, and reissued from it when something changes.",
+  },
+  {
+    n: 3,
+    eyebrow: "Tier 3 · While trips are underway",
+    name: "Dynamic Risk Operations",
+    desc: "The school's own team works from a current operating picture, structured check-ins, and practical reference tools, on a surface the school's own duty manager operates.",
+  },
+];
 
 const t2Chips = [
   { src: "/email/page-overview.png", alt: "Trip Overview one-pager", label: "Trip Overview" },
@@ -13,10 +47,59 @@ const t2Chips = [
   { src: "/marketing/library/weather-briefing.png", alt: "Weather Brief for the travel month", label: "Weather Brief" },
 ];
 
+function TierVisual({ n }: { n: 1 | 2 | 3 }) {
+  if (n === 1) {
+    return (
+      <div className="ft-card ft-card--portrait">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/email/spread-school-baseline-v3.png"
+          alt="Organizational Baseline Evaluation: ten areas of operational capability, OC01 to OC10, each marked at standard or progressing"
+          width={991}
+          height={1400}
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+  if (n === 2) {
+    return (
+      <div className="ft-chips">
+        {t2Chips.map((c) => (
+          <figure key={c.label} className="ft-chip">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={c.src} alt={c.alt} loading="lazy" />
+            <figcaption className="ui">{c.label}</figcaption>
+          </figure>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <>
+      <div className="ft-card ft-card--landscape">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/email/screen-dmd-v3.png"
+          alt="The Duty Manager Dashboard with a trip open: location map with the routed hospital, check-ins, and messages"
+          width={1280}
+          height={811}
+          loading="lazy"
+        />
+      </div>
+      <div className="ft-minis ui">
+        <span>Check-ins</span>
+        <span>RESPOND Cards</span>
+        <span>Incident Record</span>
+      </div>
+    </>
+  );
+}
+
 export function FrameworkTimeline() {
   return (
     <section id="framework" className="ft-section">
-      <div className="container">
+      <div className="container ft-intro" data-reveal="">
         <p className="label ui">The framework</p>
         <h2 className="section-heading section-heading-lg rule-gold">
           ETI360&rsquo;s 3-Tier Risk Framework.
@@ -29,77 +112,27 @@ export function FrameworkTimeline() {
         </p>
       </div>
 
-      <div className="container ft-wrap">
-        <div className="ft-rail" aria-hidden="true">
-          <div className="ft-line" />
-          <div className="ft-stops">
-            <div className="ft-stop"><span className="ft-dot" /><span className="ft-stop-lbl ui">Annual foundation</span></div>
-            <div className="ft-stop"><span className="ft-dot" /><span className="ft-stop-lbl ui">Each individual trip</span></div>
-            <div className="ft-stop"><span className="ft-dot" /><span className="ft-stop-lbl ui">While trips are underway</span></div>
-          </div>
-        </div>
+      <SequenceHighlight />
 
-        <div className="ft-tiers">
-          <div className="ft-tier" data-reveal="">
-            <p className="ft-eyebrow ui">Tier 1 &middot; Annual</p>
-            <h3 className="ft-name">Organizational Baseline</h3>
-            <p className="ft-sub">
-              A standing view of governance, responsibilities, procedures, and
-              capabilities that every trip review can reference &mdash; the
-              school, and each provider it travels with.
-            </p>
-            <div className="ft-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/email/spread-school-baseline-v3.png"
-                alt="Organizational Baseline Evaluation: ten areas of operational capability, OC01 to OC10, each marked at standard or progressing"
-                loading="lazy"
-              />
+      <div className="ft-seq">
+        {tiers.map((t) => (
+          <article key={t.n} className="ft-seq-item">
+            <div className="ft-seq-copy">
+              <span className="ft-seq-numeral" aria-hidden="true">
+                {t.n}
+              </span>
+              <p className="ft-eyebrow ui">{t.eyebrow}</p>
+              <h3 className="ft-name">{t.name}</h3>
+              <p className="ft-sub">{t.desc}</p>
             </div>
-          </div>
+            <div className="ft-seq-visual">
+              <TierVisual n={t.n} />
+            </div>
+          </article>
+        ))}
+      </div>
 
-          <div className="ft-tier ft-tier-mid" data-reveal="2">
-            <p className="ft-eyebrow ui">Tier 2 &middot; Per trip</p>
-            <h3 className="ft-name">Trip Risk Review</h3>
-            <p className="ft-sub">
-              Each trip is reviewed on its own merits, producing a complete file
-              for leadership review &mdash; every document from the trip&rsquo;s
-              single record, reissued when something changes.
-            </p>
-            <div className="ft-chips">
-              {t2Chips.map((c) => (
-                <figure key={c.label} className="ft-chip">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.src} alt={c.alt} loading="lazy" />
-                  <figcaption className="ui">{c.label}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-
-          <div className="ft-tier" data-reveal="3">
-            <p className="ft-eyebrow ui">Tier 3 &middot; During travel</p>
-            <h3 className="ft-name">Dynamic Risk Operations</h3>
-            <p className="ft-sub">
-              The school&rsquo;s own team works from a current operating
-              picture, structured check-ins, and practical reference tools.
-            </p>
-            <div className="ft-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/email/screen-dmd-v3.png"
-                alt="The Duty Manager Dashboard with a trip open: location map with the routed hospital, check-ins, and messages"
-                loading="lazy"
-              />
-            </div>
-            <div className="ft-minis ui">
-              <span>Check-ins</span>
-              <span>RESPOND Cards</span>
-              <span>Incident Record</span>
-            </div>
-          </div>
-        </div>
-
+      <div className="container">
         <div className="ft-sim" data-reveal="">
           <span className="ft-sim-k ui">Duty Manager Simulation</span>
           <span className="ft-sim-d">
