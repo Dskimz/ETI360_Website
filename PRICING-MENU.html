@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ETI360 Service Menu and Pricing | Internal Working Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0d3558; --navy-deep:#0a2a45; --gold:#C9A24D; --gold-dark:#8a6c1f;
+  --parchment:#faf8f3; --parchment-2:#f3efe4; --ink:#1f2732; --ink-mid:rgba(31,39,50,.72);
+  --hairline:rgba(13,53,88,.16); --white:#fff;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--parchment);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 30px}
+header.mast{background:var(--navy);color:#fff;padding:44px 0 36px;border-bottom:3px solid var(--gold)}
+header.mast .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 14px}
+header.mast h1{font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);line-height:1.14;margin:0 0 12px;font-weight:600}
+header.mast p{margin:0;color:rgba(255,255,255,.85);max-width:70ch;font-size:16.5px}
+section{padding:44px 0 6px;border-top:1px solid var(--hairline)}
+section:first-of-type{border-top:0}
+h2{font-family:var(--serif);font-size:26px;line-height:1.2;margin:0 0 6px;color:var(--navy);font-weight:600}
+h2::after{content:"";display:block;width:46px;height:3px;background:var(--gold);margin-top:12px}
+h3{font-family:var(--serif);font-size:19px;margin:28px 0 8px;color:var(--navy);font-weight:600}
+h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:24px 0 6px}
+p,li{max-width:76ch}
+p{margin:0 0 13px}
+ul,ol{padding-left:20px;margin:0 0 14px}
+li{margin-bottom:6px}
+strong{color:var(--navy);font-weight:600}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:var(--parchment-2);padding:1px 5px;border:1px solid var(--hairline)}
+.tablewrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--hairline);background:var(--white)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
+td{padding:9px 12px;border-top:1px solid var(--hairline);vertical-align:top;line-height:1.45}
+tbody tr:nth-child(even){background:var(--parchment)}
+td.p{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;color:var(--navy)}
+tfoot td{border-top:2px solid var(--navy);font-weight:700;background:var(--parchment-2)}
+.tag{display:inline-block;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;padding:2px 6px;border:1px solid;white-space:nowrap}
+.conf{color:#14532d;border-color:#14532d;background:rgba(20,83,45,.08)}
+.prop{color:var(--gold-dark);border-color:var(--gold-dark);background:rgba(138,108,31,.09)}
+.ask{color:#7f1d1d;border-color:#7f1d1d;background:rgba(127,29,29,.08)}
+.box{background:var(--white);border:1px solid var(--hairline);border-left:3px solid var(--gold);padding:18px 20px;margin:0 0 20px}
+.box.alarm{border-left-color:#7f1d1d}
+.box h4{margin-top:0}
+.box p:last-child{margin-bottom:0}
+.lede{font-family:var(--serif);font-size:19px;line-height:1.45;color:var(--navy);max-width:64ch}
+footer{background:var(--navy);color:rgba(255,255,255,.75);padding:30px 0;margin-top:48px;font-size:13px;border-top:3px solid var(--gold)}
+footer p{max-width:none;margin:0}
+@media(max-width:640px){.wrap{padding:0 18px}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">Internal working document &middot; not for customer surfaces</p>
+    <h1>Service menu and pricing</h1>
+    <p>Built from your four confirmed prices and the effort bands already recorded per document in the catalogue, so the rest of the menu is proportionate rather than invented. Everything marked Proposed is for your correction.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <h2>How to read this</h2>
+  <p><span class="tag conf">Confirmed</span> is a price you set. <span class="tag prop">Proposed</span> is mine, derived from the catalogue's effort band for that document. <span class="tag ask">Open</span> needs your decision.</p>
+  <h4>The scale your prices imply</h4>
+  <p><code>DOCUMENT-CATALOGUE-PROPOSAL.md</code> assigns every document an effort band. Your numbers calibrate that scale inside a trip: the Itinerary Report is banded Medium and the Calendar View Low, and together you priced them at $100. The Weather Brief is banded Low to Medium at $25. That gives a working ladder of <strong>Low $25 &middot; Low-Medium $40 &middot; Medium $75 &middot; High $150</strong> per trip document. Tier 1 sits on its own scale because it is an annual engagement rather than a document.</p>
+  <div class="box">
+    <h4>The commercial consequence worth noticing first</h4>
+    <p>This pricing model solves the funnel problem we have been working around for three rounds. When the entry price was a single $3,000 session, we needed a free offer to get a school into a conversation, and that free offer was an uncosted delivery obligation. At $25 for a weather brief and $325 for an essential trip pack, <strong>the first sale is the demonstration.</strong> A school can buy one trip's documents for the price of a textbook order, judge the work, and come back. No free work is needed anywhere.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Tier 1 &middot; Annual</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Item</th><th>Effort band</th><th>Status</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Organizational Baseline Report</strong><br><span style="color:var(--ink-mid);font-size:13px">Ten areas of operational capability, reviewed and evidenced, refreshed annually</span></td><td>High</td><td><span class="tag conf">Confirmed</span></td><td class="p">$750</td></tr>
+      <tr><td><strong>Provider Baseline Report</strong><br><span style="color:var(--ink-mid);font-size:13px">The same review applied to a provider the school travels with</span></td><td>Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$750</td></tr>
+      <tr><td><strong>Annual refresh</strong><br><span style="color:var(--ink-mid);font-size:13px">Year two onward, where the prior baseline is on file</span></td><td>Lower on repeat</td><td><span class="tag prop">Proposed</span></td><td class="p">$450</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><span class="tag ask">Open</span> Who pays for a provider baseline: the school that wants its providers reviewed, or the provider that wants to be reviewable for every school it serves? Both are defensible and they lead to different sales conversations. The provider paying is the better business, because one baseline then serves every school on that provider's book.</p>
+</section>
+
+<section>
+  <h2>Tier 2 &middot; Per trip</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Document</th><th>Band</th><th>Status</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Trip Overview</strong> &middot; the trip on one page</td><td>Low</td><td><span class="tag prop">Proposed</span></td><td class="p">$25</td></tr>
+      <tr><td><strong>Itinerary Report, both views</strong> &middot; narrative and hour-by-hour calendar</td><td>Medium + Low</td><td><span class="tag conf">Confirmed</span></td><td class="p">$100</td></tr>
+      <tr><td><strong>Trip Risk Assessment and RAMS</strong> &middot; flagship, includes activity profiling</td><td>High</td><td><span class="tag prop">Proposed</span></td><td class="p">$150</td></tr>
+      <tr><td><strong>Parent Itinerary</strong> &middot; the version families receive</td><td>Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$75</td></tr>
+      <tr><td><strong>Weather Brief</strong> &middot; rebuilt for the travel month</td><td>Low-Medium</td><td><span class="tag conf">Confirmed</span></td><td class="p">$25</td></tr>
+      <tr><td><strong>Teacher Operational Guide</strong> &middot; one page per day for the trip leader</td><td>Low</td><td><span class="tag prop">Proposed</span></td><td class="p">$50</td></tr>
+      <tr><td><strong>Leadership Deck</strong> &middot; for the approval meeting</td><td>Low</td><td><span class="tag prop">Proposed</span></td><td class="p">$40</td></tr>
+      <tr><td><strong>Trip Discovery Map</strong> &middot; stops and routes on one sheet</td><td>Low</td><td><span class="tag prop">Proposed</span></td><td class="p">$25</td></tr>
+      <tr><td><strong>School / Provider Agreement</strong> &middot; the commercial wrapper</td><td>Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$75</td></tr>
+      <tr><td><strong>Supervision Arrangement</strong> and <strong>Communication Sheet</strong></td><td>Low each</td><td><span class="tag prop">Proposed</span></td><td class="p">$25 ea</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>Additions for expeditions and outdoor days</h4>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Document</th><th>Band</th><th>Status</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Route Intelligence</strong> &middot; per route day, from the GPS track</td><td>Low-Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$40</td></tr>
+      <tr><td><strong>Location Intelligence</strong> &middot; per significant location</td><td>Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$75</td></tr>
+      <tr><td><strong>Medical Access Report</strong> &middot; hospitals and routes to them</td><td>Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$75</td></tr>
+      <tr><td><strong>Field Trip Report</strong> &middot; the single-day equivalent, sold alone</td><td>Low</td><td><span class="tag prop">Proposed</span></td><td class="p">$50</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Packaged, as you suggested</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Package</th><th>Contains</th><th>List</th><th>Package</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Essential trip pack</strong><br><span style="color:var(--ink-mid);font-size:13px">What a trip needs to reach a decision</span></td>
+        <td>Trip Overview, Itinerary Report both views, RAMS, Parent Itinerary, Weather Brief</td>
+        <td class="p" style="font-weight:400;color:var(--ink-mid)">$375</td><td class="p">$325</td>
+      </tr>
+      <tr>
+        <td><strong>Full trip review</strong><br><span style="color:var(--ink-mid);font-size:13px">The complete Tier 2 set</span></td>
+        <td>Everything in the per-trip table above</td>
+        <td class="p" style="font-weight:400;color:var(--ink-mid)">$615</td><td class="p">$525</td>
+      </tr>
+      <tr>
+        <td><strong>Expedition trip review</strong><br><span style="color:var(--ink-mid);font-size:13px">Full review plus the outdoor work</span></td>
+        <td>Full trip review, plus two route days, one location brief, one medical access report</td>
+        <td class="p" style="font-weight:400;color:var(--ink-mid)">$845</td><td class="p">$725</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="lede">The packages exist so a coordinator can say yes once instead of nine times. The itemized list exists so the packages look like a saving rather than a number.</p>
+</section>
+
+<section>
+  <h2>The Duty Manager Simulation</h2>
+  <div class="box">
+    <h4>Corrected description, per your note</h4>
+    <p>The Simulation is not an entry product and does not stand alone. It runs <strong>after</strong> a school's trips are in the system: the itineraries built, the SOPs researched, the school's RAMS added, and the parent and public-facing documents produced. Only then can it run, because it uses the school's real trip data against ETI360's event factors, and the duty manager works a timeline of those real trips on the Duty Manager Dashboard, managing events as they arrive, to stress test the school's own procedures and the team's ability to run them.</p>
+    <p style="margin-bottom:0">Commercially this makes it the natural <strong>second</strong> sale to an existing document client, not the first sale to a stranger. The document work pays for itself and creates the conditions the Simulation needs.</p>
+  </div>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Item</th><th>Prerequisite</th><th>Status</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Duty Manager Simulation</strong> &middot; one-off</td><td>Trip data in the system</td><td><span class="tag conf">Confirmed</span></td><td class="p">$1,000</td></tr>
+      <tr><td><strong>After-Action Report</strong></td><td>Included</td><td><span class="tag prop">Proposed</span></td><td class="p">included</td></tr>
+      <tr><td><strong>Repeat session</strong>, later in the year</td><td>Data already loaded</td><td><span class="tag prop">Proposed</span></td><td class="p">$600</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><span class="tag ask">Open</span> You noted it is not fully playable yet. Until it is, it should be sold on a named date you are confident of, and described in marketing without a promise of when. I would not put it in the first emails at all; it belongs in the conversation after a school's first trips are documented.</p>
+</section>
+
+<section>
+  <h2>Tier 3 &middot; During and after</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Item</th><th>Band</th><th>Status</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Incident Report</strong> &middot; per incident, produced as needed</td><td>Low</td><td><span class="tag prop">Proposed</span></td><td class="p">$50</td></tr>
+      <tr><td><strong>Post-Trip Report</strong> &middot; the record the trip leaves behind</td><td>High, low on repeat</td><td><span class="tag prop">Proposed</span></td><td class="p">$150</td></tr>
+      <tr><td><strong>Incident Summary</strong> &middot; post-trip consolidation</td><td>Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$75</td></tr>
+      <tr><td><strong>RESPOND cards</strong> &middot; per scenario set</td><td>Low-Medium</td><td><span class="tag prop">Proposed</span></td><td class="p">$40</td></tr>
+      <tr><td><strong>Duty Manager Dashboard access</strong> &middot; while groups travel</td><td>Platform</td><td><span class="tag ask">Open</span></td><td class="p">see below</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><span class="tag ask">Open</span> The Dashboard is the one item that could carry a recurring fee rather than a per-item fee, because it is the only thing a school uses continuously. Options: included with any trip pack, an annual access fee, or per trip while a group is away. This is the single biggest open question in the menu, because it decides whether ETI360 has recurring revenue or only project revenue.</p>
+</section>
+
+<section>
+  <h2>What a school's year looks like</h2>
+  <p>A worked example on the proposed numbers, for a school running eight overseas and residential trips, two of them expeditions.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Line</th><th>Detail</th><th>Amount</th></tr></thead>
+    <tbody>
+      <tr><td>Organizational Baseline</td><td>Year one</td><td class="p">$750</td></tr>
+      <tr><td>Six full trip reviews</td><td>$525 each</td><td class="p">$3,150</td></tr>
+      <tr><td>Two expedition trip reviews</td><td>$725 each</td><td class="p">$1,450</td></tr>
+      <tr><td>Post-trip records</td><td>Eight at $150</td><td class="p">$1,200</td></tr>
+      <tr><td>Duty Manager Simulation</td><td>One session</td><td class="p">$1,000</td></tr>
+    </tbody>
+    <tfoot><tr><td>Year one, one school</td><td>Before any provider baselines</td><td class="p">$7,550</td></tr></tfoot>
+  </table>
+  </div>
+  <p>Year two on the same school is lower on the baseline refresh and lower in production cost per trip, because the programs are on file and each new trip is an adjustment rather than a build.</p>
+
+  <div class="box alarm">
+    <h4>Two things to go in with your eyes open</h4>
+    <p><strong>These prices sit well below the business plan's hypotheses.</strong> That plan assumed $1,500 to $2,500 per trip pack and $10,000 to $20,000 annual programs. Your menu lands a full trip review at roughly a fifth of that. It is a defensible choice and it buys much easier first sales, but it means the annual number per school is around $7,500 rather than $15,000, so the count of schools has to carry the revenue instead of the price.</p>
+    <p style="margin-bottom:0"><strong>The margin depends entirely on the re-run engine.</strong> At $525 a trip, a full review has to take a small number of hours. That is realistic for a program already on file, which is what the re-run work was built for. It is not realistic for a brand new school's first trip, which is a full build. Either the first trip carries a one-time setup line, or the first trip is knowingly sold at little or no margin as the way into the account. I would recommend the second, stated internally so it is a decision rather than a surprise.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What this changes in the launch plan</h2>
+  <ul>
+    <li><strong>The ladder inverts.</strong> Documents first, Simulation later. The emails now invite a conversation about an upcoming trip and its documents, not a $3,000 session.</li>
+    <li><strong>No free work is needed.</strong> The entry price is low enough to be the demonstration, which retires the last argument for a free offer.</li>
+    <li><strong>The briefing keeps its job</strong> but changes its content: it walks the menu against the school's own trip calendar and produces a quote, rather than scoping a single session.</li>
+    <li><strong>Nothing here goes on a customer surface</strong> without your word. The standing rule keeps pricing off public pages; a menu like this is a document you send or walk through, not a page you publish.</li>
+  </ul>
+  <h4>What I need from you</h4>
+  <ol>
+    <li>Correct the Proposed numbers. They are proportionate, not authoritative.</li>
+    <li>Rule on who pays for a provider baseline.</li>
+    <li>Rule on the Dashboard: included, annual, or per trip. This is the recurring-revenue decision.</li>
+    <li>Confirm the first-trip margin position: setup line, or knowingly thin to win the account.</li>
+  </ol>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><strong style="color:#fff">ETI360 service menu</strong> &middot; internal working document &middot; 26 August 2026 &middot; prices are commercially sensitive and belong in proposals and conversations, never on a public page. Effort bands sourced from DOCUMENT-CATALOGUE-PROPOSAL.md in the reference repository.</p>
+  </div>
+</footer>
+
+</body>
+</html>
