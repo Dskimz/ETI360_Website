@@ -252,6 +252,7 @@ export default function ForProvidersPage() {
 
       <SectionNav
         items={[
+          { href: "#workflow", label: "How it runs" },
           { href: "#tier1", label: "Tier 1 · Baseline" },
           { href: "#tier2", label: "Tier 2 · Every proposal" },
           { href: "#tier3", label: "Tier 3 · During the trip" },
@@ -279,6 +280,144 @@ export default function ForProvidersPage() {
           </p>
         </div>
 
+        <div id="workflow" className="pw-section">
+          <div className="container">
+            <p className="label ui">How it runs</p>
+            <h2 className="section-heading section-heading-lg rule-gold">
+              One program on file. Every proposal from it.
+            </h2>
+            <p className="section-lead">
+              Producing a fresh pack for every school&rsquo;s request is where a
+              provider&rsquo;s evenings go. ETI360 runs the proposal cycle from
+              one record instead: your program documented once, each request
+              answered by adjustment, and your review before anything is sent
+              or confirmed.
+            </p>
+          </div>
+
+          <div className="container pw-flow">
+            <div className="pw-step" data-reveal="">
+              <div className="pw-num ui">Once</div>
+              <div className="pw-body">
+                <h3>The program goes on file.</h3>
+                <p>
+                  Send the program as it exists &mdash; itinerary, venues,
+                  transport, activities, in whatever form you hold them. ETI360
+                  structures it into one record: the master everything else is
+                  produced from.
+                </p>
+              </div>
+              <figure className="pw-art">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/showcase/pages/02-1-calendar-view/2.png"
+                  alt="The program's Itinerary Report as an hour-by-hour calendar: the structured record every proposal is produced from"
+                  loading="lazy"
+                />
+                <figcaption className="ui">The program&rsquo;s record</figcaption>
+              </figure>
+            </div>
+
+            <div className="pw-trigger" data-reveal="">
+              <p className="pw-trigger-line">
+                &ldquo;A proposal for this school, on this trip, on these
+                dates.&rdquo;
+              </p>
+              <p className="pw-trigger-sub ui">
+                A new request begins in one line. From there:
+              </p>
+            </div>
+
+            <div className="pw-step" data-reveal="">
+              <div className="pw-num ui">1</div>
+              <div className="pw-body">
+                <h3>The system re-dates.</h3>
+                <p>
+                  The itinerary and calendar move to the school&rsquo;s dates.
+                  The Weather Brief is rebuilt for the travel month from fifteen
+                  years of data, and the destination&rsquo;s calendar is checked
+                  against the new window &mdash; holidays, closures, and
+                  seasonal events flagged as a booking checklist for you to
+                  verify.
+                </p>
+              </div>
+              <figure className="pw-art">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/showcase/pages/01-1-weather-brief-sydney/1.png"
+                  alt="Weather Brief rebuilt for the proposal's travel month"
+                  loading="lazy"
+                />
+                <figcaption className="ui">Rebuilt for the travel month</figcaption>
+              </figure>
+            </div>
+
+            <div className="pw-step" data-reveal="">
+              <div className="pw-num ui">2</div>
+              <div className="pw-body">
+                <h3>The pack is re-prepared.</h3>
+                <p>
+                  The Trip Overview and Parent Itinerary are re-prepared for the
+                  school, in the school&rsquo;s own voice. The risk assessment
+                  and RAMS are prepared for the school&rsquo;s own review; your
+                  operational controls stay yours to author and sign.
+                </p>
+              </div>
+              <figure className="pw-art">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/email/card-parent.png"
+                  alt="Parent Itinerary re-prepared in the requesting school's voice"
+                  loading="lazy"
+                />
+                <figcaption className="ui">In the school&rsquo;s voice</figcaption>
+              </figure>
+            </div>
+
+            <div className="pw-step" data-reveal="">
+              <div className="pw-num ui">3</div>
+              <div className="pw-body">
+                <h3>The correspondence is drafted.</h3>
+                <p>
+                  Coordination emails for the hotels, restaurants, and transport
+                  around the tour are drafted from the same record. For college
+                  tours, the requests to each college for visit times are
+                  prepared alongside &mdash; every draft ready for your review.
+                </p>
+                <p className="pw-chips ui">
+                  <span>Hotels</span>
+                  <span>Restaurants</span>
+                  <span>Transport</span>
+                  <span>The colleges</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="pw-step" data-reveal="">
+              <div className="pw-num ui">4</div>
+              <div className="pw-body">
+                <h3>You review, send, and confirm.</h3>
+                <p>
+                  Every draft is yours to edit and send; every booking is yours
+                  to confirm before anything is fixed. The system prepares, you
+                  decide &mdash; and the school receives the same documented
+                  standard, proposal after proposal.
+                </p>
+              </div>
+            </div>
+
+            {/* When written permission exists, the client's name goes here:
+                "This is the cycle we run with [TSCT], a college-tour
+                provider working across Asia." Until then the cycle is
+                described without naming the client. */}
+            <p className="pw-close" data-reveal="">
+              Once the program is on file, every proposal after that is an
+              adjustment, not a rebuild. The documents below are what each
+              proposal is assembled from.
+            </p>
+          </div>
+        </div>
+
         <TierBand
           n={1}
           id="tier1"
@@ -299,25 +438,6 @@ export default function ForProvidersPage() {
           name="Trip Risk Review"
           desc="The due diligence documentation school leadership asks for, the documents that get students and parents ready for the trip, and a rehearsal of the trip before it runs."
         />
-        <div className="container measure" style={{ paddingTop: "40px" }}>
-          <p>
-            Document a program once and the Tier 2 pack becomes repeatable. A
-            new proposal begins in one line:
-          </p>
-          <p className="pull-quote">
-            &ldquo;A proposal for this school, on this trip, on these
-            dates.&rdquo;
-          </p>
-          <p>
-            ETI360 updates and adjusts the data from there: the itinerary
-            re-dated for the new group, the Trip Overview and Parent Itinerary
-            re-prepared for the school, the Weather Brief rebuilt for the travel
-            month, and the proposed dates checked against the
-            destination&rsquo;s calendar &mdash; holidays, closures, and
-            seasonal events flagged as a booking checklist for you to verify
-            before anything is confirmed.
-          </p>
-        </div>
         <div className="doc-rows">
           {tier2.map((e) => (
             <DocRow key={e.anchor} e={e} />

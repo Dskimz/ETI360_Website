@@ -39,11 +39,11 @@ export function TierBand({
         <span className="tier-band-numeral" aria-hidden="true">
           {n}
         </span>
-        <div>
+        <div className="tier-band-head">
           <p className="tier-band-eyebrow ui">{eyebrow}</p>
           <h2>{name}</h2>
-          <p className="tier-band-desc">{desc}</p>
         </div>
+        <p className="tier-band-desc">{desc}</p>
       </div>
     </section>
   );
