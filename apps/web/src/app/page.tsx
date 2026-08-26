@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DocMarquee, DocRow, TierBand } from "../components/DocShowcase";
+import { DocMarquee, DocRow } from "../components/DocShowcase";
+import { FrameworkTimeline } from "../components/FrameworkTimeline";
 import { schoolDocs } from "../components/docLibrary";
 
 export const metadata: Metadata = {
@@ -39,53 +40,13 @@ export default function HomePage() {
             A clear, consistent evidence file for each trip.
           </p>
           <div className="hero-actions">
-            <a className="cta-button ui" href="#framework">See the framework</a>
+            <Link className="cta-button ui" href="/contact">Arrange a briefing</Link>
             <a className="cta-link ui" href="#work">See what a school receives &rarr;</a>
           </div>
         </div>
       </section>
 
-      <section id="framework" className="about-strip">
-        <div className="container">
-          <p className="label ui">The framework</p>
-          <h2 className="section-heading section-heading-lg rule-gold">
-            ETI360&rsquo;s 3-Tier Risk Framework.
-          </h2>
-          <p className="section-lead">
-            Built from field experience and aligned to international standards,
-            ISO 31031 among them. Standing organizational evidence, per-trip
-            evidence, and live field evidence compound in that order: document
-            the organization annually, document each trip, equip the field.
-          </p>
-        </div>
-      </section>
-      <TierBand
-        n={1}
-        eyebrow="Tier One · Annual"
-        name="Organizational Baseline"
-        desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
-      />
-      <TierBand
-        n={2}
-        eyebrow="Tier Two · Every trip"
-        name="Trip Risk Review"
-        desc="What leadership sees before a trip is approved: a consistent set of documents for review and decision, from the trip overview to the information parents receive."
-      />
-      <TierBand
-        n={3}
-        eyebrow="Tier Three · During and after"
-        name="Dynamic Risk Operations"
-        desc="How the school stays connected while a group travels: the working views for the days away, and the record the trip carries home into next year's planning."
-      />
-      <section className="about-strip tight">
-        <div className="container">
-          <p className="bridge-line ui">
-            <Link href="/framework" className="cta-link ui">
-              How the framework works &rarr;
-            </Link>
-          </p>
-        </div>
-      </section>
+      <FrameworkTimeline />
 
       <section id="work" className="about-strip">
         <div className="container">
@@ -162,12 +123,16 @@ export default function HomePage() {
         <div className="container measure">
           <p className="label ui">About</p>
           <h2 className="section-heading rule-gold">
-            An advisory firm in the governance of educational travel.
+            The independent trip-governance service.
           </h2>
           <p>
-            ETI360 is an advisory firm working in the governance of educational travel.
-            The firm advises international schools and trip providers on structuring the
-            evidence, intelligence, and documentation that trip governance rests on.
+            ETI360 is the independent trip-governance service for international
+            schools and the providers. ETI360 provides independent
+            trip-governance services that structure the evidence behind every
+            trip decision, because the same documented framework is applied to
+            the organization once a year, to each trip before departure, and to
+            the trip while it runs, producing complete documents the school can
+            read and hold.
           </p>
           <p>
             ETI360 works in trip governance &mdash; risk assessment, provider review,

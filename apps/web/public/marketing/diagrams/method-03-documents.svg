@@ -32,10 +32,10 @@
   <text x="820" y="130" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="11" fill="#4c5968">Per trip &#8212; in the field</text>
 
   <!-- ── Column 1 cards ── -->
-  <!-- ISO 31031 Audit Report -->
+  <!-- Organizational Baseline Report -->
   <rect x="28" y="144" width="304" height="56" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
   <path d="M 52 164 L 60 167 L 60 174 Q 60 180 52 183 Q 44 180 44 174 L 44 167 Z" stroke="#0d3558" stroke-width="1.5" fill="none"/>
-  <text x="80" y="172" dominant-baseline="central" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="600" fill="#0d3558">ISO 31031 Audit Report</text>
+  <text x="80" y="172" dominant-baseline="central" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="13" font-weight="600" fill="#0d3558">Organizational Baseline Report</text>
   <!-- Organizational Baseline -->
   <rect x="28" y="216" width="304" height="56" rx="2" fill="#ffffff" stroke="#e3e8ee" stroke-width="1"/>
   <rect x="44" y="236" width="18" height="3" rx="1" fill="#0d3558"/>

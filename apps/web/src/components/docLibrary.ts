@@ -7,11 +7,11 @@ import type { DocEntry } from "./DocShowcase";
 export const schoolTier1: DocEntry[] = [
   {
     anchor: "baseline",
-    pdf: "/docs/organizational-baseline-evaluation-v2.pdf",
+    pdf: "/docs/organizational-baseline-evaluation-v3.pdf",
     stage: "T1 · Schools and trip providers",
     name: "Organizational Baseline Evaluation",
     reader: "Head · Board · Risk committee",
-    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, mapped against ISO 31031 and refreshed annually.",
+    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, recorded across the ETI360 Operational Capability Framework and refreshed annually.",
     image: {
       src: "/email/spread-school-baseline-v2.png",
       alt: "Organizational Baseline Evaluation for Harborview International School: each of ten areas marked at standard or progressing",
@@ -87,6 +87,7 @@ export const schoolTier2: DocEntry[] = [
     name: "Duty Manager Simulation",
     reader: "Duty manager · Trip leadership",
     desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    pageHref: "/duty-manager-simulation",
     image: {
       src: "/email/screen-simulation.png",
       alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",

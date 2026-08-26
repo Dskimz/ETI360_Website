@@ -21,11 +21,11 @@ export const metadata: Metadata = {
 const tier1: DocEntry[] = [
   {
     anchor: "baseline",
-    pdf: "/docs/organizational-baseline-evaluation-v2.pdf",
+    pdf: "/docs/organizational-baseline-evaluation-v3.pdf",
     stage: "T1 · Your organization",
     name: "Organizational Baseline Evaluation",
     reader: "School risk committees · Your leadership",
-    desc: "The same ten-area review schools receive, applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure, mapped against ISO 31031 and refreshed annually — your standing documented in the same form schools use for their own baseline.",
+    desc: "The same ten-area review schools receive, applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded across the ETI360 Operational Capability Framework and refreshed annually — your standing documented in the same form schools use for their own baseline.",
     image: {
       src: "/email/spread-partner-baseline-v2.png",
       alt: "Organizational Baseline Evaluation applied to a trip provider: each of ten areas marked at standard or progressing",
@@ -171,7 +171,7 @@ const qaAsked: QAEntry[] = [
     q: "A school's risk committee asks in the first meeting: what evidence can you show of how your organization manages risk?",
     needs:
       "A complete answer needs a documented review of your standing, in the form school committees already read.",
-    how: "The ten-area review, mapped against ISO 31031 and refreshed annually, is the same structure schools apply to themselves, so your documentation arrives in a form their leadership recognizes.",
+    how: "The ten-area review, recorded across the ETI360 Operational Capability Framework and refreshed annually, is the same structure schools apply to themselves, so your documentation arrives in a form their leadership recognizes.",
     bridge: { label: "Organizational Baseline Evaluation", href: "#baseline" },
   },
   {
@@ -272,7 +272,7 @@ export default function ForProvidersPage() {
           n={1}
           eyebrow="Tier One · Annual"
           name="Organizational Baseline"
-          desc="A documented review of your practices against industry standards — the same ten-area review applied to schools and to trip providers, mapped against ISO 31031, with your documentation recorded in order and refreshed annually."
+          desc="A documented review of your practices — the same ten-area review applied to schools and to trip providers, recorded across the ETI360 Operational Capability Framework, with your documentation kept in order and refreshed annually."
         />
         <div className="doc-rows">
           {tier1.map((e) => (

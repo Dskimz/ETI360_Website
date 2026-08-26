@@ -30,11 +30,11 @@ const tiers: Tier[] = [
   {
     stage: "Tier 1 · Organizational Baseline — documented once, maintained",
     question: "Where does our travel governance stand?",
-    body: "The school’s standing position: policies, procedures, and evidence reviewed and mapped against the ISO 31031 framework, area by area, with strengths and gaps identified. Not a trip document — the foundation every trip stands on.",
+    body: "The school’s standing position: policies, procedures, and evidence reviewed area by area across the ETI360 Operational Capability Framework, with strengths and open areas identified. Not a trip document — the foundation every trip stands on.",
     components:
-      "Document review · framework mapping · per-area maturity scoring · evidence register · gap identification",
+      "Document review · framework mapping · area-by-area review · evidence register · gap identification",
     receives:
-      "The Organizational Baseline Report — per-area scores, evidence found, gaps identified. Written to be read by a board in one sitting.",
+      "The Organizational Baseline Report — each area at standard or progressing, evidence found, gaps identified. Written to be read by a board in one sitting.",
     anchor: "/for-schools#baseline",
   },
   {
@@ -139,19 +139,11 @@ export default function FrameworkPage() {
           <p className="label ui">Provenance</p>
           <h2 className="section-heading rule-gold">Where the framework comes from.</h2>
           <p className="cycle-provenance">
-            Built from field experience running school trips, and aligned to recognized
-            international standards &mdash; ISO 31031 as the anchor, with ISO 31030,
-            ISO 21101, BS 8848, and SS 710 alongside. That experience and those
-            standards produced the three-tier framework &mdash; the structure beneath
-            everything ETI360 does.
+            Built from field experience running school trips, and aligned to
+            recognized international standards. That experience produced the
+            three-tier framework, presented as the ETI360 Operational Capability
+            Framework &mdash; the structure beneath everything ETI360 does.
           </p>
-          <figure className="framework-figure">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/marketing/diagrams/method-01-inputs.svg"
-              alt="Where the method comes from: field experience (school-trip operations, incident learning) and recognized standards (ISO 31031, ISO 31030, ISO 21101, BS 8848, SS 710) feed the ETI360 risk framework"
-            />
-          </figure>
           <figure className="framework-figure">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

@@ -64,7 +64,7 @@ const qaAsked: QAEntry[] = [
     q: "A new provider is proposed for next year's trips and the head asks: what do we know about how they operate?",
     needs:
       "A complete answer needs the same documented readiness review for the provider that the school holds for itself.",
-    how: "The ten-area review, mapped against ISO 31031 and refreshed annually, is applied to both sides of the trip: the school and each provider who serves it.",
+    how: "The ten-area review, recorded across the ETI360 Operational Capability Framework and refreshed annually, is applied to both sides of the trip: the school and each provider.",
     bridge: { label: "Organizational Baseline Evaluation", href: "#baseline" },
   },
 ];
@@ -139,7 +139,7 @@ export default function ForSchoolsPage() {
           id="tier1"
           eyebrow="Tier One · Annual"
           name="Organizational Baseline"
-          desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
+          desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten areas of operational capability."
         />
         <div className="doc-rows">
           {tier1.map((e) => (

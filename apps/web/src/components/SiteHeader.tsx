@@ -6,11 +6,10 @@ import {usePathname} from 'next/navigation'
 type NavItem = {href: string; label: string}
 
 const navItems: NavItem[] = [
-  {href: '/framework', label: "ETI360's 3-Tier Risk Framework"},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
+  {href: '/framework', label: 'The Framework'},
   {href: '/about', label: 'About'},
-  {href: '/contact', label: 'Contact'},
 ]
 
 function isActive(pathname: string, href: string) {
@@ -39,6 +38,14 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/contact"
+                className={'nav-action' + (isActive(pathname, '/contact') ? ' active' : '')}
+              >
+                Arrange a briefing
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

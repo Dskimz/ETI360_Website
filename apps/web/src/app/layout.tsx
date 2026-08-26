@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SourceCapture } from "@/components/SourceCapture";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       </head>
       <body className="dark-bg">
         <a className="skip-link" href="#main">Skip to main content</a>
+        <SourceCapture />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

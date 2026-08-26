@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "ETI360 is an advisory firm working in the governance of educational travel.",
+  description: "ETI360 is the independent trip-governance service for international schools and the providers.",
   alternates: { canonical: "/about" },
 };
 
@@ -18,7 +18,8 @@ export default function AboutPage() {
           <p className="label label-light ui">About</p>
           <h1>About ETI360.</h1>
           <p className="subhead">
-            An advisory firm working in the governance of educational travel.
+            The independent trip-governance service for international schools
+            and the providers.
           </p>
         </div>
       </section>
@@ -26,8 +27,11 @@ export default function AboutPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            ETI360 advises international schools and trip providers on structuring the
-            evidence, intelligence, and documentation that trip governance rests on.
+            ETI360 provides independent trip-governance services that structure
+            the evidence behind every trip decision, because the same documented
+            framework is applied to the organization once a year, to each trip
+            before departure, and to the trip while it runs, producing complete
+            documents the school can read and hold.
           </p>
 
           <h2>What we cover</h2>
@@ -41,18 +45,16 @@ export default function AboutPage() {
             Within trip governance, the firm structures and supports work the school or provider
             remains accountable for; it does not approve trips, certify providers, guarantee
             outcomes, or substitute its judgment for the governance bodies of the organizations
-            it advises.
+            it works with.
           </p>
 
           <h2>Infrastructure</h2>
           <p>
-            The firm has built infrastructure to support its consulting work &mdash; structured
-            documentation pipelines, intelligence layers maintaining current information on
-            destinations and providers, scenario testing capabilities, and document production
-            at a scale and quality that contemporary trip governance requires. The infrastructure
-            is leverage for the consulting work, not a product sold separately. Engagements are
-            advisory; the infrastructure is what allows the advisory work to scale across school
-            trip portfolios and provider operations.
+            The firm has built the infrastructure its service runs on: structured
+            documentation pipelines, intelligence on destinations and providers kept
+            current, and document production at the quality trip governance requires.
+            The infrastructure is what lets the same service carry a whole trip
+            portfolio, not a product sold separately.
           </p>
 
           <h2>Origin</h2>

@@ -4,13 +4,13 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Trip Risk Register",
   description:
-    "The home view of a school's TripRisk360 portal: every scheduled trip for the year in one register, with seasonal risk signals and RAMS status ahead of each departure.",
+    "The home view of a school's trip portal: every scheduled trip for the year in one register, with seasonal risk signals and RAMS status ahead of each departure.",
   alternates: { canonical: "/documents/trip-risk-register" },
   openGraph: {
     images: ["/marketing/og-default.png"],
     title: "Trip Risk Register — ETI360",
     description:
-      "The home view of a school's TripRisk360 portal: every scheduled trip for the year in one register, with seasonal risk signals and RAMS status ahead of each departure.",
+      "The home view of a school's trip portal: every scheduled trip for the year in one register, with seasonal risk signals and RAMS status ahead of each departure.",
     type: "article",
   },
 };
@@ -28,7 +28,7 @@ export default function TripRiskRegisterPage() {
           <p className="label label-light ui">The Documents &middot; Tier 2 &middot; Trip Risk Review</p>
           <h1>The Trip Risk Register</h1>
           <p className="subtitle">
-            The home view of a school&rsquo;s TripRisk360 portal: every scheduled
+            The home view of a school&rsquo;s trip portal: every scheduled
             trip for the year in one register, with the risk work that surrounds
             each departure.
           </p>
@@ -55,7 +55,7 @@ export default function TripRiskRegisterPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/marketing/library/trip-risk-register.png"
-              alt="The Trip Risk Register in the TripRisk360 school portal: Harborview International School's 31 scheduled trips, month by month, each with departure date, seasonal risk signals, and RAMS status"
+              alt="The Trip Risk Register in the school trip portal: Harborview International School's 31 scheduled trips, month by month, each with departure date, seasonal risk signals, and RAMS status"
               loading="lazy"
             />
           </div>
@@ -127,7 +127,7 @@ export default function TripRiskRegisterPage() {
             Loop.
           </p>
           <p>
-            TripRisk360 organizes these inputs and supports expert-led review.
+            The portal organizes these inputs and supports expert-led review.
             The judgments &mdash; which activities warrant a RAMS, what a signal
             means for a specific group, whether a trip is ready &mdash; remain
             with the school&rsquo;s own staff. We do not certify trips, and the

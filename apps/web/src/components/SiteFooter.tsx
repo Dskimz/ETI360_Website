@@ -11,7 +11,6 @@ const firmLinks = [
   {href: '/about', label: 'About'},
   {href: '/contact', label: 'Contact'},
   {href: '/privacy', label: 'Privacy'},
-  {href: '/login', label: 'Client Login'},
 ]
 
 export function SiteFooter() {

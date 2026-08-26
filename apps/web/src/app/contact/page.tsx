@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<{ kind: "idle" | "ok" | "error"; msg?: string }>({
@@ -12,7 +13,13 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus({ kind: "idle" });
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data: Record<string, unknown> = Object.fromEntries(new FormData(form).entries());
+    // Attach the first-touch source captured at landing, so every submission
+    // arrives in the inbox with its campaign attribution.
+    try {
+      const src = sessionStorage.getItem("eti_source");
+      if (src) data.source = JSON.parse(src);
+    } catch { /* no source available */ }
     try {
       const resp = await fetch("/api/contact", {
         method: "POST",
@@ -20,7 +27,8 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       });
       if (resp.ok) {
-        setStatus({ kind: "ok", msg: "Thank you. We will be in touch within two business days." });
+        track("contact_submit");
+        setStatus({ kind: "ok", msg: "Thank you. We will be in touch within two business days. A confirmation is on its way to your inbox." });
         form.reset();
       } else {
         const err = await resp.json().catch(() => ({}));
