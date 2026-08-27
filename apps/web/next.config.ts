@@ -1,18 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        // Temporary personal page (Dan, 2026-08-27), a self-contained
-        // static file at public/CMA/index.html. Next does not serve
-        // directory indexes from public/, so /CMA is rewritten onto the
-        // file. Remove this rewrite and the folder together.
-        source: "/CMA",
-        destination: "/CMA/index.html",
-      },
-    ];
-  },
   async redirects() {
     return [
       {
