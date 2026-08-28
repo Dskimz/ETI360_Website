@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ETI360 Invoice | Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --navy:#0d3558; --navy-deep:#0a2a45; --gold:#C9A24D; --gold-dark:#8a6c1f;
+    --ink:#1f2732; --ink-mid:#4c5968; --hairline:#dfe4ea; --parchment:#faf8f3;
+    --sans:"IBM Plex Sans",Helvetica,Arial,sans-serif;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9edf1;font-family:var(--sans);color:var(--ink);font-size:13px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .sheet{width:210mm;min-height:297mm;margin:22px auto;background:#fff;display:flex;flex-direction:column;box-shadow:0 8px 28px rgba(13,53,88,.16)}
+
+  /* header */
+  .head{background:var(--navy);color:#fff;padding:18px 26px;display:flex;justify-content:space-between;align-items:flex-start}
+  .brand{font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:-.01em;line-height:1}
+  .brand span{color:var(--gold)}
+  .brand .tag{display:block;font-family:var(--sans);font-size:8.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:7px}
+  .doctype{text-align:right}
+  .doctype h1{font-family:var(--serif);font-size:26px;font-weight:600;margin:0;letter-spacing:.04em;line-height:1}
+  .doctype .specimen{display:inline-block;margin-top:8px;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold);border:1px solid var(--gold);padding:2px 7px}
+  .rule{height:3px;background:var(--gold)}
+
+  .body{padding:18px 26px 0;flex:1}
+
+  /* parties */
+  .parties{display:grid;grid-template-columns:1fr 1fr 0.9fr;gap:26px;padding-bottom:12px;border-bottom:1px solid var(--hairline)}
+  .lbl{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin:0 0 6px}
+  .party p{margin:0;line-height:1.5}
+  .party .name{font-weight:600;color:var(--navy);font-size:14px;margin-bottom:2px}
+  .meta div{display:flex;justify-content:space-between;gap:12px;padding:2px 0}
+  .meta .k{color:var(--ink-mid)}
+  .meta .v{font-weight:600;color:var(--navy);font-variant-numeric:tabular-nums}
+
+  /* reference line */
+  .ref{padding:11px 0 11px;border-bottom:1px solid var(--hairline)}
+  .ref .t{font-family:var(--serif);font-size:15px;color:var(--navy);font-weight:600}
+
+  /* line items */
+  table{width:100%;border-collapse:collapse;margin-top:11px}
+  thead th{text-align:left;font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;padding:0 0 8px;border-bottom:1.5px solid var(--navy)}
+  thead th.r{text-align:right}
+  tbody td{padding:7px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
+  tbody td.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .item{font-weight:600;color:var(--navy)}
+  .sub{display:block;color:var(--ink-mid);font-size:11px;line-height:1.45;margin-top:2px;font-weight:400}
+  tfoot td{padding:8px 0}
+  tfoot .tot td{border-top:2px solid var(--navy);font-family:var(--serif);font-size:17px;font-weight:600;color:var(--navy);padding-top:12px}
+
+  /* notes */
+  .notes{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;margin-top:14px;padding-top:13px;border-top:1px solid var(--hairline)}
+  .note p{margin:0 0 6px;font-size:11px;line-height:1.45;color:var(--ink-mid)}
+  .note p strong{color:var(--navy)}
+  .scope{background:var(--parchment);border-left:3px solid var(--gold);padding:10px 13px;margin-top:10px}
+  .scope p{margin:0;font-size:11px;line-height:1.5;color:var(--ink-mid)}
+
+  /* footer */
+  .foot{background:var(--navy-deep);color:rgba(255,255,255,.72);padding:10px 26px;font-size:9.5px;line-height:1.5;display:flex;justify-content:space-between;gap:20px;margin-top:16px}
+  .foot .disc{color:rgba(255,255,255,.55)}
+
+  @page{size:A4;margin:0}
+  @media print{
+    body{background:#fff}
+    .sheet{width:auto;min-height:auto;margin:0;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="head">
+    <div class="brand">ETI<span>360</span><span class="tag">Educational Travel Insights</span></div>
+    <div class="doctype">
+      <h1>INVOICE</h1>
+      <span class="specimen">Sample</span>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="body">
+
+    <div class="parties">
+      <div class="party">
+        <p class="lbl">From</p>
+        <p class="name">ETI360 PTE. LTD.</p>
+        <p>1010 Dover Road, #01-360V<br>Singapore 139658</p>
+        <p>UEN 202302514C</p>
+        <p>danskimin@eti360.com</p>
+      </div>
+      <div class="party">
+        <p class="lbl">Billed to</p>
+        <p class="name">Harborview International School</p>
+        <p>Attention: Business Manager<br>Singapore</p>
+        <p>Purchase order: HIS-PO-2026-114</p>
+      </div>
+      <div class="party meta">
+        <p class="lbl">Details</p>
+        <div><span class="k">Invoice</span><span class="v">ETI-2026-0041</span></div>
+        <div><span class="k">Issued</span><span class="v">31 August 2026</span></div>
+        <div><span class="k">Due</span><span class="v">30 September 2026</span></div>
+        <div><span class="k">Terms</span><span class="v">Net 30</span></div>
+        <div><span class="k">Currency</span><span class="v">USD</span></div>
+      </div>
+    </div>
+
+    <div class="ref">
+      <p class="lbl">For</p>
+      <p class="t">Trip governance program, academic year 2026/27</p>
+      <p style="margin:4px 0 0;color:var(--ink-mid)">Ten trips reviewed. Two of those trips are extended outdoor programs. The year also includes the organizational review and one rehearsal session.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th class="r" style="width:70px">Quantity</th>
+          <th class="r" style="width:95px">Unit price</th>
+          <th class="r" style="width:112px">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="item">Organizational Baseline report</span>
+            <span class="sub">The school reviewed across ten areas of operational capability, with the evidence register and the finding for each area.</span></td>
+          <td class="r">1</td><td class="r">750.00</td><td class="r">750.00</td>
+        </tr>
+        <tr>
+          <td><span class="item">Full trip review</span>
+            <span class="sub">Trip overview, itinerary in both views, risk assessment and RAMS, weather brief, parent itinerary, teacher guide, and leadership deck.</span></td>
+          <td class="r">8</td><td class="r">525.00</td><td class="r">4,200.00</td>
+        </tr>
+        <tr>
+          <td><span class="item">Full trip review, extended outdoor program</span>
+            <span class="sub">The full review, with route intelligence, location intelligence, and medical access reporting. Everest Base Camp trek and Itoshima cycling.</span></td>
+          <td class="r">2</td><td class="r">725.00</td><td class="r">1,450.00</td>
+        </tr>
+        <tr>
+          <td><span class="item">Post-trip record</span>
+            <span class="sub">Compiled after each trip returns and carried into the following year's planning.</span></td>
+          <td class="r">10</td><td class="r">150.00</td><td class="r">1,500.00</td>
+        </tr>
+        <tr>
+          <td><span class="item">Duty Manager Simulation</span>
+            <span class="sub">The school's own duty manager works a timeline of the school's trips on the Duty Manager Dashboard, with the after-action report that follows.</span></td>
+          <td class="r">1</td><td class="r">1,000.00</td><td class="r">1,000.00</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3" style="text-align:right;color:var(--ink-mid);padding-right:22px">Subtotal</td><td class="r" style="font-weight:600;color:var(--navy)">8,900.00</td></tr>
+        <tr class="tot"><td colspan="3" style="text-align:right;padding-right:22px">Total due, USD</td><td class="r">8,900.00</td></tr>
+      </tfoot>
+    </table>
+
+    <div class="notes">
+      <div class="note">
+        <p class="lbl">Payment</p>
+        <p>Payable within 30 days of the issue date by bank transfer.</p>
+        <p><strong>Bank</strong> [bank name]<br>
+           <strong>Account name</strong> ETI360 PTE. LTD.<br>
+           <strong>Account</strong> [account number] &nbsp;&middot;&nbsp; <strong>SWIFT</strong> [swift]</p>
+        <p>Please quote invoice ETI-2026-0041 with your payment.</p>
+      </div>
+      <div class="note">
+        <p class="lbl">Notes</p>
+        <p>Documents are produced from the trip information the school supplies, in the school's branding and voice.</p>
+        <p>Trips added to the program during the year are invoiced separately at the same rates.</p>
+        <div class="scope">
+          <p>ETI360 structures and prepares the evidence behind trip decisions. It does not approve trips, certify schools or providers, or guarantee outcomes. Decision-making authority remains with the school and trip providers.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>ETI360 PTE. LTD. &middot; 1010 Dover Road, #01-360V, Singapore 139658 &middot; UEN 202302514C &middot; www.eti360.com</span>
+    <span class="disc">Sample document. Harborview International School is a fictitious reference school.</span>
+  </div>
+
+</div>
+
+</body>
+</html>
