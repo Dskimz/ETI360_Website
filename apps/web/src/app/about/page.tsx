@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "ETI360 is the independent trip-governance service for international schools and the providers.",
+  description: "ETI360 is an independent trip-governance service for international schools and educational travel providers.",
   alternates: { canonical: "/about" },
 };
 
@@ -18,8 +18,8 @@ export default function AboutPage() {
           <p className="label label-light ui">About</p>
           <h1>About ETI360.</h1>
           <p className="subhead">
-            The independent trip-governance service for international schools
-            and the providers.
+            An independent trip-governance service for international schools
+            and educational travel providers.
           </p>
         </div>
       </section>

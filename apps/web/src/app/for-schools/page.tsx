@@ -127,8 +127,7 @@ export default function ForSchoolsPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            ETI360 is the independent trip-governance service for
-            international schools and the providers. A school trip is a
+            ETI360 is an independent trip-governance service for international schools and educational travel providers. A school trip is a
             sequence of decisions: whether the program fits,
             how the days will run, what families should know, what has been
             assessed and what stands ready, who watches while the group travels,

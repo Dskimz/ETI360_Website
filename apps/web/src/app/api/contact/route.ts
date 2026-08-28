@@ -101,7 +101,7 @@ function renderAckText(name: string) {
     "Co-Founder, ETI360",
     "danskimin@eti360.com · www.eti360.com",
     "",
-    "ETI360 is the independent trip-governance service for international schools and the providers. We structure the evidence behind trip decisions. The decision, and the duty of care, stay with the school.",
+    "ETI360 is an independent trip-governance service for international schools and educational travel providers. We structure the evidence behind trip decisions. The decision, and the duty of care, stay with the school.",
     "",
     "ETI360 PTE. LTD. · 1010 Dover Road, #01-360V, Singapore 139658 · UEN 202302514C",
   ].join("\n");
@@ -136,7 +136,7 @@ function renderAckHtml() {
     </td></tr>
     <tr><td style="padding:20px 34px 26px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-top:1px solid rgba(13,53,88,0.14);padding-top:16px;font-family:Helvetica,Arial,sans-serif;font-size:12.5px;line-height:1.55;color:rgba(31,39,50,0.66);">
-        ETI360 is the independent trip-governance service for international schools and the providers. We structure the evidence behind trip decisions. The decision, and the duty of care, stay with the school.
+        ETI360 is an independent trip-governance service for international schools and educational travel providers. We structure the evidence behind trip decisions. The decision, and the duty of care, stay with the school.
       </td></tr></table>
     </td></tr>
     <tr><td style="background:#0a2a45;padding:15px 34px;font-family:Helvetica,Arial,sans-serif;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,0.62);">ETI360 PTE. LTD. &middot; 1010 Dover Road, #01-360V, Singapore 139658 &middot; UEN 202302514C</td></tr>

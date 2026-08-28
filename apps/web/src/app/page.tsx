@@ -137,8 +137,7 @@ export default function HomePage() {
             The independent trip-governance service.
           </h2>
           <p>
-            ETI360 is the independent trip-governance service for international
-            schools and the providers. ETI360 provides independent
+            ETI360 is an independent trip-governance service for international schools and educational travel providers. ETI360 provides independent
             trip-governance services that structure the evidence behind every
             trip decision, because the same documented framework is applied to
             the organization once a year, to each trip before departure, and to
@@ -152,9 +151,9 @@ export default function HomePage() {
             disciplines served by other specialist firms.
           </p>
           <p>
-            The work is delivered through structured engagements, but the output is not
-            advice alone. It is documented, defensible evidence that supports decisions
-            across the trip&rsquo;s full life.
+            The work is delivered through structured engagements, and the output is
+            not advice. It is a documented record that supports decisions across the
+            trip&rsquo;s full life, and that the school keeps.
           </p>
           <p>
             <Link href="/about" className="cta-link ui">More about ETI360 &rarr;</Link>

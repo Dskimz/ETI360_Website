@@ -262,8 +262,7 @@ export default function ForProvidersPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            ETI360 is the independent trip-governance service for
-            international schools and the providers. Schools decide with
+            ETI360 is an independent trip-governance service for international schools and educational travel providers. Schools decide with
             documents. We make yours, and we know what schools need to see. Open any thumbnail on this page to read a
             document in full.
           </p>
