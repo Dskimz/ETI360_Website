@@ -127,7 +127,9 @@ export default function ForSchoolsPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            A school trip is a sequence of decisions: whether the program fits,
+            ETI360 is the independent trip-governance service for
+            international schools and the providers. A school trip is a
+            sequence of decisions: whether the program fits,
             how the days will run, what families should know, what has been
             assessed and what stands ready, who watches while the group travels,
             and what next year&rsquo;s planning learns from this one. ETI360
@@ -242,7 +244,7 @@ export default function ForSchoolsPage() {
           </p>
           <p>
             <Link href="/contact" className="cta-button ui">
-              Get in touch
+              Arrange a briefing
             </Link>
           </p>
         </div>

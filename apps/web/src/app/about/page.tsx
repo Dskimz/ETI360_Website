@@ -71,7 +71,7 @@ export default function AboutPage() {
         <div className="container measure">
           <h2>Arrange a briefing.</h2>
           <p>Briefings are conversations, not sales calls. We respond within two business days.</p>
-          <Link href="/contact" className="cta-button ui">Get in touch</Link>
+          <Link href="/contact" className="cta-button ui">Arrange a briefing</Link>
         </div>
       </section>
     </>

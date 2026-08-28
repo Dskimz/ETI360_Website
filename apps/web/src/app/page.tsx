@@ -169,7 +169,7 @@ export default function HomePage() {
             A structured conversation about your current trip governance and where
             the documents can support it. We respond within two business days.
           </p>
-          <Link href="/contact" className="cta-button ui">Get in touch</Link>
+          <Link href="/contact" className="cta-button ui">Arrange a briefing</Link>
         </div>
       </section>
     </>
