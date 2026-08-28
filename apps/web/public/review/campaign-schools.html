@@ -13,7 +13,7 @@
 @font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
 @font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-:root{--navy:#0d3558;--navy-deep:#0a2a45;--gold:#C9A24D;--gold-dark:#8a6c1f;--parchment:#faf8f3;--parchment-2:#f3efe4;--ink:#1f2732;--ink-mid:rgba(31,39,50,.72);--hairline:rgba(13,53,88,.16);--white:#fff;--measure:74ch;--container:1000px;--sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--serif:"Source Serif 4",Georgia,"Times New Roman",serif}
+:root{--navy:#0d3558;--navy-deep:#0a2a45;--gold:#C9A24D;--gold-dark:#8a6c1f;--parchment:#faf8f3;--parchment-2:#f3efe4;--ink:#1f2732;--ink-mid:rgba(31,39,50,.72);--hairline:rgba(13,53,88,.16);--white:#fff;--measure:74ch;--container:1240px;--sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--serif:"Source Serif 4",Georgia,"Times New Roman",serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:20px}
 body{margin:0;background:var(--parchment);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.66;-webkit-font-smoothing:antialiased}
@@ -34,7 +34,10 @@ li{margin-bottom:6px}
 strong{color:var(--navy);font-weight:600}
 a{color:var(--gold-dark)}
 .tablewrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--hairline);background:var(--white)}
-table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:760px}
+td.dom a{color:var(--gold-dark);text-decoration:none}
+td.dom a:hover{text-decoration:underline}
+.todo{color:var(--ink-mid);font-style:italic}
 th{background:var(--navy);color:#fff;text-align:left;padding:8px 12px;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
 td{padding:8px 12px;border-top:1px solid var(--hairline);vertical-align:top;line-height:1.45}
 tbody tr:nth-child(even){background:var(--parchment)}
@@ -64,68 +67,69 @@ footer p{max-width:none;margin:0}
   <p>Latin America first, then the world. Week one takes every Latin America and Caribbean school in the directory, forty-four of them, topped up with the six strongest North American entries. From week two the campaign moves outward: North America, then Europe. Within each week, schools with the strongest published evidence of an active trip program go first.</p>
   <p>After these three weeks roughly 350 schools remain in the directory, enough for seven further waves at the same pace.</p>
   <div class="box">
-    <p><strong>Recipient details are not held here.</strong> The directory carries school names, cities and websites. It holds no contact people and no email addresses, so the named recipient for each school is researched at drafting time. Those details are never published on this page and never stored on the website.</p>
+    <p><strong>The recipient column is empty because the data does not exist.</strong> The directory carries school names, cities and websites; it holds <strong>no contact people and no email addresses at all</strong>. The domain column is the starting point for that research. Recipient names and addresses are gathered per school at drafting time and are deliberately never published on this page or stored on the website.</p>
   </div>
 </section>
 
 <section>
   <p class="eyebrow-s">Week one &middot; Latin America and the Caribbean</p>
-  <h2>The first fifty.</h2>
-  <p>Forty-four Latin America and Caribbean schools, plus six North American entries.</p>
+  <h2>Week one: fifty-one schools.</h2>
+  <p>Forty-four Latin America and Caribbean schools, six North American entries, and Colegio Jorge Washington, which was filed under the United States in the directory but is in Cartagena, Colombia.</p>
   <div class="tablewrap">
   <table>
-    <thead><tr><th class="num">#</th><th>School</th><th>City</th><th>Country</th></tr></thead>
+    <thead><tr><th class="num">#</th><th>School</th><th>City</th><th>Country</th><th>Domain</th><th>Recipient</th></tr></thead>
     <tbody>
-      <tr><td class="num">1</td><td><strong>Country Day School Costa Rica</strong></td><td>&middot;</td><td>Costa Rica</td></tr>
-      <tr><td class="num">2</td><td><strong>British Peruvian school</strong></td><td>&middot;</td><td>Peru</td></tr>
-      <tr><td class="num">3</td><td><strong>Bermuda High School</strong></td><td>&middot;</td><td>Bermuda</td></tr>
-      <tr><td class="num">4</td><td><strong>Colegio Anglo Colombiano</strong></td><td>&middot;</td><td>Colombia</td></tr>
-      <tr><td class="num">5</td><td><strong>British School Quito</strong></td><td>Quito</td><td>Ecuador</td></tr>
-      <tr><td class="num">6</td><td><strong>Uruguayan American School</strong></td><td>Montevideo</td><td>Uruguay</td></tr>
-      <tr><td class="num">7</td><td><strong>Cayman International School</strong></td><td>Grand Cayman</td><td>Cayman Islands</td></tr>
-      <tr><td class="num">8</td><td><strong>The International School Nido de Aguilas</strong></td><td>&middot;</td><td>Chile</td></tr>
-      <tr><td class="num">9</td><td><strong>Colegio Nueva Granada</strong></td><td>Bogotá</td><td>Colombia</td></tr>
-      <tr><td class="num">10</td><td><strong>Colegio Franklin Delano Roosevelt</strong></td><td>&middot;</td><td>Peru</td></tr>
-      <tr><td class="num">11</td><td><strong>Colegio Americano de Quito</strong></td><td>Quito</td><td>Ecuador</td></tr>
-      <tr><td class="num">12</td><td><strong>American Nicaraguan School</strong></td><td>&middot;</td><td>Nicaragua</td></tr>
-      <tr><td class="num">13</td><td><strong>American School Foundation of Monterrey</strong></td><td>Monterrey</td><td>Mexico</td></tr>
-      <tr><td class="num">14</td><td><strong>Association Granadino School</strong></td><td>Bogotá</td><td>Colombia</td></tr>
-      <tr><td class="num">15</td><td><strong>Colegio Americano de Torreón</strong></td><td>Torreón</td><td>Mexico</td></tr>
-      <tr><td class="num">16</td><td><strong>Colegio Bolivar</strong></td><td>&middot;</td><td>Colombia</td></tr>
-      <tr><td class="num">17</td><td><strong>Colegio Calvert La Paz</strong></td><td>La Paz</td><td>Bolivia</td></tr>
-      <tr><td class="num">18</td><td><strong>Colegio Internacional de San Salvador</strong></td><td>San Salvador</td><td>El Salvador</td></tr>
-      <tr><td class="num">19</td><td><strong>Colegio Los Nogales</strong></td><td>&middot;</td><td>Colombia</td></tr>
-      <tr><td class="num">20</td><td><strong>Craighouse School</strong></td><td>&middot;</td><td>Chile</td></tr>
-      <tr><td class="num">21</td><td><strong>Escola Americana de Campinas</strong></td><td>Campinas</td><td>Brazil</td></tr>
-      <tr><td class="num">22</td><td><strong>Escola Americana do Recife</strong></td><td>&middot;</td><td>Brazil</td></tr>
-      <tr><td class="num">23</td><td><strong>Escuela Americana de Tegucigalpa (AST)</strong></td><td>Tegucigalpa</td><td>Honduras</td></tr>
-      <tr><td class="num">24</td><td><strong>Gimnasio Campestre</strong></td><td>&middot;</td><td>Colombia</td></tr>
-      <tr><td class="num">25</td><td><strong>Good Hope Country Day School</strong></td><td>St. Croix</td><td>US Virgin Islands</td></tr>
-      <tr><td class="num">26</td><td><strong>InterAmerican Academy</strong></td><td>Guayaquil</td><td>Ecuador</td></tr>
-      <tr><td class="num">27</td><td><strong>International Christian School of Lima</strong></td><td>Lima</td><td>Peru</td></tr>
-      <tr><td class="num">28</td><td><strong>International School Of Sosua</strong></td><td>Sosúa</td><td>Dominican Republic</td></tr>
-      <tr><td class="num">29</td><td><strong>International School of Aruba</strong></td><td>Aruba</td><td>Aruba</td></tr>
-      <tr><td class="num">30</td><td><strong>International School of Curaçao</strong></td><td>Willemstad</td><td>Curaçao</td></tr>
-      <tr><td class="num">31</td><td><strong>International School of Panama</strong></td><td>Panama City</td><td>Panama</td></tr>
-      <tr><td class="num">32</td><td><strong>Lincoln International Academy</strong></td><td>&middot;</td><td>Nicaragua</td></tr>
-      <tr><td class="num">33</td><td><strong>Lucaya International School</strong></td><td>Freeport</td><td>Bahamas</td></tr>
-      <tr><td class="num">34</td><td><strong>San Silvestre School</strong></td><td>Lima</td><td>Peru</td></tr>
-      <tr><td class="num">35</td><td><strong>Sant&#x27;Anna International School</strong></td><td>&middot;</td><td>Brazil</td></tr>
-      <tr><td class="num">36</td><td><strong>St. Francis College</strong></td><td>&middot;</td><td>Brazil</td></tr>
-      <tr><td class="num">37</td><td><strong>St. Nicholas School</strong></td><td>&middot;</td><td>Brazil</td></tr>
-      <tr><td class="num">38</td><td><strong>Swiss-Brazilian School of Curitiba</strong></td><td>&middot;</td><td>Brazil</td></tr>
-      <tr><td class="num">39</td><td><strong>The American School Foundation of Guadalajara</strong></td><td>Guadalajara</td><td>Mexico</td></tr>
-      <tr><td class="num">40</td><td><strong>The American School of Asuncion</strong></td><td>Asunción</td><td>Paraguay</td></tr>
-      <tr><td class="num">41</td><td><strong>The British School Caracas</strong></td><td>Caracas</td><td>Venezuela</td></tr>
-      <tr><td class="num">42</td><td><strong>The Codrington School</strong></td><td>Bridgetown</td><td>Barbados</td></tr>
-      <tr><td class="num">43</td><td><strong>United World College Costa Rica</strong></td><td>&middot;</td><td>Costa Rica</td></tr>
-      <tr><td class="num">44</td><td><strong>Virgin Islands Montessori School &amp; Peter Gruber International Academy</strong></td><td>St. Thomas</td><td>US Virgin Islands</td></tr>
-      <tr><td class="num">45</td><td><strong>Lakefield College School</strong></td><td>Lakefield</td><td>Canada</td></tr>
-      <tr><td class="num">46</td><td><strong>British International School of Boston</strong></td><td>Boston</td><td>United States</td></tr>
-      <tr><td class="num">47</td><td><strong>TFS - Canada&#x27;s International School</strong></td><td>&middot;</td><td>Canada</td></tr>
-      <tr><td class="num">48</td><td><strong>United World College-USA</strong></td><td>Montezuma</td><td>United States</td></tr>
-      <tr><td class="num">49</td><td><strong>British International School of Washington</strong></td><td>Washington D.C.</td><td>United States</td></tr>
-      <tr><td class="num">50</td><td><strong>The Bishop Strachan School</strong></td><td>Toronto</td><td>Canada</td></tr>
+      <tr><td class="num">1</td><td><strong>Country Day School Costa Rica</strong></td><td>&middot;</td><td>Costa Rica</td><td class="dom"><a href="https://nordangliaeducation.com" rel="noopener">nordangliaeducation.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">2</td><td><strong>British Peruvian school</strong></td><td>&middot;</td><td>Peru</td><td class="dom"><a href="https://britishschool.edu.pe" rel="noopener">britishschool.edu.pe</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">3</td><td><strong>Bermuda High School</strong></td><td>&middot;</td><td>Bermuda</td><td class="dom"><a href="https://bhs.bm" rel="noopener">bhs.bm</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">4</td><td><strong>Colegio Anglo Colombiano</strong></td><td>&middot;</td><td>Colombia</td><td class="dom"><a href="https://anglocolombiano.edu.co" rel="noopener">anglocolombiano.edu.co</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">5</td><td><strong>British School Quito</strong></td><td>Quito</td><td>Ecuador</td><td class="dom"><a href="https://britishschoolquito.edu.ec" rel="noopener">britishschoolquito.edu.ec</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">6</td><td><strong>Uruguayan American School</strong></td><td>Montevideo</td><td>Uruguay</td><td class="dom"><a href="https://uas.edu.uy" rel="noopener">uas.edu.uy</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">7</td><td><strong>Cayman International School</strong></td><td>Grand Cayman</td><td>Cayman Islands</td><td class="dom"><a href="https://cis.ky" rel="noopener">cis.ky</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">8</td><td><strong>The International School Nido de Aguilas</strong></td><td>&middot;</td><td>Chile</td><td class="dom"><a href="https://nido.cl" rel="noopener">nido.cl</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">9</td><td><strong>Colegio Nueva Granada</strong></td><td>Bogotá</td><td>Colombia</td><td class="dom"><a href="https://cng.edu" rel="noopener">cng.edu</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">10</td><td><strong>Colegio Franklin Delano Roosevelt</strong></td><td>&middot;</td><td>Peru</td><td class="dom"><a href="https://amersol.edu.pe" rel="noopener">amersol.edu.pe</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">11</td><td><strong>Colegio Americano de Quito</strong></td><td>Quito</td><td>Ecuador</td><td class="dom"><a href="https://fcaq.k12.ec" rel="noopener">fcaq.k12.ec</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">12</td><td><strong>American Nicaraguan School</strong></td><td>&middot;</td><td>Nicaragua</td><td class="dom"><a href="https://ans.edu.ni" rel="noopener">ans.edu.ni</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">13</td><td><strong>American School Foundation of Monterrey</strong></td><td>Monterrey</td><td>Mexico</td><td class="dom"><a href="https://asfm.edu.mx" rel="noopener">asfm.edu.mx</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">14</td><td><strong>Association Granadino School</strong></td><td>Bogotá</td><td>Colombia</td><td class="dom"><a href="https://granadino.edu.co" rel="noopener">granadino.edu.co</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">15</td><td><strong>Colegio Americano de Torreón</strong></td><td>Torreón</td><td>Mexico</td><td class="dom"><a href="https://cat.mx" rel="noopener">cat.mx</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">16</td><td><strong>Colegio Bolivar</strong></td><td>&middot;</td><td>Colombia</td><td class="dom"><a href="https://colegiobolivar.edu.co" rel="noopener">colegiobolivar.edu.co</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">17</td><td><strong>Colegio Calvert La Paz</strong></td><td>La Paz</td><td>Bolivia</td><td class="dom"><a href="https://acslp.org" rel="noopener">acslp.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">18</td><td><strong>Colegio Internacional de San Salvador</strong></td><td>San Salvador</td><td>El Salvador</td><td class="dom"><a href="https://ciss.edu.sv" rel="noopener">ciss.edu.sv</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">19</td><td><strong>Colegio Los Nogales</strong></td><td>&middot;</td><td>Colombia</td><td class="dom"><a href="https://nogales.edu.co" rel="noopener">nogales.edu.co</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">20</td><td><strong>Craighouse School</strong></td><td>&middot;</td><td>Chile</td><td class="dom"><a href="https://craighouse.cl" rel="noopener">craighouse.cl</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">21</td><td><strong>Escola Americana de Campinas</strong></td><td>Campinas</td><td>Brazil</td><td class="dom"><a href="https://eac.com.br" rel="noopener">eac.com.br</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">22</td><td><strong>Escola Americana do Recife</strong></td><td>&middot;</td><td>Brazil</td><td class="dom"><a href="https://ear.com.br" rel="noopener">ear.com.br</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">23</td><td><strong>Escuela Americana de Tegucigalpa (AST)</strong></td><td>Tegucigalpa</td><td>Honduras</td><td class="dom"><a href="https://amschool.org" rel="noopener">amschool.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">24</td><td><strong>Gimnasio Campestre</strong></td><td>&middot;</td><td>Colombia</td><td class="dom"><a href="https://campestre.edu.co" rel="noopener">campestre.edu.co</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">25</td><td><strong>Good Hope Country Day School</strong></td><td>St. Croix</td><td>US Virgin Islands</td><td class="dom"><a href="https://ghcds.org" rel="noopener">ghcds.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">26</td><td><strong>InterAmerican Academy</strong></td><td>Guayaquil</td><td>Ecuador</td><td class="dom"><a href="https://interamerican.edu.ec" rel="noopener">interamerican.edu.ec</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">27</td><td><strong>International Christian School of Lima</strong></td><td>Lima</td><td>Peru</td><td class="dom"><a href="https://icslima.org" rel="noopener">icslima.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">28</td><td><strong>International School Of Sosua</strong></td><td>Sosúa</td><td>Dominican Republic</td><td class="dom"><a href="https://issosua.com" rel="noopener">issosua.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">29</td><td><strong>International School of Aruba</strong></td><td>Aruba</td><td>Aruba</td><td class="dom"><a href="https://isaruba.com" rel="noopener">isaruba.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">30</td><td><strong>International School of Curaçao</strong></td><td>Willemstad</td><td>Curaçao</td><td class="dom"><a href="https://isc.cw" rel="noopener">isc.cw</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">31</td><td><strong>International School of Panama</strong></td><td>Panama City</td><td>Panama</td><td class="dom"><a href="https://isp.edu.pa" rel="noopener">isp.edu.pa</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">32</td><td><strong>Lincoln International Academy</strong></td><td>&middot;</td><td>Nicaragua</td><td class="dom"><a href="https://lincoln.edu.ni" rel="noopener">lincoln.edu.ni</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">33</td><td><strong>Lucaya International School</strong></td><td>Freeport</td><td>Bahamas</td><td class="dom"><a href="https://lisbahamas.com" rel="noopener">lisbahamas.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">34</td><td><strong>San Silvestre School</strong></td><td>Lima</td><td>Peru</td><td class="dom"><a href="https://sansilvestre.edu.pe" rel="noopener">sansilvestre.edu.pe</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">35</td><td><strong>Sant&#x27;Anna International School</strong></td><td>&middot;</td><td>Brazil</td><td class="dom"><a href="https://santanna.g12.br" rel="noopener">santanna.g12.br</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">36</td><td><strong>St. Francis College</strong></td><td>&middot;</td><td>Brazil</td><td class="dom"><a href="https://stfrancis.com.br" rel="noopener">stfrancis.com.br</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">37</td><td><strong>St. Nicholas School</strong></td><td>&middot;</td><td>Brazil</td><td class="dom"><a href="https://stnicholas.com.br" rel="noopener">stnicholas.com.br</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">38</td><td><strong>Swiss-Brazilian School of Curitiba</strong></td><td>&middot;</td><td>Brazil</td><td class="dom"><a href="https://chpr.aesb.com.br" rel="noopener">chpr.aesb.com.br</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">39</td><td><strong>The American School Foundation of Guadalajara, A.C.</strong></td><td>Guadalajara</td><td>Mexico</td><td class="dom"><span class="todo">look up</span></td><td class="todo">to research</td></tr>
+      <tr><td class="num">40</td><td><strong>The American School of Asuncion</strong></td><td>Asunción</td><td>Paraguay</td><td class="dom"><a href="https://asa.edu.py" rel="noopener">asa.edu.py</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">41</td><td><strong>The British School Caracas</strong></td><td>Caracas</td><td>Venezuela</td><td class="dom"><a href="https://tbscaracas.com" rel="noopener">tbscaracas.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">42</td><td><strong>The Codrington School, The International School of Barbados</strong></td><td>Bridgetown</td><td>Barbados</td><td class="dom"><span class="todo">look up</span></td><td class="todo">to research</td></tr>
+      <tr><td class="num">43</td><td><strong>United World College Costa Rica</strong></td><td>&middot;</td><td>Costa Rica</td><td class="dom"><a href="https://uwccostarica.org" rel="noopener">uwccostarica.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">44</td><td><strong>Virgin Islands Montessori School &amp; Peter Gruber International Academy</strong></td><td>St. Thomas</td><td>US Virgin Islands</td><td class="dom"><a href="https://vimsia.org" rel="noopener">vimsia.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">45</td><td><strong>Lakefield College School</strong></td><td>Lakefield</td><td>Canada</td><td class="dom"><a href="https://lcs.on.ca" rel="noopener">lcs.on.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">46</td><td><strong>British International School of Boston</strong></td><td>Boston</td><td>United States</td><td class="dom"><a href="https://nordangliaeducation.com" rel="noopener">nordangliaeducation.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">47</td><td><strong>TFS - Canada&#x27;s International School</strong></td><td>&middot;</td><td>Canada</td><td class="dom"><a href="https://tfs.ca" rel="noopener">tfs.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">48</td><td><strong>United World College-USA</strong></td><td>Montezuma</td><td>United States</td><td class="dom"><a href="https://uwc-usa.org" rel="noopener">uwc-usa.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">49</td><td><strong>British International School of Washington</strong></td><td>Washington D.C.</td><td>United States</td><td class="dom"><a href="https://nordangliaeducation.com" rel="noopener">nordangliaeducation.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">50</td><td><strong>The Bishop Strachan School</strong></td><td>Toronto</td><td>Canada</td><td class="dom"><a href="https://bss.on.ca" rel="noopener">bss.on.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">51</td><td><strong>Colegio Jorge Washington</strong></td><td>Cartagena</td><td>Colombia</td><td class="dom"><a href="https://cojowa.edu.co" rel="noopener">cojowa.edu.co</a></td><td class="todo">to research</td></tr>
     </tbody>
   </table>
   </div>
@@ -133,61 +137,60 @@ footer p{max-width:none;margin:0}
 
 <section>
   <p class="eyebrow-s">Week two &middot; North America into Europe</p>
-  <h2>The second fifty.</h2>
+  <h2>Week two: forty-nine schools.</h2>
   <div class="tablewrap">
   <table>
-    <thead><tr><th class="num">#</th><th>School</th><th>Country</th></tr></thead>
+    <thead><tr><th class="num">#</th><th>School</th><th>City</th><th>Country</th><th>Domain</th><th>Recipient</th></tr></thead>
     <tbody>
-      <tr><td class="num">1</td><td><strong>Dwight School</strong></td><td>United States</td></tr>
-      <tr><td class="num">2</td><td><strong>University of Toronto Schools</strong></td><td>Canada</td></tr>
-      <tr><td class="num">3</td><td><strong>Lower Canada College</strong></td><td>Canada</td></tr>
-      <tr><td class="num">4</td><td><strong>Riverstone International School</strong></td><td>United States</td></tr>
-      <tr><td class="num">5</td><td><strong>Baylor School</strong></td><td>United States</td></tr>
-      <tr><td class="num">6</td><td><strong>Isidore Newman School</strong></td><td>United States</td></tr>
-      <tr><td class="num">7</td><td><strong>Trinity College School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">8</td><td><strong>North Cobb Christian School</strong></td><td>United States</td></tr>
-      <tr><td class="num">9</td><td><strong>North Yarmouth Academy</strong></td><td>United States</td></tr>
-      <tr><td class="num">10</td><td><strong>Shawnigan Lake School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">11</td><td><strong>York House School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">12</td><td><strong>Atlanta International School</strong></td><td>United States</td></tr>
-      <tr><td class="num">13</td><td><strong>Lycee Francais de San Francisco</strong></td><td>United States</td></tr>
-      <tr><td class="num">14</td><td><strong>St. Clement&#x27;s School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">15</td><td><strong>The Awty International School</strong></td><td>United States</td></tr>
-      <tr><td class="num">16</td><td><strong>Meadowridge School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">17</td><td><strong>Ransom Everglades School</strong></td><td>United States</td></tr>
-      <tr><td class="num">18</td><td><strong>Pearson College UWC (Private School)</strong></td><td>Canada</td></tr>
-      <tr><td class="num">19</td><td><strong>St. George&#x27;s Senior School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">20</td><td><strong>Strathcona-Tweedsmuir School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">21</td><td><strong>St. John&#x27;s-Ravenscourt School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">22</td><td><strong>Westlake Academy</strong></td><td>United States</td></tr>
-      <tr><td class="num">23</td><td><strong>International School of Boston</strong></td><td>United States</td></tr>
-      <tr><td class="num">24</td><td><strong>Collingwood SchooI</strong></td><td>Canada</td></tr>
-      <tr><td class="num">25</td><td><strong>St Mildred&#x27;s-Lightbourn School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">26</td><td><strong>Crazy Horse School</strong></td><td>United States</td></tr>
-      <tr><td class="num">27</td><td><strong>Branksome Hall</strong></td><td>Canada</td></tr>
-      <tr><td class="num">28</td><td><strong>Brentwood College School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">29</td><td><strong>Colegio Jorge Washington</strong></td><td>United States</td></tr>
-      <tr><td class="num">30</td><td><strong>Cranbrook Schools</strong></td><td>United States</td></tr>
-      <tr><td class="num">31</td><td><strong>Fairmont Preparatory Academy</strong></td><td>United States</td></tr>
-      <tr><td class="num">32</td><td><strong>Harrisburg Academy</strong></td><td>United States</td></tr>
-      <tr><td class="num">33</td><td><strong>Havergal College</strong></td><td>Canada</td></tr>
-      <tr><td class="num">34</td><td><strong>Leman Manhattan Preparatory School</strong></td><td>United States</td></tr>
-      <tr><td class="num">35</td><td><strong>Maggie L Walker Governor&#x27;s School</strong></td><td>United States</td></tr>
-      <tr><td class="num">36</td><td><strong>Mulgrave School</strong></td><td>Canada</td></tr>
-      <tr><td class="num">37</td><td><strong>Peoria Christian School</strong></td><td>United States</td></tr>
-      <tr><td class="num">38</td><td><strong>School Year Abroad (SYA)</strong></td><td>United States</td></tr>
-      <tr><td class="num">39</td><td><strong>Collège Alpin Beau Soleil</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">40</td><td><strong>American International School Vienna</strong></td><td>Austria</td></tr>
-      <tr><td class="num">41</td><td><strong>Westminster School</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">42</td><td><strong>The British School of Milan - Sir James Henderson</strong></td><td>Italy</td></tr>
-      <tr><td class="num">43</td><td><strong>The International School of The Hague</strong></td><td>Netherlands</td></tr>
-      <tr><td class="num">44</td><td><strong>American School of Milan</strong></td><td>Italy</td></tr>
-      <tr><td class="num">45</td><td><strong>ISF International School Frankfurt Rhein-Main</strong></td><td>Germany</td></tr>
-      <tr><td class="num">46</td><td><strong>ISR International School on the Rhine</strong></td><td>Germany</td></tr>
-      <tr><td class="num">47</td><td><strong>IST - International School of Turin</strong></td><td>Italy</td></tr>
-      <tr><td class="num">48</td><td><strong>Bryanston School</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">49</td><td><strong>The British School in The Netherlands - Senior School Voorschoten</strong></td><td>Netherlands</td></tr>
-      <tr><td class="num">50</td><td><strong>American School of Paris</strong></td><td>France</td></tr>
+      <tr><td class="num">1</td><td><strong>Dwight School</strong></td><td>New York</td><td>United States</td><td class="dom"><a href="https://dwight.edu" rel="noopener">dwight.edu</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">2</td><td><strong>University of Toronto Schools</strong></td><td>Toronto</td><td>Canada</td><td class="dom"><a href="https://utschools.ca" rel="noopener">utschools.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">3</td><td><strong>Lower Canada College</strong></td><td>&middot;</td><td>Canada</td><td class="dom"><a href="https://lcc.ca" rel="noopener">lcc.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">4</td><td><strong>Riverstone International School</strong></td><td>Boise</td><td>United States</td><td class="dom"><a href="https://riverstoneschool.org" rel="noopener">riverstoneschool.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">5</td><td><strong>Baylor School</strong></td><td>Chattanooga</td><td>United States</td><td class="dom"><a href="https://baylorschool.org" rel="noopener">baylorschool.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">6</td><td><strong>Isidore Newman School</strong></td><td>New Orleans</td><td>United States</td><td class="dom"><a href="https://newmanschool.org" rel="noopener">newmanschool.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">7</td><td><strong>Trinity College School</strong></td><td>Port Hope</td><td>Canada</td><td class="dom"><a href="https://tcs.on.ca" rel="noopener">tcs.on.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">8</td><td><strong>North Cobb Christian School</strong></td><td>Kennesaw</td><td>United States</td><td class="dom"><a href="https://ncchristian.org" rel="noopener">ncchristian.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">9</td><td><strong>North Yarmouth Academy</strong></td><td>Yarmouth</td><td>United States</td><td class="dom"><a href="https://nya.org" rel="noopener">nya.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">10</td><td><strong>Shawnigan Lake School</strong></td><td>Shawnigan Lake</td><td>Canada</td><td class="dom"><a href="https://shawnigan.ca" rel="noopener">shawnigan.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">11</td><td><strong>York House School</strong></td><td>Vancouver</td><td>Canada</td><td class="dom"><a href="https://yorkhouse.ca" rel="noopener">yorkhouse.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">12</td><td><strong>Atlanta International School</strong></td><td>Atlanta</td><td>United States</td><td class="dom"><a href="https://aischool.org" rel="noopener">aischool.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">13</td><td><strong>Lycee Francais de San Francisco</strong></td><td>San Francisco</td><td>United States</td><td class="dom"><a href="https://lelycee.org" rel="noopener">lelycee.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">14</td><td><strong>St. Clement&#x27;s School</strong></td><td>Toronto</td><td>Canada</td><td class="dom"><a href="https://scs.on.ca" rel="noopener">scs.on.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">15</td><td><strong>The Awty International School</strong></td><td>Houston</td><td>United States</td><td class="dom"><a href="https://awty.org" rel="noopener">awty.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">16</td><td><strong>Meadowridge School</strong></td><td>Maple Ridge</td><td>Canada</td><td class="dom"><a href="https://meadowridge.bc.ca" rel="noopener">meadowridge.bc.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">17</td><td><strong>Ransom Everglades School</strong></td><td>Miami</td><td>United States</td><td class="dom"><a href="https://ransomeverglades.org" rel="noopener">ransomeverglades.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">18</td><td><strong>Pearson College UWC (Private School)</strong></td><td>Victoria</td><td>Canada</td><td class="dom"><a href="https://pearsoncollege.ca" rel="noopener">pearsoncollege.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">19</td><td><strong>St. George&#x27;s Senior School</strong></td><td>Vancouver</td><td>Canada</td><td class="dom"><a href="https://stgeorges.bc.ca" rel="noopener">stgeorges.bc.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">20</td><td><strong>Strathcona-Tweedsmuir School</strong></td><td>Okotoks</td><td>Canada</td><td class="dom"><a href="https://strathconatweedsmuir.com" rel="noopener">strathconatweedsmuir.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">21</td><td><strong>St. John&#x27;s-Ravenscourt School</strong></td><td>Winnipeg</td><td>Canada</td><td class="dom"><a href="https://sjr.mb.ca" rel="noopener">sjr.mb.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">22</td><td><strong>Westlake Academy</strong></td><td>Westlake</td><td>United States</td><td class="dom"><a href="https://westlakeacademy.org" rel="noopener">westlakeacademy.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">23</td><td><strong>International School of Boston</strong></td><td>Boston</td><td>United States</td><td class="dom"><a href="https://isbos.org" rel="noopener">isbos.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">24</td><td><strong>Collingwood SchooI</strong></td><td>West Vancouver</td><td>Canada</td><td class="dom"><a href="https://collingwood.org" rel="noopener">collingwood.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">25</td><td><strong>St Mildred&#x27;s-Lightbourn School</strong></td><td>Oakville</td><td>Canada</td><td class="dom"><a href="https://smls.on.ca" rel="noopener">smls.on.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">26</td><td><strong>Crazy Horse School</strong></td><td>Pine Ridge</td><td>United States</td><td class="dom"><a href="https://crazyhorse.k12.sd.us" rel="noopener">crazyhorse.k12.sd.us</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">27</td><td><strong>Branksome Hall</strong></td><td>Toronto</td><td>Canada</td><td class="dom"><a href="https://branksome.on.ca" rel="noopener">branksome.on.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">28</td><td><strong>Brentwood College School</strong></td><td>Mill Bay</td><td>Canada</td><td class="dom"><a href="https://brentwood.ca" rel="noopener">brentwood.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">29</td><td><strong>Cranbrook Schools</strong></td><td>Bloomfield Hills</td><td>United States</td><td class="dom"><a href="https://schools.cranbrook.edu" rel="noopener">schools.cranbrook.edu</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">30</td><td><strong>Fairmont Preparatory Academy</strong></td><td>Anaheim</td><td>United States</td><td class="dom"><a href="https://fairmontschools.com" rel="noopener">fairmontschools.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">31</td><td><strong>Harrisburg Academy</strong></td><td>Harrisburg</td><td>United States</td><td class="dom"><a href="https://harrisburgacademy.org" rel="noopener">harrisburgacademy.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">32</td><td><strong>Havergal College</strong></td><td>Toronto</td><td>Canada</td><td class="dom"><a href="https://havergal.on.ca" rel="noopener">havergal.on.ca</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">33</td><td><strong>Leman Manhattan Preparatory School</strong></td><td>New York</td><td>United States</td><td class="dom"><a href="https://lemanmanhattan.org" rel="noopener">lemanmanhattan.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">34</td><td><strong>Maggie L Walker Governor&#x27;s School</strong></td><td>Richmond</td><td>United States</td><td class="dom"><a href="https://mlwgs.com" rel="noopener">mlwgs.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">35</td><td><strong>Mulgrave School, The International School of Vancouver</strong></td><td>West Vancouver</td><td>Canada</td><td class="dom"><span class="todo">look up</span></td><td class="todo">to research</td></tr>
+      <tr><td class="num">36</td><td><strong>Peoria Christian School</strong></td><td>Peoria</td><td>United States</td><td class="dom"><a href="https://peoriachristian.org" rel="noopener">peoriachristian.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">37</td><td><strong>School Year Abroad (SYA)</strong></td><td>Reno</td><td>United States</td><td class="dom"><a href="https://sya.org" rel="noopener">sya.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">38</td><td><strong>Collège Alpin Beau Soleil</strong></td><td>&middot;</td><td>Switzerland</td><td class="dom"><a href="https://beausoleil.ch" rel="noopener">beausoleil.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">39</td><td><strong>American International School Vienna</strong></td><td>Vienna</td><td>Austria</td><td class="dom"><a href="https://ais.at" rel="noopener">ais.at</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">40</td><td><strong>Westminster School</strong></td><td>&middot;</td><td>United Kingdom</td><td class="dom"><a href="https://westminster.org.uk" rel="noopener">westminster.org.uk</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">41</td><td><strong>The British School of Milan - Sir James Henderson</strong></td><td>Milan</td><td>Italy</td><td class="dom"><a href="https://britishschoolmilan.com" rel="noopener">britishschoolmilan.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">42</td><td><strong>The International School of The Hague</strong></td><td>The Hague</td><td>Netherlands</td><td class="dom"><a href="https://ishthehague.nl" rel="noopener">ishthehague.nl</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">43</td><td><strong>American School of Milan</strong></td><td>Milan</td><td>Italy</td><td class="dom"><a href="https://asmilan.org" rel="noopener">asmilan.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">44</td><td><strong>ISF International School Frankfurt Rhein-Main</strong></td><td>Frankfurt</td><td>Germany</td><td class="dom"><a href="https://isf.sabis.net" rel="noopener">isf.sabis.net</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">45</td><td><strong>ISR International School on the Rhine</strong></td><td>&middot;</td><td>Germany</td><td class="dom"><a href="https://isr-school.de" rel="noopener">isr-school.de</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">46</td><td><strong>IST - International School of Turin</strong></td><td>&middot;</td><td>Italy</td><td class="dom"><a href="https://isturin.it" rel="noopener">isturin.it</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">47</td><td><strong>Bryanston School</strong></td><td>&middot;</td><td>United Kingdom</td><td class="dom"><a href="https://bryanston.co.uk" rel="noopener">bryanston.co.uk</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">48</td><td><strong>The British School in The Netherlands - Senior School Voorschoten</strong></td><td>&middot;</td><td>Netherlands</td><td class="dom"><a href="https://britishschool.nl" rel="noopener">britishschool.nl</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">49</td><td><strong>American School of Paris</strong></td><td>Paris</td><td>France</td><td class="dom"><a href="https://asparis.org" rel="noopener">asparis.org</a></td><td class="todo">to research</td></tr>
     </tbody>
   </table>
   </div>
@@ -195,71 +198,90 @@ footer p{max-width:none;margin:0}
 
 <section>
   <p class="eyebrow-s">Week three &middot; Europe</p>
-  <h2>The third fifty.</h2>
+  <h2>Week three: fifty schools.</h2>
   <div class="tablewrap">
   <table>
-    <thead><tr><th class="num">#</th><th>School</th><th>Country</th></tr></thead>
+    <thead><tr><th class="num">#</th><th>School</th><th>City</th><th>Country</th><th>Domain</th><th>Recipient</th></tr></thead>
     <tbody>
-      <tr><td class="num">1</td><td><strong>American Section International School De Saint-Germain-En-Laye</strong></td><td>France</td></tr>
-      <tr><td class="num">2</td><td><strong>St Helen&#x27;s School</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">3</td><td><strong>Park Lane International School</strong></td><td>Czech Republic</td></tr>
-      <tr><td class="num">4</td><td><strong>Heidelberg International School</strong></td><td>Germany</td></tr>
-      <tr><td class="num">5</td><td><strong>Inter-Community School Zurich</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">6</td><td><strong>International School Hilversum</strong></td><td>Netherlands</td></tr>
-      <tr><td class="num">7</td><td><strong>Marymount International School Rome</strong></td><td>Italy</td></tr>
-      <tr><td class="num">8</td><td><strong>TASIS England</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">9</td><td><strong>American Overseas School Of Rome</strong></td><td>Italy</td></tr>
-      <tr><td class="num">10</td><td><strong>International School Eindhoven</strong></td><td>Netherlands</td></tr>
-      <tr><td class="num">11</td><td><strong>Stonyhurst College</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">12</td><td><strong>The American School in London</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">13</td><td><strong>International School of Brussels</strong></td><td>Belgium</td></tr>
-      <tr><td class="num">14</td><td><strong>Sotogrande International School</strong></td><td>Spain</td></tr>
-      <tr><td class="num">15</td><td><strong>International School of Latvia</strong></td><td>Latvia</td></tr>
-      <tr><td class="num">16</td><td><strong>George Watson&#x27;s College</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">17</td><td><strong>British International School</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">18</td><td><strong>International School of Lyon</strong></td><td>France</td></tr>
-      <tr><td class="num">19</td><td><strong>International School of Prague</strong></td><td>Czech Republic</td></tr>
-      <tr><td class="num">20</td><td><strong>Leysin American School Belle Époque Campus</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">21</td><td><strong>Saint Dominic&#x27;s International School</strong></td><td>Portugal</td></tr>
-      <tr><td class="num">22</td><td><strong>TASIS The American School In Switzerland</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">23</td><td><strong>American International School of Zagreb</strong></td><td>Croatia</td></tr>
-      <tr><td class="num">24</td><td><strong>QSI International School of Malta</strong></td><td>Malta</td></tr>
-      <tr><td class="num">25</td><td><strong>St. Gilgen International School</strong></td><td>Austria</td></tr>
-      <tr><td class="num">26</td><td><strong>American School of Warsaw</strong></td><td>Poland</td></tr>
-      <tr><td class="num">27</td><td><strong>Nova International School Skopje</strong></td><td>North Macedonia</td></tr>
-      <tr><td class="num">28</td><td><strong>Leipzig International School</strong></td><td>Germany</td></tr>
-      <tr><td class="num">29</td><td><strong>International School Basel</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">30</td><td><strong>International School of Stuttgart (Degerloch Campus)</strong></td><td>Germany</td></tr>
-      <tr><td class="num">31</td><td><strong>St. Stephen&#x27;s School</strong></td><td>Italy</td></tr>
-      <tr><td class="num">32</td><td><strong>Harrow School</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">33</td><td><strong>International School of Bergen</strong></td><td>Norway</td></tr>
-      <tr><td class="num">34</td><td><strong>Riverside School Prague - International Primary School</strong></td><td>Czech Republic</td></tr>
-      <tr><td class="num">35</td><td><strong>Riverside School Prague - International Senior High and Arts Centre</strong></td><td>Czech Republic</td></tr>
-      <tr><td class="num">36</td><td><strong>St George&#x27;s British International School</strong></td><td>Italy</td></tr>
-      <tr><td class="num">37</td><td><strong>St George&#x27;s International School</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">38</td><td><strong>Dresden International School</strong></td><td>Germany</td></tr>
-      <tr><td class="num">39</td><td><strong>International School - Zurich North</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">40</td><td><strong>Kyiv International School</strong></td><td>Ukraine</td></tr>
-      <tr><td class="num">41</td><td><strong>Anglo-American School of Sofia</strong></td><td>Bulgaria</td></tr>
-      <tr><td class="num">42</td><td><strong>International School Utrecht</strong></td><td>Netherlands</td></tr>
-      <tr><td class="num">43</td><td><strong>The Ostrava International School (Secondary School Building)</strong></td><td>Czech Republic</td></tr>
-      <tr><td class="num">44</td><td><strong>Vienna International School</strong></td><td>Austria</td></tr>
-      <tr><td class="num">45</td><td><strong>Carlucci American International School of Lisbon</strong></td><td>Portugal</td></tr>
-      <tr><td class="num">46</td><td><strong>International School of Bologna</strong></td><td>Italy</td></tr>
-      <tr><td class="num">47</td><td><strong>International School of Geneva - La Grande Boissière Campus</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">48</td><td><strong>UWC Atlantic</strong></td><td>United Kingdom</td></tr>
-      <tr><td class="num">49</td><td><strong>École Nouvelle de la Suisse Romande</strong></td><td>Switzerland</td></tr>
-      <tr><td class="num">50</td><td><strong>American International School of Bucharest (AISB)</strong></td><td>Romania</td></tr>
+      <tr><td class="num">1</td><td><strong>American Section International School De Saint-Germain-En-Laye</strong></td><td>Saint-Germain-en-Laye</td><td>France</td><td class="dom"><a href="https://americansection.org" rel="noopener">americansection.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">2</td><td><strong>St Helen&#x27;s School</strong></td><td>London</td><td>United Kingdom</td><td class="dom"><a href="https://sthelens.london" rel="noopener">sthelens.london</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">3</td><td><strong>Park Lane International School</strong></td><td>&middot;</td><td>Czech Republic</td><td class="dom"><a href="https://parklane-is.cz" rel="noopener">parklane-is.cz</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">4</td><td><strong>Heidelberg International School</strong></td><td>&middot;</td><td>Germany</td><td class="dom"><a href="https://hischool.de" rel="noopener">hischool.de</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">5</td><td><strong>Inter-Community School Zurich</strong></td><td>Zurich</td><td>Switzerland</td><td class="dom"><a href="https://icsz.ch" rel="noopener">icsz.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">6</td><td><strong>International School Hilversum</strong></td><td>&middot;</td><td>Netherlands</td><td class="dom"><a href="https://ishilversum.nl" rel="noopener">ishilversum.nl</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">7</td><td><strong>Marymount International School Rome</strong></td><td>Rome</td><td>Italy</td><td class="dom"><a href="https://marymountrome.com" rel="noopener">marymountrome.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">8</td><td><strong>TASIS England</strong></td><td>Thorpe</td><td>United Kingdom</td><td class="dom"><a href="https://tasisengland.org" rel="noopener">tasisengland.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">9</td><td><strong>American Overseas School Of Rome</strong></td><td>Rome</td><td>Italy</td><td class="dom"><a href="https://aosr.org" rel="noopener">aosr.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">10</td><td><strong>International School Eindhoven</strong></td><td>&middot;</td><td>Netherlands</td><td class="dom"><a href="https://isecampus.nl" rel="noopener">isecampus.nl</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">11</td><td><strong>Stonyhurst College</strong></td><td>&middot;</td><td>United Kingdom</td><td class="dom"><a href="https://stonyhurst.ac.uk" rel="noopener">stonyhurst.ac.uk</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">12</td><td><strong>The American School in London</strong></td><td>London</td><td>United Kingdom</td><td class="dom"><a href="https://asl.org" rel="noopener">asl.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">13</td><td><strong>International School of Brussels</strong></td><td>Brussels</td><td>Belgium</td><td class="dom"><a href="https://isb.be" rel="noopener">isb.be</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">14</td><td><strong>Sotogrande International School</strong></td><td>Sotogrande</td><td>Spain</td><td class="dom"><a href="https://sis.ac" rel="noopener">sis.ac</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">15</td><td><strong>International School of Latvia</strong></td><td>&middot;</td><td>Latvia</td><td class="dom"><a href="https://isl.edu.lv" rel="noopener">isl.edu.lv</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">16</td><td><strong>George Watson&#x27;s College</strong></td><td>&middot;</td><td>United Kingdom</td><td class="dom"><a href="https://gwc.org.uk" rel="noopener">gwc.org.uk</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">17</td><td><strong>British International School Phuket</strong></td><td>Phuket</td><td>Thailand</td><td class="dom"><span class="todo">look up</span></td><td class="todo">to research</td></tr>
+      <tr><td class="num">18</td><td><strong>International School of Lyon</strong></td><td>Lyon</td><td>France</td><td class="dom"><a href="https://islyon.org" rel="noopener">islyon.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">19</td><td><strong>International School of Prague</strong></td><td>Prague</td><td>Czech Republic</td><td class="dom"><a href="https://isp.cz" rel="noopener">isp.cz</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">20</td><td><strong>Leysin American School Belle Époque Campus</strong></td><td>&middot;</td><td>Switzerland</td><td class="dom"><a href="https://las.ch" rel="noopener">las.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">21</td><td><strong>Saint Dominic&#x27;s International School</strong></td><td>Lisbon</td><td>Portugal</td><td class="dom"><a href="https://dominics-int.org" rel="noopener">dominics-int.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">22</td><td><strong>TASIS The American School In Switzerland</strong></td><td>&middot;</td><td>Switzerland</td><td class="dom"><a href="https://tasis.ch" rel="noopener">tasis.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">23</td><td><strong>American International School of Zagreb</strong></td><td>Zagreb</td><td>Croatia</td><td class="dom"><a href="https://aisz.hr" rel="noopener">aisz.hr</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">24</td><td><strong>QSI International School of Malta</strong></td><td>Malta</td><td>Malta</td><td class="dom"><a href="https://malta.qsi.org" rel="noopener">malta.qsi.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">25</td><td><strong>St. Gilgen International School</strong></td><td>&middot;</td><td>Austria</td><td class="dom"><a href="https://stgis.at" rel="noopener">stgis.at</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">26</td><td><strong>American School of Warsaw</strong></td><td>Warsaw</td><td>Poland</td><td class="dom"><a href="https://aswarsaw.org" rel="noopener">aswarsaw.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">27</td><td><strong>Nova International School Skopje</strong></td><td>Skopje</td><td>North Macedonia</td><td class="dom"><a href="https://nova.edu.mk" rel="noopener">nova.edu.mk</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">28</td><td><strong>Leipzig International School</strong></td><td>Leipzig</td><td>Germany</td><td class="dom"><a href="https://lis.school" rel="noopener">lis.school</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">29</td><td><strong>International School Basel</strong></td><td>&middot;</td><td>Switzerland</td><td class="dom"><a href="https://isbasel.ch" rel="noopener">isbasel.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">30</td><td><strong>International School of Stuttgart (Degerloch Campus)</strong></td><td>&middot;</td><td>Germany</td><td class="dom"><a href="https://issev.de" rel="noopener">issev.de</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">31</td><td><strong>St. Stephen&#x27;s School</strong></td><td>&middot;</td><td>Italy</td><td class="dom"><a href="https://sssrome.it" rel="noopener">sssrome.it</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">32</td><td><strong>Harrow School</strong></td><td>London</td><td>United Kingdom</td><td class="dom"><a href="https://harrowschool.org.uk" rel="noopener">harrowschool.org.uk</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">33</td><td><strong>International School of Bergen</strong></td><td>&middot;</td><td>Norway</td><td class="dom"><a href="https://isbergen.no" rel="noopener">isbergen.no</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">34</td><td><strong>Riverside School Prague - International Primary School</strong></td><td>Prague</td><td>Czech Republic</td><td class="dom"><a href="https://riversideschool.cz" rel="noopener">riversideschool.cz</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">35</td><td><strong>Riverside School Prague - International Senior High and Arts Centre</strong></td><td>Prague</td><td>Czech Republic</td><td class="dom"><a href="https://riversideschool.cz" rel="noopener">riversideschool.cz</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">36</td><td><strong>St George&#x27;s British International School</strong></td><td>&middot;</td><td>Italy</td><td class="dom"><a href="https://stgeorge.school.it" rel="noopener">stgeorge.school.it</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">37</td><td><strong>St George&#x27;s International School Luxembourg</strong></td><td>Luxembourg</td><td>Luxembourg</td><td class="dom"><span class="todo">look up</span></td><td class="todo">to research</td></tr>
+      <tr><td class="num">38</td><td><strong>Dresden International School</strong></td><td>&middot;</td><td>Germany</td><td class="dom"><a href="https://dresden-is.de" rel="noopener">dresden-is.de</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">39</td><td><strong>International School - Zurich North</strong></td><td>Zurich</td><td>Switzerland</td><td class="dom"><a href="https://iszn.ch" rel="noopener">iszn.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">40</td><td><strong>Kyiv International School</strong></td><td>Kyiv</td><td>Ukraine</td><td class="dom"><a href="https://kyiv.qsi.org" rel="noopener">kyiv.qsi.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">41</td><td><strong>Anglo-American School of Sofia</strong></td><td>Sofia</td><td>Bulgaria</td><td class="dom"><a href="https://aas-sofia.org" rel="noopener">aas-sofia.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">42</td><td><strong>International School Utrecht</strong></td><td>&middot;</td><td>Netherlands</td><td class="dom"><a href="https://isutrecht.nl" rel="noopener">isutrecht.nl</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">43</td><td><strong>The Ostrava International School (Secondary School Building)</strong></td><td>Ostrava</td><td>Czech Republic</td><td class="dom"><a href="https://tois.world" rel="noopener">tois.world</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">44</td><td><strong>Vienna International School</strong></td><td>Vienna</td><td>Austria</td><td class="dom"><a href="https://vis.ac.at" rel="noopener">vis.ac.at</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">45</td><td><strong>Carlucci American International School of Lisbon</strong></td><td>Lisbon</td><td>Portugal</td><td class="dom"><a href="https://caislisbon.org" rel="noopener">caislisbon.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">46</td><td><strong>International School of Bologna</strong></td><td>Bologna</td><td>Italy</td><td class="dom"><a href="https://isbologna.com" rel="noopener">isbologna.com</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">47</td><td><strong>International School of Geneva - La Grande Boissière Campus</strong></td><td>Geneva</td><td>Switzerland</td><td class="dom"><a href="https://ecolint.ch" rel="noopener">ecolint.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">48</td><td><strong>UWC Atlantic</strong></td><td>Llantwit Major</td><td>United Kingdom</td><td class="dom"><a href="https://uwcatlantic.org" rel="noopener">uwcatlantic.org</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">49</td><td><strong>École Nouvelle de la Suisse Romande</strong></td><td>&middot;</td><td>Switzerland</td><td class="dom"><a href="https://ensr.ch" rel="noopener">ensr.ch</a></td><td class="todo">to research</td></tr>
+      <tr><td class="num">50</td><td><strong>American International School of Bucharest (AISB)</strong></td><td>Bucharest</td><td>Romania</td><td class="dom"><a href="https://aisb.ro" rel="noopener">aisb.ro</a></td><td class="todo">to research</td></tr>
     </tbody>
   </table>
   </div>
 </section>
 
 <section>
-  <h2>Known corrections at sending time</h2>
+  <h2>Corrections applied to this list</h2>
+  <p>Two were requested. Checking them turned up a third, and changed the shape of the first.</p>
+  <h3 style="font-family:var(--serif);font-size:18px;color:var(--navy);margin:22px 0 6px">Location corrected</h3>
   <ul>
-    <li>Two schools have corrupted website fields in the directory and need checking before their drafts are written.</li>
-    <li>Colegio Jorge Washington is filed under the United States but is in Cartagena, Colombia, so it belongs in week one rather than week two.</li>
+    <li><strong>Colegio Jorge Washington</strong> was filed as Washington D.C., United States. Its own domain is <code>cojowa.edu.co</code> and the school is in Cartagena, Colombia. Corrected, and moved from week two into week one, which is why the weeks now run 51, 49 and 50.</li>
+  </ul>
+  <h3 style="font-family:var(--serif);font-size:18px;color:var(--navy);margin:22px 0 6px">Five records repaired rather than deleted</h3>
+  <p>The records flagged as corrupted are not junk. In each one a comma inside the school name pushed the rest of the name into the website field, so the school is real and the entry is simply split. Deleting them would have dropped five genuine prospects, one of them in week one. The names are restored below and their websites are researched with the recipient.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Was recorded as</th><th>Actually</th></tr></thead>
+    <tbody>
+      <tr><td>British International School <em>(website: "Phuket", country: United Kingdom)</em></td><td><strong>British International School Phuket</strong>, Thailand</td></tr>
+      <tr><td>St George's International School <em>(website: "Luxembourg", country: Switzerland)</em></td><td><strong>St George's International School Luxembourg</strong>, Luxembourg</td></tr>
+      <tr><td>Mulgrave School <em>(website: "The International School of Vancouver")</em></td><td><strong>Mulgrave School, The International School of Vancouver</strong>, Canada</td></tr>
+      <tr><td>The Codrington School <em>(website: "The International School of Barbados")</em></td><td><strong>The Codrington School, The International School of Barbados</strong>, Barbados</td></tr>
+      <tr><td>The American School Foundation of Guadalajara <em>(website: "A.C.")</em></td><td><strong>The American School Foundation of Guadalajara, A.C.</strong>, Mexico</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="footnote">Two of those five also carried the wrong country for the same reason, which is corrected above. One more to watch: the directory holds both "St George's International School Luxembourg" and "St. George's International School" in Switzerland, which may or may not be a duplicate; they are treated as separate schools until someone checks.</p>
+  <h3 style="font-family:var(--serif);font-size:18px;color:var(--navy);margin:22px 0 6px">Left as they are</h3>
+  <ul>
     <li>A handful of week two and three entries are elite boarding schools rather than international schools. They are still plausible buyers and stay in the list.</li>
   </ul>
   <p class="footnote">The directory was generated in March 2026. Names and locations are stable; program details on individual schools may have moved on.</p>
