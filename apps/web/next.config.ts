@@ -13,10 +13,19 @@ const nextConfig: NextConfig = {
         source: "/Claude/MarketingCampaign",
         destination: "/Claude/MarketingCampaign/index.html",
       },
+
     ];
   },
   async redirects() {
     return [
+      {
+        // Clean entry link for the questions-page drafts. A REDIRECT (not a
+        // rewrite) on purpose: the drafts use relative links and assets, so
+        // the browser must land on the real file path for them to resolve.
+        source: "/Claude/Questions",
+        destination: "/Claude/Questions/hub-draft.html",
+        permanent: false,
+      },
       {
         // The document library folded into the audience pages (Dan,
         // 2026-08-04). Fragments survive the redirect, so old deep links
