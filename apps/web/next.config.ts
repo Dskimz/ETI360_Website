@@ -1,6 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        // Board briefing on the problem-led marketing direction (Dan,
+        // 2026-08-31), a self-contained static file at
+        // public/Claude/MarketingCampaign/index.html. Next does not serve
+        // directory indexes from public/, so the clean route is rewritten
+        // onto the file (same pattern as the retired /CMA page). Remove
+        // this rewrite and the folder together.
+        source: "/Claude/MarketingCampaign",
+        destination: "/Claude/MarketingCampaign/index.html",
+      },
+    ];
+  },
   async redirects() {
     return [
       {
