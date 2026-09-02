@@ -126,6 +126,7 @@ export function SolutionReport({ data }: { data: SolutionReportData }) {
               height={data.primaryArtifact.height}
               alt={data.primaryArtifact.alt}
               sizes="(max-width: 760px) 100vw, 960px"
+              quality={90}
               priority
             />
             <figcaption>{data.primaryArtifact.caption}</figcaption>
@@ -169,7 +170,8 @@ export function SolutionReport({ data }: { data: SolutionReportData }) {
                 width={data.secondaryArtifact.width}
                 height={data.secondaryArtifact.height}
                 alt={data.secondaryArtifact.alt}
-                sizes="(max-width: 760px) 100vw, 560px"
+                sizes="(max-width: 760px) 100vw, 720px"
+                quality={90}
               />
               <figcaption>{data.secondaryArtifact.caption}</figcaption>
             </figure>

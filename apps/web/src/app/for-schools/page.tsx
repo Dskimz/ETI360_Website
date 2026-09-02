@@ -26,18 +26,20 @@ const crops: Record<string, { pos: string; zoom?: number }> = {
   "location-timeline": { pos: "left top", zoom: 1.5 },
   "route-intelligence": { pos: "center top" },
   "weather-brief": { pos: "left top", zoom: 2.3 },
-  "medical-access": { pos: "left top", zoom: 3 },
+  "medical-access": { pos: "left top", zoom: 2.4 },
   "standard-documentation": { pos: "center top" },
   "duty-manager": { pos: "left top" },
   "incident-reporting": { pos: "left top" },
 };
 
-// The slot a thumbnail occupies, multiplied by its crop zoom — a magnified crop
-// still has to resolve, so it needs the larger source.
+// The slot a thumbnail occupies, multiplied by its crop zoom and a cover-crop
+// factor: object-fit cover on a landscape source in the portrait slot shows
+// under half the source width, so the source must be over-provisioned or the
+// crop renders soft on retina displays.
 function imageSizes(slug: string, wide: boolean) {
   const zoom = crops[slug]?.zoom ?? 1;
-  const desktop = Math.round((wide ? 420 : 205) * zoom);
-  return `(max-width: 700px) ${Math.round(100 * zoom)}vw, (max-width: 920px) ${Math.round(34 * zoom)}vw, ${desktop}px`;
+  const desktop = Math.round((wide ? 420 : 205) * zoom * 2.3);
+  return `(max-width: 700px) ${Math.round(140 * zoom)}vw, ${desktop}px`;
 }
 
 const groups = [
@@ -111,6 +113,7 @@ export default function ForSchoolsPage() {
                       src={solution.image}
                       alt={solution.imageAlt}
                       fill
+                      quality={90}
                       sizes={imageSizes(solution.slug, group.items.length === 1)}
                     />
                   </div>

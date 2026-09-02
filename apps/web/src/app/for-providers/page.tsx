@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DocEntry, DocMarquee, DocRow, TierBand } from "../../components/DocShowcase";
+import { DocEntry, DocRow, TierBand } from "../../components/DocShowcase";
 import { DocRowsExpander } from "../../components/DocRowsExpander";
-import { QABlock, type QAEntry } from "../../components/QASection";
 
 export const metadata: Metadata = {
   title: "For Providers",
@@ -152,70 +151,6 @@ const tier3: DocEntry[] = [
   },
 ];
 
-const allDocs = [...tier1, ...tier2, ...tier2More, ...tier3];
-
-const qaAsked: QAEntry[] = [
-  {
-    q: "A school's risk committee asks in the first meeting: what evidence can you show of how your organization manages risk?",
-    needs:
-      "A complete answer needs a documented review of your standing, in the form school committees already read.",
-    how: "The ten-area review, read against the ETI360 Operational Capability Framework and refreshed annually, is the same structure schools apply to themselves, so your documentation arrives in a form their leadership recognizes.",
-    bridge: { label: "Organizational Baseline Evaluation", href: "#baseline" },
-  },
-  {
-    q: "Three days before their board meeting, the school asks: can you send the full risk assessment for this itinerary?",
-    needs:
-      "A complete answer needs hazards, controls, who holds each control, and residual risk, in a form a board can read.",
-    how: "ETI360 profiles the trip's activities and supplies the structured evidence, grouped the way the trip runs. You author and sign your operational controls; the assessment is prepared for the school's own review.",
-    bridge: { label: "Trip Risk Assessment & RAMS", href: "#risk-assessment" },
-  },
-  {
-    q: "The school asks: what can we hand to families about your program?",
-    needs:
-      "A complete answer needs the journey written for families, consistent with the operational record behind it.",
-    how: "The parent version is produced from the same trip ledger as the operational documents, in the school's own voice, so what families read matches what staff run.",
-    bridge: { label: "Parent Itinerary", href: "#parent-itinerary" },
-  },
-  {
-    q: "A school wants your March program in October instead: what changes with the dates?",
-    needs:
-      "A complete answer needs month-specific conditions for the new window and the destination's calendar checked against the new dates.",
-    how: "The Weather Brief is rebuilt for the travel month from fifteen years of historical data, and holidays, closures, and seasonal events are flagged as a booking checklist for you to verify before anything is confirmed.",
-    bridge: { label: "Weather Brief", href: "#weather" },
-  },
-  {
-    q: "The school's duty manager asks: what exactly is the cycling day, kilometer by kilometer?",
-    needs:
-      "A complete answer needs the route recorded: distance, gradient, pacing, sun, terrain cover, and escape points.",
-    how: "Outdoor activities such as cycling, trekking, and river sports carry their own route record, prepared once for the program and reissued with each proposal that includes the activity.",
-    bridge: { label: "Route Intelligence", href: "#route-intelligence" },
-  },
-];
-
-const qaProcess: QAEntry[] = [
-  {
-    q: "Operators ask first: how much of our time does documenting a program take?",
-    needs:
-      "A complete start needs only the program information you already hold: the itinerary, the venues, the transport.",
-    how: "Send it in whatever form it exists. ETI360 structures it once into the program's ledger, and from then on each proposal is an adjustment, not a rebuild.",
-    bridge: { label: "Itinerary Report, the record proposals adjust from", href: "#itinerary-report" },
-  },
-  {
-    q: "A school wants a proposal for your program on their dates: what does that involve on your side?",
-    needs:
-      "A complete answer needs the documented program and one line: this school, this trip, these dates.",
-    how: "The itinerary is re-dated, the overview and parent pack re-prepared for the school, and the conditions rebuilt for the travel month. You verify the bookings before anything is confirmed.",
-    bridge: { label: "Trip Overview, the first page of the proposal", href: "#trip-overview" },
-  },
-  {
-    q: "Your own leadership asks: whose name is on these documents?",
-    needs:
-      "A complete answer needs a clear line between structured evidence and signed judgment.",
-    how: "ETI360 prepares and structures the evidence. You author and sign your operational controls, the assessment is prepared for each school's own review, and the decision to run the trip stays with the school.",
-    bridge: { label: "Trip Risk Assessment & RAMS", href: "#risk-assessment" },
-  },
-];
-
 export default function ForProvidersPage() {
   return (
     <>
@@ -230,9 +165,9 @@ export default function ForProvidersPage() {
           <h1>Document a program once. The system carries the updates.</h1>
           <p className="subtitle">
             The documents schools ask providers for &mdash; organizational
-            standing, trip due diligence, and the pack families read &mdash;
-            prepared from your program&rsquo;s own data, then adjusted for each
-            school, each trip, and each set of dates.
+            standing, the trip file their leadership reviews, and the pack
+            families read &mdash; prepared from your program&rsquo;s own data,
+            then reissued for each school, each trip, and each set of dates.
           </p>
         </div>
       </section>
@@ -240,13 +175,47 @@ export default function ForProvidersPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            Schools evaluate a provider through its documents: the
-            organizational standing behind the program, the due diligence file
-            their leadership reviews, and the itineraries and briefings their
-            families receive. This page walks those documents through the same
-            three tiers schools use &mdash; open any thumbnail to read the
-            document itself. Once they exist for one of your programs, the next
-            school&rsquo;s proposal is an adjustment, not a rebuild.
+            ETI360 turns your program information &mdash; itineraries, routes,
+            accommodation, activity detail &mdash; into the documentation
+            schools review before they book. Documented once, a program becomes
+            a pack; each new proposal is an adjustment, not a rebuild.
+          </p>
+
+          <h2>The problems this solves</h2>
+          <p>
+            <strong>Every school asks for the same evidence in a different
+            shape.</strong>{" "}
+            One consistent pack &mdash; overview, itinerary, risk information,
+            parent version &mdash; produced from your program record and
+            reissued per school, trip and dates.
+          </p>
+          <p>
+            <strong>A changed date or hotel touches half the pack.</strong>{" "}
+            The change enters the program record once; the affected documents
+            are reissued from it.
+          </p>
+          <p>
+            <strong>Due-diligence questionnaires repeat every season.</strong>{" "}
+            The annual Organizational Baseline documents your standing once;
+            every proposal references the same current evidence.
+          </p>
+          <p>
+            <strong>Routed days draw the hardest questions.</strong>{" "}
+            Route Intelligence, Weather Brief and Medical Access pages answer
+            distance, terrain, conditions and access with measured figures a
+            school can verify.
+          </p>
+          <p>
+            <strong>Schools ask how you operate while groups travel.</strong>{" "}
+            The Duty Manager Dashboard gives your duty staff &mdash; or the
+            school&rsquo;s &mdash; one working view of the trip, its
+            communications and its record.
+          </p>
+
+          <h2>The documents</h2>
+          <p>
+            The same three tiers schools use, applied from the provider&rsquo;s
+            side. Open any thumbnail to read the document itself.
           </p>
           <p className="artifact-reader ui">
             The documents shown are from a fully worked example for Harborview
@@ -272,24 +241,14 @@ export default function ForProvidersPage() {
           n={2}
           eyebrow="Tier Two · Every proposal"
           name="Trip Risk Review"
-          desc="The due diligence documentation school leadership asks for, the documents that get students and parents ready for the trip, and a rehearsal of the trip before it runs."
+          desc="The due diligence documentation school leadership asks for, and the documents that get students and parents ready for the trip."
         />
         <div className="container measure" style={{ paddingTop: "40px" }}>
           <p>
-            Document a program once and the Tier 2 pack becomes repeatable. A
-            new proposal begins in one line:
-          </p>
-          <p className="pull-quote">
-            &ldquo;A proposal for this school, on this trip, on these
-            dates.&rdquo;
-          </p>
-          <p>
-            ETI360 updates and adjusts the data from there: the itinerary
-            re-dated for the new group, the Trip Overview and Parent Itinerary
-            re-prepared for the school, the Weather Brief rebuilt for the travel
-            month, and the proposed dates checked against the
-            destination&rsquo;s calendar &mdash; holidays, closures, and
-            seasonal events flagged as a booking checklist for you to verify
+            A new proposal begins as one line: this school, this trip, these
+            dates. ETI360 re-dates the itinerary, re-prepares the overview and
+            parent documents, rebuilds the Weather Brief for the travel month,
+            and flags holidays, closures and seasonal events for you to verify
             before anything is confirmed.
           </p>
         </div>
@@ -314,58 +273,15 @@ export default function ForProvidersPage() {
             <DocRow key={e.anchor} e={e} />
           ))}
         </div>
-
-        <div className="container measure">
-          <div className="boundary-callout">
-            <h3>What ETI360 does not do</h3>
-            <p>
-              ETI360 prepares and adjusts documentation; it does not operate
-              trips, certify providers, or approve trips on a school&rsquo;s
-              behalf. Risk assessments are prepared for each school&rsquo;s own
-              review, and the decision to run a trip stays with the school. How
-              you run your operations &mdash; and what you confirm with venues,
-              transport, and calendars before booking &mdash; remains your
-              responsibility.
-            </p>
-          </div>
-        </div>
-
-        <div className="container measure">
-          <h2>The documents, end to end</h2>
-          <p>
-            Every document above, in one passing view &mdash; the strip pauses
-            when your cursor is over it, and any page opens in full.
-          </p>
-        </div>
-        <DocMarquee items={allDocs} label="The ETI360 documents for trip providers" />
-
-        <div className="container measure qa-section">
-          <h2 className="section-heading rule-gold">
-            The questions a proposal must answer.
-          </h2>
-          <p>
-            Every proposal generates questions: from school risk committees and
-            boards during due diligence, from families before departure, and
-            from your own leadership. Each answer below names the document that
-            carries it.
-          </p>
-          <QABlock
-            label="Questions schools ask you"
-            entries={qaAsked}
-            expandFirst={2}
-          />
-          <QABlock label="Working with ETI360" entries={qaProcess} />
-        </div>
       </section>
 
       <section className="cta-section">
         <div className="container measure">
-          <h2>See it on your own program.</h2>
+          <h2>Contact us.</h2>
           <p>
-            Bring the program you propose most often. A conversation covers what
-            documenting it involves and what each proposal after that looks
-            like. Briefings are conversations, not sales calls. We respond
-            within two business days.
+            Send the program you propose most often. We will produce the pack a
+            school would receive and show you what each new proposal takes from
+            there.
           </p>
           <p>
             <Link href="/contact" className="cta-button ui">

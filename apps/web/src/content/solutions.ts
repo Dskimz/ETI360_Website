@@ -20,7 +20,7 @@ export const reportCatalog = {
   weatherBrief: {
     slug: "weather-brief",
     name: "Weather Brief",
-    question: "Are you able to anticipate the conditions your trips are likely to meet?",
+    question: "Have historical seasonal conditions been reviewed against each location and date in the itinerary?",
     summary: "Historical climate context connected to preparation and adjustable risk information.",
     href: "/for-schools/weather-brief",
     image: "/showcase/pages/01-1-weather-brief-sydney/1.png",
