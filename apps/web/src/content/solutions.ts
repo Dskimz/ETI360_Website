@@ -2,7 +2,7 @@ export const reportCatalog = {
   routeIntelligence: {
     slug: "route-intelligence",
     name: "Route Intelligence",
-    question: "Do you know the routes, elevations and distances for every trip you run?",
+    question: "Do you know the route, distance, elevation, and terrain for every routed activity?",
     summary: "Map, terrain, elevation, waypoints and relevant access information in one route record.",
     href: "/for-schools/route-intelligence",
     image: "/showcase/pages/02-3-itoshima-route/1.png",
@@ -47,7 +47,7 @@ export const reportCatalog = {
   dutyManager: {
     slug: "duty-manager",
     name: "Duty Manager Dashboard",
-    question: "Can your duty manager see the same trip context while groups travel?",
+    question: "Can your duty manager see where every traveling group is scheduled to be across all active trips?",
     summary: "Trip context with calls, messages, check-ins and follow-up tracked in one operating view.",
     href: "/for-schools/duty-manager",
     image: "/email/screen-dmd-v3.png",
@@ -56,7 +56,7 @@ export const reportCatalog = {
   incidentReporting: {
     slug: "incident-reporting",
     name: "Incident Reporting",
-    question: "Does your school have one integrated system for incident reporting and documentation?",
+    question: "Can your duty team log an incident, track its status, and preserve the full record in one place?",
     summary: "Context, communications, actions, status and retained documentation in one record.",
     href: "/for-schools/incident-reporting",
     image: "/Claude/Questions/assets/incident-record.png",

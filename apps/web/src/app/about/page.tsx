@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "ETI360 is an advisory firm working in the governance of educational travel.",
+  description: "ETI360 is a risk governance and intelligence consulting firm for educational travel.",
   alternates: { canonical: "/about" },
 };
 
@@ -18,7 +18,7 @@ export default function AboutPage() {
           <p className="label label-light ui">About</p>
           <h1>About ETI360.</h1>
           <p className="subhead">
-            An advisory firm working in the governance of educational travel.
+            A risk governance and intelligence consulting firm for educational travel.
           </p>
         </div>
       </section>
@@ -26,7 +26,7 @@ export default function AboutPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="lead">
-            ETI360 advises international schools and trip providers on structuring the
+            ETI360 works with international schools and trip providers to structure the
             evidence, intelligence, and documentation that trip governance rests on.
           </p>
 
@@ -41,18 +41,16 @@ export default function AboutPage() {
             Within trip governance, the firm structures and supports work the school or provider
             remains accountable for; it does not approve trips, certify providers, guarantee
             outcomes, or substitute its judgment for the governance bodies of the organizations
-            it advises.
+            it works with.
           </p>
 
           <h2>Infrastructure</h2>
           <p>
             The firm has built infrastructure to support its consulting work &mdash; structured
             documentation pipelines, intelligence layers maintaining current information on
-            destinations and providers, scenario testing capabilities, and document production
-            at a scale and quality that contemporary trip governance requires. The infrastructure
-            is leverage for the consulting work, not a product sold separately. Engagements are
-            advisory; the infrastructure is what allows the advisory work to scale across school
-            trip portfolios and provider operations.
+            destinations and providers, scenario testing capabilities, and document production.
+            That infrastructure is what keeps the work consistent across school trip
+            portfolios and provider operations.
           </p>
 
           <h2>Origin</h2>

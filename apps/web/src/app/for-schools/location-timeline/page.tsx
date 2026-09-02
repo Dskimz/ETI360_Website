@@ -73,7 +73,7 @@ const data: SolutionReportData = {
   widerTitle: "Location is one part of a complete trip file.",
   widerCopy: "Routes, historical conditions and the duty manager’s operating view use the same trip context, so the school is not reconciling different versions of the journey.",
   ctaTitle: "See your itinerary as one continuous record.",
-  ctaCopy: "Send an itinerary for a trip already in planning. We will show how its activities, movements, breaks and overnight stays would read in a structured trip file.",
+  ctaCopy: "Send an itinerary for one upcoming trip. We will show how its activities, movements, breaks and overnight stays would read in a structured trip file.",
 };
 
 export default function LocationTimelinePage() {

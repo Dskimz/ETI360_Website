@@ -30,9 +30,9 @@ const data: SolutionReportData = {
   proofCopy: "The route begins and ends at Chikuzen-Maebaru Station in Fukuoka. The page combines the mapped loop, 10 km waypoints, nearest verified facilities and the four figures that frame the ride.",
   stats: [
     ["80.0 km", "Distance", "One coastal loop"],
-    ["361 m", "Total climb", "Distributed across the route"],
+    ["183 m", "Cumulative climb", "Measured with 5 m smoothing"],
     ["5.9%", "Steepest", "Short coastal section"],
-    ["5 h 03", "Moving time", "At an 18 km/h cruise"],
+    ["4 h 45", "Moving time", "At 18 km/h plus climb allowance"],
   ],
   primaryArtifact: {
     src: "/showcase/pages/02-3-itoshima-route/1.png",
@@ -73,7 +73,7 @@ const data: SolutionReportData = {
   widerTitle: "The route is one part of a complete trip file.",
   widerCopy: "ETI360 also structures timings, locations, accommodation, facilities, parent information and the operating view used while groups travel.",
   ctaTitle: "See one of your own trips this way.",
-  ctaCopy: "Send an itinerary for a trip already in planning. We will show you what the structured trip file would contain and whether Route Intelligence applies.",
+  ctaCopy: "Send an itinerary for one upcoming trip. We will show you what the structured trip file would contain and whether Route Intelligence applies.",
 };
 
 export default function RouteIntelligenceProblemSolution() {

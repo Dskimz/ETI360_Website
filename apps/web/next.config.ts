@@ -36,6 +36,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // The campaign emails link /questions as the hub; the hub is the
+        // For Schools page (Sep 2026 merge).
+        source: "/questions",
+        destination: "/for-schools",
+        permanent: false,
+      },
+      {
         // The solutions overview merged into For Schools (Dan, 2026-09-01):
         // capabilities first, the openable document showcase behind them.
         // The alias keeps /solutions resolving; not permanent while the

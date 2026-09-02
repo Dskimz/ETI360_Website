@@ -63,7 +63,7 @@ const data: SolutionReportData = {
     src: "/showcase/pages/liveops/3.png",
     width: 1273,
     height: 1800,
-    alt: "ETI360 LiveOps incident card showing context, communications, actions and timeline as four connected layers",
+    alt: "ETI360 incident card showing context, communications, actions and timeline as four connected layers",
     caption: "The incident card architecture: context, communications, actions and timeline in one school-operated system.",
   },
   scopeTitle: "For schools that want one record from report through review.",

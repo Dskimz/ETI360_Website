@@ -63,7 +63,7 @@ const tier2: DocEntry[] = [
     stage: "T2 · The decision record",
     name: "Trip Risk Assessment & RAMS",
     reader: "Risk lead · Trip staff · Provider",
-    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — the due diligence file a school's risk committee can put in front of its board.",
+    desc: "The structured working documents behind the risk assessment and RAMS: hazards, controls, who holds each control, and residual risk in plain language — prepared for the school to review, complete, amend, and approve; the due diligence file its risk committee can put in front of the board.",
     image: {
       src: "/marketing/library/rams-report.png",
       alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
@@ -86,8 +86,8 @@ const tier2: DocEntry[] = [
     pdf: "/docs/trip-discovery-map.pdf",
     stage: "T2 · The trip on one sheet",
     name: "Trip Discovery Map",
-    reader: "Coordinator · Parents evening",
-    desc: "Stops, routes, and the shape of each day on one visual sheet — as useful in your proposal as at the school's parents evening.",
+    reader: "Coordinator · Parent information evening",
+    desc: "Stops, routes, and the shape of each day on one visual sheet — as useful in your proposal as at the school's parent information evening.",
     image: {
       src: "/email/spread-map-1.jpg",
       alt: "Trip Discovery Map for Cherry Blossom Tokyo: numbered stops, routes, and photo callouts on one sheet",

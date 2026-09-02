@@ -23,7 +23,7 @@ const data: SolutionReportData = {
   problemTitle: "Different trips should not require a different way of reading the evidence.",
   problemCopy: [
     "A city program, ski trip and adventure itinerary contain different information. Leadership can still review each through the same sequence, terminology and document architecture.",
-    "ETI360 normalises the source itinerary into one trip ledger, then produces the relevant documents from that record. The content changes with the trip; the way the school reads it remains familiar.",
+    "ETI360 normalizes the source itinerary into one trip ledger, then produces the relevant documents from that record. The content changes with the trip; the way the school reads it remains familiar.",
   ],
   proofEyebrow: "Three different trips",
   proofTitle: "Tokyo, Hokkaido and Queenstown—one consistent calendar structure.",
@@ -72,8 +72,8 @@ const data: SolutionReportData = {
   boundaryCopy: "ETI360 standardizes the structure and prepares the evidence. It does not make every trip identical, replace the school’s policies, approve the program or substitute its judgment for the school’s review and sign-off.",
   widerTitle: "Standard documentation is the system beneath every report.",
   widerCopy: "Route, location, weather, medical, communications and incident information become more useful when each appears in a familiar form and remains connected to the same trip record.",
-  ctaTitle: "Compare two of your trips in one documentation system.",
-  ctaCopy: "Send two itineraries in the formats you already hold. We will show how different programs can be structured consistently without losing their trip-specific detail.",
+  ctaTitle: "See one of your trips in the standard structure.",
+  ctaCopy: "Send an itinerary in the format you already hold. We will show how the program reads in the consistent structure — and how your next trip would read beside it.",
 };
 
 export default function StandardDocumentationPage() {

@@ -108,7 +108,7 @@ export default function HomePage() {
           <p className="section-lead">
             Real rendered pages from our reference school, Harborview
             International School &mdash; fictitious by design, so every page can
-            be shown in full. The documents open as complete PDFs; the live
+            be shown in full &mdash; no real school&rsquo;s documents are ever shown. The documents open as complete PDFs; the live
             operations screens are shown as working views.
           </p>
         </div>
@@ -138,9 +138,9 @@ export default function HomePage() {
               <p className="label ui">For schools</p>
               <h3>Governance and oversight.</h3>
               <p>
-                When a governing board, safeguarding lead, or insurer reviews a
-                trip, they ask for specific evidence: organizational standing, a
-                trip-specific risk assessment, and a clear sign-off record.
+                The sign-off meeting, the family questions, and the days the group
+                is away all draw on the same evidence: organizational standing,
+                a trip-specific risk assessment, and a clear record of decisions.
                 ETI360 structures that evidence into a governance record built
                 the same way, every time &mdash; prepared for the school&rsquo;s
                 review and decision.

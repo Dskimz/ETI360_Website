@@ -48,7 +48,9 @@ export default function ContactPage() {
           <h1>Arrange a briefing.</h1>
           <p className="subhead">
             Briefings are conversations, not sales calls. We respond within two business days
-            to schedule a time.
+            to schedule a time. If you would rather start with something concrete: send an
+            itinerary for one upcoming trip and we will produce the reviewed file — no cost,
+            taken in the order they arrive.
           </p>
         </div>
       </section>

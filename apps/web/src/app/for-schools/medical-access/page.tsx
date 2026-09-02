@@ -73,7 +73,7 @@ const data: SolutionReportData = {
   widerTitle: "Medical access belongs beside the route and the itinerary.",
   widerCopy: "The Location Timeline shows when the group is scheduled to be somewhere. Route Intelligence shows how it moves. The Medical Access Record adds the relevant facility context to those same places.",
   ctaTitle: "See medical access connected to one of your itineraries.",
-  ctaCopy: "Send a trip already in planning. We will show how its accommodations, activities and routes could carry consistent facility references in the trip file.",
+  ctaCopy: "Send an itinerary for one upcoming trip. We will show how its accommodations, activities and routes could carry consistent facility references in the trip file.",
 };
 
 export default function MedicalAccessPage() {

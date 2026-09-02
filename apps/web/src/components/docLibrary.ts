@@ -50,7 +50,7 @@ export const schoolTier2: DocEntry[] = [
     stage: "T2 · The decision record",
     name: "Trip Risk Assessment & RAMS",
     reader: "Risk lead · Trip staff · Provider",
-    desc: "A consistent document prepared for the school's review and decision: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one assessment per activity group.",
+    desc: "The structured working documents behind the school's risk assessment and RAMS: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one report per activity group, prepared for the school to review, complete, amend, and approve.",
     image: {
       src: "/marketing/library/rams-report.png",
       alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",

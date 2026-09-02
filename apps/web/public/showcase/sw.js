@@ -1,7 +1,7 @@
 // Showcase service worker — cache-first for PDFs + thumbs, so a tap opens instantly.
 // Bump CACHE_VERSION whenever showcase content changes.
 
-const CACHE_VERSION = "showcase-v5";  // bump when pageImages set changes
+const CACHE_VERSION = "showcase-v6";  // bump when pageImages set changes
 const BASE = "/showcase/";
 
 self.addEventListener("install", (event) => {

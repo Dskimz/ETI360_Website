@@ -71,7 +71,7 @@ const data: SolutionReportData = {
   widerTitle: "Conditions become more useful when connected to the day.",
   widerCopy: "The Weather Brief sits beside the Location Timeline and Route Intelligence, allowing likely conditions to be considered against the places, timings and activities in the same trip file.",
   ctaTitle: "See the climate context for one upcoming trip.",
-  ctaCopy: "Send the destination and dates for a trip already in planning. We will show how the historical conditions would be presented alongside the rest of the trip record.",
+  ctaCopy: "Send the destination and dates for one upcoming trip. We will show how the historical conditions would be presented alongside the rest of the trip record.",
 };
 
 export default function WeatherBriefPage() {
