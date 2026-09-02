@@ -103,7 +103,16 @@ export async function POST(req: NextRequest) {
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
+    // Local dev / preview: log and report success so the form stays testable.
+    // Production: a missing key means submissions would vanish behind a
+    // "Thank you" — surface it as the failure it is (caught live 2026-09-02).
     console.log("[contact] no RESEND_API_KEY; logging only", { receivedAt, ...submission });
+    if (process.env.VERCEL_ENV === "production") {
+      return NextResponse.json(
+        { error: "Mail delivery is not configured. Please email danskimin@eti360.com directly." },
+        { status: 502 },
+      );
+    }
     return NextResponse.json({ ok: true, delivered: false });
   }
 
