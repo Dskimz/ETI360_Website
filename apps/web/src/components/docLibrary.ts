@@ -178,8 +178,8 @@ export const schoolTier3: DocEntry[] = [
     reader: "The school's own duty manager",
     desc: "The working view while groups travel — operated by your duty manager, never by us: trip context, location, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure.",
     image: {
-      src: "/email/screen-dmd-v3.png",
-      alt: "The Duty Manager Dashboard with a trip open: trip context, location map with the routed hospital, check-ins, and messages",
+      src: "/Claude/Questions/assets/scheduled-group-locations.png",
+      alt: "The Duty Manager Dashboard with a trip open: six current trips, trip context, the scheduled location on the map, today's schedule, and messages",
     },
     wide: true,
   },

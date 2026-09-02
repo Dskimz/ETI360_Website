@@ -50,8 +50,8 @@ export const reportCatalog = {
     question: "Can your duty manager see where every traveling group is scheduled to be across all active trips?",
     summary: "Trip context with calls, messages, check-ins and follow-up tracked in one operating view.",
     href: "/for-schools/duty-manager",
-    image: "/email/screen-dmd-v3.png",
-    imageAlt: "ETI360 Duty Manager Dashboard with multiple active trips",
+    image: "/Claude/Questions/assets/scheduled-group-locations.png",
+    imageAlt: "ETI360 Duty Manager Dashboard with six current trips, the selected trip's scheduled location, and the next four hours across every trip",
   },
   incidentReporting: {
     slug: "incident-reporting",
