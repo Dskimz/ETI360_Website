@@ -179,21 +179,6 @@
       "startPage": 1
     },
     {
-      "slug": "08-arp-heatmap",
-      "title": "ARP Heatmap",
-      "variant": null,
-      "pdf": "pdfs/08-arp-heatmap.pdf",
-      "thumb": "thumbs/08-arp-heatmap.png",
-      "pageImages": [
-        "pages/08-arp-heatmap/1.png"
-      ],
-      "width": 708,
-      "height": 1000,
-      "pages": 1,
-      "totalPages": 1,
-      "startPage": 1
-    },
-    {
       "slug": "a1-contact-card",
       "title": "Contact Card",
       "variant": null,

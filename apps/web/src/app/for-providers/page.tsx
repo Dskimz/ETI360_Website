@@ -25,7 +25,7 @@ const tier1: DocEntry[] = [
     stage: "T1 · Your organization",
     name: "Organizational Baseline Evaluation",
     reader: "School risk committees · Your leadership",
-    desc: "The same ten-area review schools receive, applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure, mapped against ISO 31031 and refreshed annually — your standing documented in the same form schools use for their own baseline.",
+    desc: "The same ten-area review schools receive, applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure, read against the ETI360 Operational Capability Framework and refreshed annually — your standing documented in the same form schools use for their own baseline.",
     image: {
       src: "/email/spread-partner-baseline-v2.png",
       alt: "Organizational Baseline Evaluation applied to a trip provider: each of ten areas marked at standard or progressing",
@@ -135,18 +135,6 @@ const tier2More: DocEntry[] = [
     },
     wide: true,
   },
-  {
-    anchor: "activity-risk-profile",
-    pdf: "/docs/activity-risk-profile.pdf",
-    stage: "T2 · Behind the RAMS",
-    name: "Activity Risk Profile",
-    reader: "Risk lead",
-    desc: "The working layer beneath the RAMS: every activity profiled across seven dimensions, deciding which activities carry a full assessment and which are recorded at routine level.",
-    image: {
-      src: "/marketing/library/arp-summary.png",
-      alt: "Activity Risk Profile summary page with the seven-dimension radar chart and per-dimension score table",
-    },
-  },
 ];
 
 const tier3: DocEntry[] = [
@@ -171,7 +159,7 @@ const qaAsked: QAEntry[] = [
     q: "A school's risk committee asks in the first meeting: what evidence can you show of how your organization manages risk?",
     needs:
       "A complete answer needs a documented review of your standing, in the form school committees already read.",
-    how: "The ten-area review, mapped against ISO 31031 and refreshed annually, is the same structure schools apply to themselves, so your documentation arrives in a form their leadership recognizes.",
+    how: "The ten-area review, read against the ETI360 Operational Capability Framework and refreshed annually, is the same structure schools apply to themselves, so your documentation arrives in a form their leadership recognizes.",
     bridge: { label: "Organizational Baseline Evaluation", href: "#baseline" },
   },
   {
@@ -272,7 +260,7 @@ export default function ForProvidersPage() {
           n={1}
           eyebrow="Tier One · Annual"
           name="Organizational Baseline"
-          desc="A documented review of your practices against industry standards — the same ten-area review applied to schools and to trip providers, mapped against ISO 31031, with your documentation recorded in order and refreshed annually."
+          desc="A documented review of your practices — the same ten-area review applied to schools and to trip providers, read against the ETI360 Operational Capability Framework, with your documentation recorded in order and refreshed annually."
         />
         <div className="doc-rows">
           {tier1.map((e) => (
@@ -312,7 +300,7 @@ export default function ForProvidersPage() {
         </div>
         <DocRowsExpander
           items={tier2More}
-          label="See three more Tier 2 documents"
+          label="See two more Tier 2 documents"
         />
 
         <TierBand

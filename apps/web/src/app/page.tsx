@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DocMarquee, DocRow, TierBand } from "../components/DocShowcase";
+import { DocRow, TierBand } from "../components/DocShowcase";
 import { schoolDocs } from "../components/docLibrary";
 
 export const metadata: Metadata = {
@@ -29,41 +29,53 @@ export default function HomePage() {
         style={{ ["--hero-bg" as string]: "url('/marketing/hero/home.jpg')" } as React.CSSProperties}
       >
         <div className="hero-inner">
-          <span className="label ui">Risk intelligence for school trips</span>
           <h1>
-            Every trip,
+            Risk intelligence
             <br />
-            <em>decision-ready.</em>
+            <em>for school trips.</em>
           </h1>
           <p className="subhead">
-            A clear, consistent evidence file for each trip.
+            Custom evidence documentation for each trip.
           </p>
           <div className="hero-actions">
-            <a className="cta-button ui" href="#framework">See the framework</a>
+            <a className="cta-button ui" href="#what-we-do">What we do</a>
             <a className="cta-link ui" href="#work">See what a school receives &rarr;</a>
           </div>
         </div>
       </section>
 
-      <section id="framework" className="about-strip">
+      <section id="what-we-do" className="about-strip">
+        <div className="container measure">
+          <p className="label ui">What we do</p>
+          <h2 className="section-heading section-heading-lg rule-gold">
+            Decision-ready evidence for every trip.
+          </h2>
+          <p className="section-lead">
+            ETI360 is a risk governance and intelligence consulting firm for educational
+            travel, working with international schools and the providers who serve them.
+            We turn the information a school and its providers already hold &mdash;
+            itineraries, provider documents, dates, routes &mdash; into the decision-ready
+            evidence schools need.
+          </p>
+          <p className="section-lead">
+            To help with this, we developed the 3-Tier Risk Framework.
+          </p>
+        </div>
+      </section>
+
+      <section id="framework" className="about-strip tight">
         <div className="container">
-          <p className="label ui">The framework</p>
+          <p className="label ui">How we do it</p>
           <h2 className="section-heading section-heading-lg rule-gold">
             ETI360&rsquo;s 3-Tier Risk Framework.
           </h2>
-          <p className="section-lead">
-            Built from field experience and aligned to international standards,
-            ISO 31031 among them. Standing organizational evidence, per-trip
-            evidence, and live field evidence compound in that order: document
-            the organization annually, document each trip, equip the field.
-          </p>
         </div>
       </section>
       <TierBand
         n={1}
         eyebrow="Tier One · Annual"
         name="Organizational Baseline"
-        desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten areas, mapped against ISO 31031."
+        desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across the ten operational capability areas, OC01 through OC10."
       />
       <TierBand
         n={2}
@@ -105,10 +117,9 @@ export default function HomePage() {
             <DocRow key={e.anchor} e={e} eager={i === 0} />
           ))}
         </div>
-        <DocMarquee items={schoolDocs} label="The ETI360 document library" />
         <div className="container">
           <p className="bridge-line ui">
-            <Link href="/for-schools#tier1" className="cta-link ui">
+            <Link href="/framework#tier1" className="cta-link ui">
               The full library, tier by tier &rarr;
             </Link>
           </p>
@@ -155,34 +166,6 @@ export default function HomePage() {
               </Link>
             </article>
           </div>
-        </div>
-      </section>
-
-      <section className="about-strip">
-        <div className="container measure">
-          <p className="label ui">About</p>
-          <h2 className="section-heading rule-gold">
-            An advisory firm in the governance of educational travel.
-          </h2>
-          <p>
-            ETI360 is an advisory firm working in the governance of educational travel.
-            The firm advises international schools and trip providers on structuring the
-            evidence, intelligence, and documentation that trip governance rests on.
-          </p>
-          <p>
-            ETI360 works in trip governance &mdash; risk assessment, provider review,
-            emergency documentation, and post-trip review. We do not cover safeguarding,
-            on-campus health and safety, or liability management; those are distinct
-            disciplines served by other specialist firms.
-          </p>
-          <p>
-            The work is delivered through structured engagements, but the output is not
-            advice alone. It is documented, defensible evidence that supports decisions
-            across the trip&rsquo;s full life.
-          </p>
-          <p>
-            <Link href="/about" className="cta-link ui">More about ETI360 &rarr;</Link>
-          </p>
         </div>
       </section>
 

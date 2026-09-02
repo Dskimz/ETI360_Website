@@ -36,6 +36,15 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // The solutions overview merged into For Schools (Dan, 2026-09-01):
+        // capabilities first, the openable document showcase behind them.
+        // The alias keeps /solutions resolving; not permanent while the
+        // information architecture is still settling.
+        source: "/solutions",
+        destination: "/for-schools",
+        permanent: false,
+      },
+      {
         // Two early essays built on the retired stage taxonomy (Dan,
         // 2026-08-04: "Retire"). Redirect to the framework story.
         source: "/perspective/what-each-artifact-decides",

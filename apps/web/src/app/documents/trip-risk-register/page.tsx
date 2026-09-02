@@ -38,7 +38,7 @@ export default function TripRiskRegisterPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="bridge-line ui">
-            <Link href="/for-schools#tier1" className="cta-link ui">
+            <Link href="/framework#tier1" className="cta-link ui">
               &larr; All documents
             </Link>
           </p>
@@ -151,7 +151,7 @@ export default function TripRiskRegisterPage() {
             Loop.
           </p>
           <p>
-            <Link href="/for-schools#tier1" className="cta-button ui">
+            <Link href="/framework#tier1" className="cta-button ui">
               Browse the documents
             </Link>
           </p>

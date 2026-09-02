@@ -1,0 +1,115 @@
+.page {
+  --solution-navy: #0d3558;
+  --solution-deep: #08263f;
+  --solution-blue: #1d6a95;
+  --solution-gold: #c9a24d;
+  --solution-gold-dark: #8a6c1f;
+  --solution-ink: #1f2732;
+  --solution-muted: #586776;
+  --solution-line: #d9e1e7;
+  --solution-wash: #f1f4f6;
+  --solution-warm: #f5edda;
+  color: var(--solution-ink);
+  background: #fff;
+}
+
+.hero {
+  color: #fff;
+  background:
+    linear-gradient(103deg, rgba(8, 38, 63, .98), rgba(13, 53, 88, .92) 62%, rgba(29, 106, 149, .72)),
+    url("/marketing/hero/trip-approval.jpg") center / cover no-repeat;
+  border-bottom: 6px solid var(--solution-gold);
+}
+
+.heroInner,
+.groupInner,
+.changeInner,
+.ctaInner {
+  width: min(1120px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.heroInner { padding: 86px 0 92px; }
+.label,
+.sectionLabel { margin: 0 0 17px; color: var(--solution-gold); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.sectionLabel { color: var(--solution-gold-dark); }
+.hero h1 { max-width: 920px; margin: 0 0 26px; color: #fff; font-size: clamp(50px, 6vw, 76px); font-weight: 500; line-height: 1.02; letter-spacing: -.035em; }
+.heroLead { max-width: 800px; margin: 0; color: rgba(255, 255, 255, .83); font-size: 20px; line-height: 1.55; }
+
+.groupHeading h2,
+.changeSection h2,
+.ctaSection h2 { margin: 0; color: var(--solution-navy); font-size: clamp(38px, 4.2vw, 54px); font-weight: 500; line-height: 1.08; }
+
+.groupSection { padding: 82px 0; background: #fff; }
+.groupAlt { background: var(--solution-wash); }
+.groupHeading { display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: end; margin-bottom: 42px; }
+.groupHeading > p { margin: 0; color: var(--solution-muted); font-size: 17px; }
+.solutionGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.singleCard { grid-template-columns: 1fr; }
+.solutionCard { display: grid; grid-template-columns: 205px 1fr; min-height: 300px; background: #fff; border: 1px solid var(--solution-line); border-top: 5px solid var(--solution-blue); color: inherit; text-decoration: none; transition: border-color .18s ease, transform .18s ease; }
+.solutionCard:hover { color: inherit; border-top-color: var(--solution-gold); transform: translateY(-2px); }
+.solutionCard:hover .cardGo { color: var(--solution-navy); }
+.groupAlt .solutionCard { background: #fff; }
+.cardImage { position: relative; min-height: 295px; overflow: hidden; background: var(--solution-wash); }
+.cardImage img {
+  object-fit: cover;
+  object-position: var(--crop-pos, top center);
+  transform: scale(var(--crop-zoom, 1));
+  transform-origin: var(--crop-pos, top center);
+}
+.cardCopy { display: flex; flex-direction: column; padding: 28px; }
+.cardCopy h3 { margin: 0 0 13px; color: var(--solution-navy); font-size: 29px; }
+.cardCopy > p { margin: 0; color: var(--solution-muted); font-size: 15px; }
+.supportingQuestion { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--solution-line); }
+.supportingQuestion span { display: block; margin-bottom: 7px; color: var(--solution-gold-dark); font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.supportingQuestion strong { display: block; color: var(--solution-navy); font-size: 13px; line-height: 1.45; }
+.cardGo { display: block; margin-top: 10px; color: var(--solution-gold-dark); font-size: 13px; font-weight: 700; font-style: normal; }
+.singleCard .solutionCard { grid-template-columns: minmax(270px, .75fr) 1.25fr; }
+.singleCard .cardCopy { justify-content: center; }
+.singleCard .supportingQuestion { margin-top: 28px; }
+
+.openSet { padding: 64px 0; background: var(--solution-wash); }
+.openSetInner { width: min(760px, calc(100% - 64px)); margin: 0 auto; }
+.openSetInner > p:last-of-type, .openSetInner > p:nth-of-type(2) { margin: 0 0 18px; color: var(--solution-ink); font-size: 18px; line-height: 1.6; }
+.openSetInner a { color: var(--solution-gold-dark); font-weight: 700; }
+.openSetInner a:hover { color: var(--solution-navy); }
+
+.changeSection { padding: 76px 0; color: #fff; background: var(--solution-deep); border-top: 6px solid var(--solution-gold); }
+.changeInner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.changeSection h2 { color: #fff; }
+.changeInner > div:last-child { color: rgba(255, 255, 255, .74); font-size: 17px; }
+.changeInner a { color: var(--solution-gold); font-weight: 700; }
+.changeInner a:hover { color: #fff; }
+
+.ctaSection { padding: 72px 0; background: #fff; }
+.ctaInner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+.ctaInner p:last-child { max-width: 760px; margin: 20px 0 0; color: var(--solution-muted); }
+.ctaInner > a { padding: 15px 24px; color: #fff; background: var(--solution-navy); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.ctaInner > a:hover { color: var(--solution-navy); background: var(--solution-warm); }
+
+@media (max-width: 920px) {
+  .groupHeading,
+  .changeInner,
+  .ctaInner { grid-template-columns: 1fr; gap: 34px; }
+  .solutionGrid { grid-template-columns: 1fr; }
+  .solutionCard,
+  .singleCard .solutionCard { grid-template-columns: minmax(240px, .8fr) 1.2fr; }
+  .cardCopy { justify-content: center; }
+  .supportingQuestion { margin-top: 28px; }
+}
+
+@media (max-width: 700px) {
+  .heroInner,
+  .groupInner,
+  .changeInner,
+  .ctaInner { width: min(100% - 30px, 1120px); }
+  .heroInner { padding: 62px 0 68px; }
+  .hero h1 { font-size: 44px; }
+  .groupSection { padding: 58px 0; }
+  .solutionCard,
+  .singleCard .solutionCard { grid-template-columns: 1fr; }
+  .cardCopy { justify-content: flex-start; }
+  .supportingQuestion { margin-top: 22px; }
+  .cardImage { min-height: 235px; }
+  .ctaInner > a { text-align: center; white-space: normal; }
+}

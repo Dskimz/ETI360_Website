@@ -11,7 +11,7 @@ export const schoolTier1: DocEntry[] = [
     stage: "T1 · Schools and trip providers",
     name: "Organizational Baseline Evaluation",
     reader: "Head · Board · Risk committee",
-    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, mapped against ISO 31031 and refreshed annually.",
+    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, read against the ETI360 Operational Capability Framework and refreshed annually.",
     image: {
       src: "/email/spread-school-baseline-v2.png",
       alt: "Organizational Baseline Evaluation for Harborview International School: each of ten areas marked at standard or progressing",
@@ -155,18 +155,6 @@ export const schoolTier2: DocEntry[] = [
     },
     wide: true,
     pageHref: "/documents/trip-risk-register",
-  },
-  {
-    anchor: "activity-risk-profile",
-    pdf: "/docs/activity-risk-profile.pdf",
-    stage: "T2 · Behind the RAMS",
-    name: "Activity Risk Profile",
-    reader: "Risk lead",
-    desc: "The working layer beneath the RAMS: every activity profiled across seven dimensions, deciding which activities carry a full assessment and which are recorded at routine level.",
-    image: {
-      src: "/marketing/library/arp-summary.png",
-      alt: "Activity Risk Profile summary page with the seven-dimension radar chart and per-dimension score table",
-    },
   },
 ];
 
