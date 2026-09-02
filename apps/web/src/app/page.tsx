@@ -75,7 +75,7 @@ export default function HomePage() {
         n={1}
         eyebrow="Tier One · Annual"
         name="Organizational Baseline"
-        desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across the ten operational capability areas, OC01 through OC10."
+        desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten operational capability areas."
       />
       <TierBand
         n={2}
