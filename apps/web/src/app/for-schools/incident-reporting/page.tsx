@@ -72,8 +72,8 @@ const data: SolutionReportData = {
   boundaryCopy: "ETI360 provides the system and structured record. It does not monitor incidents, direct the school’s response, make escalation decisions or replace emergency services. The school’s staff operate the system and retain authority.",
   widerTitle: "Incident documentation is one part of live trip operations.",
   widerCopy: "The Duty Manager Dashboard supplies the operating context and communication history. The incident record gives the school a focused structure when it chooses to open and manage an incident.",
-  ctaTitle: "See how one incident record connects from start to finish.",
-  ctaCopy: "We can demonstrate the system with a fictitious scenario based on the type of trips your school runs, showing the record without using real student or incident information.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the integrated incident record fits your program.",
 };
 
 export default function IncidentReportingPage() {

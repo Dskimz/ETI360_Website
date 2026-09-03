@@ -279,9 +279,9 @@ export default function ForProvidersPage() {
         <div className="container measure">
           <h2>Contact us.</h2>
           <p>
-            Send the program you propose most often. We will produce the pack a
-            school would receive and show you what each new proposal takes from
-            there.
+            A 20-minute conversation about the program you propose most often
+            will show how the documentation pack applies to it &mdash; and what
+            each new proposal takes from there.
           </p>
           <p>
             <Link href="/contact" className="cta-button ui">

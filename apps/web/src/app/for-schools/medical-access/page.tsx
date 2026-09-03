@@ -72,8 +72,8 @@ const data: SolutionReportData = {
   boundaryCopy: "ETI360 verifies and presents available facility information; it does not recommend providers, guarantee capacity or travel times, make clinical judgments or replace local emergency services. Current conditions must be checked when the information is used.",
   widerTitle: "Medical access belongs beside the route and the itinerary.",
   widerCopy: "The Location Timeline shows when the group is scheduled to be somewhere. Route Intelligence shows how it moves. The Medical Access Record adds the relevant facility context to those same places.",
-  ctaTitle: "See medical access connected to one of your itineraries.",
-  ctaCopy: "Send an itinerary for one upcoming trip. We will show how its accommodations, activities and routes could carry consistent facility references in the trip file.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Medical Access Record fits your program.",
 };
 
 export default function MedicalAccessPage() {

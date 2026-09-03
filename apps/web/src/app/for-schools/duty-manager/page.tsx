@@ -72,8 +72,8 @@ const data: SolutionReportData = {
   boundaryCopy: "ETI360 provides the operating view. It does not monitor trips on the school’s behalf, make escalation decisions or replace emergency services. The school operates the dashboard under its own roles and procedures, and it shows the planned picture for each group — never live tracking of students.",
   widerTitle: "The operating view depends on the planning record.",
   widerCopy: "Location, route and condition information become more useful when they remain connected to the itinerary, contacts and agreed procedures the duty manager receives.",
-  ctaTitle: "See how one of your trips would read in operation.",
-  ctaCopy: "Send an itinerary for one upcoming trip. We will show the context the duty manager would receive and how the working view connects to the documents prepared before departure.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Duty Manager Dashboard fits your program.",
 };
 
 export default function DutyManagerPage() {

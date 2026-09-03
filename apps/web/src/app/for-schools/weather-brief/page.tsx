@@ -70,8 +70,8 @@ const data: SolutionReportData = {
   boundaryCopy: "Historical data is a guide, not a guarantee. ETI360 prepares relevant information for the school’s risk review; it does not forecast conditions, issue warnings, author the school’s final risk position or replace current checks before and during travel.",
   widerTitle: "Conditions become more useful when connected to the day.",
   widerCopy: "The Weather Brief sits beside the Location Timeline and Route Intelligence, allowing likely conditions to be considered against the places, timings and activities in the same trip file.",
-  ctaTitle: "See the climate context for one upcoming trip.",
-  ctaCopy: "Send the destination and dates for one upcoming trip. We will show how the historical conditions would be presented alongside the rest of the trip record.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Weather Brief fits your program.",
 };
 
 export default function WeatherBriefPage() {

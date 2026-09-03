@@ -72,8 +72,8 @@ const data: SolutionReportData = {
   boundaryCopy: "ETI360 standardizes the structure and prepares the evidence. It does not make every trip identical, replace the school’s policies, approve the program or substitute its judgment for the school’s review and sign-off.",
   widerTitle: "Standard documentation is the system beneath every report.",
   widerCopy: "Route, location, weather, medical, communications and incident information become more useful when each appears in a familiar form and remains connected to the same trip record.",
-  ctaTitle: "See one of your trips in the standard structure.",
-  ctaCopy: "Send an itinerary in the format you already hold. We will show how the program reads in the consistent structure — and how your next trip would read beside it.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the standard documentation structure fits your program.",
 };
 
 export default function StandardDocumentationPage() {

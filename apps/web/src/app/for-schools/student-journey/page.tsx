@@ -97,9 +97,8 @@ const data: SolutionReportData = {
   widerTitle: "The purpose and the operating record come from one trip file.",
   widerCopy:
     "The structured itinerary behind the day pages also produces the calendar, the routes, the historical conditions and the duty manager's view, so the guide a student reads and the record leadership approves come from one source.",
-  ctaTitle: "See one of your own trips as a journey guide.",
-  ctaCopy:
-    "Send us the itinerary for one upcoming trip. We will prepare its structured trip file at no cost, so you can judge the work using one of your own trips.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Student Journey Guide fits your program.",
 };
 
 export default function StudentJourneyPage() {

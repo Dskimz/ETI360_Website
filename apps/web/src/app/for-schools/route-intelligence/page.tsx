@@ -72,8 +72,8 @@ const data: SolutionReportData = {
   boundaryCopy: "ETI360 analyzes available route data. When the definitive route must come from the provider, ETI360 records that dependency instead of filling it with an assumption. Route Intelligence supports the school’s review; it does not certify or approve the activity.",
   widerTitle: "The route is one part of a complete trip file.",
   widerCopy: "ETI360 also structures timings, locations, accommodation, facilities, parent information and the operating view used while groups travel.",
-  ctaTitle: "See one of your own trips this way.",
-  ctaCopy: "Send an itinerary for one upcoming trip. We will show you what the structured trip file would contain and whether Route Intelligence applies.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether Route Intelligence fits your program.",
 };
 
 export default function RouteIntelligenceProblemSolution() {

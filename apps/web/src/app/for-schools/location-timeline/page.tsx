@@ -72,8 +72,8 @@ const data: SolutionReportData = {
   boundaryCopy: "The timeline records the planned location of the group. It is not live student tracking. During travel, the school’s own check-in and communication procedures confirm what is happening against the plan.",
   widerTitle: "Location is one part of a complete trip file.",
   widerCopy: "Routes, historical conditions and the duty manager’s operating view use the same trip context, so the school is not reconciling different versions of the journey.",
-  ctaTitle: "See your itinerary as one continuous record.",
-  ctaCopy: "Send an itinerary for one upcoming trip. We will show how its activities, movements, breaks and overnight stays would read in a structured trip file.",
+  ctaTitle: "Talk it through on your own trips.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether Calendar + Timeline views fits your program.",
 };
 
 export default function LocationTimelinePage() {
