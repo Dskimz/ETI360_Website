@@ -27,6 +27,7 @@ const crops: Record<string, { pos: string; zoom?: number }> = {
   "route-intelligence": { pos: "center top" },
   "weather-brief": { pos: "left top", zoom: 2.3 },
   "medical-access": { pos: "left top", zoom: 2.4 },
+  "student-journey": { pos: "center top" },
   "standard-documentation": { pos: "center top" },
   "duty-manager": { pos: "left top" },
   "incident-reporting": { pos: "left top" },
@@ -53,6 +54,12 @@ const groups = [
       reportCatalog.weatherBrief,
       reportCatalog.medicalAccess,
     ],
+  },
+  {
+    label: "Connect purpose to the day",
+    title: "Carry the trip's educational intent through to the day it belongs to.",
+    copy: "The themes and objectives set when a trip is proposed travel with the group—each named activity carrying its purpose, its place on the day's map, and its hour.",
+    items: [reportCatalog.studentJourney],
   },
   {
     label: "Keep the record consistent",

@@ -35,6 +35,15 @@ export const reportCatalog = {
     image: "/Claude/Questions/assets/medical-access.png",
     imageAlt: "ETI360 verified medical facility profiles",
   },
+  studentJourney: {
+    slug: "student-journey",
+    name: "Student Journey Guide",
+    question: "Is the educational purpose of each trip connected to its daily activities?",
+    summary: "The learning purpose, the named activities and the shape of each day in one student-facing guide.",
+    href: "/for-schools/student-journey",
+    image: "/Claude/Questions/assets/student-journey-day.png",
+    imageAlt: "ETI360 Student Journey Guide day page with map, activity cards and an hour-by-hour view of the day",
+  },
   standardDocumentation: {
     slug: "standard-documentation",
     name: "Standard Trip Documentation",
