@@ -5,89 +5,114 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consistent oversight of every school trip</title>
 <!--
-  TEMPLATE v17.2a, 2026-09-03 PM: letterhead masthead (logo left, gold brand
-  line right — text renders even with images off) and INLINE-ATTACHMENT rule:
-  Gmail compose and image-blocking recipients do not reliably load hosted
-  images, so at DRAFTING TIME (G42) the logo and the featured artifact are
-  attached inline and referenced as {logo}=cid:logo-white.png and
-  {image}=cid:<artifact filename>. This browser-preview file may fill the
-  slots with hosted URLs; real drafts always embed.
-  v17.2, 2026-09-03 PM: Dan — "I want images and our logo in the
-  email. The version B and C from our earlier work." The B/C visual chassis
-  returns around the UNCHANGED v17.1 copy: navy masthead (REAL logo file
-  per the logo law — logo-white.png, never styled text), 3px gold rule,
-  one artifact panel for the featured solution (linked to {link}), the CTA
-  in the B/C-style box (no button — the ask is reply-led), and the
-  fictitious-school disclosure line REQUIRED whenever an artifact is shown.
-  Per-solution {image}/{image-alt} map in REVIEW-PACKAGE-v17.md.
-  v17.1, 2026-09-03 PM: outside-review feedback applied per Dan.
-  Problem-first opening (with {City} merge reinstated), tighter bullets,
-  personalized {one-sentence benefit}, walkthrough CTA, menu line removed.
-  Rejected for honesty: "reference schools use it", "comparable school".
-  Opt-out retained (compliance posture). "single view", never "current".
-  v17 base, 2026-09-03: matter-of-fact rework; story arms retired; no free
-  offer of any kind; rotation through every published solution, no fixed
-  arms. When the featured solution is the Duty Manager Dashboard, DROP the
-  standing dashboard paragraph from the body.
-  MERGE FIELDS (completed per school at drafting time, G42):
-  {First Name} {City} {School Name} {Solution} {one-sentence benefit}
-  {link} {link-text} {image} {image-alt}
-  UTM: featured link + image link utm_content=f-<slug> · signature
-  utm_content=signature · utm_term=<school> added at draft time.
-  Tone gate: v17.1 copy pass (2026-09-03 PM); v17.2 adds only the chassis
-  and the standing gated disclosure line — no new claims copy.
+  TEMPLATE v17.3, 2026-09-03 PM: professional chassis per Dan ("Lets use
+  html and make the email more professional."). Full table-based layout
+  (Outlook-safe), letterhead masthead, numbered framework rows with gold
+  numerals, featured-solution card with eyebrow label and captioned
+  artifact panel, CTA box, letterhead signature. COPY UNCHANGED from the
+  gated v17.1 text; the only added visible strings are structural labels
+  ("Featured solution", "Or simply reply to this email.").
+  DRAFTING RULES (standing, v17.2a): drafts are HTML-ONLY (the G42 builder
+  adds the plain-text part at SEND time); the builder embeds logo+artifact
+  as inline cid: attachments programmatically; hand-made samples use the
+  hosted URLs from the package image map.
+  MERGE FIELDS: {First Name} {City} {School Name} {Solution}
+  {one-sentence benefit} {link} {link-text} {image} {image-alt} {logo}
+  UTM: featured + image link utm_content=f-<slug> · signature
+  utm_content=signature · utm_term=<school> at draft time.
+  Rule: when the featured solution is the Duty Manager Dashboard, drop the
+  standing dashboard paragraph. Tone gate: v17.1 copy pass; chassis only.
   Suggested subject: Consistent oversight of every school trip
 -->
-<style>
-  body { margin:0; padding:0; width:100% !important; }
-  img { border:0; outline:none; text-decoration:none; }
-</style>
 </head>
-<body style="margin:0; padding:0; background-color:#f6f7f9;">
+<body style="margin:0; padding:0; background-color:#eef1f4;">
 <div style="display:none; max-height:0; overflow:hidden;">A consistent way to assess, review, and learn from every school trip, shown with a real example.</div>
-<div style="max-width:600px; margin:0 auto; background-color:#ffffff;">
 
-<!-- Masthead: real logo file on navy, gold rule (logo law: never styled text) -->
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0d3558; border-bottom:3px solid #C9A24D;"><tr>
-<td style="padding:18px 24px;"><a href="https://www.eti360.com/?utm_source=email&amp;utm_campaign=intro&amp;utm_content=signature" style="text-decoration:none;"><img src="/email/logo-white.png" alt="ETI360" height="30" style="height:30px; width:auto; display:block;"></a></td>
-<td style="padding:18px 24px; text-align:right; font-family:Helvetica, Arial, sans-serif; font-size:13px; letter-spacing:1.5px; color:#C9A24D; text-transform:uppercase; white-space:nowrap;">Risk intelligence for school trips</td>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eef1f4;"><tr><td align="center" style="padding:24px 12px;">
+
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:100%; background-color:#ffffff; border:1px solid #dfe4e9;">
+
+<!-- Letterhead -->
+<tr><td style="background-color:#0d3558; border-bottom:3px solid #C9A24D;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+<td style="padding:20px 28px;"><a href="https://www.eti360.com/?utm_source=email&amp;utm_campaign=intro&amp;utm_content=signature" style="text-decoration:none;"><img src="/email/logo-white.png" alt="ETI360" height="30" style="height:30px; width:auto; display:block; border:0;"></a></td>
+<td align="right" style="padding:20px 28px; font-family:Helvetica, Arial, sans-serif; font-size:12px; letter-spacing:2px; color:#C9A24D; text-transform:uppercase; white-space:nowrap;">Risk intelligence<br>for school trips</td>
 </tr></table>
+</td></tr>
 
-<div style="padding:28px 24px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.55; color:#1f2732;">
+<!-- Body -->
+<tr><td style="padding:32px 28px 8px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.6; color:#1f2732;">
+<p style="margin:0 0 18px;">Hi {First Name},</p>
+<p style="margin:0 0 18px;">Managing travel risk consistently becomes difficult when a school's trips range from day visits around {City} to programs that cross the world.</p>
+<p style="margin:0 0 14px;">I'm Dan Skimin, co-founder of ETI360. We give schools a consistent way to:</p>
+</td></tr>
 
-<p style="margin:0 0 16px;">Hi {First Name},</p>
+<!-- Framework: three numbered rows -->
+<tr><td style="padding:0 28px 6px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td width="34" valign="top" style="padding:6px 0 10px; font-family:Georgia, serif; font-size:20px; color:#C9A24D; font-weight:bold;">1</td>
+<td style="padding:8px 0 10px; border-bottom:1px solid #eef1f4; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.5; color:#1f2732;">assess their travel program against recognized practice;</td>
+</tr>
+<tr>
+<td width="34" valign="top" style="padding:6px 0 10px; font-family:Georgia, serif; font-size:20px; color:#C9A24D; font-weight:bold;">2</td>
+<td style="padding:8px 0 10px; border-bottom:1px solid #eef1f4; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.5; color:#1f2732;">review every trip before departure; and</td>
+</tr>
+<tr>
+<td width="34" valign="top" style="padding:6px 0 10px; font-family:Georgia, serif; font-size:20px; color:#C9A24D; font-weight:bold;">3</td>
+<td style="padding:8px 0 10px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.5; color:#1f2732;">capture lessons that improve future planning.</td>
+</tr>
+</table>
+</td></tr>
 
-<p style="margin:0 0 16px;">Managing travel risk consistently becomes difficult when a school's trips range from day visits around {City} to programs that cross the world.</p>
+<tr><td style="padding:10px 28px 6px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.6; color:#1f2732;">
+<p style="margin:0 0 18px;">While groups are away, the Duty Manager Dashboard gives staff a single view of every trip underway.</p>
+</td></tr>
 
-<p style="margin:0 0 8px;">I'm Dan Skimin, co-founder of ETI360. We give schools a consistent way to:</p>
-<ul style="margin:0 0 16px; padding-left:22px;">
-<li style="margin:0 0 6px;">assess their travel program against recognized practice;</li>
-<li style="margin:0 0 6px;">review every trip before departure; and</li>
-<li style="margin:0;">capture lessons that improve future planning.</li>
-</ul>
+<!-- Featured solution card -->
+<tr><td style="padding:4px 28px 8px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #dfe4e9; border-top:3px solid #0d3558;">
+<tr><td style="padding:16px 20px 4px; font-family:Helvetica, Arial, sans-serif; font-size:11px; letter-spacing:1.8px; color:#8a6c1f; text-transform:uppercase;">Featured solution</td></tr>
+<tr><td style="padding:0 20px 10px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.6; color:#1f2732;">
+<p style="margin:0;">I thought <strong>{Solution}</strong> might be particularly relevant to {School Name}: {one-sentence benefit}. Here is a real example, built for our reference school: <a href="{link}" style="color:#0d3558;">{link-text}</a>.</p>
+</td></tr>
+<tr><td style="padding:0 20px 16px;">
+<a href="{link}" style="text-decoration:none;"><img src="{image}" alt="{image-alt}" width="520" style="width:100%; height:auto; display:block; border:1px solid #dfe4e9;"></a>
+</td></tr>
+</table>
+</td></tr>
 
-<p style="margin:0 0 16px;">While groups are away, the Duty Manager Dashboard gives staff a single view of every trip underway.</p>
-
-<p style="margin:0 0 16px;">I thought <strong>{Solution}</strong> might be particularly relevant to {School Name}: {one-sentence benefit}. Here is a real example, built for our reference school: <a href="{link}" style="color:#0d3558;">{link-text}</a>.</p>
-
-<!-- Featured-solution artifact panel (links to the same example page) -->
-<a href="{link}" style="text-decoration:none;"><img src="{image}" alt="{image-alt}" width="552" style="width:100%; height:auto; display:block; border:1px solid #e3e8ee; margin:0 0 16px;"></a>
-
-<!-- CTA in the B/C-style box; no button — the ask is reply-led -->
-<div style="background-color:#f6f7f9; border:1px solid #e3e8ee; border-left:3px solid #C9A24D; padding:14px 16px; margin:0 0 20px;">
+<!-- CTA -->
+<tr><td style="padding:12px 28px 8px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f7f9; border:1px solid #dfe4e9; border-left:3px solid #C9A24D;">
+<tr><td style="padding:16px 20px 6px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.6; color:#1f2732;">
 <p style="margin:0;">Would it be useful to see the full worked example? I can walk you through it and compare it with your current approach in 20 minutes.</p>
-</div>
+</td></tr>
+<tr><td style="padding:0 20px 16px; font-family:Helvetica, Arial, sans-serif; font-size:13px; color:#586776;">Or simply reply to this email.</td></tr>
+</table>
+</td></tr>
 
-<p style="margin:0 0 4px;">Best,</p>
-<p style="margin:0 0 24px;"><strong>Dan Skimin</strong><br>
-Co-founder, ETI360<br>
-<a href="https://www.eti360.com/?utm_source=email&amp;utm_campaign=intro&amp;utm_content=signature" style="color:#0d3558;">www.eti360.com</a></p>
+<!-- Signature -->
+<tr><td style="padding:20px 28px 8px;">
+<table role="presentation" cellpadding="0" cellspacing="0"><tr>
+<td style="border-top:2px solid #C9A24D; padding:14px 0 0;">
+<p style="margin:0 0 2px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; color:#1f2732;">Best,</p>
+<p style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:17px; font-weight:bold; color:#0d3558;">Dan Skimin</p>
+<p style="margin:0 0 4px; font-family:Helvetica, Arial, sans-serif; font-size:13px; color:#586776;">Co-founder, ETI360</p>
+<p style="margin:0; font-family:Helvetica, Arial, sans-serif; font-size:13px;"><a href="https://www.eti360.com/?utm_source=email&amp;utm_campaign=intro&amp;utm_content=signature" style="color:#0d3558;">www.eti360.com</a></p>
+</td>
+</tr></table>
+</td></tr>
 
-<p style="margin:0 0 6px; font-size:12.5px; color:#586776;">The page shown is from our reference school, Harborview International School. It is fictitious by design, so no real school's documents are ever shown. We do not certify trips and we do not sell insurance. The decision stays with the school.</p>
-<p style="margin:0 0 6px; font-size:13px; color:#586776;">If this is not for you, reply "no thanks" and I will leave it there.</p>
-<p style="margin:0; font-size:12px; color:#8592a3;">ETI360 PTE. LTD. · 1010 Dover Road, #01-360V, Singapore 139658 · UEN 202302514C</p>
+<!-- Small print -->
+<tr><td style="padding:18px 28px 22px; border-top:1px solid #eef1f4;">
+<p style="margin:0 0 8px; font-family:Helvetica, Arial, sans-serif; font-size:11.5px; line-height:1.55; color:#8592a3;">The page shown is from our reference school, Harborview International School. It is fictitious by design, so no real school's documents are ever shown. We do not certify trips and we do not sell insurance. The decision stays with the school.</p>
+<p style="margin:0 0 8px; font-family:Helvetica, Arial, sans-serif; font-size:12px; line-height:1.55; color:#586776;">If this is not for you, reply "no thanks" and I will leave it there.</p>
+<p style="margin:0; font-family:Helvetica, Arial, sans-serif; font-size:11px; color:#8592a3;">ETI360 PTE. LTD. &middot; 1010 Dover Road, #01-360V, Singapore 139658 &middot; UEN 202302514C</p>
+</td></tr>
 
-</div>
-</div>
+</table>
+
+</td></tr></table>
 </body>
 </html>
