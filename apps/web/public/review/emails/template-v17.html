@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consistent oversight of every school trip</title>
 <!--
-  TEMPLATE v17.2, 2026-09-03 PM: Dan — "I want images and our logo in the
+  TEMPLATE v17.2a, 2026-09-03 PM: letterhead masthead (logo left, gold brand
+  line right — text renders even with images off) and INLINE-ATTACHMENT rule:
+  Gmail compose and image-blocking recipients do not reliably load hosted
+  images, so at DRAFTING TIME (G42) the logo and the featured artifact are
+  attached inline and referenced as {logo}=cid:logo-white.png and
+  {image}=cid:<artifact filename>. This browser-preview file may fill the
+  slots with hosted URLs; real drafts always embed.
+  v17.2, 2026-09-03 PM: Dan — "I want images and our logo in the
   email. The version B and C from our earlier work." The B/C visual chassis
   returns around the UNCHANGED v17.1 copy: navy masthead (REAL logo file
   per the logo law — logo-white.png, never styled text), 3px gold rule,
@@ -41,9 +48,10 @@
 <div style="max-width:600px; margin:0 auto; background-color:#ffffff;">
 
 <!-- Masthead: real logo file on navy, gold rule (logo law: never styled text) -->
-<div style="background-color:#0d3558; padding:18px 24px; border-bottom:3px solid #C9A24D;">
-<a href="https://www.eti360.com/?utm_source=email&amp;utm_campaign=intro&amp;utm_content=signature" style="text-decoration:none;"><img src="https://www.eti360.com/email/logo-white.png" alt="ETI360" height="30" style="height:30px; width:auto; display:block;"></a>
-</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0d3558; border-bottom:3px solid #C9A24D;"><tr>
+<td style="padding:18px 24px;"><a href="https://www.eti360.com/?utm_source=email&amp;utm_campaign=intro&amp;utm_content=signature" style="text-decoration:none;"><img src="/email/logo-white.png" alt="ETI360" height="30" style="height:30px; width:auto; display:block;"></a></td>
+<td style="padding:18px 24px; text-align:right; font-family:Helvetica, Arial, sans-serif; font-size:13px; letter-spacing:1.5px; color:#C9A24D; text-transform:uppercase; white-space:nowrap;">Risk intelligence for school trips</td>
+</tr></table>
 
 <div style="padding:28px 24px; font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.55; color:#1f2732;">
 
