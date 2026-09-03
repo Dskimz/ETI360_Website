@@ -83,7 +83,7 @@ const data: SolutionReportData = {
   secondaryArtifact: {
     src: "/Claude/Questions/assets/student-journey-overview.png",
     width: 1920,
-    height: 2716,
+    height: 2322,
     alt: "ETI360 Student Journey Guide overview page showing the whole trip on one map, trip facts, and the learning themes the trip is built around",
     caption:
       "The opening page: the whole journey on one map, with the themes the trip is built around. A Harborview demonstration trip.",
