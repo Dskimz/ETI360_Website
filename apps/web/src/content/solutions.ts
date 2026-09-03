@@ -44,6 +44,15 @@ export const reportCatalog = {
     image: "/Claude/Questions/assets/student-journey-day.png",
     imageAlt: "ETI360 Student Journey Guide day page with map, activity cards and an hour-by-hour view of the day",
   },
+  fieldTrips: {
+    slug: "field-trips",
+    name: "Field Trip Register",
+    question: "Do you know every field trip your school will run this year?",
+    summary: "A year of one-day trips laid out as one set, so the preparation happens once rather than trip by trip.",
+    href: "/for-schools/field-trips",
+    image: "/Claude/Questions/assets/field-trip-register.png",
+    imageAlt: "ETI360 Field Trip Register listing a term of one-day field trips with dates, venues and times",
+  },
   standardDocumentation: {
     slug: "standard-documentation",
     name: "Standard Trip Documentation",
