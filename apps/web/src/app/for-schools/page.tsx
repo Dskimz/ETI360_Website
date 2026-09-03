@@ -28,7 +28,7 @@ const crops: Record<string, { pos: string; zoom?: number }> = {
   "weather-brief": { pos: "left top", zoom: 2.3 },
   "medical-access": { pos: "left top", zoom: 2.4 },
   "student-journey": { pos: "center top" },
-  "field-trips": { pos: "center top", zoom: 1.3 },
+  "field-trips": { pos: "center top", zoom: 1.15 },
   "standard-documentation": { pos: "center top" },
   "duty-manager": { pos: "left top" },
   "incident-reporting": { pos: "left top" },

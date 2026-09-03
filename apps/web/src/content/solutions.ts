@@ -48,10 +48,10 @@ export const reportCatalog = {
     slug: "field-trips",
     name: "Field Trip Register",
     question: "Do you know every field trip your school will run this year?",
-    summary: "A year of one-day trips laid out as one set, so the preparation happens once rather than trip by trip.",
+    summary: "A year of one-day trips prepared as one set, each issuing its own parent letter with the day, the route and emergency access.",
     href: "/for-schools/field-trips",
-    image: "/Claude/Questions/assets/field-trip-register.png",
-    imageAlt: "ETI360 Field Trip Register listing a term of one-day field trips with dates, venues and times",
+    image: "/Claude/Questions/assets/field-trip-parent-letter.png",
+    imageAlt: "A field trip parent information letter carrying the day hour by hour, a route map from school and a map to the nearest emergency department",
   },
   standardDocumentation: {
     slug: "standard-documentation",
