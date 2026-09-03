@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
-import { reportList } from "@/content/solutions";
+import { relatedTier2, reportList, tier3Solutions } from "@/content/solutions";
 import styles from "./report.module.css";
 
 type Artifact = {
@@ -58,6 +58,8 @@ export type SolutionReportData = {
 };
 
 export function SolutionReport({ data }: { data: SolutionReportData }) {
+  const currentSolution = reportList.find((r) => r.slug === data.slug);
+  const related = relatedTier2[data.slug] ?? [];
   const heroStyle = {
     "--report-hero": `url("${data.heroImage}")`,
   } as CSSProperties;
@@ -206,17 +208,52 @@ export function SolutionReport({ data }: { data: SolutionReportData }) {
             <h2>{data.widerTitle}</h2>
             <p>{data.widerCopy}</p>
           </div>
-          <div className={styles.questionList}>
-            {reportList.map((report) => (
-              <a
-                key={report.href}
-                aria-current={report.href.endsWith(data.slug) ? "page" : undefined}
-                href={report.href}
-              >
-                {report.name}
+          <div className={styles.tierCards}>
+            <div className={`${styles.tierCard} ${styles.tier1}`}>
+              <p className={styles.tierEyebrow}>Tier One &middot; Annual</p>
+              <p className={styles.tierName}>Organizational Baseline</p>
+              <div className={styles.tierLinks}>
+                <a href="/framework#tier1">Organizational Baseline Evaluation</a>
+              </div>
+            </div>
+            <div className={`${styles.tierCard} ${styles.tier2}`}>
+              <p className={styles.tierEyebrow}>Tier Two &middot; Every trip</p>
+              <p className={styles.tierName}>Trip Risk Review</p>
+              <div className={styles.tierLinks}>
+                {currentSolution?.tier === 2 ? (
+                  <span className={styles.herePage} aria-current="page">
+                    {currentSolution.name}
+                    <span className={styles.hereTag}>This page</span>
+                  </span>
+                ) : null}
+                {related.map((r) => (
+                  <a key={r.href} href={r.href}>{r.name}</a>
+                ))}
+              </div>
+              <a className={styles.allLink} href="/for-schools">
+                All Tier 2 solutions &rarr;
               </a>
-            ))}
+            </div>
+            <div className={`${styles.tierCard} ${styles.tier3}`}>
+              <p className={styles.tierEyebrow}>Tier Three &middot; During and after</p>
+              <p className={styles.tierName}>Dynamic Risk Operations</p>
+              <div className={styles.tierLinks}>
+                {tier3Solutions.map((r) =>
+                  r.slug === data.slug ? (
+                    <span key={r.href} className={styles.herePage} aria-current="page">
+                      {r.name}
+                      <span className={styles.hereTag}>This page</span>
+                    </span>
+                  ) : (
+                    <a key={r.href} href={r.href}>{r.name}</a>
+                  ),
+                )}
+              </div>
+            </div>
           </div>
+        </div>
+        <div className={styles.frameworkFoot}>
+          <a href="/framework">See the full framework &rarr;</a>
         </div>
       </section>
 

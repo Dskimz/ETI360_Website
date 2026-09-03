@@ -1,6 +1,7 @@
 export const reportCatalog = {
   routeIntelligence: {
     slug: "route-intelligence",
+    tier: 2,
     name: "Route Intelligence",
     question: "Do you know the route, distance, elevation, and terrain for every routed activity?",
     summary: "Map, terrain, elevation, waypoints and relevant access information in one route record.",
@@ -10,6 +11,7 @@ export const reportCatalog = {
   },
   locationTimeline: {
     slug: "location-timeline",
+    tier: 2,
     name: "Calendar + Timeline",
     question: "Do you know the scheduled location of every trip group, on every trip?",
     summary: "One structured itinerary presented as a detailed calendar and a continuous trip timeline.",
@@ -19,6 +21,7 @@ export const reportCatalog = {
   },
   weatherBrief: {
     slug: "weather-brief",
+    tier: 2,
     name: "Weather Brief",
     question: "Have historical seasonal conditions been reviewed against each location and date in the itinerary?",
     summary: "Historical climate context connected to preparation and adjustable risk information.",
@@ -28,6 +31,7 @@ export const reportCatalog = {
   },
   medicalAccess: {
     slug: "medical-access",
+    tier: 2,
     name: "Medical Access",
     question: "Can your team see the medical facilities and travel times connected to each planned location?",
     summary: "Verified facility details and estimated access information connected to the actual itinerary.",
@@ -37,6 +41,7 @@ export const reportCatalog = {
   },
   studentJourney: {
     slug: "student-journey",
+    tier: 2,
     name: "Student Journey Guide",
     question: "Is the educational purpose of each trip connected to its daily activities?",
     summary: "The learning purpose, the named activities and the shape of each day in one student-facing guide.",
@@ -46,6 +51,7 @@ export const reportCatalog = {
   },
   fieldTrips: {
     slug: "field-trips",
+    tier: 2,
     name: "Field Trip Register",
     question: "Do you know every field trip your school will run this year?",
     summary: "A year of one-day trips prepared as one set, each issuing its own parent letter with the day, the route and emergency access.",
@@ -55,6 +61,7 @@ export const reportCatalog = {
   },
   standardDocumentation: {
     slug: "standard-documentation",
+    tier: 2,
     name: "Standard Trip Documentation",
     question: "Do all of your field trips use the same documentation format?",
     summary: "A consistent structure across different trips, generated from one trip-specific record.",
@@ -64,6 +71,7 @@ export const reportCatalog = {
   },
   dutyManager: {
     slug: "duty-manager",
+    tier: 3,
     name: "Duty Manager Dashboard",
     question: "Can your duty manager see where every traveling group is scheduled to be across all active trips?",
     summary: "Trip context with calls, messages, check-ins and follow-up tracked in one operating view.",
@@ -73,6 +81,7 @@ export const reportCatalog = {
   },
   incidentReporting: {
     slug: "incident-reporting",
+    tier: 3,
     name: "Incident Reporting",
     question: "Can your duty team log an incident, track its status, and preserve the full record in one place?",
     summary: "Context, communications, actions, status and retained documentation in one record.",
@@ -83,3 +92,35 @@ export const reportCatalog = {
 } as const;
 
 export const reportList = Object.values(reportCatalog);
+
+export const tier3Solutions = reportList.filter((r) => r.tier === 3);
+
+// The three Tier 2 links each solution page shows in its wider-system strip.
+// Curated per page (3 max, Tier 2 only, never the page itself); keyed by slug.
+const c = reportCatalog;
+export const relatedTier2: Record<string, ReadonlyArray<(typeof reportList)[number]>> = {
+  "route-intelligence": [c.weatherBrief, c.medicalAccess, c.locationTimeline],
+  "location-timeline": [c.standardDocumentation, c.routeIntelligence, c.weatherBrief],
+  "weather-brief": [c.routeIntelligence, c.locationTimeline, c.medicalAccess],
+  "medical-access": [c.routeIntelligence, c.locationTimeline, c.fieldTrips],
+  "student-journey": [c.locationTimeline, c.standardDocumentation, c.routeIntelligence],
+  "field-trips": [c.routeIntelligence, c.weatherBrief, c.medicalAccess],
+  "standard-documentation": [c.locationTimeline, c.fieldTrips, c.routeIntelligence],
+  "duty-manager": [c.locationTimeline, c.medicalAccess, c.routeIntelligence],
+  "incident-reporting": [c.standardDocumentation, c.medicalAccess, c.locationTimeline],
+};
+
+// Build-time guards: a new catalog entry must appear here, and related links
+// must be other pages' Tier 2 entries.
+for (const entry of reportList) {
+  if (!(entry.slug in relatedTier2)) {
+    throw new Error(`relatedTier2 is missing an entry for "${entry.slug}"`);
+  }
+}
+for (const [slug, related] of Object.entries(relatedTier2)) {
+  for (const r of related) {
+    if (r.tier !== 2 || r.slug === slug) {
+      throw new Error(`relatedTier2["${slug}"] must list other Tier 2 solutions only`);
+    }
+  }
+}
