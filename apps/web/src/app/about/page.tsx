@@ -49,16 +49,6 @@ export default function AboutPage() {
             The firm has built infrastructure to support its consulting work &mdash; structured
             documentation pipelines, intelligence layers maintaining current information on
             destinations and providers, scenario testing capabilities, and document production.
-            That infrastructure is what keeps the work consistent across school trip
-            portfolios and provider operations.
-          </p>
-
-          <h2>Origin</h2>
-          <p>
-            As trip portfolios have grown more complex and the standards governing
-            them have become more rigorous, trip governance has become a specialist
-            discipline in its own right. ETI360 exists to do that work alongside
-            schools and providers.
           </p>
         </div>
       </section>

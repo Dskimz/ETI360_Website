@@ -49,7 +49,7 @@ const groups = [
   {
     label: "Understand the trip",
     title: "See the trip as time, place, movement and conditions.",
-    copy: "Where the group is, how it moves, the conditions it will meet, and the medical access around it—read from one structured itinerary, not from disconnected source documents.",
+    copy: "Read from one structured itinerary, not from disconnected source documents.",
     items: [
       reportCatalog.locationTimeline,
       reportCatalog.routeIntelligence,
@@ -60,7 +60,7 @@ const groups = [
   {
     label: "Connect purpose to the day",
     title: "Carry the trip's educational intent through to the day it belongs to.",
-    copy: "The themes and objectives set when a trip is proposed travel with the group—each named activity carrying its purpose, its place on the day's map, and its hour.",
+    copy: "Each named activity carries its purpose, its place on the day's map, and its hour.",
     items: [reportCatalog.studentJourney],
   },
   {
@@ -163,7 +163,7 @@ export default function ForSchoolsPage() {
           <div>
             <p>
               A revised date, hotel, transport movement, route or activity can affect several documents.
-              ETI360 updates the confirmed source information, refreshes the connected outputs and rechecks
+              ETI360 updates the confirmed source information and rechecks
               information that depends on the changed plan.
             </p>
             <Link href="/for-providers">See how this supports trip providers →</Link>

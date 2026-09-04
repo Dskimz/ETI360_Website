@@ -1,25 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DocRow, TierBand } from "../components/DocShowcase";
-import { schoolDocs } from "../components/docLibrary";
+import { reportList } from "@/content/solutions";
 
 export const metadata: Metadata = {
   title: "ETI360 — Risk intelligence for school trips",
   description:
-    "ETI360’s 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
+    "The problems schools bring us and the documents that answer them: real rendered pages from a fully worked example, each opening as a complete PDF.",
   alternates: { canonical: "/" },
   openGraph: {
     images: ["/marketing/og-default.png"],
     title: "ETI360 — Risk intelligence for school trips",
     description:
-      "ETI360’s 3-Tier Risk Framework and the documents it produces: real rendered pages from the Organizational Baseline to the Post-Trip Feedback Loop, each opening as a complete PDF.",
+      "The problems schools bring us and the documents that answer them: real rendered pages from a fully worked example, each opening as a complete PDF.",
     type: "website",
   },
 };
-
-const featured = ["route-intelligence", "risk-assessment", "duty-manager-dashboard"]
-  .map((anchor) => schoolDocs.find((d) => d.anchor === anchor)!)
-  .map((d) => ({ ...d, anchor: `featured-${d.anchor}` }));
 
 export default function HomePage() {
   return (
@@ -57,70 +52,34 @@ export default function HomePage() {
             itineraries, provider documents, dates, routes &mdash; into the decision-ready
             evidence schools need.
           </p>
-          <p className="section-lead">
-            To help with this, we developed the 3-Tier Risk Framework.
-          </p>
         </div>
       </section>
 
-      <section id="framework" className="about-strip tight">
+      <section id="problems" className="about-strip">
         <div className="container">
-          <p className="label ui">How we do it</p>
+          <p className="label ui">The problems we solve</p>
           <h2 className="section-heading section-heading-lg rule-gold">
-            ETI360&rsquo;s 3-Tier Risk Framework.
+            The questions schools bring us.
           </h2>
-        </div>
-      </section>
-      <TierBand
-        n={1}
-        eyebrow="Tier One · Annual"
-        name="Organizational Baseline"
-        desc="Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten operational capability areas."
-      />
-      <TierBand
-        n={2}
-        eyebrow="Tier Two · Every trip"
-        name="Trip Risk Review"
-        desc="What leadership sees before a trip is approved: a consistent set of documents for review and decision, from the trip overview to the information parents receive."
-      />
-      <TierBand
-        n={3}
-        eyebrow="Tier Three · During and after"
-        name="Dynamic Risk Operations"
-        desc="How the school stays connected while a group travels: the working views for the days away, and the record the trip carries home into next year's planning."
-      />
-      <section className="about-strip tight">
-        <div className="container">
+          <p className="section-lead">
+            Each opens as a worked answer: the problem, a real example from a fully
+            worked demonstration school, and the boundaries of what it does.
+          </p>
+          <div className="problem-grid">
+            {reportList.map((r) => (
+              <Link key={r.href} href={r.href} className="problem-card">
+                <p className="problem-question">{r.question}</p>
+                <p className="problem-name">{r.name} &rarr;</p>
+              </Link>
+            ))}
+          </div>
           <p className="bridge-line ui">
-            <Link href="/framework" className="cta-link ui">
-              How the framework works &rarr;
+            <Link href="/solutions" className="cta-link ui">
+              All solutions, tier by tier &rarr;
             </Link>
-          </p>
-        </div>
-      </section>
-
-      <section id="work" className="about-strip">
-        <div className="container">
-          <p className="label ui">The work</p>
-          <h2 className="section-heading section-heading-lg rule-gold">
-            What a school receives.
-          </h2>
-          <p className="section-lead">
-            Real rendered pages from our reference school, Harborview
-            International School &mdash; fictitious by design, so every page can
-            be shown in full &mdash; no real school&rsquo;s documents are ever shown. The documents open as complete PDFs; the live
-            operations screens are shown as working views.
-          </p>
-        </div>
-        <div className="doc-rows">
-          {featured.map((e, i) => (
-            <DocRow key={e.anchor} e={e} eager={i === 0} />
-          ))}
-        </div>
-        <div className="container">
-          <p className="bridge-line ui">
-            <Link href="/framework#tier1" className="cta-link ui">
-              The full library, tier by tier &rarr;
+            {"  "}
+            <Link href="/framework" className="cta-link ui">
+              How the 3-Tier Risk Framework organizes them &rarr;
             </Link>
           </p>
         </div>

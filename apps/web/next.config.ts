@@ -42,15 +42,9 @@ const nextConfig: NextConfig = {
         destination: "/for-schools",
         permanent: false,
       },
-      {
-        // The solutions overview merged into For Schools (Dan, 2026-09-01):
-        // capabilities first, the openable document showcase behind them.
-        // The alias keeps /solutions resolving; not permanent while the
-        // information architecture is still settling.
-        source: "/solutions",
-        destination: "/for-schools",
-        permanent: false,
-      },
+      // The /solutions → /for-schools alias (Sep 1 merge) was retired on
+      // 2026-09-04: /solutions is a real page again — the tier-organized
+      // index of every solution (Dan's instruction).
       {
         // Two early essays built on the retired stage taxonomy (Dan,
         // 2026-08-04: "Retire"). Redirect to the framework story.

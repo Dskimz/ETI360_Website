@@ -1600,3 +1600,12 @@ a.doc-marquee-item:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
   cursor: pointer;
 }
 .doc-marquee.is-paused .doc-marquee-track { animation-play-state: paused; }
+
+/* Homepage problems grid */
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 34px 0 30px; }
+.problem-card { display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 22px 24px; background: #fff; border: 1px solid var(--hairline); text-decoration: none; }
+.problem-card:hover { border-color: var(--navy); text-decoration: none; }
+.problem-question { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 18.5px; font-weight: 600; line-height: 1.35; color: var(--navy); letter-spacing: -0.01em; }
+.problem-name { margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--gold-dark); }
+@media (max-width: 900px) { .problem-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .problem-grid { grid-template-columns: 1fr; } }

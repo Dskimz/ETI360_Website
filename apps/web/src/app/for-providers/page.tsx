@@ -24,7 +24,7 @@ const tier1: DocEntry[] = [
     stage: "T1 · Your organization",
     name: "Organizational Baseline Evaluation",
     reader: "School risk committees · Your leadership",
-    desc: "The same ten-area review schools receive, applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure, read against the ETI360 Operational Capability Framework and refreshed annually — your standing documented in the same form schools use for their own baseline.",
+    desc: "The ten areas applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure.",
     image: {
       src: "/email/spread-partner-baseline-v2.png",
       alt: "Organizational Baseline Evaluation applied to a trip provider: each of ten areas marked at standard or progressing",
@@ -39,7 +39,7 @@ const tier2: DocEntry[] = [
     stage: "T2 · The first read",
     name: "Trip Overview",
     reader: "Head · Approving committee",
-    desc: "Your program on one page: dates, group, and logistics at a glance — the first read for the school's leadership before the detail.",
+    desc: "Your program on one page: dates, group, and logistics at a glance.",
     image: {
       src: "/email/page-overview.png",
       alt: "Trip Overview one-pager for the Cherry Blossom Tokyo sample trip",
@@ -51,7 +51,7 @@ const tier2: DocEntry[] = [
     stage: "T2 · The operational record",
     name: "Itinerary Report",
     reader: "Coordinator · Trip staff",
-    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included — the record each proposal is adjusted from.",
+    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks — the record each proposal is adjusted from.",
     image: {
       src: "/showcase/pages/02-1-calendar-view/2.png",
       alt: "Itinerary Report calendar view, page two of the Cherry Blossom Tokyo sample trip: days five through eight as hour-by-hour blocks covering activities, meals, transport, and accommodation",
@@ -75,7 +75,7 @@ const tier2: DocEntry[] = [
     stage: "T2 · For families",
     name: "Parent Itinerary",
     reader: "Parents",
-    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know — the document that gets parents ready for the trip.",
+    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know.",
     image: {
       src: "/email/card-parent.png",
       alt: "Parent Itinerary day pages with photographs and day-by-day plans",
@@ -99,7 +99,7 @@ const tier2: DocEntry[] = [
     stage: "T2 · Rehearsal",
     name: "Duty Manager Simulation",
     reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions practiced in advance.",
+    desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions.",
     image: {
       src: "/email/screen-simulation.png",
       alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
@@ -115,7 +115,7 @@ const tier2More: DocEntry[] = [
     stage: "T2 · Conditions",
     name: "Weather Brief",
     reader: "Coordinator · Trip staff",
-    desc: "Month-specific conditions for the destination and dates, built on fifteen years of historical data — rebuilt for the travel month each time a proposal moves to new dates.",
+    desc: "Month-specific conditions for the destination and dates, built on fifteen years of historical data.",
     image: {
       src: "/showcase/pages/01-1-weather-brief-sydney/1.png",
       alt: "Weather Brief for a March trip window: fifteen-year temperature overview, daily outlook, and planning notes",
@@ -142,7 +142,7 @@ const tier3: DocEntry[] = [
     stage: "T3 · During the trip",
     name: "Duty Manager Dashboard",
     reader: "The school's or provider's own duty manager",
-    desc: "The working view while groups travel: trip context, location, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure. Operated by the school's or the provider's own duty manager, never by ETI360.",
+    desc: "The working view while groups travel: trip context, scheduled locations, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure. Operated by the school's or the provider's own duty manager, never by ETI360.",
     image: {
       src: "/Claude/Questions/assets/scheduled-group-locations.png",
       alt: "The Duty Manager Dashboard with a trip open: six current trips, trip context, the scheduled location on the map, today's schedule, and messages",
@@ -177,8 +177,7 @@ export default function ForProvidersPage() {
           <p className="lead">
             ETI360 turns your program information &mdash; itineraries, routes,
             accommodation, activity detail &mdash; into the documentation
-            schools review before they book. Documented once, a program becomes
-            a pack; each new proposal is an adjustment, not a rebuild.
+            schools review before they book.
           </p>
 
           <h2>The problems this solves</h2>
@@ -229,7 +228,7 @@ export default function ForProvidersPage() {
           n={1}
           eyebrow="Tier One · Annual"
           name="Organizational Baseline"
-          desc="A documented review of your practices — the same ten-area review applied to schools and to trip providers, read against the ETI360 Operational Capability Framework, with your documentation recorded in order and refreshed annually."
+          desc="The same ten-area review applied to schools and to trip providers, read against the ETI360 Operational Capability Framework."
         />
         <div className="doc-rows">
           {tier1.map((e) => (

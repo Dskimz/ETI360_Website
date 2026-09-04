@@ -36,10 +36,8 @@ export default function FrameworkPage() {
           <p className="label label-light ui">The Framework</p>
           <h1>Three questions every school answers about travel. One framework.</h1>
           <p className="subtitle">
-            Where does our travel governance stand? Is this trip ready for approval? Do we know
-            what&rsquo;s happening while they&rsquo;re away? Each tier of the framework answers one of
-            them &mdash; and every answer is a document you can open. What follows is the framework
-            shown as what a school actually receives.
+            Each tier answers one of them &mdash; and every answer is a document
+            you can open.
           </p>
         </div>
       </section>
@@ -51,10 +49,8 @@ export default function FrameworkPage() {
             how the days will run, what families should know, what has been
             assessed and what stands ready, who watches while the group travels,
             and what next year&rsquo;s planning learns from this one. ETI360
-            prepares a document for each of those decisions, built from your
-            trip&rsquo;s own data, so that each one can be discussed with the
-            evidence in front of it. Open any thumbnail to read the document
-            itself.
+            prepares a document for each of those decisions. Open any thumbnail
+            to read the document itself.
           </p>
           <p className="artifact-reader ui">
             The documents shown are from a fully worked example for Harborview
@@ -71,7 +67,7 @@ export default function FrameworkPage() {
           id="tier1"
           eyebrow="Tier One · Annual"
           name="Organizational Baseline"
-          desc="Where does our travel governance stand? Where the school and its providers stand before the year's trips begin: one documented review of readiness — policies, roles, evidence, and standing arrangements across ten operational capability areas."
+          desc="Where does our travel governance stand? One documented review of where the school and its providers stand before the year's trips begin — policies, roles, evidence, and standing arrangements across ten operational capability areas."
         />
         <div className="doc-rows">
           {schoolTier1.map((e) => (
@@ -84,7 +80,7 @@ export default function FrameworkPage() {
           id="tier2"
           eyebrow="Tier Two · Every trip"
           name="Trip Risk Review"
-          desc="Is this trip ready for approval? What leadership sees before a trip is approved: a consistent set of documents for review and decision, from the trip overview to the information parents receive."
+          desc="Is this trip ready for approval? A consistent set of documents for leadership review, from the trip overview to the information parents receive."
         />
         <div className="doc-rows">
           {schoolTier2Featured.map((e) => (
@@ -101,7 +97,7 @@ export default function FrameworkPage() {
           id="tier3"
           eyebrow="Tier Three · During and after"
           name="Dynamic Risk Operations"
-          desc="Do we know what's happening while they're away? How the school stays connected while a group travels: the working views for the days away, and the record the trip carries home into next year's planning."
+          desc="Do we know what's happening while they're away? The working views for the days away, and the record the trip carries home into next year's planning."
         />
         <div className="doc-rows">
           {schoolTier3.map((e) => (

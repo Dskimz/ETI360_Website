@@ -132,7 +132,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
                   <a key={r.href} href={r.href}>{r.name}</a>
                 ))}
               </div>
-              <a className={styles.allLink} href="/for-schools">
+              <a className={styles.allLink} href="/solutions">
                 All Tier 2 solutions &rarr;
               </a>
             </div>
