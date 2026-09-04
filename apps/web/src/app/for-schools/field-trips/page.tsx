@@ -99,7 +99,7 @@ const data: SolutionReportData = {
     "A field trip prepared this way produces the same routes, historical conditions and medical access information as a two-week expedition, and appears in the same duty manager's view on the day it runs.",
   ctaTitle: "See a term of your own field trips in one register.",
   ctaCopy:
-    "Send us the field trips you have scheduled for one term. We will prepare their structured trip files at no cost, so you can judge the work using your own program.",
+    "A 20-minute conversation about the field trips you have scheduled for one term is enough to see how they read as one register, and whether the approach fits your program.",
 };
 
 export default function FieldTripsPage() {
