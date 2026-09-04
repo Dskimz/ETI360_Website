@@ -101,7 +101,7 @@ const c = reportCatalog;
 export const relatedTier2: Record<string, ReadonlyArray<(typeof reportList)[number]>> = {
   "route-intelligence": [c.weatherBrief, c.medicalAccess, c.locationTimeline],
   "location-timeline": [c.standardDocumentation, c.routeIntelligence, c.weatherBrief],
-  "weather-brief": [c.routeIntelligence, c.locationTimeline, c.medicalAccess],
+  "weather-brief": [c.routeIntelligence, c.locationTimeline, c.fieldTrips],
   "medical-access": [c.routeIntelligence, c.locationTimeline, c.fieldTrips],
   "student-journey": [c.locationTimeline, c.standardDocumentation, c.routeIntelligence],
   "field-trips": [c.routeIntelligence, c.weatherBrief, c.medicalAccess],
