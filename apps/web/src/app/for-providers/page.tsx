@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const tier1: DocEntry[] = [
   {
     anchor: "baseline",
-    pdf: "/docs/organizational-baseline-evaluation-v2.pdf",
+    pdf: "/docs/organizational-baseline-evaluation-v3.pdf",
     stage: "T1 · Your organization",
     name: "Organizational Baseline Evaluation",
     reader: "School risk committees · Your leadership",
