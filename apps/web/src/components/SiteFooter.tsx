@@ -29,6 +29,10 @@ export function SiteFooter() {
             The documents and working systems that support school travel
             decisions.
           </p>
+          <p className="site-footer-desc">
+            ETI360 PTE. LTD. &middot; 1010 Dover Road, #01-360V, Singapore 139658
+            &middot; UEN 202302514C
+          </p>
         </div>
         <div className="site-footer-cols">
           <div className="site-footer-col">
