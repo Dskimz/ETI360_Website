@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SolutionReport, type SolutionReportData } from "@/components/SolutionReport";
+import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
 
 const report = reportCatalog.incidentReporting;
@@ -11,71 +11,50 @@ export const metadata: Metadata = {
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
 
-const data: SolutionReportData = {
-  slug: report.slug,
-  eyebrow: report.name,
-  question: report.question,
-  lead: "ETI360 brings the incident details, communications, recorded actions, status and follow-up into one time-stamped record operated by the school’s own team.",
-  answerTitle: "The Integrated Incident Record",
-  answerBody: "One structured record that connects the live operating view to the documentation the school retains.",
-  heroImage: "/marketing/hero/trip-approval.jpg",
-  planningLabel: "The system question",
-  problemTitle: "Incident reporting works best when the record is part of the operating system.",
-  problemCopy: [
-    "An incident may generate an initial report, calls, messages, actions, status changes and follow-up items. Each is useful on its own; together they form the complete record.",
-    "ETI360 keeps those elements connected to the trip and to one another. The school’s team can work from the same context during the event and retain a structured account for its own review afterwards.",
+const data: SolutionEvidenceData = {
+  slug: "incident-reporting",
+  question: "Can your duty team log an incident and keep the full record in one place?",
+  heroLine: "The integrated incident record, run by the school's own duty team inside the Duty Manager Dashboard.",
+  editorial: [
+    "An incident rarely stays one document. A first report becomes calls, messages, decisions, status changes, and follow-up items, spread across phones, notebooks, and inboxes. Afterward, someone reconstructs the sequence from whatever each person kept.",
+    "The duty team opens the incident, works it, and closes it as the situation runs. That working record — not a write-up assembled afterward — is the documentation the school keeps.",
   ],
-  proofEyebrow: "One connected record",
-  proofTitle: "Details, actions, communications and status in one operating view.",
-  proofCopy: "The incident view keeps the current position, open items, recorded actions and latest communication together. Entries remain associated with the trip, the people involved and the school’s own follow-up process.",
-  stats: [
-    ["1 record", "Integrated view", "Trip and incident context"],
-    ["Time-stamped", "Activity log", "Updates in sequence"],
-    ["4 layers", "Working structure", "Context, comms, actions, timeline"],
-    ["School-led", "Decision making", "Operated by your own staff"],
+  spreadTitle: "A Harborview trip in Seoul, day three of eight",
+  plates: [
+    {
+      src: "/Claude/Questions/assets/incident-record.png",
+      width: 1200,
+      height: 1458,
+      alt: "ETI360 Duty Manager Dashboard trip view showing the day's schedule, an open incident, flags, and the chronological activity log for a fictitious Harborview trip in Seoul",
+      label: "Duty Manager Dashboard, trip view",
+      note: "One trip day mid-incident — the working screen as the duty team sees it.",
+    },
   ],
-  primaryArtifact: {
-    src: "/Claude/Questions/assets/incident-record.png",
-    width: 1148,
-    height: 785,
-    alt: "ETI360 incident view showing current status, flags, incident details and the latest communication in one record",
-    caption: "A demonstration incident record. The school, trip and people shown are fictitious; no real incident or student data is used.",
-  },
-  answersLabel: "What the integrated record contains",
-  answersTitle: "The system keeps each part of the record connected.",
-  answersCopy: "The value is not a single incident form. It is the continuity between the first entry, the operating activity that follows and the documentation retained after the trip.",
-  answers: [
-    { number: "01", title: "Context", body: "The incident stays connected to the trip, activity, location and people recorded by the school." },
-    { number: "02", title: "Communications", body: "Relevant calls, messages and updates can be captured in the same chronological record." },
-    { number: "03", title: "Actions", body: "Recorded actions and follow-up items remain visible with their status and timing." },
-    { number: "04", title: "Documentation", body: "The operating record supplies a consistent basis for incident and post-trip reporting." },
+  disclosure: "Harborview International School is fictitious by design; no real school, incident, or student data is shown.",
+  claims: [
+    {
+      lead: "One log",
+      body: "Messages, calls, and check-ins enter the record as time-stamped entries, in sequence, beside the incident they concern.",
+    },
+    {
+      lead: "Context stays attached",
+      body: "The incident opens inside the trip view, not a separate module; every entry keeps its link to the trip, activity, location, and people the school recorded.",
+    },
+    {
+      lead: "Nothing overwritten",
+      body: "Updates are added as new entries; status moves through open, monitored, escalated, and resolved.",
+    },
+    {
+      lead: "After the trip",
+      body: "Follow-up items and the finished record move into the post-trip file.",
+    },
   ],
-  detailEyebrow: "From operating view to retained record",
-  detailTitle: "The documentation develops as the school uses the system.",
-  detailCopy: "The trip team and duty manager do not need to reconstruct the sequence afterwards. Time-stamped entries create the source record from which the school’s incident documentation and follow-up review can be prepared.",
-  detailItems: [
-    ["Report", "The initial facts are entered in a consistent structure."],
-    ["Update", "New information is added without overwriting the earlier record."],
-    ["Status", "Open, monitored, escalated and resolved states remain visible."],
-    ["Follow-up", "Actions and review items can carry into the post-trip file."],
-  ],
-  secondaryArtifact: {
-    src: "/showcase/pages/liveops/3.png",
-    width: 1273,
-    height: 1800,
-    alt: "ETI360 incident card showing context, communications, actions and timeline as four connected layers",
-    caption: "The incident card architecture: context, communications, actions and timeline in one school-operated system.",
-  },
-  scopeTitle: "For schools that want one record from report through review.",
-  scopeCopy: "The incident record sits within the same operating environment as the trip context, check-ins and communications. It can support the school’s procedures across active trips without changing who holds responsibility.",
-  boundaryTitle: "Scope boundary",
-  boundaryCopy: "ETI360 provides the system and structured record. It does not monitor incidents, direct the school’s response, make escalation decisions or replace emergency services. The school’s staff operate the system and retain authority.",
-  widerTitle: "Incident documentation is one part of live trip operations.",
-  widerCopy: "The Duty Manager Dashboard supplies the operating context and communication history. The incident record gives the school a focused structure when it chooses to open and manage an incident.",
+  boundary: "ETI360 provides the system and the structured record — it does not monitor incidents, direct the response, decide escalations, or stand in for emergency services.",
+  stripLine: "Incident reporting sits in Tier 3 Dynamic Risk Operations — the during-and-after tier.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the integrated incident record fits your program.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the incident record fits how your team already operates.",
 };
 
 export default function IncidentReportingPage() {
-  return <SolutionReport data={data} />;
+  return <SolutionEvidence data={data} />;
 }

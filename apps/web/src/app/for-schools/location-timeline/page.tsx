@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SolutionReport, type SolutionReportData } from "@/components/SolutionReport";
+import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
 
 const report = reportCatalog.locationTimeline;
@@ -11,71 +11,58 @@ export const metadata: Metadata = {
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
 
-const data: SolutionReportData = {
-  slug: report.slug,
-  eyebrow: report.name,
-  question: report.question,
-  lead: "ETI360 converts the itinerary into two connected views: a detailed calendar for reading each day and a continuous timeline for seeing the whole trip from departure to return.",
-  answerTitle: "Calendar + Timeline Views",
-  answerBody: "Two ways to read the same structured itinerary, both generated from one trip ledger.",
-  heroImage: "/marketing/hero/trip-approval.jpg",
-  planningLabel: "The planning question",
-  problemTitle: "A list of activities is not yet a continuous account of the trip.",
-  problemCopy: [
-    "Itineraries often describe the main events clearly while leaving transfers, breaks, free time and overnight periods in separate documents or implied between entries.",
-    "ETI360 structures every scheduled block in sequence, then presents it as both a day-by-day calendar and a whole-trip timeline. The coordinator, trip leader and duty manager can choose the view they need without reconciling different versions.",
+const data: SolutionEvidenceData = {
+  slug: "location-timeline",
+  question: "Where is every group meant to be, at every point in the trip?",
+  heroLine: "ETI360 structures the itinerary into a day-by-day calendar and a continuous whole-trip timeline.",
+  editorial: [
+    "Most itineraries name the main events clearly. Everything between them — the transfer, the unstructured hour, the night itself — sits in separate documents or is implied between entries, so a coordinator reading the plan holds a list of activities, not a continuous account of the trip.",
+    "ETI360 structures every scheduled block in sequence, covering all 24 hours of every day. One view carries the operating detail of each day; the other reads the whole journey across days, destinations, and accommodation changes. Coordinator, trip leader, and duty manager choose the scale they need, and a change to the trip record flows into both views at once.",
   ],
-  proofEyebrow: "A complete five-day view",
-  proofTitle: "One timeline shows the trip from airport arrival to departure gate.",
-  proofCopy: "Accommodation, activity, transit and meal or break periods are differentiated without breaking the sequence. Unscheduled time remains visible rather than disappearing into a gap.",
-  stats: [
-    ["5 days", "Continuous view", "Arrival through departure"],
-    ["2 views", "One itinerary", "Calendar and timeline"],
-    ["24 hrs", "Every day", "Overnights included"],
-    ["1 ledger", "Source record", "Used across the trip file"],
+  spreadTitle: "Harborview's five-day trip, from airport arrival to departure gate.",
+  plates: [
+    {
+      src: "/codex/MarketingCampaign/location-timeline.png",
+      width: 2291,
+      height: 1459,
+      alt: "ETI360 Location Timeline showing accommodation, activities, transit, and breaks across five days",
+      label: "Location Timeline",
+      note: "Every block color-coded by category — transit and downtime read as clearly as the headline activities.",
+    },
+    {
+      src: "/showcase/pages/02-1-calendar-view/2.png",
+      width: 1273,
+      height: 1800,
+      alt: "ETI360 Itinerary Report calendar view showing four days hour by hour with activities, meals, transport, free time, and accommodation",
+      label: "Calendar View",
+      note: "Four days expanded hour by hour — activities, meals, transport, free time, and lights-out in day columns.",
+    },
   ],
-  primaryArtifact: {
-    src: "/codex/MarketingCampaign/location-timeline.png",
-    width: 2291,
-    height: 1459,
-    alt: "ETI360 Location Timeline showing accommodation, activities, transit and breaks across five days",
-    caption: "A Harborview demonstration trip. Harborview International School is fictitious; no real school or student data is shown.",
-  },
-  answersLabel: "What the timeline answers",
-  answersTitle: "The same itinerary can be read at two useful scales.",
-  answersCopy: "The calendar carries the operating detail of each day. The timeline shows continuity across the trip. Both remain connected to the same source record.",
-  answers: [
-    { number: "01", title: "Calendar view", body: "Each day reads hour by hour, with activities, meals, movements, free time and overnight periods in place." },
-    { number: "02", title: "Timeline view", body: "The full journey reads continuously across days, destinations and accommodation changes." },
-    { number: "03", title: "Shared structure", body: "Both views use the same categories, times and locations from the trip ledger." },
-    { number: "04", title: "Simple updates", body: "A change to the trip record can flow into both views without rebuilding the itinerary twice." },
+  disclosure: "A Harborview demonstration trip. Harborview International School is fictitious by design; no real school or student data is shown.",
+  claims: [
+    {
+      lead: "Start, finish, place",
+      body: "Every block in both views carries a start, a finish, and a named location, so any hour of the trip has an answer.",
+    },
+    {
+      lead: "Follows the source",
+      body: "Detail comes from the itinerary the school and provider hold. The same structure serves a day trip, a residential program, or a multi-stage expedition.",
+    },
+    {
+      lead: "Confirmed by people",
+      body: "During travel, the school's own check-in and communication procedures confirm what is happening against the plan.",
+    },
+    {
+      lead: "Reused downstream",
+      body: "Routes, historical conditions, and the Duty Manager Dashboard draw on the same trip context, so the school is not reconciling different versions of the journey.",
+    },
   ],
-  detailEyebrow: "The calendar view",
-  detailTitle: "The timeline shows the trip. The calendar runs the day.",
-  detailCopy: "The calendar view expands the same structured itinerary into readable day columns. The trip team can see exact timings, movements, free periods, meals and accommodation without losing the wider sequence.",
-  detailItems: [
-    ["Activities", "Every scheduled program block has a start, finish and place."],
-    ["Movements", "Walking, coach, rail and air travel remain visible between activities."],
-    ["Unscheduled", "Free time and breaks are recorded as real blocks rather than gaps."],
-    ["Overnight", "The day continues through accommodation, lights-out and the next morning."],
-  ],
-  secondaryArtifact: {
-    src: "/showcase/pages/02-1-calendar-view/2.png",
-    width: 1273,
-    height: 1800,
-    alt: "ETI360 Itinerary Report calendar view showing four days hour by hour with activities, meals, transport, free time and accommodation",
-    caption: "Calendar view: the same trip ledger expanded into the operating detail for each day.",
-  },
-  scopeTitle: "For every trip with a scheduled itinerary.",
-  scopeCopy: "Calendar and Timeline views apply to day trips, residential programs, international travel and multi-stage expeditions. The level of detail follows the source itinerary the school and provider hold.",
-  boundaryTitle: "Scope boundary",
-  boundaryCopy: "The timeline records the planned location of the group. It is not live student tracking. During travel, the school’s own check-in and communication procedures confirm what is happening against the plan.",
-  widerTitle: "Location is one part of a complete trip file.",
-  widerCopy: "Routes, historical conditions and the duty manager’s operating view use the same trip context, so the school is not reconciling different versions of the journey.",
+  boundary: "The timeline records where each group is scheduled to be. It is not live student tracking.",
+  stripLine: "Two of the working views inside the Tier 2 Trip Risk Review.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether Calendar + Timeline views fits your program.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether these views fit your program.",
 };
 
 export default function LocationTimelinePage() {
-  return <SolutionReport data={data} />;
+  return <SolutionEvidence data={data} />;
 }

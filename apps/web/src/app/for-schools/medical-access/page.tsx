@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SolutionReport, type SolutionReportData } from "@/components/SolutionReport";
+import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
 
 const report = reportCatalog.medicalAccess;
@@ -11,71 +11,58 @@ export const metadata: Metadata = {
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
 
-const data: SolutionReportData = {
-  slug: report.slug,
-  eyebrow: report.name,
-  question: report.question,
-  lead: "ETI360 verifies facility information and connects it to the places in the itinerary, giving trip staff and the duty team one location-by-location reference.",
-  answerTitle: "The Medical Access Record",
-  answerBody: "Verified facility details, mapped against the actual trip plan with estimated access information.",
-  heroImage: "/marketing/hero/for-schools.jpg",
-  planningLabel: "The location question",
-  problemTitle: "Medical access becomes useful when it is connected to where the group will be.",
-  problemCopy: [
-    "A general destination hospital list does not show which facility relates to Tuesday’s activity, Thursday’s accommodation or a routed day outside the city center.",
-    "ETI360 organizes the information around the itinerary. Each planned location can carry a consistent facility reference, estimated access time and the operational details available from verified sources.",
+const data: SolutionEvidenceData = {
+  slug: "medical-access",
+  question: "Can your team see the medical facilities and travel times connected to each planned location?",
+  heroLine: "The Medical Access Record connects verified facility details and estimated access times to each planned location in the itinerary.",
+  editorial: [
+    "A destination hospital list answers the wrong question. It names facilities for the city in general, not for Tuesday's activity, Thursday's accommodation, or a day routed outside the center — the places where the group will actually be when someone needs the answer.",
+    "The record profiles each relevant facility in one repeatable format — address, operating detail, group suitability, emergency capability, accessibility, practical access — and files it against the accommodation, activity, day route, or remote stage it serves. Depth follows the trip and the information that can be relied on.",
   ],
-  proofEyebrow: "A location-based worked example",
-  proofTitle: "Facility information organized for the places the trip actually uses.",
-  proofCopy: "The record presents address and map access, operational profile, group suitability, emergency capability, accessibility and practical access information in one repeatable format.",
-  stats: [
-    ["3 facilities", "Worked example", "Presented consistently"],
-    ["24/7", "Operating detail", "Where verified"],
-    ["Location-led", "Trip context", "Connected to the itinerary"],
-    ["1 format", "Shared reference", "For trip and duty teams"],
+  spreadTitle: "Three facility profiles, and the day view that reads access against the schedule",
+  plates: [
+    {
+      src: "/Claude/Questions/assets/medical-access.png",
+      width: 994,
+      height: 1405,
+      alt: "ETI360 Medical Access Record profiling three Tokyo hospitals with addresses, map links, and operational detail",
+      label: "Medical Access Record",
+      note: "Each profile carries a direct map link and detail such as pediatric readiness and English-language treatment experience.",
+    },
+    {
+      src: "/showcase/pages/02-2-location-audit/4.png",
+      width: 1273,
+      height: 1800,
+      alt: "ETI360 Location Audit day view pairing six Tokyo itinerary stops with named hospitals and access times",
+      label: "Location Audit Day View",
+      note: "One Tokyo trip day: six stops, each paired with a named hospital and access minutes.",
+    },
   ],
-  primaryArtifact: {
-    src: "/Claude/Questions/assets/medical-access.png",
-    width: 994,
-    height: 1405,
-    alt: "ETI360 Medical Access record with verified facility profiles, addresses, QR links and operational evaluations",
-    caption: "A demonstration medical access record for the fictitious Harborview International School, using publicly available facility information. Facilities are verified and described, not recommended by ETI360.",
-  },
-  answersLabel: "What the record answers",
-  answersTitle: "The same practical questions are answered for each relevant facility.",
-  answersCopy: "A repeatable profile makes the information easier to compare and easier to use alongside the day, route or accommodation it supports.",
-  answers: [
-    { number: "01", title: "Which facility", body: "The facility is named with its address and a direct mapping reference." },
-    { number: "02", title: "From where", body: "The record connects the facility to the itinerary locations for which it is relevant." },
-    { number: "03", title: "How far", body: "Distance and estimated access information place the facility in practical context." },
-    { number: "04", title: "What is known", body: "Verified operating, capability and accessibility information is presented consistently." },
+  disclosure: "Demonstration artifacts for Harborview International School, fictitious by design — no real school's documents appear. Facility details are drawn from publicly available information.",
+  claims: [
+    {
+      lead: "Named, then verified",
+      body: "The school or trip provider names each facility; ETI360 verifies what is named. Operating detail appears in the record only where it could be confirmed.",
+    },
+    {
+      lead: "Estimates, not promises",
+      body: "Distance and access times are planning-context figures. The record cannot show current conditions — those are checked at the moment the information is used.",
+    },
+    {
+      lead: "Stated in minutes",
+      body: "Where a stop sits a long way from emergency care, the day view states it in minutes, visible before the group travels.",
+    },
+    {
+      lead: "One shared reference",
+      body: "The same record carries into staff and duty-manager documents, so the trip team and the duty team work from identical facility information.",
+    },
   ],
-  detailEyebrow: "The day-level view",
-  detailTitle: "The map connects facilities to the schedule, not only to the destination.",
-  detailCopy: "A Location Audit can show the planned stops, the time allocated to each and the facility reference associated with that part of the day. The team reads the access information in the context of the itinerary.",
-  detailItems: [
-    ["Locations", "The itinerary supplies the places that need to be considered."],
-    ["Facilities", "Relevant facility details are checked against available sources."],
-    ["Access", "Distance and estimated travel time are recorded for planning context."],
-    ["Handover", "The same reference can be included in staff and duty-manager documents."],
-  ],
-  secondaryArtifact: {
-    src: "/showcase/pages/02-2-location-audit/4.png",
-    width: 1273,
-    height: 1800,
-    alt: "ETI360 Location Audit mapping six Tokyo itinerary stops and their associated medical access information",
-    caption: "Location Audit: the day’s planned places, time allocation and associated facility access in one view.",
-  },
-  scopeTitle: "For itinerary locations where a verified reference adds practical value.",
-  scopeCopy: "Medical access can be documented for accommodations, activities, day routes, remote stages and other planned locations. The depth follows the trip and the reliable information available.",
-  boundaryTitle: "Scope boundary",
-  boundaryCopy: "ETI360 verifies and presents available facility information; it does not recommend providers, guarantee capacity or travel times, make clinical judgments or replace local emergency services. Current conditions must be checked when the information is used.",
-  widerTitle: "Medical access belongs beside the route and the itinerary.",
-  widerCopy: "The Location Timeline shows when the group is scheduled to be somewhere. Route Intelligence shows how it moves. The Medical Access Record adds the relevant facility context to those same places.",
+  boundary: "ETI360 never recommends a hospital or clinic, never guarantees capacity, and makes no clinical judgment.",
+  stripLine: "Location Timeline shows when, Route Intelligence shows how — medical access joins the same places.",
   ctaTitle: "Talk it through on your own trips.",
   ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Medical Access Record fits your program.",
 };
 
 export default function MedicalAccessPage() {
-  return <SolutionReport data={data} />;
+  return <SolutionEvidence data={data} />;
 }

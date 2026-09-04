@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SolutionReport, type SolutionReportData } from "@/components/SolutionReport";
+import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
 
 const report = reportCatalog.dutyManager;
@@ -11,71 +11,58 @@ export const metadata: Metadata = {
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
 
-const data: SolutionReportData = {
-  slug: report.slug,
-  eyebrow: report.name,
-  question: report.question,
-  lead: "ETI360 carries the school’s approved trip record into one operating view for the school’s own duty manager, with calls, check-ins, messages and updates tracked beside the trip context they relate to.",
-  answerTitle: "The Duty Manager Dashboard",
-  answerBody: "A working school-side view built from the context prepared before departure.",
-  heroImage: "/marketing/hero/emergency-docs.jpg",
-  planningLabel: "The operating question",
-  problemTitle: "The trip file should remain usable after the group departs.",
-  problemCopy: [
-    "A duty manager may need to move between the itinerary, contact list, location information, messages and incident notes while monitoring several groups. The difficulty is not a lack of documents; it is the lack of one operating view.",
-    "ETI360 brings the agreed trip context forward into the dashboard. The school’s duty manager operates it, records communications and updates, and follows the school’s own communication and escalation arrangements.",
+const data: SolutionEvidenceData = {
+  slug: "duty-manager",
+  question: "Can your duty manager see where every traveling group is scheduled to be?",
+  heroLine: "The Duty Manager Dashboard: one working view of every current trip.",
+  editorial: [
+    "While groups are away, the duty manager moves between the itinerary, the contact list, location information, messages, and incident notes — often for several trips at once. The documents all exist. What goes missing is the connection between them: a call comes in, and the context it concerns sits in another window.",
+    "The Duty Manager Dashboard keeps them together: communications are recorded against the trip they concern rather than accumulating in a side channel, and an incident entry opens from the same screen the itinerary and contacts already occupy.",
   ],
-  proofEyebrow: "The active-trip view",
-  proofTitle: "Six trips, with communications connected to the trip they belong to.",
-  proofCopy: "The dashboard keeps the trip list, selected trip context, location, check-ins, messages, contacts, calls, flags and incident entry in one interface. Communications remain part of the operating record rather than sitting in an unconnected side channel.",
-  stats: [
-    ["6 trips", "Portfolio view", "Active travel in one list"],
-    ["1 record", "Communications", "Calls, messages and check-ins"],
-    ["Time-stamped", "Operating log", "Updates in sequence"],
-    ["School-led", "Duty role", "Operated by your own staff"],
+  spreadTitle: "The dashboard staged mid-trip: six Harborview groups traveling at once",
+  plates: [
+    {
+      src: "/Claude/Questions/assets/scheduled-group-locations.png",
+      width: 1280,
+      height: 800,
+      alt: "ETI360 Duty Manager Dashboard showing six current trips, the selected trip's context and scheduled location, today's schedule, messages, and the next four hours across every trip",
+      label: "The Active-Trip View",
+      note: "Trip list beside one selected group: its context, today's schedule, and the message thread.",
+    },
+    {
+      src: "/Claude/Questions/assets/duty-overview.png",
+      width: 1280,
+      height: 551,
+      alt: "ETI360 Duty Manager Dashboard duty overview: students traveling, active trips, open incidents, active alerts, and overdue check-ins across every current trip",
+      label: "The Duty Overview",
+      note: "Students traveling, active trips, open incidents, alerts, and overdue check-ins — the numbers read first.",
+    },
   ],
-  primaryArtifact: {
-    src: "/Claude/Questions/assets/scheduled-group-locations.png",
-    width: 1280,
-    height: 800,
-    alt: "ETI360 Duty Manager Dashboard showing six current trips, the selected trip's context and scheduled location, today's schedule, messages, and the next four hours across every trip",
-    caption: "The ETI360 Duty Manager Dashboard. The examples are fictitious and contain no real school or student data.",
+  disclosure: "Product screenshots staged mid-trip with trips from Harborview International School, a school fictitious by design — no real school or student data appears.",
+  claims: [
+    {
+      lead: "Scheduled, not tracked",
+      body: "Each group's position is where its itinerary places it at that hour — the dashboard reads the plan, not a device signal.",
+    },
+    {
+      lead: "Next four hours",
+      body: "The band across the foot of the dashboard lists what every group is doing in the coming four hours.",
+    },
+    {
+      lead: "Time-stamped, then kept",
+      body: "What a screenshot cannot show: every entry is stamped with the moment it was made, and the record stays with the trip after the group returns.",
+    },
+  ],
+  boundary: "Operated by your school's or provider's own duty manager — ETI360 does not monitor trips on your behalf, make escalation decisions, or replace emergency services.",
+  promo: {
+    title: "Rehearse it before anyone travels",
+    body: "The dashboard is also the venue for the Duty Manager Simulation — a facilitated session working a staged situation on one of your real trips, inside this same view, before the group departs.",
   },
-  answersLabel: "How communications stay on the record",
-  answersTitle: "Each communication remains connected to the trip context.",
-  answersCopy: "The dashboard supports the school’s existing communication channels while creating one chronological view of what was received, recorded and followed up.",
-  answers: [
-    { number: "01", title: "Check-ins", body: "Routine confirmations are recorded against the active trip and its current operating context." },
-    { number: "02", title: "Messages", body: "Relevant messages and updates remain visible in the selected trip’s history." },
-    { number: "03", title: "Calls", body: "Call notes can be time-stamped and associated with the person, trip and subject." },
-    { number: "04", title: "Follow-up", body: "Flags, actions and subsequent communications build one chronological operating record." },
-  ],
-  detailEyebrow: "The record behind the screen",
-  detailTitle: "A communication is more useful when its context travels with it.",
-  detailCopy: "The dashboard is the operating surface of a wider trip file. The itinerary, locations, contacts and agreed procedures sit beside the communication record, so an update can be read against what was planned and what happened next.",
-  detailItems: [
-    ["Context", "The trip’s dates, locations, program and contacts are already structured."],
-    ["Capture", "Calls, messages and check-ins can be recorded in a common format."],
-    ["Sequence", "Time stamps show the order of updates and follow-up actions."],
-    ["Continuity", "The communication history remains associated with the trip after it closes."],
-  ],
-  secondaryArtifact: {
-    src: "/Claude/Questions/assets/duty-overview.png",
-    width: 1280,
-    height: 551,
-    alt: "ETI360 Duty Manager Dashboard duty overview: students traveling, active trips, open incidents, active alerts and overdue check-ins across every current trip",
-    caption: "The duty overview across all current trips: who is traveling, which trips are active, and whether check-ins are on schedule. The examples are fictitious and contain no real school or student data.",
-  },
-  scopeTitle: "For schools monitoring one or many active trips.",
-  scopeCopy: "The dashboard supports the school’s nominated duty manager during travel and can be rehearsed before departure through a facilitated simulation using one of the school’s own trips.",
-  boundaryTitle: "Scope boundary",
-  boundaryCopy: "ETI360 provides the operating view. It does not monitor trips on the school’s behalf, make escalation decisions or replace emergency services. The school operates the dashboard under its own roles and procedures, and it shows the planned picture for each group — never live tracking of students.",
-  widerTitle: "The operating view depends on the planning record.",
-  widerCopy: "Location, route and condition information become more useful when they remain connected to the itinerary, contacts and agreed procedures the duty manager receives.",
+  stripLine: "The trip record the school approved in Tier 2 becomes the working view here.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Duty Manager Dashboard fits your program.",
+  ctaCopy: "A 20-minute conversation is enough to see whether the Duty Manager Dashboard fits how your school manages trips in progress.",
 };
 
 export default function DutyManagerPage() {
-  return <SolutionReport data={data} />;
+  return <SolutionEvidence data={data} />;
 }

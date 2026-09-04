@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SolutionReport, type SolutionReportData } from "@/components/SolutionReport";
+import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
 
 const report = reportCatalog.standardDocumentation;
@@ -11,71 +11,62 @@ export const metadata: Metadata = {
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
 
-const data: SolutionReportData = {
-  slug: report.slug,
-  eyebrow: report.name,
-  question: report.question,
-  lead: "ETI360 gives every trip a consistent document structure while keeping the destinations, activities, timings, evidence and school decisions specific to that trip.",
-  answerTitle: "One Trip Documentation System",
-  answerBody: "A repeatable set of documents generated from one structured record for each trip.",
-  heroImage: "/marketing/hero/for-providers.jpg",
-  planningLabel: "The consistency question",
-  problemTitle: "Different trips should not require a different way of reading the evidence.",
-  problemCopy: [
-    "A city program, ski trip and adventure itinerary contain different information. Leadership can still review each through the same sequence, terminology and document architecture.",
-    "ETI360 normalizes the source itinerary into one trip ledger, then produces the relevant documents from that record. The content changes with the trip; the way the school reads it remains familiar.",
+const data: SolutionEvidenceData = {
+  slug: "standard-documentation",
+  question: "Do all of your trips use the same documentation format?",
+  heroLine: "Standard Trip Documentation: a repeatable document set for each departure, with every destination, timing, and arrangement specific to that trip.",
+  editorial: [
+    "A city program, a ski trip, and an adventure itinerary carry different information, and they usually arrive formatted differently too. Each review starts with decoding a new layout before the content itself can be weighed.",
+    "ETI360 normalizes each source itinerary into one structured trip record and generates the trip's documents from it. A coordinator who has read one program's documents reads the next — whatever its destination or season — without relearning the format.",
   ],
-  proofEyebrow: "Three different trips",
-  proofTitle: "Tokyo, Hokkaido and Queenstown—one consistent calendar structure.",
-  proofCopy: "The examples contain different dates, time zones, activities, movements and accommodation. Their shared format makes each day immediately legible without forcing the trip into generic content.",
-  stats: [
-    ["3 trips", "Different programs", "One worked comparison"],
-    ["1 structure", "Calendar view", "Familiar across departures"],
-    ["Trip-specific", "Evidence", "Never generic filler"],
-    ["One ledger", "Source record", "Documents stay connected"],
+  spreadTitle: "Tokyo, Hokkaido, and Queenstown in one calendar format.",
+  plates: [
+    {
+      src: "/Claude/Questions/assets/std-documentation.png",
+      width: 2532,
+      height: 1171,
+      alt: "Three ETI360 calendar views for Tokyo, Hokkaido and Queenstown using the same documentation structure",
+      label: "Three calendar views",
+      note: "Different dates, time zones, and content; each category holds the same position on all three.",
+    },
+    {
+      src: "/showcase/pages/02-1-calendar-view/2.png",
+      width: 1273,
+      height: 1800,
+      alt: "Detailed ETI360 calendar view showing the structured itinerary for days five through eight of a Tokyo trip",
+      label: "Tokyo calendar detail",
+      note: "Days five through eight of the Tokyo program at full operating detail — the structure frames the content.",
+    },
   ],
-  primaryArtifact: {
-    src: "/Claude/Questions/assets/std-documentation.png",
-    width: 2532,
-    height: 1171,
-    alt: "Three ETI360 calendar views for Tokyo, Hokkaido and Queenstown using the same documentation structure",
-    caption: "Three fictitious demonstration trips. The content changes; the ETI360 document structure remains consistent.",
+  disclosure: "Demonstration trips for Harborview International School, fictitious by design; no real school or student data is shown.",
+  claims: [
+    {
+      lead: "Compare across trips",
+      body: "Any day of one trip checks directly against the same day of another.",
+    },
+    {
+      lead: "Shared vocabulary",
+      body: "Activities, movements, meals, free time, and accommodation carry the same labels on every departure.",
+    },
+    {
+      lead: "Entered once",
+      body: "A revision enters the trip record once and carries through to every affected document.",
+    },
+    {
+      lead: "Any trip shape",
+      body: "Day trips, residential programs, international travel, and expeditions share the structure; only the documents relevant to each trip are produced.",
+    },
+  ],
+  boundary: "ETI360 standardizes the structure and prepares the documents; the school's own review and sign-off — not the format — approve each trip.",
+  promo: {
+    title: "The system beneath every report",
+    body: "The same trip record carries every other ETI360 view — location timeline, route intelligence, weather brief, medical access, and incident records — so each report on this site reads in a form you already know.",
   },
-  answersLabel: "What standardization provides",
-  answersTitle: "A common structure makes trip-specific information easier to read.",
-  answersCopy: "Standardization is not sameness. It gives each reader a familiar route through the evidence while preserving what is unique about the program.",
-  answers: [
-    { number: "01", title: "Common sequence", body: "Each document places the same categories of information in a predictable order." },
-    { number: "02", title: "Shared language", body: "Activities, movements, meals, free time and accommodation use consistent labels." },
-    { number: "03", title: "Trip-specific detail", body: "Dates, places, activities, evidence and arrangements remain specific to the departure." },
-    { number: "04", title: "Connected updates", body: "Changes enter the trip ledger once and can flow into the affected documents." },
-  ],
-  detailEyebrow: "The document in use",
-  detailTitle: "Consistency makes the detailed page faster to understand.",
-  detailCopy: "A coordinator or reviewer learns the document once, then reads the next trip without relearning the format. The calendar below remains detailed because the standard sits around the content, not in place of it.",
-  detailItems: [
-    ["Inputs", "Provider and school information can arrive in the form already held."],
-    ["Structure", "ETI360 creates the trip ledger and identifies the documents that apply."],
-    ["Outputs", "Calendar, timeline, location, risk and operating views share the same source."],
-    ["Revision", "Updates can be issued consistently across the affected document set."],
-  ],
-  secondaryArtifact: {
-    src: "/showcase/pages/02-1-calendar-view/2.png",
-    width: 1273,
-    height: 1800,
-    alt: "Detailed ETI360 calendar view showing the structured itinerary for days five through eight of a Tokyo trip",
-    caption: "One detailed calendar page: a consistent structure carrying trip-specific operating information.",
-  },
-  scopeTitle: "For schools managing different trips through one governance process.",
-  scopeCopy: "The shared structure can support day trips, residential programs, international travel, expeditions and provider-led programs. Only the documents relevant to the trip need to be produced.",
-  boundaryTitle: "Scope boundary",
-  boundaryCopy: "ETI360 standardizes the structure and prepares the evidence. It does not make every trip identical, replace the school’s policies, approve the program or substitute its judgment for the school’s review and sign-off.",
-  widerTitle: "Standard documentation is the system beneath every report.",
-  widerCopy: "Route, location, weather, medical, communications and incident information become more useful when each appears in a familiar form and remains connected to the same trip record.",
+  stripLine: "Standard documentation is a Tier 2 solution, part of every Trip Risk Review.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the standard documentation structure fits your program.",
+  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether one documentation structure fits your program.",
 };
 
 export default function StandardDocumentationPage() {
-  return <SolutionReport data={data} />;
+  return <SolutionEvidence data={data} />;
 }
