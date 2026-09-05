@@ -135,3 +135,17 @@ for (const [slug, related] of Object.entries(relatedTier2)) {
     }
   }
 }
+
+// Per-page hero images for the solution pages (Canva-licensed set); keyed by slug.
+export const solutionHeroes: Record<string, string> = {
+  "route-intelligence": "/marketing/hero/solutions/route-intelligence.jpg",
+  "location-timeline": "/marketing/hero/solutions/location-timeline.jpg",
+  "weather-brief": "/marketing/hero/solutions/weather-brief.jpg",
+  "medical-access": "/marketing/hero/solutions/medical-access.jpg",
+  "student-journey": "/marketing/hero/solutions/student-journey.jpg",
+  "field-trips": "/marketing/hero/solutions/field-trips.jpg",
+  "standard-documentation": "/marketing/hero/solutions/standard-documentation.jpg",
+  "tournament-travel": "/marketing/hero/solutions/tournament-travel.jpg",
+  "duty-manager": "/marketing/hero/solutions/duty-manager.jpg",
+  "incident-reporting": "/marketing/hero/solutions/incident-reporting.jpg",
+};

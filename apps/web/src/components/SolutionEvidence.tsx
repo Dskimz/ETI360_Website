@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { relatedTier2, reportList, tier3Solutions } from "@/content/solutions";
+import { relatedTier2, reportList, solutionHeroes, tier3Solutions } from "@/content/solutions";
 import styles from "./evidence.module.css";
 
 export type EvidencePlate = {
@@ -38,10 +38,14 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
   const currentSolution = reportList.find((r) => r.slug === data.slug);
   const related = relatedTier2[data.slug] ?? [];
   const crumb = `For Schools · ${TIER_NAMES[currentSolution?.tier ?? 2]}`;
+  const heroImage = solutionHeroes[data.slug];
 
   return (
     <article className={styles.page}>
-      <div className={styles.hero}>
+      <div
+        className={heroImage ? `${styles.hero} ${styles.heroImage}` : styles.hero}
+        style={heroImage ? ({ "--solution-hero": `url('${heroImage}')` } as React.CSSProperties) : undefined}
+      >
         <div className={styles.wrap}>
           <p className={styles.crumb}>{crumb}</p>
           <h1>{data.question}</h1>
