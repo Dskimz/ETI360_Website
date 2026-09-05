@@ -185,7 +185,7 @@ export default function ForSchoolsPage() {
           <Link href="/contact">Contact us →</Link>
         </div>
       </section>
-    <CtaCard title={'A 20-minute conversation.'} copy={'Enough time to talk through the trips you run and see which of these solutions fits your program.'} />
+    <CtaCard title={'A 20-minute conversation.'} copy={'Enough time to talk through the trips you run and see which of these solutions fits your program.'} image={'/marketing/hero/for-schools.jpg'} />
     </article>
   );
 }

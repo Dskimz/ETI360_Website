@@ -1,12 +1,15 @@
 import Link from "next/link";
 import styles from "./ctacard.module.css";
 
-export function CtaCard({ title, copy }: { title: string; copy: string }) {
+export function CtaCard({ title, copy, image }: { title: string; copy: string; image?: string }) {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.card}>
-          <div className={styles.imageZone} />
+          <div
+            className={styles.imageZone}
+            style={{ "--cta-image": `url('${image ?? "/marketing/cta/canva-pisac.jpg"}')` } as React.CSSProperties}
+          />
           <div className={styles.logoDisc}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/marketing/cta/eti360-circle.png" alt="ETI360" />

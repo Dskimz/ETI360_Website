@@ -130,7 +130,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CtaCard title={'Arrange a briefing.'} copy={'A structured conversation about your current trip governance and where the documents can support it.'} />
+      <CtaCard title={'Arrange a briefing.'} copy={'A structured conversation about your current trip governance and where the documents can support it.'} image={'/marketing/hero/home.jpg'} />
     </>
   );
 }

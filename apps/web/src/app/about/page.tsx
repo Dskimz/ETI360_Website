@@ -70,7 +70,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaCard title={'Arrange a briefing.'} copy={'Briefings are conversations, not sales calls.'} />
+      <CtaCard title={'Arrange a briefing.'} copy={'Briefings are conversations, not sales calls.'} image={'/marketing/hero/about.jpg'} />
     </>
   );
 }

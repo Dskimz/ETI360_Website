@@ -109,7 +109,7 @@ export default function FrameworkPage() {
 
       </section>
 
-      <CtaCard title={'Contact us.'} copy={'Tell us about your program and we will show you the connected outputs that fit it.'} />
+      <CtaCard title={'Contact us.'} copy={'Tell us about your program and we will show you the connected outputs that fit it.'} image={'/marketing/hero/trip-approval.jpg'} />
     </>
   );
 }

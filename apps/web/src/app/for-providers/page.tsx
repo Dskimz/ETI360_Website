@@ -276,7 +276,7 @@ export default function ForProvidersPage() {
         </div>
       </section>
 
-      <CtaCard title={'Contact us.'} copy={'A 20-minute conversation about the program you propose most often will show how the documentation pack applies to it — and what each new proposal takes from there.'} />
+      <CtaCard title={'Contact us.'} copy={'A 20-minute conversation about the program you propose most often will show how the documentation pack applies to it — and what each new proposal takes from there.'} image={'/marketing/hero/for-providers.jpg'} />
     </>
   );
 }

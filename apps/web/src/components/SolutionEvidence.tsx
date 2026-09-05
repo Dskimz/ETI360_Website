@@ -165,7 +165,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
         </div>
       </div>
 
-      <CtaCard title={data.ctaTitle} copy={data.ctaCopy} />
+      <CtaCard title={data.ctaTitle} copy={data.ctaCopy} image={heroImage} />
     </article>
   );
 }

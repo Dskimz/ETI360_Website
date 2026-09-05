@@ -26,7 +26,7 @@
       rgba(13, 53, 88, .55) 36%,
       rgba(13, 53, 88, .24) 62%,
       rgba(10, 42, 69, .42) 100%),
-    url('/marketing/cta/canva-pisac.jpg') center / cover no-repeat;
+    var(--cta-image) center / cover no-repeat;
 }
 
 .logoDisc {
