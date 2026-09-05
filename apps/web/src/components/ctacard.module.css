@@ -1,0 +1,114 @@
+.section { background: var(--parchment); padding: 56px 0 8px; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+
+.card {
+  position: relative;
+  overflow: hidden;
+  width: 60%;
+  min-height: 240px;
+  margin: 0 auto;
+  padding: 36px 46px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  background: var(--navy);
+  border-bottom: 4px solid var(--gold);
+  box-shadow: 0 18px 44px rgba(13, 53, 88, .22);
+}
+
+.imageZone {
+  position: absolute;
+  top: 0; bottom: 0; left: 40%; right: 0;
+  background:
+    linear-gradient(100deg,
+      rgba(13, 53, 88, 1) 0%,
+      rgba(13, 53, 88, .88) 14%,
+      rgba(13, 53, 88, .55) 36%,
+      rgba(13, 53, 88, .24) 62%,
+      rgba(10, 42, 69, .42) 100%),
+    url('/marketing/cta/canva-pisac.jpg') center / cover no-repeat;
+}
+
+.logoDisc {
+  position: absolute;
+  left: 80%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 92px; height: 92px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+  background: #fff;
+  z-index: 4;
+}
+.logoDisc img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.copy { position: relative; z-index: 5; max-width: 50%; }
+.copy h2 {
+  margin: 0 0 10px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.copy p { margin: 0 0 18px; font-size: 15px; line-height: 1.55; color: rgba(250, 248, 243, .85); }
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy-deep);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 11px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.btn:hover { background: #d8b262; color: var(--navy-deep); text-decoration: none; }
+.sub { display: block; margin-top: 10px; font-size: 12px; color: rgba(250, 248, 243, .6); }
+
+/* mini CTA — floats top-right inside a hero */
+.mini {
+  position: absolute;
+  top: 48px; right: 32px;
+  z-index: 6;
+  width: 300px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 20px 16px;
+  background: var(--parchment);
+  border-radius: 12px;
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .35);
+}
+.miniDisc { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--gold); }
+.miniDisc img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mini b {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--navy);
+}
+.mini a {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  font-size: 12.5px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.mini a:hover { background: var(--navy-mid); color: #fff; text-decoration: none; }
+
+@media (max-width: 900px) {
+  .card { width: 100%; padding: 32px 28px; }
+  .copy { max-width: 100%; }
+  .imageZone { left: 0; opacity: .25; }
+  .logoDisc { display: none; }
+  .mini { display: none; }
+}

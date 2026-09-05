@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaCard, MiniCta } from "@/components/CtaCard";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function AboutPage() {
           <h1>About ETI360.</h1>
           <p className="subhead">Risk intelligence for school trips.</p>
         </div>
+        <MiniCta />
       </section>
 
       <section className="article-body">
@@ -68,13 +70,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="cta-section">
-        <div className="container measure">
-          <h2>Arrange a briefing.</h2>
-          <p>Briefings are conversations, not sales calls. We respond within two business days.</p>
-          <Link href="/contact" className="cta-button ui">Get in touch</Link>
-        </div>
-      </section>
+      <CtaCard title={'Arrange a briefing.'} copy={'Briefings are conversations, not sales calls.'} />
     </>
   );
 }

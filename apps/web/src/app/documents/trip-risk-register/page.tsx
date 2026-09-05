@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaCard } from "@/components/CtaCard";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -142,26 +143,7 @@ export default function TripRiskRegisterPage() {
         </div>
       </section>
 
-      <section className="cta-section">
-        <div className="container measure">
-          <h2>One entry in the set.</h2>
-          <p>
-            The register is one part of the document library &mdash; the full
-            set runs from the Organizational Baseline to the Post-Trip Feedback
-            Loop.
-          </p>
-          <p>
-            <Link href="/framework#tier1" className="cta-button ui">
-              Browse the documents
-            </Link>
-          </p>
-          <p>
-            <Link href="/contact" className="cta-link ui">
-              Talk to us &rarr;
-            </Link>
-          </p>
-        </div>
-      </section>
+      <CtaCard title={'One entry in the set.'} copy={'The register is one part of the document library — the full set runs from the Organizational Baseline to the Post-Trip Feedback Loop.'} />
     </>
   );
 }

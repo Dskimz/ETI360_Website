@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import { CtaCard, MiniCta } from "@/components/CtaCard";
 import Image from "next/image";
 import Link from "next/link";
 import { reportCatalog } from "@/content/solutions";
@@ -90,6 +91,7 @@ export default function ForSchoolsPage() {
             itinerary through the days away.
           </p>
         </div>
+        <MiniCta />
       </header>
 
       {groups.map((group, groupIndex) => (
@@ -183,6 +185,7 @@ export default function ForSchoolsPage() {
           <Link href="/contact">Contact us →</Link>
         </div>
       </section>
+    <CtaCard title={'A 20-minute conversation.'} copy={'Enough time to talk through the trips you run and see which of these solutions fits your program.'} />
     </article>
   );
 }

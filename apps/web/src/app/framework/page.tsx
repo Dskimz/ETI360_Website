@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaCard, MiniCta } from "@/components/CtaCard";
 import Link from "next/link";
 import { DocRow, TierBand } from "../../components/DocShowcase";
 import { DocRowsExpander } from "../../components/DocRowsExpander";
@@ -40,6 +41,7 @@ export default function FrameworkPage() {
             you can open.
           </p>
         </div>
+        <MiniCta />
       </section>
 
       <section className="article-body">
@@ -107,20 +109,7 @@ export default function FrameworkPage() {
 
       </section>
 
-      <section className="cta-section">
-        <div className="container measure">
-          <h2>Contact us.</h2>
-          <p>
-            Tell us about your program and we will show you the connected
-            outputs that fit it. We respond within two business days.
-          </p>
-          <p>
-            <Link href="/contact" className="cta-button ui">
-              Get in touch
-            </Link>
-          </p>
-        </div>
-      </section>
+      <CtaCard title={'Contact us.'} copy={'Tell us about your program and we will show you the connected outputs that fit it.'} />
     </>
   );
 }

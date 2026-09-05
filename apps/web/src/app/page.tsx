@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaCard, MiniCta } from "@/components/CtaCard";
 import Link from "next/link";
 import { reportList } from "@/content/solutions";
 
@@ -37,6 +38,7 @@ export default function HomePage() {
             <a className="cta-link ui" href="#work">See what a school receives &rarr;</a>
           </div>
         </div>
+        <MiniCta />
       </section>
 
       <section id="what-we-do" className="about-strip">
@@ -128,16 +130,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="cta-section">
-        <div className="container measure">
-          <h2>Arrange a briefing.</h2>
-          <p>
-            A structured conversation about your current trip governance and where
-            the documents can support it. We respond within two business days.
-          </p>
-          <Link href="/contact" className="cta-button ui">Get in touch</Link>
-        </div>
-      </section>
+      <CtaCard title={'Arrange a briefing.'} copy={'A structured conversation about your current trip governance and where the documents can support it.'} />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CtaCard, MiniCta } from "@/components/CtaCard";
 import { relatedTier2, reportList, solutionHeroes, tier3Solutions } from "@/content/solutions";
 import styles from "./evidence.module.css";
 
@@ -51,6 +52,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
           <h1>{data.question}</h1>
           <p className={styles.heroLine}>{data.heroLine}</p>
         </div>
+        <MiniCta />
       </div>
 
       <div className={styles.editorial}>
@@ -163,17 +165,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
         </div>
       </div>
 
-      <div className={styles.cta}>
-        <div className={styles.wrap}>
-          <div className={styles.ctaInner}>
-            <div>
-              <h2>{data.ctaTitle}</h2>
-              <p>{data.ctaCopy}</p>
-            </div>
-            <a href="/contact">Contact ETI360 &rarr;</a>
-          </div>
-        </div>
-      </div>
+      <CtaCard title={data.ctaTitle} copy={data.ctaCopy} />
     </article>
   );
 }

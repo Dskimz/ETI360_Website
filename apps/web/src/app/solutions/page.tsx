@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { reportList } from "@/content/solutions";
 import styles from "@/components/evidence.module.css";
+import { CtaCard, MiniCta } from "@/components/CtaCard";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -25,6 +26,7 @@ export default function SolutionsPage() {
             a worked example, and the boundaries of what it does.
           </p>
         </div>
+        <MiniCta />
       </div>
 
       <div className={styles.strip}>
@@ -72,6 +74,8 @@ export default function SolutionsPage() {
           </div>
         </div>
       </div>
+
+      <CtaCard title={'A 20-minute conversation.'} copy={'Enough time to talk through the trips you run and see which of these solutions fits your program.'} />
     </article>
   );
 }

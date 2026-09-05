@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaCard, MiniCta } from "@/components/CtaCard";
 import Link from "next/link";
 import { DocEntry, DocRow, TierBand } from "../../components/DocShowcase";
 import { DocRowsExpander } from "../../components/DocRowsExpander";
@@ -170,6 +171,7 @@ export default function ForProvidersPage() {
             then reissued for each school, each trip, and each set of dates.
           </p>
         </div>
+        <MiniCta />
       </section>
 
       <section className="article-body">
@@ -274,21 +276,7 @@ export default function ForProvidersPage() {
         </div>
       </section>
 
-      <section className="cta-section">
-        <div className="container measure">
-          <h2>Contact us.</h2>
-          <p>
-            A 20-minute conversation about the program you propose most often
-            will show how the documentation pack applies to it &mdash; and what
-            each new proposal takes from there.
-          </p>
-          <p>
-            <Link href="/contact" className="cta-button ui">
-              Get in touch
-            </Link>
-          </p>
-        </div>
-      </section>
+      <CtaCard title={'Contact us.'} copy={'A 20-minute conversation about the program you propose most often will show how the documentation pack applies to it — and what each new proposal takes from there.'} />
     </>
   );
 }

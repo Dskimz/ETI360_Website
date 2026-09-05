@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaCard } from "@/components/CtaCard";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -195,13 +196,7 @@ export default function EmergencyDocsPage() {
         </div>
       </article>
 
-      <section className="cta-section">
-        <div className="container measure">
-          <h2>Arrange a briefing.</h2>
-          <p>Briefings are conversations, not sales calls. We respond within two business days.</p>
-          <Link href="/contact" className="cta-button ui">Get in touch</Link>
-        </div>
-      </section>
+      <CtaCard title={'Arrange a briefing.'} copy={'Briefings are conversations, not sales calls.'} />
     </>
   );
 }

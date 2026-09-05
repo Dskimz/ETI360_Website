@@ -16,6 +16,7 @@
 .wrap { width: min(1160px, calc(100% - 64px)); margin: 0 auto; }
 
 .hero {
+  position: relative;
   color: #fff;
   background: linear-gradient(105deg, rgba(8, 38, 63, .98), rgba(13, 53, 88, .96) 58%, rgba(29, 106, 149, .85));
   border-bottom: 6px solid var(--route-gold);
@@ -61,6 +62,7 @@
 .promo p { margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(255, 255, 255, .88); }
 
 .solutionsHead {
+  position: relative;
   color: #fff;
   background: linear-gradient(105deg, rgba(8, 38, 63, .98), rgba(13, 53, 88, .96) 58%, rgba(29, 106, 149, .85));
   border-bottom: 6px solid var(--route-gold);
