@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETI360 — Working with Trip Providers · User Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="../shared/guide.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../shared/eti360-logo.png" alt="ETI360">
+      <div class="subtitle">Working with Trip Providers &middot; Draft v0.2</div>
+    </div>
+
+    <div class="nav-group nav-group--switcher">
+      <div class="nav-group-label">ETI360 User Guides</div>
+      <a class="nav-link" href="../schools/">Working with Schools &rarr;</a>
+      <a class="nav-link" href="../simulation/">Duty Manager Simulation &rarr;</a>
+      <a class="nav-link" href="../duty-manager/">Duty Manager Dashboard &rarr;</a>
+      <a class="nav-link" href="../illustrations.html">All Illustrations &rarr;</a>
+    </div>
+
+    <div class="search-wrap">
+      <input id="guide-search" type="search" placeholder="Search the guide…  (press /)" autocomplete="off">
+    </div>
+    <div class="search-count" id="search-count"></div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Getting Started</div>
+      <a class="nav-link" data-target="welcome">1. Welcome</a>
+      <a class="nav-link" data-target="base-trip">2. The Base Trip Model</a>
+      <a class="nav-link" data-target="how-you-work">3. How You Work with Us</a>
+      <a class="nav-link" data-target="key-terms">4. Key Terms</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Working Together</div>
+      <a class="nav-link" data-target="wf-onboard">5. Onboarding Your Organization</a>
+      <a class="nav-link" data-target="wf-product">6. Adding a Trip Product</a>
+      <a class="nav-link" data-target="wf-departure">7. Scheduling a Departure</a>
+      <a class="nav-link" data-target="wf-locations">8. Location Verification</a>
+      <a class="nav-link" data-target="wf-sops">9. Your SOPs &amp; the Risk Information</a>
+      <a class="nav-link" data-target="wf-school-docs">10. What Your School Clients Receive</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">During a Departure</div>
+      <a class="nav-link" data-target="wf-during">11. While the Group Travels</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Reference</div>
+      <a class="nav-link" data-target="troubleshooting">12. If Something Looks Wrong</a>
+      <a class="nav-link" data-target="contacts">13. Contact</a>
+      <a class="nav-link" data-target="production">14. Production Notes (draft only)</a>
+    </div>
+  </aside>
+
+  <div class="nav-scrim" aria-hidden="true"></div>
+
+  <main class="main">
+    <div class="top-bar">
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
+      <span class="crumb">ETI360</span>
+      <h2 id="top-title">Working with Trip Providers</h2>
+      <span class="version">Draft v0.2 &middot; August 2026</span>
+    </div>
+
+    <div class="content">
+
+      <div class="toolbar">
+        <button onclick="toggleAll(true)">Expand All</button>
+        <button onclick="toggleAll(false)">Collapse All</button>
+      </div>
+
+      <div class="section open" id="welcome">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">1</span>
+          <div style="flex:1">
+            <div class="section-title">Welcome</div>
+            <span class="section-subtitle">What ETI360 does for your trips, and what this guide covers</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>You run the same trips season after season. ETI360 builds each of your products once — the itinerary normalized hour by hour, every location verified, your SOPs evaluated, the risk information compiled per activity group — and every departure after that starts from that reviewed file. What your school clients receive is your trip, documented for the people who have to act on it: their leadership, their risk committee, their trip leaders, and their families.</p>
+          <p>This guide is for provider operations staff. The core difference from the schools guide: your trips repeat, so the work compounds per product, not per departure — and almost all of your side of it happens by email.</p>
+          <div class="img-wrap">
+            <img src="images/05_parent_pack.png" alt="Parent Information Pack cover">
+            <div class="img-caption">Your trip as a school's families first meet it: the Parent Information Pack, built from your itinerary. (Harborview demo trip, used throughout.)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="base-trip">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">2</span>
+          <div style="flex:1">
+            <div class="section-title">The Base Trip Model</div>
+            <span class="section-subtitle">Build the trip once — every departure reuses it with new dates</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p><strong>This is the most important section in the guide.</strong> Each of your products — the five-day Chiang Mai program, the Khao Sok expedition — becomes a <strong>base trip</strong>: one reviewed file holding the normalized itinerary, the verified locations, your evaluated SOPs, and the compiled risk information. A <strong>departure</strong> is that base trip with dates and a school attached. What carries over is the structure; the dates, the group, and anything you have changed since are new each time.</p>
+          <p>The review effort happens once per product. Later departures reuse that structure: we update the dates and the seasonal information, and you confirm anything that has changed in the itinerary, the SOPs, or the locations before the file is issued to the school.</p>
+          <p>The division of labor holds here exactly as it does school-side, and it never blurs:</p>
+          <table class="ref-table">
+            <tr><th>Document</th><th>Who writes it</th><th>What ETI360 does</th></tr>
+            <tr><td><strong>Itinerary</strong></td><td>You</td><td>We normalize it hour by hour and verify every location</td></tr>
+            <tr><td><strong>SOPs</strong></td><td><strong>You</strong> — they describe your operation</td><td>We evaluate them against the product's activities</td></tr>
+            <tr><td><strong>Risk information</strong></td><td>ETI360 compiles it, per activity group</td><td>— built from your itinerary and SOPs</td></tr>
+            <tr><td><strong>RAMS</strong></td><td>Each school, from that information</td><td>Never us, never you on their behalf</td></tr>
+          </table>
+          <div class="img-wrap">
+            <img src="images/illo_base_trip_departures.png" alt="Build the trip once">
+            <div class="img-caption">The base trip is reviewed once. Each departure adds only dates and a school.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="how-you-work">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">3</span>
+          <div style="flex:1">
+            <div class="section-title">How You Work with Us</div>
+            <span class="section-subtitle">Email-first: there is no software for you to learn</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>Your entire side of the relationship runs through <strong>danskimin@eti360.com</strong>: your itineraries, your SOPs, your departure dates, your answers to verification questions. Documents in whatever format you already use — nothing needs reformatting, and there is no portal you're required to operate.</p>
+          <p>Where your work becomes visible is your school clients' portals: your organization on their provider register, your trips in their lists, your name on every trip header, and the document packs built from your itineraries. When a school and ETI360 discuss one of your departures, it happens on that trip's notes thread — anything needing your word comes to you by email, and your answer is recorded with the trip.</p>
+          <div class="img-wrap">
+            <img src="images/01_provider_register.png" alt="Provider register on a school portal">
+            <div class="img-caption">How schools see their providers: trips run, what's traveling now, documentation on file.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="key-terms">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">4</span>
+          <div style="flex:1">
+            <div class="section-title">Key Terms</div>
+            <span class="section-subtitle">Defined once, used the same way everywhere</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <table class="ref-table">
+            <tr><th>Term</th><th>Definition</th></tr>
+            <tr><td><strong>Base trip</strong></td><td>One of your products as a reviewed trip file: itinerary, verified locations, evaluated SOPs, risk information</td></tr>
+            <tr><td><strong>Departure</strong></td><td>A base trip with dates and a school group attached</td></tr>
+            <tr><td><strong>Itinerary</strong></td><td>The normalized, gap-free day-by-day record of the product — every hour, transit included</td></tr>
+            <tr><td><strong>SOP</strong></td><td>Your Standard Operating Procedure for an activity — you write it, ETI360 evaluates it</td></tr>
+            <tr><td><strong>Risk information</strong></td><td>ETI360's compiled evidence per activity group — what each school completes its own RAMS from</td></tr>
+            <tr><td><strong>Activity group</strong></td><td>Activities that run as one operation and share controls — the trek is one group, the city days another</td></tr>
+            <tr><td><strong>Location verification</strong></td><td>ETI360's check that every named venue, route, and facility is what the itinerary says it is</td></tr>
+            <tr><td><strong>Issued version</strong></td><td>The dated version ETI360 files in the trip record; formal approval stays in each party's own process</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ════════ WORKING TOGETHER ════════ -->
+
+      <div class="section" id="wf-onboard">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">5</span>
+          <div style="flex:1">
+            <div class="section-title">Onboarding Your Organization</div>
+            <span class="section-subtitle">What we ask for once, at the start</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <div class="step"><div class="step-num">1</div><div class="step-content"><p>Send your product list</p><p>The trips you run, in whatever format your sales materials already use.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-content"><p>Send an itinerary per product</p><p>Your standard version — the one you'd send a school. SOPs too, if they're at hand; if not, we'll ask for them per product as we build (section 9).</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-content"><p>We set up and build</p><p>Your organization record, then one base trip per product, starting wherever you say the next booking is. As each is ready, we send it back for the review only you can do: is this how the trip actually runs?</p></div></div>
+          <p>Corrections at this stage are the work going right, not friction — each one updates the base trip and applies to future departures where it still holds.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-product">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">6</span>
+          <div style="flex:1">
+            <div class="section-title">Adding a Trip Product</div>
+            <span class="section-subtitle">One itinerary in, one reviewed base trip out</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>A new product any time after onboarding works the same way: email the itinerary and the SOPs that cover its activities. We normalize, verify every location, evaluate the SOPs, and compile the risk information per activity group — then you review the result against how you actually run it.</p>
+          <div class="img-wrap">
+            <img src="images/03_itinerary.png" alt="Normalized itinerary calendar">
+            <div class="img-caption">What your itinerary becomes: the normalized calendar view — every hour accounted for, transit included, each block tied to a verified place.</div>
+          </div>
+          <p>The normalized view expands each block of your itinerary into the scheduled activity, the transitions, the meals, and the places: "morning: temple visit" becomes who is where for every hour, with the walk, the lunch, and the train accounted for. Your review confirms that the structured record matches the operation.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-departure">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">7</span>
+          <div style="flex:1">
+            <div class="section-title">Scheduling a Departure</div>
+            <span class="section-subtitle">Three lines of email — the rest carries over</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>A school books your March departure. You send us three things: the product, the dates, the school and rough numbers. For a current base trip, that starts it.</p>
+          <p>What happens on our side: the departure appears under the base trip; the dated material regenerates for those dates — itinerary dates, the weather window, seasonal notes in the risk information; and the school sees the trip land in their portal, decision-ready. If the school contacts us first, we'll confirm the details with you — same three lines, opposite direction.</p>
+          <div class="img-wrap">
+            <img src="images/illo_departure_email.png" alt="Scheduling a departure">
+            <div class="img-caption">Scheduling a departure: three lines of email, and what regenerates on our side.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="wf-locations">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">8</span>
+          <div style="flex:1">
+            <div class="section-title">Location Verification</div>
+            <span class="section-subtitle">What we check, and the one thing we ask you to name</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>During each build we verify every location the itinerary names — the venue exists, the route is the route, the hotel is where the hotel is. Where the product moves through an area, we ask you one question: <strong>which medical facilities would you use?</strong> You know the ground; we verify what you name. ETI360 verifies — it does not recommend. The facilities are your operational choices, and the verified record carries them into the risk information and onto the Duty Manager Dashboard.</p>
+          <p>The verification request arrives by email with the locations listed per area, and the points needing your confirmation named.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-sops">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">9</span>
+          <div style="flex:1">
+            <div class="section-title">Your SOPs &amp; the Risk Information</div>
+            <span class="section-subtitle">You describe the operation; we evaluate and compile; schools complete their RAMS</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>Your SOPs are the authoritative account of how you run each activity — group sizes, briefings, equipment checks, the calls your guides make. We never write them; a procedure only works if it describes what the operator actually does. What we do is evaluate them against the product's activities and build the risk information on them.</p>
+          <div class="img-wrap">
+            <img src="images/illo_rams_flow.png" alt="Who writes what">
+            <div class="img-caption">Where each document comes from. ETI360 structures and evaluates; your school completes and owns the RAMS.</div>
+          </div>
+          <div class="img-wrap">
+            <img src="images/04_risk_info.png" alt="Risk information spread">
+            <div class="img-caption">The compiled risk information for an activity group: each risk in the trip's specific context, the controls as your SOPs document them, and the emergency actions using the verified facilities.</div>
+          </div>
+          <p>Read the controls column as a mirror: it says what your documentation says. If it doesn't match how you actually operate, that's the finding — either the SOP needs revising or our evaluation does. You decide which, send us the current version, and we update the compiled risk information at the base trip.</p>
+          <p><strong>When the operation changes, tell us.</strong> A new put-in point, a different vehicle operator, revised ratios: send the updated SOP or describe the change, and we re-evaluate and refile the risk information, versioned. Schools with upcoming departures see the revision flagged — their RAMS review picks up exactly what moved.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-school-docs">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">10</span>
+          <div style="flex:1">
+            <div class="section-title">What Your School Clients Receive</div>
+            <span class="section-subtitle">The document pack that carries your trip, and where your confirmation sits</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>Every departure produces a document pack for the school, bundled by audience: a Proposal Set for leadership, a Risk Evidence Set for the risk committee, a Field Pack for trip leaders, a Parent Pack for families. All of it is built from your itinerary and your SOPs — your trip, told for each reader.</p>
+          <div class="img-wrap">
+            <img src="images/02_trip_hub.png" alt="A school's trip hub carrying a provider trip">
+            <div class="img-caption">A school's view of one of their trips: your name in the header, the pack below, the working lanes where your documents and theirs meet.</div>
+          </div>
+          <p>Two things in that view involve you directly. The <strong>Supplied lane</strong> holds what you and the school have shared — your itinerary and SOPs live there, versioned. And the <strong>issued record</strong>: when ETI360 issues a deliverable, the portal files its version and issue date. Your operational confirmation and the school's formal approval stay in your own processes — what the record shows is which version was issued, and when.</p>
+        </div>
+      </div>
+
+      <!-- ════════ DURING A DEPARTURE ════════ -->
+
+      <div class="section" id="wf-during">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">11</span>
+          <div style="flex:1">
+            <div class="section-title">While the Group Travels</div>
+            <span class="section-subtitle">The school runs its duty desk; your team runs the trip; the record joins them</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>On travel days the departure runs on the school's Duty Manager Dashboard: their duty manager works from the day's plan in your itinerary, the check-in windows set for the trip, and the forecast for the places it names. Your guides and trip leader are where those check-ins and messages come from.</p>
+          <p>What this asks of your operation is mostly what you already do: keep the check-in rhythm, and when something happens, communicate early — the school's duty manager works from what's logged, and your calls become part of one timestamped record rather than scattered phone histories. If an incident involves your operation, the record you and the school build together during the event is the record both of you will rely on afterward.</p>
+          <p>The full duty-desk manual is the <a href="../duty-manager/">Duty Manager Dashboard guide</a>; the <a href="../simulation/">Duty Manager Simulation</a> is how school duty teams rehearse — on scenarios built from real products like yours.</p>
+        </div>
+      </div>
+
+      <!-- ════════ REFERENCE ════════ -->
+
+      <div class="section" id="troubleshooting">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">12</span>
+          <div style="flex:1"><div class="section-title">If Something Looks Wrong</div>
+          <span class="section-subtitle">Common situations and what to do</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li><strong>A document shows your operation wrong.</strong> Email us what's off. The fix lands in the base trip, the affected documents regenerate, and every future departure inherits it.</li>
+            <li><strong>A departure shows the wrong dates.</strong> Same — one email; the dated material regenerates.</li>
+            <li><strong>A school asks you for something ETI360 already holds.</strong> Point them at their portal's trip documents, or copy us and we'll route it — either way, no duplicate paperwork.</li>
+            <li><strong>You've changed how an activity runs mid-season.</strong> Section 9 — send the change now rather than at re-booking; departures already scheduled pick up the revision flagged.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="contacts">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">13</span>
+          <div style="flex:1"><div class="section-title">Contact</div>
+          <span class="section-subtitle">One address for everything</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body"><p><strong>danskimin@eti360.com</strong> — itineraries, SOPs, departures, verification answers, corrections, questions.</p></div>
+      </div>
+
+      <div class="section" id="production">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">14</span>
+          <div style="flex:1"><div class="section-title">Production Notes</div>
+          <span class="section-subtitle">Draft stage only — removed before publication</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li><strong>No provider portal exists yet</strong> — the guide is written honestly around the email-first model, with the provider's work shown through school-side surfaces and the finished documents. (Found during the build: the <code>/portal/provider/home</code> route serves a legacy school register page — TASKS.md.)</li>
+            <li>Provider-portal screenshots stay "blocked" in ASSET-REGISTER.md until that surface exists; base-trip/departure views likewise (the base-trip model is real in the data, but has no provider-facing screen to photograph yet).</li>
+            <li>Illustrations: <code>illo_base_trip_departures</code>, <code>illo_departure_email</code> + three reused from the schools guide.</li>
+            <li>Tone review — Dan is running it.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../shared/guide.js"></script>
+</body>
+</html>

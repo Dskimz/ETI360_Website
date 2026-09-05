@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETI360 — Duty Manager Dashboard · User Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="../shared/guide.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../shared/eti360-logo.png" alt="ETI360">
+      <div class="subtitle">Duty Manager Dashboard &middot; Draft v0.2</div>
+    </div>
+
+    <div class="nav-group nav-group--switcher">
+      <div class="nav-group-label">ETI360 User Guides</div>
+      <a class="nav-link" href="../schools/">Working with Schools &rarr;</a>
+      <a class="nav-link" href="../providers/">Working with Trip Providers &rarr;</a>
+      <a class="nav-link" href="../simulation/">Duty Manager Simulation &rarr;</a>
+      <a class="nav-link" href="../illustrations.html">All Illustrations &rarr;</a>
+    </div>
+
+    <div class="search-wrap">
+      <input id="guide-search" type="search" placeholder="Search the guide…  (press /)" autocomplete="off">
+    </div>
+    <div class="search-count" id="search-count"></div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Getting Started</div>
+      <a class="nav-link" data-target="what-it-is">1. What the Dashboard Is</a>
+      <a class="nav-link" data-target="board">2. The Board at a Glance</a>
+      <a class="nav-link" data-target="key-terms">3. Key Terms</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">The Duty Shift</div>
+      <a class="nav-link" data-target="wf-shift">4. Starting a Duty Shift</a>
+      <a class="nav-link" data-target="wf-lanes">5. Reading the Lanes</a>
+      <a class="nav-link" data-target="wf-checkins">6. Check-Ins</a>
+      <a class="nav-link" data-target="wf-weather">7. Weather</a>
+      <a class="nav-link" data-target="wf-messages">8. Messages</a>
+      <a class="nav-link" data-target="wf-handover">9. Ending the Shift &amp; Handover</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">When Something Happens</div>
+      <a class="nav-link" data-target="wf-flags">10. Working with Flags</a>
+      <a class="nav-link" data-target="wf-declare">11. Declaring an Incident</a>
+      <a class="nav-link" data-target="wf-manage">12. Managing an Open Incident</a>
+      <a class="nav-link" data-target="wf-escalate">13. Escalation</a>
+      <a class="nav-link" data-target="wf-close">14. Closing &amp; Post-Trip</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Page by Page</div>
+      <a class="nav-link" data-target="pg-trip">15. The Trip Live View</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Reference</div>
+      <a class="nav-link" data-target="troubleshooting">16. If Something Looks Wrong</a>
+      <a class="nav-link" data-target="contacts">17. Contact</a>
+      <a class="nav-link" data-target="production">18. Production Notes (draft only)</a>
+    </div>
+  </aside>
+
+  <div class="nav-scrim" aria-hidden="true"></div>
+
+  <main class="main">
+    <div class="top-bar">
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
+      <span class="crumb">ETI360</span>
+      <h2 id="top-title">Duty Manager Dashboard</h2>
+      <span class="version">Draft v0.2 &middot; August 2026</span>
+    </div>
+
+    <div class="content">
+
+      <div class="toolbar">
+        <button onclick="toggleAll(true)">Expand All</button>
+        <button onclick="toggleAll(false)">Collapse All</button>
+      </div>
+
+      <!-- ════════ GETTING STARTED ════════ -->
+
+      <div class="section open" id="what-it-is">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">1</span>
+          <div style="flex:1">
+            <div class="section-title">What the Dashboard Is</div>
+            <span class="section-subtitle">One screen for the person on duty while trips travel</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>The Duty Manager Dashboard is where your current trips live while they travel: every group's state on one screen, check-ins and calls logged as they arrive, the forecast for the places the itinerary names, and the incident tools when something needs managing. It is deliberately minimal — if it isn't needed on duty, it isn't on the screen.</p>
+          <p>It runs during one specific stretch of a trip's life: from the point your school puts the trip into duty operations until the post-trip record closes. Everything it shows is built from the trip file — the day's schedule comes from the normalized itinerary, the facilities from the verified location record.</p>
+          <p>The dashboard is operated by your team: your duty manager, on your roster, following your school's procedures. ETI360 builds and maintains the surface and the trip file behind it — we are not a monitoring service. The dashboard holds the facts, communications, and actions your team records; the decisions stay in your school's process.</p>
+          <p>This guide is the duty manager's manual. The <a href="../simulation/">Duty Manager Simulation</a> is where a duty manager practices everything in it on a realistic situation before holding a live shift.</p>
+          <div class="img-wrap">
+            <img src="images/illo_duty_shift.png" alt="The duty shift">
+            <div class="img-caption">The duty shift: what arrives, what you produce, and how it becomes the handover.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="board">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">2</span>
+          <div style="flex:1">
+            <div class="section-title">The Board at a Glance</div>
+            <span class="section-subtitle">Triage lanes on the left, the day's numbers on the right</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <div class="img-wrap">
+            <img src="images/01_dashboard.png" alt="The Duty Manager Dashboard">
+            <div class="img-caption">Eight current trips, sorted by what they need: one incident, two out of contact, two on watch, three normal. (Harborview demo data, used throughout.)</div>
+          </div>
+          <h3>How to read it</h3>
+          <ul>
+            <li><strong>The left column is a triage list, not a trip list.</strong> Trips sort into lanes by state — <span class="pill">Incident</span>, <span class="pill">No contact</span>, <span class="pill">Watch</span>, <span class="pill">Normal</span> — with the most demanding lane on top. Read top to bottom and you have the recorded state of every current trip; your school's procedure sets the order you work them in.</li>
+            <li><strong>Each trip card carries its last word:</strong> the most recent message from the field, any active alert, and how long since last contact. A trip in the Normal lane can be read without opening it.</li>
+            <li><strong>Duty Overview is the day's arithmetic:</strong> students traveling, active trips, open incidents, active alerts, overdue check-ins. It counts what is open; it is not a score.</li>
+            <li><strong>The top bar shows who's on duty and the lane counts</strong> — and the Sim toggle, which is how this same screen runs practice sessions (its own guide).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="key-terms">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">3</span>
+          <div style="flex:1">
+            <div class="section-title">Key Terms</div>
+            <span class="section-subtitle">Defined once, used the same way everywhere</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <table class="ref-table">
+            <tr><th>Term</th><th>Definition</th></tr>
+            <tr><td><strong>Duty manager</strong></td><td>The person on your roster holding the shift right now — shown in the top bar</td></tr>
+            <tr><td><strong>Lane</strong></td><td>A trip's triage state: Normal · Watch · No contact · Incident</td></tr>
+            <tr><td><strong>Check-in</strong></td><td>A scheduled confirmation from the group in the field; overdue check-ins surface on the board</td></tr>
+            <tr><td><strong>Flag</strong></td><td>Something worth attention that isn't (yet) an incident — a weather front, a fatigue note. Flags are acknowledged and resolved</td></tr>
+            <tr><td><strong>Incident</strong></td><td>A situation you declare and manage, classified by category and severity (section 11)</td></tr>
+            <tr><td><strong>Log</strong></td><td>The trip's timestamped record: check-ins, calls, messages, and the actions your team records — written once, read at handover, post-trip, and beyond</td></tr>
+            <tr><td><strong>Escalation</strong></td><td>Bringing a named school contact into an incident, per your school's ladder</td></tr>
+            <tr><td><strong>Handover</strong></td><td>Passing the shift with the log as the record of where things stand</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ════════ THE DUTY SHIFT ════════ -->
+
+      <div class="section" id="wf-shift">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">4</span>
+          <div style="flex:1">
+            <div class="section-title">Starting a Duty Shift</div>
+            <span class="section-subtitle">What the board shows you at the start of a shift</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <div class="step"><div class="step-num">1</div><div class="step-content"><p>Read down the lanes</p><p>Anything above Normal carries an open item. For each: what happened, what the last shift logged, what is still open.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-content"><p>Check the Duty Overview numbers</p><p>Open incidents and overdue check-ins are your inherited work; active alerts are your watch list.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-content"><p>Know each trip's day</p><p>Open each traveling trip once: today's schedule (from the itinerary) tells you when the higher-attention blocks come — the summit day, the water day, the long transfer.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-content"><p>Confirm you're reachable</p><p>The duty phone is the number the field and the escalation ladder use — per your school's procedures.</p></div></div>
+        </div>
+      </div>
+
+      <div class="section" id="wf-lanes">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">5</span>
+          <div style="flex:1">
+            <div class="section-title">Reading the Lanes</div>
+            <span class="section-subtitle">What each state means, and what it asks of you</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <table class="ref-table">
+            <tr><th>Lane</th><th>Means</th><th>Use with your procedure</th></tr>
+            <tr><td><span class="pill">Normal</span></td><td>Check-ins on schedule, nothing open</td><td>No open item recorded</td></tr>
+            <tr><td><span class="pill">Watch</span></td><td>An open flag: weather building, a welfare note, an operational loose end</td><td>An open flag to read against today's schedule; your procedure decides the response</td></tr>
+            <tr><td><span class="pill">No contact</span></td><td>The group hasn't been heard from inside its expected window</td><td>Your school's contact procedure applies; record each attempt as you make it</td></tr>
+            <tr><td><span class="pill">Incident</span></td><td>A declared incident is open on the trip</td><td>An incident record is open — section 12</td></tr>
+          </table>
+          <p>Lanes are driven by what's recorded — a resolved flag moves a trip back toward Normal; an unanswered window moves it to No contact. Keeping the record current is what keeps the board honest.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-checkins">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">6</span>
+          <div style="flex:1">
+            <div class="section-title">Check-Ins</div>
+            <span class="section-subtitle">The rhythm of the shift</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>Trips confirm in on the windows your school and the provider set for them. A check-in that arrives by message logs itself against the window; one that comes by phone, you record. Either way the trip's "last contact" clock resets and the trip stays in Normal.</p>
+          <div class="img-wrap">
+            <img src="images/03_checkins.png" alt="Check-ins page">
+            <div class="img-caption">The check-ins view: every trip's windows for the day, taken and pending.</div>
+          </div>
+          <p>The overdue path: when a window passes unanswered, the trip moves to No contact and the Duty Overview counts it. What happens next is your school's procedure: it defines any grace period, who is contacted and in what order, and when the matter escalates. The dashboard's job is to make the clock visible and hold your record of each attempt; the decisions are yours.</p>
+          <div class="img-wrap">
+            <img src="images/illo_overdue_flow.png" alt="When a check-in is overdue">
+            <div class="img-caption">The shape of the overdue path. Your school sets the grace window, the attempts, and the escalation trigger.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="wf-weather">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">7</span>
+          <div style="flex:1">
+            <div class="section-title">Weather</div>
+            <span class="section-subtitle">The route's weather, read against the day's activities</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>The weather view presents the forecast for each trip's locations — not a generic city forecast, but the places the itinerary names today and tomorrow. When conditions cross a threshold, an alert lands on the trip: <em>southerly front from 15:00 · monsoon cells in the foothills · 38°C on the temple circuit</em>.</p>
+          <div class="img-wrap">
+            <img src="images/04_weather.png" alt="Weather page">
+            <div class="img-caption">Weather across the current trips, alerts tied to the trips they affect.</div>
+          </div>
+          <p>An alert is information for your judgment, not an instruction — what it changes is a conversation between you, the trip leader, and the plan. Record what follows on the trip: the alert, the call, the adjustment. That record shows the forecast was seen and acted on.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-messages">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">8</span>
+          <div style="flex:1">
+            <div class="section-title">Messages</div>
+            <span class="section-subtitle">Field communications, kept with the trip</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>Messages run per trip, threaded between the field and the duty desk, each tagged with who sent it and in what role — teacher, duty manager. Calls you take get logged the same way, so the phone and the thread tell one story.</p>
+          <div class="img-wrap">
+            <img src="images/05_messages.png" alt="Messages view">
+            <div class="img-caption">Message traffic across the current trips.</div>
+          </div>
+          <p>The thread survives handover. The next duty manager reads the exchange exactly as it happened, timestamped, next to the check-ins and flags it relates to — instead of asking whose phone the conversation is on.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-handover">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">9</span>
+          <div style="flex:1">
+            <div class="section-title">Ending the Shift &amp; Handover</div>
+            <span class="section-subtitle">Leave a shift the next person can pick up cold</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>The handover test: could someone who wasn't here run the next shift from the record alone? At the end of a shift the trip record can show:</p>
+          <ul>
+            <li>Every open flag and incident carries a current entry — what's been done, what's expected next, by when</li>
+            <li>Anything you promised the field ("call when you reach the hospital") is logged so the next shift knows to expect it</li>
+            <li>Anything the next shift needs is in the log rather than on a personal phone</li>
+          </ul>
+          <p>The incoming duty manager starts at section 4, and the two routines meet in the middle: your closing entries are their opening read.</p>
+        </div>
+      </div>
+
+      <!-- ════════ WHEN SOMETHING HAPPENS ════════ -->
+
+      <div class="section" id="wf-flags">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">10</span>
+          <div style="flex:1">
+            <div class="section-title">Working with Flags</div>
+            <span class="section-subtitle">Attention without alarm — acknowledge, watch, resolve</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>A flag is the middle ground the dashboard gives you between "fine" and "incident": the temperature drop due at 15:00, the evening check-in that mentioned group fatigue, the transport contingency not yet confirmed. Flags come from weather monitoring, from check-in content, and from you.</p>
+          <p>Each flag shows its severity (watch or critical), its source, and two actions: <strong>Acknowledge</strong> — you've seen it and it's on your watch — and <strong>Resolve</strong> — it's dealt with or passed, with a closing note. A trip's open flags are what hold it in the Watch lane.</p>
+          <p>A flag you keep coming back to may be an incident that has not been named yet. Your school's incident procedure decides whether a flagged condition is declared — section 11.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-declare">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">11</span>
+          <div style="flex:1">
+            <div class="section-title">Declaring an Incident</div>
+            <span class="section-subtitle">Classification, who's involved, what happened — one form, one minute</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>Your school's procedure sets the threshold for declaring. What the form does is narrow: declaring opens a record and nothing else — no one is notified automatically, and an incident that turns out to be minor closes with two entries. Communications stay under your control.</p>
+          <div class="img-wrap">
+            <img src="images/06_declare.png" alt="Declare incident form">
+            <div class="img-caption">The declare form: category, severity, who's involved, what happened.</div>
+          </div>
+          <h3>How to read the classification</h3>
+          <ul>
+            <li><strong>Category</strong> names the kind of situation: medical, safeguarding, operational, transport, weather, or other. It drives who will care about the record later.</li>
+            <li><strong>Severity</strong> carries its own working definitions on the form — from <em>minor</em> (handled locally, no escalation) through <em>moderate</em> (needs monitoring and duty-manager awareness), <em>serious</em> (escalate to school and senior staff), to <em>critical</em> (immediate danger, full escalation). The selection can be updated as the recorded facts change.</li>
+            <li><strong>Who's involved</strong> is counts, not names — students and staff affected, whether the lead teacher knows, whether medical attention is needed.</li>
+            <li><strong>What happened</strong> is the first log entry: facts, sequence, immediate actions taken.</li>
+          </ul>
+          <p>Declaring opens the incident record and moves the trip to the Incident lane. What it does <em>not</em> do: notify parents, the school, or anyone else — escalation is a separate, deliberate step (section 13), per your ladder.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-manage">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">12</span>
+          <div style="flex:1">
+            <div class="section-title">Managing an Open Incident</div>
+            <span class="section-subtitle">The trip live view becomes your working surface</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <div class="img-wrap">
+            <img src="images/07_incident.png" alt="An open incident with its log">
+            <div class="img-caption">A serious incident mid-management: the record, the flags around it, and the log of messages and calls as they happened.</div>
+          </div>
+          <p>Working an incident is a loop: information arrives (a call, a message), you act, you communicate, and you record it — then again. The log is not paperwork after the fact; it is what the next reader works from. <em>"Walking her down with the guide now… heading to Lakes District Hospital"</em> followed by the duty manager's <em>"Understood — school contact on standby, message when you arrive"</em> is a complete unit: fact, decision, expectation.</p>
+          <p>Everything you need sits on the same page: the trip's schedule, its verified facilities from the location record, the message thread, and your school's own procedures — the RAMS you completed for this activity group is exactly the document the emergency actions column was built for.</p>
+          <p>Log facts as facts and actions as actions, with times. The record is read three times: at handover, at post-trip, and — if the incident was serious — by people outside the room much later. It should serve all three.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-escalate">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">13</span>
+          <div style="flex:1">
+            <div class="section-title">Escalation</div>
+            <span class="section-subtitle">Your school's ladder, worked from the dashboard</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <div class="img-wrap">
+            <img src="images/08_escalation.png" alt="Escalation view">
+            <div class="img-caption">The escalation view: the trip's named contacts and the record of who was brought in when.</div>
+          </div>
+          <p>Escalation is bringing a named person into the incident — the school contact on the communication sheet, senior staff, the head. The ladder is your school's, and so is the trigger: your procedure defines whom to contact and when.</p>
+          <p>What the dashboard adds is the record: who was contacted, when, and what they were told. In a serious incident that timeline is what your school's account of the shift rests on.</p>
+        </div>
+      </div>
+
+      <div class="section" id="wf-close">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">14</span>
+          <div style="flex:1">
+            <div class="section-title">Closing &amp; Post-Trip</div>
+            <span class="section-subtitle">Resolution, the closing entry, and where the record goes</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>An incident closes with a resolution entry: outcome, final state of the people involved, anything left to follow up school-side. Closing moves the trip back down the lanes; reopening is allowed if the situation develops again — the record continues rather than restarting.</p>
+          <div class="img-wrap">
+            <img src="images/09_posttrip.png" alt="Post-trip page">
+            <div class="img-caption">Post-trip: the trip's operational record, closed out.</div>
+          </div>
+          <p>When the trip ends, everything the shifts recorded — check-ins, flags, incidents, the logs — rolls into the post-trip record. Nothing needs writing up after the fact: the shifts already wrote it, hour by hour, when it was true.</p>
+        </div>
+      </div>
+
+      <!-- ════════ PAGE BY PAGE ════════ -->
+
+      <div class="section" id="pg-trip">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-page">15</span>
+          <div style="flex:1"><div class="section-title">The Trip Live View</div>
+          <span class="section-subtitle">One trip's planned day and duty record</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <div class="img-wrap">
+            <img src="images/02_trip_live.png" alt="Trip live view">
+            <div class="img-caption">The trip live view during an incident: status header, NOW panel, flags, the open incident, and the log.</div>
+          </div>
+          <h3>How to read it</h3>
+          <ul>
+            <li><strong>The header</strong> is the trip's state in one line: status color, the headline if something's open, dates, and the emergency number.</li>
+            <li><strong>NOW</strong> answers the four questions a duty manager asks first: what the itinerary has scheduled for this hour, when the group was last heard from, what the last message said, and what is open. It shows the plan, not live position.</li>
+            <li><strong>TODAY</strong> is the day's schedule — the higher-attention blocks visible before they start.</li>
+            <li><strong>FLAGS and OPEN INCIDENTS</strong> carry their actions inline (acknowledge, resolve).</li>
+            <li><strong>THE LOG</strong> is filterable by kind — confirmations, incidents, welfare, calls, check-ins — so "show me every welfare entry this week" is one click, not a scroll.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ════════ REFERENCE ════════ -->
+
+      <div class="section" id="troubleshooting">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">16</span>
+          <div style="flex:1"><div class="section-title">If Something Looks Wrong</div>
+          <span class="section-subtitle">Common situations and what to do</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li><strong>A trip that's traveling isn't on the board.</strong> Use your school's duty fallback and contact ETI360 — rather than working the shift from memory.</li>
+            <li><strong>A trip sits in No contact but you just spoke to them.</strong> Log the call — the lane follows the record, and the record was behind.</li>
+            <li><strong>The day's schedule looks wrong.</strong> The itinerary feeds it; flag the correction on the trip and it flows through.</li>
+            <li><strong>The dashboard is unreachable mid-shift.</strong> Your school's paper fallback runs the shift; log retrospectively, with real times, when it returns.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="contacts">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">17</span>
+          <div style="flex:1"><div class="section-title">Contact</div>
+          <span class="section-subtitle">Reaching ETI360</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p><strong>danskimin@eti360.com</strong> — for anything about the dashboard itself. Your school's emergency contacts and escalation ladder are your own documents and always take precedence during an incident.</p>
+        </div>
+      </div>
+
+      <div class="section" id="production">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">18</span>
+          <div style="flex:1"><div class="section-title">Production Notes</div>
+          <span class="section-subtitle">Draft stage only — removed before publication</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li><strong>Access gap (Dan decision needed):</strong> the /ops surfaces this guide documents are internal-role gated today — school roles can only reach /his/duty. A duty-manager role (or opening the /ops tree to school duty staff) is needed before a school can actually operate what this guide teaches. Screenshots were captured under the internal dev role meanwhile.</li>
+            <li>Screenshots show internal chrome (left icon rail, org switcher with email addresses) — recapture once duty-role access exists.</li>
+            <li>Demo data timestamps read "33d ago" — re-stage before using these shots externally.</li>
+            <li>Illustrations: <code>illo_duty_shift</code>, <code>illo_overdue_flow</code> — register in ASSET-REGISTER.md.</li>
+            <li>Tone review — Dan is running it.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../shared/guide.js"></script>
+</body>
+</html>

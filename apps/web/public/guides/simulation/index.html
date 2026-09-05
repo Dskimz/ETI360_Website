@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETI360 — Duty Manager Simulation · User Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="../shared/guide.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../shared/eti360-logo.png" alt="ETI360">
+      <div class="subtitle">Duty Manager Simulation &middot; Draft v0.2</div>
+    </div>
+
+    <div class="nav-group nav-group--switcher">
+      <div class="nav-group-label">ETI360 User Guides</div>
+      <a class="nav-link" href="../schools/">Working with Schools &rarr;</a>
+      <a class="nav-link" href="../providers/">Working with Trip Providers &rarr;</a>
+      <a class="nav-link" href="../duty-manager/">Duty Manager Dashboard &rarr;</a>
+      <a class="nav-link" href="../illustrations.html">All Illustrations &rarr;</a>
+    </div>
+
+    <div class="search-wrap">
+      <input id="guide-search" type="search" placeholder="Search the guide…  (press /)" autocomplete="off">
+    </div>
+    <div class="search-count" id="search-count"></div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Getting Started</div>
+      <a class="nav-link" data-target="what-it-is">1. What the Simulation Is</a>
+      <a class="nav-link" data-target="before">2. Before Your Session</a>
+      <a class="nav-link" data-target="how-it-runs">3. How a Session Runs</a>
+      <a class="nav-link" data-target="key-terms">4. Key Terms</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">In the Session</div>
+      <a class="nav-link" data-target="dashboard-sim">5. The Dashboard in Simulation</a>
+      <a class="nav-link" data-target="handling">6. When the Trip Stops Going to Plan</a>
+      <a class="nav-link" data-target="comms">7. Calls &amp; Communications</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Afterwards</div>
+      <a class="nav-link" data-target="debrief">8. The Debrief &amp; the Coverage Reveal</a>
+      <a class="nav-link" data-target="aar">9. Your After-Action Report</a>
+      <a class="nav-link" data-target="next">10. Running It Again</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Reference</div>
+      <a class="nav-link" data-target="faq">11. Common Questions</a>
+      <a class="nav-link" data-target="contacts">12. Contact</a>
+      <a class="nav-link" data-target="production">13. Production Notes (draft only)</a>
+    </div>
+  </aside>
+
+  <div class="nav-scrim" aria-hidden="true"></div>
+
+  <main class="main">
+    <div class="top-bar">
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">&#9776;</button>
+      <span class="crumb">ETI360</span>
+      <h2 id="top-title">Duty Manager Simulation</h2>
+      <span class="version">Draft v0.2 &middot; August 2026</span>
+    </div>
+
+    <div class="content">
+
+      <div class="toolbar">
+        <button onclick="toggleAll(true)">Expand All</button>
+        <button onclick="toggleAll(false)">Collapse All</button>
+      </div>
+
+      <div class="section open" id="what-it-is">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">1</span>
+          <div style="flex:1">
+            <div class="section-title">What the Simulation Is</div>
+            <span class="section-subtitle">Ninety minutes running your own trip, before you run it for real</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>The Duty Manager Simulation is a facilitated 90-minute session in which your duty team runs one of your own trips inside the Duty Manager Dashboard — the same screen used for live trips. The scenario is built from the trip's actual file: the real itinerary, the real places, the real documents. For ninety minutes, the room runs the trip; then the trip stops going to plan, and every call and action is recorded as it is made.</p>
+          <p>Why schools run it: the session puts a developing situation in front of your duty manager before a real one does. The session shows — concretely, on your own trip — what your documents answer, where your team reaches for memory instead, and how your plan holds when the day stops cooperating — with no group in the field.</p>
+          <p>What it is not: not a test of people, and not scored. As the facilitator says at the top of every session — <em>the record is about the plan, not the person</em>. Nothing happens in the scenario that couldn't happen on the itinerary you're actually running.</p>
+          <ul>
+            <li><strong>Format:</strong> 90 minutes, facilitated live by ETI360, remote or on-site</li>
+            <li><strong>Who takes part:</strong> your duty manager (the player); observers welcome — many schools bring the trip leader and a senior leader</li>
+            <li><strong>What you leave with:</strong> the After-Action Report (section 9)</li>
+          </ul>
+          <div class="img-wrap">
+            <img src="images/illo_session_overview.png" alt="What a session is">
+            <div class="img-caption">What goes into a session, and the one document that comes out.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="before">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">2</span>
+          <div style="flex:1">
+            <div class="section-title">Before Your Session</div>
+            <span class="section-subtitle">What we prepare, and the little you arrange</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <h3>What ETI360 prepares</h3>
+          <ul>
+            <li>The scenario, built from the trip you choose — matched to its actual activities and exposures; a trek gets trek situations, a city program gets city ones</li>
+            <li>The simulation staged on the dashboard, ready to run</li>
+          </ul>
+          <h3>What you arrange</h3>
+          <ul>
+            <li>Which trip to rehearse — an upcoming one lets the findings be reviewed before travel</li>
+            <li>A quiet room, a laptop, a phone, and 90 uninterrupted minutes</li>
+            <li><strong>The trip's documents in front of the player</strong> — the itinerary report, your completed RAMS, the communication sheet. The session's first act asks the room to answer from the documents, not from memory; that only works if they're on the table</li>
+          </ul>
+          <div class="callout"><strong>No preparation reading is required of the player</strong> — they should arrive as they would to a real duty shift. Familiarity with the dashboard helps: the <a href="../duty-manager/">Duty Manager Dashboard guide</a> covers it, and the orientation phase re-tours the essentials.</div>
+          <div class="callout callout--note"><strong>Recording:</strong> sessions are recorded for the After-Action Report, and the screen asks for consent before anything starts. The recording serves the report; it isn't a performance review.</div>
+        </div>
+      </div>
+
+      <div class="section" id="how-it-runs">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">3</span>
+          <div style="flex:1">
+            <div class="section-title">How a Session Runs</div>
+            <span class="section-subtitle">Orientation → the trip played clean → the trip stops going to plan → debrief</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <div class="step"><div class="step-num">1</div><div class="step-content"><p>Orientation (≈10 min)</p><p>The facilitator sets the frame: your trip, your students' numbers, where the group is today. Consent, roles, and the one rule — answer from the documents in front of you, not your memory of them.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-content"><p>Familiarization (≈15 min)</p><p>The trip, played clean. Check-ins arrive; the day unfolds as the itinerary says. Checkpoints test the plan, not the person: <em>nearest definitive care from this afternoon's location? who's the school-side duty manager on the communication sheet?</em> Right or wrong, the session moves on — the debrief owns the answers.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-content"><p>The trip stops going to plan — twice (≈40 min)</p><p>Two situations develop, the way situations really do: partial information, by phone and message, with the clock running. The duty manager works the situation, communicates, and records what is done; the session captures the information presented and the actions entered, as they happen.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-content"><p>Debrief and coverage reveal (≈25 min)</p><p>The timeline replayed together — what was known when, what was done, what the documents said. Then the reveal: which of the events the room just faced were covered by a documented control, and which were handled on judgment alone (section 8).</p></div></div>
+          <div class="img-wrap">
+            <img src="images/illo_session_arc.png" alt="How a session runs">
+            <div class="img-caption">The ninety minutes, to scale — forty of them are the disruption.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="key-terms">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-start">4</span>
+          <div style="flex:1">
+            <div class="section-title">Key Terms</div>
+            <span class="section-subtitle">Defined once, used the same way everywhere</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <table class="ref-table">
+            <tr><th>Term</th><th>Definition</th></tr>
+            <tr><td><strong>Session</strong></td><td>One facilitated 90-minute simulation</td></tr>
+            <tr><td><strong>Scenario</strong></td><td>The situations rehearsed — built from your trip's actual file, never reused between schools</td></tr>
+            <tr><td><strong>Facilitator</strong></td><td>The ETI360 lead running the session and voicing everyone who calls in</td></tr>
+            <tr><td><strong>Checkpoint</strong></td><td>A question during familiarization answered from the trip's documents</td></tr>
+            <tr><td><strong>Session timeline</strong></td><td>The timestamped sequence of information, communications, and recorded actions — the raw material of the report</td></tr>
+            <tr><td><strong>Coverage reveal</strong></td><td>The debrief's closing move: which events were covered by a documented control, which weren't</td></tr>
+            <tr><td><strong>After-Action Report</strong></td><td>The compiled record of the session: timeline, checkpoint responses, documented coverage, and observations</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ════════ IN THE SESSION ════════ -->
+
+      <div class="section" id="dashboard-sim">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">5</span>
+          <div style="flex:1">
+            <div class="section-title">The Dashboard in Simulation</div>
+            <span class="section-subtitle">The real surface, one badge different</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>The screen is the Duty Manager Dashboard in the layout your team uses live — the same lanes, the same trip view, the same declare form. Two things tell you it's a session: the <strong>SIM</strong> badge in the top bar, and the <strong>Exit Sim</strong> control beside it. Live trips are untouched; the session's feed comes from the scenario.</p>
+          <div class="img-wrap">
+            <img src="images/01_sim_dashboard.png" alt="Dashboard in simulation mode">
+            <div class="img-caption">The dashboard in a session — identical to live, except the SIM badge and Exit Sim control in the top bar.</div>
+          </div>
+          <div class="img-wrap">
+            <img src="images/03_duty_sim_card.png" alt="The simulation on the school portal">
+            <div class="img-caption">School portal side: the Simulation tab on the Duty Manager Dashboard door shows your prepared session.</div>
+          </div>
+          <p>Everything the player does in-session — reading lanes, recording check-ins, working flags, declaring — is exactly the <a href="../duty-manager/">Duty Manager Dashboard guide</a>. This is the point: the session rehearses the real tool, so nothing learned needs translating afterward.</p>
+        </div>
+      </div>
+
+      <div class="section" id="handling">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">6</span>
+          <div style="flex:1">
+            <div class="section-title">When the Trip Stops Going to Plan</div>
+            <span class="section-subtitle">Decide, communicate, log — with the reasoning captured live</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>There is no script for the player. The situation develops; the duty manager works it the way they'd work a live one — read what's arriving, decide against the documents, communicate, log. Declaring an incident, choosing its severity, escalating to the school contact: all real moves on the real form, and each is captured with the player's stated reasoning at that moment.</p>
+          <p>The one rule that changes behavior: <strong>answer from the documents.</strong> When the room wants to know the nearest hospital to this afternoon's location, the answer is in the trip file on the table — reaching for it under mild pressure is what the session exercises.</p>
+          <p>Wrong turns are part of it. The facilitator won't correct in the moment — an action taken on a wrong assumption plays out, is recorded, and is reviewed in the debrief.</p>
+        </div>
+      </div>
+
+      <div class="section" id="comms">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">7</span>
+          <div style="flex:1">
+            <div class="section-title">Calls &amp; Communications</div>
+            <span class="section-subtitle">Phones ring, messages land — the way they really would</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li>The facilitator voices everyone on the other end — the trip leader in the field, the provider, a parent. Calls arrive on a real phone; messages arrive on the dashboard, as on a live trip.</li>
+            <li>Information comes the way it really comes: partial, sequential, occasionally contradictory. Part of the exercise is deciding what you know versus what you've assumed.</li>
+            <li>Fairness rule: the scenario never manufactures information the real trip couldn't produce. If the itinerary has no kayaks, nobody capsizes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ════════ AFTERWARDS ════════ -->
+
+      <div class="section" id="debrief">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">8</span>
+          <div style="flex:1">
+            <div class="section-title">The Debrief &amp; the Coverage Reveal</div>
+            <span class="section-subtitle">The timeline replayed — then the plan measured against what it faced</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>The debrief walks the session timeline back, together: what was known at each point, what was done, what the documents said — including the checkpoint answers from familiarization, which get their corrections here rather than mid-session.</p>
+          <p>Then the coverage reveal: of the events the room just faced, which were covered by a documented control in your file, and which were handled on judgment alone. Both halves matter — covered events show the plan working; uncovered ones identify exactly where the file is thinner than the trip. What to do about them is your school's call; the report records them as findings, not as an action plan.</p>
+          <p>The tone commitment, stated plainly: observations attach to the plan and the information flow, never grades to the person. A duty manager who made a reasonable call on the information they had made a reasonable call — even when the outcome went sideways.</p>
+        </div>
+      </div>
+
+      <div class="section" id="aar">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">9</span>
+          <div style="flex:1">
+            <div class="section-title">Your After-Action Report</div>
+            <span class="section-subtitle">The session, compiled — what it contains and who it's for</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <p>After the session you receive the After-Action Report: the scenario as run, the session timeline as recorded, the checkpoint answers, the coverage reveal, and the observations from the debrief. It's compiled from the session's own record — nothing is reconstructed from memory.</p>
+          <p>It's addressed to your leadership: evidence that the team rehearsed this trip, on this date, and what the rehearsal showed about the plan. Delivery: PDF, plus a copy filed with the trip in your portal's documents.</p>
+          <div class="asset"><span class="asset-tag">Screenshot needed</span> After-Action Report cover + a spread → <code>images/06_aar.png</code> — awaits a completed session's report (ASSET-REGISTER.md)</div>
+        </div>
+      </div>
+
+      <div class="section" id="next">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-flow">10</span>
+          <div style="flex:1">
+            <div class="section-title">Running It Again</div>
+            <span class="section-subtitle">Different trip, different duty manager, different situations</span>
+          </div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li>Each session is configured for the trip selected, so a later session covers different ground.</li>
+            <li>A later session can use a different trip, a different duty manager, or a different scenario.</li>
+            <li>To book: <strong>danskimin@eti360.com</strong> — name the trip and the dates that suit; we prepare the rest.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ════════ REFERENCE ════════ -->
+
+      <div class="section" id="faq">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">11</span>
+          <div style="flex:1"><div class="section-title">Common Questions</div>
+          <span class="section-subtitle">Asked before most first sessions</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li><strong>"Will my duty manager be judged?"</strong> No scoring exists. The record reads on the plan; the facilitator says so out loud at the start, and the report holds to it.</li>
+            <li><strong>"Can it touch our real trips?"</strong> No — the session runs behind the SIM badge on scenario data; live trips are untouched.</li>
+            <li><strong>"What if we've never used the dashboard?"</strong> The orientation covers the essentials, and the <a href="../duty-manager/">Dashboard guide</a> is a good hour's read beforehand — but arriving cold is a legitimate way to run it. What the session shows is your team as it is.</li>
+            <li><strong>"Why is it recorded?"</strong> The After-Action Report is compiled from the session's own record. Consent is asked on-screen before anything starts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="contacts">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">12</span>
+          <div style="flex:1"><div class="section-title">Contact</div>
+          <span class="section-subtitle">Booking and questions</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body"><p><strong>danskimin@eti360.com</strong></p></div>
+      </div>
+
+      <div class="section" id="production">
+        <div class="section-header" onclick="toggle(this)">
+          <span class="section-badge badge-ref">13</span>
+          <div style="flex:1"><div class="section-title">Production Notes</div>
+          <span class="section-subtitle">Draft stage only — removed before publication</span></div>
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"/></svg>
+        </div>
+        <div class="section-body">
+          <ul>
+            <li>Session arc, checkpoint discipline, recording consent, and the coverage reveal are grounded in the live Nepal Himalaya Trek session's facilitator script — the guide deliberately does NOT screenshot or quote the script itself (it carries scenario answer keys).</li>
+            <li>In-session shots (declare, incident log, debrief timeline) and the AAR spread await a staged session run — ASSET-REGISTER.md.</li>
+            <li>Label cleanup queued: the facilitator script page title still says "Desktop Exercise" (retired term) — internal surface, TASKS.md.</li>
+            <li>Illustrations: <code>illo_session_arc</code>, <code>illo_session_overview</code>.</li>
+            <li>Tone review — Dan is running it.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../shared/guide.js"></script>
+</body>
+</html>
