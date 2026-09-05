@@ -19,7 +19,10 @@ export default function AboutPage() {
         <div className="hero-inner">
           <p className="label label-light ui">About</p>
           <h1>About ETI360.</h1>
-          <p className="subhead">Risk intelligence for school trips.</p>
+          <p className="subhead">
+            Over 30 years of combined experience in educational travel safety
+            and learning.
+          </p>
         </div>
         <MiniCta />
       </section>

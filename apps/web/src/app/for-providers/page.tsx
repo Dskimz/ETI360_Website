@@ -161,7 +161,7 @@ export default function ForProvidersPage() {
           ["--hero-bg" as string]: "url('/marketing/hero/for-providers.jpg')",
         } as React.CSSProperties}
       >
-        <div className="container measure">
+        <div className="hero-inner">
           <p className="label label-light ui">For Providers</p>
           <h1>Document a program once. The system carries the updates.</h1>
           <p className="subtitle">

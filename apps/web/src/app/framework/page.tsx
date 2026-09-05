@@ -33,7 +33,7 @@ export default function FrameworkPage() {
           ["--hero-bg" as string]: "url('/marketing/hero/trip-approval.jpg')",
         } as React.CSSProperties}
       >
-        <div className="container measure">
+        <div className="hero-inner">
           <p className="label label-light ui">The Framework</p>
           <h1>Three questions every school answers about travel. One framework.</h1>
           <p className="subtitle">
