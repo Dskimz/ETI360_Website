@@ -46,7 +46,7 @@ export default function AboutPage() {
 
           <h2>Who does the work</h2>
           <p>
-            <strong>Dan Skimin &mdash; Co-Founder &amp; Principal Consultant.</strong>{" "}
+            <strong>Dan Skimin &mdash; Principal Consultant.</strong>{" "}
             Twenty-three years as an international school educator, the past fifteen of
             them focused on helping schools simplify educational travel. Dan runs the firm
             day to day and works directly on every engagement.
