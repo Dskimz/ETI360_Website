@@ -37,6 +37,7 @@ export const config = {
   matcher: [
     "/review",
     "/review/index.html",
+    "/review/marketing-2026-09.html",
     "/review/email-list.html",
     "/review/email-arms.html",
     "/review/school-review.html",
