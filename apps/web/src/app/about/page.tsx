@@ -41,8 +41,18 @@ export default function AboutPage() {
           <p>
             ETI360 is Educational Travel Insights 360 &mdash; ETI360 PTE. LTD., a private
             limited company registered in Singapore (UEN 202302514C), at 1010 Dover Road,
-            #01-360V, Singapore 139658. Dan Skimin, Co-Founder &amp; Principal Consultant,
-            runs the firm day to day and works directly on every engagement.
+            #01-360V, Singapore 139658.
+          </p>
+
+          <h2>Who does the work</h2>
+          <p>
+            <strong>Dan Skimin &mdash; Co-Founder &amp; Principal Consultant.</strong>{" "}
+            Twenty-three years as an international school educator, the past fifteen of
+            them focused on helping schools simplify educational travel. Dan runs the firm
+            day to day and works directly on every engagement.
+          </p>
+          <p>
+            <strong>Seb Wong &mdash; Senior Consultant.</strong>
           </p>
 
           <h2>What we cover</h2>
