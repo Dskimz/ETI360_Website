@@ -1,0 +1,52 @@
+{
+ "route-intelligence": {
+  "source": "Unsplash",
+  "photographer": "Jack Anstey",
+  "link": "https://unsplash.com/photos/aerial-photography-of-road-zS4lUqLEiNA"
+ },
+ "location-timeline": {
+  "source": "Unsplash",
+  "photographer": "Micha\u0142 Parzuchowski",
+  "link": "https://unsplash.com/photos/people-near-train-station-dmH3NWhYTHQ"
+ },
+ "weather-brief": {
+  "source": "Unsplash",
+  "photographer": "Vincentiu Solomon",
+  "link": "https://unsplash.com/photos/brown-and-green-mountains--6_jB6qjwCQ"
+ },
+ "medical-access": {
+  "source": "Unsplash",
+  "photographer": "OpenTab",
+  "link": "https://unsplash.com/photos/a-large-body-of-water-with-a-city-in-the-background-bQd8b4dZPjI"
+ },
+ "student-journey": {
+  "source": "Unsplash",
+  "photographer": "Austin Ban",
+  "link": "https://unsplash.com/photos/group-of-people-walking-on-pathway-between-green-grass-background-of-tree-juHayWuaaoQ"
+ },
+ "field-trips": {
+  "source": "Unsplash",
+  "photographer": "Maksim Shutov",
+  "link": "https://unsplash.com/photos/whale-skeleton-suspended-in-a-grand-museum-hall-Rsc99RPbNHM"
+ },
+ "standard-documentation": {
+  "source": "Unsplash",
+  "photographer": "Niklas Weiss",
+  "link": "https://unsplash.com/photos/rice-terraces-in-tegelalang-bali--2WlTWZLnRc"
+ },
+ "tournament-travel": {
+  "source": "Unsplash",
+  "photographer": "Claudio Schwarz",
+  "link": "https://unsplash.com/photos/oval-white-stadium-Zvdvm0UKPqQ"
+ },
+ "duty-manager": {
+  "source": "Unsplash",
+  "photographer": "Daniam Chou",
+  "link": "https://unsplash.com/photos/city-skyline-during-night-time-JD4P2rfAkvc"
+ },
+ "incident-reporting": {
+  "source": "Unsplash",
+  "photographer": "Jonathan Ford",
+  "link": "https://unsplash.com/photos/lighthouse-during-golden-hour-c9bEyA_xFIk"
+ }
+}
