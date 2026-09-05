@@ -13,7 +13,7 @@ export function middleware(req: NextRequest) {
       const pass = decoded.slice(decoded.indexOf(":") + 1);
       if (pass === REVIEW_PASSWORD) {
         const { pathname } = req.nextUrl;
-        if (pathname.startsWith("/guides") && !/\.[a-z0-9]+$/i.test(pathname)) {
+        if ((pathname.startsWith("/guides") || pathname === "/review") && !/\.[a-z0-9]+$/i.test(pathname)) {
           // public/ files don't auto-serve directory indexes, and Next strips
           // trailing slashes before middleware runs — send folder URLs to
           // their explicit index.html so relative asset paths resolve.
@@ -34,5 +34,12 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/review/email-list.html", "/review/email-arms.html", "/guides/:path*"],
+  matcher: [
+    "/review",
+    "/review/index.html",
+    "/review/email-list.html",
+    "/review/email-arms.html",
+    "/review/school-review.html",
+    "/guides/:path*",
+  ],
 };
