@@ -40,7 +40,7 @@ export default function UnsubscribePage() {
   return (
     <>
       <style>{`
-        .unsub-hero .hero-inner { padding: 34px 0 30px; }
+        .unsub-hero { padding: 42px 0 34px; }
         .unsub-hero h1 { font-size: clamp(28px, 3.6vw, 44px); max-width: 860px; }
         .unsub-hero .subhead { margin-top: 10px; font-size: 17px; }
         .unsub-marquee { overflow: hidden; position: relative; padding: 18px 0 6px; }
@@ -48,7 +48,7 @@ export default function UnsubscribePage() {
         .unsub-marquee:hover .unsub-track { animation-play-state: paused; }
         @keyframes unsub-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .unsub-card { flex: 0 0 auto; text-decoration: none; }
-        .unsub-card span { display: block; margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0.02em; color: var(--navy, #0d3558); font-weight: 600; }
+        .unsub-card span { display: block; margin: 0 0 6px; font-size: 12.5px; letter-spacing: 0.02em; color: var(--parchment, #f4ead2); font-weight: 600; }
         .unsub-card img { height: 240px; width: auto; max-width: 340px; object-fit: contain; display: block; border: 1px solid #dfe4e9; border-radius: 6px; background: #fff; box-shadow: 0 8px 20px rgba(13, 53, 88, 0.08); }
         @media (max-height: 800px) { .unsub-card img { height: 200px; } }
         @media (prefers-reduced-motion: reduce) { .unsub-track { animation: none; } .unsub-marquee { overflow-x: auto; } }
