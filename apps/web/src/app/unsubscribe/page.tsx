@@ -81,12 +81,6 @@ export default function UnsubscribePage() {
               ))}
             </div>
           </div>
-          <p style={{ color: "var(--muted, #8592a3)", fontSize: 13.5, margin: "14px 0 0", maxWidth: 720 }}>
-            The pages shown are prepared for Harborview International School. Harborview is not a
-            real school; it is used only as a sample school, so no real school&apos;s documents are
-            shown. ETI360 provides decision support and does not certify trips or sell insurance.
-            Decisions and responsibilities remain with the school.
-          </p>
         </div>
       </section>
     </>
