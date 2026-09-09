@@ -102,8 +102,8 @@ const tier2: DocEntry[] = [
     reader: "Duty manager · Trip leadership",
     desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions.",
     image: {
-      src: "/email/screen-simulation.png",
-      alt: "The Duty Manager Simulation: itinerary rehearsal and crisis rehearsal inside the dashboard",
+      src: "/Claude/Questions/assets/simulation-dashboard.png",
+      alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
     },
     wide: true,
   },

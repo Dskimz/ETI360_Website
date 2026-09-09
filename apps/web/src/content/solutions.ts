@@ -79,6 +79,16 @@ export const reportCatalog = {
     image: "/Claude/Questions/assets/std-documentation.png",
     imageAlt: "Three ETI360 itinerary documents using one standard format",
   },
+  dutyManagerSimulation: {
+    slug: "duty-manager-simulation",
+    tier: 2,
+    name: "Duty Manager Simulation",
+    question: "Can your duty manager practice one of your own trips on the dashboard before it runs?",
+    summary: "A facilitated ninety-minute session on one of the school's own trips inside the dashboard, the situations faced and the plan's coverage recorded in one After-Action Report.",
+    href: "/for-schools/duty-manager-simulation",
+    image: "/Claude/Questions/assets/simulation-dashboard.png",
+    imageAlt: "ETI360 Duty Manager Dashboard in simulation mode, with the SIMULATION badge in the top bar, the trip timeline, and current trips in their lanes",
+  },
   dutyManager: {
     slug: "duty-manager",
     tier: 3,
@@ -117,7 +127,8 @@ export const relatedTier2: Record<string, ReadonlyArray<(typeof reportList)[numb
   "field-trips": [c.routeIntelligence, c.weatherBrief, c.medicalAccess],
   "tournament-travel": [c.medicalAccess, c.weatherBrief, c.locationTimeline],
   "standard-documentation": [c.locationTimeline, c.fieldTrips, c.routeIntelligence],
-  "duty-manager": [c.locationTimeline, c.medicalAccess, c.routeIntelligence],
+  "duty-manager-simulation": [c.locationTimeline, c.medicalAccess, c.routeIntelligence],
+  "duty-manager": [c.dutyManagerSimulation, c.locationTimeline, c.medicalAccess],
   "incident-reporting": [c.standardDocumentation, c.medicalAccess, c.locationTimeline],
 };
 
@@ -146,6 +157,7 @@ export const solutionHeroes: Record<string, string> = {
   "field-trips": "/marketing/hero/solutions/field-trips.jpg",
   "standard-documentation": "/marketing/hero/solutions/standard-documentation.jpg",
   "tournament-travel": "/marketing/hero/solutions/tournament-travel.jpg",
+  "duty-manager-simulation": "/marketing/hero/solutions/duty-manager-simulation.jpg",
   "duty-manager": "/marketing/hero/solutions/duty-manager.jpg",
   "incident-reporting": "/marketing/hero/solutions/incident-reporting.jpg",
 };

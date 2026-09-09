@@ -32,6 +32,7 @@ const crops: Record<string, { pos: string; zoom?: number }> = {
   "field-trips": { pos: "center top", zoom: 1.15 },
   "tournament-travel": { pos: "center top", zoom: 1.15 },
   "standard-documentation": { pos: "center top" },
+  "duty-manager-simulation": { pos: "left top" },
   "duty-manager": { pos: "left top" },
   "incident-reporting": { pos: "left top" },
 };
@@ -69,6 +70,12 @@ const groups = [
     title: "Give different trips one familiar documentation structure.",
     copy: "The content remains specific to the departure while the way leadership, staff and families read it stays consistent—across a two-week expedition and across a year of one-day trips.",
     items: [reportCatalog.standardDocumentation, reportCatalog.fieldTrips, reportCatalog.tournamentTravel],
+  },
+  {
+    label: "Practice before departure",
+    title: "Work one trip from the duty phone before the group departs.",
+    copy: "The same trip record and the same screen, worked by the school's own duty manager on situations drawn from the trip's own itinerary; the record is about the plan, not the person.",
+    items: [reportCatalog.dutyManagerSimulation],
   },
   {
     label: "Operate and document",
