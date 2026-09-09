@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { reportCatalog } from "@/content/solutions";
 
 // Unsubscribe clicks are recorded to the "ETI360 Email Unsubscribes" Google
 // Sheet via its linked Form (Dan, 2026-09-09). Only the school slug and arm
@@ -10,38 +11,7 @@ const FORM_ENDPOINT =
 const ENTRY_SCHOOL = "entry.2044737610";
 const ENTRY_ARM = "entry.977866988";
 
-const DOCUMENTS: { src: string; title: string; note: string }[] = [
-  {
-    src: "/email/spread-school-baseline-v3.png",
-    title: "Organizational Baseline Evaluation",
-    note: "The school-wide annual review of policies, roles, provider arrangements, and records.",
-  },
-  {
-    src: "/email/itoshima-route-panel.png",
-    title: "Route Intelligence",
-    note: "A full-day cycling route with distance, elevation, terrain, and waypoints measured.",
-  },
-  {
-    src: "/Claude/Questions/assets/scheduled-group-locations.png",
-    title: "Duty Manager Dashboard",
-    note: "Every traveling group's scheduled location and next planned movement, in one view.",
-  },
-  {
-    src: "/Claude/Questions/assets/student-journey-day.png",
-    title: "Student Journey Guide",
-    note: "One student-facing page per travel day, with the learning purpose beside the schedule.",
-  },
-  {
-    src: "/Claude/Questions/assets/field-trip-parent-letter.png",
-    title: "Field Trip Register",
-    note: "The parent letter for a one-day trip: the day hour by hour, the route, the named emergency department.",
-  },
-  {
-    src: "/Claude/Questions/assets/tournament-travel-guide.png",
-    title: "Tournament Travel Guide",
-    note: "The host-issued guide visiting coaches receive: contacts, arrivals, accommodation, meals.",
-  },
-];
+const SOLUTIONS = Object.values(reportCatalog);
 
 export default function UnsubscribePage() {
   useEffect(() => {
@@ -69,6 +39,17 @@ export default function UnsubscribePage() {
 
   return (
     <>
+      <style>{`
+        .unsub-marquee { overflow: hidden; position: relative; padding: 26px 0 10px; }
+        .unsub-track { display: flex; gap: 18px; width: max-content; animation: unsub-scroll 55s linear infinite; }
+        .unsub-marquee:hover .unsub-track { animation-play-state: paused; }
+        @keyframes unsub-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .unsub-card { flex: 0 0 auto; width: 230px; text-decoration: none; }
+        .unsub-card img { width: 230px; height: 150px; object-fit: cover; object-position: top; display: block; border: 1px solid #dfe4e9; border-radius: 6px; background: #fff; box-shadow: 0 8px 20px rgba(13, 53, 88, 0.08); }
+        .unsub-card span { display: block; margin-top: 8px; font-size: 13px; color: var(--navy, #0d3558); font-weight: 600; }
+        @media (prefers-reduced-motion: reduce) { .unsub-track { animation: none; } .unsub-marquee { overflow-x: auto; } }
+      `}</style>
+
       <section className="hero hero-inner-page">
         <div className="hero-inner">
           <p className="label label-light ui">Email preferences</p>
@@ -81,41 +62,25 @@ export default function UnsubscribePage() {
       </section>
 
       <section>
-        <div className="container" style={{ maxWidth: 860, padding: "56px 24px 24px" }}>
-          <p className="label ui" style={{ color: "var(--gold-dark, #8a6c1f)" }}>
-            The documents we produce
+        <div className="container" style={{ maxWidth: 1120, padding: "26px 24px 40px" }}>
+          <p className="label ui" style={{ color: "var(--gold-dark, #8a6c1f)", margin: 0 }}>
+            The solutions we produce
           </p>
-          <p style={{ maxWidth: 640, color: "var(--slate, #586776)", margin: "10px 0 40px" }}>
-            The work continues on the website. Every page below is from Harborview International
-            School, our reference school, fictitious by design, so no real school&apos;s documents
-            are ever shown.
-          </p>
-
-          {DOCUMENTS.map((doc) => (
-            <figure key={doc.src} style={{ margin: "0 0 48px" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={doc.src}
-                alt={doc.title}
-                loading="lazy"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                  border: "1px solid #dfe4e9",
-                  borderRadius: 6,
-                  boxShadow: "0 12px 32px rgba(13, 53, 88, 0.08)",
-                }}
-              />
-              <figcaption style={{ marginTop: 12 }}>
-                <strong style={{ color: "var(--navy, #0d3558)" }}>{doc.title}</strong>
-                <span style={{ color: "var(--slate, #586776)" }}> · {doc.note}</span>
-              </figcaption>
-            </figure>
-          ))}
-
-          <p style={{ color: "var(--muted, #8592a3)", fontSize: 14, margin: "8px 0 64px" }}>
-            ETI360 provides decision support and does not certify trips or sell insurance.
+          <div className="unsub-marquee" aria-label="ETI360 solutions">
+            <div className="unsub-track">
+              {[...SOLUTIONS, ...SOLUTIONS].map((s, i) => (
+                <a className="unsub-card" key={`${s.slug}-${i}`} href={s.href} aria-hidden={i >= SOLUTIONS.length}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={s.image} alt={i < SOLUTIONS.length ? s.imageAlt : ""} loading="lazy" />
+                  <span>{s.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+          <p style={{ color: "var(--muted, #8592a3)", fontSize: 13.5, margin: "18px 0 0", maxWidth: 720 }}>
+            The pages shown are prepared for Harborview International School. Harborview is not a
+            real school; it is used only as a sample school, so no real school&apos;s documents are
+            shown. ETI360 provides decision support and does not certify trips or sell insurance.
             Decisions and responsibilities remain with the school.
           </p>
         </div>

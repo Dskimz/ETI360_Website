@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "The whole journey on one map, with the learning themes the trip is built around.",
     },
   ],
-  disclosure: "Harborview International School is fictitious by design; no real school or student data is shown.",
+  disclosure: "Harborview International School is not a real school; it is used only as a sample school. No real school or student data is shown.",
   claims: [
     {
       lead: "Pins match cards",

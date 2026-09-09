@@ -56,7 +56,7 @@ export default function FrameworkPage() {
           </p>
           <p className="artifact-reader ui">
             The documents shown are from a fully worked example for Harborview
-            International School. It is fictitious by design, so every page can
+            International School. It is not a real school, only a sample school, so every page can
             be shown in full &mdash; no real school&rsquo;s or provider&rsquo;s
             documents are ever shown. For your school, every document is
             produced the same way: in your branding and your voice, from your

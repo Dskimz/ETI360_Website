@@ -41,7 +41,7 @@ const data: SolutionEvidenceData = {
     },
   ],
   disclosure:
-    "Shown for a Harborview Invitational demonstration week. Harborview International School and Ohori International School are fictitious by design; the hospitals, hotel, and eating places are real Singapore locations.",
+    "Shown for a Harborview Invitational sample week. Harborview International School and Ohori International School are not real schools; they are used only as sample schools. The hospitals, hotel, and eating places are real Singapore locations.",
   pdfHref: "/docs/tournament-travel-guide.pdf",
   claims: [
     {

@@ -17,7 +17,7 @@ const data: SolutionEvidenceData = {
   heroLine: "One answer per route: the Route Intelligence Summary, a two-page record of the physical shape of the day.",
   editorial: [
     "An itinerary line reads “full-day cycling.” Between breakfast and dinner sit hours on open roads, and the person reviewing the trip has that one line to go on.",
-    "The Route Intelligence Summary covers any activity with a route — cycling days, hikes, expedition stages, river corridors — and the depth of each record follows the activity and the source information behind it.",
+    "The Route Intelligence Summary covers any activity with a route — cycling days, treks, kayaking and river stages, expedition legs — and the depth of each record follows the activity and the source information behind it.",
   ],
   spreadTitle: "The Big Itoshima cycling loop, starting and ending at Chikuzen-Maebaru Station, Fukuoka.",
   plates: [
@@ -38,7 +38,7 @@ const data: SolutionEvidenceData = {
       note: "Elevation by distance, the waypoint register, terrain cover, seasonal context, and ride-day operating notes.",
     },
   ],
-  disclosure: "Harborview International School is a fictitious demonstration school; no real school or student data is shown.",
+  disclosure: "Harborview International School is not a real school; it is used only as a sample school. No real school or student data is shown.",
   pdfHref: "/docs/route-intelligence.pdf",
   claims: [
     {

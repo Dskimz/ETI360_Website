@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "Departure to return on one side — the hour-by-hour day, both maps, and notes for families.",
     },
   ],
-  disclosure: "Shown for a Harborview demonstration term. Harborview International School is fictitious by design; no real school or student data appears.",
+  disclosure: "Shown for a Harborview sample term. Harborview International School is not a real school; it is used only as a sample school. No real school or student data appears.",
   claims: [
     {
       lead: "Venues confirmed once",

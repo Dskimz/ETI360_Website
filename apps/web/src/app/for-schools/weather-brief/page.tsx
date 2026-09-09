@@ -30,7 +30,7 @@ const data: SolutionEvidenceData = {
       note: "The one-page brief a school receives: temperature bands, rain frequency, and daylight for one travel window.",
     },
   ],
-  disclosure: "A demonstration Weather Brief prepared for Harborview International School — fictitious by design; no real school's documents are shown.",
+  disclosure: "A sample Weather Brief prepared for Harborview International School, our sample school (not a real school); no real school's documents are shown.",
   claims: [
     {
       lead: "Averages beside extremes",

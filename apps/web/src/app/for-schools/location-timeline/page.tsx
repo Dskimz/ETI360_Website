@@ -38,7 +38,7 @@ const data: SolutionEvidenceData = {
       note: "Four days expanded hour by hour — activities, meals, transport, free time, and lights-out in day columns.",
     },
   ],
-  disclosure: "A Harborview demonstration trip. Harborview International School is fictitious by design; no real school or student data is shown.",
+  disclosure: "A Harborview sample trip. Harborview International School is not a real school; it is used only as a sample school. No real school or student data is shown.",
   claims: [
     {
       lead: "Start, finish, place",

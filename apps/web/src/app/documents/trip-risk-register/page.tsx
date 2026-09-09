@@ -62,8 +62,8 @@ export default function TripRiskRegisterPage() {
           </div>
           <p className="artifact-reader ui">
             The register for Harborview International School: 31 scheduled trips
-            across the academic year. Harborview is our fictitious reference
-            school, so the screen can be shown in full.
+            across the academic year. Harborview is our sample school, not a
+            real one, so the screen can be shown in full.
           </p>
 
           <h2>Who works from it</h2>
@@ -137,7 +137,7 @@ export default function TripRiskRegisterPage() {
 
           <p className="artifact-reader ui">
             The screens on this page show Harborview International School, our
-            fictitious reference school. No real school&rsquo;s or
+            sample school. Harborview is not a real school; no real school&rsquo;s or
             provider&rsquo;s information is ever shown.
           </p>
         </div>

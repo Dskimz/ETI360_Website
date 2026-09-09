@@ -25,12 +25,12 @@ const data: SolutionEvidenceData = {
       src: "/Claude/Questions/assets/incident-record.png",
       width: 1200,
       height: 1458,
-      alt: "ETI360 Duty Manager Dashboard trip view showing the day's schedule, an open incident, flags, and the chronological activity log for a fictitious Harborview trip in Seoul",
+      alt: "ETI360 Duty Manager Dashboard trip view showing the day's schedule, an open incident, flags, and the chronological activity log for a sample Harborview trip in Seoul",
       label: "Duty Manager Dashboard, trip view",
       note: "One trip day mid-incident — the working screen as the duty team sees it.",
     },
   ],
-  disclosure: "Harborview International School is fictitious by design; no real school, incident, or student data is shown.",
+  disclosure: "Harborview International School is not a real school; it is used only as a sample school. No real school, incident, or student data is shown.",
   claims: [
     {
       lead: "One log",

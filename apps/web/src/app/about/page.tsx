@@ -74,7 +74,7 @@ export default function AboutPage() {
           <p>
             Everything shown publicly &mdash; every document page, dashboard view, and
             worked example on this site &mdash; comes from Harborview International
-            School, a reference school that is fictitious by design. That is a deliberate
+            School, our sample school. Harborview is not a real school, and that is a deliberate
             choice: it means every page can be shown in full, and no real school&rsquo;s
             documents, staff, or students ever appear in ETI360&rsquo;s materials. Client
             work is produced the same way, in the client&rsquo;s own branding, from the

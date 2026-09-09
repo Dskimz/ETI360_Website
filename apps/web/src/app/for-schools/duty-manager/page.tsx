@@ -38,7 +38,7 @@ const data: SolutionEvidenceData = {
       note: "Students traveling, active trips, open incidents, alerts, and overdue check-ins — the numbers read first.",
     },
   ],
-  disclosure: "Product screenshots staged mid-trip with trips from Harborview International School, a school fictitious by design — no real school or student data appears.",
+  disclosure: "Product screenshots staged mid-trip with trips from Harborview International School, our sample school (not a real school) — no real school or student data appears.",
   claims: [
     {
       lead: "Scheduled, not tracked",
