@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { AnalyticsConsent } from "@/components/AnalyticsConsent";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -29,7 +29,8 @@ export const metadata: Metadata = {
 };
 
 // GA4 loads only when the measurement ID is set, so local and preview builds
-// stay uninstrumented until the property exists.
+// stay uninstrumented, and then only after the visitor accepts (Dan,
+// 2026-09-09). AnalyticsConsent owns both the gate and the notice.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function RootLayout({
@@ -54,7 +55,7 @@ export default function RootLayout({
             ad blockers and school networks that eat a large share of GA events.
             It is the pageview ground truth GA4 gets checked against. */}
         <Analytics />
-        {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
+        {GA_ID ? <AnalyticsConsent gaId={GA_ID} /> : null}
       </body>
     </html>
   );

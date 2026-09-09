@@ -15,6 +15,12 @@ const firmLinks = [
   {href: '/login', label: 'Client Login'},
 ]
 
+// Cookie settings only exists while Google Analytics is configured: without a
+// measurement ID there is no notice for the link to reopen.
+const firmLinksWithConsent = process.env.NEXT_PUBLIC_GA_ID
+  ? [...firmLinks, {href: '#cookie-settings', label: 'Cookie settings'}]
+  : firmLinks
+
 export function SiteFooter() {
   const year = new Date().getFullYear()
   return (
@@ -47,7 +53,7 @@ export function SiteFooter() {
               <div className="site-footer-col">
                 <h3 className="ui">ETI360</h3>
                 <ul className="ui">
-                  {firmLinks.map((link) => (
+                  {firmLinksWithConsent.map((link) => (
                     <li key={link.href}>
                       <Link href={link.href}>{link.label}</Link>
                     </li>

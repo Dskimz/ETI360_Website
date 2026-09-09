@@ -57,14 +57,16 @@ export default function PrivacyPage() {
           <p>
             <strong>Site analytics.</strong> We measure how the site is used so we know which
             material is worth producing. Vercel Analytics records aggregate page views without
-            cookies and without identifying individual visitors. Where Google Analytics is
-            enabled it records aggregate usage such as pages viewed, approximate region, and
+            cookies and without identifying individual visitors. Google Analytics runs only if
+            you accept it when asked, and records pages viewed, approximate location, and
             referring source; we do not use it to build advertising profiles, and we do not
             combine analytics data with anything you submit through the form.
           </p>
           <p>
-            We do not attempt to identify individual visitors, and we do not track individual
-            recipients of our emails.
+            When we write to a school, the links in that email carry a tag naming the school
+            and the topic, so we can tell which material was of interest. The tag records the
+            school, never a person, and we do not use tracking pixels to detect whether an
+            email has been opened.
           </p>
 
           <h2>How long we keep it</h2>
@@ -93,9 +95,11 @@ export default function PrivacyPage() {
 
           <h2>Cookies</h2>
           <p>
-            This site sets no advertising or profiling cookies. Vercel Analytics is cookieless.
-            If Google Analytics is enabled it sets its own measurement cookies; you can block
-            these in your browser without affecting how the site works.
+            This site sets no advertising or profiling cookies. Vercel Analytics is cookieless
+            and runs on every visit. Google Analytics sets measurement cookies and loads only
+            after you accept it; declining changes nothing about how the site works. Your
+            choice is remembered in your own browser and you can change it at any time through
+            Cookie settings in the footer.
           </p>
 
           <h2>Changes</h2>
