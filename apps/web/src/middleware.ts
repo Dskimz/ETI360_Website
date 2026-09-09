@@ -43,11 +43,15 @@ function isAuthPath(pathname: string) {
 const COLUMNS = ["event", "school", "arm", "path", "city", "region", "country", "agent", "utm"] as const;
 type Row = Record<(typeof COLUMNS)[number], string>;
 
-// Set both in Vercel, then redeploy: middleware env is bound at build time.
-//   CAMPAIGN_LOG_ENDPOINT — the Google Form .../formResponse URL
-//   CAMPAIGN_LOG_ENTRIES  — its nine entry ids, comma separated, in COLUMNS order
+// Set in Vercel, then redeploy: middleware env is bound at build time.
+//   CAMPAIGN_LOG_ENDPOINT — where the row goes. The review app's ingest route
+//                           (https://…/api/webhooks/campaign-signal) takes JSON;
+//                           a Google Form .../formResponse URL is also accepted.
+//   CAMPAIGN_LOG_SECRET   — shared with the review app, sent as x-campaign-secret
+//   CAMPAIGN_LOG_ENTRIES  — Google Form only: its nine entry ids, in COLUMNS order
 const LOG_ENDPOINT = process.env.CAMPAIGN_LOG_ENDPOINT;
 const LOG_ENTRIES = process.env.CAMPAIGN_LOG_ENTRIES;
+const LOG_SECRET = process.env.CAMPAIGN_LOG_SECRET;
 
 // Fallback sink so a wave is never lost to an unconfigured form. Uses the
 // Resend key the contact route already relies on.
@@ -130,6 +134,18 @@ function buildRow(req: NextRequest): Row | null {
   };
 }
 
+// The review app writes the row to Postgres and serves /campaign-signals from it.
+async function postToReviewApp(row: Row) {
+  if (!LOG_ENDPOINT || LOG_ENTRIES) return false;
+  const res = await fetch(LOG_ENDPOINT, {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-campaign-secret": LOG_SECRET || "" },
+    body: JSON.stringify(row),
+  });
+  if (!res.ok) console.error(`[campaign-signal] ingest returned ${res.status}`);
+  return res.ok;
+}
+
 async function postToForm(row: Row) {
   if (!LOG_ENDPOINT || !LOG_ENTRIES) return false;
   const ids = LOG_ENTRIES.split(",").map((id) => id.trim()).filter(Boolean);
@@ -166,6 +182,7 @@ async function record(row: Row) {
   // Always leave a runtime log line: it is the last resort if both sinks fail.
   console.log(`[campaign-signal] ${JSON.stringify(row)}`);
   try {
+    if (await postToReviewApp(row)) return;
     if (await postToForm(row)) return;
     await emailRow(row);
   } catch (error) {
