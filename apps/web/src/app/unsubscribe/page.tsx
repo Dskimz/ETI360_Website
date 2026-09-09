@@ -65,7 +65,7 @@ export default function UnsubscribePage() {
         </div>
       </section>
 
-      <section>
+      <section style={{ padding: 0 }}>
         <div className="container" style={{ maxWidth: 1120, padding: "18px 24px 34px" }}>
           <p className="label ui" style={{ color: "var(--gold-dark, #8a6c1f)", margin: 0 }}>
             Educational Travel Solutions from ETI360
