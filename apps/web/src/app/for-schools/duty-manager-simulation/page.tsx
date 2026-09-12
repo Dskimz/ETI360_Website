@@ -22,7 +22,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "The Harborview Nepal Himalaya Trek rehearsed: the dashboard in simulation and the After-Action Report",
   plates: [
     {
-      src: "/Claude/Questions/assets/simulation-dashboard.png",
+      src: "/marketing/solutions/simulation-dashboard.png",
       width: 2880,
       height: 1800,
       alt: "ETI360 Duty Manager Dashboard in simulation mode: SIMULATION badge, clock, and status line, a note that locations follow the itinerary, a trip timeline with day marks, trip search, Harborview trips in triage lanes, the Duty Overview numbers, and the check-ins and active alerts panels",
@@ -30,7 +30,7 @@ const data: SolutionEvidenceData = {
       note: "The simulation band above the working view: the SIMULATION badge and trip timeline, then the Harborview trips in their lanes and the Duty Overview numbers.",
     },
     {
-      src: "/Claude/Questions/assets/simulation-after-action-report.png",
+      src: "/marketing/solutions/simulation-after-action-report.png",
       width: 1588,
       height: 2248,
       alt: "ETI360 After-Action Report, the simulated incident reports sheet from a Harborview session: header band, title, intro line, scenario marker, numbered incident reports with tier chip, first mention, situation, document checks, call with verbatim reasoning, communications line, and resolution, above the footer Simulated — did not occur",

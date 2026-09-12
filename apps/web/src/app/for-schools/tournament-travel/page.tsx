@@ -24,7 +24,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "One Harborview Invitational: the welcome and the medical page",
   plates: [
     {
-      src: "/Claude/Questions/assets/tournament-travel-welcome.png",
+      src: "/marketing/solutions/tournament-travel-welcome.png",
       width: 1920,
       height: 2716,
       alt: "The welcome page of a visiting coaches' guide: a Singapore skyline hero, the host athletics director's welcome, where the host, the visiting team, players and coaches are placed, five day cards for the tournament week, and the guide's index",
@@ -32,7 +32,7 @@ const data: SolutionEvidenceData = {
       note: "The host's welcome, the five days as day cards, where each party stays, and the guide's index.",
     },
     {
-      src: "/Claude/Questions/assets/tournament-travel-medical.png",
+      src: "/marketing/solutions/tournament-travel-medical.png",
       width: 1920,
       height: 2716,
       alt: "The medical and hospitals page: two 24-hour emergency departments with distances and taxi times from the campus and the hotel, what to expect at a Singapore emergency department, clinics and pharmacies, and a map from the sports complex to National University Hospital",

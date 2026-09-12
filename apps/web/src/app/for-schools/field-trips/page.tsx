@@ -23,7 +23,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "One term of Harborview field trips: the register and one trip's letter",
   plates: [
     {
-      src: "/Claude/Questions/assets/field-trip-register.png",
+      src: "/marketing/solutions/field-trip-register.png",
       width: 1921,
       height: 2798,
       alt: "ETI360 Field Trip Register: twenty-five one-day field trips for a term, each with date, trip name, venues, departure and return times",
@@ -31,7 +31,7 @@ const data: SolutionEvidenceData = {
       note: "A term's twenty-five trips in date order — each row one trip, its venues, its times.",
     },
     {
-      src: "/Claude/Questions/assets/field-trip-parent-letter.png",
+      src: "/marketing/solutions/field-trip-parent-letter.png",
       width: 1920,
       height: 2716,
       alt: "A field trip parent information letter: school crest and name, departure and return times, educational overview, hour-by-hour itinerary, a route map from school and a map to the nearest emergency department, notes for families and the trip coordinator",

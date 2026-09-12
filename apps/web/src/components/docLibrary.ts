@@ -88,7 +88,7 @@ export const schoolTier2: DocEntry[] = [
     reader: "Duty manager · Trip leadership",
     desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
     image: {
-      src: "/Claude/Questions/assets/simulation-dashboard.png",
+      src: "/marketing/solutions/simulation-dashboard.png",
       alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
     },
     wide: true,
@@ -178,7 +178,7 @@ export const schoolTier3: DocEntry[] = [
     reader: "The school's own duty manager",
     desc: "The working view while groups travel — operated by your duty manager, never by us: trip context, location, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure.",
     image: {
-      src: "/Claude/Questions/assets/scheduled-group-locations.png",
+      src: "/marketing/solutions/scheduled-group-locations.png",
       alt: "The Duty Manager Dashboard with a trip open: six current trips, trip context, the scheduled location on the map, today's schedule, and messages",
     },
     wide: true,

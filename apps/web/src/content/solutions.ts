@@ -16,7 +16,7 @@ export const reportCatalog = {
     question: "Do you know the scheduled location of every trip group, on every trip?",
     summary: "One structured itinerary presented as a detailed calendar and a continuous trip timeline.",
     href: "/for-schools/location-timeline",
-    image: "/codex/MarketingCampaign/location-timeline.png",
+    image: "/marketing/solutions/location-timeline.png",
     imageAlt: "ETI360 Location Timeline across five days",
   },
   weatherBrief: {
@@ -36,7 +36,7 @@ export const reportCatalog = {
     question: "Can your team see the medical facilities and travel times connected to each planned location?",
     summary: "Verified facility details and estimated access information connected to the actual itinerary.",
     href: "/for-schools/medical-access",
-    image: "/Claude/Questions/assets/medical-access.png",
+    image: "/marketing/solutions/medical-access.png",
     imageAlt: "ETI360 verified medical facility profiles",
   },
   studentJourney: {
@@ -46,7 +46,7 @@ export const reportCatalog = {
     question: "Is the educational purpose of each trip connected to its daily activities?",
     summary: "The learning purpose, the named activities and the shape of each day in one student-facing guide.",
     href: "/for-schools/student-journey",
-    image: "/Claude/Questions/assets/student-journey-day.png",
+    image: "/marketing/solutions/student-journey-day.png",
     imageAlt: "ETI360 Student Journey Guide day page with map, activity cards and an hour-by-hour view of the day",
   },
   fieldTrips: {
@@ -56,7 +56,7 @@ export const reportCatalog = {
     question: "Do you know every field trip your school will run this year?",
     summary: "A year of one-day trips prepared as one set, each issuing its own parent letter with the day, the route and emergency access.",
     href: "/for-schools/field-trips",
-    image: "/Claude/Questions/assets/field-trip-parent-letter.png",
+    image: "/marketing/solutions/field-trip-parent-letter.png",
     imageAlt: "A field trip parent information letter carrying the day hour by hour, a route map from school and a map to the nearest emergency department",
   },
   tournamentTravel: {
@@ -66,7 +66,7 @@ export const reportCatalog = {
     question: "What do a visiting team's coaches receive before they travel to your tournament?",
     summary: "A host school's guide for a visiting team's coaching staff: the week, the hospitals, the homestays, the hotel and where to eat, issued under the host's name.",
     href: "/for-schools/tournament-travel",
-    image: "/Claude/Questions/assets/tournament-travel-guide.png",
+    image: "/marketing/solutions/tournament-travel-guide.png",
     imageAlt: "The welcome page of a host school's visiting coaches' guide: a Singapore skyline hero, the host's welcome, five day cards for the tournament week, and the guide's index",
   },
   standardDocumentation: {
@@ -76,7 +76,7 @@ export const reportCatalog = {
     question: "Do all of your field trips use the same documentation format?",
     summary: "A consistent structure across different trips, generated from one trip-specific record.",
     href: "/for-schools/standard-documentation",
-    image: "/Claude/Questions/assets/std-documentation.png",
+    image: "/marketing/solutions/std-documentation.png",
     imageAlt: "Three ETI360 itinerary documents using one standard format",
   },
   dutyManagerSimulation: {
@@ -86,7 +86,7 @@ export const reportCatalog = {
     question: "Can your duty manager practice one of your own trips on the dashboard before it runs?",
     summary: "A facilitated ninety-minute session on one of the school's own trips inside the dashboard, the situations faced and the plan's coverage recorded in one After-Action Report.",
     href: "/for-schools/duty-manager-simulation",
-    image: "/Claude/Questions/assets/simulation-dashboard.png",
+    image: "/marketing/solutions/simulation-dashboard.png",
     imageAlt: "ETI360 Duty Manager Dashboard in simulation mode, with the SIMULATION badge in the top bar, the trip timeline, and current trips in their lanes",
   },
   dutyManager: {
@@ -96,7 +96,7 @@ export const reportCatalog = {
     question: "Can your duty manager see where every traveling group is scheduled to be across all active trips?",
     summary: "Trip context with calls, messages, check-ins and follow-up tracked in one operating view.",
     href: "/for-schools/duty-manager",
-    image: "/Claude/Questions/assets/scheduled-group-locations.png",
+    image: "/marketing/solutions/scheduled-group-locations.png",
     imageAlt: "ETI360 Duty Manager Dashboard with six current trips, the selected trip's scheduled location, and the next four hours across every trip",
   },
   incidentReporting: {
@@ -106,7 +106,7 @@ export const reportCatalog = {
     question: "Can your duty team log an incident, track its status, and preserve the full record in one place?",
     summary: "Context, communications, actions, status and retained documentation in one record.",
     href: "/for-schools/incident-reporting",
-    image: "/Claude/Questions/assets/incident-record.png",
+    image: "/marketing/solutions/incident-record.png",
     imageAlt: "ETI360 integrated incident record",
   },
 } as const;

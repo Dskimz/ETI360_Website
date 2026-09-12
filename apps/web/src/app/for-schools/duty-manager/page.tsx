@@ -22,7 +22,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "The dashboard staged mid-trip: six Harborview groups traveling at once",
   plates: [
     {
-      src: "/Claude/Questions/assets/scheduled-group-locations.png",
+      src: "/marketing/solutions/scheduled-group-locations.png",
       width: 1280,
       height: 800,
       alt: "ETI360 Duty Manager Dashboard showing six current trips, the selected trip's context and scheduled location, today's schedule, messages, and the next four hours across every trip",
@@ -30,7 +30,7 @@ const data: SolutionEvidenceData = {
       note: "Trip list beside one selected group: its context, today's schedule, and the message thread.",
     },
     {
-      src: "/Claude/Questions/assets/duty-overview.png",
+      src: "/marketing/solutions/duty-overview.png",
       width: 1280,
       height: 551,
       alt: "ETI360 Duty Manager Dashboard duty overview: students traveling, active trips, open incidents, active alerts, and overdue check-ins across every current trip",

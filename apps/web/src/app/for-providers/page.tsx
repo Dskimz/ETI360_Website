@@ -102,7 +102,7 @@ const tier2: DocEntry[] = [
     reader: "Duty manager · Trip leadership",
     desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions.",
     image: {
-      src: "/Claude/Questions/assets/simulation-dashboard.png",
+      src: "/marketing/solutions/simulation-dashboard.png",
       alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
     },
     wide: true,
@@ -145,7 +145,7 @@ const tier3: DocEntry[] = [
     reader: "The school's or provider's own duty manager",
     desc: "The working view while groups travel: trip context, scheduled locations, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure. Operated by the school's or the provider's own duty manager, never by ETI360.",
     image: {
-      src: "/Claude/Questions/assets/scheduled-group-locations.png",
+      src: "/marketing/solutions/scheduled-group-locations.png",
       alt: "The Duty Manager Dashboard with a trip open: six current trips, trip context, the scheduled location on the map, today's schedule, and messages",
     },
     wide: true,

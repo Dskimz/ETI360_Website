@@ -22,7 +22,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "Tokyo, Hokkaido, and Queenstown in one calendar format.",
   plates: [
     {
-      src: "/Claude/Questions/assets/std-documentation.png",
+      src: "/marketing/solutions/std-documentation.png",
       width: 2532,
       height: 1171,
       alt: "Three ETI360 calendar views for Tokyo, Hokkaido and Queenstown using the same documentation structure",

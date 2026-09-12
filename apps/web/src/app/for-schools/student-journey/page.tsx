@@ -23,7 +23,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "A complete travel day from a Harborview demonstration trip",
   plates: [
     {
-      src: "/Claude/Questions/assets/student-journey-day.png",
+      src: "/marketing/solutions/student-journey-day.png",
       width: 1920,
       height: 2716,
       alt: "ETI360 Student Journey Guide day page: dated header, site photograph, day map with numbered pins, narrative, three numbered activity cards, an hour-by-hour column and a safety notes card",
@@ -31,7 +31,7 @@ const data: SolutionEvidenceData = {
       note: "The place, the activities, and the hours, read before the day starts.",
     },
     {
-      src: "/Claude/Questions/assets/student-journey-overview.png",
+      src: "/marketing/solutions/student-journey-overview.png",
       width: 1920,
       height: 2322,
       alt: "ETI360 Student Journey Guide overview page showing the whole trip on one map, trip facts, and the learning themes the trip is built around",

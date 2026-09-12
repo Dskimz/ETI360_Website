@@ -22,7 +22,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "A Harborview trip in Seoul, day three of eight",
   plates: [
     {
-      src: "/Claude/Questions/assets/incident-record.png",
+      src: "/marketing/solutions/incident-record.png",
       width: 1200,
       height: 1458,
       alt: "ETI360 Duty Manager Dashboard trip view showing the day's schedule, an open incident, flags, and the chronological activity log for a sample Harborview trip in Seoul",

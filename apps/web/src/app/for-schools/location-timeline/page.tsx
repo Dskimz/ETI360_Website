@@ -22,7 +22,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "Harborview's five-day trip, from airport arrival to departure gate.",
   plates: [
     {
-      src: "/codex/MarketingCampaign/location-timeline.png",
+      src: "/marketing/solutions/location-timeline.png",
       width: 2291,
       height: 1459,
       alt: "ETI360 Location Timeline showing accommodation, activities, transit, and breaks across five days",

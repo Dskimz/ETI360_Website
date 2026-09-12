@@ -220,7 +220,7 @@ export default function MarketingCampaignReport() {
           </div>
           <figure>
             <Image
-              src="/codex/MarketingCampaign/location-timeline.png"
+              src="/marketing/solutions/location-timeline.png"
               width={2291}
               height={1459}
               alt="ETI360 Location Timeline showing accommodation, activities, transit and breaks across five days"

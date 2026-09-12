@@ -22,7 +22,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "Three facility profiles, and the day view that reads access against the schedule",
   plates: [
     {
-      src: "/Claude/Questions/assets/medical-access.png",
+      src: "/marketing/solutions/medical-access.png",
       width: 994,
       height: 1405,
       alt: "ETI360 Medical Access Record profiling three Tokyo hospitals with addresses, map links, and operational detail",

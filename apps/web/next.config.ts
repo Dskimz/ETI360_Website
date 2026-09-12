@@ -6,12 +6,12 @@ const nextConfig: NextConfig = {
       {
         // Board briefing on the problem-led marketing direction (Dan,
         // 2026-08-31), a self-contained static file at
-        // public/Claude/MarketingCampaign/index.html. Next does not serve
+        // public/review/problem-led-direction/index.html. Next does not serve
         // directory indexes from public/, so the clean route is rewritten
         // onto the file (same pattern as the retired /CMA page). Remove
         // this rewrite and the folder together.
-        source: "/Claude/MarketingCampaign",
-        destination: "/Claude/MarketingCampaign/index.html",
+        source: "/review/problem-led-direction",
+        destination: "/review/problem-led-direction/index.html",
       },
 
     ];
@@ -20,10 +20,10 @@ const nextConfig: NextConfig = {
     return [
       {
         // Clean entry link for the questions-page drafts. A REDIRECT (not a
-        // rewrite) on purpose: the drafts use relative links and assets, so
+        // rewrite) on purpose: the drafts link each other relatively, so
         // the browser must land on the real file path for them to resolve.
-        source: "/Claude/Questions",
-        destination: "/Claude/Questions/hub-draft.html",
+        source: "/review/questions",
+        destination: "/review/questions/hub-draft.html",
         permanent: false,
       },
       {
