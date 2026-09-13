@@ -81,7 +81,7 @@ export const reportCatalog = {
   },
   dutyManagerSimulation: {
     slug: "duty-manager-simulation",
-    tier: 2,
+    tier: 3,
     name: "Duty Manager Simulation",
     question: "Can your duty manager practice one of your own trips on the dashboard before it runs?",
     summary: "A facilitated ninety-minute session on one of the school's own trips inside the dashboard, the situations faced and the plan's coverage recorded in one After-Action Report.",

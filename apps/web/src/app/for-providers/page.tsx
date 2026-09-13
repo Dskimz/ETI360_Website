@@ -197,7 +197,7 @@ export default function ForProvidersPage() {
           </p>
           <p>
             <strong>Due-diligence questionnaires repeat every season.</strong>{" "}
-            The annual Organizational Baseline documents your standing once;
+            The Organizational Baseline documents your standing once, reviewed every four years;
             every proposal references the same current evidence.
           </p>
           <p>
@@ -228,7 +228,7 @@ export default function ForProvidersPage() {
 
         <TierBand
           n={1}
-          eyebrow="Tier One · Annual"
+          eyebrow="Tier One · Every four years"
           name="Organizational Baseline"
           desc="The same ten-area review applied to schools and to trip providers, read against the ETI360 Operational Capability Framework."
         />

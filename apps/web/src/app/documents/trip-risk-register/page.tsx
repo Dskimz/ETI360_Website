@@ -119,7 +119,7 @@ export default function TripRiskRegisterPage() {
           <h2>Where it sits in the framework</h2>
           <p>
             The register is the bridge between tiers. Above it sits the
-            Organizational Baseline &mdash; the annual review of the
+            Organizational Baseline &mdash; the four-yearly review of the
             school&rsquo;s own policies, roles, and standing arrangements. Below
             it, each trip carries its Tier 2 pack: the itineraries, route
             intelligence, risk assessment, and parent documents. When a group

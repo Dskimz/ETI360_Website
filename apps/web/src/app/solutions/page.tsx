@@ -6,7 +6,7 @@ import { CtaCard, MiniCta } from "@/components/CtaCard";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Every ETI360 solution in its tier: the annual Organizational Baseline, the Tier 2 trip documents, and the Tier 3 working views for the days away.",
+    "Every ETI360 solution in its tier: the Organizational Baseline reviewed on a four-year cycle, the Tier 2 trip documents, and the Tier 3 working views for the days away.",
   alternates: { canonical: "/solutions" },
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
@@ -33,7 +33,7 @@ export default function SolutionsPage() {
         <div className={styles.wrap}>
           <div className={styles.tierCards}>
             <div className={`${styles.tierCard} ${styles.tier1}`}>
-              <p className={styles.tierEyebrow}>Tier One &middot; Annual</p>
+              <p className={styles.tierEyebrow}>Tier One &middot; Every four years</p>
               <p className={styles.tierName}>Organizational Baseline</p>
               <div className={styles.tierLinks}>
                 <a href="/framework#tier1">

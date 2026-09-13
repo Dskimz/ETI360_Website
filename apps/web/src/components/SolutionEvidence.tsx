@@ -118,7 +118,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
           <p className={styles.stripIntro}>{data.stripLine}</p>
           <div className={styles.tierCards}>
             <div className={`${styles.tierCard} ${styles.tier1}`}>
-              <p className={styles.tierEyebrow}>Tier One &middot; Annual</p>
+              <p className={styles.tierEyebrow}>Tier One &middot; Every four years</p>
               <p className={styles.tierName}>Organizational Baseline</p>
               <div className={styles.tierLinks}>
                 <a href="/framework#tier1">Organizational Baseline Evaluation</a>

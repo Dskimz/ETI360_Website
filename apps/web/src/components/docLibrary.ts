@@ -7,14 +7,14 @@ import type { DocEntry } from "./DocShowcase";
 export const schoolTier1: DocEntry[] = [
   {
     anchor: "baseline",
-    pdf: "/docs/organizational-baseline-evaluation-v3.pdf",
+    pdf: "/docs/organizational-baseline-evaluation-v4.pdf",
     stage: "T1 · Schools and trip providers",
     name: "Organizational Baseline Evaluation",
     reader: "Head · Board · Risk committee",
-    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, read against the ETI360 Operational Capability Framework and refreshed annually.",
+    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, read against the ETI360 Operational Capability Framework and reviewed once every four years.",
     image: {
-      src: "/email/spread-school-baseline-v3.png",
-      alt: "Organizational Baseline Evaluation for Harborview International School: each of ten areas marked at standard or progressing",
+      src: "/email/spread-school-baseline-v4.png",
+      alt: "Organizational Baseline Evaluation for Harborview International School: ten areas read across every program path the school runs, each marked at standard, progressing, or not evidenced",
     },
   },
 ];
@@ -78,18 +78,6 @@ export const schoolTier2: DocEntry[] = [
     image: {
       src: "/marketing/library/leadership-deck.png",
       alt: "Leadership Deck title slide: the trip in 30 seconds, with days, students, activities, destination, and dates",
-    },
-    wide: true,
-  },
-  {
-    anchor: "duty-manager-simulation",
-    stage: "T2 · Rehearsal",
-    name: "Duty Manager Simulation",
-    reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
-    image: {
-      src: "/marketing/solutions/simulation-dashboard.png",
-      alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
     },
     wide: true,
   },
@@ -160,6 +148,18 @@ export const schoolTier2: DocEntry[] = [
 
 export const schoolTier3: DocEntry[] = [
   {
+    anchor: "duty-manager-simulation",
+    stage: "T3 · Rehearsal",
+    name: "Duty Manager Simulation",
+    reader: "Duty manager · Trip leadership",
+    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    image: {
+      src: "/marketing/solutions/simulation-dashboard.png",
+      alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
+    },
+    wide: true,
+  },
+  {
     anchor: "teacher-guide",
     pdf: "/docs/teacher-operational-guide.pdf",
     stage: "T3 · In the leader's hand",
@@ -189,7 +189,7 @@ export const schoolTier3: DocEntry[] = [
     stage: "T3 · After the trip",
     name: "Post-Trip Feedback Loop",
     reader: "Head · Board · Next year's coordinator",
-    desc: "Staff observations recorded after each trip and carried into the next annual baseline, so the record the trip produced is the starting point the next review reads. The feedback system is in development.",
+    desc: "Staff observations recorded after each trip and carried into the next baseline review, so the record the trip produced is the starting point the next review reads. The feedback system is in development.",
     image: {
       src: "/email/card-posttrip.png",
       alt: "Front page of the Post-Trip Intelligence Report specimen",

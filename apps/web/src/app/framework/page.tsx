@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "ETI360’s 3-Tier Risk Framework",
   description:
-    "The three tiers of the ETI360 framework shown as what a school actually receives — the annual Organizational Baseline, the Tier 2 Trip Risk Review pack, and Tier 3 Dynamic Risk Operations — every document openable as a real PDF.",
+    "The three tiers of the ETI360 framework shown as what a school actually receives — the Organizational Baseline reviewed on a four-year cycle, the Tier 2 Trip Risk Review pack, and Tier 3 Dynamic Risk Operations — every document openable as a real PDF.",
   alternates: { canonical: "/framework" },
   openGraph: {
     images: ["/marketing/og-default.png"],
@@ -67,7 +67,7 @@ export default function FrameworkPage() {
         <TierBand
           n={1}
           id="tier1"
-          eyebrow="Tier One · Annual"
+          eyebrow="Tier One · Every four years"
           name="Organizational Baseline"
           desc="Where does our travel governance stand? One documented review of where the school and its providers stand before the year's trips begin — policies, roles, evidence, and standing arrangements across ten operational capability areas."
         />

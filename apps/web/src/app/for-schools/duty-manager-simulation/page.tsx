@@ -62,7 +62,7 @@ const data: SolutionEvidenceData = {
     title: "When the group departs",
     body: "The screen the duty manager rehearses on is the Duty Manager Dashboard — the working view while groups travel, run by the school's own duty team: the same lanes, trip view, and incident form, now carrying the live trip's check-ins, messages, contacts, and incident record.",
   },
-  stripLine: "Rehearsed within Tier 2 Trip Risk Review on the Duty Manager Dashboard, the school's Tier 3 working view.",
+  stripLine: "Part of Tier 3 Dynamic Risk Operations: practiced on the Duty Manager Dashboard, the school's working view, before the trip departs.",
   ctaTitle: "Talk it through on your own trips.",
   ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Duty Manager Simulation fits how your school prepares its duty team.",
 };
