@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
 import { CtaCard, MiniCta } from "@/components/CtaCard";
+import Image from "next/image";
 import Link from "next/link";
 import { reportList } from "@/content/solutions";
+
+// Where the small page thumbnail on each problem card is anchored. The slot is
+// a portrait "page" and most sources are A4 pages, so the default is the top
+// of the page (the masthead is the recognizable part). Landscape screenshots
+// are cover-cropped into that slot; those name the corner that reads as the
+// document rather than a slice of empty canvas.
+const thumbAnchor: Record<string, string> = {
+  "location-timeline": "left top",
+  "medical-access": "left top",
+  "duty-manager-simulation": "left top",
+  "duty-manager": "left top",
+};
 
 export const metadata: Metadata = {
   title: "ETI360 — Risk intelligence for school trips",
@@ -71,7 +84,19 @@ export default function HomePage() {
             {reportList.map((r) => (
               <Link key={r.href} href={r.href} className="problem-card">
                 <p className="problem-question">{r.question}</p>
-                <p className="problem-name">{r.name} &rarr;</p>
+                <div className="problem-foot">
+                  <p className="problem-name">{r.name} &rarr;</p>
+                  <span className="problem-thumb" aria-hidden="true">
+                    <Image
+                      src={r.image}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      quality={85}
+                      style={{ objectPosition: thumbAnchor[r.slug] ?? "top center" }}
+                    />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

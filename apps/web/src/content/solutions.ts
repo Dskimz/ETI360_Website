@@ -128,7 +128,7 @@ export const relatedTier2: Record<string, ReadonlyArray<(typeof reportList)[numb
   "tournament-travel": [c.medicalAccess, c.weatherBrief, c.locationTimeline],
   "standard-documentation": [c.locationTimeline, c.fieldTrips, c.routeIntelligence],
   "duty-manager-simulation": [c.locationTimeline, c.medicalAccess, c.routeIntelligence],
-  "duty-manager": [c.dutyManagerSimulation, c.locationTimeline, c.medicalAccess],
+  "duty-manager": [c.locationTimeline, c.medicalAccess, c.weatherBrief],
   "incident-reporting": [c.standardDocumentation, c.medicalAccess, c.locationTimeline],
 };
 
