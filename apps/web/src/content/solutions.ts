@@ -64,10 +64,10 @@ export const reportCatalog = {
     tier: 2,
     name: "Conference Visits Guide",
     question: "When your teams travel to the other schools in your conference, what do your coaches carry?",
-    summary: "One guide for the staff who travel with a school's teams: every host city in the conference year, with arrival by air and rail, three hotels within a walk of the host, the emergency departments, and one contacts page to photograph.",
+    summary: "One guide for the staff who travel with a school's teams, in the school's own name and colors: every host city in the conference year, with arrival by air and rail, three hotels within a walk of the host, the emergency departments, and one contacts page to photograph.",
     href: "/for-schools/conference-visits",
     image: "/marketing/solutions/conference-visits-guide.jpg",
-    imageAlt: "The cover of the Conference Visits Guide, Wexcombe International School edition: a six-city collage of Paris, Berlin, Madrid, Rome, Amsterdam, and Geneva over the conference name, the year, the cities, and the windows",
+    imageAlt: "The cover of the Conference Visits Guide, Wexcombe International School edition: a six-city collage of Paris, Berlin, Madrid, Rome, Amsterdam, and Geneva, each tile badged with its host school's mark, over the conference name, the year, the cities, and the windows",
   },
   standardDocumentation: {
     slug: "standard-documentation",
