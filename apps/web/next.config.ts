@@ -36,6 +36,15 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // The Tournament Travel Guide page (host side, one invitational) was
+        // remade as the Conference Visits Guide (the traveling side, the whole
+        // year) on 2026-09-13. Campaign drafts and LinkedIn Post 9 still carry
+        // the old link.
+        source: "/for-schools/tournament-travel",
+        destination: "/for-schools/conference-visits",
+        permanent: false,
+      },
+      {
         // The campaign emails link /questions as the hub; the hub is the
         // For Schools page (Sep 2026 merge).
         source: "/questions",

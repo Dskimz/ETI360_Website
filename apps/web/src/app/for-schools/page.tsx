@@ -30,7 +30,7 @@ const crops: Record<string, { pos: string; zoom?: number }> = {
   "medical-access": { pos: "left top", zoom: 2.4 },
   "student-journey": { pos: "center top" },
   "field-trips": { pos: "center top", zoom: 1.15 },
-  "tournament-travel": { pos: "center top", zoom: 1.15 },
+  "conference-visits": { pos: "center top", zoom: 1.15 },
   "standard-documentation": { pos: "center top" },
   "duty-manager-simulation": { pos: "left top" },
   "duty-manager": { pos: "left top" },
@@ -69,7 +69,7 @@ const groups = [
     label: "Keep the record consistent",
     title: "Give different trips one familiar documentation structure.",
     copy: "The content remains specific to the departure while the way leadership, staff and families read it stays consistent—across a two-week expedition and across a year of one-day trips.",
-    items: [reportCatalog.standardDocumentation, reportCatalog.fieldTrips, reportCatalog.tournamentTravel],
+    items: [reportCatalog.standardDocumentation, reportCatalog.fieldTrips, reportCatalog.conferenceVisits],
   },
   {
     label: "Practice before departure",

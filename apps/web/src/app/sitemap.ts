@@ -12,7 +12,7 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
   { path: "/for-schools/route-intelligence", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/weather-brief", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/medical-access", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/for-schools/tournament-travel", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/for-schools/conference-visits", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/field-trips", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/student-journey", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/standard-documentation", priority: 0.7, changeFrequency: "monthly" },
