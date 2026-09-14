@@ -7,7 +7,7 @@ const report = reportCatalog.conferenceVisits;
 export const metadata: Metadata = {
   title: `${report.name} Problem and Solution`,
   description:
-    "How ETI360 prepares one Conference Visits Guide for a school's traveling coaches and staff, in the school's own name and colors: every host city in the conference year, with arrival by air and rail, hotels within a walk of the host, the emergency departments, and a contacts page, prepared once for the year.",
+    "How ETI360 prepares one Athletics and Activities Trips Guide for a school's traveling coaches and staff, in the school's own name and colors: every host city in the conference year, with arrival by air and rail, hotels within a walk of the host, the emergency departments, and a contacts page, prepared once for the year.",
   alternates: { canonical: "/for-schools/conference-visits" },
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
@@ -16,7 +16,7 @@ const data: SolutionEvidenceData = {
   slug: "conference-visits",
   question: "When your teams travel to the other schools in your conference, what do your coaches carry?",
   heroLine:
-    "The Conference Visits Guide goes to the coaches, advisors, and administrators who travel with a school's teams: the conference year, then a chapter for every host city — how the party arrives, where it stays within a walk of the host, which emergency department, and one page of numbers to photograph — prepared once for the year, issued in the school's own name and colors.",
+    "The Athletics and Activities Trips Guide goes to the coaches, advisors, and administrators who travel with a school's teams: the conference year, then a chapter for every host city — how the party arrives, where it stays within a walk of the host, which emergency department, and one page of numbers to photograph — prepared once for the year, issued in the school's own name and colors.",
   editorial: [
     "An athletics director sends teams away far more often than the school hosts. In a six-school conference the year runs to eleven away movements against two hosting duties: three parallel departures on a Wednesday in October, the same again in January, March, and April, and a Model United Nations delegation in November. Each coach who travels carries the same questions into a new city — which emergency department, where the team sleeps, how the party moves from the airport or the station to the host school, and who answers the phone at midnight.",
     "ETI360 prepares one guide for the year, in the school's name and the school's colors, for the staff who travel: a contents page with every start page, the conference calendar, the pages that hold for every trip — entry, health cover, the phones — and then a chapter per host city in the same seven-page order, each chapter set in the host school's colors with the host's mark on the page. Every distance is measured from the host school's own point: the airport and the main station by road, three hotels on foot, the emergency department of record and the separate children's department where the country runs one, a numbered eating list around the first hotel, ten years of climate records for the conference windows, and a contacts page with blanks for the numbers only the school holds. Each trip's own fixture guide cites the chapter instead of repeating it.",
@@ -42,7 +42,7 @@ const data: SolutionEvidenceData = {
   ],
   disclosure:
     "Shown for the Wexcombe International School edition, 2026–27. Wexcombe and the other Meridian Schools Conference members are sample schools, not real ones — their names, marks, and colors were created for this showcase — and each sits at a public landmark in its city. The hotels, hospitals, pharmacies, stations, and eating places are real, and every distance comes from Mapbox Directions.",
-  pdfHref: "/docs/conference-visits-guide-wexcombe.pdf",
+  pdfHref: "/docs/athletics-activities-trips-guide-wexcombe.pdf",
   claims: [
     {
       lead: "Measured from the host's own point",
@@ -67,7 +67,7 @@ const data: SolutionEvidenceData = {
   ],
   boundary:
     "The guide organizes public information; the school chooses the hotel, holds the medical summaries and the insurance, and completes every field marked for confirmation.",
-  stripLine: "The Conference Visits Guide sits within Tier 2 Trip Risk Review, beside the field trip register and the fixture guide for each trip.",
+  stripLine: "The Athletics and Activities Trips Guide sits within Tier 2 Trip Risk Review, beside the field trip register and the fixture guide for each trip.",
   ctaTitle: "See your conference year as the guide your coaches would carry.",
   ctaCopy:
     "Would you be open to a 20-minute conversation about the cities your teams travel to this year, and what your coaching staff would receive before the first departure?",
