@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const crops: Record<string, { pos: string; zoom?: number }> = {
   "location-timeline": { pos: "left top", zoom: 1.5 },
   "route-intelligence": { pos: "center top" },
-  "risk-assessment": { pos: "left top", zoom: 1.6 },
+  "trip-risk-documentation": { pos: "left top", zoom: 1.6 },
   "weather-brief": { pos: "left top", zoom: 2.3 },
   "medical-access": { pos: "left top", zoom: 2.4 },
   "student-journey": { pos: "center top" },
@@ -61,10 +61,10 @@ const groups = [
     ],
   },
   {
-    label: "Decide on the risk",
-    title: "Put the groundwork for each risk assessment in front of the risk team.",
-    copy: "One working document per activity group, with the hazards, the controls, the residual risk and the emergency actions, for the school to complete and approve.",
-    items: [reportCatalog.ramsWorkingDocuments],
+    label: "Prepare the risk documentation",
+    title: "Bring the information behind every trip risk document into one working file.",
+    copy: "Risk assessments, RAMS, Emergency Action Procedures, dynamic risk assessment processes: whichever the school uses, the working file carries the hazards, the controls and the emergency information they draw on, organized by activity group.",
+    items: [reportCatalog.tripRiskWorkingFile],
   },
   {
     label: "Connect purpose to the day",

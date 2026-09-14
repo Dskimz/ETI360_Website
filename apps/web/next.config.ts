@@ -45,6 +45,14 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        // The Trip Risk Working File page shipped for an hour on 2026-09-14
+        // as /for-schools/risk-assessment before Dan's naming ruling (trip
+        // risk documentation is the umbrella; RAMS is one format).
+        source: "/for-schools/risk-assessment",
+        destination: "/for-schools/trip-risk-documentation",
+        permanent: true,
+      },
+      {
         // The campaign emails link /questions as the hub; the hub is the
         // For Schools page (Sep 2026 merge).
         source: "/questions",
