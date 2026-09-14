@@ -54,7 +54,7 @@ const data: SolutionEvidenceData = {
     },
     {
       lead: "Filed with the trip",
-      body: "The session is recorded for the After-Action Report, with consent asked on screen first. Compiled from the session's record, the report names no one; it reaches the school within 48 hours, filed with the trip, and a 30-minute conversation follows.",
+      body: "The session is recorded for the After-Action Report, with consent asked on screen first. Compiled from the session's record, the report names no one; it is filed with the trip, and a 30-minute conversation follows.",
     },
   ],
   boundary: "Your school's own duty manager operates the dashboard, and your school approves its own RAMS; ETI360 facilitates and records — it does not monitor trips on your behalf, make escalation decisions, or replace emergency services.",
