@@ -295,11 +295,10 @@ strong { font-weight: 600; color: var(--navy); }
   font-weight: 400;
 }
 
-/* Home: a shorter hero with no actions — the headline and one line, then
-   straight into What we do. */
+/* Home: a shorter hero with no actions — the headline alone, then straight
+   into What we do. */
 .hero-compact { padding: 56px 0 64px; }
-.hero-compact h1 { margin-bottom: 18px; }
-.hero-compact .subhead { margin-bottom: 0; }
+.hero-compact h1 { margin-bottom: 0; }
 .hero-compact[style*="--hero-bg"]::after { height: 96px; }
 .hero-compact + .about-strip { padding-top: 64px; }
 

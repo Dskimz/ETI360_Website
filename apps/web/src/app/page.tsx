@@ -43,9 +43,6 @@ export default function HomePage() {
             <br />
             <em>for school trips.</em>
           </h1>
-          <p className="subhead">
-            Custom evidence documentation for each trip.
-          </p>
         </div>
         <MiniCta />
       </section>
