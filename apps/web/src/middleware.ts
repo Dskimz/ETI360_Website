@@ -61,6 +61,7 @@ const SIGNAL_TO = "danskimin@eti360.com";
 
 const ARM_BY_SLUG: Record<string, string> = {
   hos: "HOS",
+  hosr: "HOS-R",
   hsa: "HS-A",
   hsb: "HS-B",
   hsc: "HS-C",
