@@ -23,7 +23,7 @@ const data: SolutionEvidenceData = {
   spreadTitle: "A year of Harborview elementary field trips: the register, its contents, and one trip's page",
   plates: [
     {
-      src: "/marketing/solutions/field-trip-register-cover.jpg",
+      src: "/marketing/solutions/field-trip-register-v2-cover.jpg",
       width: 1040,
       height: 1471,
       alt: "The cover of the Harborview Elementary School Field Trip Register 2026–27: thirty field trips, five grades, nine months, thirty-six venues",
@@ -31,7 +31,7 @@ const data: SolutionEvidenceData = {
       note: "Thirty one-day trips, one for each unit of inquiry in each grade, planned and documented before the first day of school.",
     },
     {
-      src: "/marketing/solutions/field-trip-register-contents.jpg",
+      src: "/marketing/solutions/field-trip-register-v2-contents.jpg",
       width: 800,
       height: 1131,
       alt: "The contents page of the register: every month, every date, every trip with its page number",
@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "Month, date, trip — every field trip of the year has a page, and a month opener shows the calendar.",
     },
     {
-      src: "/marketing/solutions/field-trip-register-trip.jpg",
+      src: "/marketing/solutions/field-trip-register-v2-trip.jpg",
       width: 800,
       height: 1131,
       alt: "One trip's page: learning purpose, schedule, notes for families, venues, the route from school and the emergency department mapped, and the documentation set",
@@ -47,7 +47,7 @@ const data: SolutionEvidenceData = {
       note: "The learning purpose, the schedule, the route from school with its measured drive, the emergency department the school named, and the documentation set prepared for the day.",
     },
   ],
-  pdfHref: "/docs/field-trip-register-harborview-2026-27.pdf",
+  pdfHref: "/docs/field-trip-register-harborview-2026-27-v2.pdf",
   disclosure: "Shown for the Harborview sample year. Harborview International School is not a real school; it is used only as a sample school. No real school or student data appears.",
   claims: [
     {

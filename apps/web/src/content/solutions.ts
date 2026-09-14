@@ -56,7 +56,7 @@ export const reportCatalog = {
     question: "Are your educational excursions documented from day 1?",
     summary: "Every one-day trip of the school year planned and documented before day 1: one register, one page per trip, with the route, the emergency department, and the documentation set.",
     href: "/for-schools/field-trips",
-    image: "/marketing/solutions/field-trip-register-cover.jpg",
+    image: "/marketing/solutions/field-trip-register-v2-cover.jpg",
     imageAlt: "The cover of the Harborview Elementary School Field Trip Register 2026–27",
   },
   conferenceVisits: {
