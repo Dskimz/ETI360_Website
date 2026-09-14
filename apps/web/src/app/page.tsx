@@ -34,7 +34,7 @@ export default function HomePage() {
   return (
     <>
       <section
-        className="hero"
+        className="hero hero-compact"
         style={{ ["--hero-bg" as string]: "url('/marketing/hero/home.jpg')" } as React.CSSProperties}
       >
         <div className="hero-inner">
@@ -46,10 +46,6 @@ export default function HomePage() {
           <p className="subhead">
             Custom evidence documentation for each trip.
           </p>
-          <div className="hero-actions">
-            <a className="cta-button ui" href="#what-we-do">What we do</a>
-            <a className="cta-link ui" href="#work">See what a school receives &rarr;</a>
-          </div>
         </div>
         <MiniCta />
       </section>

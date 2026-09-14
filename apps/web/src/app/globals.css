@@ -295,6 +295,14 @@ strong { font-weight: 600; color: var(--navy); }
   font-weight: 400;
 }
 
+/* Home: a shorter hero with no actions — the headline and one line, then
+   straight into What we do. */
+.hero-compact { padding: 56px 0 64px; }
+.hero-compact h1 { margin-bottom: 18px; }
+.hero-compact .subhead { margin-bottom: 0; }
+.hero-compact[style*="--hero-bg"]::after { height: 96px; }
+.hero-compact + .about-strip { padding-top: 64px; }
+
 /* ── Buttons ── */
 .cta-button {
   display: inline-block;
@@ -986,13 +994,6 @@ section.tight { padding: 72px 0; }
 .hero-grid h1 { margin-bottom: 0; }
 .hero-grid .subhead { margin-bottom: 4px; }
 
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding-top: 8px;
-}
-
 .hero-panel {
   background: rgba(250, 248, 243, 0.05);
   border: 1px solid rgba(250, 248, 243, 0.14);
@@ -1253,6 +1254,8 @@ section.tight { padding: 72px 0; }
 @media (max-width: 960px) {
   section { padding: 72px 0; }
   .hero { padding: 64px 0 88px; }
+  .hero-compact { padding: 48px 0 56px; }
+  .hero-compact + .about-strip { padding-top: 56px; }
   .cta-section h2 { font-size: var(--font-3xl); }
   .section-heading, .section-heading-lg { font-size: var(--font-2xl); }
 
@@ -1281,6 +1284,7 @@ section.tight { padding: 72px 0; }
   .site-header-inner { flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 16px; padding-bottom: 16px; }
   .site-nav ul { gap: 16px; font-size: var(--font-xs); flex-wrap: wrap; }
   .hero { padding: 56px 0 72px; }
+  .hero-compact { padding: 40px 0 48px; }
   .cta-section h2 { font-size: 28px; }
   .section-heading { font-size: 24px; }
   .article-body h2 { font-size: 22px; }
