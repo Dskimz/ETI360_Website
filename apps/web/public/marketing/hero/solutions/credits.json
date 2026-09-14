@@ -53,5 +53,10 @@
   "source": "Unsplash",
   "photographer": "Geetangey",
   "link": "https://unsplash.com/photos/hikers-ascend-a-mountain-trail-towards-snowy-peaks-1gsAInHZYVQ"
+ },
+ "risk-assessment": {
+  "source": "Canva stock library",
+  "photographer": "Canva stock (Shibuya Crossing, Tokyo); the same photograph as HIS-T01 day 2 in the Sample Trip Catalogue",
+  "link": "content/vault/Sales/Sample Trip Catalogue/HIS-T01/assets/CREDITS.json"
  }
 }

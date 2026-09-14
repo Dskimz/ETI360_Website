@@ -10,6 +10,7 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
   { path: "/for-schools", priority: 0.9, changeFrequency: "monthly" },
   { path: "/for-schools/location-timeline", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/route-intelligence", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/for-schools/risk-assessment", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/weather-brief", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/medical-access", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/conference-visits", priority: 0.7, changeFrequency: "monthly" },

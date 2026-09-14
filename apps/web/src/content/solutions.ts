@@ -9,6 +9,16 @@ export const reportCatalog = {
     image: "/showcase/pages/02-3-itoshima-route/1.png",
     imageAlt: "ETI360 Route Intelligence map for the Big Itoshima cycling route",
   },
+  ramsWorkingDocuments: {
+    slug: "risk-assessment",
+    tier: 2,
+    name: "RAMS Working Documents",
+    question: "Does your risk team have the full picture before it writes the RAMS?",
+    summary: "The groundwork for each risk assessment, one working document per activity group: hazards beside controls, residual risk, emergency actions, and the routes to the emergency departments, for the school's risk team to complete and approve.",
+    href: "/for-schools/risk-assessment",
+    image: "/marketing/solutions/rams-working-documents-group.jpg",
+    imageAlt: "One activity group's page of the RAMS Working Documents for a Tokyo trip: the activities, the map with routes to the emergency departments, and the first risk with its controls and emergency actions",
+  },
   locationTimeline: {
     slug: "location-timeline",
     tier: 2,
@@ -120,6 +130,7 @@ export const tier3Solutions = reportList.filter((r) => r.tier === 3);
 const c = reportCatalog;
 export const relatedTier2: Record<string, ReadonlyArray<(typeof reportList)[number]>> = {
   "route-intelligence": [c.weatherBrief, c.medicalAccess, c.locationTimeline],
+  "risk-assessment": [c.routeIntelligence, c.medicalAccess, c.locationTimeline],
   "location-timeline": [c.standardDocumentation, c.routeIntelligence, c.weatherBrief],
   "weather-brief": [c.routeIntelligence, c.locationTimeline, c.fieldTrips],
   "medical-access": [c.routeIntelligence, c.locationTimeline, c.fieldTrips],
@@ -150,6 +161,7 @@ for (const [slug, related] of Object.entries(relatedTier2)) {
 // Per-page hero images for the solution pages (Canva-licensed set); keyed by slug.
 export const solutionHeroes: Record<string, string> = {
   "route-intelligence": "/marketing/hero/solutions/route-intelligence.jpg",
+  "risk-assessment": "/marketing/hero/solutions/risk-assessment.jpg",
   "location-timeline": "/marketing/hero/solutions/location-timeline.jpg",
   "weather-brief": "/marketing/hero/solutions/weather-brief.jpg",
   "medical-access": "/marketing/hero/solutions/medical-access.jpg",
