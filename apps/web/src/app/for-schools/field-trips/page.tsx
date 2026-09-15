@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 const data: SolutionEvidenceData = {
   slug: "field-trips",
   question: "Are your educational excursions documented from day 1?",
-  heroLine: "The Annual Elementary Field Trip Risk Assessment Pack sets out the elementary school's one-day trips for the year in one document, one page per trip with the schedule, the route from school, the emergency department the school named, and the documentation prepared for it.",
+  heroLine: "With the Annual Elementary Field Trip Risk Assessment Pack, ETI360 prepares the risk-assessment working documents and supporting information for the year's planned field trips before the school year begins, ready for the school's review and approval: one pack, one page per trip, with the schedule, the route from school, the emergency department the school named, and the documentation prepared for it.",
   editorial: [
     "A single overseas expedition is visible from a long way off, and it gets planned accordingly. The short trips are different: many, small, each arranged in the weeks before it runs. Venue confirmed, coach booked, letter home, paperwork assembled — then the same sequence starts again for next Thursday.",
     "ETI360 works from the other end, doing the shared preparation before the term starts and organizing hazards, controls, and supporting evidence into structured working documents. The school reviews, completes, and approves its own risk assessments — with the evidence already gathered and in one place.",
   ],
-  spreadTitle: "A year of Harborview elementary field trips: the pack, a month's calendar, and one trip's page",
+  spreadTitle: "A year of Harborview elementary field trips: the pack, a risk-assessment working document, and one trip's page",
   plates: [
     {
       src: "/marketing/solutions/field-trip-pack-cover.jpg",
@@ -31,12 +31,12 @@ const data: SolutionEvidenceData = {
       note: "Thirty one-day trips, one for each unit of inquiry in each grade, planned and documented before the first day of school.",
     },
     {
-      src: "/marketing/solutions/field-trip-pack-calendar.jpg",
+      src: "/marketing/solutions/trip-risk-working-file-risk.jpg",
       width: 800,
-      height: 1131,
-      alt: "A month page of the pack: the September calendar with each field trip on its date, and the trips listed beneath with their pages",
-      label: "A month's calendar",
-      note: "Each field trip on its date, and the month's trips listed beneath with their pages.",
+      height: 1132,
+      alt: "A risk-assessment working document page: two risks set out in full with consequence, inherent risk, controls, residual risk and emergency actions, for the school to complete",
+      label: "A risk-assessment working document",
+      note: "Hazards, controls, residual risk and emergency actions, prepared for each trip for the school to review, complete and approve (shown from the sample working file).",
     },
     {
       src: "/marketing/solutions/field-trip-pack-trip.jpg",
@@ -73,8 +73,8 @@ const data: SolutionEvidenceData = {
     body: "A one-day trip prepared this way produces the same working record as a two-week expedition — and appears in the school's Duty Manager Dashboard on the day it runs.",
   },
   stripLine: "The pack sits within Tier 2 Trip Readiness, beside the expedition file.",
-  ctaTitle: "See a year of your own field trips in one pack.",
-  ctaCopy: "Would you be open to a 20-minute conversation about the field trips you have planned for the year, and how they would read as one pack?",
+  ctaTitle: "Have the year's field-trip risk documentation prepared before the year begins.",
+  ctaCopy: "Would you be open to a 20-minute conversation about the field trips you have planned for the year, and what ETI360 could prepare for them before the year begins?",
 };
 
 export default function FieldTripsPage() {

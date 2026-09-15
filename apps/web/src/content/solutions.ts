@@ -64,7 +64,7 @@ export const reportCatalog = {
     tier: 2,
     name: "Annual Elementary Field Trip Risk Assessment Pack",
     question: "Are your educational excursions documented from day 1?",
-    summary: "The elementary school's one-day trips for the year in one pack, one page per trip, with the route, the emergency department, and the documentation set prepared for each visit.",
+    summary: "The risk-assessment working documents and supporting information for the year's planned field trips, prepared before the school year begins for the school's review and approval: one pack, one page per trip.",
     href: "/for-schools/field-trips",
     image: "/marketing/solutions/field-trip-pack-cover.jpg",
     imageAlt: "The cover of the Annual Elementary Field Trip Risk Assessment Pack, Harborview Elementary School 2026–27",
