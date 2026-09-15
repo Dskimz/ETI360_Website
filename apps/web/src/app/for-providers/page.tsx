@@ -23,12 +23,12 @@ const tier1: DocEntry[] = [
     anchor: "baseline",
     pdf: "/docs/organizational-baseline-evaluation-v3.pdf",
     stage: "T1 · Your organization",
-    name: "Organizational Baseline Evaluation",
+    name: "Trip Program Capability Review",
     reader: "School risk committees · Your leadership",
     desc: "The ten areas applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure.",
     image: {
       src: "/email/spread-partner-baseline-v2.png",
-      alt: "Organizational Baseline Evaluation applied to a trip provider: each of ten areas marked at standard or progressing",
+      alt: "Trip Program Capability Review applied to a trip provider: each of ten areas marked at standard or progressing",
     },
   },
 ];

@@ -7,7 +7,7 @@ const report = reportCatalog.tripRiskWorkingFile;
 export const metadata: Metadata = {
   title: `${report.name} Problem and Solution`,
   description:
-    "Trip Risk Documentation Preparation: how ETI360 brings the information behind a school's risk assessments, RAMS and emergency procedures into one Trip Risk Working File, organized by activity group, for the school to complete and approve its own documents.",
+    "Trip Risk Documentation Preparation: how ETI360 brings the information behind a school's risk assessments, RAMS and emergency procedures into one Trip Risk Assessment Working File, organized by activity group, for the school to complete and approve its own documents.",
   alternates: { canonical: "/for-schools/trip-risk-documentation" },
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
@@ -16,10 +16,10 @@ const data: SolutionEvidenceData = {
   slug: "trip-risk-documentation",
   question: "Do your risk assessments, RAMS and emergency procedures start from the same information?",
   heroLine:
-    "Trip Risk Documentation Preparation: ETI360 brings the information a school's risk documentation draws on into one Trip Risk Working File, organized by activity group, so the school and provider can determine the controls and the level of risk and complete whichever documents they use.",
+    "Trip Risk Documentation Preparation: ETI360 brings the information a school's risk documentation draws on into one Trip Risk Assessment Working File, organized by activity group, so the school and provider can determine the controls and the level of risk and complete whichever documents they use.",
   editorial: [
     "Before a school can make decisions about a trip, it needs a clear view of what students will do and where, the hazards associated with each activity and location, the controls already described by the provider, and any additional controls the school may require. It also needs practical emergency information: response triggers, location-specific actions, and the routes and travel times to the designated emergency departments. That information is usually spread across the itinerary, the provider's documentation, school policy, maps, and other supporting material.",
-    "ETI360 brings it together in a structured Trip Risk Working File, organized by activity group. The working file supports whichever forms of risk documentation the school uses: risk assessments, Risk Assessment Method Statements (RAMS), Emergency Action Procedures, and dynamic risk assessment processes. The school and provider review the information, determine the appropriate controls and level of risk, and complete and approve their chosen documents. ETI360 prepares and organizes the supporting information; the school and provider retain responsibility for risk decisions, live assessments, and final approval.",
+    "ETI360 brings it together in a structured Trip Risk Assessment Working File, organized by activity group. The working file supports whichever forms of risk documentation the school uses: risk assessments, Risk Assessment Method Statements (RAMS), Emergency Action Procedures, and dynamic risk assessment processes. The school and provider review the information, determine the appropriate controls and level of risk, and complete and approve their chosen documents. ETI360 prepares and organizes the supporting information; the school and provider retain responsibility for risk decisions, live assessments, and final approval.",
   ],
   spreadTitle: "One activity group from a Tokyo trip: the file's front page, the group's section, and one risk in full.",
   plates: [
@@ -27,7 +27,7 @@ const data: SolutionEvidenceData = {
       src: "/marketing/solutions/trip-risk-working-file-signoff.jpg",
       width: 800,
       height: 1132,
-      alt: "The front page of the Trip Risk Working File: what the file holds and which documents it supports, the likelihood and severity scales, the risk bands, and the review block for the school and the provider",
+      alt: "The front page of the Trip Risk Assessment Working File: what the file holds and which documents it supports, the likelihood and severity scales, the risk bands, and the review block for the school and the provider",
       label: "The front page",
       note: "What the file holds, the documents it supports, the scales its ratings use, and the block where the school and the provider record their review.",
     },

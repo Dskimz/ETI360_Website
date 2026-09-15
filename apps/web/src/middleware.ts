@@ -67,6 +67,7 @@ const ARM_BY_SLUG: Record<string, string> = {
   hsc: "HS-C",
   es: "ES",
   ad: "AD",
+  docs: "DOCS",
 };
 
 // Mail security scanners and link previewers follow every link in a cold email

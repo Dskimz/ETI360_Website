@@ -9,12 +9,12 @@ export const schoolTier1: DocEntry[] = [
     anchor: "baseline",
     pdf: "/docs/organizational-baseline-evaluation-v4.pdf",
     stage: "T1 · Schools and trip providers",
-    name: "Organizational Baseline Evaluation",
+    name: "School-Wide Trip Program Capability Review",
     reader: "Head · Board · Risk committee",
     desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, read against the ETI360 Operational Capability Framework and reviewed once every four years.",
     image: {
       src: "/email/spread-school-baseline-v4.png",
-      alt: "Organizational Baseline Evaluation for Harborview International School: ten areas read across every program path the school runs, each marked at standard, progressing, or not evidenced",
+      alt: "School-Wide Trip Program Capability Review for Harborview International School: ten areas read across every program path the school runs, each marked at standard, progressing, or not evidenced",
     },
   },
 ];
