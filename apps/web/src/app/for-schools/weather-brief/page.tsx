@@ -50,7 +50,7 @@ const data: SolutionEvidenceData = {
     title: "The brief moves with the trip",
     body: "Relevant seasonal context carries into the risk information prepared for the school's own review — and when dates, destination, or activities change, the brief is rebuilt against the new window rather than the review starting again from scratch.",
   },
-  stripLine: "Part of the Tier 2 Trip Risk Review, beside Location Timeline and Route Intelligence.",
+  stripLine: "Part of the Tier 2 Trip Readiness, beside Location Timeline and Route Intelligence.",
   ctaTitle: "Talk it through on your own trips.",
   ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Weather Brief fits your program.",
 };

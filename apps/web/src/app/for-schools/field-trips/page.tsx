@@ -72,7 +72,7 @@ const data: SolutionEvidenceData = {
     title: "The same record on trip day",
     body: "A one-day trip prepared this way produces the same working record as a two-week expedition — and appears in the school's Duty Manager Dashboard on the day it runs.",
   },
-  stripLine: "The register sits within Tier 2 Trip Risk Review, beside the expedition file.",
+  stripLine: "The register sits within Tier 2 Trip Readiness, beside the expedition file.",
   ctaTitle: "See a year of your own field trips in one register.",
   ctaCopy: "Would you be open to a 20-minute conversation about the field trips you have planned for the year, and how they would read as one register?",
 };

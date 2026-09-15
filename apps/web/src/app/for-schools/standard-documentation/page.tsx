@@ -62,7 +62,7 @@ const data: SolutionEvidenceData = {
     title: "The system beneath every report",
     body: "The same trip record carries every other ETI360 view — location timeline, route intelligence, weather brief, medical access, and incident records — so each report on this site reads in a form you already know.",
   },
-  stripLine: "Standard documentation is a Tier 2 solution, part of every Trip Risk Review.",
+  stripLine: "Standard documentation is a Tier 2 solution, part of every Trip Readiness review.",
   ctaTitle: "Talk it through on your own trips.",
   ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether one documentation structure fits your program.",
 };

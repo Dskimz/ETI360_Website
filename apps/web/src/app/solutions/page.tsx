@@ -6,7 +6,7 @@ import { CtaCard, MiniCta } from "@/components/CtaCard";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Every ETI360 solution in its tier: the Organizational Baseline reviewed on a four-year cycle, the Tier 2 trip documents, and the Tier 3 working views for the days away.",
+    "Every ETI360 solution in its tier: the Organizational Readiness review on a four-year cycle, the Tier 2 trip documents, and the Tier 3 working views for the days away.",
   alternates: { canonical: "/solutions" },
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
@@ -34,7 +34,7 @@ export default function SolutionsPage() {
           <div className={styles.tierCards}>
             <div className={`${styles.tierCard} ${styles.tier1}`}>
               <p className={styles.tierEyebrow}>Tier One &middot; Every four years</p>
-              <p className={styles.tierName}>Organizational Baseline</p>
+              <p className={styles.tierName}>Organizational Readiness</p>
               <div className={styles.tierLinks}>
                 <a href="/framework#tier1">
                   School-Wide Trip Program Capability Review
@@ -46,7 +46,7 @@ export default function SolutionsPage() {
             </div>
             <div className={`${styles.tierCard} ${styles.tier2}`}>
               <p className={styles.tierEyebrow}>Tier Two &middot; Every trip</p>
-              <p className={styles.tierName}>Trip Risk Review</p>
+              <p className={styles.tierName}>Trip Readiness</p>
               <div className={styles.tierLinks}>
                 {tier2.map((r) => (
                   <a key={r.href} href={r.href}>
@@ -58,7 +58,7 @@ export default function SolutionsPage() {
             </div>
             <div className={`${styles.tierCard} ${styles.tier3}`}>
               <p className={styles.tierEyebrow}>Tier Three &middot; During and after</p>
-              <p className={styles.tierName}>Dynamic Risk Operations</p>
+              <p className={styles.tierName}>Live Trip Support and Review</p>
               <div className={styles.tierLinks}>
                 {tier3.map((r) => (
                   <a key={r.href} href={r.href}>

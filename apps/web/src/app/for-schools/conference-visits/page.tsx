@@ -67,7 +67,7 @@ const data: SolutionEvidenceData = {
   ],
   boundary:
     "The guide organizes public information; the school chooses the hotel, holds the medical summaries and the insurance, and completes every field marked for confirmation.",
-  stripLine: "The Athletics and Activities Trips Guide sits within Tier 2 Trip Risk Review, beside the field trip register and the fixture guide for each trip.",
+  stripLine: "The Athletics and Activities Trips Guide sits within Tier 2 Trip Readiness, beside the field trip register and the fixture guide for each trip.",
   ctaTitle: "See your conference year as the guide your coaches would carry.",
   ctaCopy:
     "Would you be open to a 20-minute conversation about the cities your teams travel to this year, and what your coaching staff would receive before the first departure?",

@@ -63,7 +63,7 @@ const data: SolutionEvidenceData = {
     title: "The same record throughout",
     body: "The structured itinerary behind the day pages also produces the trip calendar, the routes, the historical conditions, and the duty manager's operating view — so the guide a student reads and the record leadership approves come from one source.",
   },
-  stripLine: "Prepared within Tier 2 Trip Risk Review.",
+  stripLine: "Prepared within Tier 2 Trip Readiness.",
   ctaTitle: "Talk it through on your own trips.",
   ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Student Journey Guide fits your program.",
 };

@@ -197,7 +197,7 @@ export default function ForProvidersPage() {
           </p>
           <p>
             <strong>Due-diligence questionnaires repeat every season.</strong>{" "}
-            The Organizational Baseline documents your standing once, reviewed every four years;
+            The Organizational Readiness review documents your standing once, reviewed every four years;
             every proposal references the same current evidence.
           </p>
           <p>
@@ -229,7 +229,7 @@ export default function ForProvidersPage() {
         <TierBand
           n={1}
           eyebrow="Tier One · Every four years"
-          name="Organizational Baseline"
+          name="Organizational Readiness"
           desc="The same ten-area review applied to schools and to trip providers, read against the ETI360 Operational Capability Framework."
         />
         <div className="doc-rows">
@@ -241,7 +241,7 @@ export default function ForProvidersPage() {
         <TierBand
           n={2}
           eyebrow="Tier Two · Every proposal"
-          name="Trip Risk Review"
+          name="Trip Readiness"
           desc="The due diligence documentation school leadership asks for, and the documents that get students and parents ready for the trip."
         />
         <div className="container measure" style={{ paddingTop: "40px" }}>
@@ -266,7 +266,7 @@ export default function ForProvidersPage() {
         <TierBand
           n={3}
           eyebrow="Tier Three · During the trip"
-          name="Dynamic Risk Operations"
+          name="Live Trip Support and Review"
           desc="A working view for managing trip issues while groups travel — operated by the school's or the provider's own duty manager, never staffed by ETI360."
         />
         <div className="doc-rows">

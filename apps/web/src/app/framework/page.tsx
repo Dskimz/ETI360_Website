@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "ETI360’s 3-Tier Risk Framework",
   description:
-    "The three tiers of the ETI360 framework shown as what a school actually receives — the Organizational Baseline reviewed on a four-year cycle, the Tier 2 Trip Risk Review pack, and Tier 3 Dynamic Risk Operations — every document openable as a real PDF.",
+    "The three tiers of the ETI360 framework shown as what a school actually receives — the Organizational Readiness review on a four-year cycle, the Tier 2 Trip Readiness pack, and Tier 3 Live Trip Support and Review — every document openable as a real PDF.",
   alternates: { canonical: "/framework" },
   openGraph: {
     images: ["/marketing/og-default.png"],
@@ -68,7 +68,7 @@ export default function FrameworkPage() {
           n={1}
           id="tier1"
           eyebrow="Tier One · Every four years"
-          name="Organizational Baseline"
+          name="Organizational Readiness"
           desc="Where does our travel governance stand? One documented review of where the school and its providers stand before the year's trips begin — policies, roles, evidence, and standing arrangements across ten operational capability areas."
         />
         <div className="doc-rows">
@@ -81,7 +81,7 @@ export default function FrameworkPage() {
           n={2}
           id="tier2"
           eyebrow="Tier Two · Every trip"
-          name="Trip Risk Review"
+          name="Trip Readiness"
           desc="Is this trip ready for approval? A consistent set of documents for leadership review, from the trip overview to the information parents receive."
         />
         <div className="doc-rows">
@@ -98,7 +98,7 @@ export default function FrameworkPage() {
           n={3}
           id="tier3"
           eyebrow="Tier Three · During and after"
-          name="Dynamic Risk Operations"
+          name="Live Trip Support and Review"
           desc="Do we know what's happening while they're away? The working views for the days away, and the record the trip carries home into next year's planning."
         />
         <div className="doc-rows">

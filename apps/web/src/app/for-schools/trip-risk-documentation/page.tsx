@@ -75,7 +75,7 @@ const data: SolutionEvidenceData = {
     title: "Built from the same trip record",
     body: "The activity groups, places and hospital routes come from the trip's structured itinerary, the same record behind the calendar, the location timeline and the medical access report, so the working file and every other document the trip carries read from the same record.",
   },
-  stripLine: "Trip Risk Documentation Preparation sits within Tier 2 Trip Risk Review, prepared for every trip.",
+  stripLine: "Trip Risk Documentation Preparation sits within Tier 2 Trip Readiness, prepared for every trip.",
   ctaTitle: "See the working file for one of your own trips.",
   ctaCopy:
     "Would you be open to a 20-minute conversation about an upcoming trip, and what its working file would give the people who write your risk documentation?",

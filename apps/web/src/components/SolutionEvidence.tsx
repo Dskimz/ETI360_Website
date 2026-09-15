@@ -30,9 +30,9 @@ export type SolutionEvidenceData = {
 };
 
 const TIER_NAMES: Record<number, string> = {
-  1: "Tier 1 Organizational Baseline",
-  2: "Tier 2 Trip Risk Review",
-  3: "Tier 3 Dynamic Risk Operations",
+  1: "Tier 1 Organizational Readiness",
+  2: "Tier 2 Trip Readiness",
+  3: "Tier 3 Live Trip Support and Review",
 };
 
 export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
@@ -119,14 +119,14 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
           <div className={styles.tierCards}>
             <div className={`${styles.tierCard} ${styles.tier1}`}>
               <p className={styles.tierEyebrow}>Tier One &middot; Every four years</p>
-              <p className={styles.tierName}>Organizational Baseline</p>
+              <p className={styles.tierName}>Organizational Readiness</p>
               <div className={styles.tierLinks}>
                 <a href="/framework#tier1">School-Wide Trip Program Capability Review</a>
               </div>
             </div>
             <div className={`${styles.tierCard} ${styles.tier2}`}>
               <p className={styles.tierEyebrow}>Tier Two &middot; Every trip</p>
-              <p className={styles.tierName}>Trip Risk Review</p>
+              <p className={styles.tierName}>Trip Readiness</p>
               <div className={styles.tierLinks}>
                 {currentSolution?.tier === 2 ? (
                   <span className={styles.herePage} aria-current="page">
@@ -144,7 +144,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
             </div>
             <div className={`${styles.tierCard} ${styles.tier3}`}>
               <p className={styles.tierEyebrow}>Tier Three &middot; During and after</p>
-              <p className={styles.tierName}>Dynamic Risk Operations</p>
+              <p className={styles.tierName}>Live Trip Support and Review</p>
               <div className={styles.tierLinks}>
                 {tier3Solutions.map((r) =>
                   r.slug === data.slug ? (

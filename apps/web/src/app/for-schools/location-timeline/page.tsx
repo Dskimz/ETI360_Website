@@ -58,7 +58,7 @@ const data: SolutionEvidenceData = {
     },
   ],
   boundary: "The timeline records where each group is scheduled to be. It is not live student tracking.",
-  stripLine: "Two of the working views inside the Tier 2 Trip Risk Review.",
+  stripLine: "Two of the working views inside the Tier 2 Trip Readiness.",
   ctaTitle: "Talk it through on your own trips.",
   ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether these views fit your program.",
 };

@@ -26,7 +26,7 @@ export default function TripRiskRegisterPage() {
         } as React.CSSProperties}
       >
         <div className="container measure">
-          <p className="label label-light ui">The Documents &middot; Tier 2 &middot; Trip Risk Review</p>
+          <p className="label label-light ui">The Documents &middot; Tier 2 &middot; Trip Readiness</p>
           <h1>The Trip Risk Register</h1>
           <p className="subtitle">
             The home view of a school&rsquo;s TripRisk360 portal: every scheduled
@@ -97,7 +97,7 @@ export default function TripRiskRegisterPage() {
             </li>
             <li>
               <strong>The Tier 1 connection.</strong> The school&rsquo;s
-              Organizational Baseline sits at the top of the register,
+              Organizational Readiness sits at the top of the register,
               keeping the standing review visible above the year it covers.
             </li>
           </ul>
@@ -119,7 +119,7 @@ export default function TripRiskRegisterPage() {
           <h2>Where it sits in the framework</h2>
           <p>
             The register is the bridge between tiers. Above it sits the
-            Organizational Baseline &mdash; the four-yearly review of the
+            Organizational Readiness &mdash; the four-yearly review of the
             school&rsquo;s own policies, roles, and standing arrangements. Below
             it, each trip carries its Tier 2 pack: the itineraries, route
             intelligence, risk assessment, and parent documents. When a group
@@ -143,7 +143,7 @@ export default function TripRiskRegisterPage() {
         </div>
       </section>
 
-      <CtaCard title={'One entry in the set.'} copy={'The register is one part of the document library — the full set runs from the Organizational Baseline to the Post-Trip Feedback Loop.'} />
+      <CtaCard title={'One entry in the set.'} copy={'The register is one part of the document library — the full set runs from the Organizational Readiness to the Post-Trip Feedback Loop.'} />
     </>
   );
 }
