@@ -62,12 +62,12 @@ export const reportCatalog = {
   fieldTrips: {
     slug: "field-trips",
     tier: 2,
-    name: "Field Trip Register",
+    name: "Annual Elementary Field Trip Risk Assessment Pack",
     question: "Are your educational excursions documented from day 1?",
-    summary: "Every one-day trip of the school year planned and documented before day 1: one register, one page per trip, with the route, the emergency department, and the documentation set.",
+    summary: "The elementary school's one-day trips for the year in one pack, one page per trip, with the route, the emergency department, and the documentation set prepared for each visit.",
     href: "/for-schools/field-trips",
-    image: "/marketing/solutions/field-trip-register-v2-cover.jpg",
-    imageAlt: "The cover of the Harborview Elementary School Field Trip Register 2026–27",
+    image: "/marketing/solutions/field-trip-pack-cover.jpg",
+    imageAlt: "The cover of the Annual Elementary Field Trip Risk Assessment Pack, Harborview Elementary School 2026–27",
   },
   conferenceVisits: {
     slug: "conference-visits",

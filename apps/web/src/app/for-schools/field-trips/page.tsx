@@ -7,7 +7,7 @@ const report = reportCatalog.fieldTrips;
 export const metadata: Metadata = {
   title: `${report.name} Problem and Solution`,
   description:
-    "How ETI360 sets out a school's one-day field trips for the whole year before day 1 — one register, one page per trip — so the preparation behind them happens once rather than trip by trip.",
+    "How ETI360 sets out a school's one-day field trips for the whole year in one pack, one page per trip, so the preparation behind them happens once rather than trip by trip.",
   alternates: { canonical: "/for-schools/field-trips" },
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
@@ -15,31 +15,31 @@ export const metadata: Metadata = {
 const data: SolutionEvidenceData = {
   slug: "field-trips",
   question: "Are your educational excursions documented from day 1?",
-  heroLine: "The Field Trip Register sets out every one-day trip of the school year before day 1 — one page per trip with the schedule, the route from school, the emergency department the school named, and the documentation prepared for it.",
+  heroLine: "The Annual Elementary Field Trip Risk Assessment Pack sets out the elementary school's one-day trips for the year in one document, one page per trip with the schedule, the route from school, the emergency department the school named, and the documentation prepared for it.",
   editorial: [
     "A single overseas expedition is visible from a long way off, and it gets planned accordingly. The short trips are different: many, small, each arranged in the weeks before it runs. Venue confirmed, coach booked, letter home, paperwork assembled — then the same sequence starts again for next Thursday.",
     "ETI360 works from the other end, doing the shared preparation before the term starts and organizing hazards, controls, and supporting evidence into structured working documents. The school reviews, completes, and approves its own risk assessments — with the evidence already gathered and in one place.",
   ],
-  spreadTitle: "A year of Harborview elementary field trips: the register, its contents, and one trip's page",
+  spreadTitle: "A year of Harborview elementary field trips: the pack, a month's calendar, and one trip's page",
   plates: [
     {
-      src: "/marketing/solutions/field-trip-register-v2-cover.jpg",
+      src: "/marketing/solutions/field-trip-pack-cover.jpg",
       width: 1040,
       height: 1471,
-      alt: "The cover of the Harborview Elementary School Field Trip Register 2026–27: thirty field trips, five grades, nine months, thirty-six venues",
-      label: "The register",
+      alt: "The cover of the Annual Elementary Field Trip Risk Assessment Pack, Harborview Elementary School 2026–27: thirty field trips, five grades, nine months, thirty-six venues",
+      label: "The pack",
       note: "Thirty one-day trips, one for each unit of inquiry in each grade, planned and documented before the first day of school.",
     },
     {
-      src: "/marketing/solutions/field-trip-register-v2-contents.jpg",
+      src: "/marketing/solutions/field-trip-pack-calendar.jpg",
       width: 800,
       height: 1131,
-      alt: "The contents page of the register: every month, every date, every trip with its page number",
-      label: "Contents",
-      note: "Month, date, trip — every field trip of the year has a page, and a month opener shows the calendar.",
+      alt: "A month page of the pack: the September calendar with each field trip on its date, and the trips listed beneath with their pages",
+      label: "A month's calendar",
+      note: "Each field trip on its date, and the month's trips listed beneath with their pages.",
     },
     {
-      src: "/marketing/solutions/field-trip-register-v2-trip.jpg",
+      src: "/marketing/solutions/field-trip-pack-trip.jpg",
       width: 800,
       height: 1131,
       alt: "One trip's page: learning purpose, schedule, notes for families, venues, the route from school and the emergency department mapped, and the documentation set",
@@ -47,7 +47,7 @@ const data: SolutionEvidenceData = {
       note: "The learning purpose, the schedule, the route from school with its measured drive, the emergency department the school named, and the documentation set prepared for the day.",
     },
   ],
-  pdfHref: "/docs/field-trip-register-harborview-2026-27-v2.pdf",
+  pdfHref: "/docs/field-trip-risk-assessment-pack-harborview-2026-27.pdf",
   disclosure: "Shown for the Harborview sample year. Harborview International School is not a real school; it is used only as a sample school. No real school or student data appears.",
   claims: [
     {
@@ -72,9 +72,9 @@ const data: SolutionEvidenceData = {
     title: "The same record on trip day",
     body: "A one-day trip prepared this way produces the same working record as a two-week expedition — and appears in the school's Duty Manager Dashboard on the day it runs.",
   },
-  stripLine: "The register sits within Tier 2 Trip Readiness, beside the expedition file.",
-  ctaTitle: "See a year of your own field trips in one register.",
-  ctaCopy: "Would you be open to a 20-minute conversation about the field trips you have planned for the year, and how they would read as one register?",
+  stripLine: "The pack sits within Tier 2 Trip Readiness, beside the expedition file.",
+  ctaTitle: "See a year of your own field trips in one pack.",
+  ctaCopy: "Would you be open to a 20-minute conversation about the field trips you have planned for the year, and how they would read as one pack?",
 };
 
 export default function FieldTripsPage() {
