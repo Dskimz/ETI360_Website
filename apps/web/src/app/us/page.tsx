@@ -8,8 +8,9 @@ import { DocRow, TierBand, type DocEntry } from "../../components/DocShowcase";
    plan, administrator on call, chaperones, Head of School, Board of Trustees,
    emergency room. The athletics conference guide is deliberately absent.
    The sample documents are the Harborview set until the US working documents
-   (Washington DC, New York, Chicago, outdoor education, Appalachia service,
-   Costa Rica, Montreal) are built; swap the entries below when they land. */
+   (Washington DC, Appalachia service, Hocking Hills, El Salvador, Costa Rica,
+   Quebec City, Italy; docs/US-SITEMAP.md) are built; swap the entries below
+   when they land. Hero and CTA images come from the US Website Image Set. */
 
 export const metadata: Metadata = {
   title: "ETI360 for US Schools",
@@ -129,7 +130,7 @@ export default function UsPage() {
     <>
       <section
         className="article-header"
-        style={{ ["--hero-bg" as string]: "url('/marketing/hero/trip-approval.jpg')" } as React.CSSProperties}
+        style={{ ["--hero-bg" as string]: "url('/us/images/washington-dc-hero.jpg')" } as React.CSSProperties}
       >
         <div className="hero-inner">
           <p className="label label-light ui">ETI360 in the United States</p>
@@ -231,7 +232,7 @@ export default function UsPage() {
       <CtaCard
         title={"Contact us."}
         copy={"Tell us about the trips your school runs and we will show you the seven documents for one of them."}
-        image={"/marketing/hero/for-schools.jpg"}
+        image={"/us/images/appalachia-hero.jpg"}
       />
     </>
   );
