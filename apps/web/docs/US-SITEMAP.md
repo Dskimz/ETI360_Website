@@ -53,6 +53,8 @@ Roughly 300 words: ETI360 is in Avon Lake; the Ohio trips Ohio schools run (Hock
 
 ## Images the section needs
 
+Filled by Dan 2026-09-17; exported at 1600x900 JPG to `public/us/images/{slug}-hero.jpg` and `{slug}-2.jpg` (`us-index-hero.jpg`, `ohio-hero.jpg`, `ohio-2.jpg`). Re-export from the Canva design if a slot changes.
+
 Canva design "ETI360 US Website Image Set" (`DAHVdTho3hM`, folder Trip Images `FAHRAuL7yJM`) carries the shot list, one 1600x900 page per slot with a gray label. Every image: landscape, no people in focus, no logos, licensed stock from Canva. Governance documents on the trip pages carry no decorative photography; the photos below are for the web pages and the two-page covers only.
 
 | Slot | Place | Shot |
