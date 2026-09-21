@@ -4,7 +4,9 @@ import { CtaCard, MiniCta } from "@/components/CtaCard";
 import { DocRow, TierBand, type DocEntry } from "../../components/DocShowcase";
 
 /* ETI360 for US independent and religious schools (Dan, 2026-09-16).
-   One page, seven documents. Vocabulary follows the US buyer: risk management
+   One page, seven documents. First viewport and metadata carry the locked US category,
+   "school travel preparation service," and its headline (V3 implementation plan § 01,
+   2026-09-20; applied 2026-09-21). Vocabulary follows the US buyer: risk management
    plan, administrator on call, chaperones, Head of School, Board of Trustees,
    emergency room. The athletics conference guide is deliberately absent.
    The sample documents are the Harborview set until the US working documents
@@ -15,12 +17,12 @@ import { DocRow, TierBand, type DocEntry } from "../../components/DocShowcase";
 export const metadata: Metadata = {
   title: "ETI360 for US Schools",
   description:
-    "Trip risk documentation for US independent and religious schools: seven documents prepared from your itinerary and your operator's paperwork, for the Head, the trip leaders, and the families. Approval stays with the school.",
+    "School travel preparation service for US independent and religious schools. ETI360 works from your itinerary, provider information, and school requirements to prepare clear documents for administrators, trip leaders, and families. Approval stays with the school.",
   alternates: { canonical: "/us" },
   openGraph: {
     title: "ETI360 for US Schools",
     description:
-      "Seven trip documents for US independent and religious schools, prepared from your itinerary. Approval stays with the school.",
+      "School travel preparation service: working documents for the trips your school already runs. Approval stays with the school.",
     type: "website",
     images: ["/marketing/og-default.png"],
   },
@@ -133,12 +135,12 @@ export default function UsPage() {
         style={{ ["--hero-bg" as string]: "url('/us/images/washington-dc-hero.jpg')" } as React.CSSProperties}
       >
         <div className="hero-inner">
-          <p className="label label-light ui">ETI360 in the United States</p>
-          <h1>Seven documents for the trips your school actually runs.</h1>
+          <p className="label label-light ui">School travel preparation service</p>
+          <h1>Working documents for the trips your school already runs.</h1>
           <p className="subtitle">
-            Prepared from your itinerary and your operator&rsquo;s paperwork, for the Head who
-            signs, the teachers who travel, and the families who ask. Approval stays with the
-            school.
+            ETI360 works from your itinerary, provider information, and school requirements to
+            prepare clear documents for administrators, trip leaders, and families. Approval
+            stays with the school.
           </p>
         </div>
         <MiniCta />
