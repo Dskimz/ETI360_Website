@@ -9,10 +9,10 @@ import { DocRow, TierBand, type DocEntry } from "../../components/DocShowcase";
    2026-09-20; applied 2026-09-21). Vocabulary follows the US buyer: risk management
    plan, administrator on call, chaperones, Head of School, Board of Trustees,
    emergency room. The athletics conference guide is deliberately absent.
-   The sample documents are the Harborview set until the US working documents
-   (Washington DC, Appalachia service, Hocking Hills, El Salvador, Costa Rica,
-   Quebec City, Italy; docs/US-SITEMAP.md) are built; swap the entries below
-   when they land. Hero and CTA images come from the US Website Image Set. */
+   The sample documents are the Harborview set until the Cleveland field-trip
+   documents (Horizon Ridge School of Cleveland, three separate PDFs per trip;
+   docs/US-SITEMAP.md, reconciled 2026-09-22) are built; the body recut is
+   specified there. Hero and CTA images come from the US Website Image Set. */
 
 export const metadata: Metadata = {
   title: "ETI360 for US Schools",
