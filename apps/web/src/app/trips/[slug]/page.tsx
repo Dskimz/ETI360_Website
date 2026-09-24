@@ -9,7 +9,7 @@ import styles from "../trips.module.css";
 
 /* A worked trip: the documents one trip receives, decision by decision, each
    in its US Letter and A4 editions (Dan, 2026-09-24), with three captioned
-   pages from each. Data: src/content/trips.ts. Every PDF link goes through
+   pages from each. Data: src/content/trips/{slug}.ts. Every PDF link goes through
    ./open/[doc] so the open is logged. */
 
 export const dynamicParams = false;
@@ -66,7 +66,8 @@ function Editions({ trip, doc }: { trip: Trip; doc: TripDocument }) {
 }
 
 function DocCard({ trip, doc }: { trip: Trip; doc: TripDocument }) {
-  const edition = doc.editions.letter ? "letter" : doc.editions.a4 ? "a4" : null;
+  const other = trip.paperDefault === "letter" ? "a4" : "letter";
+  const edition = doc.editions[trip.paperDefault] ? trip.paperDefault : doc.editions[other] ? other : null;
   const thumb = (
     <Image
       src={doc.cover.src}
@@ -105,6 +106,8 @@ export default async function TripPage({ params }: Props) {
   const { slug } = await params;
   const trip = getTrip(slug);
   if (!trip) notFound();
+  const pageEdition = trip.paperDefault;
+  const pageEditionName = pageEdition === "letter" ? "US Letter" : "A4";
 
   return (
     <>
@@ -134,6 +137,7 @@ export default async function TripPage({ params }: Props) {
               ))}
             </dl>
           </div>
+          {trip.heroCredit ? <p className={`${styles.credit} ui`}>{trip.heroCredit}</p> : null}
 
           <h2 id="documents">Decision by decision</h2>
           <div className={styles.sectionIntro}>
@@ -169,8 +173,8 @@ export default async function TripPage({ params }: Props) {
           <h2 id="inside">Inside the documents</h2>
           <div className={styles.sectionIntro}>
             <p>
-              Three pages from each document, as the school receives them. Select a page to open the US
-              Letter edition at that page.
+              Three pages from each document, as the school receives them. Select a page to open the{" "}
+              {pageEditionName} edition at that page.
             </p>
           </div>
           {trip.documents.map((doc) => (
@@ -182,9 +186,9 @@ export default async function TripPage({ params }: Props) {
               <div className={styles.pages}>
                 {doc.insidePages.map((pg) => (
                   <figure key={pg.page}>
-                    {doc.editions.letter ? (
+                    {doc.editions[pageEdition] ? (
                       <a
-                        href={openHref(trip, doc, "letter", pg.page)}
+                        href={openHref(trip, doc, pageEdition, pg.page)}
                         target="_blank"
                         rel="noopener"
                         aria-label={`Open the ${doc.title} at page ${pg.page} (PDF, opens in a new tab)`}

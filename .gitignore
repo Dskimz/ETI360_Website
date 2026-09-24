@@ -27,3 +27,8 @@ pnpm-debug.log*
 # screenshots
 screenshots
 .vercel
+
+# trip PDFs: not committed; restore with `npm run sync:trip-pdfs`
+# (sources recorded in apps/web/src/content/trips/<slug>.ts)
+apps/web/public/trips/*/letter/
+apps/web/public/trips/*/a4/

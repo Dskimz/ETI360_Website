@@ -271,3 +271,55 @@
 @media (prefers-reduced-motion: reduce) {
   .cardThumb img { transition: none; }
 }
+
+/* ── Library filters (plain links, no JavaScript) ── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--hairline);
+}
+.filterGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 18px;
+}
+.filterLabel {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.filterLink {
+  font-size: var(--font-sm);
+  color: var(--ink-mid);
+  border-bottom: 1px solid transparent;
+}
+.filterLink:hover {
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom-color: var(--hairline);
+}
+.filterActive,
+.filterActive:hover {
+  color: var(--navy);
+  font-weight: 600;
+  border-bottom-color: var(--gold);
+}
+.wide .paperLine {
+  font-size: var(--font-sm);
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.wide .empty {
+  color: var(--ink-mid);
+}
+.wide .credit {
+  margin-top: 16px;
+  font-size: var(--font-xs);
+  color: var(--ink-mid);
+}

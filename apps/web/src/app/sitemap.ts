@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { trips } from "@/content/trips";
 import { SITE_URL } from "@/lib/site";
 
 // Every indexable route, with the priority a search engine should read as our
@@ -22,7 +23,7 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
   { path: "/for-schools/incident-reporting", priority: 0.7, changeFrequency: "monthly" },
   { path: "/us", priority: 0.8, changeFrequency: "monthly" },
   { path: "/trips", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/trips/washington-dc", priority: 0.7, changeFrequency: "monthly" },
+  // Each live trip page (src/content/trips/) is appended below.
   { path: "/for-providers", priority: 0.8, changeFrequency: "monthly" },
   { path: "/showcase", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.5, changeFrequency: "monthly" },
@@ -32,7 +33,12 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return ROUTES.map(({ path, priority, changeFrequency }) => ({
+  const tripRoutes = trips.map((t) => ({
+    path: `/trips/${t.slug}`,
+    priority: 0.7,
+    changeFrequency: "monthly" as const,
+  }));
+  return [...ROUTES, ...tripRoutes].map(({ path, priority, changeFrequency }) => ({
     url: `${SITE_URL}${path}`,
     lastModified,
     changeFrequency,

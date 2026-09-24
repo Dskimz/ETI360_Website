@@ -13,6 +13,7 @@
     "build": "npm run build -w @eti360/web",
     "lint": "npm run lint -w @eti360/web",
     "screenshots": "node scripts/take-screenshots.mjs",
+    "sync:trip-pdfs": "node scripts/sync-trip-pdfs.mjs",
     "checkpoint": "bash scripts/checkpoint.sh",
     "ship": "bash scripts/ship.sh"
   }

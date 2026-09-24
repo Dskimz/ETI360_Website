@@ -1,81 +1,16 @@
-/* Worked trips: one entry per built trip, shown at /trips and /trips/{slug}.
-   Only real, built trips belong here; no placeholders.
+import { tripPaths } from "./helpers";
+import type { Trip } from "./types";
 
-   Paper (Dan, 2026-09-24): ETI360 builds every document to both US Letter and
-   A4. Each document lists both editions; an edition that is not yet built is
-   null and the page says it is in preparation. Every PDF opens through
-   /trips/{slug}/open/{doc}?size=letter|a4 so the open is logged.
+/* Washington, DC (Horizon Ridge School of Cleveland), ported from the V3
+   prototype (customers/hrs-cleveland/website/build_washington_dc_page.py,
+   2026-09-22). Letter PDFs: customers/hrs-cleveland/outputs/pdf/; A4 PDFs:
+   outputs/pdf/a4/ (2026-09-24, V3 ADR-024). Restore them locally with
+   `npm run sync:trip-pdfs`. */
 
-   Washington, DC is ported from the V3 prototype
-   (customers/hrs-cleveland/website/build_washington_dc_page.py, 2026-09-22),
-   with the Letter PDFs from customers/hrs-cleveland/outputs/pdf/ and the A4 PDFs from outputs/pdf/a4/ (2026-09-24, V3 ADR-024). */
-
-export type TripImage = { src: string; width: number; height: number; alt: string };
-
-export type InsidePage = { page: number; caption: string; image: TripImage };
-
-export type Editions = { letter: string | null; a4: string | null };
-
-export type TripDocument = {
-  slug: string;
-  title: string;
-  /** Who reads and uses it. */
-  reader: string;
-  /** The decision it supports; matches a Trip.decisions title. */
-  decision: string;
-  blurb: string;
-  cover: TripImage;
-  editions: Editions;
-  insidePages: InsidePage[];
-};
-
-export type TripDecision = { title: string; note: string };
-
-export type Trip = {
-  slug: string;
-  /** Short name for cards, metadata and the sitemap. */
-  title: string;
-  h1: string;
-  /** Fictional school name. */
-  school: string;
-  schoolType: "US" | "International";
-  tripType: string;
-  region: string;
-  dates: string;
-  group: string;
-  /** One paragraph under the hero. */
-  lede: string;
-  /** One sentence for the library card and the page description. */
-  summary: string;
-  facts: { label: string; value: string }[];
-  hero: TripImage;
-  disclosure: string;
-  decisions: TripDecision[];
-  documents: TripDocument[];
-};
-
-const DC = "/trips/washington-dc";
-const COVER = { width: 935, height: 1210 };
-const PAGE = { width: 1105, height: 1430 };
-
-function cover(slug: string, title: string): TripImage {
-  return { src: `${DC}/${slug}-cover.jpg`, ...COVER, alt: `First page of the ${title}` };
-}
-
-function inside(slug: string, title: string, pages: [number, string][]): InsidePage[] {
-  return pages.map(([page, caption]) => ({
-    page,
-    caption,
-    image: { src: `${DC}/${slug}-p${page}.jpg`, ...PAGE, alt: `${title}, page ${page}` },
-  }));
-}
-
-function letter(slug: string): Editions {
-  return {
-    letter: `${DC}/letter/hrsc-ot01-washington-dc-${slug}.pdf`,
-    a4: `${DC}/a4/hrsc-ot01-washington-dc-${slug}.pdf`,
-  };
-}
+const { base, cover, inside, editions } = tripPaths({
+  slug: "washington-dc",
+  filePrefix: "hrsc-ot01-washington-dc",
+});
 
 const washingtonDc: Trip = {
   slug: "washington-dc",
@@ -83,10 +18,12 @@ const washingtonDc: Trip = {
   h1: "The documents for a five-day trip to Washington, DC.",
   school: "Horizon Ridge School of Cleveland",
   schoolType: "US",
+  tripKind: "City",
   tripType: "Overnight trip, five days",
   region: "Washington, DC",
   dates: "Wednesday, April 14 to Sunday, April 18, 2027",
   group: "30 eighth-grade students and six chaperones",
+  paperDefault: "letter",
   lede:
     "Horizon Ridge School of Cleveland is taking thirty 8th graders to Washington, DC for five days in April. ETI360 brought together the school's itinerary, the bus and hotel confirmations, and the school's own procedures, checked group entry and bag rules against each venue's own guidance, timed every drive for a motorcoach, and found the emergency department for each place, with the drive time. Each document below is written for the person who uses it, and each opens in full.",
   summary:
@@ -104,7 +41,7 @@ const washingtonDc: Trip = {
     { label: "School", value: "Horizon Ridge School of Cleveland, a fictional school" },
   ],
   hero: {
-    src: `${DC}/hero-capitol.jpg`,
+    src: `${base}/hero-capitol.jpg`,
     width: 1400,
     height: 656,
     alt: "The west front of the U.S. Capitol seen across the lawn from the National Mall.",
@@ -142,7 +79,7 @@ const washingtonDc: Trip = {
       blurb:
         "Trip facts, contacts, and the approval line, then reservations, the trip calendar, and transportation. Filed with the contracts, confirmations, roster, and signed permission slips.",
       cover: cover("school-trip-record", "School Trip Record"),
-      editions: letter("school-trip-record"),
+      editions: editions("school-trip-record"),
       insidePages: inside("school-trip-record", "School Trip Record", [
         [2, "Trip facts, the contacts table, and the approval line for the Head of Middle School."],
         [3, "Every reservation with where its confirmation is held, the hotel plan, and the trip calendar."],
@@ -157,7 +94,7 @@ const washingtonDc: Trip = {
       blurb:
         "Hazards, controls, and emergency actions organized one section per activity group, with the live-assessment prompts for the day. The school completes it, amends it, and approves it.",
       cover: cover("trip-risk-working-file", "Trip Risk Working File"),
-      editions: letter("trip-risk-working-file"),
+      editions: editions("trip-risk-working-file"),
       insidePages: inside("trip-risk-working-file", "Trip Risk Working File", [
         [1, "The trip summary, the five activity groups, and how the file is used: review, complete, approve, carry."],
         [3, "Charter bus travel, one section per activity group: each risk with its controls, its emergency actions, and a rating the school can change."],
@@ -172,7 +109,7 @@ const washingtonDc: Trip = {
       blurb:
         "The letter home, the five days at a glance, how students are supervised, the packing list, the student agreement, and the permission slip and health update that come back with the deposit.",
       cover: cover("family-trip-brief", "Family Trip Brief"),
-      editions: letter("family-trip-brief"),
+      editions: editions("family-trip-brief"),
       insidePages: inside("family-trip-brief", "Family Trip Brief", [
         [2, "The letter home leads with the dates, the cost, and the day the permission slip is due, then explains what students will learn."],
         [3, "The five days at a glance, the bus and the hotel from a family's side, staying in touch, Sunday pickup, and the cost."],
@@ -187,7 +124,7 @@ const washingtonDc: Trip = {
       blurb:
         "Groups, contacts, and standards, four day plans timed to the bus, the overnight return with its rest stops, and the emergency plan: the emergency department for each place, with the drive time.",
       cover: cover("trip-leader-card", "Trip Leader Card"),
-      editions: letter("trip-leader-card"),
+      editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
         [3, "Day plans timed to the bus. Each move has a time and a head count, and the day has a fallback: if Thursday runs late, the Supreme Court stop is the one to drop."],
         [5, "The overnight ride home: a rested second driver team, four rest stops at named service plazas, and a chaperone watch rota."],
@@ -202,7 +139,7 @@ const washingtonDc: Trip = {
       blurb:
         "Three pages for the adults who each take five students: their role, the head count, the daily rhythm, hotel and bus duties, and the four procedures, with a card to print, cut, and fold that carries the emergency sequence and every working number.",
       cover: cover("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card"),
-      editions: letter("chaperone-briefing"),
+      editions: editions("chaperone-briefing"),
       insidePages: inside("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card", [
         [1, "Each chaperone's group and role, with the corridor and overnight-watch duties, the head-count rule, and the daily rhythm."],
         [2, "Hotel and bus duties, then the four procedures: a separated student, a student hurt or unwell, a security instruction, a behavior or welfare concern."],
@@ -217,7 +154,7 @@ const washingtonDc: Trip = {
       blurb:
         "One inquiry question, the fourteen sites day by day with a map and a photograph for each, the learning at every site, and the field journal and assessment guide.",
       cover: cover("educational-journey", "Educational Journey"),
-      editions: letter("educational-journey"),
+      editions: editions("educational-journey"),
       insidePages: inside("educational-journey", "Educational Journey", [
         [2, "Democracy in Place: the question students carry all week, the three strands, and the fourteen sites on one map."],
         [4, "Friday on the National Mall: two museums by day, four memorials at dusk, each with what students do there."],
@@ -232,7 +169,7 @@ const washingtonDc: Trip = {
       blurb:
         "The printed guide students carry all week: the question, the week ahead, how the group travels with a cut-out trip card, one page per day with the map, the sites, and journal prompts with room to write, then the final synthesis and grading guide.",
       cover: cover("student-journey-guide", "Student Journey Guide"),
-      editions: letter("student-journey-guide"),
+      editions: editions("student-journey-guide"),
       insidePages: inside("student-journey-guide", "Student Journey Guide", [
         [3, "How We Travel: the agreement in the student's own voice, head counts and buddies, the daily backpack, and the trip card to cut out and carry."],
         [5, "Friday in the guide: the same map, the sites in a student's words, and the three prompts with room to write at the site."],
@@ -247,7 +184,7 @@ const washingtonDc: Trip = {
       blurb:
         "Four questions asked of students, parents, the leaders, and the bus company after the trip: what each group said, the moments that did not go to plan with the day they belong to, and what in the trip each one touches. It states; it does not recommend.",
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
-      editions: letter("post-trip-feedback-report"),
+      editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
         [1, "What people said: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
         [2, "For the school's review: three sentences on what the responses show and what in the trip each touches, with no recommendation."],
@@ -255,17 +192,10 @@ const washingtonDc: Trip = {
       ]),
     },
   ],
+  pdfSource: {
+    letterDir: "customers/hrs-cleveland/outputs/pdf",
+    a4Dir: "customers/hrs-cleveland/outputs/pdf/a4",
+  },
 };
 
-/** Live trips, in the order the library shows them. */
-export const trips: Trip[] = [washingtonDc];
-
-export function getTrip(slug: string): Trip | undefined {
-  return trips.find((t) => t.slug === slug);
-}
-
-export function openHref(trip: Trip, doc: TripDocument, size: "letter" | "a4", page?: number): string {
-  const q = new URLSearchParams({ size });
-  if (page) q.set("page", String(page));
-  return `/trips/${trip.slug}/open/${doc.slug}?${q.toString()}`;
-}
+export default washingtonDc;
