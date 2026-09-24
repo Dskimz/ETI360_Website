@@ -21,6 +21,8 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
   { path: "/for-schools/duty-manager-simulation", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/incident-reporting", priority: 0.7, changeFrequency: "monthly" },
   { path: "/us", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/trips", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/trips/washington-dc", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-providers", priority: 0.8, changeFrequency: "monthly" },
   { path: "/showcase", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.5, changeFrequency: "monthly" },

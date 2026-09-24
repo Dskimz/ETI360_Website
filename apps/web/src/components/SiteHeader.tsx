@@ -9,6 +9,7 @@ const navItems: NavItem[] = [
   {href: '/framework', label: "ETI360's 3-Tier Risk Framework"},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
+  {href: '/trips', label: 'Trips'},
   {href: '/about', label: 'About'},
   {href: '/contact', label: 'Contact'},
 ]

@@ -1,0 +1,273 @@
+/* Trip library (/trips) and worked trip pages (/trips/{slug}). Tokens only. */
+
+.wide {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ── Intro: lede beside the trip facts ── */
+.intro {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.wide .intro .lede {
+  font-size: var(--font-lg);
+  line-height: 1.65;
+  color: var(--navy);
+}
+.wide .disclosure {
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--ink-mid);
+  border-left: var(--rule) solid var(--gold);
+  padding: 4px 0 4px 14px;
+}
+.facts {
+  margin: 0;
+  border-top: var(--rule) solid var(--gold);
+}
+.facts > div {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.facts dt {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  padding-top: 3px;
+}
+.facts dd {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* ── Decision by decision ── */
+.sectionIntro {
+  max-width: var(--measure);
+}
+.wide .paper {
+  font-size: var(--font-sm);
+  color: var(--ink-mid);
+}
+.decision {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+}
+.decisionHead {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 32px;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+.wide .decisionHead h3 {
+  margin: 0;
+  font-size: var(--font-2xl);
+}
+.wide .decisionHead p {
+  margin: 0;
+  font-size: var(--font-base);
+  color: var(--ink-mid);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.card {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--hairline);
+}
+.cardThumb {
+  display: block;
+  align-self: start;
+}
+.cardThumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  transition: box-shadow 0.18s;
+}
+.cardThumb:hover img,
+.cardThumb:focus-visible img {
+  box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18);
+}
+.cardBody {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.wide .reader {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 6px;
+}
+.wide .card h4 {
+  font-size: var(--font-xl);
+  margin: 0 0 8px;
+}
+.wide .card p.blurb {
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.editions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: baseline;
+  font-size: var(--font-sm);
+}
+.editions a {
+  font-weight: 600;
+  color: var(--gold-dark);
+  border-bottom: 1px solid var(--gold);
+}
+.editions a:hover {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+  text-decoration: none;
+}
+.pending {
+  color: var(--ink-mid);
+}
+
+/* ── Inside the documents ── */
+.inside {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+}
+.insideHead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 16px;
+}
+.wide .insideHead h3 {
+  margin: 0;
+  font-size: var(--font-xl);
+}
+.insideHead span {
+  font-size: var(--font-sm);
+  color: var(--ink-mid);
+}
+.pages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 28px;
+  margin-top: 18px;
+}
+.pages figure {
+  margin: 0;
+}
+.pages figure a {
+  display: block;
+}
+.pages figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  background: #fff;
+}
+.pages figure a:hover img,
+.pages figure a:focus-visible img {
+  box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18);
+}
+.wide .pages figcaption {
+  margin-top: 10px;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.wide .boundaryNext {
+  margin-top: 1em;
+}
+
+/* ── Library ── */
+.library {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.tripCard {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+}
+.tripCard:hover {
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: 0 10px 30px rgba(13, 53, 88, 0.14);
+}
+.tripCard img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.tripCardBody {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.wide .tripCard h2 {
+  font-size: var(--font-2xl);
+  margin: 0 0 10px;
+  padding-left: 0;
+}
+.wide .tripCard h2::before {
+  display: none;
+}
+.wide .tripMeta {
+  font-size: var(--font-sm);
+  color: var(--ink-mid);
+  margin-bottom: 12px;
+}
+.tripCardBody .go {
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--gold-dark);
+}
+
+@media (max-width: 960px) {
+  .intro { grid-template-columns: 1fr; gap: 32px; }
+  .cards { grid-template-columns: 1fr; }
+  .pages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .library { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .wide { padding: 0 16px; }
+  .decisionHead { grid-template-columns: 1fr; gap: 8px; }
+  .card { grid-template-columns: 96px 1fr; gap: 14px; padding: 16px; }
+  .pages { grid-template-columns: 1fr; }
+  .facts > div { grid-template-columns: 84px 1fr; gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cardThumb img { transition: none; }
+}

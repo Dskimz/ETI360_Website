@@ -102,10 +102,34 @@ function classifyAgent(req: NextRequest) {
   return "browser";
 }
 
+// Trip-document opens (/trips/{slug}/open/{doc}, src/app/trips/[slug]/open/[doc]/route.ts)
+// are logged as their own event. The links on a trip page carry no tags, so
+// when the open itself is untagged the tags are read from the referring page
+// on this site, which is where a campaign visitor's tags live.
+const TRIP_OPEN = /^\/trips\/[^/]+\/open\/[^/]+$/;
+
+function tagsFor(req: NextRequest, isTripOpen: boolean): URLSearchParams {
+  const own = req.nextUrl.searchParams;
+  if (!isTripOpen || own.get("utm_source") === "email") return own;
+  const referer = req.headers.get("referer");
+  if (!referer) return own;
+  try {
+    const ref = new URL(referer);
+    if (ref.host !== req.nextUrl.host) return own;
+    const merged = new URLSearchParams(ref.search);
+    own.forEach((value, key) => merged.set(key, value));
+    return merged;
+  } catch {
+    return own;
+  }
+}
+
 function buildRow(req: NextRequest): Row | null {
   if (req.method !== "GET") return null;
 
-  const { pathname, searchParams } = req.nextUrl;
+  const { pathname } = req.nextUrl;
+  const isTripOpen = TRIP_OPEN.test(pathname);
+  const searchParams = tagsFor(req, isTripOpen);
   if (searchParams.get("nolog") === "1") return null;
 
   // Navigations only. Missing sec-fetch-dest is allowed through (older clients
@@ -124,7 +148,7 @@ function buildRow(req: NextRequest): Row | null {
   const school = searchParams.get("utm_term") || searchParams.get("school") || "";
 
   return {
-    event: isUnsubscribe ? "unsubscribe" : "visit",
+    event: isUnsubscribe ? "unsubscribe" : isTripOpen ? "pdf-open" : "visit",
     school,
     arm: armFrom(utmContent, explicitArm),
     path: pathname,
@@ -132,7 +156,7 @@ function buildRow(req: NextRequest): Row | null {
     region: decode(req.headers.get("x-vercel-ip-country-region")),
     country: decode(req.headers.get("x-vercel-ip-country")),
     agent: classifyAgent(req),
-    utm: req.nextUrl.search.replace(/^\?/, ""),
+    utm: isTripOpen ? searchParams.toString() : req.nextUrl.search.replace(/^\?/, ""),
   };
 }
 
