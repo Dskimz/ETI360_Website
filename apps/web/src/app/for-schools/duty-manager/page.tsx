@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.dutyManager;
 
@@ -60,7 +61,7 @@ const data: SolutionEvidenceData = {
   },
   stripLine: "The trip record the school approved in Tier 2 becomes the working view here.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation is enough to see whether the Duty Manager Dashboard fits how your school manages trips in progress.",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function DutyManagerPage() {

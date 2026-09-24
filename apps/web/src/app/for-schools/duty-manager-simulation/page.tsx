@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.dutyManagerSimulation;
 
@@ -64,7 +65,7 @@ const data: SolutionEvidenceData = {
   },
   stripLine: "Part of Tier 3 Live Trip Support and Review: practiced on the Duty Manager Dashboard, the school's working view, before the trip departs.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Duty Manager Simulation fits how your school prepares its duty team.",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function DutyManagerSimulationPage() {

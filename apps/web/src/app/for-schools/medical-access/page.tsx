@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.medicalAccess;
 
@@ -60,7 +61,7 @@ const data: SolutionEvidenceData = {
   boundary: "ETI360 never recommends a hospital or clinic, never guarantees capacity, and makes no clinical judgment.",
   stripLine: "Location Timeline shows when, Route Intelligence shows how — medical access joins the same places.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Medical Access Record fits your program.",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function MedicalAccessPage() {

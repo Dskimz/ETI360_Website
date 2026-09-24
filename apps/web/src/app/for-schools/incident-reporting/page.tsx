@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.incidentReporting;
 
@@ -52,7 +53,7 @@ const data: SolutionEvidenceData = {
   boundary: "ETI360 provides the system and the structured record — it does not monitor incidents, direct the response, decide escalations, or stand in for emergency services.",
   stripLine: "Incident reporting sits in Tier 3 Live Trip Support and Review — the during-and-after tier.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the incident record fits how your team already operates.",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function IncidentReportingPage() {

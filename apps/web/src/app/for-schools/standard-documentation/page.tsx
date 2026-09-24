@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.standardDocumentation;
 
@@ -64,7 +65,7 @@ const data: SolutionEvidenceData = {
   },
   stripLine: "Standard documentation is a Tier 2 solution, part of every Trip Readiness review.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether one documentation structure fits your program.",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function StandardDocumentationPage() {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.routeIntelligence;
 
@@ -61,7 +62,7 @@ const data: SolutionEvidenceData = {
   },
   stripLine: "One route record, one part of the complete trip file ETI360 structures.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether Route Intelligence fits your program.",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function RouteIntelligenceProblemSolution() {

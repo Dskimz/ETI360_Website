@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.fieldTrips;
 
@@ -20,7 +21,7 @@ const data: SolutionEvidenceData = {
     "A single overseas expedition is visible from a long way off, and it gets planned accordingly. The short trips are different: many, small, each arranged in the weeks before it runs. Venue confirmed, coach booked, letter home, paperwork assembled — then the same sequence starts again for next Thursday.",
     "ETI360 works from the other end, doing the shared preparation before the term starts and organizing hazards, controls, and supporting evidence into structured working documents. The school reviews, completes, and approves its own risk assessments — with the evidence already gathered and in one place.",
   ],
-  spreadTitle: "A year of Harborview elementary field trips: the pack, a risk-assessment working document, and one trip's page",
+  spreadTitle: "A year of Harborview elementary field trips: the pack, a month's calendar, and one trip's page",
   plates: [
     {
       src: "/marketing/solutions/field-trip-pack-cover.jpg",
@@ -31,12 +32,12 @@ const data: SolutionEvidenceData = {
       note: "Thirty one-day trips, one for each unit of inquiry in each grade, planned and documented before the first day of school.",
     },
     {
-      src: "/marketing/solutions/trip-risk-working-file-risk.jpg",
+      src: "/marketing/solutions/field-trip-pack-calendar.jpg",
       width: 800,
-      height: 1132,
-      alt: "A risk-assessment working document page: two risks set out in full with consequence, inherent risk, controls, residual risk and emergency actions, for the school to complete",
-      label: "A risk-assessment working document",
-      note: "Hazards, controls, residual risk and emergency actions, prepared for each trip for the school to review, complete and approve (shown from the sample working file).",
+      height: 1133,
+      alt: "The September 2026 calendar page of the Field Trip Risk Assessment Pack: three field trips on the month grid, each listed below with its grade, venues and page number",
+      label: "A month's calendar",
+      note: "Each month opens with its calendar: the trips on the grid, then each one listed with its grade, its venues and the page it is on.",
     },
     {
       src: "/marketing/solutions/field-trip-pack-trip.jpg",
@@ -52,7 +53,7 @@ const data: SolutionEvidenceData = {
   claims: [
     {
       lead: "Venues confirmed once",
-      body: "Forty-four venues sit behind the set. Each is confirmed, measured, and documented once, and that record serves every trip that visits it.",
+      body: "Thirty-six venues sit behind the set. Each is confirmed, measured, and documented once, and that record serves every trip that visits it.",
     },
     {
       lead: "Measured, not estimated",
@@ -74,7 +75,7 @@ const data: SolutionEvidenceData = {
   },
   stripLine: "The pack sits within Tier 2 Trip Readiness, beside the expedition file.",
   ctaTitle: "Have the year's field-trip risk documentation prepared before the year begins.",
-  ctaCopy: "Would you be open to a 20-minute conversation about the field trips you have planned for the year, and what ETI360 could prepare for them before the year begins?",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function FieldTripsPage() {

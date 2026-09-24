@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/site";
 
 const TITLE = "ETI360 — Risk intelligence for school trips";
 const DESCRIPTION =
-  "ETI360 structures the evidence behind school-trip decisions — the 3-Tier Risk Framework and the documents it produces, for international schools and trip providers.";
+  "ETI360 provides risk intelligence for school trips. We help schools and educational travel providers strengthen their travel programs, prepare for individual trips, and support staff while groups are away.";
 
 export const metadata: Metadata = {
   // metadataBase resolves every relative OG and canonical URL in the app.

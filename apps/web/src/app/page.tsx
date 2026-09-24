@@ -3,6 +3,7 @@ import { CtaCard, MiniCta } from "@/components/CtaCard";
 import Image from "next/image";
 import Link from "next/link";
 import { reportList } from "@/content/solutions";
+import { POSITIONING_STATEMENT } from "@/content/voice";
 
 // Where the small page thumbnail on each problem card is anchored. The slot is
 // a portrait "page" and most sources are A4 pages, so the default is the top
@@ -53,13 +54,7 @@ export default function HomePage() {
           <h2 className="section-heading section-heading-lg rule-gold">
             Decision-ready evidence for every trip.
           </h2>
-          <p className="section-lead">
-            ETI360 is a risk governance and intelligence consulting firm for educational
-            travel, working with international schools and the providers who serve them.
-            We turn the information a school and its providers already hold &mdash;
-            itineraries, provider documents, dates, routes &mdash; into the decision-ready
-            evidence schools need.
-          </p>
+          <p className="section-lead">{POSITIONING_STATEMENT}</p>
         </div>
       </section>
 
@@ -120,9 +115,9 @@ export default function HomePage() {
                 The sign-off meeting, the family questions, and the days the group
                 is away all draw on the same evidence: organizational standing,
                 a trip-specific risk assessment, and a clear record of decisions.
-                ETI360 structures that evidence into a governance record built
-                the same way, every time &mdash; prepared for the school&rsquo;s
-                review and decision.
+                ETI360 brings that evidence together, adds further information
+                about each location and hospital on the itinerary, and prepares it
+                the same way every time, for the school&rsquo;s review and decision.
               </p>
               <Link href="/for-schools" className="cta-link ui">
                 How we engage with schools &rarr;

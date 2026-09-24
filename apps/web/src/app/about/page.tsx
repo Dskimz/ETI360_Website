@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { CtaCard, MiniCta } from "@/components/CtaCard";
-import Link from "next/link";
+import { FOUNDERS_LINE, POSITIONING_STATEMENT } from "@/content/voice";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "ETI360 PTE. LTD. is a Singapore-registered risk governance and intelligence consulting firm for educational travel, run by Dan Skimin.",
+    "ETI360 provides risk intelligence for school trips. ETI360 PTE. LTD. is a Singapore-registered company founded by Dan Skimin and Seb Wong.",
   alternates: { canonical: "/about" },
 };
 
@@ -29,13 +29,7 @@ export default function AboutPage() {
 
       <section className="article-body">
         <div className="container measure">
-          <p className="lead">
-            ETI360 works with international schools and educational travel providers,
-            turning the information they already hold &mdash; itineraries, provider
-            documents, dates, routes, hazards, and controls &mdash; into one consistent
-            trip file, a standing organizational baseline, and working views the
-            school&rsquo;s own staff operate on the days trips run.
-          </p>
+          <p className="lead">{POSITIONING_STATEMENT}</p>
 
           <h2>The firm</h2>
           <p>
@@ -45,6 +39,7 @@ export default function AboutPage() {
           </p>
 
           <h2>Who does the work</h2>
+          <p>{FOUNDERS_LINE}</p>
           <p>
             <strong>Dan Skimin &mdash; Principal Consultant.</strong>{" "}
             Twenty-three years as an international school educator, the past fifteen of
@@ -63,11 +58,11 @@ export default function AboutPage() {
             disciplines served by other specialist firms.
           </p>
           <p>
-            The firm structures and supports work the school or provider remains
-            accountable for. It is a decision support service: it does not approve trips,
-            certify providers, insure anyone, or substitute its judgment for the
-            governance bodies of the organizations it works with. The evidence is ours to
-            structure; the judgment stays with the school.
+            The firm supports work the school or provider remains accountable for. It is a
+            decision support service: it does not approve trips, certify providers, insure
+            anyone, or substitute its judgment for the governance bodies of the
+            organizations it works with. Schools and providers retain responsibility for
+            decisions and approvals.
           </p>
 
           <h2>How the work is shown</h2>

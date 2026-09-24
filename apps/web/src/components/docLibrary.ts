@@ -48,12 +48,12 @@ export const schoolTier2: DocEntry[] = [
     anchor: "risk-assessment",
     pdf: "/showcase/pdfs/04-rams-report.pdf",
     stage: "T2 · The decision record",
-    name: "Trip Risk Assessment & RAMS",
+    name: "Trip Risk Working File",
     reader: "Risk lead · Trip staff · Provider",
     desc: "The structured working documents behind the school's risk assessment and RAMS: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one report per activity group, prepared for the school to review, complete, amend, and approve.",
     image: {
       src: "/marketing/library/rams-report.png",
-      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
+      alt: "Trip Risk Working File risk register page: named risks with inherent and residual scores, controls, and emergency actions",
     },
   },
   {

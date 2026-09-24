@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.weatherBrief;
 
@@ -52,7 +53,7 @@ const data: SolutionEvidenceData = {
   },
   stripLine: "Part of the Tier 2 Trip Readiness, beside Location Timeline and Route Intelligence.",
   ctaTitle: "Talk it through on your own trips.",
-  ctaCopy: "A 20-minute conversation about the trips you run is enough to see whether the Weather Brief fits your program.",
+  ctaCopy: CLOSING_SENTENCE,
 };
 
 export default function WeatherBriefPage() {

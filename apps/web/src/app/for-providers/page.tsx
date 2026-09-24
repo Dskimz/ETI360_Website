@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { CtaCard, MiniCta } from "@/components/CtaCard";
-import Link from "next/link";
 import { DocEntry, DocRow, TierBand } from "../../components/DocShowcase";
 import { DocRowsExpander } from "../../components/DocRowsExpander";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 export const metadata: Metadata = {
   title: "For Providers",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const tier1: DocEntry[] = [
   {
     anchor: "baseline",
-    pdf: "/docs/organizational-baseline-evaluation-v3.pdf",
+    pdf: "/docs/organizational-baseline-evaluation-v4.pdf",
     stage: "T1 · Your organization",
     name: "Trip Program Capability Review",
     reader: "School risk committees · Your leadership",
@@ -62,12 +62,12 @@ const tier2: DocEntry[] = [
     anchor: "risk-assessment",
     pdf: "/showcase/pdfs/04-rams-report.pdf",
     stage: "T2 · The decision record",
-    name: "Trip Risk Assessment & RAMS",
+    name: "Trip Risk Working File",
     reader: "Risk lead · Trip staff · Provider",
     desc: "The structured working documents behind the risk assessment and RAMS: hazards, controls, who holds each control, and residual risk in plain language — prepared for the school to review, complete, amend, and approve; the due diligence file its risk committee can put in front of the board.",
     image: {
       src: "/marketing/library/rams-report.png",
-      alt: "RAMS report risk register page: named risks with inherent and residual scores, controls, and emergency actions",
+      alt: "Trip Risk Working File risk register page: named risks with inherent and residual scores, controls, and emergency actions",
     },
   },
   {
@@ -92,18 +92,6 @@ const tier2: DocEntry[] = [
     image: {
       src: "/email/spread-map-1.jpg",
       alt: "Trip Discovery Map for Cherry Blossom Tokyo: numbered stops, routes, and photo callouts on one sheet",
-    },
-    wide: true,
-  },
-  {
-    anchor: "duty-manager-simulation",
-    stage: "T2 · Rehearsal",
-    name: "Duty Manager Simulation",
-    reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions.",
-    image: {
-      src: "/marketing/solutions/simulation-dashboard.png",
-      alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
     },
     wide: true,
   },
@@ -138,6 +126,18 @@ const tier2More: DocEntry[] = [
 ];
 
 const tier3: DocEntry[] = [
+  {
+    anchor: "duty-manager-simulation",
+    stage: "T3 · Rehearsal",
+    name: "Duty Manager Simulation",
+    reader: "Duty manager · Trip leadership",
+    desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions.",
+    image: {
+      src: "/marketing/solutions/simulation-dashboard.png",
+      alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
+    },
+    wide: true,
+  },
   {
     anchor: "duty-manager-dashboard",
     stage: "T3 · During the trip",
@@ -265,9 +265,9 @@ export default function ForProvidersPage() {
 
         <TierBand
           n={3}
-          eyebrow="Tier Three · During the trip"
+          eyebrow="Tier Three · During and after"
           name="Live Trip Support and Review"
-          desc="A working view for managing trip issues while groups travel — operated by the school's or the provider's own duty manager, never staffed by ETI360."
+          desc="A rehearsal before departure, and a working view for managing trip issues while groups travel. The working view is operated by the school's or the provider's own duty manager, never staffed by ETI360."
         />
         <div className="doc-rows">
           {tier3.map((e) => (
@@ -276,7 +276,7 @@ export default function ForProvidersPage() {
         </div>
       </section>
 
-      <CtaCard title={'Contact us.'} copy={'A 20-minute conversation about the program you propose most often will show how the documentation pack applies to it — and what each new proposal takes from there.'} image={'/marketing/hero/for-providers.jpg'} />
+      <CtaCard title={'Contact us.'} copy={CLOSING_SENTENCE} image={'/marketing/hero/for-providers.jpg'} />
     </>
   );
 }

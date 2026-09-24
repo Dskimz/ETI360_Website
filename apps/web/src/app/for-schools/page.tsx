@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { reportCatalog } from "@/content/solutions";
 import styles from "./page.module.css";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 export const metadata: Metadata = {
   title: "For Schools",
@@ -100,9 +101,10 @@ export default function ForSchoolsPage() {
           <p className={styles.label}>For Schools</p>
           <h1>Turn the itinerary into a complete operating picture.</h1>
           <p className={styles.heroLead}>
-            ETI360 structures the trip information a school already holds into one trip record, then
-            prepares the documents, intelligence and working views the program needs—from the first
-            itinerary through the days away.
+            ETI360 brings together itineraries, provider documents, and school procedures, adds further
+            information about each location and hospital on the itinerary, and prepares the documents,
+            intelligence, and working views the program needs, from the first itinerary through the days
+            away.
           </p>
         </div>
         <MiniCta />
@@ -199,7 +201,7 @@ export default function ForSchoolsPage() {
           <Link href="/contact">Contact us →</Link>
         </div>
       </section>
-    <CtaCard title={'A 20-minute conversation.'} copy={'Enough time to talk through the trips you run and see which of these solutions fits your program.'} image={'/marketing/hero/for-schools.jpg'} />
+    <CtaCard title={'Contact us.'} copy={CLOSING_SENTENCE} image={'/marketing/hero/for-schools.jpg'} />
     </article>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { reportList } from "@/content/solutions";
 import styles from "@/components/evidence.module.css";
 import { CtaCard, MiniCta } from "@/components/CtaCard";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -75,7 +76,7 @@ export default function SolutionsPage() {
         </div>
       </div>
 
-      <CtaCard title={'A 20-minute conversation.'} copy={'Enough time to talk through the trips you run and see which of these solutions fits your program.'} />
+      <CtaCard title={'Contact us.'} copy={CLOSING_SENTENCE} />
     </article>
   );
 }
