@@ -62,7 +62,7 @@ export default function UsPage() {
             the 8th-grade Washington trip, a language trip to Europe or Quebec, a service week in
             Appalachia or Central America, an outdoor education week, and the senior trip. Each is
             planned by a teacher, a campus minister, or a department chair, booked through an
-            operator, and approved by the Head. ETI360 prepares the documents that sit between
+            operator, and approved by the school. ETI360 prepares the documents that sit between
             those three, each for the person who uses it: the record the office files, the working
             file the school completes and approves, the brief families read, the card the trip leader
             carries, and the report that closes the trip.
@@ -117,7 +117,7 @@ export default function UsPage() {
             <strong>We book through an operator. What does this add?</strong> Your operator&rsquo;s
             documents are the starting point, not a competitor. ETI360 brings them together with your
             policy and the itinerary, adds what the group needs to know about each place, and prepares
-            the file your Head reviews and the card your trip leader carries. Nothing the operator does
+            the file your school reviews and the card your trip leader carries. Nothing the operator does
             is replaced.
           </p>
           <p>
