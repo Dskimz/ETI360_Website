@@ -8,7 +8,7 @@
 
    Washington, DC is ported from the V3 prototype
    (customers/hrs-cleveland/website/build_washington_dc_page.py, 2026-09-22),
-   with the Letter PDFs from customers/hrs-cleveland/outputs/pdf/ (2026-09-23). */
+   with the Letter PDFs from customers/hrs-cleveland/outputs/pdf/ and the A4 PDFs from outputs/pdf/a4/ (2026-09-24, V3 ADR-024). */
 
 export type TripImage = { src: string; width: number; height: number; alt: string };
 
@@ -71,7 +71,10 @@ function inside(slug: string, title: string, pages: [number, string][]): InsideP
 }
 
 function letter(slug: string): Editions {
-  return { letter: `${DC}/letter/hrsc-ot01-washington-dc-${slug}.pdf`, a4: null };
+  return {
+    letter: `${DC}/letter/hrsc-ot01-washington-dc-${slug}.pdf`,
+    a4: `${DC}/a4/hrsc-ot01-washington-dc-${slug}.pdf`,
+  };
 }
 
 const washingtonDc: Trip = {
@@ -246,7 +249,7 @@ const washingtonDc: Trip = {
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: letter("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What people said: the three questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
+        [1, "What people said: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
         [2, "For the school's review: three sentences on what the responses show and what in the trip each touches, with no recommendation."],
         [4, "The moments people raised, each with its day, whether it points at the plan or at how the day was run, and the words as written."],
       ]),
