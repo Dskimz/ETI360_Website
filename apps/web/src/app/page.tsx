@@ -1,35 +1,57 @@
 import type { Metadata } from "next";
-import { CtaCard, MiniCta } from "@/components/CtaCard";
-import Image from "next/image";
 import Link from "next/link";
-import { reportList } from "@/content/solutions";
-import { POSITIONING_STATEMENT } from "@/content/voice";
+import { CtaCard } from "@/components/CtaCard";
+import { TripStrip } from "@/components/TripStrip";
+import { TwoServices } from "@/components/TwoServices";
+import { DECISIONS, PAPER_NOTE, TIER_NAMES } from "@/content/services";
+import { CLOSING_SENTENCE, POSITIONING_STATEMENT, WHAT_WE_DO_LINE } from "@/content/voice";
+import styles from "./home.module.css";
 
-// Where the small page thumbnail on each problem card is anchored. The slot is
-// a portrait "page" and most sources are A4 pages, so the default is the top
-// of the page (the masthead is the recognizable part). Landscape screenshots
-// are cover-cropped into that slot; those name the corner that reads as the
-// document rather than a slice of empty canvas.
-const thumbAnchor: Record<string, string> = {
-  "location-timeline": "left top",
-  "medical-access": "left top",
-  "duty-manager-simulation": "left top",
-  "duty-manager": "left top",
-};
+/* Home (Website v1, 2026-09-25). The order: the worked trips, decision by
+   decision, the three tiers and where each one's documents appear, the two
+   paper sizes, then the two services as the main doors (Dan, 2026-09-25: the
+   Travel Program Review, and trip by trip; one approach for every school),
+   then Dan's closing sentence, the only call to action. */
+
+const DESCRIPTION =
+  "Risk intelligence for school trips. Worked trips from ETI360, each document tied to the decision it supports and open in full, in US Letter and A4.";
 
 export const metadata: Metadata = {
   title: "ETI360 — Risk intelligence for school trips",
-  description:
-    "The problems schools bring us and the documents that answer them: real rendered pages from a fully worked example, each opening as a complete PDF.",
+  description: DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
     images: ["/marketing/og-default.png"],
     title: "ETI360 — Risk intelligence for school trips",
-    description:
-      "The problems schools bring us and the documents that answer them: real rendered pages from a fully worked example, each opening as a complete PDF.",
+    description: DESCRIPTION,
     type: "website",
   },
 };
+
+const TIERS: { n: 1 | 2 | 3; name: string; body: string; links: { href: string; label: string }[] }[] = [
+  {
+    n: 1,
+    name: TIER_NAMES[1],
+    body: "The school's travel program as a whole: its policies and procedures, path by path, reviewed once every four years.",
+    links: [{ href: "/framework#tier1", label: "The sample review" }],
+  },
+  {
+    n: 2,
+    name: TIER_NAMES[2],
+    body: "The documents for one trip, from the approval to the day the group leaves. Every worked trip shows them in full.",
+    links: [{ href: "/trips", label: "The worked trips" }],
+  },
+  {
+    n: 3,
+    name: TIER_NAMES[3],
+    body: "What the trip leader and chaperones carry while the group is away, and the report that closes the trip. The Duty Manager Dashboard is the school's own view while groups travel.",
+    links: [
+      { href: "/trips/washington-dc#trip-leader-card", label: "Trip Leader Card" },
+      { href: "/trips/washington-dc#chaperone-briefing", label: "Chaperone Briefing" },
+      { href: "/trips/washington-dc#post-trip-feedback-report", label: "Post-Trip Feedback Report" },
+    ],
+  },
+];
 
 export default function HomePage() {
   return (
@@ -45,105 +67,90 @@ export default function HomePage() {
             <em>for school trips.</em>
           </h1>
         </div>
-        <MiniCta />
       </section>
 
       <section id="what-we-do" className="about-strip">
         <div className="container measure">
           <p className="label ui">What we do</p>
-          <h2 className="section-heading section-heading-lg rule-gold">
-            Decision-ready evidence for every trip.
-          </h2>
+          <h2 className="section-heading section-heading-lg rule-gold">{WHAT_WE_DO_LINE}</h2>
           <p className="section-lead">{POSITIONING_STATEMENT}</p>
         </div>
       </section>
 
-      <section id="problems" className="about-strip">
+      <section id="trips" className={styles.band}>
         <div className="container">
-          <p className="label ui">The problems we solve</p>
-          <h2 className="section-heading section-heading-lg rule-gold">
-            The questions schools bring us.
-          </h2>
-          <p className="section-lead">
-            Each opens as a worked answer: the problem, a real example from a fully
-            worked demonstration school, and the boundaries of what it does.
+          <p className="label ui">Worked trips</p>
+          <h2 className="section-heading rule-gold">Every document open in full.</h2>
+          <p className={styles.lead}>
+            Each worked trip shows the documents prepared for it, as the school receives them.
           </p>
-          <div className="problem-grid">
-            {reportList.map((r) => (
-              <Link key={r.href} href={r.href} className="problem-card">
-                <p className="problem-question">{r.question}</p>
-                <div className="problem-foot">
-                  <p className="problem-name">{r.name} &rarr;</p>
-                  <span className="problem-thumb" aria-hidden="true">
-                    <Image
-                      src={r.image}
-                      alt=""
-                      fill
-                      sizes="160px"
-                      quality={85}
-                      style={{ objectPosition: thumbAnchor[r.slug] ?? "top center" }}
-                    />
-                  </span>
-                </div>
-              </Link>
+          <TripStrip />
+        </div>
+      </section>
+
+      <section id="decisions" className="about-strip">
+        <div className="container">
+          <p className="label ui">Decision by decision</p>
+          <h2 className="section-heading rule-gold">Each document is tied to the decision it supports.</h2>
+          <p className={styles.lead}>
+            A trip is a run of decisions the school makes, and each person involved needs something
+            different. Every document is written for the person who uses it and names the decision
+            behind it.
+          </p>
+          <ol className={styles.decisions}>
+            {DECISIONS.map((d) => (
+              <li key={d.title}>
+                <h3>{d.title}</h3>
+                <p>{d.note}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="tiers" className={styles.band}>
+        <div className="container">
+          <p className="label ui">Three tiers</p>
+          <h2 className="section-heading rule-gold">Where each tier&rsquo;s documents appear.</h2>
+          <div className={styles.tiers}>
+            {TIERS.map((t) => (
+              <article key={t.n} className={`${styles.tier} ${styles[`tier${t.n}`]}`}>
+                <p className={`${styles.tierName} ui`}>{t.name}</p>
+                <p className={styles.tierBody}>{t.body}</p>
+                <p className={`${styles.tierLinks} ui`}>
+                  {t.links.map((l) => (
+                    <Link key={l.href} href={l.href}>
+                      {l.label} &rarr;
+                    </Link>
+                  ))}
+                </p>
+              </article>
             ))}
           </div>
-          <p className="bridge-line ui">
-            <Link href="/solutions" className="cta-link ui">
-              All solutions, tier by tier &rarr;
-            </Link>
-            {"  "}
+          <p className="bridge-line">
             <Link href="/framework" className="cta-link ui">
-              How the 3-Tier Risk Framework organizes them &rarr;
+              The three tiers in full &rarr;
             </Link>
           </p>
         </div>
       </section>
 
-      <section id="audiences" className="about-strip">
-        <div className="container">
-          <p className="label ui">Who we work with</p>
-          <h2 className="section-heading rule-gold">
-            The same framework. Two operational realities.
-          </h2>
-
-          <div className="audience-cards">
-            <article className="audience-card">
-              <p className="label ui">For schools</p>
-              <h3>Governance and oversight.</h3>
-              <p>
-                The sign-off meeting, the family questions, and the days the group
-                is away all draw on the same evidence: organizational standing,
-                a trip-specific risk assessment, and a clear record of decisions.
-                ETI360 brings that evidence together, adds further information
-                about each location and hospital on the itinerary, and prepares it
-                the same way every time, for the school&rsquo;s review and decision.
-              </p>
-              <Link href="/for-schools" className="cta-link ui">
-                How we engage with schools &rarr;
-              </Link>
-            </article>
-
-            <article className="audience-card">
-              <p className="label ui">For providers</p>
-              <h3>Proposal and operations.</h3>
-              <p>
-                Schools ask providers to demonstrate governance before they book.
-                ETI360 gives providers a structured way to produce the same
-                organizational and trip evidence schools review, to a consistent
-                standard for every departure &mdash; the evidence pack a school
-                expects, produced through a documented process and ready for
-                their review.
-              </p>
-              <Link href="/for-providers" className="cta-link ui">
-                How we engage with providers &rarr;
-              </Link>
-            </article>
-          </div>
+      <section id="paper" className={`about-strip ${styles.paperBand}`}>
+        <div className="container measure">
+          <p className="label ui">Two paper sizes</p>
+          <p className={styles.paper}>{PAPER_NOTE}</p>
         </div>
       </section>
 
-      <CtaCard title={'Arrange a briefing.'} copy={'A structured conversation about your current trip governance and where the documents can support it.'} image={'/marketing/hero/home.jpg'} />
+      <section id="services" className={styles.band}>
+        <div className="container">
+          <p className="label ui">Two services</p>
+          <h2 className="section-heading rule-gold">The whole program, or one trip at a time.</h2>
+          <TwoServices />
+        </div>
+      </section>
+
+      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} image={"/marketing/hero/home.jpg"} />
     </>
   );
 }

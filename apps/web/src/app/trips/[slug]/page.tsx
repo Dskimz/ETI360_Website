@@ -154,18 +154,28 @@ export default async function TripPage({ params }: Props) {
 
           {trip.decisions.map((decision) => {
             const docs = trip.documents.filter((d) => d.decision === decision.title);
-            if (docs.length === 0) return null;
+            // A trip with a single document (the elementary pack) answers every
+            // decision from that one document: its card sits under the first
+            // decision, and each later decision points back to it.
+            const only = trip.documents.length === 1 ? trip.documents[0] : null;
+            if (docs.length === 0 && !only) return null;
             return (
               <div key={decision.title} className={styles.decision}>
                 <div className={styles.decisionHead}>
                   <h3>{decision.title}</h3>
                   <p>{decision.note}</p>
                 </div>
-                <div className={styles.cards}>
-                  {docs.map((doc) => (
-                    <DocCard key={doc.slug} trip={trip} doc={doc} />
-                  ))}
-                </div>
+                {docs.length > 0 ? (
+                  <div className={styles.cards}>
+                    {docs.map((doc) => (
+                      <DocCard key={doc.slug} trip={trip} doc={doc} />
+                    ))}
+                  </div>
+                ) : only ? (
+                  <p className={`${styles.paper} ui`}>
+                    In the <a href={`#${only.slug}`}>{only.title}</a>.
+                  </p>
+                ) : null}
               </div>
             );
           })}

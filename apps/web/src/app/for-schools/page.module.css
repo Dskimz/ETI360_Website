@@ -114,3 +114,7 @@
   .cardImage { min-height: 235px; }
   .ctaInner > a { text-align: center; white-space: normal; }
 }
+
+/* Space above each h2 block in the body (the former /us content). */
+.block { margin-top: 72px; }
+@media (max-width: 700px) { .block { margin-top: 56px; } }

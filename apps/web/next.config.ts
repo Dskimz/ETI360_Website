@@ -19,6 +19,23 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // One page for every school (Dan, 2026-09-25: one marketing approach
+        // for international schools and US independent schools). The /us
+        // content moved to /for-schools. Exact path only: the images under
+        // public/us/ stay where they are.
+        source: "/us",
+        destination: "/for-schools",
+        permanent: true,
+      },
+      {
+        // The Harborview sample pack gave way to the worked trips library
+        // (Website v1, 2026-09-25). Exact path only: /showcase/pdfs and
+        // /showcase/pages files in public/ are still used by /framework.
+        source: "/showcase",
+        destination: "/trips",
+        permanent: true,
+      },
+      {
         // Clean entry link for the questions-page drafts. A REDIRECT (not a
         // rewrite) on purpose: the drafts link each other relatively, so
         // the browser must land on the real file path for them to resolve.

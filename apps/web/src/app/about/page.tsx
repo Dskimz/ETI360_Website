@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { CtaCard, MiniCta } from "@/components/CtaCard";
-import { FOUNDERS_LINE, POSITIONING_STATEMENT } from "@/content/voice";
+import { CtaCard } from "@/components/CtaCard";
+import { CLOSING_SENTENCE, DAN_TRACK_RECORD, FOUNDERS_LINE, POSITIONING_STATEMENT } from "@/content/voice";
 
 export const metadata: Metadata = {
   title: "About",
@@ -19,12 +19,7 @@ export default function AboutPage() {
         <div className="hero-inner">
           <p className="label label-light ui">About</p>
           <h1>About ETI360.</h1>
-          <p className="subhead">
-            Over 30 years of combined experience in educational travel safety
-            and learning.
-          </p>
         </div>
-        <MiniCta />
       </section>
 
       <section className="article-body">
@@ -39,15 +34,9 @@ export default function AboutPage() {
           </p>
 
           <h2>Who does the work</h2>
-          <p>{FOUNDERS_LINE}</p>
           <p>
-            <strong>Dan Skimin &mdash; Principal Consultant.</strong>{" "}
-            Twenty-three years as an international school educator, the past fifteen of
-            them focused on helping schools simplify educational travel. Dan runs the firm
-            day to day and works directly on every engagement.
-          </p>
-          <p>
-            <strong>Seb Wong &mdash; Senior Consultant.</strong>
+            {FOUNDERS_LINE} {DAN_TRACK_RECORD} He runs the firm day to day and works directly on
+            every engagement. Seb Wong, Senior Consultant, is part of every engagement.
           </p>
 
           <h2>What we cover</h2>
@@ -67,18 +56,16 @@ export default function AboutPage() {
 
           <h2>How the work is shown</h2>
           <p>
-            Everything shown publicly &mdash; every document page, dashboard view, and
-            worked example on this site &mdash; comes from Harborview International
-            School, our sample school. Harborview is not a real school, and that is a deliberate
-            choice: it means every page can be shown in full, and no real school&rsquo;s
-            documents, staff, or students ever appear in ETI360&rsquo;s materials. Client
-            work is produced the same way, in the client&rsquo;s own branding, from the
-            client&rsquo;s own trip data &mdash; and stays theirs.
+            Every school named on this site is fictional, and each worked trip names its school
+            with a notice that the school is fictional. That is a deliberate choice: every page can
+            be shown in full, and no real school&rsquo;s documents, staff, or students appear in
+            ETI360&rsquo;s materials. Client work is produced the same way, in the client&rsquo;s own
+            branding, from the client&rsquo;s own trip data, and stays theirs.
           </p>
         </div>
       </section>
 
-      <CtaCard title={'Arrange a briefing.'} copy={'Briefings are conversations, not sales calls.'} image={'/marketing/hero/about.jpg'} />
+      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} image={"/marketing/hero/about.jpg"} />
     </>
   );
 }

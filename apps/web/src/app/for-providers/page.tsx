@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { CtaCard, MiniCta } from "@/components/CtaCard";
+import Link from "next/link";
+import { CtaCard } from "@/components/CtaCard";
+import { TripStrip } from "@/components/TripStrip";
 import { DocEntry, DocRow, TierBand } from "../../components/DocShowcase";
 import { DocRowsExpander } from "../../components/DocRowsExpander";
 import { CLOSING_SENTENCE } from "@/content/voice";
+
+/* voice.ts has no provider variant of Dan's closing sentence, so the page
+   keeps CLOSING_SENTENCE unchanged. */
 
 export const metadata: Metadata = {
   title: "For Providers",
@@ -39,7 +44,7 @@ const tier2: DocEntry[] = [
     pdf: "/docs/trip-overview.pdf",
     stage: "T2 · The first read",
     name: "Trip Overview",
-    reader: "Head · Approving committee",
+    reader: "School leadership · Approving committee",
     desc: "Your program on one page: dates, group, and logistics at a glance.",
     image: {
       src: "/email/page-overview.png",
@@ -64,7 +69,7 @@ const tier2: DocEntry[] = [
     stage: "T2 · The decision record",
     name: "Trip Risk Working File",
     reader: "Risk lead · Trip staff · Provider",
-    desc: "The structured working documents behind the risk assessment and RAMS: hazards, controls, who holds each control, and residual risk in plain language — prepared for the school to review, complete, amend, and approve; the due diligence file its risk committee can put in front of the board.",
+    desc: "The structured working documents behind the school's risk assessment: hazards, controls, who holds each control, and residual risk in plain language — prepared for the school to review, complete, amend, and approve; the due diligence file its risk committee can put in front of the board.",
     image: {
       src: "/marketing/library/rams-report.png",
       alt: "Trip Risk Working File risk register page: named risks with inherent and residual scores, controls, and emergency actions",
@@ -171,7 +176,6 @@ export default function ForProvidersPage() {
             then reissued for each school, each trip, and each set of dates.
           </p>
         </div>
-        <MiniCta />
       </section>
 
       <section className="article-body">
@@ -213,16 +217,34 @@ export default function ForProvidersPage() {
             communications and its record.
           </p>
 
+          <h2>What your school clients receive</h2>
+          <p>
+            The worked trips show what a school receives for one trip: the
+            documents decision by decision, in the school&rsquo;s name, each in
+            US Letter and A4. A provider working with ETI360 can offer its school
+            clients the same documents for each departure, prepared from the
+            provider&rsquo;s own itinerary and documents.
+          </p>
+        </div>
+        <div className="container">
+          <TripStrip />
+        </div>
+        <div className="container measure">
+          <p>
+            <Link href="/trips" className="cta-link ui">
+              See the worked trips &rarr;
+            </Link>
+          </p>
+
           <h2>The documents</h2>
           <p>
             The same three tiers schools use, applied from the provider&rsquo;s
             side. Open any thumbnail to read the document itself.
           </p>
           <p className="artifact-reader ui">
-            The documents shown are from a fully worked example for Harborview
-            International School. It is not a real school, only a sample school, so every page can
-            be shown in full &mdash; no real school&rsquo;s or provider&rsquo;s
-            documents are ever shown.
+            The documents in this section are from a worked example for
+            Harborview International School. Harborview International School is
+            a fictional school; its location is shown for illustrative purposes.
           </p>
         </div>
 
@@ -260,7 +282,7 @@ export default function ForProvidersPage() {
         </div>
         <DocRowsExpander
           items={tier2More}
-          label="See two more Tier 2 documents"
+          label="See more Tier 2 documents"
         />
 
         <TierBand

@@ -1,0 +1,112 @@
+/* Home page blocks (Website v1). Tokens only. */
+.band {
+  background: #fff;
+}
+.lead {
+  max-width: 760px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+/* Decision by decision */
+.decisions {
+  list-style: none;
+  counter-reset: decision;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 32px;
+  margin-top: 36px;
+}
+.decisions li {
+  counter-increment: decision;
+  border-top: var(--rule) solid var(--gold);
+  padding-top: 16px;
+}
+.decisions li::before {
+  content: counter(decision, decimal-leading-zero);
+  display: block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+}
+.decisions h3 {
+  font-size: var(--font-xl);
+  margin-bottom: 8px;
+}
+.decisions p {
+  font-size: var(--font-base);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Three tiers */
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+.tier {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 26px;
+  color: #fff;
+}
+.tier1 { background: var(--tier1-band); }
+.tier2 { background: var(--tier2-band); }
+.tier3 { background: var(--tier3-band); }
+.tier p {
+  margin: 0;
+}
+.tier .tierName {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+.tier2 .tierName { color: var(--tier2-band-accent); }
+.tier3 .tierName { color: #fff; }
+.tier .tierBody {
+  font-size: var(--font-base);
+  line-height: 1.6;
+  color: #fff;
+}
+.tierLinks {
+  margin-top: auto !important;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--font-sm);
+}
+.tierLinks a {
+  color: #fff;
+  font-weight: 600;
+  align-self: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+.tierLinks a:hover {
+  color: #fff;
+  text-decoration: none;
+  border-bottom-color: #fff;
+}
+
+/* Paper */
+.paperBand {
+  padding: 56px 0;
+}
+.paper {
+  font-size: var(--font-lg);
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiers { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .decisions { grid-template-columns: 1fr; }
+}

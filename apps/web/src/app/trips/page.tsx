@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CtaCard } from "@/components/CtaCard";
-import { hasEdition, TRIP_KINDS, trips, type SchoolType, type Trip, type TripKind } from "@/content/trips";
+import { hasEdition, TRIP_KINDS, trips, type Trip, type TripKind } from "@/content/trips";
 import { BRAND_EYEBROW, CLOSING_SENTENCE } from "@/content/voice";
 import styles from "./trips.module.css";
 
 /* The library of worked trips. Only built trips appear (src/content/trips/);
-   no placeholders. Filters are plain links (?school=us&kind=city), rendered on
-   the server, so they work without JavaScript. Only options that match at
-   least one live trip are offered. */
+   no placeholders. The filter is plain links (?kind=city), rendered on the
+   server, so it works without JavaScript. Only kinds that match at least one
+   live trip are offered. There is no school-type filter (Dan, 2026-09-25: one
+   approach for every school); each card still names its fictional school. */
 
 export const metadata: Metadata = {
   title: "Trips",
@@ -25,19 +26,12 @@ export const metadata: Metadata = {
   },
 };
 
-const SCHOOL_PARAM: Record<SchoolType, string> = { US: "us", International: "international" };
-const SCHOOL_LABEL: Record<SchoolType, string> = { US: "US schools", International: "International schools" };
-
 function kindParam(kind: TripKind): string {
   return kind.toLowerCase().replace(/\s+/g, "-");
 }
 
-function filterHref(school: SchoolType | null, kind: TripKind | null): string {
-  const q = new URLSearchParams();
-  if (school) q.set("school", SCHOOL_PARAM[school]);
-  if (kind) q.set("kind", kindParam(kind));
-  const s = q.toString();
-  return s ? `/trips?${s}` : "/trips";
+function filterHref(kind: TripKind | null): string {
+  return kind ? `/trips?kind=${kindParam(kind)}` : "/trips";
 }
 
 function FilterLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) {
@@ -65,24 +59,17 @@ function PaperLine({ trip }: { trip: Trip }) {
   );
 }
 
-type Props = { searchParams: Promise<{ school?: string | string[]; kind?: string | string[] }> };
+type Props = { searchParams: Promise<{ kind?: string | string[] }> };
 
 export default async function TripsPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const schoolQ = typeof sp.school === "string" ? sp.school : "";
   const kindQ = typeof sp.kind === "string" ? sp.kind : "";
 
-  const schoolOptions = (["US", "International"] as SchoolType[]).filter((s) =>
-    trips.some((t) => t.schoolType === s),
-  );
   const kindOptions = TRIP_KINDS.filter((k) => trips.some((t) => t.tripKind === k));
 
-  const school = schoolOptions.find((s) => SCHOOL_PARAM[s] === schoolQ) ?? null;
   const kind = kindOptions.find((k) => kindParam(k) === kindQ) ?? null;
 
-  const shown = trips.filter(
-    (t) => (!school || t.schoolType === school) && (!kind || t.tripKind === kind),
-  );
+  const shown = trips.filter((t) => !kind || t.tripKind === kind);
 
   return (
     <>
@@ -101,23 +88,12 @@ export default async function TripsPage({ searchParams }: Props) {
         <div className={styles.wide}>
           <nav className={`${styles.filters} ui`} aria-label="Filter trips">
             <div className={styles.filterGroup}>
-              <span className={styles.filterLabel}>School</span>
-              <FilterLink href={filterHref(null, kind)} active={!school}>
-                All schools
-              </FilterLink>
-              {schoolOptions.map((s) => (
-                <FilterLink key={s} href={filterHref(s, kind)} active={school === s}>
-                  {SCHOOL_LABEL[s]}
-                </FilterLink>
-              ))}
-            </div>
-            <div className={styles.filterGroup}>
               <span className={styles.filterLabel}>Trip</span>
-              <FilterLink href={filterHref(school, null)} active={!kind}>
+              <FilterLink href={filterHref(null)} active={!kind}>
                 All trips
               </FilterLink>
               {kindOptions.map((k) => (
-                <FilterLink key={k} href={filterHref(school, k)} active={kind === k}>
+                <FilterLink key={k} href={filterHref(k)} active={kind === k}>
                   {k}
                 </FilterLink>
               ))}
@@ -126,7 +102,7 @@ export default async function TripsPage({ searchParams }: Props) {
 
           {shown.length === 0 ? (
             <p className={styles.empty}>
-              No trips match these filters.{" "}
+              No trips match this filter.{" "}
               <Link href="/trips" className="cta-link">
                 All trips &rarr;
               </Link>
@@ -144,8 +120,7 @@ export default async function TripsPage({ searchParams }: Props) {
                   />
                   <div className={styles.tripCardBody}>
                     <p className={`${styles.reader} ui`}>
-                      {trip.schoolType === "US" ? "US school" : "International school"} &middot; {trip.tripKind}{" "}
-                      &middot; {trip.region}
+                      {trip.tripKind} &middot; {trip.region}
                     </p>
                     <h2>{trip.title}</h2>
                     <p className={`${styles.tripMeta} ui`}>

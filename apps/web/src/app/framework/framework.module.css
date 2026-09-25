@@ -1,0 +1,21 @@
+/* Where each tier's documents appear (Website v1). Tokens only. */
+.where {
+  padding-top: 32px;
+}
+.where + :global(.doc-rows) {
+  padding-top: 32px;
+}
+.where p {
+  color: var(--ink-mid);
+}
+.whereLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: var(--font-sm);
+}
+.whereLinks :global(.cta-link) {
+  font-size: var(--font-sm);
+}

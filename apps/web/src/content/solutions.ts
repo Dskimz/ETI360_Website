@@ -13,7 +13,7 @@ export const reportCatalog = {
     slug: "trip-risk-documentation",
     tier: 2,
     name: "Trip Risk Working File",
-    question: "Do your risk assessments, RAMS and emergency procedures start from the same information?",
+    question: "Do your risk assessments and emergency procedures start from the same information?",
     summary: "The supporting information behind a school's trip risk documentation, one working file per trip organized by activity group: what students will do and where, the hazards, the controls the provider describes, and the emergency information for each place, for the school to complete and approve its own documents.",
     href: "/for-schools/trip-risk-documentation",
     image: "/marketing/solutions/trip-risk-working-file-group.jpg",

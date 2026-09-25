@@ -25,7 +25,7 @@ export const schoolTier2: DocEntry[] = [
     pdf: "/docs/trip-overview.pdf",
     stage: "T2 · The first read",
     name: "Trip Overview",
-    reader: "Head · Approving committee",
+    reader: "School leadership · Approving committee",
     desc: "The trip on one page: program, dates, group, and logistics at a glance, for the first read before the detail.",
     image: {
       src: "/email/page-overview.png",
@@ -50,7 +50,7 @@ export const schoolTier2: DocEntry[] = [
     stage: "T2 · The decision record",
     name: "Trip Risk Working File",
     reader: "Risk lead · Trip staff · Provider",
-    desc: "The structured working documents behind the school's risk assessment and RAMS: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one report per activity group, prepared for the school to review, complete, amend, and approve.",
+    desc: "The structured working documents behind the school's risk assessment: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one report per activity group, prepared for the school to review, complete, amend, and approve.",
     image: {
       src: "/marketing/library/rams-report.png",
       alt: "Trip Risk Working File risk register page: named risks with inherent and residual scores, controls, and emergency actions",
@@ -125,10 +125,10 @@ export const schoolTier2: DocEntry[] = [
     stage: "T2 · One-day trips",
     name: "Field Trip Report",
     reader: "Parents · Trip coordinator",
-    desc: "The same discipline for a single day out: departure and return times, a timed itinerary, the route and hospital mapped, and notes for families, on one page.",
+    desc: "The same discipline for a single day out: departure and return times, a timed itinerary, the route and the emergency department mapped, with the drive time, and notes for families, on one page.",
     image: {
       src: "/email/page-fieldtrip.png",
-      alt: "Field Trip Report for a one-day trip: timed itinerary, route map, and hospital map on one page",
+      alt: "Field Trip Report for a one-day trip: timed itinerary, route map, and emergency department map on one page",
     },
   },
   {
@@ -136,10 +136,10 @@ export const schoolTier2: DocEntry[] = [
     stage: "T2 · Before departure",
     name: "Trip Risk Register",
     reader: "Coordinator · Risk lead · Leadership",
-    desc: "The home view of the school's TripRisk360 portal, where the documents live: every scheduled trip for the year in one register — departures, seasonal risk signals, and RAMS status, connected to each trip's documents.",
+    desc: "The home view of the school's TripRisk360 portal, where the documents live: every scheduled trip for the year in one register — departures, seasonal risk signals, and the status the school set for each trip's risk documentation, connected to each trip's documents.",
     image: {
       src: "/marketing/library/trip-risk-register.png",
-      alt: "The Trip Risk Register in the school portal: scheduled trips month by month with seasonal risk signals and RAMS status",
+      alt: "The Trip Risk Register in the school portal: scheduled trips month by month with seasonal risk signals and risk documentation status",
     },
     wide: true,
     pageHref: "/documents/trip-risk-register",
@@ -198,7 +198,5 @@ export const schoolTier3: DocEntry[] = [
 ];
 
 /* For Schools shows the decision-path six; the rest sit behind "See more". */
-export const schoolTier2Featured: DocEntry[] = schoolTier2.slice(0, 6);
-export const schoolTier2More: DocEntry[] = schoolTier2.slice(6);
 
 export const schoolDocs: DocEntry[] = [...schoolTier1, ...schoolTier2, ...schoolTier3];

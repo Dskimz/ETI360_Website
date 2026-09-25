@@ -1,5 +1,5 @@
 /* One voice across the site (Dan, 2026-09-24: "everything has the same vibe").
-   The home page, /us and every trip page use these lines unchanged. "School
+   The home page, For Schools and every trip page use these lines unchanged. "School
    travel preparation service" may appear only as a plain descriptor inside
    body copy, never as a tagline, eyebrow, top-bar tag or h1. */
 
@@ -23,6 +23,11 @@ export const POSITIONING_STATEMENT =
 /** The founders, always named together. */
 export const FOUNDERS_LINE = "ETI360 was founded by Dan Skimin and Seb Wong.";
 
-/** The boundary used on /us and the trip pages. */
+/** Dan's track record (Dan, 2026-09-25), verbatim; follows FOUNDERS_LINE.
+    Replaces the retired earlier bio line. */
+export const DAN_TRACK_RECORD =
+  "Dan Skimin, Principal Consultant, spent 16 years as an international school athletics director and trip coordinator, coordinating 600 programs for 12,000 students.";
+
+/** The boundary used on For Schools and the trip pages. */
 export const WHO_DECIDES =
   "The school, and any provider it works with, retain responsibility for decisions, supervision, live assessments, and final approval.";

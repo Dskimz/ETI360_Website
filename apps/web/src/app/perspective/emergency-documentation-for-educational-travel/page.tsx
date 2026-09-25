@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CtaCard } from "@/components/CtaCard";
 import Link from "next/link";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 export const metadata: Metadata = {
   title: "Emergency documentation for educational travel — ETI360",
@@ -196,7 +197,7 @@ export default function EmergencyDocsPage() {
         </div>
       </article>
 
-      <CtaCard title={'Arrange a briefing.'} copy={'Briefings are conversations, not sales calls.'} />
+      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} />
     </>
   );
 }

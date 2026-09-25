@@ -36,7 +36,7 @@ export function MiniCta() {
         <img src="/marketing/cta/eti360-circle.png" alt="ETI360" />
       </div>
       <div>
-        <b>Arrange a briefing.</b>
+        <b>Contact us.</b>
         <Link href="/contact">Get in touch &rarr;</Link>
       </div>
     </div>

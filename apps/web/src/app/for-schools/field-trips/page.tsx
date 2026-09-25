@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { SolutionEvidence, type SolutionEvidenceData } from "@/components/SolutionEvidence";
 import { reportCatalog } from "@/content/solutions";
+import { trips } from "@/content/trips";
 import { CLOSING_SENTENCE } from "@/content/voice";
 
 const report = reportCatalog.fieldTrips;
+
+// The elementary pack pages in the worked trips library (Website v1): every
+// live "Day trips" trip, so a second pack links here as soon as it is built.
+const packPages = trips
+  .filter((t) => t.tripKind === "Day trips")
+  .map((t) => ({ href: `/trips/${t.slug}`, label: `${t.title}, the worked trip` }));
 
 export const metadata: Metadata = {
   title: `${report.name} Problem and Solution`,
@@ -49,7 +56,8 @@ const data: SolutionEvidenceData = {
     },
   ],
   pdfHref: "/docs/field-trip-risk-assessment-pack-harborview-2026-27.pdf",
-  disclosure: "Shown for the Harborview sample year. Harborview International School is not a real school; it is used only as a sample school. No real school or student data appears.",
+  disclosure: "Shown for the Harborview sample year. Harborview International School is a fictional school; its location is shown for illustrative purposes.",
+  tripLinks: packPages,
   claims: [
     {
       lead: "Venues confirmed once",

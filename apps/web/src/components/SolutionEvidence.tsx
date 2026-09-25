@@ -21,6 +21,8 @@ export type SolutionEvidenceData = {
   plates: EvidencePlate[];
   disclosure: string;
   pdfHref?: string;
+  /** Worked trip pages where this document appears in full, both editions. */
+  tripLinks?: Array<{ href: string; label: string }>;
   claims: Array<{ lead: string; body: string }>;
   boundary: string;
   promo?: { title: string; body: string };
@@ -91,6 +93,15 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
                       Open the document (PDF) →
                     </a>
                   </>
+                ) : null}
+                {data.tripLinks && data.tripLinks.length > 0 ? (
+                  <span className={styles.tripLinks}>
+                    {data.tripLinks.map((l) => (
+                      <a key={l.href} href={l.href}>
+                        {l.label} &rarr;
+                      </a>
+                    ))}
+                  </span>
                 ) : null}
               </figcaption>
             </figure>
