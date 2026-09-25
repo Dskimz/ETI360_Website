@@ -6,7 +6,8 @@ A worked trip on the site is three things: a content file
 `apps/web/public/trips/<slug>/letter/` and `.../a4/` (gitignored, restored from
 the V3 repo by `npm run sync:trip-pdfs`).
 
-`scripts/import-trip.py` does the file work. Run it with
+`scripts/import-trip.py` does the file work, for worked trips (the default,
+`--root trips`) and for single-document versions (`--root versions`, below). Run it with
 `/Library/Frameworks/Python.framework/Versions/3.12/bin/python3` (Pillow and
 PyMuPDF are installed there).
 
@@ -79,7 +80,30 @@ npm run sync:trip-pdfs -- --force # recopy everything
 ```
 
 The V3 root defaults to `/Users/danskimin/00 - ETI360 - V3`; set
-`ETI360_V3_ROOT` elsewhere. The script reads the live trips from
-`src/content/trips/index.ts`, so it copies exactly what the site links to and
-exits non-zero if a linked PDF is missing in V3. An edition whose URL is
-absolute (object storage) is skipped.
+`ETI360_V3_ROOT` elsewhere. The script reads every version from the registry,
+`src/content/versions/index.ts`, so it copies exactly what the site links to
+and exits non-zero if a linked PDF is missing at its source. A version with no
+`pdfSource` is skipped (the Travel Program Review sample: only
+`publish_baseline_report.py` in the rebuild repo writes it). An edition whose
+URL is absolute (object storage) is skipped.
+
+## Single-document versions (`--root versions`)
+
+A product's other versions (the Travel Program Review sample, a Field Trip
+Package pack, a Conference Travel Package guide) are one document each, shown
+whole on the product page. Their content files live in
+`apps/web/src/content/versions/<slug>.ts` and use `docPaths()` from
+`src/content/trips/helpers.ts`. Their images go under
+`apps/web/public/versions/<slug>/` (committed); their PDFs go to
+`apps/web/public/docs/<file>.pdf`, written by the builder's publish step or by
+`npm run sync:trip-pdfs`, so `--letter` and `--a4` are refused with this root.
+
+```sh
+PY=/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+$PY scripts/import-trip.py harborview-review --root versions \
+  --render "travel-program-review=apps/web/public/docs/travel-program-review-harborview-a4.pdf:cover,2,5,18"
+```
+
+Render from the version's default edition (US Letter for a US school, A4 for
+an international school), and copy the reported sizes into the content file
+(`A4_COVER`/`A4_PAGE` in `helpers.ts` for A4).

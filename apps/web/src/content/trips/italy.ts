@@ -18,6 +18,7 @@ const { base, cover, inside, editions } = tripPaths({
 
 const italy: Trip = {
   slug: "italy",
+  product: "trip-package",
   title: "Italy",
   h1: "The documents for an eleven-day trip to Italy.",
   school: "Horizon Ridge School of Cleveland",
@@ -25,6 +26,7 @@ const italy: Trip = {
   tripKind: "Language and culture",
   tripType: "Overnight trip, eleven days",
   region: "Europe",
+  place: "Europe",
   dates: "Saturday, June 12 to Tuesday, June 22, 2027",
   group: "20 students from Italian II and III and four chaperones",
   paperDefault: "letter",

@@ -18,6 +18,7 @@ const { base, cover, inside, editions } = tripPaths({
 
 const cascoBay: Trip = {
   slug: "casco-bay",
+  product: "trip-package",
   title: "Casco Bay",
   h1: "The documents for a five-day trip to Casco Bay.",
   school: "Tideline School",
@@ -25,6 +26,7 @@ const cascoBay: Trip = {
   tripKind: "Outdoor",
   tripType: "Sea kayaking journey, five days and four nights",
   region: "Maine coast",
+  place: "Maine coast",
   dates: "Monday, August 16 to Friday, August 20, 2027",
   group: "20 tenth-grade students and four chaperones in two pods, each with two of the outfitter's guides",
   paperDefault: "letter",

@@ -20,6 +20,7 @@ const { base, cover, inside, editions } = tripPaths({
 
 const whiteMountains: Trip = {
   slug: "white-mountains",
+  product: "trip-package",
   title: "White Mountains",
   h1: "The documents for a four-day trip to the White Mountains.",
   school: "Tideline School",
@@ -27,6 +28,7 @@ const whiteMountains: Trip = {
   tripKind: "Outdoor",
   tripType: "Hut-to-hut trek, four days and three nights",
   region: "New Hampshire",
+  place: "New Hampshire",
   dates: "Tuesday, September 7 to Friday, September 10, 2027",
   group: "20 ninth-grade students, four trail adults, and a valley support adult",
   paperDefault: "letter",

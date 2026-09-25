@@ -1003,11 +1003,11 @@ section.tight { padding: 72px 0; }
 .site-footer-col li { margin-bottom: 5px; }
 .site-footer-col a { font-size: 13px; }
 .site-footer-rule { border-top: 1px solid var(--hairline-2); margin: 16px 0 10px; }
+/* Three lines: the copyright, the Singapore company, the US office. */
 .site-footer-small {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2px;
   font-size: 11px;
   color: rgba(250, 248, 243, .55);
   line-height: 1.6;
@@ -1658,9 +1658,12 @@ a.doc-marquee-item:hover img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
 .doc-row-editions a:hover { color: var(--navy); border-bottom-color: var(--navy); text-decoration: none; }
 .doc-row-pending { color: var(--ink-mid); }
 
-/* ── Mobile header: one row, nav behind a Menu button ── */
+/* ── Narrow header: one row, nav behind a Menu button ──
+   The four full product names and Contact take about 900px in one row, so
+   the nav folds below 1100px and the bar never wraps (four-product site,
+   2026-09-25; checked at 1024, 1100 and 1280px). */
 .site-menu-toggle { display: none; }
-@media (max-width: 767px) {
+@media (max-width: 1099px) {
   .site-header-inner {
     position: relative;
     flex-direction: row;

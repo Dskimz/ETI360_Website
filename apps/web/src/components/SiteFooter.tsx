@@ -1,14 +1,8 @@
 import Link from 'next/link'
+import {liveProducts} from '@/content/products'
 import {BRAND_LINE} from '@/content/voice'
 
-const exploreLinks = [
-  {href: '/framework', label: "ETI360's 3-Tier Risk Framework"},
-  {href: '/trips', label: 'Trips'},
-  {href: '/for-schools', label: 'For Schools'},
-]
-
 const firmLinks = [
-  {href: '/about', label: 'About'},
   {href: '/contact', label: 'Contact'},
   {href: '/privacy', label: 'Privacy'},
 ]
@@ -19,8 +13,12 @@ const firmLinksWithConsent = process.env.NEXT_PUBLIC_GA_ID
   ? [...firmLinks, {href: '#cookie-settings', label: 'Cookie settings'}]
   : firmLinks
 
+/* The footer on every page: the brand block, the live products, the firm's
+   links, and both postal addresses (Dan, 2026-09-25: "We can put both").
+   Unsubscribe stays out: it is reached from the email only. */
 export function SiteFooter() {
   const year = new Date().getFullYear()
+  const products = liveProducts()
   return (
     <footer className="site-footer">
       <div className="site-footer-container">
@@ -35,16 +33,18 @@ export function SiteFooter() {
               <p className="site-footer-desc">{BRAND_LINE}</p>
             </div>
             <div className="site-footer-cols">
-              <div className="site-footer-col">
-                <h3 className="ui">Explore</h3>
-                <ul className="ui">
-                  {exploreLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href}>{link.label}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {products.length > 0 ? (
+                <div className="site-footer-col">
+                  <h3 className="ui">Products</h3>
+                  <ul className="ui">
+                    {products.map((p) => (
+                      <li key={p.slug}>
+                        <Link href={p.href}>{p.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
               <div className="site-footer-col">
                 <h3 className="ui">ETI360</h3>
                 <ul className="ui">
@@ -61,6 +61,7 @@ export function SiteFooter() {
           <div className="site-footer-small ui">
             <span>&copy; {year} Educational Travel Insights 360.</span>
             <span>ETI360 PTE. LTD. &middot; 1010 Dover Road, #01-360V, Singapore 139658 &middot; UEN 202302514C</span>
+            <span>US office &middot; 412 Avon Belden Rd, Avon Lake, OH 44012</span>
           </div>
         </div>
       </div>

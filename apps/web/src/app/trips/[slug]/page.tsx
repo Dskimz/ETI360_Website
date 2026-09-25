@@ -92,7 +92,7 @@ export default async function TripPage({ params }: Props) {
             // row, and what it covers is one list under it, decision by decision.
             <div className={styles.decision}>
               <div className={styles.cards}>
-                <DocCard trip={trip} doc={single} solo />
+                <DocCard version={trip} doc={single} solo />
               </div>
               <h3 className={styles.coversHead}>What the pack covers</h3>
               <ul className={styles.covers}>
@@ -115,7 +115,7 @@ export default async function TripPage({ params }: Props) {
                   </div>
                   <div className={styles.cards}>
                     {docs.map((doc) => (
-                      <DocCard key={doc.slug} trip={trip} doc={doc} solo={docs.length === 1} />
+                      <DocCard key={doc.slug} version={trip} doc={doc} solo={docs.length === 1} />
                     ))}
                   </div>
                 </div>

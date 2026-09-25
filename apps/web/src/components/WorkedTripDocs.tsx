@@ -16,7 +16,7 @@ export function WorkedTripDocs({ tripSlug, docSlugs }: { tripSlug: string; docSl
     <div className={`${styles.wide} ${styles.workedDocs}`}>
       <div className={styles.cards}>
         {docs.map((doc) => (
-          <DocCard key={doc.slug} trip={trip} doc={doc} solo={docs.length === 1} />
+          <DocCard key={doc.slug} version={trip} doc={doc} solo={docs.length === 1} />
         ))}
       </div>
       <p className={`${styles.paper} ${styles.workedNote} ui`}>

@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
-"""Import one trip's images and PDFs into the website.
+"""Import one version's images (and a trip's PDFs) into the website.
 
 Run with /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.
 Needs Pillow and PyMuPDF (pip3 install pillow pymupdf).
 
-Writes under apps/web/public/trips/<slug>/:
+Writes under apps/web/public/<root>/<slug>/, where --root is "trips" (the
+default: a Trip Package version, the worked trip) or "versions" (a
+single-document version: the Review sample, a Field Trip Package pack, a
+Conference Travel Package guide):
   <name>.jpg              prepared page images and the hero, compressed
   <doc>-cover.jpg         rendered from a PDF's first page (cover width)
   <doc>-p<N>.jpg          rendered from PDF page N, 1-based physical page
-  letter/<file>.pdf       US Letter editions (gitignored; restored by sync:trip-pdfs)
-  a4/<file>.pdf           A4 editions (gitignored)
+  letter/<file>.pdf       US Letter editions (trips only; gitignored; restored by sync:trip-pdfs)
+  a4/<file>.pdf           A4 editions (trips only; gitignored)
+
+A single-document version's PDFs live in public/docs/, written by its
+builder's publish step or by sync:trip-pdfs, so --letter and --a4 are refused
+with --root versions.
 
 Every JPEG is at most --max-width px wide (default 1400), quality 80,
 progressive. The bound trip pack (*-trip-pack.pdf) is excluded by default:
@@ -112,8 +119,12 @@ def render(pdf: Path, doc: str, pages: list[str], outdir: Path, args) -> list[di
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="Import one trip's images and PDFs into apps/web/public/trips/<slug>/.")
-    ap.add_argument("slug", help="trip slug, e.g. costa-rica")
+    ap = argparse.ArgumentParser(
+        description="Import one version's images (and a trip's PDFs) into apps/web/public/<root>/<slug>/.")
+    ap.add_argument("slug", help="version slug, e.g. costa-rica or harborview-review")
+    ap.add_argument("--root", choices=("trips", "versions"), default="trips",
+                    help="trips (default): a worked trip, /trips/<slug>/; "
+                         "versions: a single-document version, /versions/<slug>/")
     ap.add_argument("--images", nargs="+", default=[], metavar="PATH",
                     help="prepared page images, or folders of them; copied and compressed, names kept")
     ap.add_argument("--hero", metavar="PATH", help="hero photograph")
@@ -139,8 +150,11 @@ def main() -> None:
     args = ap.parse_args()
 
     exclude = args.exclude if args.exclude is not None else ["*-trip-pack.pdf"]
-    outdir = PUBLIC / "trips" / args.slug
-    report: dict = {"slug": args.slug, "public": f"/trips/{args.slug}", "images": [], "letter": [], "a4": []}
+    if args.root == "versions" and (args.letter or args.a4):
+        sys.exit("--letter/--a4 apply to trips only: a single-document version's PDFs go to "
+                 "public/docs/ through its builder's publish step or `npm run sync:trip-pdfs`.")
+    outdir = PUBLIC / args.root / args.slug
+    report: dict = {"slug": args.slug, "public": f"/{args.root}/{args.slug}", "images": [], "letter": [], "a4": []}
 
     for src in expand(args.images, IMAGE_EXT, "*", exclude):
         with Image.open(src) as img:
@@ -176,7 +190,7 @@ def main() -> None:
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(pdf, dest)
             report[edition].append({
-                "url": f"/trips/{args.slug}/{edition}/{pdf.name}",
+                "url": f"/{args.root}/{args.slug}/{edition}/{pdf.name}",
                 "bytes": pdf.stat().st_size,
                 "from": str(pdf),
             })

@@ -18,6 +18,7 @@ const { base, cover, inside, editions } = tripPaths({
 
 const costaRica: Trip = {
   slug: "costa-rica",
+  product: "trip-package",
   title: "Costa Rica",
   h1: "The documents for a nine-day trip to Costa Rica.",
   school: "Horizon Ridge School of Cleveland",
@@ -25,6 +26,7 @@ const costaRica: Trip = {
   tripKind: "Service",
   tripType: "Overnight trip abroad, nine days",
   region: "Central America",
+  place: "Central America",
   dates: "Saturday, March 20 to Sunday, March 28, 2027",
   group: "20 tenth-grade students and four chaperones",
   paperDefault: "letter",

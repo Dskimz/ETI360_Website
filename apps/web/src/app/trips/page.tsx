@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { CtaCard } from "@/components/CtaCard";
-import { cardEyebrow, cardSummary, hasEdition, shortDates, TRIP_KINDS, trips, type Trip, type TripKind } from "@/content/trips";
+import { TripCard } from "@/components/TripCard";
+import { TRIP_KINDS, trips, type TripKind } from "@/content/trips";
 import { BRAND_EYEBROW, CLOSING_SENTENCE } from "@/content/voice";
 import styles from "./trips.module.css";
 
@@ -44,18 +44,6 @@ function FilterLink({ href, active, children }: { href: string; active: boolean;
     >
       {children}
     </Link>
-  );
-}
-
-function PaperLine({ trip }: { trip: Trip }) {
-  const letter = hasEdition(trip, "letter");
-  const a4 = hasEdition(trip, "a4");
-  return (
-    <p className={`${styles.paperLine} ui`}>
-      {letter ? "US Letter" : <span className={styles.pending}>US Letter edition in preparation</span>}
-      {" · "}
-      {a4 ? "A4" : <span className={styles.pending}>A4 edition in preparation</span>}
-    </p>
   );
 }
 
@@ -110,21 +98,7 @@ export default async function TripsPage({ searchParams }: Props) {
           ) : (
             <div className={styles.library}>
               {shown.map((trip) => (
-                <Link key={trip.slug} href={`/trips/${trip.slug}`} className={styles.tripCard}>
-                  <span className={styles.tripCardPhoto}>
-                    <Image src={trip.hero.src} alt={trip.hero.alt} fill sizes="(max-width: 960px) 100vw, 530px" />
-                  </span>
-                  <div className={styles.tripCardBody}>
-                    <p className={`${styles.reader} ui`}>{cardEyebrow(trip)}</p>
-                    <h2>{trip.title}</h2>
-                    <p className={`${styles.tripMeta} ui`}>
-                      {trip.school} &middot; {shortDates(trip)}
-                    </p>
-                    <p>{cardSummary(trip)}</p>
-                    <PaperLine trip={trip} />
-                    <span className={`${styles.go} ui`}>See the documents &rarr;</span>
-                  </div>
-                </Link>
+                <TripCard key={trip.slug} trip={trip} headingLevel={2} />
               ))}
             </div>
           )}

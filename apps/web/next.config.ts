@@ -17,7 +17,25 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
+    // First match wins: the specific /trips/* rules come before any other.
+    // Nothing here may match /routes/* (the route-map session's pages).
     return [
+      {
+        // The Harborview elementary pack became a Field Trip Package version
+        // (four-product site, 2026-09-25); its version slug changed with it.
+        // Must come before the general rule below. The query (size, page)
+        // passes through.
+        source: "/trips/elementary/open/:doc",
+        destination: "/open/harborview-elementary/:doc",
+        permanent: true,
+      },
+      {
+        // One logged open route for every version of every product (spec S6):
+        // /open/{version}/{doc}. Trip version slugs are unchanged.
+        source: "/trips/:slug/open/:doc",
+        destination: "/open/:slug/:doc",
+        permanent: true,
+      },
       {
         // Providers page taken down for now (Dan, 2026-09-25: "Focus on
         // schools."). The page source is parked, unrouted, in

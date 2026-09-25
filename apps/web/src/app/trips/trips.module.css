@@ -404,3 +404,75 @@
     gap: 28px;
   }
 }
+
+/* ── Look inside: a document's three pages, folded into its card (spec S8) ── */
+.lookInside {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--hairline);
+  padding-top: 12px;
+}
+.lookInside summary {
+  cursor: pointer;
+  width: max-content;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--gold-dark);
+}
+.lookInside summary:hover,
+.lookInside summary:focus-visible {
+  color: var(--navy);
+}
+.lookInsidePages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+.lookInsidePages figure {
+  margin: 0;
+}
+.lookInsidePages figure a {
+  display: block;
+}
+.lookInsidePages figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  background: #fff;
+}
+.lookInsidePages figure a:hover img,
+.lookInsidePages figure a:focus-visible img {
+  box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18);
+}
+.wide .lookInsidePages figcaption {
+  margin-top: 8px;
+  font-size: var(--font-xs);
+  line-height: 1.5;
+  color: var(--ink);
+}
+@media (max-width: 767px) {
+  .lookInsidePages {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+  .lookInsidePages figure {
+    flex: 0 0 72vw;
+    scroll-snap-align: start;
+  }
+}
+
+/* TripCard's title at either heading level (h2 on the library, h3 under a
+   section heading). */
+.wide .tripCard .tripCardTitle {
+  font-size: var(--font-2xl);
+  margin: 0 0 10px;
+  padding-left: 0;
+}
+.wide .tripCard .tripCardTitle::before {
+  display: none;
+}

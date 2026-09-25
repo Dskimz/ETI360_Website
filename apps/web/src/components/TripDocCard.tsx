@@ -1,47 +1,109 @@
 import Image from "next/image";
-import { openHref, type Trip, type TripDocument } from "@/content/trips";
+import {
+  openHref,
+  PAPER_NAME,
+  thumbEdition,
+  type Paper,
+  type Version,
+  type VersionDocument,
+} from "@/content/versions";
 import styles from "@/app/trips/trips.module.css";
 
-/* The document card from the worked trip pages: thumbnail, reader, title,
-   blurb, and both paper editions ("US Letter" and "A4"; a missing edition
-   reads "… edition in preparation"). Shared by /trips/{slug} and /framework
-   so a document looks and is named the same everywhere. Wrap in an element
-   with styles.wide for the type scale. */
+/* The document card: thumbnail, reader, title, blurb, and both paper editions
+   ("US Letter" and "A4"; a missing edition reads "… edition in
+   preparation"). Works for any version of any product, so a document looks
+   and is named the same everywhere. Every link opens through
+   /open/{version}/{doc}. Wrap in an element with styles.wide for the type
+   scale.
 
-export function Editions({ trip, doc }: { trip: Trip; doc: TripDocument }) {
+   lookInside (the worked-trip pages, spec S8): a closed native <details>
+   under the card holds the document's three captioned pages, each opening
+   the default edition at that page. No JavaScript. */
+
+export function Editions({ version, doc }: { version: Version; doc: VersionDocument }) {
+  const sizes: Paper[] = ["letter", "a4"];
   return (
     <p className={`${styles.editions} ui`}>
-      {doc.editions.letter ? (
-        <a
-          href={openHref(trip, doc, "letter")}
-          target="_blank"
-          rel="noopener"
-          aria-label={`Open the ${doc.title}, US Letter edition (PDF, opens in a new tab)`}
-        >
-          US Letter
-        </a>
-      ) : (
-        <span className={styles.pending}>US Letter edition in preparation</span>
-      )}
-      {doc.editions.a4 ? (
-        <a
-          href={openHref(trip, doc, "a4")}
-          target="_blank"
-          rel="noopener"
-          aria-label={`Open the ${doc.title}, A4 edition (PDF, opens in a new tab)`}
-        >
-          A4
-        </a>
-      ) : (
-        <span className={styles.pending}>A4 edition in preparation</span>
+      {sizes.map((size) =>
+        doc.editions[size] ? (
+          <a
+            key={size}
+            href={openHref(version, doc, size)}
+            target="_blank"
+            rel="noopener"
+            aria-label={`Open the ${doc.title}, ${PAPER_NAME[size]} edition (PDF, opens in a new tab)`}
+          >
+            {PAPER_NAME[size]}
+          </a>
+        ) : (
+          <span key={size} className={styles.pending}>
+            {PAPER_NAME[size]} edition in preparation
+          </span>
+        ),
       )}
     </p>
   );
 }
 
-export function DocCard({ trip, doc, solo = false }: { trip: Trip; doc: TripDocument; solo?: boolean }) {
-  const other = trip.paperDefault === "letter" ? "a4" : "letter";
-  const edition = doc.editions[trip.paperDefault] ? trip.paperDefault : doc.editions[other] ? other : null;
+/** A document's captioned inside pages, each opening `edition` at that page
+    (or a plain image when no edition is built). */
+export function InsidePages({
+  version,
+  doc,
+  edition,
+  className,
+}: {
+  version: Version;
+  doc: VersionDocument;
+  edition: Paper | null;
+  className?: string;
+}) {
+  return (
+    <div className={className ?? styles.pages}>
+      {doc.insidePages.map((pg) => {
+        const img = (
+          <Image
+            src={pg.image.src}
+            width={pg.image.width}
+            height={pg.image.height}
+            alt={pg.image.alt}
+            sizes="(max-width: 640px) 80vw, (max-width: 960px) 45vw, 340px"
+          />
+        );
+        return (
+          <figure key={pg.page}>
+            {edition ? (
+              <a
+                href={openHref(version, doc, edition, pg.page)}
+                target="_blank"
+                rel="noopener"
+                aria-label={`Open the ${doc.title} at page ${pg.page} (PDF, opens in a new tab)`}
+              >
+                {img}
+              </a>
+            ) : (
+              img
+            )}
+            <figcaption>{pg.caption}</figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  );
+}
+
+export function DocCard({
+  version,
+  doc,
+  solo = false,
+  lookInside = false,
+}: {
+  version: Version;
+  doc: VersionDocument;
+  solo?: boolean;
+  lookInside?: boolean;
+}) {
+  const edition = thumbEdition(version, doc);
   const thumb = (
     <Image
       src={doc.cover.src}
@@ -56,7 +118,7 @@ export function DocCard({ trip, doc, solo = false }: { trip: Trip; doc: TripDocu
       {edition ? (
         <a
           className={styles.cardThumb}
-          href={openHref(trip, doc, edition)}
+          href={openHref(version, doc, edition)}
           target="_blank"
           rel="noopener"
           aria-label={`Open the ${doc.title} (PDF, opens in a new tab)`}
@@ -70,8 +132,14 @@ export function DocCard({ trip, doc, solo = false }: { trip: Trip; doc: TripDocu
         <p className={`${styles.reader} ui`}>{doc.reader}</p>
         <h4>{doc.title}</h4>
         <p className={styles.blurb}>{doc.blurb}</p>
-        <Editions trip={trip} doc={doc} />
+        <Editions version={version} doc={doc} />
       </div>
+      {lookInside && doc.insidePages.length > 0 ? (
+        <details className={styles.lookInside}>
+          <summary className="ui">Look inside</summary>
+          <InsidePages version={version} doc={doc} edition={edition} className={styles.lookInsidePages} />
+        </details>
+      ) : null}
     </article>
   );
 }

@@ -28,6 +28,10 @@ export const FOUNDERS_LINE = "ETI360 was founded by Dan Skimin and Seb Wong.";
 export const DAN_TRACK_RECORD =
   "Dan Skimin, Principal Consultant, spent 16 years as an international school athletics director and trip coordinator, coordinating 600 programs for 12,000 students.";
 
+/** Seb's line (Sales rulings, Dan 2026-09-13: Seb Wong is part of every
+    engagement); follows DAN_TRACK_RECORD in WhoDoesTheWork. [draft] */
+export const SEB_LINE = "Seb Wong, Senior Consultant, is part of every engagement.";
+
 /** The boundary used on For Schools and the trip pages. */
 export const WHO_DECIDES =
   "The school, and any provider it works with, retain responsibility for decisions, supervision, live assessments, and final approval.";

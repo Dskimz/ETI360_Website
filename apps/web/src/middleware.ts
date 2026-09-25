@@ -5,19 +5,19 @@ import { NextResponse } from "next/server";
 // Guides (Dan, 2026-09-04). Username is ignored; any value works.
 const REVIEW_PASSWORD = "Goodtimes2026";
 
-// The exact set the basic-auth gate covers. Everything else on the site is
-// public and only ever passes through the campaign logger below.
-const AUTH_PAGES = new Set([
-  "/review",
-  "/review/index.html",
-  "/review/marketing-2026-09.html",
-  "/review/email-list.html",
-  "/review/email-arms.html",
-  "/review/school-review.html",
-]);
+// The basic-auth gate covers the whole /review prefix (four-product site,
+// S15: the internal drafts are kept, not deleted, and none is public) and the
+// Users Guides. Everything else on the site is public and only ever passes
+// through the campaign logger below.
+function isAuthPath(p: string) {
+  return p === "/review" || p.startsWith("/review/") || p === "/guides" || p.startsWith("/guides/");
+}
 
-function isAuthPath(pathname: string) {
-  return AUTH_PAGES.has(pathname) || pathname === "/guides" || pathname.startsWith("/guides/");
+// /routes/* belongs to the route-map pages (a separate build on its own
+// token-gated pages): the logger never records it, and the matcher below
+// never sends it here.
+function isRoutesPath(p: string) {
+  return p === "/routes" || p.startsWith("/routes/");
 }
 
 // ---------------------------------------------------------------------------
@@ -105,15 +105,18 @@ function classifyAgent(req: NextRequest) {
   return "browser";
 }
 
-// Trip-document opens (/trips/{slug}/open/{doc}, src/app/trips/[slug]/open/[doc]/route.ts)
-// are logged as their own event. The links on a trip page carry no tags, so
-// when the open itself is untagged the tags are read from the referring page
-// on this site, which is where a campaign visitor's tags live.
-const TRIP_OPEN = /^\/trips\/[^/]+\/open\/[^/]+$/;
+// Document opens (/open/{version}/{doc}, src/app/open/[version]/[doc]/route.ts)
+// are logged as their own event. The links on a product or trip page carry no
+// tags, so when the open itself is untagged the tags are read from the
+// referring page on this site, which is where a campaign visitor's tags live.
+// An old /trips/{slug}/open/{doc} link never reaches here: the next.config
+// redirect answers it first, and the browser keeps the trip page as the
+// Referer on the redirected request.
+const DOC_OPEN = /^\/open\/[^/]+\/[^/]+$/;
 
-function tagsFor(req: NextRequest, isTripOpen: boolean): URLSearchParams {
+function tagsFor(req: NextRequest, isDocOpen: boolean): URLSearchParams {
   const own = req.nextUrl.searchParams;
-  if (!isTripOpen || own.get("utm_source") === "email") return own;
+  if (!isDocOpen || own.get("utm_source") === "email") return own;
   const referer = req.headers.get("referer");
   if (!referer) return own;
   try {
@@ -131,8 +134,9 @@ function buildRow(req: NextRequest): Row | null {
   if (req.method !== "GET") return null;
 
   const { pathname } = req.nextUrl;
-  const isTripOpen = TRIP_OPEN.test(pathname);
-  const searchParams = tagsFor(req, isTripOpen);
+  if (isRoutesPath(pathname)) return null;
+  const isDocOpen = DOC_OPEN.test(pathname);
+  const searchParams = tagsFor(req, isDocOpen);
   if (searchParams.get("nolog") === "1") return null;
 
   // Navigations only. Missing sec-fetch-dest is allowed through (older clients
@@ -151,7 +155,7 @@ function buildRow(req: NextRequest): Row | null {
   const school = searchParams.get("utm_term") || searchParams.get("school") || "";
 
   return {
-    event: isUnsubscribe ? "unsubscribe" : isTripOpen ? "pdf-open" : "visit",
+    event: isUnsubscribe ? "unsubscribe" : isDocOpen ? "pdf-open" : "visit",
     school,
     arm: armFrom(utmContent, explicitArm),
     path: pathname,
@@ -159,7 +163,7 @@ function buildRow(req: NextRequest): Row | null {
     region: decode(req.headers.get("x-vercel-ip-country-region")),
     country: decode(req.headers.get("x-vercel-ip-country")),
     agent: classifyAgent(req),
-    utm: isTripOpen ? searchParams.toString() : req.nextUrl.search.replace(/^\?/, ""),
+    utm: isDocOpen ? searchParams.toString() : req.nextUrl.search.replace(/^\?/, ""),
   };
 }
 
@@ -222,6 +226,9 @@ async function record(row: Row) {
 export function middleware(req: NextRequest, event: NextFetchEvent) {
   const { pathname } = req.nextUrl;
 
+  // Belt and braces: the matcher already leaves /routes/* alone.
+  if (isRoutesPath(pathname)) return NextResponse.next();
+
   if (isAuthPath(pathname)) {
     const auth = req.headers.get("authorization");
     if (auth?.startsWith("Basic ")) {
@@ -257,16 +264,14 @@ export function middleware(req: NextRequest, event: NextFetchEvent) {
 
 export const config = {
   matcher: [
-    // Basic-auth gate. Listed file by file so the rest of public/ stays public.
+    // Basic-auth gate: the whole /review prefix (pages and the static HTML
+    // drafts in public/review/) and the Users Guides.
     "/review",
-    "/review/index.html",
-    "/review/marketing-2026-09.html",
-    "/review/email-list.html",
-    "/review/email-arms.html",
-    "/review/school-review.html",
+    "/review/:path*",
     "/guides/:path*",
     // Campaign logger. Every navigable route, minus Next internals, the API,
-    // and anything with a file extension (assets and the static HTML drafts).
-    "/((?!_next/|api/|.*\\.[a-zA-Z0-9]+$).*)",
+    // the route-map pages (/routes and /routes/*), and anything with a file
+    // extension (assets and the static HTML drafts).
+    "/((?!_next/|api/|routes/|routes$|.*\\.[a-zA-Z0-9]+$).*)",
   ],
 };

@@ -1,14 +1,19 @@
-/* Types for the worked trips (/trips and /trips/{slug}). One content file per
-   trip lives beside this one; src/content/trips/index.ts lists them in order.
+/* Types for the site's versions: one version is one product prepared for one
+   fictional school (Dan, 2026-09-25: each product page shows several versions
+   of that product). A Trip Package version is a worked trip with a page of its
+   own (/trips/{slug}); every other version is one document shown whole on its
+   product page. The registry is src/content/versions/index.ts; the worked trips
+   keep their files beside this one, listed in src/content/trips/index.ts.
 
    Paper (Dan, 2026-09-24): ETI360 builds every document to both US Letter and
    A4. Each document lists both editions; an edition that is not yet built is
    null and the page says it is in preparation. Every PDF opens through
-   /trips/{slug}/open/{doc}?size=letter|a4 so the open is logged.
+   /open/{version}/{doc}?size=letter|a4 (src/app/open/[version]/[doc]/route.ts),
+   so the open is logged, and in production it redirects to DOCS_BASE_URL (S3).
 
-   PDFs are not committed (see scripts/README-import-trip.md): each trip
-   records where its PDFs live in the V3 repo (pdfSource), and
-   `npm run sync:trip-pdfs` copies them into public/trips/{slug}/letter|a4/. */
+   PDFs are not committed (see scripts/README-import-trip.md): a version
+   records where its PDFs live (pdfSource), and `npm run sync:trip-pdfs`
+   copies them into public/. */
 
 export type SchoolType = "US" | "International";
 
@@ -17,17 +22,27 @@ export type TripKind = (typeof TRIP_KINDS)[number];
 
 export type Paper = "letter" | "a4";
 
+/** The four products, by their page address (src/content/products.ts). */
+export type ProductSlug =
+  | "travel-program-review"
+  | "trip-package"
+  | "field-trip-package"
+  | "conference-travel-package";
+
 export type TripImage = { src: string; width: number; height: number; alt: string };
 
 export type InsidePage = { page: number; caption: string; image: TripImage };
 
-/** Public URLs of the two editions (under /trips/{slug}/letter|a4/, or absolute
-    once PDFs move to object storage). null = in preparation. */
+/** Site paths of the two editions (/trips/{slug}/letter|a4/… for a worked
+    trip, /docs/… for a single-document version; absolute once a file lives
+    only in object storage). null = in preparation. */
 export type Editions = { letter: string | null; a4: string | null };
 
-/** Where a trip's PDFs live in the V3 repo, relative to its root
-    (/Users/danskimin/00 - ETI360 - V3, or $ETI360_V3_ROOT). The sync script
-    copies <letterDir>/<file name of editions.letter> and likewise for A4. */
+/** Where a version's PDFs are built, relative to the V3 repo root
+    (/Users/danskimin/00 - ETI360 - V3, or $ETI360_V3_ROOT); the rebuild repo
+    sits beside it, so its builders are reached as ../00 - eti360-rebuild/….
+    The sync copies <letterDir>/<file name of editions.letter> and likewise
+    for A4, unless the document names its own `source`. */
 export type PdfSource = { letterDir: string; a4Dir: string };
 
 export type TripDocument = {
@@ -35,27 +50,54 @@ export type TripDocument = {
   title: string;
   /** Who reads and uses it. */
   reader: string;
-  /** The decision it supports; matches a Trip.decisions title. */
+  /** The decision it supports; matches a decisions title where the version has them. */
   decision: string;
   blurb: string;
   cover: TripImage;
   editions: Editions;
   insidePages: InsidePage[];
-  /** Per-document override of the V3 source file (V3-relative path), for a
+  /** Per-document override of the source file (V3-relative path), for a
       file whose name differs from its published name. */
   source?: { letter?: string; a4?: string };
 };
 
+/** A document inside any version: the same shape as a worked trip's documents. */
+export type VersionDocument = TripDocument;
+
 export type TripDecision = { title: string; note: string };
 
-export type Trip = {
+/** One version of a product: real documents prepared for one fictional school. */
+export type Version = {
+  /** Unique across the site: the /open/{slug}/ segment and the page anchor. */
   slug: string;
-  /** Short name for cards, metadata and the sitemap. */
+  product: ProductSlug;
+  /** Short name for cards, blocks, metadata and the sitemap. */
   title: string;
-  h1: string;
   /** Fictional school name. */
   school: string;
   schoolType: SchoolType;
+  /** Where the version is set, e.g. "Washington, DC" or "Singapore". */
+  place: string;
+  /** One sentence for the version block, the card and the page description. */
+  summary: string;
+  /** The edition page thumbnails open by default: "letter" for US schools,
+      "a4" for international schools. Both editions are always listed. */
+  paperDefault: Paper;
+  /** The verbatim notice(s): "<School name> is a fictional school; its
+      location is shown for illustrative purposes." */
+  disclosure: string;
+  documents: VersionDocument[];
+  /** The decisions the version's documents support, where the product page lists them. */
+  decisions?: TripDecision[];
+  /** Absent = not synced by sync:trip-pdfs (the Review sample reaches
+      public/docs only through publish_baseline_report.py). */
+  pdfSource?: PdfSource;
+};
+
+/** A Trip Package version: a worked trip with a page of its own. */
+export type Trip = Version & {
+  product: "trip-package";
+  h1: string;
   /** Library filter. */
   tripKind: TripKind;
   /** Plain description, e.g. "Overnight trip, five days". */
@@ -63,20 +105,12 @@ export type Trip = {
   region: string;
   dates: string;
   group: string;
-  /** The edition page thumbnails open by default: "letter" for US schools,
-      "a4" for international schools. Both editions are always listed. */
-  paperDefault: Paper;
   /** One paragraph under the hero. */
   lede: string;
-  /** One sentence for the library card and the page description. */
-  summary: string;
   facts: { label: string; value: string }[];
   hero: TripImage;
   /** Photo credit for the hero, shown under the trip facts when present. */
   heroCredit?: string;
-  /** "<School name> is a fictional school; its location is shown for illustrative purposes." */
-  disclosure: string;
   decisions: TripDecision[];
-  documents: TripDocument[];
   pdfSource: PdfSource;
 };

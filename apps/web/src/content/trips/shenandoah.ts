@@ -19,6 +19,7 @@ const { base, cover, inside, editions } = tripPaths({
 
 const shenandoah: Trip = {
   slug: "shenandoah",
+  product: "trip-package",
   title: "Shenandoah National Park",
   h1: "The documents for a five-day trip to Shenandoah National Park.",
   school: "Horizon Ridge School of Philadelphia",
@@ -26,6 +27,7 @@ const shenandoah: Trip = {
   tripKind: "Outdoor",
   tripType: "Overnight trip, five days",
   region: "Virginia",
+  place: "Virginia",
   dates: "Monday, October 4 to Friday, October 8, 2027",
   group: "20 tenth-grade students and four chaperones",
   paperDefault: "letter",

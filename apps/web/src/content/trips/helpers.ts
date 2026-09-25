@@ -1,8 +1,12 @@
 import type { Editions, InsidePage, TripImage } from "./types";
 
-/* Path helpers shared by the trip content files. Image names follow
-   scripts/import-trip.py: {doc}-cover.jpg and {doc}-p{N}.jpg under
-   /trips/{slug}/; PDFs are /trips/{slug}/letter|a4/{filePrefix}-{doc}.pdf. */
+/* Path helpers shared by the version content files. Image names follow
+   scripts/import-trip.py: {doc}-cover.jpg and {doc}-p{N}.jpg.
+     - Worked trips (tripPaths): images under /trips/{slug}/; PDFs are
+       /trips/{slug}/letter|a4/{filePrefix}-{doc}.pdf.
+     - Single-document versions (docPaths): images under /versions/{slug}/
+       (import-trip.py --root versions); PDFs are /docs/{file}.pdf, where the
+       builders' publish steps write them. */
 
 type Size = { width: number; height: number };
 
@@ -42,6 +46,42 @@ export function tripPaths(opts: {
       return {
         letter: built.letter === false ? null : `${base}/letter/${file}`,
         a4: built.a4 === false ? null : `${base}/a4/${file}`,
+      };
+    },
+  };
+}
+
+/** Paths for a single-document version (the Review sample, a Field Trip
+    Package pack, a Conference Travel Package guide). `letter` and `a4` are
+    the published PDF file names under /docs/, or null for an edition still
+    in preparation. */
+export function docPaths(opts: {
+  slug: string;
+  letter: string | null;
+  a4: string | null;
+  coverSize?: Size;
+  pageSize?: Size;
+}) {
+  const base = `/versions/${opts.slug}`;
+  const coverSize = opts.coverSize ?? LETTER_COVER;
+  const pageSize = opts.pageSize ?? LETTER_PAGE;
+
+  return {
+    base,
+    cover(doc: string, title: string): TripImage {
+      return { src: `${base}/${doc}-cover.jpg`, ...coverSize, alt: `First page of the ${title}` };
+    },
+    inside(doc: string, title: string, pages: [number, string][]): InsidePage[] {
+      return pages.map(([page, caption]) => ({
+        page,
+        caption,
+        image: { src: `${base}/${doc}-p${page}.jpg`, ...pageSize, alt: `${title}, page ${page}` },
+      }));
+    },
+    editions(): Editions {
+      return {
+        letter: opts.letter ? `/docs/${opts.letter}` : null,
+        a4: opts.a4 ? `/docs/${opts.a4}` : null,
       };
     },
   };

@@ -14,6 +14,7 @@ const { base, cover, inside, editions } = tripPaths({
 
 const washingtonDc: Trip = {
   slug: "washington-dc",
+  product: "trip-package",
   title: "Washington, DC",
   h1: "The documents for a five-day trip to Washington, DC.",
   school: "Horizon Ridge School of Cleveland",
@@ -21,6 +22,7 @@ const washingtonDc: Trip = {
   tripKind: "City",
   tripType: "Overnight trip, five days",
   region: "Washington, DC",
+  place: "Washington, DC",
   dates: "Wednesday, April 14 to Sunday, April 18, 2027",
   group: "30 eighth-grade students and six chaperones",
   paperDefault: "letter",

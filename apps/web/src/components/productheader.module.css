@@ -1,0 +1,21 @@
+/* Product page header additions (ProductHeader). Tokens only. The lede
+   takes the article-header subtitle's type without its class, so the two
+   margins never compete. */
+.tiers {
+  margin: -8px 0 0;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.lede {
+  margin: 20px 0 0;
+  max-width: 800px;
+  font-size: 20px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.83);
+}
+@media (max-width: 640px) {
+  .lede { font-size: var(--font-lg); }
+}
