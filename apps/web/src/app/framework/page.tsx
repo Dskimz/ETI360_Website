@@ -90,7 +90,10 @@ export default function FrameworkPage() {
           <p>
             Tier 1 is the Travel Program Review: the school&rsquo;s policies and
             procedures, path by path, once every four years. The sample review
-            below opens in full.
+            below opens in full.{" "}
+            <Link href="/travel-program-review" className="cta-link ui">
+              The Travel Program Review &rarr;
+            </Link>
           </p>
         </div>
         <div className="doc-rows">

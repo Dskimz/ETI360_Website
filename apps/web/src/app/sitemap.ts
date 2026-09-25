@@ -8,6 +8,7 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/framework", priority: 0.9, changeFrequency: "monthly" },
   { path: "/for-schools", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/travel-program-review", priority: 0.9, changeFrequency: "monthly" },
   { path: "/for-schools/location-timeline", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/route-intelligence", priority: 0.7, changeFrequency: "monthly" },
   { path: "/for-schools/trip-risk-documentation", priority: 0.7, changeFrequency: "monthly" },
