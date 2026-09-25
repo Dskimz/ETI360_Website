@@ -23,7 +23,7 @@ export const SERVICES: Service[] = [
   {
     name: "The Travel Program Review",
     tiers: TIER_NAMES[1],
-    body: "A review of the school's whole travel program. ETI360 reads the school's policies and procedures path by path, from overnight trips abroad to elementary day trips, athletics, and service programs, and records where each area stands. The review runs once every four years.",
+    body: "A review of the school's whole travel program. ETI360 reads the school's policies and procedures path by path, from overnight trips abroad to elementary day trips, athletics, and service programs, and evaluates the documents of every provider the school uses against the same framework. One report for the school's leadership, once every four years.",
     link: { href: "/travel-program-review", label: "See what the review covers" },
   },
   {

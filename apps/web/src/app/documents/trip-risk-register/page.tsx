@@ -40,7 +40,7 @@ export default function TripRiskRegisterPage() {
       <section className="article-body">
         <div className="container measure">
           <p className="bridge-line ui">
-            <Link href="/framework#tier1" className="cta-link ui">
+            <Link href="/travel-program-review" className="cta-link ui">
               &larr; All documents
             </Link>
           </p>

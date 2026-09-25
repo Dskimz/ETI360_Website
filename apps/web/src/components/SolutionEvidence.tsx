@@ -131,7 +131,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
               <p className={styles.tierEyebrow}>Tier One &middot; Every four years</p>
               <p className={styles.tierName}>Organizational Readiness</p>
               <div className={styles.tierLinks}>
-                <a href="/framework#tier1">Travel Program Review</a>
+                <a href="/travel-program-review">Travel Program Review</a>
               </div>
             </div>
             <div className={`${styles.tierCard} ${styles.tier2}`}>
