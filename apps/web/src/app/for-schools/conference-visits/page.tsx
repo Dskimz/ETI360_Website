@@ -42,7 +42,7 @@ const data: SolutionEvidenceData = {
     },
   ],
   disclosure:
-    "Shown for the Wexcombe International School edition, 2026–27. Wexcombe and the other Meridian Schools Conference members are sample schools, not real ones — their names, marks, and colors were created for this showcase — and each sits at a public landmark in its city. The hotels, hospitals, pharmacies, stations, and eating places are real, and every distance comes from Mapbox Directions.",
+    "Shown for the Wexcombe International School edition, 2026–27. Wexcombe International School is a fictional school; its location is shown for illustrative purposes. The other Meridian Schools Conference members are fictional too: their names, marks, and colors were created for this showcase, and each sits at a public landmark in its city. The hotels, hospitals, pharmacies, stations, and eating places are real, and every distance comes from Mapbox Directions.",
   pdfHref: "/docs/athletics-activities-trips-guide-wexcombe.pdf",
   claims: [
     {

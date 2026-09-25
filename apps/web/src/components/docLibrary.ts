@@ -1,202 +1,51 @@
 import type { DocEntry } from "./DocShowcase";
 
-/* The school-facing document library - single source of truth for the
-   homepage, For Schools, and any future surface that shows the set.
-   For Providers keeps its own audience-split variant. */
+/* The school-facing document library for /framework. Tier 2 and the Tier 3
+   documents a trip carries are shown from a worked trip (WorkedTripDocs), so
+   they carry the same names and editions as the trip pages. What stays here
+   is what no worked trip holds: the Travel Program Review sample, and the two
+   Tier 3 services that are screens rather than documents. */
 
 export const schoolTier1: DocEntry[] = [
   {
     anchor: "baseline",
     pdf: "/docs/organizational-baseline-evaluation-v4.pdf",
-    stage: "T1 · Schools and trip providers",
-    name: "School-Wide Trip Program Capability Review",
-    reader: "Head · Board · Risk committee",
-    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: a baseline of organizational readiness on both sides of every trip, read against the ETI360 Operational Capability Framework and reviewed once every four years.",
+    stage: "Tier 1 · Schools and trip providers",
+    name: "Travel Program Review",
+    reader: "School leadership · Board · Risk committee",
+    desc: "The same ten-area review is applied to your school and to each trip provider who serves it: where the school and its providers stand, read against the ETI360 Operational Capability Framework and reviewed once every four years.",
     image: {
       src: "/email/spread-school-baseline-v4.png",
-      alt: "School-Wide Trip Program Capability Review for Harborview International School: ten areas read across every program path the school runs, each marked at standard, progressing, or not evidenced",
+      alt: "Travel Program Review for Harborview International School: ten areas read across every program path the school runs, each marked at standard, progressing, or not evidenced",
     },
-  },
-];
-
-export const schoolTier2: DocEntry[] = [
-  {
-    anchor: "trip-overview",
-    pdf: "/docs/trip-overview.pdf",
-    stage: "T2 · The first read",
-    name: "Trip Overview",
-    reader: "School leadership · Approving committee",
-    desc: "The trip on one page: program, dates, group, and logistics at a glance, for the first read before the detail.",
-    image: {
-      src: "/email/page-overview.png",
-      alt: "Trip Overview one-pager for the Cherry Blossom Tokyo sample trip",
-    },
-  },
-  {
-    anchor: "itinerary-report",
-    pdf: "/showcase/pdfs/02-1-calendar-view.pdf",
-    stage: "T2 · The operational record",
-    name: "Itinerary Report",
-    reader: "Coordinator · Trip staff",
-    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks, transit included.",
-    image: {
-      src: "/showcase/pages/02-1-calendar-view/2.png",
-      alt: "Itinerary Report calendar view, page two of the Cherry Blossom Tokyo sample trip: days five through eight as hour-by-hour blocks covering activities, meals, transport, and accommodation",
-    },
-  },
-  {
-    anchor: "risk-assessment",
-    pdf: "/showcase/pdfs/04-rams-report.pdf",
-    stage: "T2 · The decision record",
-    name: "Trip Risk Working File",
-    reader: "Risk lead · Trip staff · Provider",
-    desc: "The structured working documents behind the school's risk assessment: hazards, controls, who holds each control, and residual risk in plain language — grouped the way the trip runs, one report per activity group, prepared for the school to review, complete, amend, and approve.",
-    image: {
-      src: "/marketing/library/rams-report.png",
-      alt: "Trip Risk Working File risk register page: named risks with inherent and residual scores, controls, and emergency actions",
-    },
-  },
-  {
-    anchor: "parent-itinerary",
-    pdf: "/docs/parent-itinerary.pdf",
-    stage: "T2 · For families",
-    name: "Parent Itinerary",
-    reader: "Parents",
-    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know — with the full risk assessment staying school-side, deliberately.",
-    image: {
-      src: "/email/card-parent.png",
-      alt: "Parent Itinerary day pages with photographs and day-by-day plans",
-    },
-  },
-  {
-    anchor: "leadership-deck",
-    pdf: "/docs/leadership-deck.pdf",
-    stage: "T2 · For the approval meeting",
-    name: "Leadership Deck",
-    reader: "Head presenting to board or parents",
-    desc: "The trip's evidence base as a short presentation, for the internal meeting where the trip is discussed and decided.",
-    image: {
-      src: "/marketing/library/leadership-deck.png",
-      alt: "Leadership Deck title slide: the trip in 30 seconds, with days, students, activities, destination, and dates",
-    },
-    wide: true,
-  },
-  {
-    anchor: "trip-discovery-map",
-    pdf: "/docs/trip-discovery-map.pdf",
-    stage: "T2 · The trip on one sheet",
-    name: "Trip Discovery Map",
-    reader: "Coordinator · Parents evening",
-    desc: "Stops, routes, and the shape of each day on one visual sheet, with the day-by-day companion page alongside.",
-    image: {
-      src: "/email/spread-map-1.jpg",
-      alt: "Trip Discovery Map for Cherry Blossom Tokyo: numbered stops, routes, and photo callouts on one sheet",
-    },
-    wide: true,
-  },
-  {
-    anchor: "route-intelligence",
-    pdf: "/docs/route-intelligence.pdf",
-    stage: "T2 · Outdoor activities",
-    name: "Route Intelligence",
-    reader: "Coordinator · Duty manager",
-    desc: "Distance, gradient, pacing, sun, terrain cover, and escape points, recorded for outdoor activities such as cycling, trekking, and river sports.",
-    image: {
-      src: "/email/spread-itoshima-2.png",
-      alt: "Route Intelligence page for the Big Itoshima ride: elevation profile, waypoint register, sun and terrain cover",
-    },
-    wide: true,
-  },
-  {
-    anchor: "weather",
-    pdf: "/showcase/pdfs/01-1-weather-brief-sydney.pdf",
-    stage: "T2 · Conditions",
-    name: "Weather Brief",
-    reader: "Coordinator · Trip staff",
-    desc: "Month-specific conditions for the destination and dates, built on fifteen years of historical data: temperature ranges, rain probability by day, daylight, and what the pattern means for the plan.",
-    image: {
-      src: "/showcase/pages/01-1-weather-brief-sydney/1.png",
-      alt: "Weather Brief for a March trip window: fifteen-year temperature overview, daily outlook, and planning notes",
-    },
-  },
-  {
-    anchor: "field-trip-report",
-    pdf: "/showcase/pdfs/05-field-trip-brief.pdf",
-    stage: "T2 · One-day trips",
-    name: "Field Trip Report",
-    reader: "Parents · Trip coordinator",
-    desc: "The same discipline for a single day out: departure and return times, a timed itinerary, the route and the emergency department mapped, with the drive time, and notes for families, on one page.",
-    image: {
-      src: "/email/page-fieldtrip.png",
-      alt: "Field Trip Report for a one-day trip: timed itinerary, route map, and emergency department map on one page",
-    },
-  },
-  {
-    anchor: "trip-risk-register",
-    stage: "T2 · Before departure",
-    name: "Trip Risk Register",
-    reader: "Coordinator · Risk lead · Leadership",
-    desc: "The home view of the school's TripRisk360 portal, where the documents live: every scheduled trip for the year in one register — departures, seasonal risk signals, and the status the school set for each trip's risk documentation, connected to each trip's documents.",
-    image: {
-      src: "/marketing/library/trip-risk-register.png",
-      alt: "The Trip Risk Register in the school portal: scheduled trips month by month with seasonal risk signals and risk documentation status",
-    },
-    wide: true,
-    pageHref: "/documents/trip-risk-register",
   },
 ];
 
 export const schoolTier3: DocEntry[] = [
   {
     anchor: "duty-manager-simulation",
-    stage: "T3 · Rehearsal",
+    stage: "Tier 3 · Practice before departure",
     name: "Duty Manager Simulation",
     reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions.",
+    desc: "A facilitated ninety-minute session inside the dashboard. Your duty manager works through a realistic scenario based on one of your school's trips, practicing agreed roles, communication, and escalation decisions. The Duty Manager Simulation has not yet been run with a school.",
     image: {
       src: "/marketing/solutions/simulation-dashboard.png",
       alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
     },
     wide: true,
-  },
-  {
-    anchor: "teacher-guide",
-    pdf: "/docs/teacher-operational-guide.pdf",
-    stage: "T3 · In the leader's hand",
-    name: "Teacher Operational Guide",
-    reader: "Trip leader · Trip staff",
-    desc: "One page per day, built for the trip leader: timing, movements, contacts, and the day's attention points.",
-    image: {
-      src: "/email/page-teacher.png",
-      alt: "Teacher Operational Guide day page with the run sheet, movements, and contacts",
-    },
+    pageHref: "/for-schools/duty-manager-simulation",
   },
   {
     anchor: "duty-manager-dashboard",
-    stage: "T3 · During the trip",
+    stage: "Tier 3 · During the trip",
     name: "Duty Manager Dashboard",
     reader: "The school's own duty manager",
-    desc: "The working view while groups travel — operated by your duty manager, never by us: trip context, location, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure.",
+    desc: "The school's own view while groups travel, operated by the school's duty manager, never by ETI360: trip context, location, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure.",
     image: {
       src: "/marketing/solutions/scheduled-group-locations.png",
       alt: "The Duty Manager Dashboard with a trip open: six current trips, trip context, the scheduled location on the map, today's schedule, and messages",
     },
     wide: true,
-  },
-  {
-    anchor: "post-trip-feedback-loop",
-    pdf: "/docs/post-trip-feedback-loop.pdf",
-    stage: "T3 · After the trip",
-    name: "Post-Trip Feedback Loop",
-    reader: "Head · Board · Next year's coordinator",
-    desc: "Staff observations recorded after each trip and carried into the next baseline review, so the record the trip produced is the starting point the next review reads. The feedback system is in development.",
-    image: {
-      src: "/email/card-posttrip.png",
-      alt: "Front page of the Post-Trip Intelligence Report specimen",
-    },
+    pageHref: "/for-schools/duty-manager",
   },
 ];
-
-/* For Schools shows the decision-path six; the rest sit behind "See more". */
-
-export const schoolDocs: DocEntry[] = [...schoolTier1, ...schoolTier2, ...schoolTier3];

@@ -31,7 +31,7 @@ const data: SolutionEvidenceData = {
       note: "One trip day mid-incident — the working screen as the duty team sees it.",
     },
   ],
-  disclosure: "Harborview International School is not a real school; it is used only as a sample school. No real school, incident, or student data is shown.",
+  disclosure: "Harborview International School is a fictional school; its location is shown for illustrative purposes. No real school, incident, or student data is shown.",
   claims: [
     {
       lead: "One log",

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { reportList } from "@/content/solutions";
 import styles from "@/components/evidence.module.css";
-import { CtaCard, MiniCta } from "@/components/CtaCard";
+import { CtaCard } from "@/components/CtaCard";
 import { CLOSING_SENTENCE } from "@/content/voice";
 
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Every ETI360 solution in its tier: the Organizational Readiness review on a four-year cycle, the Tier 2 trip documents, and the Tier 3 working views for the days away.",
+    "Every ETI360 solution in its tier: the Travel Program Review on a four-year cycle, the Tier 2 trip documents, and the Tier 3 working views for the days away.",
   alternates: { canonical: "/solutions" },
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
@@ -27,7 +27,6 @@ export default function SolutionsPage() {
             a worked example, and the boundaries of what it does.
           </p>
         </div>
-        <MiniCta />
       </div>
 
       <div className={styles.strip}>
@@ -38,7 +37,7 @@ export default function SolutionsPage() {
               <p className={styles.tierName}>Organizational Readiness</p>
               <div className={styles.tierLinks}>
                 <a href="/framework#tier1">
-                  School-Wide Trip Program Capability Review
+                  Travel Program Review
                   <span className={styles.linkQuestion}>
                     Where does a trip operation stand &mdash; yours, or a provider&rsquo;s?
                   </span>

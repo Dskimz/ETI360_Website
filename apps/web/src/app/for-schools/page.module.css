@@ -118,3 +118,19 @@
 /* Space above each h2 block in the body (the former /us content). */
 .block { margin-top: 72px; }
 @media (max-width: 700px) { .block { margin-top: 56px; } }
+
+/* Website v1: lead text under a heading that introduces a card grid */
+.gridLead { max-width: var(--measure); }
+
+/* What each tier includes */
+.tierList { margin: 8px 0 24px; border-top: var(--rule) solid var(--gold); }
+.tierList > div { padding: 16px 0; border-bottom: 1px solid var(--hairline); }
+.tierList dt {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 6px;
+}
+.tierList dd { margin: 0; color: var(--ink); line-height: 1.65; }

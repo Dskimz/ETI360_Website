@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { trips as allTrips, type Trip } from "@/content/trips";
+import { cardEyebrow, trips as allTrips, type Trip } from "@/content/trips";
 import styles from "./tripstrip.module.css";
 
 /* The worked trips as a strip of cards (home, For Schools, For Providers).
@@ -23,8 +23,8 @@ export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
               />
             </span>
             <span className={styles.body}>
-              <span className={`${styles.kind} ui`}>
-                {trip.tripKind} &middot; {trip.region}
+              <span className={`${styles.kind} ui`} title={cardEyebrow(trip)}>
+                {cardEyebrow(trip)}
               </span>
               <span className={styles.title}>{trip.title}</span>
               <span className={`${styles.school} ui`}>{trip.school}</span>
@@ -32,6 +32,11 @@ export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
             </span>
           </Link>
         ))}
+        {trips.length % 4 !== 0 ? (
+          <Link href="/trips" className={styles.allTile}>
+            <span className={`${styles.allTileText} ui`}>All trips &rarr;</span>
+          </Link>
+        ) : null}
       </div>
       <div className={`${styles.disclosures} ui`}>
         {disclosures.map((d) => (

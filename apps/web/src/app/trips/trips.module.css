@@ -102,6 +102,9 @@
   width: 100%;
   height: auto;
   border: 1px solid var(--hairline);
+  background: #fff;
+  /* A mostly white title page still reads as paper. */
+  box-shadow: 0 1px 4px rgba(13, 53, 88, 0.12);
   transition: box-shadow 0.18s;
 }
 .cardThumb:hover img,
@@ -225,11 +228,6 @@
   color: var(--ink);
   box-shadow: 0 10px 30px rgba(13, 53, 88, 0.14);
 }
-.tripCard img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 .tripCardBody {
   padding: 22px 24px 24px;
   display: flex;
@@ -322,4 +320,87 @@
   margin-top: 16px;
   font-size: var(--font-xs);
   color: var(--ink-mid);
+}
+
+/* ── A section with one document: the card spans the row ── */
+.cardSolo {
+  grid-column: 1 / -1;
+  grid-template-columns: 200px minmax(0, 60ch);
+  gap: 28px;
+}
+.wide .coversHead {
+  margin: 36px 0 12px;
+  font-size: var(--font-xl);
+}
+.covers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: var(--measure);
+}
+.covers li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: var(--font-base);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.covers li strong {
+  color: var(--navy);
+}
+
+/* ── Phones: each document's pages scroll sideways, not down ── */
+@media (max-width: 767px) {
+  .pages {
+    display: flex;
+    grid-template-columns: none;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+  .pages figure {
+    flex: 0 0 80vw;
+    scroll-snap-align: start;
+  }
+}
+@media (max-width: 640px) {
+  .cardSolo { grid-template-columns: 96px 1fr; gap: 14px; }
+}
+
+/* Worked-trip documents shown on /framework and /for-providers */
+.workedDocs { padding-top: 32px; padding-bottom: 48px; }
+.wide .workedNote { margin-top: 16px; }
+
+/* Library cards: one image ratio for every card */
+.tripCardPhoto {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--parchment-2);
+}
+.tripCardPhoto img { object-fit: cover; }
+.libraryNotes {
+  margin-top: 28px;
+  border-left: var(--rule) solid var(--gold);
+  padding: 2px 0 2px 14px;
+}
+.wide .libraryNotes p {
+  font-size: var(--font-xs);
+  line-height: 1.55;
+  color: var(--ink-mid);
+  margin: 0;
+  max-width: none;
+}
+
+/* An odd last card spans the row rather than leaving half of it empty. */
+@media (min-width: 961px) {
+  .cards > .card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    grid-template-columns: 200px minmax(0, 60ch);
+    gap: 28px;
+  }
 }

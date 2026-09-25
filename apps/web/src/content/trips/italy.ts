@@ -29,7 +29,7 @@ const italy: Trip = {
   group: "20 students from Italian II and III and four chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Cleveland is taking twenty 10th and 11th graders from Italian II and III to Rome, Florence, and Venice for eleven days in June, with three mornings at a language school in Florence at the center of the trip. ETI360 brought together the school's itinerary, the operator's, hotels', and language school's arrangements, and the school's own procedures, checked passports and entry against the current rules for U.S. citizens, checked group sizes, timed entry, and dress rules against each venue's own guidance, timed the coach transfers and the walks between places, and found the emergency department for each place, with the travel time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Cleveland is taking twenty tenth and eleventh graders from Italian II and III to Rome, Florence, and Venice for eleven days in June, with three mornings at a language school in Florence at the center of the trip. ETI360 brought together the school's itinerary, the operator's, hotels', and language school's arrangements, and the school's own procedures, checked passports and entry against the current rules for U.S. citizens, checked group sizes, timed entry, and dress rules against each venue's own guidance, timed the coach transfers and the walks between places, and found the emergency department for each place, with the travel time. Each document below is written for the person who uses it, and each opens in full.",
   summary:
     "An eleven-day language and culture trip to Rome, Florence, and Venice: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
@@ -37,12 +37,12 @@ const italy: Trip = {
     {
       label: "Group",
       value:
-        "20 students in 10th and 11th grade from Italian II and III, and four chaperones, one adult for every five students",
+        "20 students in tenth and eleventh grade from Italian II and III, and four chaperones, one adult for every five students",
     },
     {
       label: "Program",
       value:
-        "Fourteen places in three cities: the Pantheon, the San Cosimato market in Trastevere, the Vatican, the Colosseum and the Forum; three mornings at a language school in Florence, with the Baptistery, the Uffizi, and the Accademia; a day in Siena; the Doge's Palace, Murano, and a boat route students navigate in Italian",
+        "Fourteen places in Rome, Florence, Siena, and Venice: the Pantheon, the San Cosimato market in Trastevere, the Vatican, the Colosseum and the Forum; three mornings at a language school in Florence, with the Baptistery, the Uffizi, and the Accademia; a day in Siena; the Doge's Palace, Murano, and a boat route students navigate in Italian",
     },
     {
       label: "Travel",
@@ -89,7 +89,7 @@ const italy: Trip = {
     {
       slug: "school-trip-record",
       title: "School Trip Record",
-      reader: "School office",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Trip facts and contacts, passports, entry, and insurance with the consular contacts for Rome, Florence, and Venice, then the reservations, the trip calendar, and the flights, trains, and coach transfers. Filed with the contracts, confirmations, roster, health records, and signed permission slips.",
@@ -104,7 +104,7 @@ const italy: Trip = {
     {
       slug: "trip-risk-working-file",
       title: "Trip Risk Working File",
-      reader: "The school, to review, complete, and approve",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Hazards, controls, and emergency actions organized one section per activity group, from the flights to the boats in Venice, with the emergency care for each group and the live-assessment prompts for the day. The school completes it, amends it, and approves it.",
@@ -134,7 +134,7 @@ const italy: Trip = {
     {
       slug: "trip-leader-card",
       title: "Trip Leader Card",
-      reader: "Trip leader and chaperones",
+      reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
         "Groups, contacts, and standards, the airport and rail procedures, a plan for every day of the trip, and the emergency plan: the emergency department for each place, with the travel time.",
@@ -194,14 +194,14 @@ const italy: Trip = {
     {
       slug: "post-trip-feedback-report",
       title: "Post-Trip Feedback Report",
-      reader: "The school, after the trip",
+      reader: "After the trip",
       decision: "Improving next year's trip",
       blurb:
         "A short set of questions asked of students, parents, the leaders, and the operator after the trip: what each group said, the moments people described with the day they belong to, and what the answers show. It states; it does not recommend.",
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "The digest: the rated questions for students and parents, with the count under every answer, and the three moments most people raised, each with its day."],
+        [1, "What the report looks like, with example responses because the trip has not yet run: the rated questions for students and parents, with the count under every answer, and the three moments most people raised, each with its day."],
         [2, "What the answers show, in three statements that are not recommendations, and the one place parents and students diverge."],
         [4, "One moment, in their words: the answers to the open question, grouped where people described the same thing, with the day and the part of the plan it belongs to."],
       ]),

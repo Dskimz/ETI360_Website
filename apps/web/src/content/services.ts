@@ -15,6 +15,8 @@ export type Service = {
   tiers: string;
   body: string;
   link: { href: string; label: string };
+  /** A smaller door inside the card. */
+  more?: { href: string; label: string };
 };
 
 export const SERVICES: Service[] = [
@@ -29,13 +31,8 @@ export const SERVICES: Service[] = [
     tiers: `${TIER_NAMES[2]} · ${TIER_NAMES[3]}`,
     body: "The documents for one trip, before, during, and after it: the file the school reviews and approves, what families read, what the trip leader and chaperones carry, and the report that closes the trip.",
     link: { href: "/trips", label: "See the worked trips" },
+    more: { href: "/trips?kind=day-trips", label: "Elementary day trips" },
   },
-];
-
-/** Smaller doors under the two services. */
-export const SERVICE_LINKS = [
-  { href: "/trips?kind=day-trips", label: "Elementary day trips" },
-  { href: "/for-providers", label: "For trip providers" },
 ];
 
 /** The decisions a trip's documents are tied to, in the order a trip meets them. */

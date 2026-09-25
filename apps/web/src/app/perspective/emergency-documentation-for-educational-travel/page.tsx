@@ -45,14 +45,14 @@ export default function EmergencyDocsPage() {
 
           <p>
             This brief sets out the gap, the research that explains why it exists, and the
-            documentation architecture that responds to it. It is written for international schools
-            and trip providers thinking through how their emergency documentation is structured
+            documentation architecture that responds to it. It is written for schools and trip
+            providers thinking through how their emergency documentation is structured
             &mdash; whether they engage ETI360 or not.
           </p>
 
           <h2>The gap</h2>
           <p>
-            Pre-trip risk documentation &mdash; risk assessments, RAMS files, compliance checklists,
+            Pre-trip risk documentation &mdash; risk assessments, compliance checklists,
             insurance summaries &mdash; is structured for planning. Its readers are risk committees,
             heads of school, insurance underwriters, accreditation bodies. Its purpose is to demonstrate
             that the trip has been thought through. Its register is institutional, its detail is
@@ -154,7 +154,7 @@ export default function EmergencyDocsPage() {
 
           <p>
             <strong>Tier three: the reference.</strong> Cognitive state: managed stress. Hours available.
-            Purpose: full reference for the period after the initial response. Contents: full RAMS
+            Purpose: full reference for the period after the initial response. Contents: the full risk
             documentation, insurance procedures, embassy protocols, escalation chains, parent notification
             templates, media response procedures, incident documentation forms. This tier already exists
             in most schools&apos; documentation. What changes under the three-tier model is the recognition

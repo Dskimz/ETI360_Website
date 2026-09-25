@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const data: SolutionEvidenceData = {
   slug: "duty-manager",
   question: "Can your duty manager see where every traveling group is scheduled to be?",
-  heroLine: "The Duty Manager Dashboard: one working view of every current trip.",
+  heroLine: "The Duty Manager Dashboard: the school's own view while groups travel.",
   editorial: [
     "While groups are away, the duty manager moves between the itinerary, the contact list, location information, messages, and incident notes — often for several trips at once. The documents all exist. What goes missing is the connection between them: a call comes in, and the context it concerns sits in another window.",
     "The Duty Manager Dashboard keeps them together: communications are recorded against the trip they concern rather than accumulating in a side channel, and an incident entry opens from the same screen the itinerary and contacts already occupy.",
@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "Students traveling, active trips, open incidents, alerts, and overdue check-ins — the numbers read first.",
     },
   ],
-  disclosure: "Product screenshots staged mid-trip with trips from Harborview International School, our sample school (not a real school) — no real school or student data appears.",
+  disclosure: "Product screenshots staged mid-trip with Harborview trips. Harborview International School is a fictional school; its location is shown for illustrative purposes. No real school or student data appears.",
   claims: [
     {
       lead: "Scheduled, not tracked",

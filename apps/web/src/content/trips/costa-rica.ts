@@ -29,9 +29,9 @@ const costaRica: Trip = {
   group: "20 tenth-grade students and four chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Cleveland is taking twenty 10th graders to Costa Rica for nine days over spring break. ETI360 brought together the school's itinerary, the host operator's and the properties' arrangements, and the school's own procedures, checked the passport rule against Costa Rica's own entry requirements and the health guidance against the CDC, timed every road transfer and traced the boat leg along the canal, and found the emergency department for each of the three bases, with the travel time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Cleveland is taking twenty tenth graders to Costa Rica for nine days over spring break. ETI360 brought together the school's itinerary, the host operator's and the properties' arrangements, and the school's own procedures, checked the passport rule against Costa Rica's own entry requirements and the health guidance against the CDC, timed every road transfer and traced the boat leg along the canal, and found the emergency department for each of the three bases, with the travel time. Each document below is written for the person who uses it, and each opens in full.",
   summary:
-    "A nine-day 10th grade service and ecology trip, by air through Miami, then by minibus and boat: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
+    "A nine-day tenth-grade service and ecology trip, by air through Miami, then by minibus and boat: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
     { label: "Trip", value: "Costa Rica Service and Ecology Journey, Saturday, March 20 to Sunday, March 28, 2027" },
     {
@@ -89,7 +89,7 @@ const costaRica: Trip = {
     {
       slug: "school-trip-record",
       title: "School Trip Record",
-      reader: "School office",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Trip facts and contacts, the travel documents, insurance, and health requirements, the reservations and trip calendar, and the flights, roads, and water. Filed with the host contract, the policy, passport copies, the roster, health records, and signed permission slips.",
@@ -104,7 +104,7 @@ const costaRica: Trip = {
     {
       slug: "trip-risk-working-file",
       title: "Trip Risk Working File",
-      reader: "The school, to review, complete, and approve",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Hazards, controls, and emergency actions organized one section per activity group, from the flights and the host's road travel to the boat crossing and the night patrols, with the live-assessment prompts for the day. The school completes it, amends it, and approves it.",
@@ -134,7 +134,7 @@ const costaRica: Trip = {
     {
       slug: "trip-leader-card",
       title: "Trip Leader Card",
-      reader: "Trip leader and chaperones",
+      reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
         "Groups, contacts, and standards, the airport and travel days in both directions, day plans for all nine days, and the emergency plan: the emergency department for each of the three bases, with the travel time.",
@@ -142,7 +142,7 @@ const costaRica: Trip = {
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
         [3, "The airport days: a head count at every fixed point in both directions, and the Miami connection on the way home, where the group spreads out."],
-        [5, "The service day in Chilamate, then the crossing to the coast: lifejackets fitted and checked by a chaperone before anyone boards, and a patrol rotation in which nobody patrols two nights running."],
+        [5, "The service day in Chilamate, then the crossing to the coast: life jackets fitted and checked by a chaperone before anyone boards, and the patrol rotation across the three nights."],
         [7, "The emergency plan: 911 and the action sequence first, then the emergency department for each base, with the travel time, and the boat-then-road route from the reserve."],
       ]),
     },
@@ -194,14 +194,14 @@ const costaRica: Trip = {
     {
       slug: "post-trip-feedback-report",
       title: "Post-Trip Feedback Report",
-      reader: "The school, after the trip",
+      reader: "After the trip",
       decision: "Improving next year's trip",
       blurb:
         "Four questions asked of students, parents, the leaders, and the host operator after the trip: what each group said, the moments that did not go to plan with the day they belong to, and what in the trip each one touches. It states; it does not recommend.",
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What people said: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
+        [1, "What the report looks like, with example responses because the trip has not yet run: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
         [2, "For the school's review: what the responses show and what in the trip each touches, who answered, and where parents and students differed, with no recommendation."],
         [4, "The moments people raised, each with its day, whether it points at the plan or at how the day was run, and the words as written."],
       ]),

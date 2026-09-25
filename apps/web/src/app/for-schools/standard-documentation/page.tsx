@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "Days five through eight of the Tokyo program at full operating detail — the structure frames the content.",
     },
   ],
-  disclosure: "Sample trips for Harborview International School, our sample school (not a real school); no real school or student data is shown.",
+  disclosure: "Sample Harborview trips. Harborview International School is a fictional school; its location is shown for illustrative purposes. No real school or student data is shown.",
   claims: [
     {
       lead: "Compare across trips",

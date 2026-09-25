@@ -43,7 +43,7 @@ const elementaryFieldTripsInternational: Trip = {
   group: "Grades 1 to 5, 66 to 70 students in each grade",
   paperDefault: "a4",
   lede:
-    "Harborview International School's elementary school takes thirty one-day field trips in the 2026–27 school year: six for each grade from Grade 1 to Grade 5, one for each unit of inquiry. ETI360 prepared the pack before the school year began. Each trip is dated to a school day around the breaks and holidays, with two venues in Singapore and every bus leg timed, and each trip page maps the route from school and the emergency department for each trip, with the drive time from the venue. Every trip has one page and every month a calendar, so the school reads every trip the same way. The pack opens in full.",
+    "Harborview International School's elementary school takes thirty one-day field trips in the 2026–27 school year: six for each grade from Grade 1 to Grade 5, one for each unit of inquiry. ETI360 prepared the pack before the school year began. Each trip is dated to a school day around the breaks and holidays, with two venues in Singapore, and each trip page maps the route from school and the emergency department for each trip, with the drive time from the venue. Every trip has one page and every month a calendar, so the school reads every trip the same way. The pack opens in full.",
   summary:
     "A school year of one-day elementary field trips in Singapore: one page per trip and a calendar for each month, for the school's elementary leaders, trip coordinators, teachers, and families.",
   facts: [
@@ -96,14 +96,14 @@ const elementaryFieldTripsInternational: Trip = {
     },
     {
       title: "Getting a child to care",
-      note: "The emergency department for each trip, with the drive time from the venue and the address, mapped. For the Pulau Ubin trip, the travel time is the island ferry, then the road.",
+      note: "The emergency department for each trip, with the drive time from the venue and the address, mapped. For the Pulau Ubin trip, the route is the island ferry, then the road.",
     },
   ],
   documents: [
     {
       slug: "field-trip-risk-assessment-pack",
       title: TITLE,
-      reader: "Head of Elementary and trip coordinators",
+      reader: "Elementary leaders",
       decision: "Planning the year",
       blurb:
         "The elementary school's single list of the year's one-day trips: the year at a glance by grade, a calendar for each month, and one page per trip with its learning purpose, schedule, notes for families, venues, the route from school, and the emergency department with the drive time. A trip that moves keeps its page.",

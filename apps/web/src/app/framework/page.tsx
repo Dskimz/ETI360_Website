@@ -2,54 +2,58 @@ import type { Metadata } from "next";
 import { CtaCard } from "@/components/CtaCard";
 import Link from "next/link";
 import { DocRow, TierBand } from "../../components/DocShowcase";
-import { schoolTier1, schoolTier2, schoolTier3 } from "../../components/docLibrary";
+import { schoolTier1, schoolTier3 } from "../../components/docLibrary";
+import { WorkedTripDocs } from "@/components/WorkedTripDocs";
 import { getTrip } from "@/content/trips";
 import { CLOSING_SENTENCE } from "@/content/voice";
 import styles from "./framework.module.css";
 
-/* Each tier points to where its documents appear (Website v1, 2026-09-25):
-   Tier 1 to the sample review below, Tier 2 to the worked trips, Tier 3 to
-   the Trip Leader Card, Chaperone Briefing and Post-Trip Feedback Report on a
-   worked trip page. No document-count buttons. */
+/* Each tier shows the documents a school receives (Website v1, 2026-09-25):
+   Tier 1 the Travel Program Review sample (Harborview), Tier 2 and the Tier 3
+   trip documents from the Washington, DC worked trip, with the same names,
+   cards and editions as the trip page. No document-count buttons. */
 
-const TIER3_TRIP = "washington-dc";
+const WORKED_TRIP = "washington-dc";
+const TIER2_DOCS = [
+  "school-trip-record",
+  "trip-risk-working-file",
+  "family-trip-brief",
+  "educational-journey",
+  "student-journey-guide",
+];
 const TIER3_DOCS = ["trip-leader-card", "chaperone-briefing", "post-trip-feedback-report"];
+
+const DESCRIPTION =
+  "The three tiers of the ETI360 framework shown as what a school receives: the Travel Program Review every four years, the documents for each trip, and live trip support and review, every document open in full.";
 
 export const metadata: Metadata = {
   title: "ETI360’s 3-Tier Risk Framework",
-  description:
-    "The three tiers of the ETI360 framework shown as what a school actually receives — the Organizational Readiness review on a four-year cycle, the Tier 2 Trip Readiness pack, and Tier 3 Live Trip Support and Review — every document openable as a real PDF.",
+  description: DESCRIPTION,
   alternates: { canonical: "/framework" },
   openGraph: {
     images: ["/marketing/og-default.png"],
     title: "ETI360’s 3-Tier Risk Framework",
-    description:
-      "The three tiers of the ETI360 framework shown as what a school actually receives — every document openable as a real PDF.",
+    description: DESCRIPTION,
     type: "website",
   },
 };
 
 export default function FrameworkPage() {
-  const tier3Trip = getTrip(TIER3_TRIP);
-  const tier3Docs = tier3Trip
-    ? TIER3_DOCS.map((slug) => tier3Trip.documents.find((d) => d.slug === slug)).filter(
-        (d): d is NonNullable<typeof d> => Boolean(d),
-      )
-    : [];
+  const worked = getTrip(WORKED_TRIP);
 
   return (
     <>
       <section
         className="article-header"
         style={{
-          ["--hero-bg" as string]: "url('/marketing/hero/trip-approval.jpg')",
+          ["--hero-bg" as string]: "url('/trips/shenandoah/hero-point-overlook.jpg')",
         } as React.CSSProperties}
       >
         <div className="hero-inner">
           <p className="label label-light ui">The Framework</p>
-          <h1>Three questions every school answers about travel. One framework.</h1>
+          <h1>ETI360&rsquo;s 3-Tier Risk Framework</h1>
           <p className="subtitle">
-            Each tier answers one of them &mdash; and every answer is a document
+            Each tier answers one question a school asks about travel, and each answer is a document
             you can open.
           </p>
         </div>
@@ -66,11 +70,12 @@ export default function FrameworkPage() {
             to read the document itself.
           </p>
           <p className="artifact-reader ui">
-            The documents on this page are from a worked example for Harborview
-            International School. Harborview International School is a fictional
-            school; its location is shown for illustrative purposes. For your
-            school, every document is produced the same way: in your branding and
-            your voice, from your trip&rsquo;s own data.
+            The Travel Program Review sample and the dashboard screens are from
+            a worked example for Harborview International School. Harborview International School is a fictional
+            school; its location is shown for illustrative purposes. The Tier 2
+            and Tier 3 documents are from the {worked ? worked.title : "Washington, DC"} worked
+            trip. For your school, every document is produced the same way: in
+            your branding and your voice, from your trip&rsquo;s own data.
           </p>
         </div>
 
@@ -79,16 +84,13 @@ export default function FrameworkPage() {
           id="tier1"
           eyebrow="Tier One · Every four years"
           name="Organizational Readiness"
-          desc="Where does our travel governance stand? One documented review of where the school and its providers stand before the year's trips begin — policies, roles, evidence, and standing arrangements across ten operational capability areas."
+          desc="Where does our travel governance stand? One documented review, every four years, of where the school and its providers stand: policies, roles, evidence, and standing arrangements across ten operational capability areas."
         />
         <div className={`container measure ${styles.where}`}>
           <p>
             Tier 1 is the Travel Program Review: the school&rsquo;s policies and
             procedures, path by path, once every four years. The sample review
-            below opens in full.{" "}
-            <a href="#baseline" className="cta-link ui">
-              The sample review &rarr;
-            </a>
+            below opens in full.
           </p>
         </div>
         <div className="doc-rows">
@@ -102,7 +104,7 @@ export default function FrameworkPage() {
           id="tier2"
           eyebrow="Tier Two · Every trip"
           name="Trip Readiness"
-          desc="Is this trip ready for approval? A consistent set of documents for leadership review, from the trip overview to the information parents receive."
+          desc="Is this trip ready for approval? The documents for one trip, each written for the person who uses it, from the record the school files to the brief families read."
         />
         <div className={`container measure ${styles.where}`}>
           <p>
@@ -113,44 +115,29 @@ export default function FrameworkPage() {
             </Link>
           </p>
         </div>
-        <div className="doc-rows">
-          {schoolTier2.map((e) => (
-            <DocRow key={e.anchor} e={e} />
-          ))}
-        </div>
+        <WorkedTripDocs tripSlug={WORKED_TRIP} docSlugs={TIER2_DOCS} />
 
         <TierBand
           n={3}
           id="tier3"
           eyebrow="Tier Three · During and after"
           name="Live Trip Support and Review"
-          desc="Do we know what's happening while they're away? The working views for the days away, and the record the trip carries home into next year's planning."
+          desc="Do we know what's happening while they're away? The documents the trip leader and chaperones carry, the school's own view while groups travel, and the report that closes the trip."
         />
-        {tier3Trip && tier3Docs.length > 0 ? (
-          <div className={`container measure ${styles.where}`}>
-            <p>
-              On a worked trip, this tier appears in the documents the trip
-              leader and chaperones carry while the group is away and in the
-              report that closes the trip. The Duty Manager Dashboard is the
-              school&rsquo;s own view while groups travel.
-            </p>
-            <ul className={`${styles.whereLinks} ui`}>
-              {tier3Docs.map((d) => (
-                <li key={d.slug}>
-                  <Link href={`/trips/${tier3Trip.slug}#${d.slug}`} className="cta-link">
-                    {d.title}, {tier3Trip.title} &rarr;
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
+        <div className={`container measure ${styles.where}`}>
+          <p>
+            On a worked trip, this tier appears in the documents the trip
+            leader and chaperones carry while the group is away and in the
+            report that closes the trip. The Duty Manager Dashboard is the
+            school&rsquo;s own view while groups travel.
+          </p>
+        </div>
+        <WorkedTripDocs tripSlug={WORKED_TRIP} docSlugs={TIER3_DOCS} />
         <div className="doc-rows">
           {schoolTier3.map((e) => (
             <DocRow key={e.anchor} e={e} />
           ))}
         </div>
-
       </section>
 
       <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} image={"/marketing/hero/trip-approval.jpg"} />

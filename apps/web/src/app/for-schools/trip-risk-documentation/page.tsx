@@ -8,19 +8,19 @@ const report = reportCatalog.tripRiskWorkingFile;
 export const metadata: Metadata = {
   title: `${report.name} Problem and Solution`,
   description:
-    "Trip Risk Documentation Preparation: how ETI360 brings the information behind a school's risk assessments, RAMS and emergency procedures into one Trip Risk Working File, organized by activity group, for the school to complete and approve its own documents.",
+    "Trip Risk Documentation Preparation: how ETI360 brings the information behind a school's risk assessments, Emergency Action Procedures, dynamic risk assessment frameworks, and the school's own forms into one Trip Risk Working File, organized by activity group, for the school to complete and approve its own documents.",
   alternates: { canonical: "/for-schools/trip-risk-documentation" },
   openGraph: { type: "website", images: ["/marketing/og-default.png"] },
 };
 
 const data: SolutionEvidenceData = {
   slug: "trip-risk-documentation",
-  question: "Do your risk assessments, RAMS and emergency procedures start from the same information?",
+  question: "Do your risk assessments and emergency procedures start from the same information?",
   heroLine:
     "Trip Risk Documentation Preparation: ETI360 brings the information a school's risk documentation draws on into one Trip Risk Working File, organized by activity group, so the school and provider can determine the controls and the level of risk and complete whichever documents they use.",
   editorial: [
-    "Before a school can make decisions about a trip, it needs a clear view of what students will do and where, the hazards associated with each activity and location, the controls already described by the provider, and any additional controls the school may require. It also needs practical emergency information: response triggers, location-specific actions, and the routes and travel times to the designated emergency departments. That information is usually spread across the itinerary, the provider's documentation, school policy, maps, and other supporting material.",
-    "ETI360 brings it together in a structured Trip Risk Working File, organized by activity group. The working file supports whichever forms of risk documentation the school uses: risk assessments, Risk Assessment Method Statements (RAMS), Emergency Action Procedures, and dynamic risk assessment processes. The school and provider review the information, determine the appropriate controls and level of risk, and complete and approve their chosen documents. ETI360 prepares and organizes the supporting information; the school and provider retain responsibility for risk decisions, live assessments, and final approval.",
+    "Before a school can make decisions about a trip, it needs a clear view of what students will do and where, the hazards associated with each activity and location, the controls already described by the provider, and any additional controls the school may require. It also needs practical emergency information: response triggers, location-specific actions, and the emergency department for each place, with the drive time. That information is usually spread across the itinerary, the provider's documentation, school policy, maps, and other supporting material.",
+    "ETI360 brings it together in a structured Trip Risk Working File, organized by activity group. The working file supports whichever forms of risk documentation the school uses: risk assessments, Emergency Action Procedures, dynamic risk assessment frameworks, and the school's own forms. The school and provider review the information, determine the appropriate controls and level of risk, and complete and approve their chosen documents. ETI360 prepares and organizes the supporting information; the school and provider retain responsibility for risk decisions, live assessments, and final approval.",
   ],
   spreadTitle: "One activity group from a Tokyo trip: the file's front page, the group's section, and one risk in full.",
   plates: [
@@ -51,11 +51,11 @@ const data: SolutionEvidenceData = {
   ],
   pdfHref: "/docs/trip-risk-working-file.pdf",
   disclosure:
-    "Shown for Harborview International School, our sample school (not a real school), as an example document. No real school or student data appears.",
+    "An example document. Harborview International School is a fictional school; its location is shown for illustrative purposes. No real school or student data appears.",
   claims: [
     {
       lead: "Any format the school uses",
-      body: "A risk assessment, a RAMS, an Emergency Action Procedure, a dynamic risk assessment framework, or the school's own form: the working file carries the information each of them draws on, so ETI360 stays independent of any single format.",
+      body: "A risk assessment, an Emergency Action Procedure, a dynamic risk assessment framework, or the school's own form: the working file carries the information each of them draws on, so ETI360 stays independent of any single format.",
     },
     {
       lead: "Organized by activity group",
@@ -63,7 +63,7 @@ const data: SolutionEvidenceData = {
     },
     {
       lead: "Emergency information in place",
-      body: "The routes and travel times to the designated emergency departments are measured for each location, and the emergency actions are written for that place rather than in general terms.",
+      body: "The emergency department for each place is found with the drive time from that location, and the emergency actions are written for that place rather than in general terms.",
     },
     {
       lead: "The live assessment stays with the trip leader",
@@ -74,7 +74,7 @@ const data: SolutionEvidenceData = {
     "ETI360 prepares and organizes the supporting information; it does not write, approve or certify the school's risk documentation. The school and provider determine the controls and the level of risk, make any live assessment, and give final approval.",
   promo: {
     title: "Built from the same trip record",
-    body: "The activity groups, places and hospital routes come from the trip's structured itinerary, the same record behind the calendar, the location timeline and the medical access report, so the working file and every other document the trip carries read from the same record.",
+    body: "The activity groups, places and routes to the emergency departments come from the trip's structured itinerary, the same record behind the calendar, the location timeline and the medical access report, so the working file and every other document the trip carries read from the same record.",
   },
   stripLine: "Trip Risk Documentation Preparation sits within Tier 2 Trip Readiness, prepared for every trip.",
   ctaTitle: "See the working file for one of your own trips.",

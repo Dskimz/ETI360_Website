@@ -12,10 +12,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section
-        className="hero hero-inner-page"
-        style={{ ["--hero-bg" as string]: "url('/marketing/hero/about.jpg')" } as React.CSSProperties}
-      >
+      <section className="hero hero-inner-page">
         <div className="hero-inner">
           <p className="label label-light ui">About</p>
           <h1>About ETI360.</h1>
@@ -36,13 +33,13 @@ export default function AboutPage() {
           <h2>Who does the work</h2>
           <p>
             {FOUNDERS_LINE} {DAN_TRACK_RECORD} He runs the firm day to day and works directly on
-            every engagement. Seb Wong, Senior Consultant, is part of every engagement.
+            every engagement.
           </p>
 
           <h2>What we cover</h2>
           <p>
-            ETI360 works in trip governance &mdash; risk assessment, provider review,
-            emergency documentation, and post-trip review. We do not cover safeguarding,
+            ETI360 works on school trips: risk assessment groundwork, emergency action
+            procedures, trip documents, and post-trip review. We do not cover safeguarding,
             on-campus health and safety, or liability management; those are distinct
             disciplines served by other specialist firms.
           </p>

@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaCard } from "@/components/CtaCard";
-import { getTrip, openHref, trips, type Trip, type TripDocument } from "@/content/trips";
+import { getTrip, openHref, trips } from "@/content/trips";
+import { DocCard } from "@/components/TripDocCard";
 import { BRAND_EYEBROW, CLOSING_SENTENCE, WHO_DECIDES } from "@/content/voice";
 import styles from "../trips.module.css";
 
@@ -34,91 +35,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function Editions({ trip, doc }: { trip: Trip; doc: TripDocument }) {
-  return (
-    <p className={`${styles.editions} ui`}>
-      {doc.editions.letter ? (
-        <a
-          href={openHref(trip, doc, "letter")}
-          target="_blank"
-          rel="noopener"
-          aria-label={`Open the ${doc.title}, US Letter edition (PDF, opens in a new tab)`}
-        >
-          US Letter
-        </a>
-      ) : (
-        <span className={styles.pending}>US Letter edition in preparation</span>
-      )}
-      {doc.editions.a4 ? (
-        <a
-          href={openHref(trip, doc, "a4")}
-          target="_blank"
-          rel="noopener"
-          aria-label={`Open the ${doc.title}, A4 edition (PDF, opens in a new tab)`}
-        >
-          A4
-        </a>
-      ) : (
-        <span className={styles.pending}>A4 edition in preparation</span>
-      )}
-    </p>
-  );
-}
-
-function DocCard({ trip, doc }: { trip: Trip; doc: TripDocument }) {
-  const other = trip.paperDefault === "letter" ? "a4" : "letter";
-  const edition = doc.editions[trip.paperDefault] ? trip.paperDefault : doc.editions[other] ? other : null;
-  const thumb = (
-    <Image
-      src={doc.cover.src}
-      width={doc.cover.width}
-      height={doc.cover.height}
-      alt={doc.cover.alt}
-      sizes="(max-width: 640px) 96px, 150px"
-    />
-  );
-  return (
-    <article id={doc.slug} className={styles.card}>
-      {edition ? (
-        <a
-          className={styles.cardThumb}
-          href={openHref(trip, doc, edition)}
-          target="_blank"
-          rel="noopener"
-          aria-label={`Open the ${doc.title} (PDF, opens in a new tab)`}
-        >
-          {thumb}
-        </a>
-      ) : (
-        <div className={styles.cardThumb}>{thumb}</div>
-      )}
-      <div className={styles.cardBody}>
-        <p className={`${styles.reader} ui`}>{doc.reader}</p>
-        <h4>{doc.title}</h4>
-        <p className={styles.blurb}>{doc.blurb}</p>
-        <Editions trip={trip} doc={doc} />
-      </div>
-    </article>
-  );
-}
-
 export default async function TripPage({ params }: Props) {
   const { slug } = await params;
   const trip = getTrip(slug);
   if (!trip) notFound();
   const pageEdition = trip.paperDefault;
   const pageEditionName = pageEdition === "letter" ? "US Letter" : "A4";
+  const single = trip.documents.length === 1 ? trip.documents[0] : null;
+  const hasWorkingFile = trip.documents.some((d) => d.slug === "trip-risk-working-file");
 
   return (
     <>
       <section
-        className="article-header"
+        className="article-header trip-hero"
         style={{ ["--hero-bg" as string]: `url('${trip.hero.src}')` } as React.CSSProperties}
       >
         <div className="hero-inner">
           <p className="label label-light ui">{BRAND_EYEBROW}</p>
           <h1>{trip.h1}</h1>
         </div>
+        {trip.heroCredit ? <p className="trip-hero-credit ui">{trip.heroCredit}</p> : null}
       </section>
 
       <section className="article-body">
@@ -137,7 +73,6 @@ export default async function TripPage({ params }: Props) {
               ))}
             </dl>
           </div>
-          {trip.heroCredit ? <p className={`${styles.credit} ui`}>{trip.heroCredit}</p> : null}
 
           <h2 id="documents">Decision by decision</h2>
           <div className={styles.sectionIntro}>
@@ -152,33 +87,41 @@ export default async function TripPage({ params }: Props) {
             </p>
           </div>
 
-          {trip.decisions.map((decision) => {
-            const docs = trip.documents.filter((d) => d.decision === decision.title);
-            // A trip with a single document (the elementary pack) answers every
-            // decision from that one document: its card sits under the first
-            // decision, and each later decision points back to it.
-            const only = trip.documents.length === 1 ? trip.documents[0] : null;
-            if (docs.length === 0 && !only) return null;
-            return (
-              <div key={decision.title} className={styles.decision}>
-                <div className={styles.decisionHead}>
-                  <h3>{decision.title}</h3>
-                  <p>{decision.note}</p>
-                </div>
-                {docs.length > 0 ? (
+          {single ? (
+            // A trip with one document (the elementary pack): the card spans the
+            // row, and what it covers is one list under it, decision by decision.
+            <div className={styles.decision}>
+              <div className={styles.cards}>
+                <DocCard trip={trip} doc={single} solo />
+              </div>
+              <h3 className={styles.coversHead}>What the pack covers</h3>
+              <ul className={styles.covers}>
+                {trip.decisions.map((decision) => (
+                  <li key={decision.title}>
+                    <strong>{decision.title}.</strong> {decision.note}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            trip.decisions.map((decision) => {
+              const docs = trip.documents.filter((d) => d.decision === decision.title);
+              if (docs.length === 0) return null;
+              return (
+                <div key={decision.title} className={styles.decision}>
+                  <div className={styles.decisionHead}>
+                    <h3>{decision.title}</h3>
+                    <p>{decision.note}</p>
+                  </div>
                   <div className={styles.cards}>
                     {docs.map((doc) => (
-                      <DocCard key={doc.slug} trip={trip} doc={doc} />
+                      <DocCard key={doc.slug} trip={trip} doc={doc} solo={docs.length === 1} />
                     ))}
                   </div>
-                ) : only ? (
-                  <p className={`${styles.paper} ui`}>
-                    In the <a href={`#${only.slug}`}>{only.title}</a>.
-                  </p>
-                ) : null}
-              </div>
-            );
-          })}
+                </div>
+              );
+            })
+          )}
 
           <h2 id="inside">Inside the documents</h2>
           <div className={styles.sectionIntro}>
@@ -230,11 +173,19 @@ export default async function TripPage({ params }: Props) {
           <div className="boundary-callout">
             <h3>Who decides</h3>
             <p>{WHO_DECIDES}</p>
-            <p className={styles.boundaryNext}>
-              The Trip Risk Working File is written for the school to review, complete, and approve. Its
-              ratings are a starting point, its review lines are for the school&rsquo;s own controls, and
-              the trip leader makes the live assessment on the day.
-            </p>
+            {hasWorkingFile ? (
+              <p className={styles.boundaryNext}>
+                The Trip Risk Working File is written for the school to review, complete, and approve.
+                Its ratings are a starting point, its review lines are for the school&rsquo;s own
+                controls, and the trip leader makes the live assessment on the day.
+              </p>
+            ) : single ? (
+              <p className={styles.boundaryNext}>
+                The risk-assessment working documents in the pack are written for the school to review,
+                complete, and approve. The pack records that they were prepared, not that a trip is
+                approved.
+              </p>
+            ) : null}
           </div>
 
           <p className="ui">

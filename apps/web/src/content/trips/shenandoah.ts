@@ -30,9 +30,9 @@ const shenandoah: Trip = {
   group: "20 tenth-grade students and four chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Philadelphia is taking twenty 10th graders to walk the Appalachian Trail through Shenandoah National Park for five days in October. ETI360 brought together the school's itinerary, the coach, lodge, and guiding arrangements, and the school's own procedures, drew each walking day's route from National Park Service and OpenStreetMap trail data, with the elevation along it, computed the sun times for where the group will be each day, and found the emergency department for each half of the ridge, with the drive time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Philadelphia is taking twenty tenth graders to walk the Appalachian Trail through Shenandoah National Park for five days in October. ETI360 brought together the school's itinerary, the coach, lodge, and guiding arrangements, and the school's own procedures, drew each walking day's route from National Park Service and OpenStreetMap trail data, with the elevation along it, computed the sun times for where the group will be each day, and found the emergency department for each half of the ridge, with the drive time. Each document below is written for the person who uses it, and each opens in full.",
   summary:
-    "A five-day 10th grade walk on the Appalachian Trail, with the coach on Skyline Drive all week: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
+    "A five-day tenth-grade walk on the Appalachian Trail, with the coach on Skyline Drive all week: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
     { label: "Trip", value: "Shenandoah Appalachian Trail Trek, Monday, October 4 to Friday, October 8, 2027" },
     {
@@ -52,7 +52,7 @@ const shenandoah: Trip = {
     {
       label: "Travel",
       value:
-        "One motorcoach, 212 road miles each way, with the group on Skyline Drive all week and meeting each walking party at the named road crossings",
+        "One motorcoach: about 215 road miles to the park on Monday and about 230 home on Friday, with the coach on Skyline Drive all week and meeting each walking party at the named road crossings",
     },
     { label: "Lodging", value: "Two nights at Skyland and two at Big Meadows Lodge, both inside the national park on Skyline Drive" },
     { label: "School", value: "Horizon Ridge School of Philadelphia, a fictional school" },
@@ -96,7 +96,7 @@ const shenandoah: Trip = {
     {
       slug: "school-trip-record",
       title: "School Trip Record",
-      reader: "School office",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Trip facts, contacts, and the approval line, then what is held at each lodge, the dates the office works to, and the road journey. Filed with the contracts, confirmations, roster, health records, and signed permission slips.",
@@ -105,13 +105,13 @@ const shenandoah: Trip = {
       insidePages: inside("school-trip-record", "School Trip Record", [
         [2, "Trip facts, the contacts table, and the approval line, with supervision and medical arrangements set out for the office."],
         [3, "What is held at each lodge, every date the office works to, and what the trip cost covers and does not."],
-        [4, "The 212-mile road journey with its rest stops, the Monday and Friday schedules, and how the coach works inside the park."],
+        [4, "The road journey with its rest stops, the Monday and Friday schedules, and how the coach works inside the park."],
       ]),
     },
     {
       slug: "trip-risk-working-file",
       title: "Trip Risk Working File",
-      reader: "The school, to review, complete, and approve",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Hazards, controls, and emergency actions organized one section per activity group, from the road to the open rock and the optional scramble, with the emergency care for each group and the live-assessment prompts for the day. The school completes it, amends it, and approves it.",
@@ -141,14 +141,14 @@ const shenandoah: Trip = {
     {
       slug: "trip-leader-card",
       title: "Trip Leader Card",
-      reader: "Trip leader and chaperones",
+      reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
         "Groups, walking parties, contacts, and standards, the week in outline, a Route Intelligence page for each walking day, and the emergency plan: the emergency department for each half of the ridge, with the drive time.",
       cover: cover("trip-leader-card", "Trip Leader Card"),
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
-        [2, "Groups of five and two walking parties of thirteen: the nurse walks with the first party and the trip leader with the second, so neither half of the group is without one of them."],
+        [2, "Groups of five and two walking parties of thirteen, fifteen minutes apart, each with a guide and two school adults, and the working contacts."],
         [5, "Route Intelligence for the longest day: the map, the legs, where the coach meets the group, the turnaround times, the elevation profile, and the daylight left at the finish."],
         [8, "The emergency plan: the park's dispatch number first, then the emergency department for each half of the ridge, with the drive time, and the route out through Thornton Gap."],
       ]),
@@ -171,7 +171,7 @@ const shenandoah: Trip = {
     {
       slug: "daylight-and-cover-report",
       title: "Daylight and Cover Report",
-      reader: "Trip leader and the school",
+      reader: "Trip leader",
       decision: "Deciding each day's route and turnaround",
       blurb:
         "Sunrise, sunset, and the last usable light for every day of the trip, computed for where the group will be, with the planned times set against them and the tree cover along each day's route.",
@@ -216,14 +216,14 @@ const shenandoah: Trip = {
     {
       slug: "post-trip-feedback-report",
       title: "Post-Trip Feedback Report",
-      reader: "The school, after the trip",
+      reader: "After the trip",
       decision: "Improving next year's trip",
       blurb:
         "Four questions asked of students, parents, the leaders, and the guides after the trip: what each group said, the moments that did not go to plan with the day they belong to, and what in the trip each one touches. It states; it does not recommend.",
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What people said: the three rated questions for students and parents, the counts at every step, and the moments most raised, each with its day."],
+        [1, "What the report looks like, with example responses because the trip has not yet run: the three rated questions for students and parents, the counts at every step, and the moments most raised, each with its day."],
         [2, "For the school's review: what the answers show, where parents and students differ, and who answered, with no recommendation."],
         [4, "The moments people raised, each with its day, whether it points at the plan or at how the day was run, and the words as written."],
       ]),

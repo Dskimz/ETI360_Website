@@ -25,16 +25,16 @@ const washingtonDc: Trip = {
   group: "30 eighth-grade students and six chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Cleveland is taking thirty 8th graders to Washington, DC for five days in April. ETI360 brought together the school's itinerary, the bus and hotel confirmations, and the school's own procedures, checked group entry and bag rules against each venue's own guidance, timed every drive for a motorcoach, and found the emergency department for each place, with the drive time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Cleveland is taking thirty eighth graders to Washington, DC, for five days in April. ETI360 brought together the school's itinerary, the bus and hotel confirmations, and the school's own procedures, checked group entry and bag rules against each venue's own guidance, timed every drive for a motorcoach, and found the emergency department for each place, with the drive time. Each document below is written for the person who uses it, and each opens in full.",
   summary:
-    "A five-day 8th grade trip by charter bus: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
+    "A five-day eighth-grade trip by charter bus: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
     { label: "Trip", value: "Washington, DC Civic Journey, Wednesday, April 14 to Sunday, April 18, 2027" },
     { label: "Group", value: "30 eighth-grade students and six chaperones, one adult for every five students" },
     {
       label: "Program",
       value:
-        "Fourteen sites over three days: the National Archives, the U.S. Capitol, the Library of Congress, two Smithsonian museums, four memorials at dusk, Arlington, the Portrait Gallery, and the White House",
+        "Fourteen sites over three days: the National Archives, the U.S. Capitol, the Library of Congress, the Supreme Court, two Smithsonian museums, four memorials at dusk, Arlington, the Portrait Gallery, Lafayette Square, and the White House",
     },
     { label: "Travel", value: "Charter bus, 372 miles each way, with a rested second driver team for the overnight ride home" },
     { label: "Lodging", value: "Three nights in College Park, Maryland" },
@@ -74,14 +74,14 @@ const washingtonDc: Trip = {
     {
       slug: "school-trip-record",
       title: "School Trip Record",
-      reader: "School office",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Trip facts, contacts, and the approval line, then reservations, the trip calendar, and transportation. Filed with the contracts, confirmations, roster, and signed permission slips.",
       cover: cover("school-trip-record", "School Trip Record"),
       editions: editions("school-trip-record"),
       insidePages: inside("school-trip-record", "School Trip Record", [
-        [2, "Trip facts, the contacts table, and the approval line for the Head of Middle School."],
+        [2, "Trip facts, the contacts table, and the school's approval line."],
         [3, "Every reservation with where its confirmation is held, the hotel plan, and the trip calendar."],
         [4, "The 372-mile route with its three rest stops, the outbound schedule, and the rules on the bus."],
       ]),
@@ -89,7 +89,7 @@ const washingtonDc: Trip = {
     {
       slug: "trip-risk-working-file",
       title: "Trip Risk Working File",
-      reader: "The school, to review, complete, and approve",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Hazards, controls, and emergency actions organized one section per activity group, with the live-assessment prompts for the day. The school completes it, amends it, and approves it.",
@@ -119,7 +119,7 @@ const washingtonDc: Trip = {
     {
       slug: "trip-leader-card",
       title: "Trip Leader Card",
-      reader: "Trip leader and chaperones",
+      reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
         "Groups, contacts, and standards, four day plans timed to the bus, the overnight return with its rest stops, and the emergency plan: the emergency department for each place, with the drive time.",
@@ -143,7 +143,7 @@ const washingtonDc: Trip = {
       insidePages: inside("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card", [
         [1, "Each chaperone's group and role, with the corridor and overnight-watch duties, the head-count rule, and the daily rhythm."],
         [2, "Hotel and bus duties, then the four procedures: a separated student, a student hurt or unwell, a security instruction, a behavior or welfare concern."],
-        [4, "The pocket emergency card at finished size, printed and folded: the 911 sequence and every working number on one side, the hospitals and the separated-student steps on the other."],
+        [4, "The pocket emergency card at finished size, printed and folded: the 911 sequence and every working number on one side, the emergency departments and the separated-student steps on the other."],
       ]),
     },
     {
@@ -179,14 +179,14 @@ const washingtonDc: Trip = {
     {
       slug: "post-trip-feedback-report",
       title: "Post-Trip Feedback Report",
-      reader: "The school, after the trip",
+      reader: "After the trip",
       decision: "Improving next year's trip",
       blurb:
         "Four questions asked of students, parents, the leaders, and the bus company after the trip: what each group said, the moments that did not go to plan with the day they belong to, and what in the trip each one touches. It states; it does not recommend.",
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What people said: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
+        [1, "What the report looks like, with example responses because the trip has not yet run: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
         [2, "For the school's review: three sentences on what the responses show and what in the trip each touches, with no recommendation."],
         [4, "The moments people raised, each with its day, whether it points at the plan or at how the day was run, and the words as written."],
       ]),

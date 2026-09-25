@@ -16,6 +16,9 @@ export type DocEntry = {
   desc: string;
   image: { src: string; alt: string };
   pdf?: string;
+  /** The two paper editions. When omitted, a pdf is the A4 edition (the
+      Harborview samples are A4) and the US Letter edition is in preparation. */
+  editions?: { letter: string | null; a4: string | null };
   wide?: boolean;
   pageHref?: string;
 };
@@ -51,6 +54,7 @@ export function TierBand({
 
 export function DocRow({ e, eager }: { e: DocEntry; eager?: boolean }) {
   const thumbClass = `doc-row-thumb${e.wide ? " wide" : ""}`;
+  const editions = e.editions ?? (e.pdf ? { letter: null, a4: e.pdf } : null);
   const img = (
     // eslint-disable-next-line @next/next/no-img-element
     <img src={e.image.src} alt={e.image.alt} loading={eager ? undefined : "lazy"} />
@@ -81,17 +85,32 @@ export function DocRow({ e, eager }: { e: DocEntry; eager?: boolean }) {
         <p className="artifact-reader ui">
           <span className="artifact-reader-label">Read by</span> {e.reader}
         </p>
-        {e.pdf && (
-          <p>
-            <a
-              href={e.pdf}
-              target="_blank"
-              rel="noopener"
-              className="cta-link ui"
-              aria-label={`Open the ${e.name} PDF (opens in new tab)`}
-            >
-              Open the PDF &rarr;
-            </a>
+        {editions && (
+          <p className="doc-row-editions ui">
+            {editions.letter ? (
+              <a
+                href={editions.letter}
+                target="_blank"
+                rel="noopener"
+                aria-label={`Open the ${e.name}, US Letter edition (PDF, opens in a new tab)`}
+              >
+                US Letter
+              </a>
+            ) : (
+              <span className="doc-row-pending">US Letter edition in preparation</span>
+            )}
+            {editions.a4 ? (
+              <a
+                href={editions.a4}
+                target="_blank"
+                rel="noopener"
+                aria-label={`Open the ${e.name}, A4 edition (PDF, opens in a new tab)`}
+              >
+                A4
+              </a>
+            ) : (
+              <span className="doc-row-pending">A4 edition in preparation</span>
+            )}
           </p>
         )}
         {e.pageHref && (

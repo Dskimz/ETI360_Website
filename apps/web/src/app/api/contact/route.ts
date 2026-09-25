@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
     discuss: String(body.discuss).trim().slice(0, 4000),
   };
   const receivedAt = new Date().toISOString();
-  const subject = `Briefing request — ${submission.name}, ${submission.organization}`;
+  const subject = `Contact request — ${submission.name}, ${submission.organization}`;
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {

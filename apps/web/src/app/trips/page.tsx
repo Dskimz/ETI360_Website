@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CtaCard } from "@/components/CtaCard";
-import { hasEdition, TRIP_KINDS, trips, type Trip, type TripKind } from "@/content/trips";
+import { cardEyebrow, cardSummary, hasEdition, shortDates, TRIP_KINDS, trips, type Trip, type TripKind } from "@/content/trips";
 import { BRAND_EYEBROW, CLOSING_SENTENCE } from "@/content/voice";
 import styles from "./trips.module.css";
 
@@ -111,30 +111,30 @@ export default async function TripsPage({ searchParams }: Props) {
             <div className={styles.library}>
               {shown.map((trip) => (
                 <Link key={trip.slug} href={`/trips/${trip.slug}`} className={styles.tripCard}>
-                  <Image
-                    src={trip.hero.src}
-                    width={trip.hero.width}
-                    height={trip.hero.height}
-                    alt={trip.hero.alt}
-                    sizes="(max-width: 960px) 100vw, 530px"
-                  />
+                  <span className={styles.tripCardPhoto}>
+                    <Image src={trip.hero.src} alt={trip.hero.alt} fill sizes="(max-width: 960px) 100vw, 530px" />
+                  </span>
                   <div className={styles.tripCardBody}>
-                    <p className={`${styles.reader} ui`}>
-                      {trip.tripKind} &middot; {trip.region}
-                    </p>
+                    <p className={`${styles.reader} ui`}>{cardEyebrow(trip)}</p>
                     <h2>{trip.title}</h2>
                     <p className={`${styles.tripMeta} ui`}>
-                      {trip.school} &middot; {trip.dates}
+                      {trip.school} &middot; {shortDates(trip)}
                     </p>
-                    <p>{trip.summary}</p>
+                    <p>{cardSummary(trip)}</p>
                     <PaperLine trip={trip} />
-                    <p className={`${styles.disclosure} ui`}>{trip.disclosure}</p>
                     <span className={`${styles.go} ui`}>See the documents &rarr;</span>
                   </div>
                 </Link>
               ))}
             </div>
           )}
+          {shown.length > 0 ? (
+            <div className={`${styles.libraryNotes} ui`}>
+              {Array.from(new Set(shown.map((t) => t.disclosure))).map((d) => (
+                <p key={d}>{d}</p>
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
 

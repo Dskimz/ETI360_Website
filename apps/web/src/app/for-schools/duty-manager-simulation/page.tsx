@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 const data: SolutionEvidenceData = {
   slug: "duty-manager-simulation",
   question: "Can your duty manager practice one of your own trips before it runs?",
-  heroLine: "The Duty Manager Simulation: one of the school's own trips, run by its own duty manager inside the Duty Manager Dashboard before the group departs.",
+  heroLine: "The Duty Manager Simulation: one of the school's own trips, run by its own duty manager inside the Duty Manager Dashboard before the group departs. The Duty Manager Simulation has not yet been run with a school.",
   editorial: [
-    "A group is away, and the duty phone sits beside the trip file. The itinerary, the contact sheet, the hospital list, and the approved RAMS all exist, each on its own page and each complete in its own terms. Working them together — with a call on the line and a message arriving on the dashboard — has no venue before the trip itself.",
-    "ETI360 prepares that venue: the itinerary normalized, the school's own procedures included where the school supplies them, and the trip staged inside the Duty Manager Dashboard — the same screen used for live trips. In a facilitated ninety-minute session, remote or on-site, the school's own duty manager — observers welcome — runs it from the documents at hand. The trip plays clean, then stops going to plan, twice — partial information by phone and message, the clock running, every decision recorded. The record is about the plan, not the person; the facilitator says so at the start.",
+    "A group is away, and the duty phone sits beside the trip file. The itinerary, the contact sheet, the emergency departments, and the school's approved risk documentation all exist, each on its own page and each complete in its own terms. Working them together — with a call on the line and a message arriving on the dashboard — has no venue before the trip itself.",
+    "ETI360 prepares that venue: the itinerary normalized, the school's own procedures included where the school supplies them, and the trip staged inside the Duty Manager Dashboard — the same screen used for live trips. In a facilitated ninety-minute session, on-site, the school's own duty manager — observers welcome — runs it from the documents at hand. The trip plays clean, then stops going to plan, twice — partial information by phone and message, the clock running, every decision recorded. The record is about the plan, not the person; the facilitator says so at the start.",
   ],
   spreadTitle: "The Harborview Nepal Himalaya Trek rehearsed: the dashboard in simulation and the After-Action Report",
   plates: [
@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "Each numbered incident: first mention, the situation, document checks, the call with its time and reasoning verbatim, and resolution; footer “Simulated — did not occur.”",
     },
   ],
-  disclosure: "A dashboard and a report sheet from Harborview International School, fictitious by design — no real school, incident, or student data appears; the places are real Nepal locations, every event simulated.",
+  disclosure: "Harborview International School is a fictional school; its location is shown for illustrative purposes. No real incident or student data appears; the places are real Nepal locations, every event simulated.",
   claims: [
     {
       lead: "The trip, not a template",
@@ -51,14 +51,14 @@ const data: SolutionEvidenceData = {
     },
     {
       lead: "Covered, or on judgment",
-      body: "Nothing is corrected mid-session. The debrief replays the timeline; the coverage reveal shows which events the room faced were covered by a documented control in the trip's approved RAMS and which were handled on judgment alone — gaps identified, never scheduled.",
+      body: "Nothing is corrected mid-session. The debrief replays the timeline; the coverage reveal shows which events the room faced were covered by a documented control in the school's approved risk documentation and which were handled on judgment alone — gaps identified, never scheduled.",
     },
     {
       lead: "Filed with the trip",
-      body: "The session is recorded for the After-Action Report, with consent asked on screen first. Compiled from the session's record, the report names no one; it is filed with the trip, and a 30-minute conversation follows.",
+      body: "The session is recorded for the After-Action Report, with consent asked on screen first. Written from the session's record, the report names no one; it is filed with the trip.",
     },
   ],
-  boundary: "Your school's own duty manager operates the dashboard, and your school approves its own RAMS; ETI360 facilitates and records — it does not monitor trips on your behalf, make escalation decisions, or replace emergency services.",
+  boundary: "Your school's own duty manager operates the dashboard, and your school approves its own risk documentation; ETI360 facilitates and records — it does not monitor trips on your behalf, make escalation decisions, or replace emergency services.",
   promo: {
     title: "When the group departs",
     body: "The screen the duty manager rehearses on is the Duty Manager Dashboard — the working view while groups travel, run by the school's own duty team: the same lanes, trip view, and incident form, now carrying the live trip's check-ins, messages, contacts, and incident record.",

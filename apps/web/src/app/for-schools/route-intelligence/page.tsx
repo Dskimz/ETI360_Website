@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "Elevation by distance, the waypoint register, terrain cover, seasonal context, and ride-day operating notes.",
     },
   ],
-  disclosure: "Harborview International School is not a real school; it is used only as a sample school. No real school or student data is shown.",
+  disclosure: "Harborview International School is a fictional school; its location is shown for illustrative purposes. No real school or student data is shown.",
   pdfHref: "/docs/route-intelligence.pdf",
   claims: [
     {

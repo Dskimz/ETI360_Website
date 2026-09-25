@@ -35,17 +35,17 @@
   text-transform: uppercase;
   color: var(--gold-dark);
 }
-.door :global(.cta-link) {
+.door p.links {
   margin-top: auto;
   padding-top: 8px;
-  align-self: flex-start;
-}
-.more {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 28px;
-  margin-top: 24px;
+  gap: 8px 28px;
   font-size: var(--font-sm);
+}
+/* Both eyebrows take two lines' height, so the two titles line up. */
+@media (min-width: 961px) {
+  .door p.tiers { min-height: 3.3em; }
 }
 
 @media (max-width: 960px) {

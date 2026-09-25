@@ -34,7 +34,7 @@ const data: SolutionEvidenceData = {
       src: "/marketing/solutions/field-trip-pack-cover.jpg",
       width: 1040,
       height: 1471,
-      alt: "The cover of the Annual Elementary Field Trip Risk Assessment Pack, Harborview Elementary School 2026–27: thirty field trips, five grades, nine months, thirty-six venues",
+      alt: "The cover of the Annual Elementary Field Trip Risk Assessment Pack, Harborview International School elementary, 2026–27: thirty field trips, five grades, nine months, thirty-six venues",
       label: "The pack",
       note: "Thirty one-day trips, one for each unit of inquiry in each grade, planned and documented before the first day of school.",
     },
@@ -52,7 +52,7 @@ const data: SolutionEvidenceData = {
       height: 1131,
       alt: "One trip's page: learning purpose, schedule, notes for families, venues, the route from school and the emergency department mapped, and the documentation set",
       label: "One trip's page",
-      note: "The learning purpose, the schedule, the route from school with its measured drive, the emergency department the school named, and the documentation set prepared for the day.",
+      note: "The learning purpose, the schedule, the route from school with its drive time, the emergency department the school named, and the documentation set prepared for the day.",
     },
   ],
   pdfHref: "/docs/field-trip-risk-assessment-pack-harborview-2026-27.pdf",
@@ -64,8 +64,8 @@ const data: SolutionEvidenceData = {
       body: "Thirty-six venues sit behind the set. Each is confirmed, measured, and documented once, and that record serves every trip that visits it.",
     },
     {
-      lead: "Measured, not estimated",
-      body: "Routes carry measured journey times, not estimates; the emergency department shown is the one the school named for that area, mapped with its travel time from the venue.",
+      lead: "Timed for the route",
+      body: "Each route carries a drive time computed for that route from the venue; the emergency department shown is the one the school named for that area, mapped with its drive time.",
     },
     {
       lead: "The school's name",

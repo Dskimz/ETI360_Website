@@ -3,11 +3,11 @@ import Link from "next/link";
 import { CtaCard } from "@/components/CtaCard";
 import { TripStrip } from "@/components/TripStrip";
 import { DocEntry, DocRow, TierBand } from "../../components/DocShowcase";
-import { DocRowsExpander } from "../../components/DocRowsExpander";
-import { CLOSING_SENTENCE } from "@/content/voice";
+import { WorkedTripDocs } from "@/components/WorkedTripDocs";
 
-/* voice.ts has no provider variant of Dan's closing sentence, so the page
-   keeps CLOSING_SENTENCE unchanged. */
+/* PENDING Dan: voice.ts has no provider version of the closing sentence, and
+   Dan's sentence speaks to "your school". Until he writes one, the card says
+   "Contact us." with no body copy; never reword his sentence inline. */
 
 export const metadata: Metadata = {
   title: "For Providers",
@@ -27,116 +27,24 @@ const tier1: DocEntry[] = [
   {
     anchor: "baseline",
     pdf: "/docs/organizational-baseline-evaluation-v4.pdf",
-    stage: "T1 · Your organization",
-    name: "Trip Program Capability Review",
+    stage: "Tier 1 · Your organization",
+    name: "Travel Program Review, applied to a trip provider",
     reader: "School risk committees · Your leadership",
     desc: "The ten areas applied to your organization: policies, roles, standing arrangements, and supporting evidence recorded in a common structure.",
     image: {
-      src: "/email/spread-partner-baseline-v2.png",
-      alt: "Trip Program Capability Review applied to a trip provider: each of ten areas marked at standard or progressing",
+      src: "/email/spread-school-baseline-v4.png",
+      alt: "Travel Program Review for Harborview International School: ten areas, each marked at standard, progressing, or not evidenced; a provider's review follows the same structure",
     },
-  },
-];
-
-const tier2: DocEntry[] = [
-  {
-    anchor: "trip-overview",
-    pdf: "/docs/trip-overview.pdf",
-    stage: "T2 · The first read",
-    name: "Trip Overview",
-    reader: "School leadership · Approving committee",
-    desc: "Your program on one page: dates, group, and logistics at a glance.",
-    image: {
-      src: "/email/page-overview.png",
-      alt: "Trip Overview one-pager for the Cherry Blossom Tokyo sample trip",
-    },
-  },
-  {
-    anchor: "itinerary-report",
-    pdf: "/showcase/pdfs/02-1-calendar-view.pdf",
-    stage: "T2 · The operational record",
-    name: "Itinerary Report",
-    reader: "Coordinator · Trip staff",
-    desc: "The same journey as a minute-by-minute calendar: every activity, transfer, meal, and overnight in hour-by-hour blocks — the record each proposal is adjusted from.",
-    image: {
-      src: "/showcase/pages/02-1-calendar-view/2.png",
-      alt: "Itinerary Report calendar view, page two of the Cherry Blossom Tokyo sample trip: days five through eight as hour-by-hour blocks covering activities, meals, transport, and accommodation",
-    },
-  },
-  {
-    anchor: "risk-assessment",
-    pdf: "/showcase/pdfs/04-rams-report.pdf",
-    stage: "T2 · The decision record",
-    name: "Trip Risk Working File",
-    reader: "Risk lead · Trip staff · Provider",
-    desc: "The structured working documents behind the school's risk assessment: hazards, controls, who holds each control, and residual risk in plain language — prepared for the school to review, complete, amend, and approve; the due diligence file its risk committee can put in front of the board.",
-    image: {
-      src: "/marketing/library/rams-report.png",
-      alt: "Trip Risk Working File risk register page: named risks with inherent and residual scores, controls, and emergency actions",
-    },
-  },
-  {
-    anchor: "parent-itinerary",
-    pdf: "/docs/parent-itinerary.pdf",
-    stage: "T2 · For families",
-    name: "Parent Itinerary",
-    reader: "Parents",
-    desc: "The journey written for families, in the school's own voice: clear day information, meals, accommodation, and what to know.",
-    image: {
-      src: "/email/card-parent.png",
-      alt: "Parent Itinerary day pages with photographs and day-by-day plans",
-    },
-  },
-  {
-    anchor: "trip-discovery-map",
-    pdf: "/docs/trip-discovery-map.pdf",
-    stage: "T2 · The trip on one sheet",
-    name: "Trip Discovery Map",
-    reader: "Coordinator · Parent information evening",
-    desc: "Stops, routes, and the shape of each day on one visual sheet — as useful in your proposal as at the school's parent information evening.",
-    image: {
-      src: "/email/spread-map-1.jpg",
-      alt: "Trip Discovery Map for Cherry Blossom Tokyo: numbered stops, routes, and photo callouts on one sheet",
-    },
-    wide: true,
-  },
-];
-
-const tier2More: DocEntry[] = [
-  {
-    anchor: "weather",
-    pdf: "/showcase/pdfs/01-1-weather-brief-sydney.pdf",
-    stage: "T2 · Conditions",
-    name: "Weather Brief",
-    reader: "Coordinator · Trip staff",
-    desc: "Month-specific conditions for the destination and dates, built on fifteen years of historical data.",
-    image: {
-      src: "/showcase/pages/01-1-weather-brief-sydney/1.png",
-      alt: "Weather Brief for a March trip window: fifteen-year temperature overview, daily outlook, and planning notes",
-    },
-  },
-  {
-    anchor: "route-intelligence",
-    pdf: "/docs/route-intelligence.pdf",
-    stage: "T2 · Outdoor activities",
-    name: "Route Intelligence",
-    reader: "Coordinator · Duty manager",
-    desc: "Distance, gradient, pacing, sun, terrain cover, and escape points, recorded for outdoor activities such as cycling, trekking, and river sports.",
-    image: {
-      src: "/email/spread-itoshima-2.png",
-      alt: "Route Intelligence page for the Big Itoshima ride: elevation profile, waypoint register, sun and terrain cover",
-    },
-    wide: true,
   },
 ];
 
 const tier3: DocEntry[] = [
   {
     anchor: "duty-manager-simulation",
-    stage: "T3 · Rehearsal",
+    stage: "Tier 3 · Practice before departure",
     name: "Duty Manager Simulation",
     reader: "Duty manager · Trip leadership",
-    desc: "A facilitated ninety-minute session inside the dashboard: a way to stress test a trip before it runs, working through a realistic scenario with roles, communication, and escalation decisions.",
+    desc: "A facilitated ninety-minute session inside the dashboard: practice on one of the school's own trips before it runs, working through a realistic scenario with roles, communication, and escalation decisions. The Duty Manager Simulation has not yet been run with a school.",
     image: {
       src: "/marketing/solutions/simulation-dashboard.png",
       alt: "The Duty Manager Dashboard in simulation mode: a gold SIMULATION badge, the trip timeline, current Harborview trips in triage lanes, and the Duty Overview",
@@ -145,7 +53,7 @@ const tier3: DocEntry[] = [
   },
   {
     anchor: "duty-manager-dashboard",
-    stage: "T3 · During the trip",
+    stage: "Tier 3 · During the trip",
     name: "Duty Manager Dashboard",
     reader: "The school's or provider's own duty manager",
     desc: "The working view while groups travel: trip context, scheduled locations, check-ins, weather flags, incidents, contacts, and the escalation path agreed before departure. Operated by the school's or the provider's own duty manager, never by ETI360.",
@@ -163,12 +71,12 @@ export default function ForProvidersPage() {
       <section
         className="article-header"
         style={{
-          ["--hero-bg" as string]: "url('/marketing/hero/for-providers.jpg')",
+          ["--hero-bg" as string]: "url('/trips/costa-rica/hero-poas.jpg')",
         } as React.CSSProperties}
       >
         <div className="hero-inner">
           <p className="label label-light ui">For Providers</p>
-          <h1>Document a program once. The system carries the updates.</h1>
+          <h1>Documents for the schools you work with.</h1>
           <p className="subtitle">
             The documents schools ask providers for &mdash; organizational
             standing, the trip file their leadership reviews, and the pack
@@ -201,7 +109,7 @@ export default function ForProvidersPage() {
           </p>
           <p>
             <strong>Due-diligence questionnaires repeat every season.</strong>{" "}
-            The Organizational Readiness review documents your standing once, reviewed every four years;
+            The Travel Program Review documents your standing once, reviewed every four years;
             every proposal references the same current evidence.
           </p>
           <p>
@@ -242,9 +150,11 @@ export default function ForProvidersPage() {
             side. Open any thumbnail to read the document itself.
           </p>
           <p className="artifact-reader ui">
-            The documents in this section are from a worked example for
-            Harborview International School. Harborview International School is
-            a fictional school; its location is shown for illustrative purposes.
+            The Travel Program Review sample and the dashboard screens are from
+            a worked example for Harborview International School. Harborview
+            International School is a fictional school; its location is shown
+            for illustrative purposes. The trip documents are from the
+            Washington, DC worked trip.
           </p>
         </div>
 
@@ -275,14 +185,9 @@ export default function ForProvidersPage() {
             before anything is confirmed.
           </p>
         </div>
-        <div className="doc-rows">
-          {tier2.map((e) => (
-            <DocRow key={e.anchor} e={e} />
-          ))}
-        </div>
-        <DocRowsExpander
-          items={tier2More}
-          label="See more Tier 2 documents"
+        <WorkedTripDocs
+          tripSlug="washington-dc"
+          docSlugs={["school-trip-record", "trip-risk-working-file", "family-trip-brief", "educational-journey"]}
         />
 
         <TierBand
@@ -291,6 +196,10 @@ export default function ForProvidersPage() {
           name="Live Trip Support and Review"
           desc="A rehearsal before departure, and a working view for managing trip issues while groups travel. The working view is operated by the school's or the provider's own duty manager, never staffed by ETI360."
         />
+        <WorkedTripDocs
+          tripSlug="washington-dc"
+          docSlugs={["trip-leader-card", "chaperone-briefing", "post-trip-feedback-report"]}
+        />
         <div className="doc-rows">
           {tier3.map((e) => (
             <DocRow key={e.anchor} e={e} />
@@ -298,7 +207,7 @@ export default function ForProvidersPage() {
         </div>
       </section>
 
-      <CtaCard title={'Contact us.'} copy={CLOSING_SENTENCE} image={'/marketing/hero/for-providers.jpg'} />
+      <CtaCard title={"Contact us."} image={"/marketing/hero/for-providers.jpg"} />
     </>
   );
 }

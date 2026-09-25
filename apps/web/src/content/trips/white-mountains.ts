@@ -31,9 +31,9 @@ const whiteMountains: Trip = {
   group: "20 ninth-grade students, four trail adults, and a valley support adult",
   paperDefault: "letter",
   lede:
-    "Tideline School in Portland, Maine is starting the 9th grade year with a four-day hut-to-hut trek in the White Mountains of New Hampshire: 20.9 miles on the Appalachian Trail and its approach trails from Franconia Notch to Crawford Notch, with three nights in the Appalachian Mountain Club's huts. ETI360 brought together the school's plan, the huts' published information, and the national forest's rules, measured each day's distance, climb, and daylight from the route itself, checked the plan against the wilderness boundary and the roads, and found the emergency department for each place, with the drive time from every trailhead. Each document below is written for the person who uses it, and each opens in full.",
+    "Tideline School in Portland, Maine, is starting the ninth-grade year with a four-day hut-to-hut trek in the White Mountains of New Hampshire: 20.9 miles on the Appalachian Trail and its approach trails from Franconia Notch to Crawford Notch, with three nights in the Appalachian Mountain Club's huts. ETI360 brought together the school's plan, the huts' published information, and the national forest's rules, measured each day's distance, climb, and daylight from the route itself, checked the plan against the wilderness boundary and the roads, and found the emergency department for each place, with the drive time from every trailhead. Each document below is written for the person who uses it, and each opens in full.",
   summary:
-    "A four-day 9th grade hut-to-hut trek on the Appalachian Trail: the documents for the office, the trip leader and trail adults, families, teachers, students, and next year's planning.",
+    "A four-day ninth-grade hut-to-hut trek on the Appalachian Trail: the documents for the office, the trip leader and trail adults, families, teachers, students, and next year's planning.",
   facts: [
     { label: "Trip", value: "White Mountains Hut-to-Hut Trek, Tuesday, September 7 to Friday, September 10, 2027" },
     {
@@ -96,22 +96,22 @@ const whiteMountains: Trip = {
     {
       slug: "school-trip-record",
       title: "School Trip Record",
-      reader: "School office",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
-        "The office copy: the trip in one place, the people who run it, the huts, the coach and the permits, the emergency care, the cost, and what research changed in the plan and why.",
+        "The office copy: the trip in one place, the people who run it, the huts, the coach and the permits, the emergency care, the cost, and what the research found and how the plan changed.",
       cover: cover("school-trip-record", "School Trip Record"),
       editions: editions("school-trip-record"),
       insidePages: inside("school-trip-record", "School Trip Record", [
         [2, "The trip in one page: dates, program, group and ratio, the leader and the school contact at any hour, and the four days with their distance and climb."],
         [3, "Huts, transport and permits: the three hut nights with their beds and what each hut provides, the meal times and the season, what the booking asks of the Appalachian Mountain Club, and the coach."],
-        [7, "What research changed: two parties of twelve, a longer coach time, a Friday exit on a paved road at Crawford Notch, a fifth adult in the valley, and measured distances shorter than the published ones."],
+        [7, "What the research found and how the plan changed: two parties of twelve, a longer coach time, a Friday exit on a paved road at Crawford Notch, a fifth adult in the valley, and measured distances shorter than the published ones."],
       ]),
     },
     {
       slug: "trip-risk-working-file",
       title: "Trip Risk Working File",
-      reader: "The school, to review, complete, and approve",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Hazards, controls, and emergency actions organized one section per activity group, from the coach and the hut nights to the open ridge and rescue in the backcountry, with the live-assessment prompts for the trip leader. The school reviews it, completes it, amends it, and approves it.",
@@ -141,7 +141,7 @@ const whiteMountains: Trip = {
     {
       slug: "trip-leader-card",
       title: "Trip Leader Card",
-      reader: "Trip leader and trail adults",
+      reader: "Trip leader",
       decision: "Preparing the leader and trail adults",
       blurb:
         "Parties, contacts, and standards, the week in outline, a Route Intelligence page for each hiking day, the communication plan and the weather decision, and the emergency plan. Every trail adult carries a copy.",
@@ -156,7 +156,7 @@ const whiteMountains: Trip = {
     {
       slug: "chaperone-briefing",
       title: "Chaperone Briefing and Pocket Card",
-      reader: "Trail adults and the valley support adult",
+      reader: "Trail adults",
       decision: "Preparing the leader and trail adults",
       blurb:
         "For the adults who each take five students all week: their group and place in the party, the shape of a hut-to-hut day, what to do when something happens, the calls in order, and a pocket card to cut out and carry.",
@@ -216,7 +216,7 @@ const whiteMountains: Trip = {
     {
       slug: "post-trip-feedback-report",
       title: "Post-Trip Feedback Report",
-      reader: "The school, after the trip",
+      reader: "After the trip",
       decision: "Improving next year's trip",
       blurb:
         "Four questions asked of students, parents, the trip leaders, and the hut crews after the trek: what each group said, where students' and parents' answers part, and the moments that did not go to plan, each with the day it belongs to.",
@@ -224,8 +224,8 @@ const whiteMountains: Trip = {
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
         [2, "The four questions, asked once two weeks after the group returned, in each group's own words, with who was asked and who answered."],
-        [4, "What they answered, as labeled distributions: students felt looked after, parents felt less well informed, and the gap sits on Wednesday evening."],
-        [5, "The moments people raised, each with its day and who raised it, and two things that went well: the ridge mornings and the field study at Zealand Falls."],
+        [4, "What the report looks like, with example responses because the trip has not yet run: labeled distributions for each question, students beside parents."],
+        [5, "The moments raised in the example responses, each with its day and who raised it, and two things that went well: the ridge mornings and the field study at Zealand Falls."],
       ]),
     },
   ],

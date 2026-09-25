@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CtaCard, MiniCta } from "@/components/CtaCard";
+import { CtaCard } from "@/components/CtaCard";
 import { relatedTier2, reportList, solutionHeroes, tier3Solutions } from "@/content/solutions";
 import styles from "./evidence.module.css";
 
@@ -54,7 +54,6 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
           <h1>{data.question}</h1>
           <p className={styles.heroLine}>{data.heroLine}</p>
         </div>
-        <MiniCta />
       </div>
 
       <div className={styles.editorial}>
@@ -71,7 +70,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
           <p className={styles.spreadTitle}>{data.spreadTitle}</p>
           <div className={styles.evGrid}>
             <figure className={styles.plate}>
-              <div className={data.plates.length > 1 ? styles.pagesTwo : styles.pagesOne}>
+              <div className={data.plates.length === 3 ? styles.pagesThree : data.plates.length > 1 ? styles.pagesTwo : styles.pagesOne}>
                 {data.plates.map((p) => (
                   <div key={p.src} className={styles.thumb}>
                     <a href={data.pdfHref ?? p.src} target="_blank" rel="noreferrer">
@@ -132,7 +131,7 @@ export function SolutionEvidence({ data }: { data: SolutionEvidenceData }) {
               <p className={styles.tierEyebrow}>Tier One &middot; Every four years</p>
               <p className={styles.tierName}>Organizational Readiness</p>
               <div className={styles.tierLinks}>
-                <a href="/framework#tier1">School-Wide Trip Program Capability Review</a>
+                <a href="/framework#tier1">Travel Program Review</a>
               </div>
             </div>
             <div className={`${styles.tierCard} ${styles.tier2}`}>

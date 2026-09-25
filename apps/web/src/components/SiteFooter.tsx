@@ -1,8 +1,8 @@
 import Link from 'next/link'
+import {BRAND_LINE} from '@/content/voice'
 
 const exploreLinks = [
   {href: '/framework', label: "ETI360's 3-Tier Risk Framework"},
-  {href: '/solutions', label: 'Solutions'},
   {href: '/trips', label: 'Trips'},
   {href: '/for-schools', label: 'For Schools'},
   {href: '/for-providers', label: 'For Providers'},
@@ -12,7 +12,6 @@ const firmLinks = [
   {href: '/about', label: 'About'},
   {href: '/contact', label: 'Contact'},
   {href: '/privacy', label: 'Privacy'},
-  {href: '/login', label: 'Client Login'},
 ]
 
 // Cookie settings only exists while Google Analytics is configured: without a
@@ -34,10 +33,7 @@ export function SiteFooter() {
                 <span className="three-sixty">360</span>
               </Link>
               <p className="site-footer-name ui">Educational Travel Insights 360</p>
-              <p className="site-footer-desc">
-                The documents and working systems that support school travel
-                decisions.
-              </p>
+              <p className="site-footer-desc">{BRAND_LINE}</p>
             </div>
             <div className="site-footer-cols">
               <div className="site-footer-col">

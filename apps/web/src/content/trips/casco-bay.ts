@@ -29,9 +29,9 @@ const cascoBay: Trip = {
   group: "20 tenth-grade students and four chaperones in two pods, each with two of the outfitter's guides",
   paperDefault: "letter",
   lede:
-    "Tideline School in Portland, Maine runs a five-day sea kayaking journey on Casco Bay for its 10th grade summer program: 23.8 miles in two-person kayaks from East End Beach in Portland to Little Chebeague Island and Jewell Island and back, with four nights camping on the two state-owned islands. ETI360 brought together the school's plan, the islands' published rules, and NOAA's tide and current predictions for these dates, measured each day's distance and time on the water from the route itself, timed every crossing to a window near slack water or on weak current, and found the emergency department for each place, with the travel time by water and by road. Each document below is written for the person who uses it, and each opens in full.",
+    "Tideline School in Portland, Maine, runs a five-day sea kayaking journey on Casco Bay for its tenth-grade summer program: 23.8 miles in two-person kayaks from East End Beach in Portland to Little Chebeague Island and Jewell Island and back, with four nights camping on the two state-owned islands. ETI360 brought together the school's plan, the islands' published rules, and NOAA's tide and current predictions for these dates, measured each day's distance and time on the water from the route itself, timed every crossing to a window near slack water or on weak current, and found the emergency department for each place, with the travel time by water and by road. Each document below is written for the person who uses it, and each opens in full.",
   summary:
-    "A five-day 10th grade sea kayaking journey on Casco Bay: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
+    "A five-day tenth-grade sea kayaking journey on Casco Bay: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
     { label: "Trip", value: "Casco Bay Sea Kayaking Journey, Monday, August 16 to Friday, August 20, 2027" },
     {
@@ -100,22 +100,22 @@ const cascoBay: Trip = {
     {
       slug: "school-trip-record",
       title: "School Trip Record",
-      reader: "School office",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
-        "The office copy: the trip in one place, the people who run it, the outfitter and the guides, the islands and their rules, emergency care, the cost, and what research changed in the plan and why.",
+        "The office copy: the trip in one place, the people who run it, the outfitter and the guides, the islands and their rules, emergency care, the cost, and what the research found and how the plan changed.",
       cover: cover("school-trip-record", "School Trip Record"),
       editions: editions("school-trip-record"),
       insidePages: inside("school-trip-record", "School Trip Record", [
         [2, "The trip in one page: dates, program, group, the trip leader and the school contact at any hour, and the five days with their distance and where the group sleeps."],
         [4, "Camping on state-owned islands: the sites on Little Chebeague and Jewell, and each island rule beside what the plan does about it, from first-come sites to no campfires."],
-        [7, "What research changed: two islands in place of one, two camps of fourteen, no campfires, a route clear of the main ship channel, and a long Friday kept on purpose."],
+        [7, "What the research found and how the plan changed: two islands in place of one, two camps of fourteen, no campfires, a route clear of the main ship channel, and a long Friday kept on purpose."],
       ]),
     },
     {
       slug: "trip-risk-working-file",
       title: "Trip Risk Working File",
-      reader: "The school, to review, complete, and approve",
+      reader: "School",
       decision: "Approving the trip",
       blurb:
         "Hazards, controls, and emergency actions organized one section per activity group, from the coach and the beach to the crossings, the island camps, the shore study, and weather holds, with the live-assessment prompts for the trip leader and the guides. The school reviews it, completes it, amends it, and approves it.",
@@ -145,7 +145,7 @@ const cascoBay: Trip = {
     {
       slug: "trip-leader-card",
       title: "Trip Leader Card",
-      reader: "Trip leader and chaperones",
+      reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
         "Pods, contacts, and standards on the water, the week in outline, a Route Intelligence page for each paddling day with its crossings and their windows, the weather holds and the radio plan, and the emergency plan.",
@@ -175,7 +175,7 @@ const cascoBay: Trip = {
     {
       slug: "daylight-tide-and-exposure-report",
       title: "Daylight, Tide and Exposure Report",
-      reader: "Trip leader and guides",
+      reader: "Trip leader",
       decision: "Timing each paddling day",
       blurb:
         "How much light each paddling day has, what the tide and current do on each crossing, and how long the group is exposed on open water, from NOAA's predictions for these dates. On this trip fog, wind, and the current windows, not the light, set the limits.",
@@ -220,7 +220,7 @@ const cascoBay: Trip = {
     {
       slug: "post-trip-feedback-report",
       title: "Post-Trip Feedback Report",
-      reader: "The school, after the trip",
+      reader: "After the trip",
       decision: "Improving next year's trip",
       blurb:
         "Four questions asked of students, parents, the chaperones, and the outfitter two weeks after the trip, how the answers are read, and the parts of this plan most likely to come up, named in advance.",

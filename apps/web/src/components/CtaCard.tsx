@@ -1,22 +1,16 @@
 import Link from "next/link";
 import styles from "./ctacard.module.css";
 
-export function CtaCard({ title, copy, image }: { title: string; copy: string; image?: string }) {
+/* The contact band. `image` is accepted for existing callers and ignored:
+   the band is flat navy (Website v1 review, 2026-09-25). */
+export function CtaCard({ title, copy }: { title: string; copy?: string; image?: string }) {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.card}>
-          <div
-            className={styles.imageZone}
-            style={{ "--cta-image": `url('${image ?? "/marketing/cta/canva-pisac.jpg"}')` } as React.CSSProperties}
-          />
-          <div className={styles.logoDisc}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/marketing/cta/eti360-circle.png" alt="ETI360" />
-          </div>
           <div className={styles.copy}>
             <h2>{title}</h2>
-            <p>{copy}</p>
+            {copy ? <p>{copy}</p> : null}
             <Link className={styles.btn} href="/contact">
               Get in touch &rarr;
             </Link>
@@ -25,20 +19,5 @@ export function CtaCard({ title, copy, image }: { title: string; copy: string; i
         </div>
       </div>
     </section>
-  );
-}
-
-export function MiniCta() {
-  return (
-    <div className={styles.mini}>
-      <div className={styles.miniDisc}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/marketing/cta/eti360-circle.png" alt="ETI360" />
-      </div>
-      <div>
-        <b>Contact us.</b>
-        <Link href="/contact">Get in touch &rarr;</Link>
-      </div>
-    </div>
   );
 }

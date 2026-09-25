@@ -39,7 +39,7 @@ const data: SolutionEvidenceData = {
       note: "One Tokyo trip day: six stops, each paired with a named hospital and access minutes.",
     },
   ],
-  disclosure: "Sample artifacts for Harborview International School, our sample school (not a real school) — no real school's documents appear. Facility details are drawn from publicly available information.",
+  disclosure: "Sample documents for Harborview. Harborview International School is a fictional school; its location is shown for illustrative purposes. Facility details are drawn from publicly available information.",
   claims: [
     {
       lead: "Named, then verified",

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { CLOSING_SENTENCE } from "@/content/voice";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<{ kind: "idle" | "ok" | "error"; msg?: string }>({
@@ -45,11 +46,8 @@ export default function ContactPage() {
       >
         <div className="hero-inner">
           <p className="label label-light ui">Contact</p>
-          <h1>Arrange a briefing.</h1>
-          <p className="subhead">
-            Briefings are conversations, not sales calls. We respond within two business days
-            to schedule a time.
-          </p>
+          <h1>Contact us.</h1>
+          <p className="subhead">{CLOSING_SENTENCE}</p>
         </div>
       </section>
 

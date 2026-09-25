@@ -44,6 +44,9 @@
   text-transform: uppercase;
   color: var(--gold-dark);
   margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .title {
   font-family: 'Source Serif 4', Georgia, serif;
@@ -74,6 +77,26 @@
   color: var(--ink-mid);
   margin: 0;
   max-width: none;
+}
+
+/* Fills the last row of the grid; text only. */
+.allTile {
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  background: var(--navy);
+  border: 1px solid var(--navy);
+  min-height: 180px;
+}
+.allTile:hover,
+.allTile:focus-visible {
+  text-decoration: none;
+  background: var(--navy-deep);
+}
+.allTileText {
+  font-size: var(--font-base);
+  font-weight: 600;
+  color: var(--gold);
 }
 
 @media (max-width: 960px) {
