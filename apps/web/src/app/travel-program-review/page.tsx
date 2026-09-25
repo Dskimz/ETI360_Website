@@ -16,6 +16,11 @@ import styles from "./page.module.css";
    Harborview PDF (published by publish_baseline_report.py in the rebuild
    repo, never hand-copied); no provider sample exists, so none is shown. */
 
+/* Hidden until the Travel Program Review edition of the sample exists (2026-09-25
+   review: the current PDF is the older Organizational Baseline Evaluation, marked
+   Confidential, with retired HIA codes, no fictional-school notice and no provider
+   section). Re-render through publish_baseline_report.py, then set this to true. */
+const SHOW_SAMPLE = false;
 const SAMPLE_PDF = "/docs/organizational-baseline-evaluation-v4.pdf";
 const SAMPLE_PAGE = {
   src: "/email/spread-school-baseline-v4.png",
@@ -144,6 +149,7 @@ export default function TravelProgramReviewPage() {
           </div>
         </div>
 
+        {SHOW_SAMPLE && (
         <div className={`container measure ${styles.block}`}>
           <h2 className="section-heading rule-gold" id="sample">
             The sample review
@@ -195,6 +201,7 @@ export default function TravelProgramReviewPage() {
             the evidence behind each finding.
           </p>
         </div>
+        )}
 
         <div className={`container measure ${styles.block}`}>
           <h2 className="section-heading rule-gold" id="trip-by-trip">

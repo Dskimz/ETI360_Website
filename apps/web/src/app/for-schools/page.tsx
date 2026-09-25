@@ -138,13 +138,9 @@ export default function ForSchoolsPage() {
             <strong>Who does the work.</strong> {FOUNDERS_LINE} {DAN_TRACK_RECORD}
           </p>
           {
-            // PENDING Dan N6: price display
+            // PENDING Dan N6: price display. The per-day pricing paragraph came off on
+            // 2026-09-25 because the pricing shape is undecided (per traveler or per day).
           }
-          <p>
-            <strong>Pricing.</strong> Per trip, in US dollars: the number of trip days times a per-day
-            rate covers the trip&rsquo;s documents. A one-day trip is a flat rate. Nothing is free, and
-            there is no first-trip fee.
-          </p>
           <p>
             <strong>Where we are.</strong> ETI360 PTE. LTD. is a Singapore company with a US office at{" "}
             {OFFICE_ADDRESS}. We respond within two business days.
