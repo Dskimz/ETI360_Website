@@ -5,7 +5,6 @@ const exploreLinks = [
   {href: '/framework', label: "ETI360's 3-Tier Risk Framework"},
   {href: '/trips', label: 'Trips'},
   {href: '/for-schools', label: 'For Schools'},
-  {href: '/for-providers', label: 'For Providers'},
 ]
 
 const firmLinks = [

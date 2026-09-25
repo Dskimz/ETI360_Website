@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Providers page taken down for now (Dan, 2026-09-25: "Focus on
+        // schools."). The page source is parked, unrouted, in
+        // src/app/_for-providers-parked/. Temporary redirect so it can return.
+        source: "/for-providers",
+        destination: "/for-schools",
+        permanent: false,
+      },
+      {
         // One page for every school (Dan, 2026-09-25: one marketing approach
         // for international schools and US independent schools). The /us
         // content moved to /for-schools. Exact path only: the images under

@@ -23,7 +23,6 @@ const ROUTES: Array<{ path: string; priority: number; changeFrequency: "weekly" 
   { path: "/for-schools/incident-reporting", priority: 0.7, changeFrequency: "monthly" },
   { path: "/trips", priority: 0.8, changeFrequency: "monthly" },
   // Each live trip page (src/content/trips/) is appended below.
-  { path: "/for-providers", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.5, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.2, changeFrequency: "monthly" },

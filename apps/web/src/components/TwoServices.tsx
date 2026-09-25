@@ -3,7 +3,7 @@ import { SERVICES } from "@/content/services";
 import styles from "./twoservices.module.css";
 
 /* The two services as the main doors (Dan, 2026-09-25). Used on the home
-   page and For Schools. For trip providers is linked from the footer. */
+   page and For Schools. */
 
 export function TwoServices() {
   return (

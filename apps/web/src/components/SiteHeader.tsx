@@ -9,7 +9,6 @@ type NavItem = {href: string; label: string}
 const navItems: NavItem[] = [
   {href: '/framework', label: 'Framework'},
   {href: '/for-schools', label: 'For Schools'},
-  {href: '/for-providers', label: 'For Providers'},
   {href: '/trips', label: 'Trips'},
   {href: '/about', label: 'About'},
   {href: '/contact', label: 'Contact'},

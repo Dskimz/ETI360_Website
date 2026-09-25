@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cardEyebrow, trips as allTrips, type Trip } from "@/content/trips";
 import styles from "./tripstrip.module.css";
 
-/* The worked trips as a strip of cards (home, For Schools, For Providers).
+/* The worked trips as a strip of cards (home, For Schools).
    Each card names its fictional school; the disclosure for every school shown
    sits under the strip, once per school, verbatim from the trip file. */
 
