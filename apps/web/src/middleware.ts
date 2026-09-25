@@ -68,6 +68,9 @@ const ARM_BY_SLUG: Record<string, string> = {
   es: "ES",
   ad: "AD",
   docs: "DOCS",
+  // v55 (2026-09-28 cohort): utm_content=review, and trip-<slug> (armFrom splits on "-").
+  review: "REVIEW",
+  trip: "TRIP",
 };
 
 // Mail security scanners and link previewers follow every link in a cold email
