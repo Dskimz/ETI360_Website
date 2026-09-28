@@ -10,7 +10,7 @@ import {
 import styles from "@/app/trips/trips.module.css";
 
 /* The document card: thumbnail, reader, title, blurb, and both paper editions
-   ("US Letter" and "A4"; a missing edition reads "… edition in
+   (the school's own paper first; a missing edition reads "… edition in
    preparation"). Works for any version of any product, so a document looks
    and is named the same everywhere. Every link opens through
    /open/{version}/{doc}. Wrap in an element with styles.wide for the type
@@ -21,7 +21,9 @@ import styles from "@/app/trips/trips.module.css";
    the default edition at that page. No JavaScript. */
 
 export function Editions({ version, doc }: { version: Version; doc: VersionDocument }) {
-  const sizes: Paper[] = ["letter", "a4"];
+  // The school's own paper first: US Letter for a US school, A4 for an
+  // international school (spec §5.2).
+  const sizes: Paper[] = version.paperDefault === "a4" ? ["a4", "letter"] : ["letter", "a4"];
   return (
     <p className={`${styles.editions} ui`}>
       {sizes.map((size) =>

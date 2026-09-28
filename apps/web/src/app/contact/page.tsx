@@ -1,13 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CLOSING_SENTENCE } from "@/content/voice";
+
+/* The product a visitor came from rides in a hidden field (spec §4.7, S14).
+   A product page's contact band links /contact?product={slug}; the page reads
+   the slug from window.location.search once it has loaded (no useSearchParams,
+   so no Suspense boundary). The shape check here only keeps junk out of the
+   field: the API keeps the value only if it is one of the four product slugs
+   (PRODUCT_SLUGS in src/content/products.ts, which stays off the client so the
+   version registry is never sent to the browser). A slug, never personal data. */
+const SLUG_SHAPE = /^[a-z][a-z-]{0,63}$/;
 
 export default function ContactPage() {
   const [status, setStatus] = useState<{ kind: "idle" | "ok" | "error"; msg?: string }>({
     kind: "idle",
   });
+  const productRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const product = new URLSearchParams(window.location.search).get("product") ?? "";
+    if (productRef.current && SLUG_SHAPE.test(product)) productRef.current.value = product;
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,7 +72,9 @@ export default function ContactPage() {
             <label htmlFor="name">Name</label>
             <input type="text" id="name" name="name" required autoComplete="name" />
 
-            <label htmlFor="organization">Organization</label>
+            {/* The label reads "School" (spec S14); the field name stays
+                `organization`, so the API contract holds. */}
+            <label htmlFor="organization">School</label>
             <input type="text" id="organization" name="organization" required autoComplete="organization" />
 
             <label htmlFor="role">Role</label>
@@ -71,6 +88,8 @@ export default function ContactPage() {
 
             <label htmlFor="discuss">What you&apos;d like to discuss</label>
             <textarea id="discuss" name="discuss" required />
+
+            <input type="hidden" name="product" ref={productRef} />
 
             <button type="submit" className="cta-button">Send</button>
 

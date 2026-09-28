@@ -32,3 +32,8 @@ screenshots
 # (sources recorded in apps/web/src/content/trips/<slug>.ts)
 apps/web/public/trips/*/letter/
 apps/web/public/trips/*/a4/
+# single-document PDFs (Review sample, field-trip packs, conference guide):
+# not committed either; production serves every document from S3 through
+# /open (four-product site §6). publish_baseline_report.py, sync:trip-pdfs
+# and the Wexcombe builder's --web-dir write them here for local opens.
+apps/web/public/docs/*.pdf

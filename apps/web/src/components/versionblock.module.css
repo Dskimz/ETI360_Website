@@ -1,10 +1,15 @@
 /* A single-document version shown whole (VersionBlock). Tokens only.
-   The editions line and captions reuse the document card's classes from
-   trips.module.css; wrap the block in an element with that file's .wide. */
+   The editions line reuses the document card's classes from
+   trips.module.css.
+
+   Safe inside or outside .article-body: every text rule carries .block, so
+   it outranks the article body's element rules (.article-body p and h3,
+   0,1,1), and the block drops the site-wide section padding (section
+   { padding: 96px 0 }) below it. */
 
 .block {
   margin-top: 48px;
-  padding-top: 28px;
+  padding: 28px 0 0;
   border-top: 1px solid var(--hairline);
   scroll-margin-top: 96px;
 }
@@ -12,7 +17,7 @@
   max-width: var(--measure);
   margin-bottom: 24px;
 }
-.eyebrow {
+.block .eyebrow {
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -20,11 +25,11 @@
   color: var(--gold-dark);
   margin: 0 0 6px;
 }
-.title {
+.block .title {
   font-size: var(--font-2xl);
   margin: 0 0 10px;
 }
-.summary {
+.block .summary {
   font-size: var(--font-base);
   line-height: 1.65;
   color: var(--ink-mid);
@@ -59,7 +64,7 @@ a.cover:hover img,
 a.cover:focus-visible img {
   box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18);
 }
-.reader {
+.block .reader {
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -67,7 +72,7 @@ a.cover:focus-visible img {
   color: var(--gold-dark);
   margin: 0 0 4px;
 }
-.docTitle {
+.block .docTitle {
   font-family: 'Source Serif 4', Georgia, serif;
   font-size: var(--font-lg);
   font-weight: 600;
@@ -98,14 +103,14 @@ a.cover:focus-visible img {
 .pages figure a:focus-visible img {
   box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18);
 }
-.pages figcaption {
+.block .pages figcaption {
   margin-top: 10px;
   font-size: var(--font-sm);
   line-height: 1.55;
   color: var(--ink);
 }
 
-.notice {
+.block .notice {
   margin: 24px 0 0;
   max-width: var(--measure);
   border-left: var(--rule) solid var(--gold);

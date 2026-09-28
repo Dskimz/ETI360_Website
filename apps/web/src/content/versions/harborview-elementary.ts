@@ -16,7 +16,8 @@ import type { Version } from "@/content/trips/types";
    the rebuild repo sits beside V3 (/Users/danskimin/00 - eti360-rebuild).
 
    Images: import-trip.py harborview-elementary --root versions, from the A4
-   clean-web edition (2026-09-25), pages cover, 5, 6 and 8. */
+   clean-web edition (2026-09-25 16:18; re-cut 2026-09-27, byte-identical),
+   pages cover, 5, 6 and 8. */
 
 const REBUILD_OUT = "../00 - eti360-rebuild/dev/field-trip-register/out";
 const DOC = "field-trip-risk-assessment-pack";
@@ -62,7 +63,7 @@ const harborviewElementary: Version = {
     {
       title: "Getting a child to care",
       // [draft] updated for the 2026-09-25 edition, which lists three departments per trip
-      note: "Singapore's two children's emergency departments and the general department with the shortest drive from each stop, with the drive times and addresses; the school confirms which one the group uses. For the Pulau Ubin trip, the route is the island ferry, then the road.",
+      note: "Singapore's two children's emergency departments and the general department with the shortest drive from each stop, with the drive times and addresses; the school confirms which one the group uses. For the Pulau Ubin trip, the drives start at the ferry terminal on the main island.",
     },
   ],
   documents: [
@@ -72,13 +73,13 @@ const harborviewElementary: Version = {
       reader: "Elementary leaders",
       decision: "Planning the year",
       blurb:
-        "The elementary school's single list of the year's one-day trips: the year at a glance by grade, a calendar for each month, and one page per trip with its learning purpose, schedule, notes for families, venues, the route from school, and the emergency department with the drive time. A trip that moves keeps its page.",
+        "The elementary school's single list of the year's one-day trips: the year at a glance by grade, a calendar for each month, and one page per trip with its learning purpose, schedule, notes for families, venues, the route from school, and the emergency departments with their drive times. A trip that moves keeps its page.",
       cover: cover(DOC, TITLE),
       editions: editions(),
       insidePages: inside(DOC, TITLE, [
         [5, "The year at a glance: each grade's trips by date and unit of inquiry, with the class size, the supervision ratio, and the two semesters."],
         // [draft] updated for the 2026-09-25 edition
-        [6, "What every trip carries: the itinerary, the parent letter, the risk-assessment working documents for the school to complete and approve, and the weather note from the 15-year record, then how the emergency departments on each trip page are chosen."],
+        [6, "What every trip carries: the itinerary, the parent letter, the risk-assessment working documents for the school to complete and approve, and the weather note from the 15-year record, then how the emergency departments on each trip page are listed."],
         // [draft] updated for the 2026-09-25 edition
         [8, "A Grade 1 trip page: Mount Faber Park and Henderson Waves, with the learning purpose, the schedule, notes for families, the route from school, and the emergency departments with the drive time from each stop."],
       ]),

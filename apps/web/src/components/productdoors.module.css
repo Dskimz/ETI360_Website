@@ -90,6 +90,11 @@
 @media (max-width: 1100px) {
   .door { grid-template-columns: minmax(0, 1fr) 120px; padding: 28px; }
 }
+/* Tablets: one door per row, so the text column keeps a readable width
+   (two across left it about 100 px at 768 px). */
+@media (max-width: 960px) {
+  .doors { grid-template-columns: 1fr; }
+}
 @media (max-width: 640px) {
   .doors { grid-template-columns: 1fr; gap: 20px; }
   .door { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; padding: 22px 18px; }

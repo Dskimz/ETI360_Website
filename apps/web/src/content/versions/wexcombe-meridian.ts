@@ -1,33 +1,37 @@
-import { docPaths } from "@/content/trips/helpers";
+import { A4_COVER, A4_PAGE, docPaths } from "@/content/trips/helpers";
 import type { Version } from "@/content/trips/types";
 
 /* The Athletics and Activities Trips Guide 2026–27, Wexcombe International
    School edition (Meridian Schools Conference), the Conference Travel
    Package's version. The document keeps the name its PDF carries.
 
-   PDF: public/docs/athletics-activities-trips-guide-wexcombe.pdf (A4, 49
-   pages, 9.6 MB), a compressed web copy of the rebuild repo's
-   dev/league-guide/wexcombe/out/Meridian-Visits-Guide-2026-27-Wexcombe.pdf
-   (17.7 MB). No pdfSource yet: record which file is canonical when the
-   fictional-school notice is added to the cover and back page (the gate in
-   the four-product site spec, §5.3), then point the sync at it. US Letter is
-   not built.
+   PDFs: public/docs/athletics-activities-trips-guide-wexcombe-{a4,letter}.pdf,
+   49 pages each, the same page on the same page number on both papers. They
+   are the web copies (images re-encoded, about 10 MB each) that the rebuild
+   repo's dev/league-guide/wexcombe/build_visits_guide.py writes with
+   `--web-dir <site>/apps/web/public/docs`, never edited by hand. The canonical
+   print files stay in that builder's out/ folder (README there). So there is
+   no pdfSource and sync:trip-pdfs skips this version, as for the Review
+   sample. Built 2026-09-25 with the fictional-school notice on both covers,
+   the conference line, and the emergency departments listed by drive time
+   from the host school (V3 ADR-025). The older single-paper copy,
+   athletics-activities-trips-guide-wexcombe.pdf (Sep 14, no notice), is
+   superseded.
 
    Images: import-trip.py wexcombe-meridian --root versions, from the A4
-   edition, pages cover, 4, 8 and 9.
+   edition (the default: Wexcombe is an international school), 2026-09-27,
+   pages cover, 4, 8 and 9.
 
-   Copy marked [draft] goes through the tone review before Dan's preview. */
+   Copy marked [draft] passed the tone review on 2026-09-27 (Stage D) and
+   awaits Dan's preview. */
 
 const DOC = "athletics-activities-trips-guide";
 const TITLE = "Athletics and Activities Trips Guide";
 
-const A4_COVER = { width: 935, height: 1322 };
-const A4_PAGE = { width: 1105, height: 1563 };
-
 const { cover, inside, editions } = docPaths({
   slug: "wexcombe-meridian",
-  letter: null,
-  a4: "athletics-activities-trips-guide-wexcombe.pdf",
+  letter: "athletics-activities-trips-guide-wexcombe-letter.pdf",
+  a4: "athletics-activities-trips-guide-wexcombe-a4.pdf",
   coverSize: A4_COVER,
   pageSize: A4_PAGE,
 });
@@ -43,8 +47,11 @@ const wexcombeMeridian: Version = {
   summary:
     "One guide for the year for the staff who travel with the school's teams and delegations: the conference calendar, then a chapter for every host city.",
   paperDefault: "a4",
+  // The guide's own two cover lines, verbatim. Tone review 2026-09-27: the
+  // Sep 14 third sentence (the real places, and the directions vendor) came
+  // off, so the notice matches the other schools' and the PDF's.
   disclosure:
-    "Shown for the Wexcombe International School edition, 2026–27. Wexcombe International School is a fictional school; its location is shown for illustrative purposes. The other Meridian Schools Conference members are fictional too: their names, marks, and colors were created for this showcase, and each sits at a public landmark in its city. The hotels, hospitals, pharmacies, stations, and eating places are real, and every distance comes from Mapbox Directions.",
+    "Wexcombe International School is a fictional school; its location is shown for illustrative purposes. The Meridian Schools Conference, its other member schools and the Geneva host school are fictional too.",
   documents: [
     {
       slug: DOC,
@@ -60,7 +67,7 @@ const wexcombeMeridian: Version = {
       insidePages: inside(DOC, TITLE, [
         [4, "The year: every conference weekend, Wednesday out and Sunday home, with each event, its host school, and the city."],
         [8, "The hotels in Paris: three within a walk of the host school, each with its walk, its drive to the emergency department, and its drive from the airport and the station."],
-        [9, "The medical page for Paris: the adult and the children's emergency departments with measured times from the host and the first hotel, and what to expect at an emergency department in France."],
+        [9, "The medical page for Paris: the adult and the children's emergency departments and a private hospital, listed by drive time from the host school, and what to expect at an emergency department in France. The school confirms which one the group uses."],
       ]),
     },
   ],

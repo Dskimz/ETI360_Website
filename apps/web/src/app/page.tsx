@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CtaCard } from "@/components/CtaCard";
-import { TripStrip } from "@/components/TripStrip";
-import { TwoServices } from "@/components/TwoServices";
-import { DECISIONS, PAPER_NOTE, TIER_NAMES } from "@/content/services";
+import { ProductDoors } from "@/components/ProductDoors";
+import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
+import { liveProducts, type Product } from "@/content/products";
+import type { ProductSlug } from "@/content/trips/types";
 import {
   BRAND_EYEBROW,
   BRAND_LINE,
   CLOSING_SENTENCE,
-  POSITIONING_STATEMENT,
   WHAT_WE_DO_LINE,
+  WHO_DECIDES,
 } from "@/content/voice";
 import styles from "./home.module.css";
 
-/* Home (Website v1, 2026-09-25). The order: What we do, then the two
-   services as the main doors (Dan, 2026-09-25: the Travel Program Review,
-   and trip by trip; one approach for every school), the worked trips,
-   decision by decision, the three tiers and what each includes, then Dan's
-   closing sentence, the only call to action. */
+/* Home (four-product site, spec §4.1 and S19; Dan, 2026-09-25: "each page
+   should be one of the 4 products"). The page only routes: the two brand
+   lines above the fold, one door per live product, who does the work and who
+   decides, then Dan's closing sentence, the only call to action. Its only
+   links in the body are the product pages and the contact band. */
 
 // The h1 is BRAND_LINE split for its line break: "Risk intelligence" /
 // "for school trips." Never retyped (voice.ts).
@@ -25,7 +25,38 @@ const BREAK_AT = BRAND_LINE.indexOf(" for ");
 const BRAND_HEAD = BRAND_LINE.slice(0, BREAK_AT);
 const BRAND_TAIL = BRAND_LINE.slice(BREAK_AT + 1);
 
-const DESCRIPTION = `${BRAND_LINE} Worked trips from ETI360, each document tied to the decision it supports and open in full, in US Letter and A4.`;
+// Only live products get a door (S18), so the count and the heading are
+// built from the live list: with all four live, the heading reads "The whole
+// program, one trip, a year of day trips, or a conference year." [draft]
+const PHRASE: Record<ProductSlug, string> = {
+  "travel-program-review": "the whole program",
+  "trip-package": "one trip",
+  "field-trip-package": "a year of day trips",
+  "conference-travel-package": "a conference year",
+};
+const COUNT = ["", "One product", "Two products", "Three products", "Four products"];
+
+function listOf(items: string[]): string {
+  if (items.length <= 1) return items.join("");
+  if (items.length === 2) return `${items[0]} or ${items[1]}`;
+  return `${items.slice(0, -1).join(", ")}, or ${items[items.length - 1]}`;
+}
+
+function doorsHeading(products: Product[]): string {
+  const text = listOf(products.map((p) => PHRASE[p.slug]));
+  return `${text.charAt(0).toUpperCase()}${text.slice(1)}.`;
+}
+
+function productNames(products: Product[]): string {
+  const names = products.map((p) => `the ${p.name}`);
+  if (names.length <= 2) return names.join(" and ");
+  return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
+}
+
+const LIVE = liveProducts();
+
+// [draft] The second sentence of the description.
+const DESCRIPTION = `${BRAND_LINE} ${WHAT_WE_DO_LINE} ${COUNT[LIVE.length]} for schools: ${productNames(LIVE)}.`;
 
 export const metadata: Metadata = {
   title: `ETI360 — ${BRAND_EYEBROW}`,
@@ -38,27 +69,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-const TIERS: { n: 1 | 2 | 3; name: string; body: string; docs: string[] }[] = [
-  {
-    n: 1,
-    name: TIER_NAMES[1],
-    body: "The school's travel program as a whole: its policies and procedures, path by path, reviewed once every four years.",
-    docs: ["Travel Program Review"],
-  },
-  {
-    n: 2,
-    name: TIER_NAMES[2],
-    body: "The documents for one trip, from the approval to the day the group leaves.",
-    docs: ["School Trip Record", "Trip Risk Working File", "Family Trip Brief"],
-  },
-  {
-    n: 3,
-    name: TIER_NAMES[3],
-    body: "What the trip leader and chaperones carry while the group is away, and the report that closes the trip. The Duty Manager Dashboard is the school's own view while groups travel.",
-    docs: ["Trip Leader Card", "Chaperone Briefing", "Post-Trip Feedback Report"],
-  },
-];
 
 export default function HomePage() {
   return (
@@ -73,80 +83,31 @@ export default function HomePage() {
             <br />
             <em>{BRAND_TAIL}</em>
           </h1>
+          <p className={`hero-line ${styles.heroLine}`}>{WHAT_WE_DO_LINE}</p>
         </div>
       </section>
 
-      <section id="what-we-do" className="about-strip">
+      {LIVE.length > 0 ? (
+        <section id="products" className={styles.doorsBand}>
+          <div className="container">
+            <p className="label ui">{COUNT[LIVE.length]}</p>
+            <h2 className="section-heading rule-gold">{doorsHeading(LIVE)}</h2>
+            <ProductDoors products={LIVE} />
+          </div>
+        </section>
+      ) : null}
+
+      <section className={styles.band}>
         <div className="container measure">
-          <p className="label ui">What we do</p>
-          <h2 className="section-heading section-heading-lg rule-gold">{WHAT_WE_DO_LINE}</h2>
-          <p className="section-lead">{POSITIONING_STATEMENT}</p>
-        </div>
-      </section>
-
-      <section id="services" className={styles.band}>
-        <div className="container">
-          <p className="label ui">Two services</p>
-          <h2 className="section-heading rule-gold">The whole program, or one trip at a time.</h2>
-          <TwoServices />
-        </div>
-      </section>
-
-      <section id="trips" className="about-strip">
-        <div className="container">
-          <p className="label ui">Worked trips</p>
-          <h2 className="section-heading rule-gold">Every document open in full.</h2>
-          <p className={styles.lead}>
-            Each worked trip shows the documents prepared for it, as the school receives them. {PAPER_NOTE}
-          </p>
-          <TripStrip />
-        </div>
-      </section>
-
-      <section id="decisions" className={styles.band}>
-        <div className="container">
-          <p className="label ui">Decision by decision</p>
-          <h2 className="section-heading rule-gold">Each document is tied to the decision it supports.</h2>
-          <p className={styles.lead}>
-            A trip is a run of decisions the school makes, and each person involved needs something
-            different. Every document is written for the person who uses it and names the decision
-            behind it.
-          </p>
-          <ol className={styles.decisions}>
-            {DECISIONS.map((d) => (
-              <li key={d.title}>
-                <h3>{d.title}</h3>
-                <p>{d.note}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section id="tiers" className="about-strip">
-        <div className="container">
-          <p className="label ui">Three tiers</p>
-          <h2 className="section-heading rule-gold">What each tier includes.</h2>
-          <div className={styles.tiers}>
-            {TIERS.map((t) => (
-              <article key={t.n} className={`${styles.tier} ${styles[`tier${t.n}`]}`}>
-                <p className={`${styles.tierName} ui`}>{t.name}</p>
-                <p className={styles.tierBody}>{t.body}</p>
-                <ul className={`${styles.tierDocs} ui`}>
-                  {t.docs.map((d) => (
-                    <li key={d}>{d}</li>
-                  ))}
-                </ul>
-                <p className={`${styles.tierLinks} ui`}>
-                  <Link href={`/framework#tier${t.n}`}>See Tier {t.n} &rarr;</Link>
-                </p>
-              </article>
-            ))}
+          <WhoDoesTheWork />
+          <div className="boundary-callout" id="who-decides">
+            <h3>Who decides</h3>
+            <p>{WHO_DECIDES}</p>
           </div>
         </div>
       </section>
 
-      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} image={"/marketing/hero/home.jpg"} />
+      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} />
     </>
   );
 }

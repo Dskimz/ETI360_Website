@@ -1,9 +1,48 @@
-/* Trip library (/trips) and worked trip pages (/trips/{slug}). Tokens only. */
+/* Worked trip pages (/trips/{slug}), the Trip Package page's trip cards
+   (/trip-package), and the document card, trip card and version block
+   shared by every product page (TripDocCard, TripCard, VersionBlock). Tokens
+   only. */
 
 .wide {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 32px;
+}
+/* Anything a link lands on (/trips/{slug}#{doc}, #documents, #other-trips)
+   clears the sticky header. */
+.wide [id] {
+  scroll-margin-top: 96px;
+}
+
+/* ── Breadcrumb: the trip as one version of the Trip Package ── */
+.breadcrumb {
+  margin-bottom: 28px;
+}
+.wide .breadcrumb ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 0;
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-sm);
+  color: var(--ink-mid);
+}
+.wide .breadcrumb li {
+  margin: 0;
+}
+.wide .breadcrumb li + li::before {
+  content: "\203A";
+  padding: 0 10px;
+  color: var(--gold-dark);
+}
+.breadcrumb a {
+  font-weight: 600;
+  color: var(--gold-dark);
+}
+.breadcrumb a:hover {
+  color: var(--navy);
 }
 
 /* ── Intro: lede beside the trip facts ── */
@@ -88,6 +127,11 @@
 .card {
   display: grid;
   grid-template-columns: 150px 1fr;
+  /* Closed cards in a row share one height: the thumbnail and body row
+     takes the extra, so every card's editions line sits at the same depth
+     and "Look inside", in the implicit second row, directly under it. A
+     card without "Look inside" has no second row and no gap. */
+  grid-template-rows: 1fr;
   gap: 20px;
   padding: 20px;
   background: #fff;
@@ -155,27 +199,7 @@
   color: var(--ink-mid);
 }
 
-/* ── Inside the documents ── */
-.inside {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid var(--hairline);
-}
-.insideHead {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px 16px;
-}
-.wide .insideHead h3 {
-  margin: 0;
-  font-size: var(--font-xl);
-}
-.insideHead span {
-  font-size: var(--font-sm);
-  color: var(--ink-mid);
-}
+/* ── A document's captioned pages (InsidePages' default layout) ── */
 .pages {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -210,7 +234,18 @@
   margin-top: 1em;
 }
 
-/* ── Library ── */
+/* ── Other worked trips, under Who decides ── */
+.others {
+  margin-top: 72px;
+}
+.wide .others h2 {
+  margin-top: 0;
+}
+@media (max-width: 700px) {
+  .others { margin-top: 56px; }
+}
+
+/* ── Trip cards (the Trip Package page) ── */
 .library {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -270,56 +305,11 @@
   .cardThumb img { transition: none; }
 }
 
-/* ── Library filters (plain links, no JavaScript) ── */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 40px;
-  margin-bottom: 32px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--hairline);
-}
-.filterGroup {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px 18px;
-}
-.filterLabel {
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-}
-.filterLink {
-  font-size: var(--font-sm);
-  color: var(--ink-mid);
-  border-bottom: 1px solid transparent;
-}
-.filterLink:hover {
-  color: var(--navy);
-  text-decoration: none;
-  border-bottom-color: var(--hairline);
-}
-.filterActive,
-.filterActive:hover {
-  color: var(--navy);
-  font-weight: 600;
-  border-bottom-color: var(--gold);
-}
+/* The paper line on a trip card (PaperLine). */
 .wide .paperLine {
   font-size: var(--font-sm);
   color: var(--ink);
   margin-bottom: 12px;
-}
-.wide .empty {
-  color: var(--ink-mid);
-}
-.wide .credit {
-  margin-top: 16px;
-  font-size: var(--font-xs);
-  color: var(--ink-mid);
 }
 
 /* ── A section with one document: the card spans the row ── */
@@ -327,26 +317,6 @@
   grid-column: 1 / -1;
   grid-template-columns: 200px minmax(0, 60ch);
   gap: 28px;
-}
-.wide .coversHead {
-  margin: 36px 0 12px;
-  font-size: var(--font-xl);
-}
-.covers {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-width: var(--measure);
-}
-.covers li {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--hairline);
-  font-size: var(--font-base);
-  line-height: 1.6;
-  color: var(--ink);
-}
-.covers li strong {
-  color: var(--navy);
 }
 
 /* ── Phones: each document's pages scroll sideways, not down ── */
@@ -368,10 +338,6 @@
 @media (max-width: 640px) {
   .cardSolo { grid-template-columns: 96px 1fr; gap: 14px; }
 }
-
-/* Worked-trip documents shown on /framework and /for-providers */
-.workedDocs { padding-top: 32px; padding-bottom: 48px; }
-.wide .workedNote { margin-top: 16px; }
 
 /* Library cards: one image ratio for every card */
 .tripCardPhoto {
@@ -410,6 +376,13 @@
   grid-column: 1 / -1;
   border-top: 1px solid var(--hairline);
   padding-top: 12px;
+}
+/* Once a card's pages are open its row grows; the cards beside it keep
+   their content at the top, with the extra space below, instead of
+   spreading it down the taller row. */
+.cards:has(.lookInside[open]) > .card {
+  grid-template-rows: auto;
+  align-content: start;
 }
 .lookInside summary {
   cursor: pointer;

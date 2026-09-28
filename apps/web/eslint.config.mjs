@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Parked pages, kept readable but not compiled (four-product site §12):
+    // their components are deleted; restore them from git history.
+    "_parked/**",
+    "src/app/_for-providers-parked/**",
   ]),
 ]);
 

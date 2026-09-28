@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 };
 
 // Last substantive review of this notice. Update when what we collect changes.
-const UPDATED = "31 July 2026";
+// September 2026 (four-product site, spec §4.8): the form's "School" field and
+// product note, document opens, and document storage on AWS.
+const UPDATED = "September 27, 2026";
 
 export default function PrivacyPage() {
   return (
@@ -43,8 +45,9 @@ export default function PrivacyPage() {
           <h2>What we collect, and why</h2>
           <p>
             <strong>The briefing form.</strong> When you use the contact form we collect your
-            name, organization, role, email address, country, and what you would like to
-            discuss. We use these details only to answer your inquiry and to arrange a
+            name, school, role, email address, country, and what you would like to
+            discuss. If you reach the form from a product page, it also notes which
+            product. We use these details only to answer your inquiry and to arrange a
             briefing if you want one. The lawful basis is our legitimate interest in
             responding to someone who has asked us to get in touch.
           </p>
@@ -66,7 +69,9 @@ export default function PrivacyPage() {
             When we write to a school, the links in that email carry a tag naming the school
             and the topic, so we can tell which material was of interest. The tag records the
             school, never a person, and we do not use tracking pixels to detect whether an
-            email has been opened.
+            email has been opened. Opening a document from the site is recorded the same
+            way, as the document, the paper size and the approximate location, never a name,
+            an email address or an IP address.
           </p>
 
           <h2>How long we keep it</h2>
@@ -80,7 +85,8 @@ export default function PrivacyPage() {
           <p>
             This site is hosted by Vercel and email is delivered by Resend. Both process data
             on our behalf under their own terms, and both may process it outside your country
-            of residence. We use no other third-party service that receives what you submit.
+            of residence. Documents open from ETI360&rsquo;s storage on Amazon Web Services. We
+            use no other third-party service that receives what you submit.
           </p>
 
           <h2>Your rights</h2>

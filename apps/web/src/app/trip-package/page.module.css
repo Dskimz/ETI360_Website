@@ -1,0 +1,146 @@
+/* The Trip Package (/trip-package). Tokens only. The page sits in
+   trips.module.css's .wide, like the worked-trip pages, so the trip cards
+   keep their type scale and the two pages share one left edge. Selectors
+   that style lists and paragraphs carry :global(.article-body) or a second
+   class so they outrank the article body's defaults whatever the
+   stylesheet order. */
+
+/* Space above each h2 block. */
+.block { margin-top: 72px; }
+@media (max-width: 700px) { .block { margin-top: 56px; } }
+
+/* The first block opens the body: no extra space above its heading. */
+:global(.article-body) .top > h2:first-child { margin-top: 0; }
+
+/* Anchored elements (spec §8: /trip-package#{decision|document}) clear the
+   sticky header through trips.module.css's `.wide [id]` rule. */
+
+/* Text sections keep the reading measure, left-aligned under the grids. */
+.prose {
+  max-width: var(--measure);
+  font-size: var(--font-md);
+  line-height: 1.75;
+}
+
+/* A section's opening line: quieter than the article body's .lead. */
+:global(.article-body) p.lead {
+  max-width: 760px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+/* ── Decision by decision: numbered, three across, as the former home list ── */
+:global(.article-body) ol.decisions {
+  list-style: none;
+  counter-reset: decision;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px 32px;
+  margin: 36px 0 0;
+  padding: 0;
+}
+:global(.article-body) ol.decisions > li {
+  counter-increment: decision;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-top: 16px;
+  border-top: var(--rule) solid var(--gold);
+  min-width: 0;
+}
+:global(.article-body) ol.decisions > li::before {
+  content: counter(decision, decimal-leading-zero);
+  display: block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+}
+.decisions .decisionTitle {
+  font-size: var(--font-xl);
+  margin: 0 0 8px;
+}
+.decisions .note {
+  font-size: var(--font-base);
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+/* The documents under a decision: name, then who reads it. */
+:global(.article-body) .decisions ul.docs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+:global(.article-body) .decisions ul.docs > li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin: 0;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.docName {
+  display: inline-block;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--navy);
+}
+.docReader {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  white-space: nowrap;
+}
+/* Where a retired page's link lands, the line it names is marked. */
+.docName:target,
+.outdoor:target {
+  background: var(--parchment-2);
+  box-shadow: 0 0 0 6px var(--parchment-2);
+}
+.decisionTitle:target {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.decisions .noDoc {
+  margin: 0;
+  padding: 10px 0 10px 14px;
+  border-left: var(--rule) solid var(--hairline);
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+/* Outdoor trips, then the paper note: two lines under the grid. */
+:global(.article-body) p.outdoor {
+  max-width: var(--measure);
+  margin: 40px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+  font-size: var(--font-base);
+  line-height: 1.65;
+}
+:global(.article-body) p.paper {
+  max-width: var(--measure);
+  margin: 12px 0 0;
+  font-size: var(--font-sm);
+  color: var(--ink-mid);
+}
+
+@media (max-width: 960px) {
+  :global(.article-body) ol.decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  :global(.article-body) ol.decisions { grid-template-columns: 1fr; gap: 28px; }
+}

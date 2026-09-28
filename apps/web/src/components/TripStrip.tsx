@@ -3,9 +3,12 @@ import Link from "next/link";
 import { cardEyebrow, trips as allTrips, type Trip } from "@/content/trips";
 import styles from "./tripstrip.module.css";
 
-/* The worked trips as a strip of cards (home, For Schools).
-   Each card names its fictional school; the disclosure for every school shown
-   sits under the strip, once per school, verbatim from the trip file. */
+/* The worked trips as a strip of cards: "Other worked trips" on each
+   /trips/{slug} page, with the current trip left out (four-product site spec
+   §4.4). Each card names its fictional school; the disclosure for every
+   school shown sits under the strip, once per school, verbatim from the trip
+   file. When the last row has room, a navy tile ends it with a link to the
+   product page, /trip-package. */
 
 export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
   const disclosures = Array.from(new Map(trips.map((t) => [t.school, t.disclosure])).values());
@@ -33,8 +36,8 @@ export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
           </Link>
         ))}
         {trips.length % 4 !== 0 ? (
-          <Link href="/trips" className={styles.allTile}>
-            <span className={`${styles.allTileText} ui`}>All trips &rarr;</span>
+          <Link href="/trip-package" className={styles.allTile}>
+            <span className={`${styles.allTileText} ui`}>The Trip Package &rarr;</span>
           </Link>
         ) : null}
       </div>

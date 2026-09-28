@@ -1,5 +1,7 @@
 /* One voice across the site (Dan, 2026-09-24: "everything has the same vibe").
-   The home page, For Schools and every trip page use these lines unchanged. "School
+   The home page, the product pages and every trip page use these lines
+   unchanged. The company statement (2026-09-22) is not used on the site (four-product
+   site spec S5: it names providers, and the site is for schools only). "School
    travel preparation service" may appear only as a plain descriptor inside
    body copy, never as a tagline, eyebrow, top-bar tag or h1. */
 
@@ -16,10 +18,6 @@ export const WHAT_WE_DO_LINE = "Decision-ready evidence for every trip.";
 export const CLOSING_SENTENCE =
   "If your school is looking to strengthen its school-wide procedures, individual trip preparation, or the connection between travel and learning, send me a message and we'll find a time to talk.";
 
-/** Positioning statement (Dan, 2026-09-22), verbatim when used. */
-export const POSITIONING_STATEMENT =
-  "ETI360 provides risk intelligence for school trips. We help schools and educational travel providers strengthen their travel programs, prepare for individual trips, and support staff while groups are away. Our work brings together itineraries, provider documents, and school procedures to produce practical reports, risk assessment groundwork, and emergency action procedures. Led by experienced educators and travel consultants, we make trip information easier to review and use. Schools and providers retain responsibility for decisions and approvals.";
-
 /** The founders, always named together. */
 export const FOUNDERS_LINE = "ETI360 was founded by Dan Skimin and Seb Wong.";
 
@@ -32,6 +30,6 @@ export const DAN_TRACK_RECORD =
     engagement); follows DAN_TRACK_RECORD in WhoDoesTheWork. [draft] */
 export const SEB_LINE = "Seb Wong, Senior Consultant, is part of every engagement.";
 
-/** The boundary used on For Schools and the trip pages. */
+/** The boundary used on the home page, the product pages and the trip pages. */
 export const WHO_DECIDES =
   "The school, and any provider it works with, retain responsibility for decisions, supervision, live assessments, and final approval.";

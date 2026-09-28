@@ -9,9 +9,8 @@ import { versionsOf } from "@/content/versions";
    footer, the home page doors and the sitemap list only live products: a
    product is live once it has at least one version (spec S18).
 
-   Replaces SERVICES in services.ts once the home page is rebuilt; TIER_NAMES,
-   DECISIONS and PAPER_NOTE stay there. Door sentences marked [draft] go
-   through the tone review before Dan's preview. */
+   Replaced SERVICES in services.ts; TIER_NAMES, DECISIONS and PAPER_NOTE
+   stay there. */
 
 export type Tier = 1 | 2 | 3;
 
@@ -45,7 +44,7 @@ export const PRODUCTS: Product[] = [
     name: "Trip Package",
     h1: "The Trip Package",
     tiers: [2, 3],
-    // SERVICES[1].body in services.ts, verbatim; inlined so SERVICES can go.
+    // The former SERVICES[1].body, verbatim.
     door: "The documents for one trip, before, during, and after it: the file the school reviews and approves, what families read, what the trip leader and chaperones carry, and the report that closes the trip.",
     lead: { version: "washington-dc", doc: "trip-leader-card" },
   },

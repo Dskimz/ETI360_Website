@@ -15,7 +15,8 @@ import type { Version } from "@/content/trips/types";
    2, 5 and 18. The provider-section sample (week of Sep 28) joins this same
    version when it lands.
 
-   Copy marked [draft] goes through the tone review before Dan's preview. */
+   Copy marked [draft] passed the tone review on 2026-09-27 (Stage D) and
+   awaits Dan's preview. */
 
 const DOC = "travel-program-review";
 const TITLE = "Travel Program Review";

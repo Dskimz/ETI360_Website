@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { getProduct, PRODUCT_SLUGS } from "@/content/products";
+import type { ProductSlug } from "@/content/trips/types";
 
 /**
  * Contact-form submissions.
@@ -15,11 +17,28 @@ import { Resend } from "resend";
  *                            the box without domain verification. Replace
  *                            with e.g. "ETI360 <danskimin@eti360.com>" once
  *                            the eti360.com domain is verified in Resend.
+ *
+ * The form's "School" field keeps the name `organization` (spec §4.7). A
+ * product page's contact band sends `product`; it is kept only if it is one of
+ * the four product slugs, and then adds a "Product" line to the email.
  */
 
 const TO = "danskimin@eti360.com";
 const DEFAULT_FROM = "ETI360 Website <onboarding@resend.dev>";
 const REQUIRED = ["name", "organization", "role", "email", "discuss"];
+
+// What the visitor sees if a required field is empty: the form's own labels.
+const FIELD_LABEL: Record<string, string> = {
+  name: "name",
+  organization: "school",
+  role: "role",
+  email: "email",
+  discuss: "what you'd like to discuss",
+};
+
+function isProductSlug(value: unknown): value is ProductSlug {
+  return typeof value === "string" && (PRODUCT_SLUGS as string[]).includes(value);
+}
 
 type Submission = {
   name: string;
@@ -28,6 +47,7 @@ type Submission = {
   email: string;
   country?: string;
   discuss: string;
+  product?: ProductSlug;
 };
 
 function renderText(s: Submission, receivedAt: string) {
@@ -35,10 +55,11 @@ function renderText(s: Submission, receivedAt: string) {
     `Received: ${receivedAt}`,
     "",
     `Name:         ${s.name}`,
-    `Organization: ${s.organization}`,
+    `School:       ${s.organization}`,
     `Role:         ${s.role}`,
     `Email:        ${s.email}`,
     `Country:      ${s.country || "(not provided)"}`,
+    ...(s.product ? [`Product:      ${getProduct(s.product).name}`] : []),
     "",
     "What they'd like to discuss:",
     s.discuss,
@@ -57,10 +78,15 @@ function renderHtml(s: Submission, receivedAt: string) {
   <p style="color:#888;font-size:12px;margin:0 0 18px">Received ${esc(receivedAt)}</p>
   <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-size:14px">
     <tr><td style="color:#888;padding-right:18px">Name</td><td><strong>${esc(s.name)}</strong></td></tr>
-    <tr><td style="color:#888;padding-right:18px">Organization</td><td>${esc(s.organization)}</td></tr>
+    <tr><td style="color:#888;padding-right:18px">School</td><td>${esc(s.organization)}</td></tr>
     <tr><td style="color:#888;padding-right:18px">Role</td><td>${esc(s.role)}</td></tr>
     <tr><td style="color:#888;padding-right:18px">Email</td><td><a href="mailto:${esc(s.email)}">${esc(s.email)}</a></td></tr>
-    <tr><td style="color:#888;padding-right:18px">Country</td><td>${esc(s.country || "—")}</td></tr>
+    <tr><td style="color:#888;padding-right:18px">Country</td><td>${esc(s.country || "—")}</td></tr>${
+      s.product
+        ? `
+    <tr><td style="color:#888;padding-right:18px">Product</td><td>${esc(getProduct(s.product).name)}</td></tr>`
+        : ""
+    }
   </table>
   <p style="color:#888;font-size:12px;margin:24px 0 6px">What they'd like to discuss</p>
   <div style="border-left:3px solid #C9A24D;padding:4px 0 4px 14px;white-space:pre-wrap;line-height:1.5">${esc(s.discuss)}</div>
@@ -80,7 +106,7 @@ export async function POST(req: NextRequest) {
   );
   if (missing.length > 0) {
     return NextResponse.json(
-      { error: `Missing: ${missing.join(", ")}` },
+      { error: `Missing: ${missing.map((f) => FIELD_LABEL[f] ?? f).join(", ")}` },
       { status: 400 },
     );
   }
@@ -97,6 +123,7 @@ export async function POST(req: NextRequest) {
     email,
     country: String(body.country ?? "").trim().slice(0, 120) || undefined,
     discuss: String(body.discuss).trim().slice(0, 4000),
+    product: isProductSlug(body.product) ? body.product : undefined,
   };
   const receivedAt = new Date().toISOString();
   const subject = `Contact request — ${submission.name}, ${submission.organization}`;

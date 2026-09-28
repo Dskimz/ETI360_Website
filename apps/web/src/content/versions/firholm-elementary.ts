@@ -12,9 +12,12 @@ import type { Version } from "@/content/trips/types";
    default edition.
 
    Images: import-trip.py firholm-elementary --root versions, from the US
-   Letter edition (2026-09-25), pages cover, 4, 18 and 19.
+   Letter edition of 2026-09-25 16:37 (re-cut 2026-09-27), pages cover, 4,
+   20 and 21. That build added the emergency-department tables as pages 17
+   to 19, so the Oxbow Farm spread moved from pages 18-19 to 20-21.
 
-   Copy marked [draft] goes through the tone review before Dan's preview. */
+   Copy marked [draft] passed the tone review on 2026-09-27 (Stage D) and
+   awaits Dan's preview. */
 
 const PACK = "customers/firholm-school/outputs/pdf";
 const DOC = "field-trip-risk-assessment-pack";
@@ -52,8 +55,8 @@ const firholmElementary: Version = {
       // [draft] captions
       insidePages: inside(DOC, TITLE, [
         [4, "The year at a glance: one trip for each grade in each semester, with the class size and the supervision ratio."],
-        [18, "A Grade 1 trip page: Oxbow Farm, with the learning purpose, the schedule, and notes for families."],
-        [19, "The same trip's planning page: the emergency departments with the drive time from the venue, the route from school, and the hazards and controls for the school to review, amend, and approve."],
+        [20, "A Grade 1 trip page: Oxbow Farm, with the learning purpose, the schedule, notes for families, and the route from school."],
+        [21, "The same trip's planning page: the emergency departments by drive time from the venue, then the hazards and controls for the school to review, amend, and approve. The school confirms which department the group uses."],
       ]),
       source: {
         letter: `${PACK}/frh-field-trip-pack-2026-27.pdf`,

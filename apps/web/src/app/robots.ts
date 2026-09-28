@@ -7,11 +7,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // /api is machinery; /review holds unlisted internal review pages
-        // (noindex meta as well); /open is the logged document route (keeps
-        // crawlers out of the open log and the sample PDFs out of search);
-        // /routes holds the private route-map pages.
-        disallow: ["/api/", "/review/", "/open/", "/routes/"],
+        // /api is machinery; /review and /guides are behind the review
+        // password (noindex meta as well); /open is the logged document
+        // route (keeps crawlers out of the open log and the fictional-school
+        // PDFs out of search); /routes holds the private route-map pages.
+        disallow: ["/api/", "/review/", "/guides/", "/open/", "/routes/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

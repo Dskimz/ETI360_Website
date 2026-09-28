@@ -9,8 +9,7 @@ import styles from "./productdoors.module.css";
    in the tier's color, the product name, one moment-first sentence, the
    cover of its lead version, its versions named in one line, and one link.
    Only live products get a door (spec S18). Under the grid, the notice for
-   every school whose cover is shown, once per school, verbatim. Rebuilt from
-   TwoServices, which goes when the home page is rewritten. */
+   every school whose cover is shown, once per school, verbatim. */
 
 const TIER_CLASS = { 1: styles.tier1, 2: styles.tier2, 3: styles.tier3 } as const;
 

@@ -17,105 +17,140 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
-    // First match wins: the specific /trips/* rules come before any other.
-    // Nothing here may match /routes/* (the route-map session's pages).
+    // Every retired address, in the four-product site's order (spec §8,
+    // 2026-09-27). First match wins: the specific /trips/* rules come before
+    // any other, and each specific /for-schools and /perspective rule comes
+    // before its prefix catch-all. Every rule goes straight to its final
+    // page: no chains. 308 (permanent: true) unless the page may return:
+    // /framework, /about and /for-providers are 307.
+    // Nothing here may match /routes/* (the route-map session's pages), and
+    // there is no /docs wildcard: the kept PDFs in public/docs stay reachable
+    // for the local /open fallback.
+    const toTripPackage = (source: string, anchor = "") => ({
+      source,
+      destination: `/trip-package${anchor ? `#${anchor}` : ""}`,
+      permanent: true,
+    });
     return [
+      // ── Trips (rows 1–4) ──
       {
         // The Harborview elementary pack became a Field Trip Package version
-        // (four-product site, 2026-09-25); its version slug changed with it.
-        // Must come before the general rule below. The query (size, page)
-        // passes through.
+        // (2026-09-25); its version slug changed with it. Before row 2.
         source: "/trips/elementary/open/:doc",
         destination: "/open/harborview-elementary/:doc",
         permanent: true,
       },
       {
-        // One logged open route for every version of every product (spec S6):
-        // /open/{version}/{doc}. Trip version slugs are unchanged.
+        // One logged open route for every version of every product (spec
+        // S6). The query (size, page) passes through.
         source: "/trips/:slug/open/:doc",
         destination: "/open/:slug/:doc",
         permanent: true,
       },
       {
-        // Providers page taken down for now (Dan, 2026-09-25: "Focus on
-        // schools."). The page source is parked, unrouted, in
-        // src/app/_for-providers-parked/. Temporary redirect so it can return.
+        source: "/trips/elementary",
+        destination: "/field-trip-package#harborview-elementary",
+        permanent: true,
+      },
+      {
+        // The library became the Trip Package page's worked trips; the
+        // six /trips/{slug} pages keep their addresses (Monday's emails).
+        source: "/trips",
+        destination: "/trip-package",
+        permanent: true,
+      },
+
+      // ── The retired solution pages land on their line of a product page (rows 5–19) ──
+      toTripPackage("/for-schools/trip-risk-documentation", "trip-risk-working-file"),
+      toTripPackage("/for-schools/risk-assessment", "trip-risk-working-file"),
+      toTripPackage("/for-schools/student-journey", "student-journey-guide"),
+      toTripPackage("/for-schools/route-intelligence", "outdoor-trips"),
+      toTripPackage("/for-schools/weather-brief", "outdoor-trips"),
+      toTripPackage("/for-schools/medical-access", "getting-a-student-to-care"),
+      toTripPackage("/for-schools/location-timeline", "school-trip-record"),
+      toTripPackage("/for-schools/standard-documentation"),
+      // The Duty Manager Dashboard, the Simulation and Incident Reporting
+      // stay off customer surfaces (pages parked in apps/web/_parked/).
+      toTripPackage("/for-schools/duty-manager"),
+      toTripPackage("/for-schools/duty-manager-simulation"),
+      toTripPackage("/for-schools/incident-reporting"),
+      { source: "/for-schools/field-trips", destination: "/field-trip-package", permanent: true },
+      // Q2 answered (Dan, 2026-09-25: Conference Travel Package), so 308.
+      { source: "/for-schools/conference-visits", destination: "/conference-travel-package", permanent: true },
+      { source: "/for-schools/tournament-travel", destination: "/conference-travel-package", permanent: true },
+      { source: "/for-schools/travel-program-review", destination: "/travel-program-review", permanent: true },
+      {
+        // Row 20, after rows 5–19. Also matches /for-schools itself (Dan:
+        // "Everything is for the school").
+        source: "/for-schools/:path*",
+        destination: "/",
+        permanent: true,
+      },
+
+      // ── Retired pages (rows 21–30) ──
+      { source: "/framework", destination: "/", permanent: false },
+      { source: "/about", destination: "/", permanent: false },
+      { source: "/solutions", destination: "/", permanent: true },
+      toTripPackage("/perspective/emergency-documentation-for-educational-travel"),
+      // After the rule above; also matches /perspective and the two retired essays.
+      { source: "/perspective/:path*", destination: "/", permanent: true },
+      // Also matches /documents and /documents/trip-risk-register.
+      { source: "/documents/:path*", destination: "/", permanent: true },
+      // Exact path only: nothing under public/us/ is linked.
+      { source: "/us", destination: "/", permanent: true },
+      { source: "/questions", destination: "/", permanent: true },
+      {
+        // Providers page parked (Dan, 2026-09-25: "Focus on schools."); its
+        // source stays unrouted in src/app/_for-providers-parked/. 307 so it
+        // can return.
         source: "/for-providers",
-        destination: "/for-schools",
+        destination: "/",
         permanent: false,
       },
+      // The old sample pack; its files are deleted. Also matches /showcase.
+      toTripPackage("/showcase/:path*"),
+
+      // ── Retired PDFs, each by exact path (rows 31–33) ──
       {
-        // One page for every school (Dan, 2026-09-25: one marketing approach
-        // for international schools and US independent schools). The /us
-        // content moved to /for-schools. Exact path only: the images under
-        // public/us/ stay where they are.
-        source: "/us",
-        destination: "/for-schools",
+        source: "/docs/organizational-baseline-evaluation-v2.pdf",
+        destination: "/travel-program-review#harborview-review",
         permanent: true,
       },
       {
-        // The Harborview sample pack gave way to the worked trips library
-        // (Website v1, 2026-09-25). Exact path only: /showcase/pdfs and
-        // /showcase/pages files in public/ are still used by /framework.
-        source: "/showcase",
-        destination: "/trips",
+        source: "/docs/organizational-baseline-evaluation-v4.pdf",
+        destination: "/travel-program-review#harborview-review",
         permanent: true,
       },
+      { source: "/docs/conference-visits-guide-wexcombe.pdf", destination: "/conference-travel-package", permanent: true },
+      { source: "/docs/tournament-travel-guide.pdf", destination: "/conference-travel-package", permanent: true },
+      // Superseded single-paper editions (2026-09-25 rebuilds; spec S16):
+      // the Sep 14 Wexcombe guide without the notice, and the Harborview
+      // pack before its fixes.
+      { source: "/docs/athletics-activities-trips-guide-wexcombe.pdf", destination: "/conference-travel-package", permanent: true },
       {
-        // Clean entry link for the questions-page drafts. A REDIRECT (not a
-        // rewrite) on purpose: the drafts link each other relatively, so
-        // the browser must land on the real file path for them to resolve.
+        source: "/docs/field-trip-risk-assessment-pack-harborview-2026-27.pdf",
+        destination: "/field-trip-package#harborview-elementary",
+        permanent: true,
+      },
+      // Legacy Tokyo and Kathmandu material.
+      toTripPackage("/docs/leadership-deck.pdf"),
+      toTripPackage("/docs/parent-itinerary.pdf"),
+      toTripPackage("/docs/post-trip-feedback-loop.pdf"),
+      toTripPackage("/docs/route-intelligence.pdf"),
+      toTripPackage("/docs/teacher-operational-guide.pdf"),
+      toTripPackage("/docs/trip-discovery-map.pdf"),
+      toTripPackage("/docs/trip-overview.pdf"),
+      toTripPackage("/docs/trip-risk-working-file.pdf"),
+
+      // ── Kept ──
+      {
+        // Clean entry link for the questions-page drafts (behind the review
+        // password). A REDIRECT (not a rewrite) on purpose: the drafts link
+        // each other relatively, so the browser must land on the real file
+        // path for them to resolve.
         source: "/review/questions",
         destination: "/review/questions/hub-draft.html",
         permanent: false,
-      },
-      {
-        // The document library folded into the audience pages (Dan,
-        // 2026-08-04). Fragments survive the redirect, so old deep links
-        // like /documents#weather land on the matching row of For Schools.
-        // /documents/trip-risk-register is a separate route and stays live.
-        source: "/documents",
-        destination: "/for-schools",
-        permanent: true,
-      },
-      {
-        // The Tournament Travel Guide page (host side, one invitational) was
-        // remade as the Conference Visits Guide (the traveling side, the whole
-        // year) on 2026-09-13. Campaign drafts and LinkedIn Post 9 still carry
-        // the old link.
-        source: "/for-schools/tournament-travel",
-        destination: "/for-schools/conference-visits",
-        permanent: false,
-      },
-      {
-        // The Trip Risk Working File page shipped for an hour on 2026-09-14
-        // as /for-schools/risk-assessment before Dan's naming ruling (trip
-        // risk documentation is the umbrella; RAMS is one format).
-        source: "/for-schools/risk-assessment",
-        destination: "/for-schools/trip-risk-documentation",
-        permanent: true,
-      },
-      {
-        // The campaign emails link /questions as the hub; the hub is the
-        // For Schools page (Sep 2026 merge).
-        source: "/questions",
-        destination: "/for-schools",
-        permanent: false,
-      },
-      // The /solutions → /for-schools alias (Sep 1 merge) was retired on
-      // 2026-09-04: /solutions is a real page again — the tier-organized
-      // index of every solution (Dan's instruction).
-      {
-        // Two early essays built on the retired stage taxonomy (Dan,
-        // 2026-08-04: "Retire"). Redirect to the framework story.
-        source: "/perspective/what-each-artifact-decides",
-        destination: "/framework",
-        permanent: true,
-      },
-      {
-        source: "/perspective/trip-approval-is-not-trip-governance",
-        destination: "/framework",
-        permanent: true,
       },
       {
         // Interim client door. Flips to https://app.eti360.com once the

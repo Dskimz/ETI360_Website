@@ -1,39 +1,13 @@
-/* The two services the site sells (Dan, 2026-09-25): the Travel Program
-   Review (Tier 1) and trip by trip (Tiers 2 and 3). One approach for every
-   school: the same two doors on the home page and For Schools, with no
-   separate pitch for international schools and US independent schools.
-   Tier names follow the canon in CLAUDE.md. */
+/* Shared by the product pages (four-product site, 2026-09-25): the
+   canonical tier names (CLAUDE.md), the decisions a trip's documents are
+   tied to, and the paper note. The four products themselves live in
+   products.ts. */
 
 export const TIER_NAMES = {
   1: "Tier 1 Organizational Readiness",
   2: "Tier 2 Trip Readiness",
   3: "Tier 3 Live Trip Support and Review",
 } as const;
-
-export type Service = {
-  name: string;
-  tiers: string;
-  body: string;
-  link: { href: string; label: string };
-  /** A smaller door inside the card. */
-  more?: { href: string; label: string };
-};
-
-export const SERVICES: Service[] = [
-  {
-    name: "The Travel Program Review",
-    tiers: TIER_NAMES[1],
-    body: "A review of the school's whole travel program. ETI360 reads the school's policies and procedures path by path, from overnight trips abroad to elementary day trips, athletics, and service programs, and evaluates the documents of every provider the school uses against the same framework. One report for the school's leadership, once every four years.",
-    link: { href: "/travel-program-review", label: "See what the review covers" },
-  },
-  {
-    name: "Trip by trip",
-    tiers: `${TIER_NAMES[2]} · ${TIER_NAMES[3]}`,
-    body: "The documents for one trip, before, during, and after it: the file the school reviews and approves, what families read, what the trip leader and chaperones carry, and the report that closes the trip.",
-    link: { href: "/trips", label: "See the worked trips" },
-    more: { href: "/trips?kind=day-trips", label: "Elementary day trips" },
-  },
-];
 
 /** The decisions a trip's documents are tied to, in the order a trip meets them. */
 export const DECISIONS: { title: string; note: string }[] = [
@@ -55,7 +29,8 @@ export const DECISIONS: { title: string; note: string }[] = [
   },
   {
     title: "Getting a student to care",
-    note: "The emergency department for each place, with the drive time, mapped before the group leaves; where a leg is by boat or on foot, the travel time.",
+    // Tone review 2026-09-27: departments plural (hospital rule, N4 Option B).
+    note: "The emergency departments for each place, listed with their drive times and mapped before the group leaves; where a leg is by boat or on foot, the travel time.",
   },
   {
     title: "Improving next year's trip",
