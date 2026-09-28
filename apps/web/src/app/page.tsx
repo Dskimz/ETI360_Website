@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { CtaCard } from "@/components/CtaCard";
 import { ProductDoors } from "@/components/ProductDoors";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { liveProducts, productCount, siteDescription, type Product } from "@/content/products";
@@ -7,7 +6,6 @@ import type { ProductSlug } from "@/content/trips/types";
 import {
   BRAND_EYEBROW,
   BRAND_LINE,
-  CLOSING_SENTENCE,
   WHAT_WE_DO_LINE,
   WHO_DECIDES,
 } from "@/content/voice";
@@ -100,7 +98,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} />
     </>
   );
 }

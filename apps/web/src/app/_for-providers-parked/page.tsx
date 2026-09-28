@@ -8,7 +8,6 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CtaCard } from "@/components/CtaCard";
 import { TripStrip } from "@/components/TripStrip";
 import { DocEntry, DocRow, TierBand } from "../../components/DocShowcase";
 import { WorkedTripDocs } from "@/components/WorkedTripDocs";
@@ -215,7 +214,6 @@ export default function ForProvidersPage() {
         </div>
       </section>
 
-      <CtaCard title={"Contact us."} image={"/marketing/hero/for-providers.jpg"} />
     </>
   );
 }

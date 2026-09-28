@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { CaseStudyLink } from "@/components/CaseStudyLink";
-import { CtaCard } from "@/components/CtaCard";
 import { ProductHeader } from "@/components/ProductHeader";
 import { TripCard } from "@/components/TripCard";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
@@ -8,7 +7,7 @@ import { getProduct, tierNames } from "@/content/products";
 import { DECISIONS, PAPER_NOTE } from "@/content/services";
 import { trips } from "@/content/trips";
 import { notices } from "@/content/versions";
-import { CLOSING_SENTENCE, WHO_DECIDES } from "@/content/voice";
+import { WHO_DECIDES } from "@/content/voice";
 import { WORKING_FILE_BOUNDARY } from "../trips/boundary";
 import tripStyles from "../trips/trips.module.css";
 import styles from "./page.module.css";
@@ -220,7 +219,6 @@ export default function TripPackagePage() {
         </div>
       </section>
 
-      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} product="trip-package" />
     </>
   );
 }

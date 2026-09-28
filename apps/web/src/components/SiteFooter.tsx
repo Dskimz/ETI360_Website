@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {liveProducts} from '@/content/products'
 import {caseStudyLive} from '@/content/case-study'
 import {BRAND_LINE} from '@/content/voice'
+import {FooterContact} from './FooterContact'
 
 const firmLinks = [
   {href: '/contact', label: 'Contact'},
@@ -15,7 +16,7 @@ const firmLinksWithConsent = process.env.NEXT_PUBLIC_GA_ID
   ? [...firmLinks, {href: '#cookie-settings', label: 'Cookie settings'}]
   : firmLinks
 
-/* The footer on every page: the brand block, the live products and the Case
+/* The footer on every page: Dan's contact row, the brand block, the live products and the Case
    Study (the four products in one illustrative school year), the firm's
    links, and both postal addresses (Dan, 2026-09-25: "We can put both").
    Unsubscribe stays out: it is reached from the email only. */
@@ -26,6 +27,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer-container">
         <div className="site-footer-bento">
+          <FooterContact />
           <div className="site-footer-grid">
             <div className="site-footer-brand">
               {/* The reverse-white logo file, as in the header. */}

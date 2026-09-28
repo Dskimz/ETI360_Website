@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { CaseStudyLink } from "@/components/CaseStudyLink";
-import { CtaCard } from "@/components/CtaCard";
 import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct } from "@/content/products";
 import { notices, versionsOf } from "@/content/versions";
-import { CLOSING_SENTENCE, WHO_DECIDES } from "@/content/voice";
+import { WHO_DECIDES } from "@/content/voice";
 import styles from "@/components/productpage.module.css";
 
 /* The Conference Travel Package, Tier 2 (four-product site spec §4.6; Dan,
@@ -164,7 +163,6 @@ export default function ConferenceTravelPackagePage() {
         </div>
       </section>
 
-      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} product="conference-travel-package" />
     </>
   );
 }

@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { CaseStudyLink } from "@/components/CaseStudyLink";
-import { CtaCard } from "@/components/CtaCard";
 import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct } from "@/content/products";
 import { notices, versionsOf } from "@/content/versions";
-import { CLOSING_SENTENCE } from "@/content/voice";
 import styles from "@/components/productpage.module.css";
 
 /* The Travel Program Review, Tier 1 (four-product site spec §4.2). The
@@ -174,7 +172,6 @@ export default function TravelProgramReviewPage() {
         </div>
       </section>
 
-      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} product="travel-program-review" />
     </>
   );
 }

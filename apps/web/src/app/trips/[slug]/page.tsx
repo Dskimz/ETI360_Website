@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CtaCard } from "@/components/CtaCard";
 import { DocCard } from "@/components/TripDocCard";
 import { TripStrip } from "@/components/TripStrip";
 import { getProduct } from "@/content/products";
 import { getTrip, PAPER_NAME, trips } from "@/content/trips";
-import { BRAND_EYEBROW, CLOSING_SENTENCE, WHO_DECIDES } from "@/content/voice";
+import { BRAND_EYEBROW, WHO_DECIDES } from "@/content/voice";
 import { WORKING_FILE_BOUNDARY } from "../boundary";
 import styles from "../trips.module.css";
 
@@ -140,7 +139,6 @@ export default async function TripPage({ params }: Props) {
         </div>
       </section>
 
-      <CtaCard title={"Contact us."} copy={CLOSING_SENTENCE} product="trip-package" />
     </>
   );
 }
