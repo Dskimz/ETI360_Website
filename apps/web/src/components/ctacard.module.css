@@ -31,7 +31,7 @@
   text-decoration: none;
 }
 .btn:hover { background: #d8b262; color: var(--navy-deep); text-decoration: none; }
-.sub { display: block; margin-top: 10px; font-size: 12px; color: rgba(250, 248, 243, .7); }
+.copy p.signature { margin: -12px 0 20px; font-size: 14px; font-weight: 600; color: var(--gold); }
 
 @media (max-width: 640px) {
   .container { padding: 0 16px; }

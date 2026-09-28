@@ -4,31 +4,45 @@
 The site never links a PDF file directly: every document opens through a logged
 route that redirects to the file. With DOCS_BASE_URL set in the site's
 environment, that redirect goes to S3 instead of the site's own public/ folder.
-This script mirrors the files so both addresses hold the same bytes:
+This script mirrors exactly the editions the site links, as listed by the
+version registry (apps/web/src/content/versions/, read through
+`node scripts/sync-trip-pdfs.mjs --list`), so both addresses hold the same bytes:
 
-    apps/web/public/trips/<slug>/letter/<file>.pdf -> s3://<bucket>/trips/<slug>/letter/<file>.pdf
-    apps/web/public/trips/<slug>/a4/<file>.pdf     -> s3://<bucket>/trips/<slug>/a4/<file>.pdf
-    apps/web/public/docs/<file>.pdf                -> s3://<bucket>/docs/<file>.pdf     (with --docs)
+    apps/web/public/trips/<slug>/letter|a4/<file>.pdf -> s3://<bucket>/trips/<slug>/letter|a4/<file>.pdf
+    apps/web/public/docs/<file>.pdf                   -> s3://<bucket>/docs/<file>.pdf
+
+Registry-driven (review fix, 2026-09-27), so a stale or retired file lying in
+public/ is never published:
+  - every linked edition must be present locally (run `npm run sync:trip-pdfs`
+    and the Review sample's publish_baseline_report.py first), or nothing uploads;
+  - any other PDF in public/docs or public/trips/*/letter|a4 stops the run
+    (move it out; it is not linked and must not become public);
+  - every file passes scripts/check-pdf-wording.py (V3 ADR-025: no document
+    says a hospital is designated) before anything uploads.
 
 Dry run by default. Unchanged files (same MD5 as the object's ETag) are skipped.
 After an --execute run, every uploaded object is fetched anonymously over HTTPS
-to prove the bucket policy lets the public read it.
+to prove the bucket policy lets the public read it. To check the whole bucket
+against the registry at any time: `node scripts/sync-trip-pdfs.mjs --s3-check`.
 
 Credentials: SITE_DOCS_AWS_ACCESS_KEY_ID / SITE_DOCS_AWS_SECRET_ACCESS_KEY if set,
 otherwise AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY from the environment or from
 the rebuild repo's .env.local (the uploader user, once it has the inline policy in
 scripts/s3/uploader-inline-policy.json). One-time bucket setup: scripts/s3/README.md.
 
-    python3 scripts/upload-docs-s3.py                  # dry run: what would upload
-    python3 scripts/upload-docs-s3.py --execute        # upload trip PDFs
-    python3 scripts/upload-docs-s3.py --execute --docs # also public/docs/*.pdf
-    python3 scripts/upload-docs-s3.py --only washington-dc
+    python3 scripts/upload-docs-s3.py                   # dry run: what would upload
+    python3 scripts/upload-docs-s3.py --execute         # upload every linked edition
+    python3 scripts/upload-docs-s3.py --only washington-dc   # one version
+("--docs" is still accepted and changes nothing: the linked /docs editions are
+always included.)
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
+import subprocess
 import sys
 import urllib.request
 from pathlib import Path
@@ -70,19 +84,43 @@ def md5(path: Path) -> str:
     return h.hexdigest()
 
 
-def collect(include_docs: bool, only: str | None) -> list[tuple[Path, str]]:
+def registry_editions() -> list[dict]:
+    """Every edition the site links, from the version registry."""
+    out = subprocess.run(
+        ["node", str(ROOT / "scripts" / "sync-trip-pdfs.mjs"), "--list"],
+        capture_output=True, text=True, cwd=ROOT,
+    )
+    if out.returncode != 0:
+        sys.exit(f"Could not read the version registry:\n{out.stderr}")
+    return json.loads(out.stdout)
+
+
+def collect(only: str | None) -> tuple[list[tuple[Path, str]], list[str], list[Path]]:
+    """(linked editions present locally, linked editions missing, unlinked PDFs in public/)."""
+    editions = registry_editions()
+    linked = {e["url"].lstrip("/") for e in editions}
     items: list[tuple[Path, str]] = []
-    for pdf in sorted((PUBLIC / "trips").glob("*/*/*.pdf")):
-        slug, paper = pdf.parent.parent.name, pdf.parent.name
-        if paper not in ("letter", "a4"):
+    missing: list[str] = []
+    for e in editions:
+        if only and e["version"] != only:
             continue
-        if only and slug != only:
-            continue
-        items.append((pdf, f"trips/{slug}/{paper}/{pdf.name}"))
-    if include_docs and not only:
-        for pdf in sorted((PUBLIC / "docs").glob("*.pdf")):
-            items.append((pdf, f"docs/{pdf.name}"))
-    return items
+        key = e["url"].lstrip("/")
+        path = PUBLIC / key
+        if path.is_file():
+            items.append((path, key))
+        else:
+            missing.append(f"{e['version']}/{e['doc']} ({e['size']}): public/{key}")
+    unlinked = [
+        p for p in sorted([*(PUBLIC / "docs").glob("*.pdf"), *(PUBLIC / "trips").glob("*/*/*.pdf")])
+        if p.relative_to(PUBLIC).as_posix() not in linked
+        and (p.parent.name in ("letter", "a4") or p.parent.name == "docs")
+    ]
+    return items, missing, unlinked
+
+
+def wording_check(paths: list[Path]) -> bool:
+    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "check-pdf-wording.py"), *map(str, paths)])
+    return r.returncode == 0
 
 
 def public_url(bucket: str, region: str, key: str) -> str:
@@ -94,14 +132,29 @@ def main() -> int:
     ap.add_argument("--bucket", default=os.environ.get("SITE_DOCS_BUCKET", DEFAULT_BUCKET))
     ap.add_argument("--region", default=os.environ.get("SITE_DOCS_REGION", DEFAULT_REGION))
     ap.add_argument("--execute", action="store_true", help="upload (default is a dry run)")
-    ap.add_argument("--docs", action="store_true", help="also upload public/docs/*.pdf")
-    ap.add_argument("--only", help="one trip slug")
+    ap.add_argument("--docs", action="store_true", help="accepted for old commands; the linked /docs editions are always included")
+    ap.add_argument("--only", help="one version slug")
+    ap.add_argument("--skip-wording-check", action="store_true", help="never before a publish")
     args = ap.parse_args()
 
-    items = collect(args.docs, args.only)
-    if not items:
-        print("Nothing to upload. Run `npm run sync:trip-pdfs` first so public/trips holds the PDFs.")
+    items, missing, unlinked = collect(args.only)
+    if unlinked:
+        print("PDFs in public/ that the site does not link (move them out; they must not become public):")
+        for p in unlinked:
+            print(f"  {p.relative_to(PUBLIC)}")
+        return 4
+    if missing:
+        print("Linked editions missing locally (run `npm run sync:trip-pdfs`, and the Review sample's"
+              " publish_baseline_report.py, then try again):")
+        for m in missing:
+            print(f"  {m}")
         return 1
+    if not items:
+        print("Nothing to upload.")
+        return 1
+    if not args.skip_wording_check and not wording_check([p for p, _ in items]):
+        print("Wording check failed: nothing uploaded.")
+        return 5
 
     import boto3
     from boto3.s3.transfer import TransferConfig

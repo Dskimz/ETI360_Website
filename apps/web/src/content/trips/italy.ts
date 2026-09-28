@@ -9,7 +9,12 @@ import type { Trip } from "./types";
    outputs/pdf/a4/ (V3 ADR-024). Both editions have the same page count, so the
    page numbers below hold for either. The bound trip pack is not published.
    Hero: trips/italy-2027/assets/photo-cover.jpg (the Florence Duomo, from the
-   trip's Canva image set). Restore the PDFs locally with `npm run sync:trip-pdfs`. */
+   trip's Canva image set). Restore the PDFs locally with `npm run sync:trip-pdfs`.
+
+   Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
+   departments; the school confirms which one the group uses. The pages of
+   the Working File, the Trip Leader Card and the Chaperone Briefing were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
+   and the copy below describes a list, never a choice made by ETI360. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "italy",
@@ -31,7 +36,7 @@ const italy: Trip = {
   group: "20 students from Italian II and III and four chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Cleveland is taking twenty tenth and eleventh graders from Italian II and III to Rome, Florence, and Venice for eleven days in June, with three mornings at a language school in Florence at the center of the trip. ETI360 brought together the school's itinerary, the operator's, hotels', and language school's arrangements, and the school's own procedures, checked passports and entry against the current rules for U.S. citizens, checked group sizes, timed entry, and dress rules against each venue's own guidance, timed the coach transfers and the walks between places, and found the emergency department for each place, with the travel time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Cleveland is taking twenty tenth and eleventh graders from Italian II and III to Rome, Florence, and Venice for eleven days in June, with three mornings at a language school in Florence at the center of the trip. ETI360 brought together the school's itinerary, the operator's, hotels', and language school's arrangements, and the school's own procedures, checked passports and entry against the current rules for U.S. citizens, checked group sizes, timed entry, and dress rules against each venue's own guidance, timed the coach transfers and the walks between places, and listed the emergency departments by travel time from each place; the school or provider confirms which one the group uses. Each document below is written for the person who uses it, and each opens in full.",
   summary:
     "An eleven-day language and culture trip to Rome, Florence, and Venice: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
@@ -76,7 +81,7 @@ const italy: Trip = {
     },
     {
       title: "Preparing the leader and chaperones",
-      note: "Day plans for every day of the trip, the procedures, and the emergency department for each place, with the travel time.",
+      note: "Day plans for every day of the trip, the procedures, and the emergency departments by travel time from each place.",
     },
     {
       title: "Connecting the trip to learning",
@@ -139,13 +144,13 @@ const italy: Trip = {
       reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
-        "Groups, contacts, and standards, the airport and rail procedures, a plan for every day of the trip, and the emergency plan: the emergency department for each place, with the travel time.",
+        "Groups, contacts, and standards, the airport and rail procedures, a plan for every day of the trip, and the emergency plan: the emergency departments by travel time from each place.",
       cover: cover("trip-leader-card", "Trip Leader Card"),
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
         [3, "Airports, rail, and moving the group: the moments when twenty-four people and their luggage have to arrive somewhere together."],
         [5, "The Florence days, timed around three mornings at the language school, the Uffizi and the Accademia in two groups of twelve, and the day in Siena."],
-        [7, "The emergency plan: 112 and the action sequence first, then the emergency department in each city, with the travel time, and the walking route in Venice, where an ambulance is a boat."],
+        [7, "The emergency plan: 112 and the action sequence first, then the emergency departments by travel time in each city, and the walking route in Venice, where an ambulance is a boat."],
       ]),
     },
     {
@@ -160,7 +165,7 @@ const italy: Trip = {
       insidePages: inside("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card", [
         [1, "Each chaperone's group and role, the head-count rule, and what their five students need from them on each day of the trip."],
         [2, "Hotels and movements, then the four procedures: a student separated, a student hurt or unwell, an evacuation or security instruction, and a behavior or welfare concern."],
-        [4, "The pocket card at finished size: 112 and the emergency sequence, the emergency department for each city with its distance and time, the hotels, and a line for the day's regroup point."],
+        [4, "The pocket card at finished size: 112 and the emergency sequence, the emergency departments with their distances and times, the hotels, and a line for the day's regroup point."],
       ]),
     },
     {

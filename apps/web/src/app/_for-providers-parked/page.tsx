@@ -1,3 +1,11 @@
+/* PARKED, AND IT DOES NOT COMPILE (four-product site, 2026-09-27). The
+   providers page is down "for now" (Dan, 2026-09-25: "Focus on schools.").
+   It stays at this path because CLAUDE.md names it, unrouted (the leading
+   underscore) and excluded from tsconfig.json and the ESLint ignores. Its
+   imports are broken on purpose: DocShowcase and WorkedTripDocs were
+   deleted and its content moved to apps/web/_parked/content/for-providers.ts.
+   Restore them from git history if the page returns. */
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaCard } from "@/components/CtaCard";

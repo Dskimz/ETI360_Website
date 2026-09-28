@@ -6,6 +6,7 @@ import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct, tierNames } from "@/content/products";
 import { DECISIONS, PAPER_NOTE } from "@/content/services";
 import { trips } from "@/content/trips";
+import { notices } from "@/content/versions";
 import { CLOSING_SENTENCE, WHO_DECIDES } from "@/content/voice";
 import { WORKING_FILE_BOUNDARY } from "../trips/boundary";
 import tripStyles from "../trips/trips.module.css";
@@ -79,8 +80,17 @@ const DECISIONS_LEAD =
 const TO_CARE_WHERE =
   "No document of its own: the emergency departments appear in the Trip Risk Working File, the emergency plan on the Trip Leader Card, and the pocket card. The school confirms which one the group uses.";
 
-// The door sentence, then one [draft] sentence.
-const DESCRIPTION = `The Trip Package (${tierNames(product).join(" · ")}): ${product.door.charAt(0).toLowerCase()}${product.door.slice(1)} Worked trips show every document in full, in US Letter and A4.`;
+// The door sentence, then one [draft] sentence, then each fictional school's
+// notice verbatim (ADR-023: this is the collection page).
+const DESCRIPTION = `The Trip Package (${tierNames(product).join(" · ")}): ${product.door.charAt(0).toLowerCase()}${product.door.slice(1)} Worked trips show every document in full, in US Letter and A4. ${notices(trips)}`;
+
+// [draft] Which part of the package is Tier 3 (review fix, 2026-09-27), from
+// Dan's Tier 3 bullets in the DOCS email (template-v42-docs.html: "Provide
+// trip leaders with practical field and emergency information"; "Organize
+// incident records and feedback into post-trip reports"). The Duty Manager
+// Dashboard stays off the page. Dan to confirm the mapping.
+const TIER_3_LINE =
+  "Tier 3 is what travels with the group and what follows the trip: the Trip Leader Card, the Chaperone Briefing and Pocket Emergency Card, and the Post-Trip Feedback Report.";
 
 export const metadata: Metadata = {
   title: "The Trip Package",
@@ -96,7 +106,7 @@ export const metadata: Metadata = {
 
 export default function TripPackagePage() {
   // One notice per fictional school, verbatim from the trip files.
-  const notices = Array.from(new Map(trips.map((t) => [t.school, t.disclosure])).values());
+  const schoolNotices = Array.from(new Set(trips.map((t) => t.disclosure)));
 
   return (
     <>
@@ -107,6 +117,7 @@ export default function TripPackagePage() {
           <div className={styles.top}>
             <h2 id="receives">What the school receives</h2>
             <p className={styles.lead}>{DECISIONS_LEAD}</p>
+            <p className={styles.lead}>{TIER_3_LINE}</p>
 
             <ol className={styles.decisions}>
               {DECISIONS.map((d) => {
@@ -157,7 +168,7 @@ export default function TripPackagePage() {
               ))}
             </div>
             <div className={`${tripStyles.libraryNotes} ui`}>
-              {notices.map((n) => (
+              {schoolNotices.map((n) => (
                 <p key={n}>{n}</p>
               ))}
             </div>
@@ -174,8 +185,7 @@ export default function TripPackagePage() {
               and the school&rsquo;s trip policy. ETI360 adds what the group needs to know along the
               way, such as venue entry rules and the emergency departments for each place with their
               drive times, and returns the documents in the school&rsquo;s name and branding, each in a
-              US Letter edition and an A4 edition. Where a provider runs the trip, its documents are the starting point.
-              The school approves the trip.
+              US Letter edition and an A4 edition. The school approves the trip.
             </p>
             <p>
               <strong>We book through a provider. What does this add?</strong> The provider&rsquo;s
@@ -194,7 +204,6 @@ export default function TripPackagePage() {
               identifiable student information. Trip files name places, dates, providers, and staff
               roles. The school&rsquo;s obligations for student data stay with the school.
             </p>
-            <p>There are no due dates and no tracking.</p>
           </div>
 
           <div className="boundary-callout" id="who-decides">

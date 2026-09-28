@@ -10,8 +10,12 @@ import type { Trip } from "./types";
    the Canva set yet, so the hero is the route overview map from the Educational
    Journey (trips/white-mountains-2027/assets/wm-trek-overview.png). Page images
    were rendered from the Letter PDFs with scripts/import-trip.py (2026-09-24;
-   School Trip Record p. 3 and Working File p. 6 on 2026-09-25, replacing pages
-   that print "designated emergency department"). */
+   School Trip Record p. 3 and Working File p. 6 on 2026-09-25).
+
+   Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
+   departments; the school confirms which one the group uses. The pages of
+   the School Trip Record, the Working File and the Trip Leader Card were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
+   and the copy below describes a list, never a choice made by ETI360. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "white-mountains",
@@ -33,7 +37,7 @@ const whiteMountains: Trip = {
   group: "20 ninth-grade students, four trail adults, and a valley support adult",
   paperDefault: "letter",
   lede:
-    "Tideline School in Portland, Maine, is starting the ninth-grade year with a four-day hut-to-hut trek in the White Mountains of New Hampshire: 20.9 miles on the Appalachian Trail and its approach trails from Franconia Notch to Crawford Notch, with three nights in the Appalachian Mountain Club's huts. ETI360 brought together the school's plan, the huts' published information, and the national forest's rules, measured each day's distance, climb, and daylight from the route itself, checked the plan against the wilderness boundary and the roads, and found the emergency department for each place, with the drive time from every trailhead. Each document below is written for the person who uses it, and each opens in full.",
+    "Tideline School in Portland, Maine, is starting the ninth-grade year with a four-day hut-to-hut trek in the White Mountains of New Hampshire: 20.9 miles on the Appalachian Trail and its approach trails from Franconia Notch to Crawford Notch, with three nights in the Appalachian Mountain Club's huts. ETI360 brought together the school's plan, the huts' published information, and the national forest's rules, measured each day's distance, climb, and daylight from the route itself, checked the plan against the wilderness boundary and the roads, and listed the emergency departments by drive time from every trailhead; the school confirms which one the group uses. Each document below is written for the person who uses it, and each opens in full.",
   summary:
     "A four-day ninth-grade hut-to-hut trek on the Appalachian Trail: the documents for the office, the trip leader and trail adults, families, teachers, students, and next year's planning.",
   facts: [
@@ -79,7 +83,7 @@ const whiteMountains: Trip = {
     },
     {
       title: "Preparing the leader and trail adults",
-      note: "A Route Intelligence page for each hiking day, the weather call and the turn-back triggers, the procedures, and the emergency department for each place, with the drive time.",
+      note: "A Route Intelligence page for each hiking day, the weather call and the turn-back triggers, the procedures, and the emergency departments by drive time from every trailhead.",
     },
     {
       title: "Timing each hiking day",
@@ -151,8 +155,8 @@ const whiteMountains: Trip = {
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
         [11, "Wednesday's Route Intelligence page: distance, climb, moving time at a school group's pace, and sunset, with the route from Greenleaf Hut over Mount Lafayette and Garfield Ridge to Galehead Hut."],
-        [14, "Wednesday's exits and road access, water, light and tree cover, and the emergency department for the day, with the drive time from each exit trailhead."],
-        [25, "The emergency plan: the action sequence first, search and rescue in New Hampshire, and the emergency department nearest by road to every trailhead on the trek."],
+        [14, "Wednesday's exits and road access, water, light and tree cover, and the drive time from each exit trailhead to the emergency department."],
+        [25, "The emergency plan: the action sequence first, search and rescue in New Hampshire, and the drive time by road from every trailhead on the trek to the emergency department."],
       ]),
     },
     {

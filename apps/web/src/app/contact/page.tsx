@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { CLOSING_SENTENCE } from "@/content/voice";
+import { CLOSING_SENTENCE, CLOSING_SIGNATURE } from "@/content/voice";
 
 /* The product a visitor came from rides in a hidden field (spec §4.7, S14).
    A product page's contact band links /contact?product={slug}; the page reads
@@ -36,7 +36,7 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       });
       if (resp.ok) {
-        setStatus({ kind: "ok", msg: "Thank you. We will be in touch within two business days." });
+        setStatus({ kind: "ok", msg: "Thank you. Your message has been sent, and we will be in touch." });
         form.reset();
       } else {
         const err = await resp.json().catch(() => ({}));
@@ -63,6 +63,8 @@ export default function ContactPage() {
           <p className="label label-light ui">Contact</p>
           <h1>Contact us.</h1>
           <p className="subhead">{CLOSING_SENTENCE}</p>
+          {/* Who "me" is in Dan's sentence (review fix, 2026-09-27). */}
+          <p className="hero-signature ui">{CLOSING_SIGNATURE}</p>
         </div>
       </section>
 

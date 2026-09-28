@@ -4,7 +4,7 @@ import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct } from "@/content/products";
-import { versionsOf } from "@/content/versions";
+import { notices, versionsOf } from "@/content/versions";
 import { CLOSING_SENTENCE } from "@/content/voice";
 import styles from "@/components/productpage.module.css";
 
@@ -28,13 +28,15 @@ const PRODUCT = getProduct("travel-program-review");
 const LEDE =
   "The Travel Program Review looks at a school’s travel program as a whole: its own policies and procedures, program path by program path, and the documents of every provider it currently uses. ETI360 evaluates both against the ETI360 Operational Capability Framework and writes one report for the school’s leadership, once every four years.";
 
+// The program paths (CLAUDE.md, Tier 1 is path-aware), named as the
+// Harborview sample names them.
 const PATHS = [
-  "Overnight trips abroad",
-  "Domestic trips",
+  "International multi-day trips",
   "Elementary day trips",
-  "Athletics and activities",
-  "Service programs",
-  "Exchanges",
+  "Athletics and activities travel",
+  "Week Without Walls",
+  "Service learning and CAS",
+  "Exchanges and homestays",
 ];
 
 const STEPS = [
@@ -44,10 +46,11 @@ const STEPS = [
 ];
 
 const WHO_DECIDES_REVIEW =
-  "The school, and any provider it works with, retain responsibility for decisions and approvals. ETI360 evaluates documents and shows what they cover; it never certifies, approves, ranks or recommends a provider.";
+  "The school and any provider it works with retain responsibility for decisions and approvals. ETI360 evaluates documents and shows what they cover; it never certifies, approves, ranks, or recommends a provider.";
 
-const DESCRIPTION =
-  "The Travel Program Review (Tier 1 Organizational Readiness): a school’s travel policies and procedures, program path by program path, and the documents of every provider it uses, evaluated against the ETI360 Operational Capability Framework. One report for the school’s leadership, once every four years.";
+// The version's notice rides in the description verbatim (ADR-023: the
+// fictional-school disclosure on the page and in its metadata).
+const DESCRIPTION = `The Travel Program Review (Tier 1 Organizational Readiness): a school’s travel policies and procedures, program path by program path, and the documents of every provider it uses, evaluated against the ETI360 Operational Capability Framework. One report for the school’s leadership, once every four years. ${notices(versionsOf("travel-program-review"))}`;
 
 export const metadata: Metadata = {
   title: "The Travel Program Review",
@@ -73,12 +76,13 @@ export default function TravelProgramReviewPage() {
             <h2 className="section-heading rule-gold" id="receives">
               What the school receives
             </h2>
-            {/* [draft] condensed from the three paragraphs this section had */}
+            {/* [draft] condensed from the three paragraphs this section had;
+                review fix 2026-09-27: it no longer repeats the lede's opening. */}
             <p>
-              One report for the school&rsquo;s leadership, once every four years. It opens with where
-              the program stands across the ten areas of the ETI360 Operational Capability Framework,
-              then sets out each area, each program path, and each provider. Every evidence line names
-              the document, section, and page it comes from, and the report comes in US Letter and A4.
+              The report opens with where the program stands across the ten areas of the ETI360
+              Operational Capability Framework, then sets out each area, each program path, and each
+              provider. Every evidence line names the document, section, and page it comes from, and
+              the report comes in US Letter and A4.
             </p>
           </div>
         </div>
@@ -89,11 +93,12 @@ export default function TravelProgramReviewPage() {
           {versions.map((v) => (
             <VersionBlock key={v.slug} version={v} />
           ))}
+          {/* [draft] review fix 2026-09-27: what the school receives, not
+              what the sample lacks. The provider-section pages join this
+              version when the renamed fictional provider's sample lands. */}
           <p className={styles.after}>
-            The sample shows the school&rsquo;s side of the review. There is no published sample of
-            the provider section yet. In a school&rsquo;s report, that section takes each provider the
-            school uses in turn and shows what its documents cover in each area of the framework, with
-            the evidence behind each finding.
+            In a school&rsquo;s report, a provider section follows: each provider the school uses, in
+            turn, with what its documents cover in each area and the evidence behind each finding.
           </p>
         </div>
       </div>
@@ -138,20 +143,21 @@ export default function TravelProgramReviewPage() {
                 <li key={s}>{s}</li>
               ))}
             </ol>
-            <p>There are no due dates and no tracking. The school sends what it has, by email.</p>
+            <p>The school sends what it has, by email.</p>
           </div>
 
           <div className={styles.block}>
-            {/* Moved verbatim from For Schools ("Which standard is this against?"). */}
+            {/* Dan's spoken answer (Sales rulings, 2026-09-13): the framework
+                "was aligned on a number of international standards". No
+                standard is named (CLAUDE.md). Review fix, 2026-09-27. */}
             <h2 className="section-heading rule-gold" id="standard">
               Which standard is this against?
             </h2>
             <p>
-              There is no single standard for school trips. Schools work to their own policies, their
-              accreditor&rsquo;s standards, their insurer&rsquo;s requirements, the rules of the country
-              they operate in, and, for travel abroad, government travel advisories. The ETI360
-              Operational Capability Framework organizes the school&rsquo;s documents against those
-              references without replacing them.
+              The ETI360 Operational Capability Framework was aligned on a number of international
+              standards. It sits beside the school&rsquo;s own policies, its accreditor&rsquo;s
+              standards, its insurer&rsquo;s requirements, the rules of the country it operates in,
+              and, for travel abroad, government travel advisories, without replacing them.
             </p>
           </div>
 

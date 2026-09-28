@@ -32,4 +32,8 @@ export const SEB_LINE = "Seb Wong, Senior Consultant, is part of every engagemen
 
 /** The boundary used on the home page, the product pages and the trip pages. */
 export const WHO_DECIDES =
-  "The school, and any provider it works with, retain responsibility for decisions, supervision, live assessments, and final approval.";
+  "The school and any provider it works with retain responsibility for decisions, supervision, live assessments, and final approval.";
+
+/** Who the closing sentence's "me" is: shown under it in the contact band
+    and on /contact (review fix, 2026-09-27). */
+export const CLOSING_SIGNATURE = "Dan Skimin, Principal Consultant";

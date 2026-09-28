@@ -9,7 +9,12 @@ import type { Trip } from "./types";
    Restore them locally with `npm run sync:trip-pdfs`. No photograph is placed in
    the Canva set yet, so the hero is the week's overview map from the Educational
    Journey (trips/casco-bay-2027/assets/casco-overview.png). Page images were
-   rendered from the Letter PDFs with scripts/import-trip.py (2026-09-24/25). */
+   rendered from the Letter PDFs with scripts/import-trip.py (2026-09-24/25).
+
+   Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
+   departments; the school confirms which one the group uses. The pages of
+   the School Trip Record and the Trip Leader Card were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
+   and the copy below describes a list, never a choice made by ETI360. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "casco-bay",
@@ -31,7 +36,7 @@ const cascoBay: Trip = {
   group: "20 tenth-grade students and four chaperones in two pods, each with two of the outfitter's guides",
   paperDefault: "letter",
   lede:
-    "Tideline School in Portland, Maine, runs a five-day sea kayaking journey on Casco Bay for its tenth-grade summer program: 23.8 miles in two-person kayaks from East End Beach in Portland to Little Chebeague Island and Jewell Island and back, with four nights camping on the two state-owned islands. ETI360 brought together the school's plan, the islands' published rules, and NOAA's tide and current predictions for these dates, measured each day's distance and time on the water from the route itself, timed every crossing to a window near slack water or on weak current, and found the emergency department for each place, with the travel time by water and by road. Each document below is written for the person who uses it, and each opens in full.",
+    "Tideline School in Portland, Maine, runs a five-day sea kayaking journey on Casco Bay for its tenth-grade summer program: 23.8 miles in two-person kayaks from East End Beach in Portland to Little Chebeague Island and Jewell Island and back, with four nights camping on the two state-owned islands. ETI360 brought together the school's plan, the islands' published rules, and NOAA's tide and current predictions for these dates, measured each day's distance and time on the water from the route itself, timed every crossing to a window near slack water or on weak current, and set out the travel time by water and by road to the emergency department for each day; the school confirms with the outfitter which emergency department the group uses. Each document below is written for the person who uses it, and each opens in full.",
   summary:
     "A five-day tenth-grade sea kayaking journey on Casco Bay: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
@@ -83,7 +88,7 @@ const cascoBay: Trip = {
     },
     {
       title: "Preparing the leader and chaperones",
-      note: "A Route Intelligence page for each paddling day, the crossing windows, the weather holds, the procedures, and the emergency department for each place, with the travel time by water and by road.",
+      note: "A Route Intelligence page for each paddling day, the crossing windows, the weather holds, the procedures, and the travel time by water and by road to the emergency department.",
     },
     {
       title: "Timing each paddling day",
@@ -154,7 +159,7 @@ const cascoBay: Trip = {
       cover: cover("trip-leader-card", "Trip Leader Card"),
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
-        [10, "Monday's bail-out and boat access, what the guides watch, the radio plan, light and tide, and the emergency department for the day, with the travel time by water and by road."],
+        [10, "Monday's bail-out and boat access, what the guides watch, the radio plan, light and tide, and the travel time by water and by road to the emergency department."],
         [18, "Friday's Route Intelligence page: distance, time on the water at the group's pace, tide, and sunset, with the route from Jewell Island past Andrews Beach to East End Beach and its crossings numbered in order."],
         [22, "The weather holds: what happens in fog, under a small craft advisory, or with thunder, when a crossing cannot run, and how the pods and the support boat keep in touch by radio."],
       ]),

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { liveProducts } from "@/content/products";
 import { versionsOf } from "@/content/versions";
+import { assertRedirectsLand } from "@/lib/redirect-check";
 import { SITE_URL } from "@/lib/site";
 
 // Every indexable route (four-product site spec §10), with the priority a
@@ -12,6 +13,9 @@ import { SITE_URL } from "@/lib/site";
 type Route = { path: string; priority: number; changeFrequency: "weekly" | "monthly" };
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Fails the build if a redirect points at a page this build does not
+  // serve (spec S18; src/lib/redirect-check.ts).
+  assertRedirectsLand();
   const lastModified = new Date();
   const routes: Route[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
@@ -24,10 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
     { path: "/privacy", priority: 0.2, changeFrequency: "monthly" },
   ];
-  return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+  // Backstop: /routes/* (the route-map pages) is never listed.
+  return routes
+    .filter(({ path }) => path !== "/routes" && !path.startsWith("/routes/"))
+    .map(({ path, priority, changeFrequency }) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified,
+      changeFrequency,
+      priority,
+    }));
 }

@@ -4,7 +4,7 @@ import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct } from "@/content/products";
-import { versionsOf } from "@/content/versions";
+import { notices, versionsOf } from "@/content/versions";
 import { CLOSING_SENTENCE, WHO_DECIDES } from "@/content/voice";
 import styles from "@/components/productpage.module.css";
 
@@ -17,8 +17,10 @@ import styles from "@/components/productpage.module.css";
    /for-schools/field-trips and /trips/elementary land here.
 
    The decisions below are written for the product, not for one school, so
-   they hold for both packs (checked against both PDFs, 2026-09-27). The
-   Harborview content file keeps its own school-specific decisions.
+   they hold for both packs (checked against both PDFs, 2026-09-27); they
+   live here only (the version files carry no decisions of their own). What
+   differs between the packs, such as the documents Harborview issues beside
+   its pack, is in each version's summary.
 
    Copy marked [draft] passed the tone review on 2026-09-27 (Stage D) and
    awaits Dan's preview. */
@@ -37,8 +39,9 @@ const DECISIONS: { title: string; note: string }[] = [
   },
   {
     title: "Approving each day trip",
-    // [draft] adapted from the Harborview note to hold for both packs
-    note: "Each trip’s page and the risk-assessment working documents prepared for it, for the school to review, complete, and approve. The pack records what was prepared, not that a trip is approved.",
+    // [draft] adapted from the Harborview note to hold for both packs. Review
+    // fix 2026-09-27: the approval boundary is said once, under Who decides.
+    note: "Each trip’s page and the risk-assessment working documents prepared for it, for the school to review, complete, and approve.",
   },
   {
     title: "Briefing teachers and chaperones",
@@ -57,9 +60,8 @@ const DECISIONS: { title: string; note: string }[] = [
   },
 ];
 
-// [draft]
-const DESCRIPTION =
-  "The Field Trip Package (Tier 2 Trip Readiness): the Annual Elementary Field Trip Risk Assessment Pack, a school year of one-day field trips prepared before the year begins, one page per trip and a calendar for each month. Shown for two fictional schools, in US Letter and A4.";
+// [draft] Then each school's notice verbatim (ADR-023).
+const DESCRIPTION = `The Field Trip Package (Tier 2 Trip Readiness): the Annual Elementary Field Trip Risk Assessment Pack, a school year of one-day field trips prepared before the year begins, one page per trip and a calendar for each month, in US Letter and A4. ${notices(versionsOf("field-trip-package"))}`;
 
 export const metadata: Metadata = {
   title: "The Field Trip Package",
@@ -140,15 +142,10 @@ export default function FieldTripPackagePage() {
           <div className="boundary-callout" id="who-decides">
             <h3>Who decides</h3>
             <p>{WHO_DECIDES}</p>
-            {/* [draft] adapted: "the set" is now "the pack" */}
+            {/* [draft] Review fix 2026-09-27: the approval boundary once. */}
             <p className={styles.next}>
-              Preparing the pack approves nothing: the school still approves each trip on its own
+              The pack lists what was prepared for each trip; the school approves each trip on its own
               terms.
-            </p>
-            {/* [draft] adapted: Harborview's working documents are issued beside the pack, Firholm's are in it */}
-            <p className={styles.next}>
-              The risk-assessment working documents prepared for each trip are written for the school to
-              review, complete, and approve.
             </p>
           </div>
 

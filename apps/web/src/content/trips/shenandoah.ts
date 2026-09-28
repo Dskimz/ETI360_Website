@@ -10,7 +10,12 @@ import type { Trip } from "./types";
    Hero: "The Point Overlook on Skyline Drive", Carol M. Highsmith Archive,
    Library of Congress (item 2011631743, public domain), the photo-cover.jpg
    crop in trips/shenandoah-2027/assets/. The guiding company in the
-   documents is invented and is not named on this page. */
+   documents is invented and is not named on this page.
+
+   Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
+   departments; the school confirms which one the group uses. The pages of
+   the School Trip Record, the Working File, the Family Trip Brief and the Trip Leader Card were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
+   and the copy below describes a list, never a choice made by ETI360. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "shenandoah",
@@ -32,7 +37,7 @@ const shenandoah: Trip = {
   group: "20 tenth-grade students and four chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Philadelphia is taking twenty tenth graders to walk the Appalachian Trail through Shenandoah National Park for five days in October. ETI360 brought together the school's itinerary, the coach, lodge, and guiding arrangements, and the school's own procedures, drew each walking day's route from National Park Service and OpenStreetMap trail data, with the elevation along it, computed the sun times for where the group will be each day, and found the emergency department for each half of the ridge, with the drive time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Philadelphia is taking twenty tenth graders to walk the Appalachian Trail through Shenandoah National Park for five days in October. ETI360 brought together the school's itinerary, the coach, lodge, and guiding arrangements, and the school's own procedures, drew each walking day's route from National Park Service and OpenStreetMap trail data, with the elevation along it, computed the sun times for where the group will be each day, and listed the emergency departments by drive time from each half of the ridge; the school confirms which one the group uses. Each document below is written for the person who uses it, and each opens in full.",
   summary:
     "A five-day tenth-grade walk on the Appalachian Trail, with the coach on Skyline Drive all week: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
@@ -79,7 +84,7 @@ const shenandoah: Trip = {
     },
     {
       title: "Preparing the leader and chaperones",
-      note: "Groups and walking parties, the procedures on the Trail and at the lodges, and the emergency department for each half of the ridge, with the drive time.",
+      note: "Groups and walking parties, the procedures on the Trail and at the lodges, and the emergency departments by drive time from each half of the ridge.",
     },
     {
       title: "Deciding each day's route and turnaround",
@@ -122,7 +127,7 @@ const shenandoah: Trip = {
       insidePages: inside("trip-risk-working-file", "Trip Risk Working File", [
         [1, "The trip summary the file is built on, and the activity groups from the road to the rock, each with its own section."],
         [13, "Summits and open rock: a fall from the rock and lightning on exposed ground, each with its controls, its emergency actions, and its rating."],
-        [16, "The optional Bearfence rock scramble: the emergency department for the south of the ridge, with the drive time, the live-assessment prompts for the day, and the school's review lines."],
+        [16, "The optional Bearfence rock scramble: the emergency department by drive time from the south of the ridge, the live-assessment prompts for the day, and the school's review lines."],
       ]),
     },
     {
@@ -146,13 +151,13 @@ const shenandoah: Trip = {
       reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
-        "Groups, walking parties, contacts, and standards, the week in outline, a Route Intelligence page for each walking day, and the emergency plan: the emergency department for each half of the ridge, with the drive time.",
+        "Groups, walking parties, contacts, and standards, the week in outline, a Route Intelligence page for each walking day, and the emergency plan: the emergency departments by drive time from each half of the ridge.",
       cover: cover("trip-leader-card", "Trip Leader Card"),
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
         [2, "Groups of five and two walking parties of thirteen, fifteen minutes apart, each with a guide and two school adults, and the working contacts."],
         [5, "Route Intelligence for the longest day: the map, the legs, where the coach meets the group, the turnaround times, the elevation profile, and the daylight left at the finish."],
-        [8, "The emergency plan: the park's dispatch number first, then the emergency department for each half of the ridge, with the drive time, and the route out through Thornton Gap."],
+        [8, "The emergency plan: the park's dispatch number first, then the emergency departments by drive time from each half of the ridge, and the route out through Thornton Gap."],
       ]),
     },
     {

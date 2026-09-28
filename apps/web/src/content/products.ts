@@ -1,6 +1,7 @@
 import { TIER_NAMES } from "@/content/services";
 import type { ProductSlug } from "@/content/trips/types";
 import { versionsOf } from "@/content/versions";
+import { BRAND_LINE, WHAT_WE_DO_LINE } from "@/content/voice";
 
 /* The four products (Dan, 2026-09-25: "each page should be one of the 4
    products and then we show off multiple versions of the product from that
@@ -92,3 +93,27 @@ export function tierNames(p: Product): string[] {
 
 /** The product slugs the contact form accepts (?product=). */
 export const PRODUCT_SLUGS: ProductSlug[] = PRODUCTS.map((p) => p.slug);
+
+const COUNT = ["", "One product", "Two products", "Three products", "Four products"];
+
+/** "One product" … "Four products", for the live list. */
+export function productCount(products: Product[] = liveProducts()): string {
+  return COUNT[products.length] ?? `${products.length} products`;
+}
+
+/** "the Travel Program Review, the Trip Package, …, and the Conference Travel Package". */
+export function productNames(products: Product[] = liveProducts()): string {
+  const names = products.map((p) => `the ${p.name}`);
+  if (names.length <= 2) return names.join(" and ");
+  return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
+}
+
+/** The site's description: the home page's, and the fallback for every page
+    that sets none (the root layout). The two brand lines, then the live
+    products by name. Never the company statement (spec S5: it names
+    providers, and the site is for schools only). [draft] */
+export function siteDescription(): string {
+  const live = liveProducts();
+  if (live.length === 0) return `${BRAND_LINE} ${WHAT_WE_DO_LINE}`;
+  return `${BRAND_LINE} ${WHAT_WE_DO_LINE} ${productCount(live)} for schools: ${productNames(live)}.`;
+}

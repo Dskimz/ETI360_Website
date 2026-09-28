@@ -16,8 +16,8 @@ import type { Version } from "@/content/trips/types";
    the rebuild repo sits beside V3 (/Users/danskimin/00 - eti360-rebuild).
 
    Images: import-trip.py harborview-elementary --root versions, from the A4
-   clean-web edition (2026-09-25 16:18; re-cut 2026-09-27, byte-identical),
-   pages cover, 5, 6 and 8. */
+   clean-web edition of 2026-09-27 20:36 (re-cut the same evening), pages
+   cover, 5, 6 and 8. */
 
 const REBUILD_OUT = "../00 - eti360-rebuild/dev/field-trip-register/out";
 const DOC = "field-trip-risk-assessment-pack";
@@ -38,42 +38,19 @@ const harborviewElementary: Version = {
   school: "Harborview International School",
   schoolType: "International",
   place: "Singapore",
+  // [draft] second sentence (review fix, 2026-09-27): what Harborview issues
+  // beside the pack (its page 6), which the Firholm pack does not.
   summary:
-    "A school year of one-day elementary field trips in Singapore: one page per trip and a calendar for each month, for the school's elementary leaders, trip coordinators, teachers, and families.",
+    "A school year of one-day elementary field trips in Singapore: one page per trip and a calendar for each month, for the school's elementary leaders, trip coordinators, teachers, and families. Each trip's itinerary, parent letter, risk-assessment working documents, and weather note are issued separately from the pack.",
   paperDefault: "a4",
   disclosure:
     "Harborview International School is a fictional school; its location is shown for illustrative purposes.",
-  decisions: [
-    {
-      title: "Planning the year",
-      note: "The year at a glance by grade, and a calendar for each month with the school's breaks and holidays marked and every trip dated to a school day.",
-    },
-    {
-      title: "Approving each day trip",
-      note: "Each trip's page and its risk-assessment working documents, one per activity group, for the school to review, complete, and approve. The pack records that the working documents were prepared, not that a trip is approved.",
-    },
-    {
-      title: "Briefing teachers and chaperones",
-      note: "The learning purpose the teachers wrote, the schedule timed to the bus, the supervision ratio, the two venues with their addresses, and the trip coordinator.",
-    },
-    {
-      title: "Telling families",
-      note: "Notes for families on every trip page, and a parent information letter, in the school's own name, in each trip's documentation set.",
-    },
-    {
-      title: "Getting a child to care",
-      // [draft] updated for the 2026-09-25 edition, which lists three departments per trip
-      note: "Singapore's two children's emergency departments and the general department with the shortest drive from each stop, with the drive times and addresses; the school confirms which one the group uses. For the Pulau Ubin trip, the drives start at the ferry terminal on the main island.",
-    },
-  ],
   documents: [
     {
       slug: DOC,
       title: TITLE,
       reader: "Elementary leaders",
       decision: "Planning the year",
-      blurb:
-        "The elementary school's single list of the year's one-day trips: the year at a glance by grade, a calendar for each month, and one page per trip with its learning purpose, schedule, notes for families, venues, the route from school, and the emergency departments with their drive times. A trip that moves keeps its page.",
       cover: cover(DOC, TITLE),
       editions: editions(),
       insidePages: inside(DOC, TITLE, [

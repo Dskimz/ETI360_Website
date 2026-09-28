@@ -12,8 +12,8 @@ import type { Version } from "@/content/trips/types";
    default edition.
 
    Images: import-trip.py firholm-elementary --root versions, from the US
-   Letter edition of 2026-09-25 16:37 (re-cut 2026-09-27), pages cover, 4,
-   20 and 21. That build added the emergency-department tables as pages 17
+   Letter edition of 2026-09-27 21:04 (re-cut the same evening), pages cover,
+   4, 20 and 21. That build added the emergency-department tables as pages 17
    to 19, so the Oxbow Farm spread moved from pages 18-19 to 20-21.
 
    Copy marked [draft] passed the tone review on 2026-09-27 (Stage D) and
@@ -37,8 +37,10 @@ const firholmElementary: Version = {
   schoolType: "US",
   place: "Seattle, Washington",
   // [draft]
+  // [draft] second sentence (review fix, 2026-09-27): what the pack itself
+  // carries for each trip (its planning pages), unlike Harborview's.
   summary:
-    "A school year of one-day lower school field trips in and around Seattle: one page per trip and a calendar for each month, for the school's lower school leaders, trip coordinator, teachers, and families.",
+    "A school year of one-day lower school field trips in and around Seattle: one page per trip and a calendar for each month, for the school's lower school leaders, trip coordinator, teachers, and families. Each trip's planning page, inside the pack, carries its emergency departments and its hazards and controls for the school to review.",
   paperDefault: "letter",
   disclosure: "Firholm School is a fictional school; its location is shown for illustrative purposes.",
   documents: [
@@ -47,9 +49,6 @@ const firholmElementary: Version = {
       title: TITLE,
       reader: "Lower school leaders",
       decision: "Planning the year",
-      // [draft]
-      blurb:
-        "The lower school's single list of the year's one-day trips: the year at a glance by grade, a calendar for each month, and for each trip a page with its learning purpose, schedule, and notes for families, then a planning page with the emergency departments, their drive times, and the hazards and controls for the school to review.",
       cover: cover(DOC, TITLE),
       editions: editions(),
       // [draft] captions

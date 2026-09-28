@@ -5,7 +5,12 @@ import type { Trip } from "./types";
    prototype (customers/hrs-cleveland/website/build_washington_dc_page.py,
    2026-09-22). Letter PDFs: customers/hrs-cleveland/outputs/pdf/; A4 PDFs:
    outputs/pdf/a4/ (2026-09-24, V3 ADR-024). Restore them locally with
-   `npm run sync:trip-pdfs`. */
+   `npm run sync:trip-pdfs`.
+
+   Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
+   departments; the school confirms which one the group uses. The pages of
+   the Working File were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
+   and the copy below describes a list, never a choice made by ETI360. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "washington-dc",
@@ -27,7 +32,7 @@ const washingtonDc: Trip = {
   group: "30 eighth-grade students and six chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Cleveland is taking thirty eighth graders to Washington, DC, for five days in April. ETI360 brought together the school's itinerary, the bus and hotel confirmations, and the school's own procedures, checked group entry and bag rules against each venue's own guidance, timed every drive for a motorcoach, and found the emergency department for each place, with the drive time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Cleveland is taking thirty eighth graders to Washington, DC, for five days in April. ETI360 brought together the school's itinerary, the bus and hotel confirmations, and the school's own procedures, checked group entry and bag rules against each venue's own guidance, timed every drive for a motorcoach, and listed the emergency departments by drive time from each place; the school confirms which one the group uses. Each document below is written for the person who uses it, and each opens in full.",
   summary:
     "A five-day eighth-grade trip by charter bus: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
@@ -61,7 +66,7 @@ const washingtonDc: Trip = {
     },
     {
       title: "Preparing the leader and chaperones",
-      note: "Day plans timed to the bus, the procedures, and the emergency department for each place, with the drive time.",
+      note: "Day plans timed to the bus, the procedures, and the emergency departments by drive time from each place.",
     },
     {
       title: "Connecting the trip to learning",
@@ -100,7 +105,7 @@ const washingtonDc: Trip = {
       insidePages: inside("trip-risk-working-file", "Trip Risk Working File", [
         [1, "The trip summary, the five activity groups, and how the file is used: review, complete, approve, carry."],
         [3, "Charter bus travel, one section per activity group: each risk with its controls, its emergency actions, and a rating the school can change."],
-        [8, "Hotel overnight stays: the emergency department for the hotel, with the drive time and the route, the live-assessment prompts for the day, and the school's review lines."],
+        [8, "Hotel overnight stays: the emergency department near the hotel, with the drive time and the route, the live-assessment prompts for the day, and the school's review lines."],
       ]),
     },
     {
@@ -124,13 +129,13 @@ const washingtonDc: Trip = {
       reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
-        "Groups, contacts, and standards, four day plans timed to the bus, the overnight return with its rest stops, and the emergency plan: the emergency department for each place, with the drive time.",
+        "Groups, contacts, and standards, four day plans timed to the bus, the overnight return with its rest stops, and the emergency plan: the emergency departments by drive time from each place.",
       cover: cover("trip-leader-card", "Trip Leader Card"),
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
         [3, "Day plans timed to the bus. Each move has a time and a head count, and the day has a fallback: if Thursday runs late, the Supreme Court stop is the one to drop."],
         [5, "The overnight ride home: a rested second driver team, four rest stops at named service plazas, and a chaperone watch rota."],
-        [6, "The emergency plan: the action sequence first, then the emergency department for each place, with the drive time and the route, one in Washington and one near the hotel."],
+        [6, "The emergency plan: the action sequence first, then the emergency departments with their drive times and the route, one in Washington and one near the hotel."],
       ]),
     },
     {

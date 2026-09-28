@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CtaCard } from "@/components/CtaCard";
 import { ProductDoors } from "@/components/ProductDoors";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
-import { liveProducts, type Product } from "@/content/products";
+import { liveProducts, productCount, siteDescription, type Product } from "@/content/products";
 import type { ProductSlug } from "@/content/trips/types";
 import {
   BRAND_EYEBROW,
@@ -34,7 +34,10 @@ const PHRASE: Record<ProductSlug, string> = {
   "field-trip-package": "a year of day trips",
   "conference-travel-package": "a conference year",
 };
-const COUNT = ["", "One product", "Two products", "Three products", "Four products"];
+function doorsHeading(products: Product[]): string {
+  const text = listOf(products.map((p) => PHRASE[p.slug]));
+  return `${text.charAt(0).toUpperCase()}${text.slice(1)}.`;
+}
 
 function listOf(items: string[]): string {
   if (items.length <= 1) return items.join("");
@@ -42,21 +45,11 @@ function listOf(items: string[]): string {
   return `${items.slice(0, -1).join(", ")}, or ${items[items.length - 1]}`;
 }
 
-function doorsHeading(products: Product[]): string {
-  const text = listOf(products.map((p) => PHRASE[p.slug]));
-  return `${text.charAt(0).toUpperCase()}${text.slice(1)}.`;
-}
-
-function productNames(products: Product[]): string {
-  const names = products.map((p) => `the ${p.name}`);
-  if (names.length <= 2) return names.join(" and ");
-  return `${names.slice(0, -1).join(", ")}, and ${names[names.length - 1]}`;
-}
-
 const LIVE = liveProducts();
 
-// [draft] The second sentence of the description.
-const DESCRIPTION = `${BRAND_LINE} ${WHAT_WE_DO_LINE} ${COUNT[LIVE.length]} for schools: ${productNames(LIVE)}.`;
+// The two brand lines and the live products (products.ts), also the root
+// layout's fallback description.
+const DESCRIPTION = siteDescription();
 
 export const metadata: Metadata = {
   title: `ETI360 — ${BRAND_EYEBROW}`,
@@ -90,7 +83,7 @@ export default function HomePage() {
       {LIVE.length > 0 ? (
         <section id="products" className={styles.doorsBand}>
           <div className="container">
-            <p className="label ui">{COUNT[LIVE.length]}</p>
+            <p className="label ui">{productCount(LIVE)}</p>
             <h2 className="section-heading rule-gold">{doorsHeading(LIVE)}</h2>
             <ProductDoors products={LIVE} />
           </div>

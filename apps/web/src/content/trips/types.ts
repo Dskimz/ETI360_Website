@@ -17,7 +17,7 @@
 
 export type SchoolType = "US" | "International";
 
-export const TRIP_KINDS = ["Day trips", "City", "Service", "Language and culture", "Outdoor"] as const;
+export const TRIP_KINDS = ["City", "Service", "Language and culture", "Outdoor"] as const;
 export type TripKind = (typeof TRIP_KINDS)[number];
 
 export type Paper = "letter" | "a4";
@@ -45,14 +45,17 @@ export type Editions = { letter: string | null; a4: string | null };
     for A4, unless the document names its own `source`. */
 export type PdfSource = { letterDir: string; a4Dir: string };
 
-export type TripDocument = {
+/** A document inside any version. */
+export type VersionDocument = {
   slug: string;
   title: string;
   /** Who reads and uses it. */
   reader: string;
   /** The decision it supports; matches a decisions title where the version has them. */
   decision: string;
-  blurb: string;
+  /** The card text on a worked-trip page. A single-document version has
+      none: its block shows the version's summary instead. */
+  blurb?: string;
   cover: TripImage;
   editions: Editions;
   insidePages: InsidePage[];
@@ -61,8 +64,8 @@ export type TripDocument = {
   source?: { letter?: string; a4?: string };
 };
 
-/** A document inside any version: the same shape as a worked trip's documents. */
-export type VersionDocument = TripDocument;
+/** A document inside a worked trip: its card always carries a blurb. */
+export type TripDocument = VersionDocument & { blurb: string };
 
 export type TripDecision = { title: string; note: string };
 
@@ -112,5 +115,6 @@ export type Trip = Version & {
   /** Photo credit for the hero, shown under the trip facts when present. */
   heroCredit?: string;
   decisions: TripDecision[];
+  documents: TripDocument[];
   pdfSource: PdfSource;
 };

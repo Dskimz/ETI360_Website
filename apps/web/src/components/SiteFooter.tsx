@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import {liveProducts} from '@/content/products'
 import {BRAND_LINE} from '@/content/voice'
@@ -25,9 +26,9 @@ export function SiteFooter() {
         <div className="site-footer-bento">
           <div className="site-footer-grid">
             <div className="site-footer-brand">
-              <Link href="/" className="brand-mark ui">
-                <span className="eti">ETI</span>
-                <span className="three-sixty">360</span>
+              {/* The reverse-white logo file, as in the header. */}
+              <Link href="/" className="brand-mark" aria-label="ETI360 home">
+                <Image src="/brand/eti360-logo-reverse-white.png" alt="ETI360" width={635} height={144} />
               </Link>
               <p className="site-footer-name ui">Educational Travel Insights 360</p>
               <p className="site-footer-desc">{BRAND_LINE}</p>

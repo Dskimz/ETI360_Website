@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
@@ -31,9 +32,11 @@ export function SiteHeaderBar({items}: {items: NavItem[]}) {
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Link href="/" className="brand-mark ui" onClick={() => setOpen(false)}>
-          <span className="eti">ETI</span>
-          <span className="three-sixty">360</span>
+        {/* The real logo file (CLAUDE.md logo law), the reverse-white variant
+            for the navy bar: ETI360_Logo_COL-REVERSE-WHITE.png from the Logo
+            Suite, trimmed to its ink and sized for the web. */}
+        <Link href="/" className="brand-mark" aria-label="ETI360 home" onClick={() => setOpen(false)}>
+          <Image src="/brand/eti360-logo-reverse-white.png" alt="ETI360" width={635} height={144} priority />
         </Link>
         <button
           type="button"

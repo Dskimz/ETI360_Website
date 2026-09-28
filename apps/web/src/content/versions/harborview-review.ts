@@ -48,9 +48,6 @@ const harborviewReview: Version = {
       title: TITLE,
       reader: "School leadership",
       decision: "Reviewing the whole program",
-      // [draft]
-      blurb:
-        "The school's own travel policies and procedures, read program path by program path across the ten areas of the ETI360 Operational Capability Framework. Every evidence line names the document, section, and page it comes from.",
       cover: cover(DOC, TITLE),
       editions: editions(),
       // [draft] captions

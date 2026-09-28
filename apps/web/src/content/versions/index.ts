@@ -49,3 +49,10 @@ export function getVersion(slug: string): Version | undefined {
 export function versionsOf(product: ProductSlug): Version[] {
   return versions.filter((v) => v.product === product);
 }
+
+/** Each fictional school's notice once, verbatim, in the order the versions
+    appear: for a product page's metadata and its notes under the versions
+    (ADR-023: the disclosure on the page and in the page's metadata). */
+export function notices(list: Version[]): string {
+  return Array.from(new Set(list.map((v) => v.disclosure))).join(" ");
+}

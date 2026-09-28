@@ -187,19 +187,11 @@ strong { font-weight: 600; color: var(--navy); }
   max-width: var(--container);
   margin: 0 auto;
 }
-.brand-mark {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  white-space: nowrap;
-}
-.brand-mark .eti { color: var(--navy); }
-/* The wordmark sits on navy in both the header and the footer, so it takes
-   --gold (5.25:1 on --navy, 6.12:1 on --navy-deep). --gold-dark is for type
-   on light surfaces and measures 2.55:1 here. */
-.brand-mark .three-sixty { color: var(--gold); }
+/* The logo is the real file (CLAUDE.md logo law): the Logo Suite's
+   reverse-white PNG, since the header and the footer are both navy. Never a
+   styled-text wordmark. */
+.brand-mark { display: inline-flex; align-items: center; line-height: 0; flex-shrink: 0; }
+.brand-mark img { display: block; height: 26px; width: auto; }
 
 .site-nav ul {
   list-style: none;
@@ -227,7 +219,6 @@ strong { font-weight: 600; color: var(--navy); }
   background: var(--navy);
   border-bottom: 1px solid var(--hairline-2);
 }
-.dark-bg .brand-mark .eti { color: var(--parchment); }
 .dark-bg .site-nav a { color: var(--muted-light); }
 .dark-bg .site-nav a:hover { color: var(--parchment); }
 
@@ -319,6 +310,13 @@ strong { font-weight: 600; color: var(--navy); }
   max-width: 800px;
   margin-bottom: 36px;
   font-weight: 400;
+}
+/* Who the closing sentence's "me" is, under it on /contact. */
+.hero .hero-signature {
+  margin: -24px 0 36px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gold);
 }
 
 /* Home: a shorter hero with no actions — the headline alone, then straight
@@ -968,8 +966,8 @@ section.tight { padding: 72px 0; }
 }
 .site-footer-container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
 .site-footer-bento { padding: 0; }
-.site-footer .brand-mark { font-size: 20px; }
-.site-footer .brand-mark .eti { color: var(--parchment); }
+.site-footer .brand-mark img { height: 22px; }
+.site-footer a.brand-mark:hover { border-bottom: 0; }
 .site-footer a { color: rgba(250, 248, 243, .85); }
 .site-footer a:hover { color: var(--parchment); text-decoration: none; border-bottom: 1px solid var(--gold); }
 .site-footer-grid {

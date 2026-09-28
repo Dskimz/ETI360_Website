@@ -9,7 +9,12 @@ import type { Trip } from "./types";
    Letter PDFs by scripts/import-trip.py; A4 page numbers match Letter.
    Letter PDFs: customers/hrs-cleveland/outputs/pdf/hrsc-ot02-costa-rica-*.pdf;
    A4 PDFs: outputs/pdf/a4/ (never the *-trip-pack). Restore them locally with
-   `npm run sync:trip-pdfs`. Hero: trips/costa-rica-2027/assets/photo-site-01-poas.jpg. */
+   `npm run sync:trip-pdfs`. Hero: trips/costa-rica-2027/assets/photo-site-01-poas.jpg.
+
+   Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
+   departments; the school confirms which one the group uses. The pages of
+   the School Trip Record and the Working File were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
+   and the copy below describes a list, never a choice made by ETI360. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "costa-rica",
@@ -31,7 +36,7 @@ const costaRica: Trip = {
   group: "20 tenth-grade students and four chaperones",
   paperDefault: "letter",
   lede:
-    "Horizon Ridge School of Cleveland is taking twenty tenth graders to Costa Rica for nine days over spring break. ETI360 brought together the school's itinerary, the host operator's and the properties' arrangements, and the school's own procedures, checked the passport rule against Costa Rica's own entry requirements and the health guidance against the CDC, timed every road transfer and traced the boat leg along the canal, and found the emergency department for each of the three bases, with the travel time. Each document below is written for the person who uses it, and each opens in full.",
+    "Horizon Ridge School of Cleveland is taking twenty tenth graders to Costa Rica for nine days over spring break. ETI360 brought together the school's itinerary, the host operator's and the properties' arrangements, and the school's own procedures, checked the passport rule against Costa Rica's own entry requirements and the health guidance against the CDC, timed every road transfer and traced the boat leg along the canal, and listed the emergency departments by travel time from each of the three bases; the school or provider confirms which one the group uses. Each document below is written for the person who uses it, and each opens in full.",
   summary:
     "A nine-day tenth-grade service and ecology trip, by air through Miami, then by minibus and boat: the documents for the office, the trip leader and chaperones, families, teachers, students, and next year's planning.",
   facts: [
@@ -76,7 +81,7 @@ const costaRica: Trip = {
     },
     {
       title: "Preparing the leader and chaperones",
-      note: "The airport days, day plans timed to the minibuses and the boats, the procedures, and the emergency department for each base, with the travel time.",
+      note: "The airport days, day plans timed to the minibuses and the boats, the procedures, and the emergency departments by travel time from each base.",
     },
     {
       title: "Connecting the trip to learning",
@@ -139,13 +144,13 @@ const costaRica: Trip = {
       reader: "Trip leader",
       decision: "Preparing the leader and chaperones",
       blurb:
-        "Groups, contacts, and standards, the airport and travel days in both directions, day plans for all nine days, and the emergency plan: the emergency department for each of the three bases, with the travel time.",
+        "Groups, contacts, and standards, the airport and travel days in both directions, day plans for all nine days, and the emergency plan: the emergency departments by travel time from each of the three bases.",
       cover: cover("trip-leader-card", "Trip Leader Card"),
       editions: editions("trip-leader-card"),
       insidePages: inside("trip-leader-card", "Trip Leader Card", [
         [3, "The airport days: a head count at every fixed point in both directions, and the Miami connection on the way home, where the group spreads out."],
         [5, "The service day in Chilamate, then the crossing to the coast: life jackets fitted and checked by a chaperone before anyone boards, and the patrol rotation across the three nights."],
-        [7, "The emergency plan: 911 and the action sequence first, then the emergency department for each base, with the travel time, and the boat-then-road route from the reserve."],
+        [7, "The emergency plan: 911 and the action sequence first, then the emergency departments by travel time from each base, and the boat-then-road route from the reserve."],
       ]),
     },
     {

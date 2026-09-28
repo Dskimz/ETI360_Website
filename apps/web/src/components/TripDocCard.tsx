@@ -133,7 +133,7 @@ export function DocCard({
       <div className={styles.cardBody}>
         <p className={`${styles.reader} ui`}>{doc.reader}</p>
         <h4>{doc.title}</h4>
-        <p className={styles.blurb}>{doc.blurb}</p>
+        {doc.blurb ? <p className={styles.blurb}>{doc.blurb}</p> : null}
         <Editions version={version} doc={doc} />
       </div>
       {lookInside && doc.insidePages.length > 0 ? (

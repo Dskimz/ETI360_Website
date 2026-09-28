@@ -4,7 +4,7 @@ import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct } from "@/content/products";
-import { versionsOf } from "@/content/versions";
+import { notices, versionsOf } from "@/content/versions";
 import { CLOSING_SENTENCE, WHO_DECIDES } from "@/content/voice";
 import styles from "@/components/productpage.module.css";
 
@@ -36,8 +36,9 @@ const LEDE =
 const CLAIMS: { lead: string; body: string }[] = [
   {
     lead: "Measured from the host’s own point",
-    // [draft] edited: the walk is to the host school; the Cochin figure is by road
-    body: "Three hotels within a walk of each host school, each with its walk to the host, its drive to the emergency department, and its drive from the airport and from the station: in Paris, the Hôtel Trianon Rive Gauche is 0.7 km on foot from the host school and 2.3 km by road from Hôpital Cochin. Times come from Mapbox walking and driving directions.",
+    // [draft] edited: the walk is to the host school; the Cochin figure is by
+    // road. Review fix 2026-09-27: the directions vendor came off.
+    body: "Three hotels within a walk of each host school, each with its walk to the host, its drive to the emergency department, and its drive from the airport and from the station: in Paris, the Hôtel Trianon Rive Gauche is 0.7 km on foot from the host school and 2.3 km by road from Hôpital Cochin.",
   },
   {
     // Tone review 2026-09-27: the heading no longer personifies the page.
@@ -56,7 +57,9 @@ const CLAIMS: { lead: string; body: string }[] = [
     // review 2026-09-27: the per-trip fixture guide (not one of the four
     // products) came off; the trip details stay with the school, as in How
     // it works below.
-    body: "A contents page with every start page, then six chapters in one fixed order — the medical page is always the fourth page of a chapter — so a coach who has used the Paris chapter reads the Madrid chapter without learning it. The schedule, the squad, and the rooming list stay with the school; the city does not change between visits, so it is written once.",
+    // Review fix 2026-09-27: "the schedule, the squad, and the rooming list
+    // stay with the school" is said once, in How it works.
+    body: "A contents page with every start page, then six chapters in one fixed order — the medical page is always the fourth page of a chapter — so a coach who has used the Paris chapter reads the Madrid chapter without learning it. A city does not change between visits, so its chapter is written once.",
   },
   {
     // Trimmed from the old page: ETI360 is now named on every medical page.
@@ -66,9 +69,8 @@ const CLAIMS: { lead: string; body: string }[] = [
   },
 ];
 
-// [draft]
-const DESCRIPTION =
-  "The Conference Travel Package (Tier 2 Trip Readiness): one Athletics and Activities Trips Guide for the year, for the coaches and staff who travel with a school’s teams and delegations, with a chapter for every host city. Shown for a fictional London school, in A4 and US Letter.";
+// [draft] Then the notice verbatim (ADR-023).
+const DESCRIPTION = `The Conference Travel Package (Tier 2 Trip Readiness): one Athletics and Activities Trips Guide for the year, for the coaches and staff who travel with a school’s teams and delegations, with a chapter for every host city, in A4 and US Letter. ${notices(versionsOf("conference-travel-package"))}`;
 
 export const metadata: Metadata = {
   title: "The Conference Travel Package",
@@ -144,10 +146,13 @@ export default function ConferenceTravelPackagePage() {
           <div className="boundary-callout" id="who-decides">
             <h3>Who decides</h3>
             <p>{WHO_DECIDES}</p>
-            {/* The old page's boundary, verbatim. */}
+            {/* [draft] The old page's boundary; review fix 2026-09-27: the
+                guide also carries ETI360's own measured distances, so it
+                does more than organize (positioning, 2026-09-22). */}
             <p className={styles.next}>
-              The guide organizes public information; the school chooses the hotel, holds the medical
-              summaries and the insurance, and completes every field marked for confirmation.
+              The guide sets out public information and ETI360&rsquo;s measured distances; the school
+              chooses the hotel, holds the medical summaries and the insurance, and completes every
+              field marked for confirmation.
             </p>
           </div>
 

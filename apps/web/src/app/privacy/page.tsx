@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const DESCRIPTION =
+  "What ETI360 collects through this website, why, how long it is kept, and how to ask for it to be removed.";
+
 export const metadata: Metadata = {
   title: "Privacy notice",
-  description:
-    "What ETI360 collects through this website, why, how long it is kept, and how to ask for it to be removed.",
+  description: DESCRIPTION,
   alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy notice — ETI360",
+    description: DESCRIPTION,
+    type: "website",
+    images: ["/marketing/og-default.png"],
+  },
 };
 
 // Last substantive review of this notice. Update when what we collect changes.
@@ -44,11 +52,11 @@ export default function PrivacyPage() {
 
           <h2>What we collect, and why</h2>
           <p>
-            <strong>The briefing form.</strong> When you use the contact form we collect your
+            <strong>The contact form.</strong> When you use the contact form we collect your
             name, school, role, email address, country, and what you would like to
             discuss. If you reach the form from a product page, it also notes which
-            product. We use these details only to answer your inquiry and to arrange a
-            briefing if you want one. The lawful basis is our legitimate interest in
+            product. We use these details only to answer your inquiry and to find a time
+            to talk if you want one. The lawful basis is our legitimate interest in
             responding to someone who has asked us to get in touch.
           </p>
           <p>
@@ -70,8 +78,8 @@ export default function PrivacyPage() {
             and the topic, so we can tell which material was of interest. The tag records the
             school, never a person, and we do not use tracking pixels to detect whether an
             email has been opened. Opening a document from the site is recorded the same
-            way, as the document, the paper size and the approximate location, never a name,
-            an email address or an IP address.
+            way, as the document, the paper size, and the approximate location. That record
+            holds no name, email address, or IP address.
           </p>
 
           <h2>How long we keep it</h2>
