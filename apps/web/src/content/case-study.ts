@@ -3,10 +3,16 @@ import { getVersion } from "@/content/versions";
 
 /* The Case Study (/case-study; Dan, 2026-09-28: "How we work I do not like.
    I prefer Case Study."): one illustrative school year with Harborview
-   International School across the four products, told chapter by chapter.
-   Each chapter carries the same three-part block: what Harborview sends by
-   email, what ETI360 does (the reading, the data entry, the research and the
-   writing), and what Harborview receives and decides.
+   International School across the four products, told as a step-by-step
+   guide (Dan, 2026-09-28: "That is too much scroll … a step by step guide
+   for each of the products"). /case-study is the overview; each chapter
+   below is one step with its own page, /case-study/{id}. Each step carries
+   the same four moves: what Harborview sends by email, what ETI360 does
+   (the reading, the data entry, the research and the writing), what
+   Harborview receives, and what Harborview decides. A step shows the two
+   or three exhibits named in its `show` list; the rest stay listed here
+   with their source words, and every document a chapter's exhibits open
+   stays linked from its step.
 
    Source: the rebuild repo's content/vault/Marketing/
    ETI360-Case-Study-Harborview-2026-09.html, pages 1 to 15, tone-reviewed
@@ -113,8 +119,11 @@ export const WORK = {
     "Prepared documents, in its own paper size. The school reviews them and makes every decision; for trip risk documents, it completes, amends and approves them. ETI360 never certifies, approves, ranks or recommends a provider.",
 };
 
-export const READING_THE_CHAPTERS =
-  "Each chapter opens with what Harborview needs, then the same three-part block: what Harborview sends, what ETI360 does, and what Harborview receives and decides. Pages cut from the real samples follow, each captioned with what it is for. Where a Harborview document is not part of this case study, the chapter says so and shows the same product built for another fictional school.";
+// The page's former reading note (READING_THE_CHAPTERS), adapted to the
+// steps and their four parts. [draft], tone-reviewed 2026-09-28 (its one
+// correction applied: "four moves" became "four parts").
+export const READING_THE_STEPS =
+  "Each step opens with what Harborview needs, then four parts: what Harborview sends, what ETI360 does, what Harborview receives, and what Harborview decides. Pages cut from the real samples follow, each captioned with what it is for. Where a Harborview document is not part of this case study, the step says so and shows the same product built for another fictional school.";
 
 // [draft]
 export const OPENING_PAGES =
@@ -146,7 +155,8 @@ export type ChapterSection = {
 };
 
 export type Chapter = {
-  /** The anchor: /case-study#{id}. A product chapter takes its product's slug. */
+  /** The step's page: /case-study/{id}. A product step takes its product's
+      slug. The old anchors (/case-study#{id}) redirect to it. */
   id: string;
   number: number;
   name: string;
@@ -155,6 +165,9 @@ export type Chapter = {
   product?: ProductSlug;
   /** The label where the chapter is not one product. */
   label?: string;
+  /** Where the chapter is not one product: the products its label names,
+      whose tiers mark it in the step list. */
+  opens?: ProductSlug[];
   need: string;
   sends: { title: string; items: string[] };
   does: { title: string; items: string[] };
@@ -163,6 +176,9 @@ export type Chapter = {
   /** The Trip Package chapter's decision table. */
   decisionTable?: { decision: string; documents: { id: string; name: string }[]; holders: string }[];
   sections: ChapterSection[];
+  /** The exhibits the step shows (image file names from `sections`): the
+      two or three most telling, in this order. */
+  show: string[];
   links: { href: string; label: string }[];
 };
 
@@ -177,6 +193,7 @@ export const CHAPTERS: Chapter[] = [
     name: "The first conversation",
     title: "Every way a student leaves campus",
     label: "Opens a Travel Program Review",
+    opens: ["travel-program-review"],
     need: "Harborview’s travel grew one program at a time: international trips, elementary day trips, athletics and activities, Week Without Walls, and service learning and CAS, each with its own owner. Before planning the year, the leadership team wants one view of all of it.",
     sends: {
       title: "By email, and in one conversation",
@@ -235,6 +252,7 @@ export const CHAPTERS: Chapter[] = [
         ],
       },
     ],
+    show: ["review-p03-paths.jpg"],
     links: [{ href: "/travel-program-review", label: "The Travel Program Review" }],
   },
 
@@ -374,6 +392,7 @@ export const CHAPTERS: Chapter[] = [
         notices: [NOTICES.cycling, NOTICES.orienteering],
       },
     ],
+    show: ["review-p02-summary.jpg", "review-p05-area.jpg", "dsct-p02-summary.jpg"],
     links: [
       { href: "/travel-program-review", label: "The Travel Program Review" },
       { href: "/travel-program-review#harborview-review", label: "Harborview’s sample review, in A4 and US Letter" },
@@ -473,6 +492,7 @@ export const CHAPTERS: Chapter[] = [
         ],
       },
     ],
+    show: ["ftp-p08-trip.jpg", "ftp-p05-year.jpg"],
     links: [
       { href: "/field-trip-package", label: "The Field Trip Package" },
       { href: "/field-trip-package#harborview-elementary", label: "Harborview’s pack, in A4 and US Letter" },
@@ -566,6 +586,7 @@ export const CHAPTERS: Chapter[] = [
         ],
       },
     ],
+    show: ["wex-p01-cover.jpg", "wex-p09-medical.jpg"],
     links: [
       { href: "/conference-travel-package", label: "The Conference Travel Package" },
       { href: "/conference-travel-package#wexcombe-meridian", label: "Wexcombe’s guide, in A4 and US Letter" },
@@ -699,6 +720,7 @@ export const CHAPTERS: Chapter[] = [
         ],
       },
     ],
+    show: ["italy-trwf-p02-groups.jpg", "italy-ej-p02-language.jpg"],
     links: [
       { href: "/trip-package", label: "The Trip Package" },
       { href: "/trips/italy", label: "The Italy trip, every document in US Letter and A4" },
@@ -711,6 +733,7 @@ export const CHAPTERS: Chapter[] = [
     name: "Through the year",
     title: "After each trip, and the year after",
     label: "Trip Package · Field Trip Package · Travel Program Review",
+    opens: ["trip-package", "field-trip-package", "travel-program-review"],
     need: "After each trip, Harborview wants to hear how it went from students, families and leaders. Each August it plans the next elementary year, and every four years its program is read again.",
     sends: {
       title: "By email, when each moment comes",
@@ -770,6 +793,7 @@ export const CHAPTERS: Chapter[] = [
         ],
       },
     ],
+    show: ["italy-ptf-p06-rules.jpg", "ftp-p07-september.jpg"],
     links: [
       { href: "/trip-package#post-trip-feedback-report", label: "The Post-Trip Feedback Report" },
       { href: "/field-trip-package", label: "The Field Trip Package" },
@@ -822,7 +846,9 @@ export function glanceOf(ch: Chapter): { need: string; meets: string; label?: st
   return g;
 }
 
-/** Across the four products (source page 14). */
+/** Across the four products (source page 14). Not shown in the
+    step-by-step guide, where each product's step carries the same division
+    in full as its four moves; kept here with its source words. */
 export const ACROSS: { product: ProductSlug; sends: string; does: string; receives: string }[] = [
   {
     product: "travel-program-review",
@@ -888,4 +914,92 @@ export function chapterDocuments(ch: Chapter): { version: Version; doc: VersionD
     }
   }
   return out;
+}
+
+/* ── The steps ── */
+
+/** The overview's address; each step is /case-study/{chapter id}. */
+export const CASE_STUDY_HREF = "/case-study";
+
+export function stepHref(ch: Chapter): string {
+  return `${CASE_STUDY_HREF}/${ch.id}`;
+}
+
+export function getChapter(id: string): Chapter | undefined {
+  return CHAPTERS.find((c) => c.id === id);
+}
+
+/** Interface words for the guide: the step bar, the step list, the four
+    moves and the start button. [draft], tone-reviewed 2026-09-28. The move
+    labels are the ones the guide was specified with. */
+export const STEP_UI = {
+  overview: "Overview",
+  steps: "Case Study steps",
+  bar: "Previous and next step",
+  previous: "Previous",
+  next: "Next",
+  contact: "Contact",
+  start: "Start at step 1",
+  exhibits: "Pages from the samples",
+  moves: {
+    sends: "What Harborview sends",
+    does: "What ETI360 does",
+    receives: "What Harborview receives",
+    decides: "What Harborview decides",
+  },
+};
+
+/** "Step 2 of 6". [draft] */
+export function stepOfTotal(ch: Chapter): string {
+  return `Step ${ch.number} of ${CHAPTERS.length}`;
+}
+
+export type ShownExhibits = {
+  /** A chapter showing another fictional school: said before its pages. */
+  lead?: { text: string; notices: string[] };
+  exhibits: Exhibit[];
+  /** The notes of the sections the shown exhibits come from. */
+  notes: { lead: string; text: string }[];
+};
+
+/** The exhibits a step shows, in its `show` order, with their sections'
+    notes. Throws (failing the build) if a name is not one of the chapter's
+    exhibits, or if another school's pages would be shown beside
+    Harborview's, where "these pages" would no longer be exact. */
+export function shownExhibits(ch: Chapter): ShownExhibits {
+  const found = ch.show.map((image) => {
+    const section = ch.sections.find((s) => s.exhibits.some((e) => e.image === image));
+    if (!section) throw new Error(`Case Study: ${ch.id} shows "${image}", which is not one of its exhibits`);
+    return { section, exhibit: section.exhibits.find((e) => e.image === image)! };
+  });
+  const sections = [...new Set(found.map((f) => f.section))];
+  const leads = sections.filter((s) => s.otherSchool);
+  if (leads.length > 0 && sections.length > 1) {
+    throw new Error(`Case Study: ${ch.id} mixes another school's pages with Harborview's`);
+  }
+  return {
+    lead: leads[0]?.otherSchool,
+    exhibits: found.map((f) => f.exhibit),
+    notes: sections.flatMap((s) => s.notes ?? []),
+  };
+}
+
+/* Which fictional names a notice covers: a step carries the notice of every
+   fictional school or provider it names, so a page reached on its own is as
+   plain about what is invented as the whole case study was. */
+const NOTICE_NAMES: [string, string][] = [
+  [NOTICES.cycling, CYCLING_PROVIDER],
+  [NOTICES.orienteering, ORIENTEERING_PROVIDER],
+  [NOTICES.wexcombe, "Wexcombe"],
+  [NOTICES.horizonRidge, "Horizon Ridge"],
+];
+
+/** The notices at the foot of a step: Harborview's always, then those of
+    every other fictional name the step carries, in the order the story
+    meets them, less any already said in the step's lead. */
+export function stepNotices(ch: Chapter): string[] {
+  const text = JSON.stringify(ch);
+  const said = new Set(shownExhibits(ch).lead?.notices ?? []);
+  const named = NOTICE_NAMES.filter(([, name]) => text.includes(name)).map(([n]) => n);
+  return [NOTICES.harborview, ...named].filter((n) => !said.has(n));
 }
