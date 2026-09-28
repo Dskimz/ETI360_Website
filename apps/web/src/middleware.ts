@@ -2,8 +2,12 @@ import type { NextFetchEvent, NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 // Shared reviewer password for the unlisted campaign pages and the Users
-// Guides (Dan, 2026-09-04). Username is ignored; any value works.
-const REVIEW_PASSWORD = "Goodtimes2026";
+// Guides (Dan, 2026-09-04). Username is ignored; any value works. It comes
+// from the REVIEW_PASSWORD environment setting (Vercel, and .env.local for a
+// dev server), never from this file: the repository is public. Unset, the
+// gate opens for nobody. Middleware env is bound at build time, so a change
+// needs a redeploy.
+const REVIEW_PASSWORD = process.env.REVIEW_PASSWORD ?? "";
 
 // The exact set the basic-auth gate covers. Everything else on the site is
 // public and only ever passes through the campaign logger below.
@@ -222,13 +226,21 @@ async function record(row: Row) {
 export function middleware(req: NextRequest, event: NextFetchEvent) {
   const { pathname } = req.nextUrl;
 
+  // Private route pages (/routes/{token}) have their own password gate in the
+  // route handlers and are never logged: a campaign row would copy the private
+  // address into the log. The matcher below still reaches them (they have no
+  // file extension), so they leave here untouched.
+  if (pathname === "/routes" || pathname.startsWith("/routes/")) {
+    return NextResponse.next();
+  }
+
   if (isAuthPath(pathname)) {
     const auth = req.headers.get("authorization");
     if (auth?.startsWith("Basic ")) {
       try {
         const decoded = atob(auth.slice(6));
         const pass = decoded.slice(decoded.indexOf(":") + 1);
-        if (pass === REVIEW_PASSWORD) {
+        if (REVIEW_PASSWORD.length >= 8 && pass === REVIEW_PASSWORD) {
           if ((pathname.startsWith("/guides") || pathname === "/review") && !/\.[a-z0-9]+$/i.test(pathname)) {
             // public/ files don't auto-serve directory indexes, and Next strips
             // trailing slashes before middleware runs — send folder URLs to

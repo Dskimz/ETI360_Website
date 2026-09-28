@@ -32,3 +32,10 @@ screenshots
 # (sources recorded in apps/web/src/content/trips/<slug>.ts)
 apps/web/public/trips/*/letter/
 apps/web/public/trips/*/a4/
+
+# private route pages (/routes/[token]): nothing of them is ever committed, since
+# this repository is public. Their folders (route.json with the password hash,
+# the data bundle, the logo, the card PDFs) are written by `npm run
+# sync:route-private` from V3 and uploaded to the private bucket; see
+# scripts/s3/README.md, "Private route pages".
+apps/web/private/

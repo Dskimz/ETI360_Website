@@ -35,10 +35,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
     changeFrequency: "monthly" as const,
   }));
-  return [...ROUTES, ...tripRoutes].map(({ path, priority, changeFrequency }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+  // The private route pages (/routes/{token}) are never listed: their address
+  // is the first of their two locks. The filter keeps it that way if a path
+  // under /routes is ever added above by mistake.
+  return [...ROUTES, ...tripRoutes]
+    .filter(({ path }) => path !== "/routes" && !path.startsWith("/routes/"))
+    .map(({ path, priority, changeFrequency }) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified,
+      changeFrequency,
+      priority,
+    }));
 }
