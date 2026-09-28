@@ -1,4 +1,5 @@
 import {liveProducts} from '@/content/products'
+import {caseStudyLive} from '@/content/case-study'
 import {SiteHeaderBar, type NavItem} from './SiteHeaderBar'
 
 /* The primary nav (four-product site, Dan 2026-09-25): the four products by
@@ -13,7 +14,7 @@ export function SiteHeader() {
       label: p.name,
       alsoActive: p.slug === 'trip-package' ? '/trips' : undefined,
     })),
-    {href: '/case-study', label: 'Case Study'},
+    ...(caseStudyLive() ? [{href: '/case-study', label: 'Case Study'}] : []),
     {href: '/contact', label: 'Contact'},
   ]
   return <SiteHeaderBar items={items} />

@@ -3,6 +3,7 @@ import { liveProducts } from "@/content/products";
 import { versionsOf } from "@/content/versions";
 import { assertRedirectsLand } from "@/lib/redirect-check";
 import { SITE_URL } from "@/lib/site";
+import { caseStudyLive } from "@/content/case-study";
 
 // Every indexable route (four-product site spec §10), with the priority a
 // search engine should read as our own ranking of them: the home page, each
@@ -20,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes: Route[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
     ...liveProducts().map((p) => ({ path: p.href, priority: 0.9, changeFrequency: "monthly" as const })),
-    { path: "/case-study", priority: 0.8, changeFrequency: "monthly" },
+    ...(caseStudyLive() ? [{ path: "/case-study", priority: 0.8, changeFrequency: "monthly" as const }] : []),
     ...versionsOf("trip-package").map((v) => ({
       path: `/trips/${v.slug}`,
       priority: 0.7,

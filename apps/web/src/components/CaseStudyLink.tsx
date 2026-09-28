@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CHAPTERS } from "@/content/case-study";
+import { CHAPTERS, caseStudyLive } from "@/content/case-study";
 import type { Product } from "@/content/products";
 import styles from "./casestudylink.module.css";
 
@@ -8,6 +8,7 @@ import styles from "./casestudylink.module.css";
    The chapter anchor comes from the case study's content, so a product
    without a chapter links the page's top. */
 export function CaseStudyLink({ product }: { product: Product }) {
+  if (!caseStudyLive()) return null;
   const chapter = CHAPTERS.find((c) => c.product === product.slug);
   const href = chapter ? `/case-study#${chapter.id}` : "/case-study";
   return (

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {liveProducts} from '@/content/products'
+import {caseStudyLive} from '@/content/case-study'
 import {BRAND_LINE} from '@/content/voice'
 
 const firmLinks = [
@@ -44,9 +45,11 @@ export function SiteFooter() {
                         <Link href={p.href}>{p.name}</Link>
                       </li>
                     ))}
-                    <li>
-                      <Link href="/case-study">Case Study</Link>
-                    </li>
+                    {caseStudyLive() ? (
+                      <li>
+                        <Link href="/case-study">Case Study</Link>
+                      </li>
+                    ) : null}
                   </ul>
                 </div>
               ) : null}

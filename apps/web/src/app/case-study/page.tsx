@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -9,6 +10,8 @@ import {
   ABOUT,
   ACROSS,
   ALL_NOTICES,
+  CASE_STUDY_ON_HOLD,
+  caseStudyLive,
   CHAPTERS,
   chapterDocuments,
   glanceOf,
@@ -60,6 +63,8 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/case-study" },
+  // Kept out of search engines while the provider-name hold is on.
+  robots: CASE_STUDY_ON_HOLD ? { index: false, follow: false } : undefined,
   openGraph: {
     title: `${TITLE} — ETI360`,
     description: DESCRIPTION,
@@ -342,6 +347,7 @@ function ChapterBlock({ ch, shade }: { ch: Chapter; shade: boolean }) {
 }
 
 export default function CaseStudyPage() {
+  if (!caseStudyLive()) notFound();
   return (
     <>
       <section

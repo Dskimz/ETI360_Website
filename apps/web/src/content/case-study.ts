@@ -42,6 +42,19 @@ import { getVersion } from "@/content/versions";
    (dsct-p02-summary.jpg, swot-p01-cover.jpg) show the names too and must be
    re-cut from the rebuilt evaluations at the same time. */
 
+/* The hold, enforced in code (not only this comment). While it is on, a
+   production deploy (VERCEL_ENV "production") serves /case-study as a 404 and
+   drops every link to it: the menu, the footer, the product pages' lines and
+   the sitemap. Local builds and Vercel preview deployments still show the
+   page so it can be reviewed. Set CASE_STUDY_ON_HOLD to false in the same
+   edit as the provider rename. */
+export const CASE_STUDY_ON_HOLD = true;
+
+/** False on a production deploy while the hold is on; true everywhere else. */
+export function caseStudyLive(): boolean {
+  return !(CASE_STUDY_ON_HOLD && process.env.VERCEL_ENV === "production");
+}
+
 /** The fictional cycling-tour provider (renamed before publishing). */
 export const CYCLING_PROVIDER = "Dan Skimin Cycling Tours";
 /** The fictional orienteering provider (renamed before publishing). */
