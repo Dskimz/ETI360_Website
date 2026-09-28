@@ -1,0 +1,1450 @@
+/* Private route pages (/routes/{token}), in the school's own style: the
+   Tideline School Document Style Guide v1.0 (V3 customers/tideline-school/
+   branding/tokens.json) carried onto the web.
+
+   - White surfaces only. Atlantic blue for titles and table heads, graphite
+     for text, secondary gray for captions, pale gray for hairlines only,
+     brick red for a few small accents (the cover rule, summits, crossings).
+   - Barlow Condensed for titles only; Source Sans 3 for everything else,
+     including tables and subheadings. Sentence case; uppercase only for
+     short running labels.
+   - No rounded cards, shadows, gradients, colored sidebars, zebra rows or
+     vertical table rules.
+   - Web floors sit above the guide's print floors and the 9 px site floor:
+     body 17 px, tables 15 px, captions and chart text 12 to 13 px, running
+     labels 12 px. Text on a dark field (map pins, the button) is 14 px or
+     more, above 10 pt. */
+
+/* The site's navy body shows past the page edges otherwise. */
+:global(body):has(.root) {
+  background: #ffffff;
+}
+
+.root {
+  min-height: 100vh;
+  background: var(--school-paper);
+  color: var(--school-text);
+  font-family: var(--school-body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Resets against the site's global type (serif headings, gold links). */
+/* Resets use :where() so they outrank the site's element rules (0,1,0) while
+   every class rule below, written later, still wins over them. */
+.root :where(p) {
+  margin: 0;
+}
+/* The site gives every <section> 96 px of padding; these sections set their own. */
+.root :where(section) {
+  padding: 0;
+}
+.root strong {
+  color: inherit;
+  font-weight: 600;
+}
+.root a {
+  color: var(--school-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.root a:hover {
+  color: var(--school-accent);
+}
+.root h1,
+.root h2 {
+  font-family: var(--school-display);
+  font-weight: 600;
+  color: var(--school-primary);
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+.root h3,
+.root h4 {
+  font-family: var(--school-body);
+  font-weight: 600;
+  color: var(--school-primary);
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+/* Mapbox's own controls keep their styling (the attribution button's icon is
+   its background). */
+.root :where(button:not([class*="mapboxgl-"])) {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.root :focus-visible {
+  outline: 2px solid var(--school-primary);
+  outline-offset: 2px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.runningLabel {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--school-muted);
+}
+.spaced {
+  margin-top: 14px;
+}
+
+.mark {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+/* ── Page ─────────────────────────────────────────────────────────────── */
+
+.page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px 24px;
+}
+
+.head {
+  padding-top: 28px;
+}
+.running {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--school-line);
+}
+.runningRight {
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--school-muted);
+  text-align: right;
+  padding-top: 6px;
+}
+
+.titleBlock {
+  padding: 36px 0 32px;
+}
+.title {
+  font-size: 60px;
+  margin-bottom: 12px;
+}
+.meta {
+  font-size: 20px;
+  line-height: 1.45;
+  color: var(--school-muted);
+  max-width: 62ch;
+}
+.coverRule {
+  display: flex;
+  gap: 4px;
+  margin: 24px 0 22px;
+}
+.coverRule span {
+  display: block;
+  height: 2px;
+}
+.coverRule span:first-child {
+  width: 144px;
+  background: var(--school-primary);
+}
+.coverRule span:last-child {
+  width: 32px;
+  background: var(--school-accent);
+}
+.intro {
+  font-size: 18px;
+  max-width: 74ch;
+}
+.metaRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 26px 0 0;
+  padding: 16px 0;
+  border-top: 1px solid var(--school-line);
+  border-bottom: 1px solid var(--school-line);
+}
+.metaRow dt,
+.facts dt {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--school-muted);
+  margin-bottom: 2px;
+}
+.metaRow dd {
+  font-size: 15px;
+  line-height: 1.45;
+}
+.notice {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--school-muted);
+}
+.skipCards {
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+/* ── Trip and week switcher ───────────────────────────────────────────── */
+
+.viewTabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 1px solid var(--school-line);
+  scroll-margin-top: 12px;
+}
+.root .viewTab {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding: 14px 16px 12px 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+}
+.root .viewTab[aria-selected="true"] {
+  border-bottom-color: var(--school-primary);
+}
+.viewTabTitle {
+  font-family: var(--school-display);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.05;
+  color: var(--school-muted);
+}
+.viewTab[aria-selected="true"] .viewTabTitle,
+.viewTab:hover .viewTabTitle {
+  color: var(--school-primary);
+}
+.viewTabSub {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--school-muted);
+}
+
+.panel {
+  min-height: 60vh;
+}
+
+/* ── One trip, one day ────────────────────────────────────────────────── */
+
+.trip,
+.week {
+  padding-top: 30px;
+}
+.tripTitle {
+  font-size: 38px;
+}
+.tripMeta {
+  margin-top: 6px;
+  font-size: 16px;
+  color: var(--school-muted);
+}
+
+.dayTabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 8px;
+  margin: 20px 0 6px;
+}
+.root .dayTab {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 12px 7px;
+  border: 1px solid var(--school-line);
+  border-bottom-width: 3px;
+}
+.root .dayTab:hover {
+  border-color: var(--school-muted);
+}
+.root .dayTab[aria-selected="true"] {
+  border-color: var(--school-primary);
+}
+.dayTabDate {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--school-primary);
+}
+.dayTabSub {
+  font-size: 13px;
+  color: var(--school-muted);
+}
+
+.day {
+  margin-top: 14px;
+}
+.dayHead {
+  padding-top: 14px;
+}
+.root .dayTitle {
+  font-family: var(--school-display);
+  font-size: 44px;
+  line-height: 1.05;
+  margin: 4px 0 8px;
+}
+.dayMeta {
+  font-size: 17px;
+  color: var(--school-muted);
+}
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 22px 0 26px;
+  padding: 18px 0;
+  border-top: 1px solid var(--school-line);
+  border-bottom: 1px solid var(--school-line);
+}
+.figureLabel {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--school-muted);
+}
+.root .figureValue {
+  font-family: var(--school-display);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.05;
+  color: var(--school-primary);
+  margin: 4px 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+.figureSub {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--school-muted);
+}
+.beside {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--school-text);
+}
+
+.dayGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.dayMain {
+  min-width: 0;
+  scroll-margin-top: 16px;
+}
+.daySide {
+  min-width: 0;
+}
+.daySide > .block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* ── Map ──────────────────────────────────────────────────────────────── */
+
+.mapBox {
+  position: relative;
+  border: 1px solid var(--school-line);
+  background: #f1efe9;
+}
+.mapCanvas {
+  width: 100%;
+  height: 500px;
+}
+.mapCompact {
+  height: 340px;
+}
+.mapMessage {
+  padding: 20px;
+  font-size: 14px;
+  color: var(--school-muted);
+  background: #ffffff;
+}
+.mapBox > .mapMessage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid var(--school-line);
+}
+
+.pin {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: var(--school-body);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  cursor: default;
+}
+.pinCrossing {
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+}
+.pinFocus {
+  outline: 3px solid var(--school-accent);
+  outline-offset: 2px;
+}
+.pin_primary {
+  background: var(--school-primary);
+}
+.pin_accent {
+  background: var(--school-accent);
+}
+.pin_muted {
+  background: var(--school-muted);
+}
+.pinInline {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  vertical-align: -6px;
+}
+.pinSquare {
+  border-radius: 0;
+}
+
+/* ── Charts along the day ─────────────────────────────────────────────── */
+
+.along {
+  margin-top: 16px;
+}
+.alongReadout {
+  min-height: 1.5em;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: var(--school-muted);
+  font-variant-numeric: tabular-nums;
+}
+.alongSvg {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  touch-action: pan-y;
+}
+.gridLine {
+  stroke: var(--school-line);
+  stroke-width: 1;
+}
+.tick {
+  font-family: var(--school-body);
+  font-size: 12px;
+  fill: var(--school-muted);
+}
+.refLine {
+  stroke: var(--school-muted);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.aboveBand {
+  stroke: var(--school-primary);
+  stroke-width: 5;
+}
+.profileArea {
+  fill: var(--school-primary);
+  fill-opacity: 0.1;
+}
+.profileLine {
+  fill: none;
+  stroke: var(--school-primary);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.leader {
+  stroke: var(--school-line);
+  stroke-width: 1;
+}
+.dot_primary,
+.dot_accent,
+.dot_muted {
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+.dot_primary {
+  fill: var(--school-primary);
+}
+.dot_accent {
+  fill: var(--school-accent);
+}
+.dot_muted {
+  fill: var(--school-muted);
+}
+.stopLetter {
+  font-family: var(--school-body);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--school-text);
+}
+.cursor {
+  stroke: var(--school-accent);
+  stroke-width: 1.5;
+}
+.cursorDot {
+  fill: var(--school-accent);
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+.hitArea {
+  fill: transparent;
+  cursor: crosshair;
+}
+.stripBase {
+  stroke: var(--school-primary);
+  stroke-width: 3;
+}
+.stripEnd {
+  stroke: var(--school-primary);
+  stroke-width: 2;
+}
+.stripCrossing {
+  fill: var(--school-accent);
+}
+.crossingNumber {
+  font-family: var(--school-body);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--school-accent);
+}
+
+.legend {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 28px;
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.legend li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.legend .pinInline {
+  vertical-align: 0;
+}
+
+/* ── Blocks, notes, captions ──────────────────────────────────────────── */
+
+.root .block {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid var(--school-line);
+  min-width: 0;
+}
+.root .blockTitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.blockLede {
+  font-size: 15px;
+  margin-bottom: 14px;
+  max-width: 72ch;
+}
+.note {
+  margin-top: 12px;
+  font-size: 15px;
+}
+.root .note strong {
+  color: var(--school-primary);
+}
+.caption {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--school-muted);
+}
+.bullets {
+  margin-top: 6px;
+  padding-left: 20px;
+  list-style: disc;
+  font-size: 15px;
+}
+.bullets li {
+  margin-bottom: 4px;
+}
+.docWords {
+  margin: 0 0 16px;
+  max-width: 80ch;
+}
+.docWords p + p {
+  margin-top: 4px;
+}
+.edLine {
+  margin-top: 6px;
+  font-size: 16px;
+}
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+}
+
+.root .linkButton {
+  display: inline;
+  margin-left: 8px;
+  font-size: 14px;
+  color: var(--school-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.placeList {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+.placeName {
+  font-weight: 600;
+}
+.placeMeta {
+  margin-top: 2px;
+  font-size: 15px;
+}
+
+/* Ratio bars */
+.ratio {
+  position: relative;
+}
+.ratioKey {
+  position: relative;
+  height: 20px;
+  font-size: 12px;
+  color: var(--school-muted);
+}
+.ratioKeyMark {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.ratioRow {
+  margin-bottom: 14px;
+}
+.ratioHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 15px;
+}
+.root .ratioHead strong {
+  color: var(--school-primary);
+  font-variant-numeric: tabular-nums;
+}
+.ratioTrack {
+  position: relative;
+  height: 12px;
+  margin: 4px 0 3px;
+  border-bottom: 1px solid var(--school-line);
+}
+.ratioBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--school-primary);
+}
+.ratioRef {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 0;
+  border-left: 2px dashed var(--school-text);
+}
+.ratioDetail {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--school-muted);
+}
+
+/* Daylight on a clock axis */
+.clock {
+  margin: 0 0 10px;
+  --clock-label: 0px;
+}
+.clockLabelled {
+  --clock-label: 150px;
+}
+.clockAxisRow {
+  display: flex;
+}
+.clockLabelSpacer {
+  flex: 0 0 var(--clock-label);
+}
+.clockAxis {
+  position: relative;
+  flex: 1;
+  height: 20px;
+  font-size: 12px;
+  color: var(--school-muted);
+}
+.clockAxis span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.clockRow {
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+}
+.clockLabel {
+  flex: 0 0 var(--clock-label);
+  padding-right: 12px;
+  min-width: 0;
+}
+.clockTrack {
+  position: relative;
+  flex: 1;
+  height: 22px;
+  border-bottom: 1px solid var(--school-line);
+}
+.clockTick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--at);
+  border-left: 1px solid var(--school-line);
+}
+.clockDay,
+.clockDusk,
+.clockPlan {
+  position: absolute;
+}
+.clockDay {
+  top: 3px;
+  bottom: 3px;
+  background: rgba(36, 69, 83, 0.14);
+}
+.clockDusk {
+  top: 3px;
+  bottom: 3px;
+  background: rgba(36, 69, 83, 0.06);
+}
+.clockPlan {
+  top: 8px;
+  bottom: 8px;
+  background: var(--school-primary);
+}
+.clockKey {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--school-muted);
+}
+.keyItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.keyPlan,
+.keyDay,
+.keyDusk {
+  display: inline-block;
+  width: 18px;
+  height: 10px;
+}
+.keyPlan {
+  height: 6px;
+  background: var(--school-primary);
+}
+.keyDay {
+  background: rgba(36, 69, 83, 0.14);
+}
+.keyDusk {
+  background: rgba(36, 69, 83, 0.06);
+  outline: 1px solid var(--school-line);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+  margin-top: 12px;
+}
+.facts dd {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tables: white cells, Atlantic blue heads, pale gray horizontal rules. */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.table th {
+  text-align: left;
+  vertical-align: bottom;
+  font-weight: 600;
+  color: var(--school-primary);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--school-line);
+}
+.table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--school-line);
+}
+.table th:first-child,
+.table td:first-child {
+  padding-left: 0;
+}
+.table th:last-child,
+.table td:last-child {
+  padding-right: 0;
+}
+.table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cellNote {
+  display: block;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--school-muted);
+  white-space: normal;
+}
+
+.sources {
+  margin-top: 32px;
+  padding-top: 14px;
+  border-top: 1px solid var(--school-line);
+  font-size: 14px;
+}
+.sources summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--school-primary);
+}
+.sources ul {
+  list-style: disc;
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  padding-left: 20px;
+  max-width: 90ch;
+}
+
+/* ── Week at a glance ─────────────────────────────────────────────────── */
+
+.root .refBlock {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+  margin-top: 26px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--school-line);
+}
+.refMap {
+  min-width: 0;
+}
+.refFacts {
+  min-width: 0;
+}
+.root .refTitle {
+  font-family: var(--school-display);
+  font-size: 30px;
+  line-height: 1.1;
+  margin: 4px 0 8px;
+}
+.refFacts .facts {
+  margin: 16px 0 4px;
+}
+
+.weekGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px 48px;
+  margin-top: 30px;
+}
+.weekChart {
+  margin: 0;
+  min-width: 0;
+  --week-label: 118px;
+  --week-value: 128px;
+}
+.weekChartTitle {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--school-primary);
+  margin-bottom: 10px;
+}
+.weekAxisRow {
+  display: grid;
+  grid-template-columns: var(--week-label) minmax(0, 1fr) var(--week-value);
+  column-gap: 12px;
+}
+.weekAxis {
+  grid-column: 2;
+  position: relative;
+  height: 18px;
+  font-size: 12px;
+  color: var(--school-muted);
+}
+.weekAxis span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.weekAxisUnit {
+  grid-column: 3;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--school-muted);
+}
+.weekGroup {
+  margin-top: 8px;
+}
+.weekGroupTitle {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--school-muted);
+  margin-bottom: 2px;
+}
+.weekRow {
+  display: grid;
+  grid-template-columns: var(--week-label) minmax(0, 1fr) var(--week-value);
+  column-gap: 12px;
+  align-items: center;
+  min-height: 34px;
+  border-bottom: 1px solid var(--school-line);
+}
+.weekRowLabel {
+  min-width: 0;
+}
+.weekTrack {
+  position: relative;
+  height: 24px;
+}
+.weekTick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--at);
+  border-left: 1px solid var(--school-line);
+}
+/* After both tick rules: a 1 px line at a fractional offset all but vanishes. */
+@supports (left: round(1.5px, 1px)) {
+  .weekTick,
+  .clockTick {
+    left: round(var(--at), 1px);
+  }
+}
+.weekBar,
+.weekBarRef {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+}
+.weekBar {
+  background: var(--school-primary);
+}
+.weekBarRef {
+  background: var(--school-muted);
+}
+.weekRefLine {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  width: 0;
+  border-left: 2px dashed var(--school-text);
+}
+.weekValue {
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.weekGroupNote {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--school-muted);
+}
+.weekRefLabel {
+  font-weight: 600;
+  font-size: 15px;
+}
+.weekDayButton {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 0;
+  line-height: 1.2;
+}
+.weekDayDate {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--school-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--school-line);
+  text-underline-offset: 3px;
+}
+.weekDayButton:hover .weekDayDate {
+  text-decoration-color: var(--school-primary);
+}
+.weekDaySub {
+  font-size: 13px;
+  color: var(--school-muted);
+}
+.weekGrid .clock {
+  --clock-label: 118px;
+}
+.weekGrid .clockRow {
+  border-bottom: 1px solid var(--school-line);
+  margin: 0;
+  min-height: 42px;
+}
+.weekGrid .clockTrack {
+  border-bottom: 0;
+}
+
+.root .multiples {
+  margin-top: 40px;
+  padding-top: 22px;
+  border-top: 1px solid var(--school-line);
+  --week-label: 118px;
+}
+.root .multiTitle {
+  font-family: var(--school-display);
+  font-size: 30px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.multiRow {
+  display: grid;
+  grid-template-columns: var(--week-label) minmax(0, 1fr);
+  column-gap: 12px;
+  align-items: end;
+  padding: 8px 0 6px;
+  border-bottom: 1px solid var(--school-line);
+}
+.multiRow:last-child {
+  border-bottom: 0;
+}
+.multiLabel {
+  min-width: 0;
+  align-self: center;
+}
+.multiPlot {
+  min-width: 0;
+}
+.multiPlot svg {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+}
+.multiDetail {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--school-muted);
+}
+.multiAxis {
+  position: relative;
+  height: 18px;
+  font-size: 12px;
+  color: var(--school-muted);
+}
+.multiAxis span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.multiAxisUnit {
+  align-self: start;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: right;
+  color: var(--school-muted);
+}
+
+/* ── Cards and footer ─────────────────────────────────────────────────── */
+
+.root .cards {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--school-line);
+  scroll-margin-top: 16px;
+}
+.sectionTitle {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+.sectionLede {
+  max-width: 72ch;
+  font-size: 16px;
+}
+.cardList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+  margin-top: 16px;
+}
+.cardList li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 16px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--school-line);
+}
+.cardName {
+  font-weight: 600;
+  color: var(--school-primary);
+}
+.cardSize {
+  grid-column: 1;
+  font-size: 14px;
+  color: var(--school-muted);
+}
+.cardLink,
+.cardPending {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  font-size: 15px;
+}
+.cardPending {
+  color: var(--school-muted);
+}
+
+.foot {
+  margin-top: 56px;
+  padding: 16px 0 28px;
+  border-top: 1px solid var(--school-line);
+  font-size: 14px;
+  color: var(--school-muted);
+}
+.footRow {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.footPrepared {
+  font-size: 13px;
+}
+.footNotice {
+  margin-top: 8px;
+}
+.footCredits {
+  margin-top: 8px;
+  font-size: 13px;
+  max-width: 96ch;
+}
+
+/* ── Password form ────────────────────────────────────────────────────── */
+
+.gate {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+.gateHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--school-line);
+}
+.gateBody {
+  flex: 1;
+  padding: 44px 0;
+}
+.gateTitle {
+  font-size: 46px;
+  margin-bottom: 12px;
+}
+.gateLede {
+  font-size: 17px;
+  margin-bottom: 26px;
+}
+.gateForm {
+  display: grid;
+  gap: 10px;
+  max-width: 380px;
+}
+.gateLabel {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--school-primary);
+}
+.gateInput {
+  font: inherit;
+  font-size: 17px;
+  padding: 10px 12px;
+  border: 1px solid var(--school-muted);
+  border-radius: 0;
+  background: #ffffff;
+  color: var(--school-text);
+}
+.gateError {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--school-accent);
+}
+.root .gateButton {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 11px 22px;
+  background: var(--school-primary);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.root .gateButton:hover {
+  background: #1b3540;
+}
+.gateFoot {
+  display: grid;
+  gap: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--school-line);
+  font-size: 13px;
+  color: var(--school-muted);
+}
+
+/* ── Narrow screens ───────────────────────────────────────────────────── */
+
+@media (max-width: 1040px) {
+  .dayGrid,
+  .root .refBlock {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .weekGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .daySide > .block:first-child {
+    margin-top: 30px;
+    padding-top: 18px;
+    border-top: 1px solid var(--school-line);
+  }
+  .daySide {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 32px;
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 0 16px 16px;
+  }
+  .head {
+    padding-top: 18px;
+  }
+  .mark {
+    width: 150px;
+  }
+  .runningRight {
+    font-size: 11px;
+    padding-top: 2px;
+  }
+  .titleBlock {
+    padding: 24px 0 24px;
+  }
+  .title {
+    font-size: 40px;
+  }
+  .meta {
+    font-size: 17px;
+  }
+  .intro {
+    font-size: 16px;
+  }
+  .metaRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .root .viewTab {
+    padding: 12px 10px 10px 0;
+  }
+  .viewTabTitle {
+    font-size: 20px;
+  }
+  .viewTabSub {
+    font-size: 12px;
+  }
+  .tripTitle {
+    font-size: 30px;
+  }
+  .tripMeta {
+    font-size: 15px;
+  }
+  .dayTabs {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  .root .dayTitle {
+    font-size: 32px;
+  }
+  .dayMeta {
+    font-size: 15px;
+  }
+  .figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 16px;
+  }
+  .root .figureValue {
+    font-size: 32px;
+  }
+  .mapCanvas {
+    height: 340px;
+  }
+  .pin {
+    width: 26px;
+    height: 26px;
+  }
+  .pinCrossing {
+    width: 22px;
+    height: 22px;
+  }
+  .mapCompact {
+    height: 260px;
+  }
+  .legend,
+  .pair,
+  .daySide,
+  .cardList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .facts {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  /* Tables become stacked rows, each cell labeled. */
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--school-line);
+  }
+  .table td,
+  .table td:first-child,
+  .table td:last-child {
+    padding: 2px 0;
+    border: 0;
+  }
+  .table td:first-child {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .table .num {
+    text-align: left;
+    white-space: normal;
+  }
+  .table td[data-label]::before {
+    content: attr(data-label) ": ";
+    font-weight: 600;
+    color: var(--school-primary);
+  }
+  .table td[data-label] .cellNote {
+    display: inline;
+    margin-left: 6px;
+  }
+
+  .weekChart,
+  .root .multiples,
+  .weekGrid .clock {
+    --week-label: 92px;
+    --week-value: 104px;
+    --clock-label: 92px;
+  }
+  .weekRow {
+    column-gap: 8px;
+  }
+  /* Every day on one clock axis leaves room for 6 a.m., noon and 6 p.m. only. */
+  .weekGrid .clockMinor {
+    display: none;
+  }
+  /* The small multiples' mile axis: even miles only. */
+  .axisMinor {
+    display: none;
+  }
+  .weekValue {
+    font-size: 13px;
+  }
+  .weekDayDate {
+    font-size: 14px;
+  }
+  .root .multiTitle,
+  .root .refTitle {
+    font-size: 26px;
+  }
+  .sectionTitle {
+    font-size: 28px;
+  }
+  .gateTitle {
+    font-size: 36px;
+  }
+}

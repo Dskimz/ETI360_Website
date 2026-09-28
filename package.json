@@ -14,6 +14,8 @@
     "lint": "npm run lint -w @eti360/web",
     "screenshots": "node scripts/take-screenshots.mjs",
     "sync:trip-pdfs": "node scripts/sync-trip-pdfs.mjs",
+    "sync:route-private": "node scripts/sync-route-private.mjs",
+    "route-password": "node scripts/route-password.mjs",
     "checkpoint": "bash scripts/checkpoint.sh",
     "ship": "bash scripts/ship.sh"
   }

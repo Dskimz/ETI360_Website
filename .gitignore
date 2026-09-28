@@ -37,3 +37,10 @@ apps/web/public/trips/*/a4/
 # /open (four-product site §6). publish_baseline_report.py, sync:trip-pdfs
 # and the Wexcombe builder's --web-dir write them here for local opens.
 apps/web/public/docs/*.pdf
+
+# private route pages (/routes/[token]): nothing of them is ever committed, since
+# this repository is public. Their folders (route.json with the password hash,
+# the data bundle, the logo, the card PDFs) are written by `npm run
+# sync:route-private` from V3 and uploaded to the private bucket; see
+# scripts/s3/README.md, "Private route pages".
+apps/web/private/

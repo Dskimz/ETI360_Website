@@ -4,6 +4,7 @@ import { AnalyticsConsent } from "@/components/AnalyticsConsent";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { PublicOnly } from "@/components/PublicOnly";
 import { SITE_URL } from "@/lib/site";
 import { siteDescription } from "@/content/products";
 import { BRAND_EYEBROW } from "@/content/voice";
@@ -57,14 +58,21 @@ export default function RootLayout({
       </head>
       <body className="dark-bg">
         <a className="skip-link" href="#main">Skip to main content</a>
-        <SiteHeader />
+        {/* PublicOnly keeps the ETI360 header, footer and both analytics off
+            the private route pages (/routes/{token}), which carry a school's
+            identity and load no measurement. */}
+        <PublicOnly>
+          <SiteHeader />
+        </PublicOnly>
         <main id="main">{children}</main>
-        <SiteFooter />
-        {/* Vercel Analytics is cookieless and edge-measured, so it survives the
-            ad blockers and school networks that eat a large share of GA events.
-            It is the pageview ground truth GA4 gets checked against. */}
-        <Analytics />
-        {GA_ID ? <AnalyticsConsent gaId={GA_ID} /> : null}
+        <PublicOnly>
+          <SiteFooter />
+          {/* Vercel Analytics is cookieless and edge-measured, so it survives the
+              ad blockers and school networks that eat a large share of GA events.
+              It is the pageview ground truth GA4 gets checked against. */}
+          <Analytics />
+          {GA_ID ? <AnalyticsConsent gaId={GA_ID} /> : null}
+        </PublicOnly>
       </body>
     </html>
   );

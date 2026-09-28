@@ -28,7 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
     { path: "/privacy", priority: 0.2, changeFrequency: "monthly" },
   ];
-  // Backstop: /routes/* (the route-map pages) is never listed.
+  // The private route pages (/routes/{token}) are never listed: their address
+  // is the first of their two locks. The filter keeps it that way if a path
+  // under /routes is ever added above by mistake.
   return routes
     .filter(({ path }) => path !== "/routes" && !path.startsWith("/routes/"))
     .map(({ path, priority, changeFrequency }) => ({

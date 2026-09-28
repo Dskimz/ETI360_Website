@@ -1,0 +1,3 @@
+# Private route pages: the gitignored folder written by `npm run sync:route-private`
+# never leaves this machine except to the private bucket (scripts/s3/README.md).
+private
