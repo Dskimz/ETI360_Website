@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CaseStudyLink } from "@/components/CaseStudyLink";
 import { CtaCard } from "@/components/CtaCard";
 import { ProductHeader } from "@/components/ProductHeader";
 import { TripCard } from "@/components/TripCard";
@@ -172,6 +173,7 @@ export default function TripPackagePage() {
                 <p key={n}>{n}</p>
               ))}
             </div>
+            <CaseStudyLink product={product} />
           </div>
 
           {/* Moved from For Schools (spec §4.3 item 4). Tone review 2026-09-27:

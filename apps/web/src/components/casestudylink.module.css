@@ -1,0 +1,18 @@
+/* The Case Study line on a product page (CaseStudyLink). Tokens only; the
+   paragraph selector outranks the article body's `p` rule. */
+p.line {
+  max-width: var(--measure);
+  margin: 28px 0 0;
+  font-size: var(--font-sm);
+  line-height: 1.6;
+}
+p.line a {
+  font-weight: 600;
+  color: var(--gold-dark);
+  border-bottom: 1px solid var(--gold);
+}
+p.line a:hover {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+  text-decoration: none;
+}

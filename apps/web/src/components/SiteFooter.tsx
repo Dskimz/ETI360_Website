@@ -14,7 +14,8 @@ const firmLinksWithConsent = process.env.NEXT_PUBLIC_GA_ID
   ? [...firmLinks, {href: '#cookie-settings', label: 'Cookie settings'}]
   : firmLinks
 
-/* The footer on every page: the brand block, the live products, the firm's
+/* The footer on every page: the brand block, the live products and the Case
+   Study (the four products in one illustrative school year), the firm's
    links, and both postal addresses (Dan, 2026-09-25: "We can put both").
    Unsubscribe stays out: it is reached from the email only. */
 export function SiteFooter() {
@@ -43,6 +44,9 @@ export function SiteFooter() {
                         <Link href={p.href}>{p.name}</Link>
                       </li>
                     ))}
+                    <li>
+                      <Link href="/case-study">Case Study</Link>
+                    </li>
                   </ul>
                 </div>
               ) : null}

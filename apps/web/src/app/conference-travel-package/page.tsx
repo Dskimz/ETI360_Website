@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CaseStudyLink } from "@/components/CaseStudyLink";
 import { CtaCard } from "@/components/CtaCard";
 import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
@@ -126,6 +127,7 @@ export default function ConferenceTravelPackagePage() {
           {versions.map((v) => (
             <VersionBlock key={v.slug} version={v} />
           ))}
+          <CaseStudyLink product={PRODUCT} />
         </div>
       </div>
 

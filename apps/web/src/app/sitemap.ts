@@ -6,10 +6,10 @@ import { SITE_URL } from "@/lib/site";
 
 // Every indexable route (four-product site spec §10), with the priority a
 // search engine should read as our own ranking of them: the home page, each
-// live product page, each Trip Package version's page, then contact and
-// privacy. Built from the product registry, so a product without a version
-// (spec S18) and a single-document version (an anchor on its product page)
-// never appear. /open, /review, /guides and /routes are never listed.
+// live product page, the Case Study, each Trip Package version's page, then
+// contact and privacy. Built from the product registry, so a product without
+// a version (spec S18) and a single-document version (an anchor on its
+// product page) never appear. /open, /review, /guides and /routes are never listed.
 type Route = { path: string; priority: number; changeFrequency: "weekly" | "monthly" };
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes: Route[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
     ...liveProducts().map((p) => ({ path: p.href, priority: 0.9, changeFrequency: "monthly" as const })),
+    { path: "/case-study", priority: 0.8, changeFrequency: "monthly" },
     ...versionsOf("trip-package").map((v) => ({
       path: `/trips/${v.slug}`,
       priority: 0.7,
