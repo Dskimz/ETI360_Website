@@ -5,8 +5,6 @@ import {
   otherSchoolNote,
   siteDocument,
   STEP_UI,
-  stepHref,
-  STEPS,
   TIER_LINES,
   WHO_DECIDES_BOX,
   type Excerpt,
@@ -101,8 +99,13 @@ export function Notices({ notices, className }: { notices: string[]; className?:
   );
 }
 
-/* ── Rows: a labeled grid on wide screens, stacked with inline labels on
-   phones (the parts summaries, the decision table, the overview's year). ── */
+/* ── Rows: a labeled grid on wide screens, stacked on phones (the parts
+   summaries, the decision table, the overview's year). The visible column
+   heads are aria-hidden; each cell carries its column's name as a label
+   that only screen readers hear, so the table's header semantics reach
+   them at every width (review fix, 2026-09-28). On phones the decision
+   table shows its two labels inline; the others need none, the first cell
+   naming the row. ── */
 
 export function Rows({
   labels,
@@ -293,19 +296,23 @@ function ExcerptFigure({ ex }: { ex: Excerpt }) {
   const edition = thumbEdition(t.version, t.doc);
   const href = edition ? openHref(t.version, t.doc, edition, ex.open.page) : `/case-study/${ex.image}`;
   const label = edition
-    ? `Open the ${t.doc.title} at page ${ex.open.page}, ${PAPER_NAME[edition]} PDF (opens in a new tab)`
-    : "Open this excerpt larger (image, opens in a new tab)";
+    ? `Open the ${t.doc.title} at page ${ex.open.page}, ${PAPER_NAME[edition]} PDF (${STEP_UI.opens}).`
+    : `Open this excerpt larger (image, ${STEP_UI.opens}).`;
   const style = { ["--grow" as string]: (ex.pt / ex.textPt).toFixed(2) } as CSSProperties;
   return (
     <figure className={styles.excerpt} style={style}>
-      <a className={styles.excerptLink} href={href} target="_blank" rel="noopener" aria-label={label}>
+      {/* The link's name is the image's alt text, then the action, so a
+          screen reader hears what the excerpt shows (review fix,
+          2026-09-28: an aria-label here replaced the alt text). */}
+      <a className={styles.excerptLink} href={href} target="_blank" rel="noopener">
         <Image
           src={`/case-study/${ex.image}`}
           width={ex.width}
           height={ex.height}
           alt={ex.alt}
-          sizes="(max-width: 640px) 100vw, (max-width: 1023px) 48vw, 420px"
+          sizes="(max-width: 640px) 100vw, 460px"
         />
+        <span className="sr-only">{` ${label}`}</span>
       </a>
       <figcaption>
         <span className={styles.caption}>{ex.caption}</span>{" "}
@@ -363,8 +370,9 @@ export function RestOfYear({ step }: { step: Step }) {
   );
 }
 
-/* ── The step's foot: the documents in both papers, the pages on this
-   site, and the next step ── */
+/* ── The step's foot: the documents in both papers and the pages on this
+   site. The next step is the pinned bar's Next (review fix, 2026-09-28:
+   the foot's own Next step block repeated it). ── */
 
 /** The two editions of a document, each named in full for a screen reader
     ("Open the Travel Program Review, A4 PDF"), the school's own paper
@@ -396,8 +404,6 @@ function PdfLinks({ refDoc }: { refDoc: { version: string; doc: string } }) {
 }
 
 export function StepFoot({ step }: { step: Step }) {
-  const i = STEPS.indexOf(step);
-  const next = STEPS[i + 1] ?? null;
   return (
     <div className={`${styles.stepFoot} ui`}>
       <div className={styles.footGroup}>
@@ -423,19 +429,6 @@ export function StepFoot({ step }: { step: Step }) {
             </li>
           ))}
         </ul>
-      </div>
-      <div className={`${styles.footGroup} ${styles.footNext}`}>
-        <h2 className={styles.footLabel}>{next ? STEP_UI.nextStep : STEP_UI.next}</h2>
-        {next ? (
-          <Link className={styles.nextLink} href={stepHref(next)}>
-            <span className={styles.nextName}>{`Step ${next.number}: ${next.name}`}</span>
-            <span className={styles.nextTitle}>{` ${next.title} →`}</span>
-          </Link>
-        ) : (
-          <Link className={styles.nextLink} href="/contact">
-            <span className={styles.nextName}>{`${STEP_UI.contact} →`}</span>
-          </Link>
-        )}
       </div>
     </div>
   );

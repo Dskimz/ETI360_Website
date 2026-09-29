@@ -32,8 +32,10 @@ export const SEB_LINE = "Seb Wong, Senior Consultant, is part of every engagemen
 
 /** ETI360's positive role, said before WHO_DECIDES wherever the two run as
     one statement (the Case Study's Who decides box). The copy canon's first
-    sentence (CLAUDE.md, Trip risk documentation law, 2026-09-14). */
-export const WHO_PREPARES = "ETI360 prepares and organizes the supporting information.";
+    sentence without "and organizes": the positioning law (Dan, 2026-09-22)
+    retired copy that reduces the service to preparing and organizing what
+    the school holds (Case Study review fix, 2026-09-28). */
+export const WHO_PREPARES = "ETI360 prepares the supporting information.";
 
 /** The boundary used on the home page, the product pages and the trip pages. */
 export const WHO_DECIDES =

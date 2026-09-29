@@ -25,7 +25,9 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    content, and an equivalent for each other product) → how it works (1 what
    Harborview sends, 2 what ETI360 does, 3 what Harborview decides) → one
    decision-ownership box, positive role first, in the site's canonical
-   words → one or two readable excerpts → next.
+   words → one or two readable excerpts → the documents; next is the pinned
+   bar's Next (review fix, 2026-09-28: the foot's own Next step block
+   repeated it).
 
    Excerpts: public/case-study/x-*.jpg, cut by the rebuild repo's
    dev/case-study/cut_web_excerpts.py, one column of a real sample page
@@ -69,19 +71,26 @@ export const NOTICES = {
   horizonRidge: requireVersion("italy").disclosure,
 };
 
-/** The other fictional schools whose samples a step shows. */
-const OTHER_SCHOOLS = {
+/** The other fictional schools whose samples a step shows; `trip` names
+    the sample's trip where the step's own story is a different one (the
+    Trip Package tells a Taiwan cycling trip, its samples come from Italy;
+    review fix, 2026-09-28). */
+const OTHER_SCHOOLS: Record<string, { school: string; notice: string; trip?: string }> = {
   wexcombe: { school: "Wexcombe International School", notice: NOTICES.wexcombe },
-  horizonRidge: { school: "Horizon Ridge School of Cleveland", notice: NOTICES.horizonRidge },
+  horizonRidge: {
+    school: "Horizon Ridge School of Cleveland",
+    notice: NOTICES.horizonRidge,
+    trip: "its Italy trip",
+  },
 };
-type OtherSchool = keyof typeof OTHER_SCHOOLS;
+type OtherSchool = "wexcombe" | "horizonRidge";
 
 /** One note, the same wherever another school's samples appear, followed
     by that school's verbatim notice once. [draft] */
 export function otherSchoolNote(key: OtherSchool): { text: string; notice: string } {
   const o = OTHER_SCHOOLS[key];
   return {
-    text: `These pages come from samples prepared for another fictional school, ${o.school}; Harborview’s edition would take the same form.`,
+    text: `These pages come from samples prepared for another fictional school, ${o.school}${o.trip ? `, for ${o.trip}` : ""}; Harborview’s edition would take the same form.`,
     notice: o.notice,
   };
 }
@@ -258,12 +267,12 @@ export const STEPS: Step[] = [
     ],
     does: {
       title: "The reading, the evidence entry, the checking",
+      // Four bullets (review fix, 2026-09-28): the reviewed six, merged;
+      // tone-reviewed again ("records" the state, "not supplied").
       items: [
-        "Reads each document supplied in full, section by section, and assigns it to the program path it governs.",
-        "Enters each statement in those documents as an evidence line that names the document, section and page.",
-        "Reads each path against the ten areas of the ETI360 Operational Capability Framework, from that path’s own documents only, and checks each open item against the full text before recording it.",
-        "Sets a state for each path in each area: At standard, Progressing or Not evidenced. The school’s state for an area is its weakest documented path.",
-        "Records who proposes, approves, leads, can cancel and reviews each path’s trips, and notes the two documents the school’s documents mention but did not send, without assuming their content.",
+        "Reads each document supplied in full, assigns it to the program path it governs, and enters each statement as an evidence line that names the document, section and page.",
+        "Reads each path against the ten areas of the ETI360 Operational Capability Framework from its own documents only, checks each open item against the full text, and records the path’s state in each area; the school’s state for an area is its weakest documented path.",
+        "Notes who proposes, approves, leads, can cancel and reviews each path’s trips, and the two documents referred to but not supplied, without assuming their content.",
         "Reads each provider’s documents against the same ten areas and marks which document governs how the provider runs its trips.",
       ],
     },
@@ -286,14 +295,17 @@ export const STEPS: Step[] = [
         open: { ...TPR_OPEN, page: 2 },
       },
       {
+        // At standard and Progressing, printed side by side on the page,
+        // stacked here so the pair reads on a phone (review fix,
+        // 2026-09-28: Progressing is the state of most of Harborview's areas).
         image: "x-tpr-states.jpg",
-        width: 942,
-        height: 522,
-        pt: 271,
+        width: 869,
+        height: 373,
+        pt: 250,
         textPt: 7.5,
-        alt: "Two state definitions from the review. At standard: the path’s documents describe the practice in cited detail, with at least three evidence lines, no structural open item and no more than two procedural open items. Not evidenced: the path’s governing documents do not describe the practice.",
+        alt: "Two state definitions from the review. At standard: the path’s documents describe the practice in cited detail, with at least three evidence lines, no structural open item and no more than two procedural open items. Progressing: the documents describe the practice, and at least one part of it is not yet written down.",
         caption:
-          "How a state is set, as the review prints it: At standard asks for cited detail from the path’s own documents; Not evidenced means they do not describe the practice.",
+          "How a state is set, as the review prints it (side by side on the page): At standard asks for cited detail from the path’s own documents; Progressing means at least one part of the practice is not yet written down.",
         source: "Travel Program Review, sample edition · page 4 of 19 · A4 edition",
         open: { ...TPR_OPEN, page: 4 },
       },
@@ -348,24 +360,25 @@ export const STEPS: Step[] = [
     excerpts: [
       {
         image: "x-ftp-trip-left.jpg",
-        width: 973,
+        width: 932,
         height: 834,
-        pt: 280,
+        pt: 268,
         textPt: 8.5,
         alt: "A Grade 1 trip page, left column: the learning purpose, and the schedule from 08:15 to 14:10 for Mount Faber Park and Henderson Waves.",
-        caption: "A trip page, Grade 1, left: the learning purpose and the schedule. The notes for families follow.",
+        caption: "A trip page, Grade 1, left column: the learning purpose and the schedule. The notes for families follow.",
         source: "Field Trip Risk Assessment Pack 2026–27 · page 8 of 46 · A4 edition",
         open: { ...FTP_OPEN, page: 8 },
       },
       {
-        image: "x-ftp-trip-right.jpg",
+        // The route card: ETI360's measured drive (review fix, 2026-09-28:
+        // the caption names only what the crop shows).
+        image: "x-ftp-route.jpg",
         width: 800,
-        height: 560,
+        height: 480,
         pt: 230,
-        textPt: 8,
-        alt: "The same trip page, right column: 66 Grade 1 students, one adult to five students, departure and return times, and the two stops with their addresses.",
-        caption:
-          "Right: the day’s facts: students, supervision, times, and the two stops with their addresses. Below them come the route from school with its measured drive, and the emergency departments with the drive from each stop; the school confirms which one the group uses.",
+        textPt: 7.5,
+        alt: "The route from school on the same trip page: 3.7 km, about 8 minutes by coach to Mount Faber Park, with the route drawn on a map.",
+        caption: "The same page, right column: the route from school, measured by road, with the distance and the drive time to the first stop.",
         source: "Field Trip Risk Assessment Pack 2026–27 · page 8 of 46 · A4 edition",
         open: { ...FTP_OPEN, page: 8 },
       },
@@ -389,7 +402,7 @@ export const STEPS: Step[] = [
     title: "One guide for the conference year",
     need: "Harborview’s teams and activity groups travel to other schools in its conference through the year, and Harborview hosts in turn. The Director of Athletics & Activities wants the coaches and advisors who travel with them to carry the same information for every host city.",
     receives: {
-      title: "One guide for the conference year, in the school’s own name",
+      title: "The Athletics and Activities Trips Guide, in the school’s own name",
       paper: "In A4 and US Letter",
       // [draft] rows, from the reviewed receives line and the guide's
       // own contents page.
@@ -431,9 +444,9 @@ export const STEPS: Step[] = [
     excerpts: [
       {
         image: "x-ctp-medical.jpg",
-        width: 903,
+        width: 890,
         height: 744,
-        pt: 260,
+        pt: 256,
         textPt: 7.9,
         alt: "Two entries from the Paris medical page: Hôpital Cochin, the adult emergency department, 1.8 km and about 9 minutes by taxi from the host school; and the American Hospital of Paris, private, 8.4 km and about 36 minutes.",
         caption:
@@ -443,9 +456,9 @@ export const STEPS: Step[] = [
       },
       {
         image: "x-ctp-confirm.jpg",
-        width: 903,
-        height: 626,
-        pt: 260,
+        width: 888,
+        height: 633,
+        pt: 255.5,
         textPt: 7.9,
         alt: "The confirm-before-travel page, each line initialed and dated when confirmed: passports, EES registration, ETIAS status and the GHIC.",
         caption:
@@ -520,11 +533,10 @@ export const STEPS: Step[] = [
     does: {
       title: "The record, the research, the writing, the maps",
       items: [
-        "Turns the itinerary supplied into a day-by-day record, hour by hour, and places each location it names on the map.",
+        "Turns the itinerary supplied into a day-by-day record and places each location it names on the map.",
         "Lists the emergency departments by drive time from each place in the itinerary where the group stays or rides, with each hospital’s published capability facts.",
         "Prepares the Trip Risk Working File, one section for each activity group, in support of whichever risk documentation the school uses.",
-        "Writes the documents for families, the trip leader, chaperones, teachers and students.",
-        "Maps each riding day and builds each document in A4, Harborview’s paper, and in US Letter.",
+        "Writes the documents for families, the trip leader, chaperones, teachers and students, maps each riding day, and builds each document in A4, Harborview’s paper, and in US Letter.",
       ],
     },
     decides: [
@@ -572,15 +584,15 @@ export const STEPS: Step[] = [
           // src/feedback/instrument.py (the line goes to the school's
           // designated contact at submission; a report may record only
           // that the channel was used).
-          text: "The school collects answers to four questions from students and families; the trip leaders and the provider answer them as a named debrief. ETI360 compiles the Post-Trip Feedback Report, with any group under five responses suppressed. Anything written on the welfare line goes to the school’s designated welfare contact when the form is submitted; the report records only whether that channel was used.",
+          text: "The school collects answers to four questions and ETI360 compiles the Post-Trip Feedback Report; anything written on the welfare line goes to the school’s designated welfare contact, and the report records only whether that channel was used.",
         },
         {
           lead: "Each August.",
-          text: "ETI360 prepares next year’s field-trip pack from the school’s new plans and this year’s pages; within a year, a trip that moves keeps its page.",
+          text: "ETI360 prepares next year’s field-trip pack from the school’s new plans and this year’s pages.",
         },
         {
           lead: "Every four years.",
-          text: "ETI360 opens the next Travel Program Review with a scoping conversation, where the school confirms its program paths, and reads its documents as they then stand.",
+          text: "ETI360 opens the next Travel Program Review with a scoping conversation.",
         },
       ],
       // From the report's page 6: "The three statements on page 2 say what
@@ -640,7 +652,8 @@ export const STEP_UI = {
   excerpts: "From the samples",
   docs: "Open the documents",
   onSite: "On this site",
-  nextStep: "Next step",
+  /** After an excerpt's alt text, inside its link. */
+  opens: "opens in a new tab",
 };
 
 /* ── Lookups and build-time checks ── */

@@ -31,9 +31,10 @@ import styles from "../page.module.css";
    title, its tiers, the illustrative label and the samples line, since a
    product page links straight here); what Harborview needs; (the Travel
    Program Review only) the first conversation; what Harborview receives;
-   how it works (sends, ETI360 does, decides); the one Who decides box; the excerpts; (the Trip
-   Package only) the rest of the year; the documents, the pages on this site
-   and the next step; the notices. The footer's contact row closes it.
+   how it works (sends, ETI360 does, decides); the one Who decides box; the
+   excerpts; (the Trip Package only) the rest of the year; the documents and
+   the pages on this site; the notices. The pinned bar's Next is the way on;
+   the footer's contact row closes the page.
 
    On hold like the rest of the case study: a production build lists no
    step and every step address is a 404 (src/lib/case-study-hold.ts). */
@@ -83,13 +84,14 @@ export default async function CaseStudyStepPage({ params }: Props) {
           <h1 id="step-title" className={styles.stepTitle} tabIndex={-1}>
             {s.title}
           </h1>
+          {/* The illustrative label and the samples line, one line
+              (review fix, 2026-09-28). */}
           <p className={`${styles.stepMeta} ui`}>
             <TierChips step={s} />{" "}
             <span className={styles.stepMetaText}>
-              {`${STEP_UI.illustrative} · Harborview International School · Singapore`}
+              {`${STEP_UI.illustrative} · Harborview International School · Singapore. ${INTRO.samples}`}
             </span>
           </p>
-          <p className={`${styles.stepAbout} ui`}>{INTRO.samples}</p>
           <div className={styles.need}>
             <h2 className={`${styles.needLabel} ui`}>{STEP_UI.need}</h2>
             <p className={styles.needText}>{s.need}</p>

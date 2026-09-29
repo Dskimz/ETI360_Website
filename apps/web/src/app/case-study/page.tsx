@@ -78,7 +78,7 @@ export default function CaseStudyPage() {
             <div className="hero-inner">
               <p className="label label-light ui">{TITLE}</p>
               <h1 className={styles.heroTitle}>{INTRO.heading}</h1>
-              <p className={`${headerStyles.tiers} ui`}>
+              <p className={`${headerStyles.tiers} ${styles.heroTag} ui`}>
                 {`${STEP_UI.illustrative} · Harborview International School · Singapore`}
               </p>
               <p className={`${headerStyles.lede} ${styles.heroLede}`}>{INTRO.lede}</p>
