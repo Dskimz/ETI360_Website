@@ -1,18 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import {
   otherSchoolNote,
   siteDocument,
+  STEP_COVER,
+  STEP_RECEIVES,
   STEP_UI,
+  stepHref,
+  STEPS,
   TIER_LINES,
   WHO_DECIDES_BOX,
-  type Excerpt,
+  type DocGroup,
+  type Fact,
   type Step,
 } from "@/content/case-study";
 import { getProduct, type Tier } from "@/content/products";
 import { TIER_NAMES } from "@/content/services";
-import { openHref, PAPER_NAME, thumbEdition, type Paper } from "@/content/versions";
+import type { Version, VersionDocument } from "@/content/versions";
+import { DocCard } from "@/components/TripDocCard";
+import tripStyles from "@/app/trips/trips.module.css";
 import styles from "../page.module.css";
 
 /* The pieces the overview and the steps share. Copy lives in
@@ -33,8 +40,8 @@ const TIER_CLASS: Record<Tier, string> = { 1: styles.tier1, 2: styles.tier2, 3: 
 
 /** Tier chips: a swatch in the tier color beside navy text on white, so the
     text passes AA at its size whatever the tier color (Tier 3's #3182AC
-    under white text does not). "Tier 2" in the step list, the full
-    canonical name on the step itself. */
+    under white text does not). "Tier 2" in the step list and on the
+    overview's cards, the full canonical name in a step's hero bar. */
 export function TierChips({ step, short = false }: { step: Step; short?: boolean }) {
   return (
     <span className={`${styles.chips} ui`}>
@@ -56,9 +63,9 @@ export function TierChips({ step, short = false }: { step: Step; short?: boolean
   );
 }
 
-/** What Tier 1, 2 and 3 mean, one line each (Dan, 2026-09-28): under the
-    step list on wide screens, a closed disclosure under the step row below
-    1024px. */
+/** ETI360's 3-Tier Risk Framework, one line per tier (Dan, 2026-09-28 and
+    2026-09-29): under the step list on wide screens, a closed disclosure
+    under the step row below 1024px. */
 export function TierKey({ variant }: { variant: "list" | "disclosure" }) {
   const lines = (
     <ul className={styles.tierLines}>
@@ -99,67 +106,62 @@ export function Notices({ notices, className }: { notices: string[]; className?:
   );
 }
 
-/* ── Rows: a labeled grid on wide screens, stacked on phones (the parts
-   summaries, the decision table, the overview's year). The visible column
-   heads are aria-hidden; each cell carries its column's name as a label
-   that only screen readers hear, so the table's header semantics reach
-   them at every width (review fix, 2026-09-28). On phones the decision
-   table shows its two labels inline; the others need none, the first cell
-   naming the row. ── */
+/* ── The hero bar (Dan, 2026-09-29: "a small hero bar on each of the
+   pages. Give the key information."): a compact navy band under the pinned
+   step bar, full width. The name (the page's h1), its line, the tier chips;
+   the key facts beside them; the illustrative line along the foot. ── */
 
-export function Rows({
-  labels,
-  rows,
-  variant,
+export function HeroBar({
+  eyebrow,
+  title,
+  titleId,
+  sub,
+  chips,
+  facts,
+  note,
+  overview = false,
 }: {
-  labels: string[];
-  rows: { key: string; cells: ReactNode[] }[];
-  variant: "outputs" | "decisions" | "glance";
+  eyebrow: string;
+  title: string;
+  /** The h1's id: a step's skip link lands on it. */
+  titleId?: string;
+  sub?: string;
+  chips?: ReactNode;
+  facts: Fact[];
+  note: string;
+  /** The overview: a longer h1, set a size smaller, with more room. */
+  overview?: boolean;
 }) {
   return (
-    <div className={`${styles.rows} ${styles[variant]}`}>
-      <div className={`${styles.rowHead} ui`} aria-hidden="true">
-        {labels.map((l) => (
-          <span key={l}>{l}</span>
-        ))}
+    <div className={`${styles.heroBar}${overview ? ` ${styles.heroBarOverview}` : ""}`}>
+      <div className={styles.heroBarInner}>
+        <div className={styles.heroHead}>
+          <p className={`${styles.heroEyebrow} ui`}>{eyebrow}</p>
+          <h1 id={titleId} className={styles.heroName} tabIndex={titleId ? -1 : undefined}>
+            {title}
+          </h1>
+          {sub ? <p className={styles.heroSub}>{sub}</p> : null}
+          {chips ? <div className={styles.heroChips}>{chips}</div> : null}
+        </div>
+        <dl className={`${styles.heroFacts} ui`}>
+          {facts.map((f) => (
+            <div key={f.label}>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className={`${styles.heroNote} ui`}>{note}</p>
       </div>
-      <ul className={styles.rowList}>
-        {rows.map((r) => (
-          <li key={r.key} className={styles.rowItemLine}>
-            {r.cells.map((c, j) => (
-              <div key={labels[j]} className={styles.cell}>
-                <span className={`${styles.cellLabel} ui`}>{`${labels[j]}: `}</span>
-                <div className={styles.cellBody}>{c}</div>
-              </div>
-            ))}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
 
 /* ── A step's parts, in the page's order ── */
 
-function BlockHead({ label, sub, aside, id }: { label: string; sub?: string; aside?: string; id?: string }) {
+function List({ items, className }: { items: string[]; className?: string }) {
   return (
-    <div className={styles.blockHead}>
-      <h2 className={`${styles.blockLabel} ui`} id={id}>
-        {label}
-      </h2>
-      {sub ? (
-        <p className={styles.blockSub}>
-          {sub}
-          {aside ? <span className={`${styles.paper} ui`}>{` · ${aside}`}</span> : null}
-        </p>
-      ) : null}
-    </div>
-  );
-}
-
-function List({ items, cols = false, className }: { items: string[]; cols?: boolean; className?: string }) {
-  return (
-    <ul className={`${styles.list}${cols ? ` ${styles.listCols}` : ""}${className ? ` ${className}` : ""}`}>
+    <ul className={`${styles.list}${className ? ` ${className}` : ""}`}>
       {items.map((it) => (
         <li key={it}>{it}</li>
       ))}
@@ -177,63 +179,85 @@ function Lead({ lead, text }: { lead: string; text: string }) {
   );
 }
 
-/** The Travel Program Review's opening: the first conversation. */
-export function Conversation({ step }: { step: Step }) {
-  if (!step.conversation) return null;
+/** What Harborview needs: one sentence. */
+export function Need({ step }: { step: Step }) {
   return (
-    <div role="region" className={styles.conversation} aria-labelledby="conversation">
-      <BlockHead id="conversation" label={STEP_UI.conversation} sub={step.conversation.title} />
-      <List items={step.conversation.items} className={styles.listThree} />
+    <div className={styles.need}>
+      <h2 className={`${styles.needLabel} ui`}>{STEP_UI.need}</h2>
+      <p className={styles.needText}>{step.need}</p>
     </div>
   );
 }
 
-/** What Harborview receives: a compact summary of the output. */
-export function Receives({ step }: { step: Step }) {
-  const r = step.receives;
+/** A document as the case study shows it on the trip page's card: its line
+    is the decision it supports, and every image's alt text names the
+    document, the school and the page. */
+function caseStudyDoc(version: Version, doc: VersionDocument): VersionDocument {
+  return {
+    ...doc,
+    blurb: doc.decision,
+    cover: { ...doc.cover, alt: `First page of the ${doc.title}, ${version.school}` },
+    insidePages: doc.insidePages.map((pg) => ({
+      ...pg,
+      image: { ...pg.image, alt: `${doc.title}, ${version.school}, page ${pg.page}` },
+    })),
+  };
+}
+
+function Group({ group, open }: { group: DocGroup; open: boolean }) {
+  const docs = group.docs.map((doc) => siteDocument({ version: group.version, doc }));
+  const version = docs[0].version;
+  const one = docs.length === 1;
+  const note = group.otherSchool ? otherSchoolNote(group.otherSchool) : null;
   return (
-    <div role="region" className={styles.receives} aria-labelledby="receives">
-      <BlockHead id="receives" label={STEP_UI.receives} sub={r.title} aside={r.paper} />
-      {r.decisions ? (
-        <Rows
-          variant="decisions"
-          labels={["The decision", "The documents", "Who holds them"]}
-          rows={r.decisions.map((d) => ({
-            key: d.decision,
-            cells: [
-              <strong key="d">{d.decision}</strong>,
-              <span key="docs" className={styles.docNames}>
-                {d.documents.map((doc, i) => (
-                  <span key={doc.id}>
-                    {i > 0 ? " · " : null}
-                    <Link href={`/trip-package#${doc.id}`}>{doc.name}</Link>
-                  </span>
-                ))}
-              </span>,
-              <span key="h">{d.holders}</span>,
-            ],
-          }))}
-        />
-      ) : (
-        <Rows
-          variant="outputs"
-          labels={["Part", "What it holds"]}
-          rows={(r.parts ?? []).map((p) => ({
-            key: p.part,
-            cells: [<strong key="p">{p.part}</strong>, <span key="h">{p.holds}</span>],
-          }))}
-        />
-      )}
-      {r.note ? (
-        <p className={styles.receivesNote}>
-          <Lead lead={r.note.lead} text={r.note.text} />
+    <div className={styles.docGroup}>
+      <h3 className={`${styles.groupHead} ui`}>{`${version.school} · ${version.title}`}</h3>
+      {note ? (
+        <div className={`${styles.otherSchool} ui`}>
+          <p>{note.text}</p>
+          <p className={styles.otherNotice}>{note.notice}</p>
+        </div>
+      ) : null}
+      <div className={one ? (open ? styles.docOne : styles.docClosed) : styles.docGrid}>
+        {docs.map(({ doc }) => (
+          <DocCard
+            key={doc.slug}
+            id={`${version.slug}-${doc.slug}`}
+            version={version}
+            doc={caseStudyDoc(version, doc)}
+            solo={one}
+            lookInside
+            insideOpen={open}
+          />
+        ))}
+      </div>
+      {group.note ? (
+        <p className={styles.groupNote}>
+          <Lead lead={group.note.lead} text={group.note.text} />
         </p>
       ) : null}
     </div>
   );
 }
 
-function MoveHead({ n, label, title }: { n: number; label: string; title?: string }) {
+/** What Harborview receives: the documents, as the trip page shows them.
+    A step's first group opens its Look inside when it holds one document
+    (the step's own document, shown whole); every other card starts
+    closed. */
+export function StepDocs({ step }: { step: Step }) {
+  return (
+    <div role="region" className={`${tripStyles.wide} ${styles.docs}`} aria-labelledby="documents">
+      <h2 className={`${styles.blockLabel} ui`} id="documents">
+        {STEP_UI.receives}
+      </h2>
+      {step.groups.map((g, i) => (
+        <Group key={g.version} group={g} open={i === 0 && g.docs.length === 1} />
+      ))}
+    </div>
+  );
+}
+
+function MoveHead({ n, label }: { n: number; label: string }) {
   return (
     <div className={styles.moveHead}>
       <span className={`${styles.moveNum} ui`} aria-hidden="true">
@@ -244,26 +268,27 @@ function MoveHead({ n, label, title }: { n: number; label: string; title?: strin
           <span className="sr-only">{`${n}. `}</span>
           {label}
         </h3>
-        {title ? <p className={styles.moveTitle}>{title}</p> : null}
       </div>
     </div>
   );
 }
 
-/** How it works: 1 sends, 2 ETI360 does (navy, the strongest block, beside
-    the other two on wide screens), 3 decides. */
+/** How it works, one compact row: 1 sends, 2 ETI360 does (navy, the
+    strongest cell), 3 decides. */
 export function HowItWorks({ step }: { step: Step }) {
   return (
     <div role="region" className={styles.how} aria-labelledby="how">
-      <BlockHead id="how" label={STEP_UI.how} />
+      <h2 className={`${styles.blockLabel} ui`} id="how">
+        {STEP_UI.how}
+      </h2>
       <ol className={styles.moves}>
         <li className={`${styles.move} ${styles.moveSends}`}>
           <MoveHead n={1} label={STEP_UI.moves.sends} />
           <List items={step.sends} />
         </li>
         <li className={`${styles.move} ${styles.moveDoes}`}>
-          <MoveHead n={2} label={STEP_UI.moves.does} title={step.does.title} />
-          <List items={step.does.items} />
+          <MoveHead n={2} label={STEP_UI.moves.does} />
+          <List items={step.does} />
         </li>
         <li className={`${styles.move} ${styles.moveDecides}`}>
           <MoveHead n={3} label={STEP_UI.moves.decides} />
@@ -274,7 +299,7 @@ export function HowItWorks({ step }: { step: Step }) {
   );
 }
 
-/** The one decision-ownership box on a page: ETI360's role first. */
+/** The one decision-ownership line on a page: ETI360's role first. */
 export function WhoDecidesBox({ id = "who-decides" }: { id?: string }) {
   return (
     <aside className={styles.who} aria-labelledby={id}>
@@ -286,150 +311,67 @@ export function WhoDecidesBox({ id = "who-decides" }: { id?: string }) {
   );
 }
 
-/* ── Excerpts ── */
-
-/** One excerpt: a column of a sample page, opening its document at that
-    page. `grow` sets its share of the row so every excerpt's source text
-    reads at one size (its width in points over its text size). */
-function ExcerptFigure({ ex }: { ex: Excerpt }) {
-  const t = siteDocument(ex.open);
-  const edition = thumbEdition(t.version, t.doc);
-  const href = edition ? openHref(t.version, t.doc, edition, ex.open.page) : `/case-study/${ex.image}`;
-  const label = edition
-    ? `Open the ${t.doc.title} at page ${ex.open.page}, ${PAPER_NAME[edition]} PDF (${STEP_UI.opens}).`
-    : `Open this excerpt larger (image, ${STEP_UI.opens}).`;
-  const style = { ["--grow" as string]: (ex.pt / ex.textPt).toFixed(2) } as CSSProperties;
-  return (
-    <figure className={styles.excerpt} style={style}>
-      {/* The link's name is the image's alt text, then the action, so a
-          screen reader hears what the excerpt shows (review fix,
-          2026-09-28: an aria-label here replaced the alt text). */}
-      <a className={styles.excerptLink} href={href} target="_blank" rel="noopener">
-        <Image
-          src={`/case-study/${ex.image}`}
-          width={ex.width}
-          height={ex.height}
-          alt={ex.alt}
-          sizes="(max-width: 640px) 100vw, 460px"
-        />
-        <span className="sr-only">{` ${label}`}</span>
-      </a>
-      <figcaption>
-        <span className={styles.caption}>{ex.caption}</span>{" "}
-        <span className={`${styles.source} ui`}>{ex.source}</span>
-      </figcaption>
-    </figure>
-  );
-}
-
-export function Excerpts({ step }: { step: Step }) {
-  const note = step.otherSchool ? otherSchoolNote(step.otherSchool) : null;
-  return (
-    <div role="region" className={styles.excerpts} aria-labelledby="excerpts">
-      <BlockHead id="excerpts" label={STEP_UI.excerpts} />
-      {note ? (
-        <div className={`${styles.otherSchool} ui`}>
-          <p>{note.text}</p>
-          <p className={styles.otherNotice}>{note.notice}</p>
-        </div>
-      ) : null}
-      <div className={`${styles.excerptRow}${step.excerpts.length === 1 ? ` ${styles.excerptSingle}` : ""}`}>
-        {step.excerpts.map((ex) => (
-          <ExcerptFigure key={ex.image} ex={ex} />
-        ))}
-      </div>
-      {step.excerptNote ? (
-        <p className={styles.excerptNote}>
-          <Lead lead={step.excerptNote.lead} text={step.excerptNote.text} />
-        </p>
-      ) : null}
-    </div>
-  );
-}
-
-/** The Trip Package's close: the rest of the year. */
-export function RestOfYear({ step }: { step: Step }) {
-  const r = step.restOfYear;
-  if (!r) return null;
-  return (
-    <div role="region" className={styles.rest} aria-labelledby="rest-of-year">
-      <div className={styles.restText}>
-        <BlockHead id="rest-of-year" label={r.title} sub={r.subtitle} />
-        <ul className={styles.restList}>
-          {r.items.map((it) => (
-            <li key={it.lead}>
-              <Lead lead={it.lead} text={it.text} />
-            </li>
-          ))}
-        </ul>
-        <p className={styles.restDecides}>
-          <Lead lead={`${STEP_UI.moves.decides}.`} text={r.decides} />
-        </p>
-      </div>
-    </div>
-  );
-}
-
-/* ── The step's foot: the documents in both papers and the pages on this
-   site. The next step is the pinned bar's Next (review fix, 2026-09-28:
-   the foot's own Next step block repeated it). ── */
-
-/** The two editions of a document, each named in full for a screen reader
-    ("Open the Travel Program Review, A4 PDF"), the school's own paper
-    first. */
-function PdfLinks({ refDoc }: { refDoc: { version: string; doc: string } }) {
-  const { version, doc } = siteDocument(refDoc);
-  const sizes: Paper[] = version.paperDefault === "a4" ? ["a4", "letter"] : ["letter", "a4"];
-  return (
-    <span className={styles.pdfLinks}>
-      {sizes.map((size, i) => (
-        <span key={size}>
-          {i > 0 ? " · " : null}
-          {doc.editions[size] ? (
-            <a
-              href={openHref(version, doc, size)}
-              target="_blank"
-              rel="noopener"
-              aria-label={`Open the ${doc.title}, ${PAPER_NAME[size]} PDF (opens in a new tab)`}
-            >
-              {`${PAPER_NAME[size]} PDF`}
-            </a>
-          ) : (
-            <span className={styles.pending}>{`${PAPER_NAME[size]} edition in preparation`}</span>
-          )}
-        </span>
-      ))}
-    </span>
-  );
-}
-
+/** The step's foot: the pages on this site. The documents are the cards
+    above; the next step is the pinned bar's Next. */
 export function StepFoot({ step }: { step: Step }) {
   return (
     <div className={`${styles.stepFoot} ui`}>
-      <div className={styles.footGroup}>
-        <h2 className={styles.footLabel}>{STEP_UI.docs}</h2>
-        <ul className={styles.footDocs}>
-          {step.docs.map((d) => {
-            const { version, doc } = siteDocument(d);
-            return (
-              <li key={`${d.version}/${d.doc}`}>
-                <span className={styles.footDocName}>{`${doc.title}, ${version.school}`}</span>{" "}
-                <PdfLinks refDoc={d} />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <div className={styles.footGroup}>
-        <h2 className={styles.footLabel}>{STEP_UI.onSite}</h2>
-        <ul className={styles.footLinks}>
-          {step.links.map((l) => (
-            <li key={l.href}>
-              <Link href={l.href}>{`${l.label} →`}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h2 className={styles.footLabel}>{STEP_UI.onSite}</h2>
+      <ul className={styles.footLinks}>
+        {step.links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href}>{`${l.label} →`}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
+}
+
+/* ── The overview's year at a glance: one card per step, its document's
+   cover first. A cover from another fictional school's samples says so
+   under the card; that school's notice is in the overview's notices. ── */
+
+export function GlanceCards() {
+  return (
+    <ol className={`${styles.glance} ui`}>
+      {STEPS.map((s) => {
+        const { version, doc } = siteDocument(STEP_COVER[s.id]);
+        const href = stepHref(s);
+        const other = version.school !== "Harborview International School";
+        return (
+          <li key={s.id} className={styles.glanceCard}>
+            <Link className={styles.glanceThumb} href={href}>
+              <Image
+                src={doc.cover.src}
+                width={doc.cover.width}
+                height={doc.cover.height}
+                alt={`First page of the ${doc.title}, ${version.school}`}
+                sizes="(max-width: 640px) 44vw, 190px"
+              />
+            </Link>
+            <p className={styles.glanceStep}>
+              <span className={styles.glanceNum}>{`Step ${s.number}`}</span> <TierChips step={s} short />
+            </p>
+            <h3 className={styles.glanceName}>
+              <Link href={href}>{s.name}</Link>
+            </h3>
+            <p className={styles.glanceText}>{STEP_RECEIVES[s.id]}</p>
+            {other ? <p className={styles.glanceSample}>{`${STEP_UI.sampleFrom} ${version.school}`}</p> : null}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+/** The notices of the other fictional schools whose covers the overview's
+    cards show, in step order, each once. */
+export function glanceNotices(): string[] {
+  const seen = new Set<string>();
+  for (const s of STEPS) {
+    const { version } = siteDocument(STEP_COVER[s.id]);
+    if (version.school !== "Harborview International School") seen.add(version.disclosure);
+  }
+  return [...seen];
 }

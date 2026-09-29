@@ -12,12 +12,11 @@ import {
   STEPS,
 } from "@/content/case-study";
 import {
-  Conversation,
-  Excerpts,
+  HeroBar,
   HowItWorks,
+  Need,
   Notices,
-  Receives,
-  RestOfYear,
+  StepDocs,
   StepFoot,
   TierChips,
   WhoDecidesBox,
@@ -26,15 +25,14 @@ import { CaseStudyShell } from "../_parts/Shell";
 import styles from "../page.module.css";
 
 /* One step of the Case Study (/case-study/{product}): one product in
-   Harborview's illustrative year. Outputs first, one sequence on every step
-   (the reviewer's point, 2026-09-28): the head (the product, the step's
-   title, its tiers, the illustrative label and the samples line, since a
-   product page links straight here); what Harborview needs; (the Travel
-   Program Review only) the first conversation; what Harborview receives;
-   how it works (sends, ETI360 does, decides); the one Who decides box; the
-   excerpts; (the Trip Package only) the rest of the year; the documents and
-   the pages on this site; the notices. The pinned bar's Next is the way on;
-   the footer's contact row closes the page.
+   Harborview's illustrative year. Documents first (Dan, 2026-09-29: "I want
+   people to see the solution. Less words and more about the solution."):
+   the hero bar (the product, its tiers, its key facts, the illustrative
+   line); what Harborview needs, in one sentence; what Harborview receives,
+   the documents as the trip page's cards; how it works, one compact row;
+   the one Who decides line; the pages on this site; the notices. The
+   pinned bar's Next is the way on; the footer's contact row closes the
+   page.
 
    On hold like the rest of the case study: a production build lists no
    step and every step address is a 404 (src/lib/case-study-hold.ts). */
@@ -74,39 +72,28 @@ export default async function CaseStudyStepPage({ params }: Props) {
   if (!s) notFound();
 
   return (
-    <CaseStudyShell current={s}>
-      <article className={styles.step} aria-labelledby="step-title">
-        <header className={styles.stepHead}>
-          <p className={`${styles.stepEyebrow} ui`}>
-            <span className="sr-only">{`${stepOfTotal(s)}: `}</span>
-            {s.name}
-          </p>
-          <h1 id="step-title" className={styles.stepTitle} tabIndex={-1}>
-            {s.title}
-          </h1>
-          {/* The illustrative label and the samples line, one line
-              (review fix, 2026-09-28). */}
-          <p className={`${styles.stepMeta} ui`}>
-            <TierChips step={s} />{" "}
-            <span className={styles.stepMetaText}>
-              {`${STEP_UI.illustrative} · Harborview International School · Singapore. ${INTRO.samples}`}
-            </span>
-          </p>
-          <div className={styles.need}>
-            <h2 className={`${styles.needLabel} ui`}>{STEP_UI.need}</h2>
-            <p className={styles.needText}>{s.need}</p>
-          </div>
-        </header>
-
-        <Conversation step={s} />
-        <Receives step={s} />
+    <CaseStudyShell
+      current={s}
+      lead={
+        <HeroBar
+          eyebrow={`${STEP_UI.label} · ${stepOfTotal(s)}`}
+          title={s.name}
+          titleId="step-title"
+          sub={s.title}
+          chips={<TierChips step={s} />}
+          facts={s.facts}
+          note={`${STEP_UI.illustrative} · Harborview International School · Singapore. ${INTRO.samples}`}
+        />
+      }
+    >
+      <div className={styles.step}>
+        <Need step={s} />
+        <StepDocs step={s} />
         <HowItWorks step={s} />
         <WhoDecidesBox />
-        <Excerpts step={s} />
-        <RestOfYear step={s} />
         <StepFoot step={s} />
         <Notices notices={stepNotices(s)} className={styles.stepNotices} />
-      </article>
+      </div>
     </CaseStudyShell>
   );
 }

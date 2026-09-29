@@ -9,14 +9,13 @@ import {
   LIFECYCLE,
   NOTICES,
   OVERVIEW_DESCRIPTION,
-  STEP_RECEIVES,
+  OVERVIEW_FACTS,
   STEP_UI,
   stepHref,
   STEPS,
   WORK,
 } from "@/content/case-study";
-import headerStyles from "@/components/productheader.module.css";
-import { Notices, Rows, TierChips, WhoDecidesBox } from "./_parts/blocks";
+import { GlanceCards, glanceNotices, HeroBar, Notices, WhoDecidesBox } from "./_parts/blocks";
 import { HashRedirect } from "./_parts/HashRedirect";
 import { CaseStudyShell } from "./_parts/Shell";
 import styles from "./page.module.css";
@@ -29,19 +28,20 @@ import styles from "./page.module.css";
    page: it sits after the four products in the nav, and each step links to
    its product page.
 
-   ON HOLD FOR PUBLISHING until both fictional providers are renamed:
+   ON HOLD FOR PUBLISHING until the second fictional provider is renamed:
    src/lib/case-study-hold.ts.
 
-   Top to bottom: the header ("Case Study" as its label, the reviewer's
-   opening as the h1 and lede, the illustrative label, and the button to
-   step 1, so it shows on the first screen); then, inside the guide's frame
-   (_parts/Shell.tsx): the samples line and Harborview's notice; how the
-   work divides (the school sends, ETI360 does the reading, the data entry,
-   the research and the writing, the school receives and decides); the year
-   at a glance, one row per step, and one line for the rest of the year;
-   the Who decides box and who does the work, side by side on wide screens.
-   The footer's contact row, with Dan's closing sentence, is the only call
-   to action. Copy: src/content/case-study.ts. */
+   Top to bottom (2026-09-29, documents first): the hero bar ("Case Study",
+   the reviewer's opening as the h1, the school, the four products, who
+   decides, the paper, and the illustrative line); then, inside the guide's
+   frame (_parts/Shell.tsx): the year at a glance, one card per step with
+   its document's cover, the link to step 1, and one line for the rest of
+   the year; how the work divides (the school sends, ETI360 does the
+   reading, the data entry, the research and the writing, the school
+   receives and decides); the Who decides line and who does the work, side
+   by side on wide screens; the dates line and the notices. The footer's
+   contact row, with Dan's closing sentence, is the only call to action.
+   Copy: src/content/case-study.ts. */
 
 const TITLE = "Case Study";
 
@@ -59,47 +59,40 @@ export const metadata: Metadata = {
   },
 };
 
-const HERO = "/case-study/hero-marina-bay.jpg";
-
 export default function CaseStudyPage() {
   if (!caseStudyLive()) notFound();
   const first = STEPS[0];
-  const last = STEPS[STEPS.length - 1];
   return (
     <>
       <HashRedirect />
       <CaseStudyShell
         current={null}
         lead={
-          <section
-            className={`article-header ${styles.hero}`}
-            style={{ ["--hero-bg" as string]: `url('${HERO}')` } as React.CSSProperties}
-          >
-            <div className="hero-inner">
-              <p className="label label-light ui">{TITLE}</p>
-              <h1 className={styles.heroTitle}>{INTRO.heading}</h1>
-              <p className={`${headerStyles.tiers} ${styles.heroTag} ui`}>
-                {`${STEP_UI.illustrative} · Harborview International School · Singapore`}
-              </p>
-              <p className={`${headerStyles.lede} ${styles.heroLede}`}>{INTRO.lede}</p>
-              <p className={`${headerStyles.lede} ${styles.heroLede}`}>{INTRO.work}</p>
-              <p className={styles.heroStart}>
-                <Link className="cta-button ui" href={stepHref(first)}>
-                  {`${STEP_UI.start}: ${first.name} →`}
-                </Link>
-              </p>
-            </div>
-          </section>
+          <HeroBar
+            eyebrow={TITLE}
+            title={INTRO.heading}
+            facts={OVERVIEW_FACTS}
+            note={`${STEP_UI.illustrative}. ${INTRO.samples}`}
+            overview
+          />
         }
       >
         <div className={styles.overview}>
-          <div className={styles.disclosure}>
-            <p>{`${INTRO.samples} ${INTRO.dates}`}</p>
-            <Notices notices={[NOTICES.harborview]} />
+          <div className={styles.glanceBlock}>
+            <h2 className={`${styles.blockLabel} ui`} id="the-year">
+              The year at a glance
+            </h2>
+            <GlanceCards />
+            <p className={`${styles.glanceStart} ui`}>
+              <Link href={stepHref(first)}>{`${STEP_UI.start}: ${first.name} →`}</Link>
+            </p>
+            <p className={styles.lifecycle} id="rest-of-year">
+              {LIFECYCLE}
+            </p>
           </div>
 
           <div className={styles.block}>
-            <h2 className={`${styles.overviewHeading} rule-gold`} id="the-work">
+            <h2 className={`${styles.blockLabel} ui`} id="the-work">
               How the work divides
             </h2>
             <div className={styles.parts}>
@@ -118,35 +111,16 @@ export default function CaseStudyPage() {
             </div>
           </div>
 
-          <div className={styles.block}>
-            <h2 className={`${styles.overviewHeading} rule-gold`} id="the-year">
-              The year at a glance
-            </h2>
-            <Rows
-              variant="glance"
-              labels={["Step", "What Harborview receives"]}
-              rows={STEPS.map((s) => ({
-                key: s.id,
-                cells: [
-                  <span key="s" className={styles.meets}>
-                    <Link href={stepHref(s)}>{`${s.number}. ${s.name}`}</Link>{" "}
-                    <TierChips step={s} short />
-                  </span>,
-                  <span key="r">{STEP_RECEIVES[s.id]}</span>,
-                ],
-              }))}
-            />
-            <p className={styles.lifecycle}>
-              {`${LIFECYCLE} `}
-              <Link href={`${stepHref(last)}#rest-of-year`}>{`The rest of the year, in step ${last.number} →`}</Link>
-            </p>
-          </div>
-
           <div className={styles.closing}>
             <WhoDecidesBox />
             <div className={styles.prose}>
               <WhoDoesTheWork />
             </div>
+          </div>
+
+          <div className={styles.disclosure}>
+            <p>{INTRO.dates}</p>
+            <Notices notices={[NOTICES.harborview, ...glanceNotices()]} />
           </div>
         </div>
       </CaseStudyShell>

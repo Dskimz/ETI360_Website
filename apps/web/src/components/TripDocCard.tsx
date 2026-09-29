@@ -18,7 +18,10 @@ import styles from "@/app/trips/trips.module.css";
 
    lookInside (the worked-trip pages, spec S8): a closed native <details>
    under the card holds the document's three captioned pages, each opening
-   the default edition at that page. No JavaScript. */
+   the default edition at that page. No JavaScript. insideOpen starts it
+   open (the Case Study, on a step with one document); id replaces the
+   card's anchor where two cards on one page show documents with the same
+   slug (the Case Study's two field-trip packs). */
 
 export function Editions({ version, doc }: { version: Version; doc: VersionDocument }) {
   // The school's own paper first: US Letter for a US school, A4 for an
@@ -99,11 +102,15 @@ export function DocCard({
   doc,
   solo = false,
   lookInside = false,
+  insideOpen = false,
+  id,
 }: {
   version: Version;
   doc: VersionDocument;
   solo?: boolean;
   lookInside?: boolean;
+  insideOpen?: boolean;
+  id?: string;
 }) {
   const edition = thumbEdition(version, doc);
   const thumb = (
@@ -116,7 +123,7 @@ export function DocCard({
     />
   );
   return (
-    <article id={doc.slug} className={solo ? `${styles.card} ${styles.cardSolo}` : styles.card}>
+    <article id={id ?? doc.slug} className={solo ? `${styles.card} ${styles.cardSolo}` : styles.card}>
       {edition ? (
         <a
           className={styles.cardThumb}
@@ -137,7 +144,7 @@ export function DocCard({
         <Editions version={version} doc={doc} />
       </div>
       {lookInside && doc.insidePages.length > 0 ? (
-        <details className={styles.lookInside}>
+        <details className={styles.lookInside} open={insideOpen || undefined}>
           <summary className="ui">Look inside</summary>
           <InsidePages version={version} doc={doc} edition={edition} className={styles.lookInsidePages} />
         </details>

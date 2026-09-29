@@ -179,22 +179,24 @@ export const REDIRECTS: SiteRedirect[] = [
 ];
 
 /* The Case Study's two folded steps (2026-09-28: five pages, not seven):
-   the first conversation now opens the Travel Program Review, and the rest
-   of the year closes the Trip Package. Permanent, each straight to the
-   part it folded into. Only while the case study is live: next.config.ts
-   adds these rows unless the publishing hold is on in a production build
-   (src/lib/case-study-hold.ts), where every /case-study address is a 404.
+   the first conversation now opens the ETI360 cell of the Travel Program
+   Review's How it works, and the rest of the year is the overview's line
+   for it (2026-09-29, when the Trip Package became step 2). Permanent,
+   each straight to the part it folded into. Only while the case study is
+   live: next.config.ts adds these rows unless the publishing hold is on in
+   a production build (src/lib/case-study-hold.ts), where every /case-study
+   address is a 404.
    The old hash anchors (/case-study#…) are handled on the page
    (src/app/case-study/_parts/HashRedirect.tsx). */
 export const CASE_STUDY_REDIRECTS: SiteRedirect[] = [
   {
     source: "/case-study/first-conversation",
-    destination: "/case-study/travel-program-review#conversation",
+    destination: "/case-study/travel-program-review#how",
     permanent: true,
   },
   {
     source: "/case-study/through-the-year",
-    destination: "/case-study/trip-package#rest-of-year",
+    destination: "/case-study#rest-of-year",
     permanent: true,
   },
 ];

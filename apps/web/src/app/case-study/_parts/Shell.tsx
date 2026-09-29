@@ -13,19 +13,22 @@ import styles from "../page.module.css";
                     than sticky, over a spacer of its own height, so it stays
                     in view to the very end of the footer, which on a phone
                     is taller than the screen;
+     the lead       the page's hero bar (_parts/blocks.tsx HeroBar), full
+                    width under the bar;
      the step row   below 1024px, the step list as one scrollable row of
-                    buttons under the bar, and under it a closed "What the
-                    tiers mean" disclosure;
+                    buttons under the hero bar, and at the top of the column
+                    a closed "ETI360's 3-Tier Risk Framework" disclosure;
      the step list  at 1024px and wider, a sticky column on the left: the
                     overview and the four steps, each with its tier chips,
                     the current one marked aria-current="page", and under
-                    them what Tier 1, 2 and 3 mean (Dan, 2026-09-28: "we
-                    don't explain T1-T3. I think a small explanation on the
-                    nav bar will help").
+                    them ETI360's 3-Tier Risk Framework, one line per tier
+                    (Dan, 2026-09-28: "we don't explain T1-T3. I think a
+                    small explanation on the nav bar will help"; renamed
+                    from "What the tiers mean" on 2026-09-29).
    Every control is a link, so the guide works without JavaScript; StepKeys
    only adds the arrow keys. `current` is the step shown, or null on the
    overview. On a step, a second skip link (after the site's own) passes the
-   bar and the step list and lands on the step's h1. */
+   bar and lands on the step's h1, the hero bar's name. */
 
 /** A bar link: its address, its visible name, and the words a screen
     reader hears between "Previous"/"Next" and that name. */
@@ -169,7 +172,7 @@ export function CaseStudyShell({
   children,
 }: {
   current: Step | null;
-  /** Shown between the bar and the steps: the overview's header. */
+  /** Shown between the bar and the steps: the page's hero bar. */
   lead?: ReactNode;
   children: ReactNode;
 }) {

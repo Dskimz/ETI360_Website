@@ -1,15 +1,21 @@
 /* Case Study: the overview (/case-study) and the four steps
-   (/case-study/{product}), a step-by-step guide (Dan, 2026-09-28). Tokens
-   only: the colors, tier colors, type sizes, rules and measure of
-   globals.css. No <section> elements inside the frame (the site's section
-   padding would reach them); its parts are divs with role="region".
-     .shell    the frame: the fixed step bar, the phone step row and tier
-               disclosure, and the layout (the sticky step list with the
-               tier key on the left, the page's column);
-     .overview the overview's column;
-     .step     a step: head, need, (conversation), receives, how it works
-               (ETI360's move on navy, the strongest block), the Who decides
-               box, the excerpts, (the rest of the year), the foot.
+   (/case-study/{product}), a step-by-step guide (Dan, 2026-09-28), remade
+   documents first on 2026-09-29. Tokens only: the colors, tier colors, type
+   sizes, rules and measure of globals.css. No <section> elements inside the
+   frame (the site's section padding would reach them); its parts are divs
+   with role="region".
+     .shell    the frame: the fixed step bar, the hero bar, the phone step
+               row and tier disclosure, and the layout (the sticky step list
+               with ETI360's 3-Tier Risk Framework on the left, the page's
+               column);
+     .heroBar  the compact navy band under the bar on every page: the name,
+               its tiers and the key facts;
+     .step     a step: the need, the documents (the trip page's document
+               cards, trips.module.css, laid out here), how it works in one
+               row (ETI360's cell on navy, the strongest), the Who decides
+               line, the foot;
+     .overview the overview's column: the year at a glance as four cards
+               with covers, how the work divides, the closing, the notices.
    Contrast: small uppercase labels on white or parchment use --gold-dark
    (4.95:1 on white, 4.66:1 on parchment) or navy; plain --gold only on
    navy. Text on navy is 14px or larger (the 10pt floor for text on dark
@@ -287,40 +293,89 @@
 /* The phone step row: hidden where the list shows. */
 .stepRow { display: none; }
 
-/* ── A step: the head ── */
-.stepEyebrow {
-  margin: 0 0 6px;
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
+/* ── The hero bar: a compact navy band, full width under the step bar ── */
+.heroBar {
+  background: var(--navy-deep);
+  border-bottom: 3px solid var(--gold);
 }
-h1.stepTitle {
-  margin: 0 0 10px;
+.heroBarInner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 16px 32px 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+  gap: 10px 40px;
+  align-items: start;
+}
+.heroBarOverview .heroBarInner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr); }
+.heroHead { min-width: 0; }
+.heroBar p.heroEyebrow {
+  margin: 0 0 6px;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.heroBar h1.heroName {
+  margin: 0;
   font-size: var(--font-3xl);
   font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1.12;
-  color: var(--navy);
+  line-height: 1.1;
+  color: #fff;
 }
-/* The tier chips, then the illustrative label and the samples line in
-   one run of text that wraps under them. */
-.stepMeta {
-  max-width: 880px;
+.heroBarOverview h1.heroName { font-size: var(--font-2xl); line-height: 1.2; }
+.heroBar h1.heroName:focus { outline: none; }
+.heroBar h1.heroName:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.heroBar p.heroSub {
+  margin: 6px 0 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: var(--font-lg);
+  line-height: 1.35;
+  color: var(--parchment);
+}
+.heroChips { margin-top: 10px; }
+.heroFacts {
   margin: 0;
-  font-size: var(--font-xs);
-  line-height: 1.9;
-  color: var(--ink-mid);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 28px;
 }
-.stepMeta > .chips {
-  display: inline-flex;
-  vertical-align: 1px;
-  margin-right: 10px;
+.heroFacts > div {
+  min-width: 0;
+  padding-top: 6px;
+  border-top: 1px solid rgba(201, 162, 77, 0.45);
 }
-.stepMetaText { line-height: 1.55; }
-.need { max-width: 800px; margin-top: 14px; }
-h2.needLabel {
+.heroFacts dt {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.heroFacts dd {
+  margin: 2px 0 0;
+  font-size: var(--font-sm);
+  line-height: 1.45;
+  color: var(--parchment);
+}
+.heroBar p.heroNote {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--hairline-2);
+  font-size: var(--font-sm);
+  line-height: 1.5;
+  color: var(--muted-light);
+}
+
+/* ── A step ── */
+.need { max-width: 820px; }
+h2.needLabel,
+h2.blockLabel {
   margin: 0 0 4px;
   font-size: var(--font-xs);
   font-weight: 600;
@@ -336,26 +391,106 @@ h2.needLabel {
   color: var(--navy);
 }
 
-/* Block heads: a small label, then the block's own title in serif. */
-.blockHead { margin: 0 0 10px; }
-h2.blockLabel {
-  margin: 0;
+/* The documents: the trip page's cards (TripDocCard, trips.module.css),
+   inside this column. The wrapper also carries trips.module.css's .wide for
+   the cards' type scale; its width and padding are the column's. */
+.main .docs {
+  max-width: none;
+  margin: 22px 0 0;
+  padding: 0;
+}
+.shell .docs [id] { scroll-margin-top: calc(var(--cs-top) + var(--cs-bar) + 16px); }
+.docGroup + .docGroup { margin-top: 20px; }
+h3.groupHead {
+  margin: 6px 0 10px;
   font-size: var(--font-xs);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   line-height: 1.5;
   text-transform: uppercase;
-  color: var(--gold-dark);
-}
-.blockSub {
-  margin: 2px 0 0;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: var(--font-xl);
-  font-weight: 600;
-  line-height: 1.25;
   color: var(--navy);
 }
+.otherSchool {
+  max-width: 820px;
+  margin: 0 0 12px;
+  padding: 2px 0 2px 14px;
+  border-left: var(--rule) solid var(--gold);
+}
+.main .otherSchool > p {
+  margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--navy);
+}
+.main .otherSchool > p.otherNotice { margin-top: 2px; color: var(--ink-mid); }
 
+/* Several documents: two cards to a row, each with a narrower cover than
+   the trip page's, so a row of two fits the column; a closed card's Look
+   inside sits beside the cover, under the name, and spans the card once
+   open. A step's second document shown alone (.docClosed) takes the same
+   card. */
+.docGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.docGrid > article,
+.docClosed > article {
+  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "thumb body"
+    "thumb inside";
+  gap: 10px 16px;
+  padding: 16px;
+}
+.docGrid > article > :nth-child(1),
+.docClosed > article > :nth-child(1) { grid-area: thumb; }
+.docGrid > article > :nth-child(2),
+.docClosed > article > :nth-child(2) { grid-area: body; }
+.docGrid > article > details,
+.docClosed > article > details {
+  grid-area: inside;
+  align-self: end;
+}
+.docGrid > article > details[open],
+.docClosed > article > details[open] {
+  grid-area: auto;
+  grid-column: 1 / -1;
+  grid-row: 3;
+  align-self: start;
+}
+/* Once a card's pages are open its row grows; the cards beside it keep
+   their own height instead of stretching down the taller row. */
+.docGrid:has(details[open]) { align-items: start; }
+/* One document: the cover on the left; the name, then its pages, beside
+   it, so the document shows whole without a long scroll. */
+.docOne > article {
+  grid-template-columns: 184px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "thumb body"
+    "thumb inside";
+  gap: 12px 24px;
+  padding: 18px;
+}
+.docOne > article > :nth-child(1) { grid-area: thumb; }
+.docOne > article > :nth-child(2) { grid-area: body; }
+.docOne > article > details {
+  grid-area: inside;
+  align-self: start;
+}
+.main .docs p.groupNote {
+  max-width: 820px;
+  margin: 10px 0 0;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* How it works: one compact row, ETI360's cell on navy and a little wider,
+   the strongest. */
+.how { margin-top: 28px; }
 .list {
   list-style: none;
   margin: 0;
@@ -364,7 +499,7 @@ h2.blockLabel {
 .list li {
   position: relative;
   margin: 0 0 5px;
-  padding: 0 0 0 16px;
+  padding: 0 0 0 14px;
   font-size: var(--font-sm);
   line-height: 1.5;
   color: var(--ink);
@@ -380,73 +515,30 @@ h2.blockLabel {
   height: 6px;
   background: var(--gold);
 }
-.listCols { columns: 2; column-gap: 32px; }
-/* The conversation's three lines, side by side on wide screens. */
-.listThree {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px 24px;
-}
-.listThree li { margin: 0; }
-
-/* The first conversation (the Travel Program Review). */
-.conversation {
-  margin-top: 20px;
-  padding: 14px 20px 16px;
-  background: #fff;
-  border: 1px solid var(--hairline);
-  border-left: var(--rule) solid var(--gold);
-}
-
-/* What Harborview receives. */
-.receives { margin-top: 24px; }
-.paper {
-  font-size: var(--font-xs);
-  font-weight: 400;
-  color: var(--ink-mid);
-}
-.receivesNote {
-  max-width: 820px;
-  margin: 10px 0 0;
-  font-size: var(--font-sm);
-  line-height: 1.55;
-  color: var(--ink);
-}
-
-/* How it works: 1 and 3 in the left column, ETI360's move on navy beside
-   them, spanning both, as the strongest block; stacked on narrow screens. */
-.how { margin-top: 24px; }
 .moves {
   list-style: none;
-  margin: 0;
+  margin: 4px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  grid-template-areas:
-    "sends does"
-    "decides does";
-  grid-template-rows: auto 1fr;
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 10px;
 }
 .move {
   min-width: 0;
-  padding: 14px 18px 16px;
+  padding: 12px 16px 14px;
   background: #fff;
   border: 1px solid var(--hairline);
 }
-.moveSends { grid-area: sends; }
-.moveDoes { grid-area: does; }
-.moveDecides { grid-area: decides; }
 .moveHead {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  margin: 0 0 10px;
+  gap: 10px;
+  margin: 0 0 8px;
 }
 .moveNum {
   flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   display: grid;
   place-items: center;
   border: 1px solid rgba(13, 53, 88, 0.35);
@@ -457,40 +549,29 @@ h2.blockLabel {
 }
 h3.moveLabel {
   margin: 0;
+  padding-top: 3px;
   font-size: var(--font-xs);
   font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.5;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
   text-transform: uppercase;
   color: var(--gold-dark);
 }
-.moveTitle {
-  margin: 0;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: var(--font-md);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--navy);
-}
 .moveDoes {
-  padding: 18px 24px 20px;
+  padding: 14px 18px 16px;
   background: var(--navy);
   border-color: var(--navy);
   border-top: 3px solid var(--gold);
 }
 .moveDoes .moveNum {
-  width: 34px;
-  height: 34px;
   border-color: var(--gold);
   background: var(--gold);
   color: var(--navy-deep);
-  font-size: var(--font-base);
 }
-.moveDoes h3.moveLabel { font-size: var(--font-sm); color: var(--gold); }
-.moveDoes .moveTitle { font-size: var(--font-lg); color: var(--parchment); }
+.moveDoes h3.moveLabel { font-size: var(--font-sm); padding-top: 2px; color: var(--gold); }
 .moveDoes .list li { color: var(--parchment); }
 
-/* The one Who decides box: navy, ETI360's role first; its label beside
+/* The one Who decides line: navy, ETI360's role first; its label beside
    the text on wide screens. */
 .who {
   display: grid;
@@ -498,7 +579,7 @@ h3.moveLabel {
   gap: 4px 16px;
   align-items: baseline;
   margin-top: 12px;
-  padding: 14px 22px 15px;
+  padding: 11px 20px 12px;
   background: var(--navy-deep);
   border-left: var(--rule) solid var(--gold);
 }
@@ -514,44 +595,99 @@ h2.whoLabel {
 .whoText {
   margin: 0;
   max-width: 820px;
-  font-size: var(--font-base);
-  line-height: 1.6;
+  font-size: var(--font-sm);
+  line-height: 1.55;
   color: var(--parchment);
 }
 
-/* ── The excerpts: one column of a sample page each, side by side at
-   1100px and wider with each one's share of the row set by --grow (its
-   width in points over its text size), so every excerpt's text reads at
-   one size, about 12px. Below 1100px, one per row with its caption beside
-   it, each image --grow × 13px wide (its text at about 13px); on phones,
-   stacked edge to edge (review fix, 2026-09-28: two across a tablet read
-   at 10 to 11px). ── */
-.excerpts { margin-top: 24px; }
-.otherSchool {
-  max-width: 820px;
-  margin: 0 0 14px;
-  padding: 2px 0 2px 14px;
-  border-left: var(--rule) solid var(--gold);
+/* The step's foot: the pages on this site. */
+.stepFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 24px;
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: var(--rule) solid var(--gold);
 }
-.otherSchool > p {
+h2.footLabel {
+  margin: 0;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.footLinks {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin: 0;
+  padding: 0;
+}
+.footLinks li { margin: 0; font-size: var(--font-sm); }
+.footLinks a,
+.glanceStart a,
+.glanceName a {
+  font-weight: 600;
+  color: var(--gold-dark);
+  border-bottom: 1px solid var(--gold);
+}
+.glanceName a { color: var(--navy); }
+.footLinks a:hover,
+.glanceStart a:hover,
+.glanceName a:hover {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+  text-decoration: none;
+}
+.footLinks a:focus-visible,
+.glanceStart a:focus-visible,
+.glanceName a:focus-visible,
+.glanceThumb:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+
+p.notices {
   margin: 0;
   font-size: var(--font-sm);
   line-height: 1.55;
-  color: var(--navy);
+  color: var(--ink-mid);
 }
-.otherSchool > p.otherNotice { margin-top: 4px; color: var(--ink-mid); }
-.excerptRow {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
+.stepNotices {
+  max-width: 820px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
 }
-.excerpt {
-  flex: var(--grow) 1 0px;
+
+/* ── The overview ── */
+/* The year at a glance: one card per step, its document's cover first. */
+.glance {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.glanceCard {
   min-width: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 14px 16px;
+  background: #fff;
+  border: 1px solid var(--hairline);
 }
-.excerptLink { display: block; }
-.excerptLink img {
+/* Every cover in a box of the A4 page's shape, standing on its foot, so a
+   US Letter cover lines up with the A4 ones. */
+.glanceThumb {
+  display: flex;
+  align-items: flex-end;
+  aspect-ratio: 935 / 1324;
+  margin-bottom: 12px;
+}
+.glanceThumb img {
   display: block;
   width: 100%;
   height: auto;
@@ -560,278 +696,65 @@ h2.whoLabel {
   box-shadow: 0 1px 4px rgba(13, 53, 88, 0.12);
   transition: box-shadow 0.18s;
 }
-.excerptLink:hover img,
-.excerptLink:focus-visible img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
-.excerptLink:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
-.excerpt figcaption {
+.glanceThumb:hover img,
+.glanceThumb:focus-visible img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
+.glanceCard p.glanceStep {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0 0 6px;
 }
-/* One excerpt: its caption beside it. */
-.excerptSingle .excerpt {
-  display: grid;
-  grid-template-columns: minmax(0, 390px) minmax(0, 1fr);
-  gap: 22px;
-  align-items: start;
+.glanceNum {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
 }
-.excerptSingle .excerpt figcaption { margin-top: 0; }
-.caption {
+.glanceCard h3.glanceName {
+  margin: 0 0 6px;
+  font-family: 'Source Serif 4', Georgia, serif !important;
+  font-size: var(--font-lg);
+  font-weight: 600;
+  line-height: 1.25;
+}
+.glanceCard p.glanceText {
+  margin: 0;
   font-size: var(--font-sm);
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--ink);
 }
-.source {
+.glanceCard p.glanceSample {
+  margin: auto 0 0;
+  padding-top: 8px;
   font-size: var(--font-xs);
   line-height: 1.45;
   color: var(--ink-mid);
 }
-.excerptNote {
+.overview p.glanceStart {
+  margin: 12px 0 0;
+  font-size: var(--font-sm);
+}
+.overview p.lifecycle {
   max-width: 820px;
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   font-size: var(--font-sm);
   line-height: 1.6;
   color: var(--ink);
 }
-
-/* The rest of the year (the Trip Package). */
-.rest {
-  margin-top: 24px;
-  padding: 16px 20px 18px;
-  background: #fff;
-  border: 1px solid var(--hairline);
-  border-top: var(--rule) solid var(--navy);
-}
-.restList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.restText { max-width: 860px; }
-.restList li {
-  margin: 0 0 8px;
-  font-size: var(--font-sm);
-  line-height: 1.55;
-  color: var(--ink);
-}
-.restDecides {
-  margin: 10px 0 0;
-  padding-top: 10px;
-  border-top: 1px solid var(--hairline);
-  font-size: var(--font-sm);
-  line-height: 1.6;
-  color: var(--ink);
-}
-
-/* ── The step's foot: documents, pages on this site, the next step ── */
-.stepFoot {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 16px 32px;
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: var(--rule) solid var(--gold);
-}
-.footGroup { min-width: 0; }
-h2.footLabel {
-  margin: 0 0 8px;
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.5;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-}
-.footDocs,
-.footLinks {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.footDocs li {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 0 0 8px;
-  font-size: var(--font-sm);
-}
-.footDocName { font-weight: 600; color: var(--navy); }
-.pdfLinks a,
-.footLinks a,
-.docNames a,
-.lifecycle a,
-.meets a {
-  font-weight: 600;
-  color: var(--gold-dark);
-  border-bottom: 1px solid var(--gold);
-}
-.docNames a,
-.meets a { color: var(--navy); }
-.pdfLinks a:hover,
-.footLinks a:hover,
-.docNames a:hover,
-.lifecycle a:hover,
-.meets a:hover {
-  color: var(--navy);
-  border-bottom-color: var(--navy);
-  text-decoration: none;
-}
-.pdfLinks a:focus-visible,
-.footLinks a:focus-visible,
-.docNames a:focus-visible,
-.lifecycle a:focus-visible,
-.meets a:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
-.pending { color: var(--ink-mid); }
-.footLinks li { margin: 0 0 6px; font-size: var(--font-sm); }
-
-p.notices {
-  margin: 0;
-  font-size: var(--font-sm);
-  line-height: 1.55;
-  color: var(--ink-mid);
-}
-.disclosure > p.notices { margin: 0; font-size: var(--font-sm); color: var(--ink-mid); }
-.stepNotices {
-  max-width: 820px;
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid var(--hairline);
-}
-
-/* ── Ruled rows: the parts summaries, the decision table, the year ── */
-.rows { margin-top: 2px; }
-.rowHead,
-.rowItemLine {
-  display: grid;
-  gap: 20px;
-  align-items: start;
-}
-.outputs .rowHead,
-.outputs .rowItemLine { grid-template-columns: 176px minmax(0, 1fr); }
-.decisions .rowHead,
-.decisions .rowItemLine { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); }
-.glance .rowHead,
-.glance .rowItemLine { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
-.rowHead {
-  padding: 0 0 6px;
-  border-bottom: var(--rule) solid var(--gold);
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-}
-.rowList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.rowItemLine {
-  margin: 0;
-  padding: 7px 0;
-  border-bottom: 1px solid var(--hairline);
-  font-size: var(--font-sm);
-  line-height: 1.55;
-  color: var(--ink);
-}
-.glance .rowItemLine { padding: 12px 0; }
-.cell { min-width: 0; }
-/* Each cell's column name: heard, not seen (the visible heads are
-   aria-hidden); shown inline in the decision table on phones. */
-.cellLabel {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-.meets {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 10px;
-}
-.meets a {
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: var(--font-lg);
-  line-height: 1.3;
-}
-
-/* ── The overview ── */
-section.hero { padding: 48px 0 52px; }
-/* The overlay behind the text, darker than the site's default (review fix,
-   2026-09-28): the gold labels and the lede measured below AA over the
-   photo's bright sky. At least 0.93 navy wherever text sits, so gold
-   (#C9A24D) holds 4.5:1 over the brightest pixel; the photo shows through
-   on the right, past the text, on wide screens, and as a texture below
-   1024px, where the text runs the full width. Measured against the
-   rendered photo, not the background color. */
-section.hero[style*="--hero-bg"] {
-  background-image:
-    linear-gradient(100deg,
-      rgba(10, 42, 69, 0.97) 0%,
-      rgba(10, 42, 69, 0.95) 56%,
-      rgba(10, 42, 69, 0.9) 72%,
-      rgba(13, 53, 88, 0.66) 100%),
-    var(--hero-bg);
-}
-@media (max-width: 1023px) {
-  section.hero[style*="--hero-bg"] {
-    background-image:
-      linear-gradient(180deg, rgba(10, 42, 69, 0.95) 0%, rgba(10, 42, 69, 0.93) 100%),
-      var(--hero-bg);
-  }
-}
-/* The two labels as wide as their words, so nothing past the text counts
-   as their background. */
-.hero :global(.label),
-.hero p.heroTag { width: fit-content; max-width: 100%; }
-/* The "Case Study" label on navy: 14px, the 10pt floor for text on dark. */
-.hero :global(.label) { font-size: var(--font-sm); }
-.hero h1.heroTitle {
-  max-width: 820px;
-  font-size: var(--font-5xl);
-  line-height: 1.06;
-  margin-bottom: 18px;
-}
-p.heroLede { max-width: 820px; margin-top: 14px; font-size: var(--font-lg); }
-.heroStart { margin: 24px 0 0; }
-.heroStart :global(.cta-button):focus-visible { outline: 2px solid var(--parchment); outline-offset: 3px; }
-.overview > .disclosure { margin-top: 4px; }
-.disclosure {
-  max-width: 820px;
-  border-left: var(--rule) solid var(--gold);
-  padding: 2px 0 2px 16px;
-}
-.disclosure > p {
-  margin: 0 0 6px;
-  font-size: var(--font-base);
-  line-height: 1.6;
-  color: var(--navy);
-}
-.block { margin-top: 40px; }
-h2.overviewHeading {
-  margin: 0 0 14px;
-  font-size: var(--font-2xl);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--navy);
-}
+.block { margin-top: 32px; }
 /* How the work divides: the school's two columns light, ETI360's on navy
    and a little wider, since it carries the most. */
 .parts {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 12px;
+  gap: 10px;
+  margin-top: 4px;
 }
 .part {
   min-width: 0;
-  padding: 16px 18px 18px;
+  padding: 14px 16px 16px;
   background: #fff;
   border: 1px solid var(--hairline);
   border-top: var(--rule) solid var(--navy);
@@ -842,7 +765,7 @@ h2.overviewHeading {
   border-top: 3px solid var(--gold);
 }
 .part h3.partLabel {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -858,22 +781,15 @@ h2.overviewHeading {
   color: var(--ink);
 }
 .partEti .partText { color: var(--parchment); }
-.lifecycle {
-  max-width: 820px;
-  margin: 14px 0 0;
-  font-size: var(--font-sm);
-  line-height: 1.65;
-  color: var(--ink);
-}
 /* Who decides and who does the work: side by side where the column is
    wide enough, stacked below. */
 .closing {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 28px;
-  margin-top: 40px;
+  gap: 24px;
+  margin-top: 32px;
 }
-.closing .who { margin: 0; }
+.closing .who { margin: 0; grid-template-columns: minmax(0, 1fr); }
 .closing :global(.section-heading) { font-size: var(--font-2xl); margin-bottom: 12px; }
 @media (min-width: 1100px) {
   .closing {
@@ -884,18 +800,24 @@ h2.overviewHeading {
 }
 .prose { font-size: var(--font-md); line-height: 1.7; }
 .prose > * { max-width: var(--measure); }
+.disclosure {
+  max-width: 820px;
+  margin-top: 28px;
+  border-left: var(--rule) solid var(--gold);
+  padding: 2px 0 2px 16px;
+}
+.disclosure > p {
+  margin: 0 0 6px;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--navy);
+}
+.disclosure > p.notices { margin: 0; color: var(--ink-mid); }
 
+/* ── Below 1100px: the hero bar's facts under the name ── */
 @media (max-width: 1099px) {
-  .excerptRow { flex-direction: column; gap: 22px; }
-  .excerpt {
-    flex: none;
-    width: 100%;
-    display: grid;
-    grid-template-columns: minmax(0, calc(var(--grow) * 13px)) minmax(0, 1fr);
-    gap: 20px;
-    align-items: start;
-  }
-  .excerpt figcaption { margin-top: 0; }
+  .heroBarInner,
+  .heroBarOverview .heroBarInner { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
 
 /* ── Below 1024px: no left column; the step row sits under the bar, the
@@ -1007,15 +929,24 @@ h2.overviewHeading {
   .tierDisclosure .tierLines { padding: 2px 14px 14px; }
   .tierDisclosure .tierLines li { font-size: var(--font-sm); }
 
+  .heroBarInner { padding: 18px 24px 14px; }
+
+  /* How it works: what Harborview sends and decides side by side, ETI360's
+     cell across the column under them. */
   .moves {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
       "sends decides"
       "does does";
-    grid-template-rows: auto auto;
   }
-  .moveDoes .list { columns: 2; column-gap: 28px; }
+  .moveSends { grid-area: sends; }
+  .moveDoes { grid-area: does; }
+  .moveDecides { grid-area: decides; }
+
+  .glance { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .glanceCard { padding: 10px 10px 12px; }
 }
+
 
 /* Below 600px the bar shows its arrows; their names stay for screen
    readers. The last step's Contact keeps its visible label. */
@@ -1051,67 +982,54 @@ h2.overviewHeading {
 
 @media (max-width: 860px) {
   .parts { grid-template-columns: minmax(0, 1fr); }
-  .listThree { grid-template-columns: minmax(0, 1fr); }
-  .excerptSingle .excerpt { grid-template-columns: minmax(0, 1fr); }
-  .excerptSingle .excerpt figcaption { margin-top: 10px; }
-
-  /* Rows stack, each cell with its label. */
-  .rowHead { display: none; }
-  .rows { border-top: var(--rule) solid var(--gold); }
-  .outputs .rowItemLine,
-  .decisions .rowItemLine,
-  .glance .rowItemLine { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .decisions .cell + .cell .cellLabel {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-    font-size: var(--font-xs);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold-dark);
-  }
-  .decisions .cell + .cell .cellBody { display: inline; }
+  .glance { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* Phones: one card to a row, the trip page's narrow cover; one document's
+   pages under its cover and name, scrolling sideways (trips.module.css). */
 @media (max-width: 640px) {
   .layout { padding: 12px 16px 48px; }
   .barInner { padding: 0 16px; }
   .stepRowList { padding: 8px 16px; }
-  h1.stepTitle { font-size: var(--font-2xl); }
+  .heroBarInner { padding: 16px 16px 12px; gap: 10px; }
+  .heroBar h1.heroName { font-size: var(--font-2xl); }
+  .heroBarOverview h1.heroName { font-size: var(--font-xl); }
+  .heroBar p.heroSub { font-size: var(--font-md); }
+  .heroChips { margin-top: 8px; }
+  .heroFacts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .heroFacts > div {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 10px;
+    padding: 6px 0;
+  }
+  .heroFacts dd { margin: 0; }
   .needText { font-size: var(--font-base); }
-  .blockSub { font-size: var(--font-lg); }
-  .listCols { columns: 1; }
+  .docGrid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .docGrid > article,
+  .docClosed > article { grid-template-columns: 96px minmax(0, 1fr); gap: 10px 14px; padding: 14px; }
+  .docOne > article {
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "thumb body"
+      "inside inside";
+    gap: 12px 14px;
+    padding: 14px;
+  }
   .moves {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "sends" "does" "decides";
   }
-  .move { padding: 14px 16px 16px; }
-  .moveDoes { padding: 16px 16px 18px; }
-  .moveDoes .list { columns: 1; }
-  .conversation,
-  .rest { padding: 14px 16px 16px; }
-  .who { grid-template-columns: minmax(0, 1fr); padding: 14px 16px 16px; }
-  /* Excerpts stack, each across the screen edge to edge, so the text in
-     the narrowest crop still reads at about 11px. */
-  .excerptRow { gap: 24px; }
-  .excerpt { display: block; }
-  .excerpt figcaption { margin-top: 10px; }
-  .excerptLink { margin: 0 -16px; }
-  .excerptLink img { border-left: 0; border-right: 0; }
-  .stepFoot { grid-template-columns: minmax(0, 1fr); }
-  section.hero { padding: 36px 0 40px; }
-  .hero h1.heroTitle { font-size: var(--font-3xl); }
-  p.heroLede { font-size: var(--font-md); }
-  h2.overviewHeading { font-size: var(--font-xl); }
-  .block { margin-top: 36px; }
+  .move { padding: 12px 14px 14px; }
+  .moveDoes { padding: 14px 14px 16px; }
+  .who { grid-template-columns: minmax(0, 1fr); padding: 12px 14px 14px; }
+  .glance { gap: 10px; }
+  .glanceCard h3.glanceName { font-size: var(--font-md); }
+  .block { margin-top: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .excerptLink img,
+  .glanceThumb img,
   .barArrow { transition: none; }
 }
