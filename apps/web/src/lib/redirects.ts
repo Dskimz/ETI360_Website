@@ -169,6 +169,15 @@ export const REDIRECTS: SiteRedirect[] = [
     permanent: false,
   },
   {
+    // Staff door (Dan, 2026-09-29). Sends Dan and Seb to the school
+    // research in the review app, where their own logins and the
+    // campaign grant protect it. Nothing internal lives on this site:
+    // this repo is public. Temporary so the destination can change.
+    source: "/internal",
+    destination: "https://eti360-review.onrender.com/campaign/research",
+    permanent: false,
+  },
+  {
     // Interim client door. Flips to https://app.eti360.com once the
     // Render custom domain + CNAME exist. Non-permanent on purpose so
     // the flip is not cached forever by browsers.
