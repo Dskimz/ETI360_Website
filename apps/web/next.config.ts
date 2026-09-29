@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
-import { REDIRECTS } from "./src/lib/redirects";
+import { caseStudyLive } from "./src/lib/case-study-hold";
+import { CASE_STUDY_REDIRECTS, REDIRECTS } from "./src/lib/redirects";
 
 const nextConfig: NextConfig = {
   // Private route pages (/routes/{token}) read their files from the private
@@ -43,8 +44,9 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     // The table lives in src/lib/redirects.ts (pure data), so the build can
-    // check that every destination is a live page (src/app/sitemap.ts).
-    return REDIRECTS;
+    // check that every destination is a live page (src/app/sitemap.ts). The
+    // Case Study's two old step addresses redirect only while it is live.
+    return [...REDIRECTS, ...(caseStudyLive() ? CASE_STUDY_REDIRECTS : [])];
   },
 };
 

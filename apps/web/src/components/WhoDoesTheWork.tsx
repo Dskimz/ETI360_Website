@@ -11,9 +11,9 @@ export function WhoDoesTheWork({ title = "Who does the work", id = "who" }: { ti
       <h2 className="section-heading rule-gold" id={id}>
         {title}
       </h2>
-      <p>
-        {FOUNDERS_LINE} {DAN_TRACK_RECORD} {SEB_LINE}
-      </p>
+      {/* One text run, so copy-paste and screen readers keep the spaces
+          between the three lines (Case Study review, 2026-09-28). */}
+      <p>{`${FOUNDERS_LINE} ${DAN_TRACK_RECORD} ${SEB_LINE}`}</p>
     </div>
   );
 }

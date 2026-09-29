@@ -1,14 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import {
-  CASE_STUDY_HREF,
-  CHAPTERS,
-  STEP_UI,
-  stepHref,
-  stepOfTotal,
-  type Chapter,
-} from "@/content/case-study";
-import { TierChips } from "./blocks";
+import { CASE_STUDY_HREF, STEP_UI, stepHref, stepOfTotal, STEPS, type Step } from "@/content/case-study";
+import { TierChips, TierKey } from "./blocks";
 import { StepKeys } from "./StepKeys";
 import styles from "../page.module.css";
 
@@ -21,10 +14,14 @@ import styles from "../page.module.css";
                     in view to the very end of the footer, which on a phone
                     is taller than the screen;
      the step row   below 1024px, the step list as one scrollable row of
-                    buttons under the bar;
+                    buttons under the bar, and under it a closed "What the
+                    tiers mean" disclosure;
      the step list  at 1024px and wider, a sticky column on the left: the
-                    overview and the six steps, each with its tier chips, the
-                    current one marked aria-current="page".
+                    overview and the four steps, each with its tier chips,
+                    the current one marked aria-current="page", and under
+                    them what Tier 1, 2 and 3 mean (Dan, 2026-09-28: "we
+                    don't explain T1-T3. I think a small explanation on the
+                    nav bar will help").
    Every control is a link, so the guide works without JavaScript; StepKeys
    only adds the arrow keys. `current` is the step shown, or null on the
    overview. On a step, a second skip link (after the site's own) passes the
@@ -35,19 +32,19 @@ import styles from "../page.module.css";
 type Target = { href: string; label: string; sr: string };
 
 /** `exit`: the last step's Next, which leaves the guide for Contact. */
-function targets(current: Chapter | null): { prev: Target | null; next: Target; exit: boolean } {
-  const i = current ? CHAPTERS.indexOf(current) : -1;
-  const prevCh = i > 0 ? CHAPTERS[i - 1] : null;
-  const nextCh = CHAPTERS[i + 1] ?? null;
+function targets(current: Step | null): { prev: Target | null; next: Target; exit: boolean } {
+  const i = current ? STEPS.indexOf(current) : -1;
+  const prevStep = i > 0 ? STEPS[i - 1] : null;
+  const nextStep = STEPS[i + 1] ?? null;
   const prev: Target | null = current
-    ? prevCh
-      ? { href: stepHref(prevCh), label: prevCh.name, sr: `, step ${prevCh.number}: ` }
+    ? prevStep
+      ? { href: stepHref(prevStep), label: prevStep.name, sr: `, step ${prevStep.number}: ` }
       : { href: CASE_STUDY_HREF, label: STEP_UI.overview, sr: ": " }
     : null;
-  const next: Target = nextCh
-    ? { href: stepHref(nextCh), label: nextCh.name, sr: `, step ${nextCh.number}: ` }
+  const next: Target = nextStep
+    ? { href: stepHref(nextStep), label: nextStep.name, sr: `, step ${nextStep.number}: ` }
     : { href: "/contact", label: STEP_UI.contact, sr: ": " };
-  return { prev, next, exit: nextCh === null };
+  return { prev, next, exit: nextStep === null };
 }
 
 function Arrow({ dir }: { dir: "prev" | "next" }) {
@@ -64,7 +61,7 @@ function Arrow({ dir }: { dir: "prev" | "next" }) {
   );
 }
 
-function StepBar({ current }: { current: Chapter | null }) {
+function StepBar({ current }: { current: Step | null }) {
   const { prev, next, exit } = targets(current);
   return (
     <nav className={`${styles.bar} ui`} aria-label={STEP_UI.bar}>
@@ -86,23 +83,9 @@ function StepBar({ current }: { current: Chapter | null }) {
           <span className={styles.barPrev} aria-hidden="true" />
         )}
         <p className={styles.barNow}>
-          {current ? (
-            <>
-              <span className={styles.barStep}>{stepOfTotal(current)}</span>
-              <span className={styles.barSep} aria-hidden="true">
-                &middot;
-              </span>
-              <span className={styles.barName}>{current.name}</span>
-            </>
-          ) : (
-            <>
-              <span className={styles.barStep}>Case Study</span>
-              <span className={styles.barSep} aria-hidden="true">
-                &middot;
-              </span>
-              <span className={styles.barName}>{STEP_UI.overview}</span>
-            </>
-          )}
+          <span className={styles.barStep}>{current ? stepOfTotal(current) : STEP_UI.label}</span>
+          <span className={styles.barSep}>{" · "}</span>
+          <span className={styles.barName}>{current ? current.name : STEP_UI.overview}</span>
         </p>
         <Link
           className={`${styles.barLink} ${styles.barNext}${exit ? ` ${styles.barExit}` : ""}`}
@@ -126,9 +109,9 @@ function StepBar({ current }: { current: Chapter | null }) {
   );
 }
 
-/** The overview and the six steps, as the left column (`list`) or the
+/** The overview and the four steps, as the left column (`list`) or the
     phone row (`row`). */
-function Steps({ current, variant }: { current: Chapter | null; variant: "list" | "row" }) {
+function Steps({ current, variant }: { current: Step | null; variant: "list" | "row" }) {
   const list = variant === "list";
   return (
     <nav
@@ -149,27 +132,33 @@ function Steps({ current, variant }: { current: Chapter | null; variant: "list" 
             </span>
           </Link>
         </li>
-        {CHAPTERS.map((ch) => (
-          <li key={ch.id}>
+        {STEPS.map((s) => (
+          <li key={s.id}>
             <Link
               className={list ? styles.sideItem : styles.rowItem}
-              href={stepHref(ch)}
-              aria-current={current?.id === ch.id ? "page" : undefined}
+              href={stepHref(s)}
+              aria-current={current?.id === s.id ? "page" : undefined}
             >
               <span className={styles.stepNum} aria-hidden="true">
-                {ch.number}
+                {s.number}
               </span>
               <span className={styles.sideBody}>
                 <span className={styles.sideName}>
-                  <span className="sr-only">Step {ch.number}: </span>
-                  {ch.name}
+                  <span className="sr-only">{`Step ${s.number}: `}</span>
+                  {s.name}
                 </span>
-                {list ? <TierChips chapter={ch} short /> : null}
+                {list ? (
+                  <>
+                    {" "}
+                    <TierChips step={s} short />
+                  </>
+                ) : null}
               </span>
             </Link>
           </li>
         ))}
       </ol>
+      {list ? <TierKey variant="list" /> : null}
     </nav>
   );
 }
@@ -179,7 +168,7 @@ export function CaseStudyShell({
   lead,
   children,
 }: {
-  current: Chapter | null;
+  current: Step | null;
   /** Shown between the bar and the steps: the overview's header. */
   lead?: ReactNode;
   children: ReactNode;
@@ -199,7 +188,12 @@ export function CaseStudyShell({
         <div className={styles.sideCol}>
           <Steps current={current} variant="list" />
         </div>
-        <div className={styles.main}>{children}</div>
+        <div className={styles.main}>
+          <div className={styles.tierPhone}>
+            <TierKey variant="disclosure" />
+          </div>
+          {children}
+        </div>
       </div>
     </div>
   );

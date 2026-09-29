@@ -3,12 +3,13 @@ import { liveProducts } from "@/content/products";
 import { versionsOf } from "@/content/versions";
 import { assertRedirectsLand } from "@/lib/redirect-check";
 import { SITE_URL } from "@/lib/site";
-import { CASE_STUDY_HREF, caseStudyLive, CHAPTERS, stepHref } from "@/content/case-study";
+import { CASE_STUDY_HREF, caseStudyLive, STEPS, stepHref } from "@/content/case-study";
 
 // Every indexable route (four-product site spec §10), with the priority a
 // search engine should read as our own ranking of them: the home page, each
-// live product page, the Case Study (its overview, then its six steps, while
-// the provider-name hold allows), each Trip Package version's page, then
+// live product page, the Case Study (its overview, then its four steps, one
+// per product, while the provider-name hold allows; the two folded old steps
+// redirect and are never listed), each Trip Package version's page, then
 // contact and privacy. Built from the product registry, so a product without
 // a version (spec S18) and a single-document version (an anchor on its
 // product page) never appear. /open, /review, /guides and /routes are never listed.
@@ -25,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...(caseStudyLive()
       ? [
           { path: CASE_STUDY_HREF, priority: 0.8, changeFrequency: "monthly" as const },
-          ...CHAPTERS.map((ch) => ({ path: stepHref(ch), priority: 0.7, changeFrequency: "monthly" as const })),
+          ...STEPS.map((s) => ({ path: stepHref(s), priority: 0.7, changeFrequency: "monthly" as const })),
         ]
       : []),
     ...versionsOf("trip-package").map((v) => ({

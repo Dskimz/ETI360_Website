@@ -30,6 +30,11 @@ export const DAN_TRACK_RECORD =
     engagement); follows DAN_TRACK_RECORD in WhoDoesTheWork. [draft] */
 export const SEB_LINE = "Seb Wong, Senior Consultant, is part of every engagement.";
 
+/** ETI360's positive role, said before WHO_DECIDES wherever the two run as
+    one statement (the Case Study's Who decides box). The copy canon's first
+    sentence (CLAUDE.md, Trip risk documentation law, 2026-09-14). */
+export const WHO_PREPARES = "ETI360 prepares and organizes the supporting information.";
+
 /** The boundary used on the home page, the product pages and the trip pages. */
 export const WHO_DECIDES =
   "The school and any provider it works with retain responsibility for decisions, supervision, live assessments, and final approval.";

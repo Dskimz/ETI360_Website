@@ -1,160 +1,232 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment, type ReactNode } from "react";
-import { Editions } from "@/components/TripDocCard";
+import type { CSSProperties, ReactNode } from "react";
 import {
-  chapterDocuments,
-  openTarget,
-  shownExhibits,
+  otherSchoolNote,
+  siteDocument,
   STEP_UI,
-  type Chapter,
-  type Exhibit,
+  stepHref,
+  STEPS,
+  TIER_LINES,
+  WHO_DECIDES_BOX,
+  type Excerpt,
+  type Step,
 } from "@/content/case-study";
 import { getProduct, type Tier } from "@/content/products";
 import { TIER_NAMES } from "@/content/services";
-import { openHref, thumbEdition } from "@/content/versions";
+import { openHref, PAPER_NAME, thumbEdition, type Paper } from "@/content/versions";
 import styles from "../page.module.css";
 
 /* The pieces the overview and the steps share. Copy lives in
-   src/content/case-study.ts; nothing here adds words beyond STEP_UI. */
+   src/content/case-study.ts; nothing here adds words beyond STEP_UI.
+
+   Spacing (reviewer's point 12): wherever a label and a sentence sit in
+   separate elements, the space between them is inside a text node (a
+   template string), so copy-paste and screen readers get "leave out. The
+   school", never "leave out.The school". */
 
 /* ── Tiers ── */
 
-/** A step's tiers: its product's, or those of the products its label names. */
-export function tiersOf(ch: Chapter): Tier[] {
-  const slugs = ch.product ? [ch.product] : (ch.opens ?? []);
-  return [...new Set(slugs.flatMap((s) => getProduct(s).tiers))].sort();
+export function tiersOf(s: Step): Tier[] {
+  return [...getProduct(s.id).tiers].sort();
 }
 
 const TIER_CLASS: Record<Tier, string> = { 1: styles.tier1, 2: styles.tier2, 3: styles.tier3 };
 
-/** The tier chips in the tier colors: "Tier 2" in the step list (the full
-    name read out), the full canonical name on the step itself. */
-export function TierChips({ chapter, short = false }: { chapter: Chapter; short?: boolean }) {
-  const tiers = tiersOf(chapter);
-  if (tiers.length === 0) return null;
+/** Tier chips: a swatch in the tier color beside navy text on white, so the
+    text passes AA at its size whatever the tier color (Tier 3's #3182AC
+    under white text does not). "Tier 2" in the step list, the full
+    canonical name on the step itself. */
+export function TierChips({ step, short = false }: { step: Step; short?: boolean }) {
   return (
     <span className={`${styles.chips} ui`}>
-      {tiers.map((t) =>
-        short ? (
-          <span key={t} className={`${styles.chip} ${TIER_CLASS[t]}`} title={TIER_NAMES[t]}>
-            <span aria-hidden="true">Tier {t}</span>
-            <span className="sr-only">, {TIER_NAMES[t]}</span>
-          </span>
-        ) : (
-          <span key={t} className={`${styles.chip} ${TIER_CLASS[t]}`}>
-            {TIER_NAMES[t]}
-          </span>
-        ),
-      )}
+      {tiersOf(step).map((t, i) => (
+        <span key={t} className={styles.chip}>
+          {i > 0 ? " " : null}
+          <span className={`${styles.swatch} ${TIER_CLASS[t]}`} aria-hidden="true" />
+          {short ? (
+            <>
+              <span aria-hidden="true">{`Tier ${t}`}</span>
+              <span className="sr-only">{`, ${TIER_NAMES[t]}`}</span>
+            </>
+          ) : (
+            TIER_NAMES[t]
+          )}
+        </span>
+      ))}
     </span>
+  );
+}
+
+/** What Tier 1, 2 and 3 mean, one line each (Dan, 2026-09-28): under the
+    step list on wide screens, a closed disclosure under the step row below
+    1024px. */
+export function TierKey({ variant }: { variant: "list" | "disclosure" }) {
+  const lines = (
+    <ul className={styles.tierLines}>
+      {([1, 2, 3] as Tier[]).map((t) => (
+        <li key={t}>
+          <span className={`${styles.swatch} ${TIER_CLASS[t]}`} aria-hidden="true" />
+          <span>
+            <strong>{`${TIER_NAMES[t]}.`}</strong>
+            {` ${TIER_LINES[t]}`}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+  if (variant === "list") {
+    return (
+      <div className={`${styles.tierKey} ui`}>
+        <p className={styles.tierKeyLabel}>{STEP_UI.tiers}</p>
+        {lines}
+      </div>
+    );
+  }
+  return (
+    <details className={`${styles.tierDisclosure} ui`}>
+      <summary>{STEP_UI.tiers}</summary>
+      {lines}
+    </details>
   );
 }
 
 /* ── Notices ── */
 
+/** Each fictional name's notice, verbatim, run as one paragraph. */
 export function Notices({ notices, className }: { notices: string[]; className?: string }) {
   if (notices.length === 0) return null;
   return (
-    <div className={`${styles.notices}${className ? ` ${className}` : ""} ui`}>
-      {notices.map((n) => (
-        <p key={n}>{n}</p>
-      ))}
-    </div>
+    <p className={`${styles.notices}${className ? ` ${className}` : ""} ui`}>{notices.join(" ")}</p>
   );
 }
 
-/* ── Exhibits ── */
+/* ── Rows: a labeled grid on wide screens, stacked with inline labels on
+   phones (the parts summaries, the decision table, the overview's year). ── */
 
-/** One page from a sample: a portrait page as a thumbnail with its caption
-    beside it, a wide crop across its cell with the caption under it. A page
-    of a document on this site opens that document at the page, through the
-    logged /open route; any other page opens its own image. */
-function ExhibitCard({ ex }: { ex: Exhibit }) {
-  const target = openTarget(ex);
-  const edition = target ? thumbEdition(target.version, target.doc) : null;
-  const link =
-    target && edition
-      ? {
-          href: openHref(target.version, target.doc, edition, target.page),
-          label: `Open the ${target.doc.title} at page ${target.page} (PDF, opens in a new tab)`,
-        }
-      : { href: `/case-study/${ex.image}`, label: "Open this page larger (image, opens in a new tab)" };
+export function Rows({
+  labels,
+  rows,
+  variant,
+}: {
+  labels: string[];
+  rows: { key: string; cells: ReactNode[] }[];
+  variant: "outputs" | "decisions" | "glance";
+}) {
   return (
-    <figure className={ex.wide ? styles.exWide : styles.exPage}>
-      <a className={styles.figLink} href={link.href} target="_blank" rel="noopener" aria-label={link.label}>
-        <Image
-          src={`/case-study/${ex.image}`}
-          width={ex.width}
-          height={ex.height}
-          alt={ex.alt}
-          sizes={ex.wide ? "(max-width: 767px) 92vw, 400px" : "(max-width: 640px) 112px, 150px"}
-        />
-      </a>
-      <figcaption>
-        <span className={styles.caption}>{ex.caption}</span>
-        <span className={`${styles.source} ui`}>{ex.source}</span>
-      </figcaption>
-    </figure>
-  );
-}
-
-/** A step's exhibits: another school's lead first, where it applies; the
-    pages two to a row, each section's run under that section's intro
-    (across the row); the sections' notes in the free cell or under. Where
-    the last row has a free cell, the last section's intro opens it, above
-    the notes, rather than taking a row of its own. */
-export function StepExhibits({ chapter }: { chapter: Chapter }) {
-  const { lead, groups, notes } = shownExhibits(chapter);
-  const lastGroup = groups[groups.length - 1];
-  // The cell beside the last page, when that row has one free.
-  const noteInGrid = (lastGroup?.exhibits.length ?? 0) % 2 === 1;
-  const sideIntro = noteInGrid ? lastGroup?.intro : undefined;
-  const noteBlock =
-    notes.length > 0 || sideIntro ? (
-      <div className={styles.exNotes}>
-        {sideIntro ? <p className={styles.note}>{sideIntro}</p> : null}
-        {notes.map((n) => (
-          <p key={n.lead} className={styles.note}>
-            <strong>{n.lead}</strong> {n.text}
-          </p>
+    <div className={`${styles.rows} ${styles[variant]}`}>
+      <div className={`${styles.rowHead} ui`} aria-hidden="true">
+        {labels.map((l) => (
+          <span key={l}>{l}</span>
         ))}
       </div>
-    ) : null;
-  return (
-    <div className={styles.exhibitsBlock}>
-      <h2 className={`${styles.blockLabel} ui`}>{STEP_UI.exhibits}</h2>
-      {lead ? (
-        <div className={styles.otherSchool}>
-          <p>{lead.text}</p>
-          <Notices notices={lead.notices} />
-        </div>
-      ) : null}
-      <div className={styles.exhibits}>
-        {groups.map((g) => (
-          <Fragment key={g.exhibits[0].image}>
-            {g.intro && !(g === lastGroup && sideIntro) ? <p className={styles.sectionIntro}>{g.intro}</p> : null}
-            {g.exhibits.map((ex) => (
-              <ExhibitCard key={ex.image} ex={ex} />
+      <ul className={styles.rowList}>
+        {rows.map((r) => (
+          <li key={r.key} className={styles.rowItemLine}>
+            {r.cells.map((c, j) => (
+              <div key={labels[j]} className={styles.cell}>
+                <span className={`${styles.cellLabel} ui`}>{`${labels[j]}: `}</span>
+                <div className={styles.cellBody}>{c}</div>
+              </div>
             ))}
-          </Fragment>
+          </li>
         ))}
-        {noteInGrid ? noteBlock : null}
-      </div>
-      {noteInGrid ? null : noteBlock}
+      </ul>
     </div>
   );
 }
 
-/* ── The four moves ── */
+/* ── A step's parts, in the page's order ── */
 
-function List({ items, cols = false }: { items: string[]; cols?: boolean }) {
+function BlockHead({ label, sub, aside, id }: { label: string; sub?: string; aside?: string; id?: string }) {
   return (
-    <ul className={`${styles.list}${cols ? ` ${styles.listCols}` : ""}`}>
+    <div className={styles.blockHead}>
+      <h2 className={`${styles.blockLabel} ui`} id={id}>
+        {label}
+      </h2>
+      {sub ? (
+        <p className={styles.blockSub}>
+          {sub}
+          {aside ? <span className={`${styles.paper} ui`}>{` · ${aside}`}</span> : null}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function List({ items, cols = false, className }: { items: string[]; cols?: boolean; className?: string }) {
+  return (
+    <ul className={`${styles.list}${cols ? ` ${styles.listCols}` : ""}${className ? ` ${className}` : ""}`}>
       {items.map((it) => (
         <li key={it}>{it}</li>
       ))}
     </ul>
+  );
+}
+
+/** A lead in bold and its sentence, one text run apart. */
+function Lead({ lead, text }: { lead: string; text: string }) {
+  return (
+    <>
+      <strong>{lead}</strong>
+      {` ${text}`}
+    </>
+  );
+}
+
+/** The Travel Program Review's opening: the first conversation. */
+export function Conversation({ step }: { step: Step }) {
+  if (!step.conversation) return null;
+  return (
+    <div role="region" className={styles.conversation} aria-labelledby="conversation">
+      <BlockHead id="conversation" label={STEP_UI.conversation} sub={step.conversation.title} />
+      <List items={step.conversation.items} className={styles.listThree} />
+    </div>
+  );
+}
+
+/** What Harborview receives: a compact summary of the output. */
+export function Receives({ step }: { step: Step }) {
+  const r = step.receives;
+  return (
+    <div role="region" className={styles.receives} aria-labelledby="receives">
+      <BlockHead id="receives" label={STEP_UI.receives} sub={r.title} aside={r.paper} />
+      {r.decisions ? (
+        <Rows
+          variant="decisions"
+          labels={["The decision", "The documents", "Who holds them"]}
+          rows={r.decisions.map((d) => ({
+            key: d.decision,
+            cells: [
+              <strong key="d">{d.decision}</strong>,
+              <span key="docs" className={styles.docNames}>
+                {d.documents.map((doc, i) => (
+                  <span key={doc.id}>
+                    {i > 0 ? " · " : null}
+                    <Link href={`/trip-package#${doc.id}`}>{doc.name}</Link>
+                  </span>
+                ))}
+              </span>,
+              <span key="h">{d.holders}</span>,
+            ],
+          }))}
+        />
+      ) : (
+        <Rows
+          variant="outputs"
+          labels={["Part", "What it holds"]}
+          rows={(r.parts ?? []).map((p) => ({
+            key: p.part,
+            cells: [<strong key="p">{p.part}</strong>, <span key="h">{p.holds}</span>],
+          }))}
+        />
+      )}
+      {r.note ? (
+        <p className={styles.receivesNote}>
+          <Lead lead={r.note.lead} text={r.note.text} />
+        </p>
+      ) : null}
+    </div>
   );
 }
 
@@ -163,178 +235,207 @@ function MoveHead({ n, label, title }: { n: number; label: string; title?: strin
     <div className={styles.moveHead}>
       <span className={`${styles.moveNum} ui`} aria-hidden="true">
         {n}
-      </span>
+      </span>{" "}
       <div>
-        <h2 className={`${styles.moveLabel} ui`}>
-          <span className="sr-only">{n}. </span>
+        <h3 className={`${styles.moveLabel} ui`}>
+          <span className="sr-only">{`${n}. `}</span>
           {label}
-        </h2>
+        </h3>
         {title ? <p className={styles.moveTitle}>{title}</p> : null}
       </div>
     </div>
   );
 }
 
-function WhoDecides({ ch }: { ch: Chapter }) {
+/** How it works: 1 sends, 2 ETI360 does (navy, the strongest block, beside
+    the other two on wide screens), 3 decides. */
+export function HowItWorks({ step }: { step: Step }) {
   return (
-    <>
-      {ch.whoDecides.map((w) => (
-        <blockquote key={w.text} className={styles.who}>
-          <p className={`${styles.whoLabel} ui`}>Who decides</p>
-          <p className={styles.whoText}>{w.text}</p>
-          {w.source ? <p className={`${styles.whoSource} ui`}>{w.source}</p> : null}
-        </blockquote>
-      ))}
-    </>
-  );
-}
-
-const chars = (xs: string[]) => xs.reduce((n, x) => n + x.length, 0);
-
-/** Whether the Who decides lines fit under the fourth move without making
-    it much taller than the third (judged by length); if not, they run as a
-    row under both, so neither card is left half empty. Layout only. */
-function whoInDecides(ch: Chapter): boolean {
-  const receives = chars([ch.receives.title, ...ch.receives.receives]);
-  const decides = chars(ch.receives.decides) + chars(ch.whoDecides.map((w) => `${w.text} ${w.source ?? ""}`));
-  return decides <= receives * 1.15;
-}
-
-/** Sends, does, receives, decides: ETI360's move on navy across the
-    column, since it carries the work. The chapter's Who decides lines,
-    from the documents' own text, close the fourth move or run under the
-    third and fourth. */
-export function Moves({ ch }: { ch: Chapter }) {
-  const inCard = whoInDecides(ch);
-  return (
-    <>
-    <ol className={styles.moves}>
-      <li className={`${styles.move} ${styles.moveSends}`}>
-        <MoveHead n={1} label={STEP_UI.moves.sends} title={ch.sends.title} />
-        <List items={ch.sends.items} cols={ch.sends.items.length > 2} />
-      </li>
-      <li className={`${styles.move} ${styles.moveDoes}`}>
-        <MoveHead n={2} label={STEP_UI.moves.does} title={ch.does.title} />
-        <List items={ch.does.items} cols={ch.does.items.length > 2} />
-      </li>
-      <li className={`${styles.move} ${styles.moveReceives}`}>
-        <MoveHead n={3} label={STEP_UI.moves.receives} title={ch.receives.title} />
-        <List items={ch.receives.receives} />
-      </li>
-      <li className={`${styles.move} ${styles.moveDecides}`}>
-        <MoveHead n={4} label={STEP_UI.moves.decides} />
-        <List items={ch.receives.decides} />
-        {inCard ? <WhoDecides ch={ch} /> : null}
-      </li>
-    </ol>
-    {inCard ? null : (
-      <div className={`${styles.whoRow}${ch.whoDecides.length > 1 ? ` ${styles.whoRowTwo}` : ""}`}>
-        <WhoDecides ch={ch} />
-      </div>
-    )}
-    </>
-  );
-}
-
-/* ── Ruled rows (the year at a glance, the decision table): a labeled
-   grid on wide screens, stacked with inline labels on phones. ── */
-
-export function Rows({
-  labels,
-  rows,
-  variant,
-  ordered = false,
-}: {
-  labels: string[];
-  rows: { key: string; cells: ReactNode[] }[];
-  variant: "glance" | "decisions";
-  ordered?: boolean;
-}) {
-  const Tag = ordered ? "ol" : "ul";
-  return (
-    <div className={`${styles.rows} ${styles[variant]}`}>
-      <div className={`${styles.rowHead} ui`} aria-hidden="true">
-        {ordered ? <span /> : null}
-        {labels.map((l) => (
-          <span key={l}>{l}</span>
-        ))}
-      </div>
-      <Tag className={styles.rowList}>
-        {rows.map((r, i) => (
-          <li key={r.key} className={styles.rowItemLine}>
-            {ordered ? <span className={`${styles.rowNum} ui`}>{i + 1}</span> : null}
-            {r.cells.map((c, j) => (
-              <div key={labels[j]} className={styles.cell}>
-                <span className={`${styles.cellLabel} ui`}>{labels[j]}</span>
-                <div className={styles.cellBody}>{c}</div>
-              </div>
-            ))}
-          </li>
-        ))}
-      </Tag>
+    <div role="region" className={styles.how} aria-labelledby="how">
+      <BlockHead id="how" label={STEP_UI.how} />
+      <ol className={styles.moves}>
+        <li className={`${styles.move} ${styles.moveSends}`}>
+          <MoveHead n={1} label={STEP_UI.moves.sends} />
+          <List items={step.sends} />
+        </li>
+        <li className={`${styles.move} ${styles.moveDoes}`}>
+          <MoveHead n={2} label={STEP_UI.moves.does} title={step.does.title} />
+          <List items={step.does.items} />
+        </li>
+        <li className={`${styles.move} ${styles.moveDecides}`}>
+          <MoveHead n={3} label={STEP_UI.moves.decides} />
+          <List items={step.decides} />
+        </li>
+      </ol>
     </div>
   );
 }
 
-/** The Trip Package step's decision table ("listed below" in its third move). */
-export function DecisionTable({ ch }: { ch: Chapter }) {
-  if (!ch.decisionTable) return null;
+/** The one decision-ownership box on a page: ETI360's role first. */
+export function WhoDecidesBox({ id = "who-decides" }: { id?: string }) {
   return (
-    <div className={styles.decisionBlock}>
-      <h2 className={`${styles.blockLabel} ui`}>The Trip Package, decision by decision</h2>
-      <Rows
-        variant="decisions"
-        labels={["The decision", "The documents", "Who holds them"]}
-        rows={ch.decisionTable.map((d) => ({
-          key: d.decision,
-          cells: [
-            <strong key="d">{d.decision}</strong>,
-            <span key="docs" className={styles.docNames}>
-              {d.documents.map((doc, i) => (
-                <span key={doc.id}>
-                  {i > 0 ? <span aria-hidden="true"> &middot; </span> : null}
-                  <Link href={`/trip-package#${doc.id}`}>{doc.name}</Link>
-                </span>
-              ))}
-            </span>,
-            <span key="h">{d.holders}</span>,
-          ],
-        }))}
-      />
-    </div>
+    <aside className={styles.who} aria-labelledby={id}>
+      <h2 className={`${styles.whoLabel} ui`} id={id}>
+        {STEP_UI.whoDecides}
+      </h2>
+      <p className={styles.whoText}>{WHO_DECIDES_BOX}</p>
+    </aside>
   );
 }
 
-/* ── The step's foot: the documents in both papers, the pages on this site ── */
+/* ── Excerpts ── */
 
-export function StepLinks({ ch }: { ch: Chapter }) {
-  const docs = chapterDocuments(ch);
+/** One excerpt: a column of a sample page, opening its document at that
+    page. `grow` sets its share of the row so every excerpt's source text
+    reads at one size (its width in points over its text size). */
+function ExcerptFigure({ ex }: { ex: Excerpt }) {
+  const t = siteDocument(ex.open);
+  const edition = thumbEdition(t.version, t.doc);
+  const href = edition ? openHref(t.version, t.doc, edition, ex.open.page) : `/case-study/${ex.image}`;
+  const label = edition
+    ? `Open the ${t.doc.title} at page ${ex.open.page}, ${PAPER_NAME[edition]} PDF (opens in a new tab)`
+    : "Open this excerpt larger (image, opens in a new tab)";
+  const style = { ["--grow" as string]: (ex.pt / ex.textPt).toFixed(2) } as CSSProperties;
   return (
-    <div className={`${styles.stepFoot} ui`}>
-      {docs.length > 0 ? (
-        <div className={styles.footGroup}>
-          <p className={styles.footLabel}>Open the documents</p>
-          <ul className={styles.footDocs}>
-            {docs.map(({ version, doc }) => (
-              <li key={`${version.slug}/${doc.slug}`}>
-                <span className={styles.footDocName}>
-                  {doc.title} <span className={styles.footSchool}>&middot; {version.school}</span>
-                </span>
-                <Editions version={version} doc={doc} />
-              </li>
-            ))}
-          </ul>
+    <figure className={styles.excerpt} style={style}>
+      <a className={styles.excerptLink} href={href} target="_blank" rel="noopener" aria-label={label}>
+        <Image
+          src={`/case-study/${ex.image}`}
+          width={ex.width}
+          height={ex.height}
+          alt={ex.alt}
+          sizes="(max-width: 640px) 100vw, (max-width: 1023px) 48vw, 420px"
+        />
+      </a>
+      <figcaption>
+        <span className={styles.caption}>{ex.caption}</span>{" "}
+        <span className={`${styles.source} ui`}>{ex.source}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+export function Excerpts({ step }: { step: Step }) {
+  const note = step.otherSchool ? otherSchoolNote(step.otherSchool) : null;
+  return (
+    <div role="region" className={styles.excerpts} aria-labelledby="excerpts">
+      <BlockHead id="excerpts" label={STEP_UI.excerpts} />
+      {note ? (
+        <div className={`${styles.otherSchool} ui`}>
+          <p>{note.text}</p>
+          <p className={styles.otherNotice}>{note.notice}</p>
         </div>
       ) : null}
-      <div className={styles.footGroup}>
-        <p className={styles.footLabel}>On this site</p>
-        <ul className={styles.footLinks}>
-          {ch.links.map((l) => (
-            <li key={l.href}>
-              <Link href={l.href}>{l.label} &rarr;</Link>
+      <div className={`${styles.excerptRow}${step.excerpts.length === 1 ? ` ${styles.excerptSingle}` : ""}`}>
+        {step.excerpts.map((ex) => (
+          <ExcerptFigure key={ex.image} ex={ex} />
+        ))}
+      </div>
+      {step.excerptNote ? (
+        <p className={styles.excerptNote}>
+          <Lead lead={step.excerptNote.lead} text={step.excerptNote.text} />
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+/** The Trip Package's close: the rest of the year. */
+export function RestOfYear({ step }: { step: Step }) {
+  const r = step.restOfYear;
+  if (!r) return null;
+  return (
+    <div role="region" className={styles.rest} aria-labelledby="rest-of-year">
+      <div className={styles.restText}>
+        <BlockHead id="rest-of-year" label={r.title} sub={r.subtitle} />
+        <ul className={styles.restList}>
+          {r.items.map((it) => (
+            <li key={it.lead}>
+              <Lead lead={it.lead} text={it.text} />
             </li>
           ))}
         </ul>
+        <p className={styles.restDecides}>
+          <Lead lead={`${STEP_UI.moves.decides}.`} text={r.decides} />
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ── The step's foot: the documents in both papers, the pages on this
+   site, and the next step ── */
+
+/** The two editions of a document, each named in full for a screen reader
+    ("Open the Travel Program Review, A4 PDF"), the school's own paper
+    first. */
+function PdfLinks({ refDoc }: { refDoc: { version: string; doc: string } }) {
+  const { version, doc } = siteDocument(refDoc);
+  const sizes: Paper[] = version.paperDefault === "a4" ? ["a4", "letter"] : ["letter", "a4"];
+  return (
+    <span className={styles.pdfLinks}>
+      {sizes.map((size, i) => (
+        <span key={size}>
+          {i > 0 ? " · " : null}
+          {doc.editions[size] ? (
+            <a
+              href={openHref(version, doc, size)}
+              target="_blank"
+              rel="noopener"
+              aria-label={`Open the ${doc.title}, ${PAPER_NAME[size]} PDF (opens in a new tab)`}
+            >
+              {`${PAPER_NAME[size]} PDF`}
+            </a>
+          ) : (
+            <span className={styles.pending}>{`${PAPER_NAME[size]} edition in preparation`}</span>
+          )}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+export function StepFoot({ step }: { step: Step }) {
+  const i = STEPS.indexOf(step);
+  const next = STEPS[i + 1] ?? null;
+  return (
+    <div className={`${styles.stepFoot} ui`}>
+      <div className={styles.footGroup}>
+        <h2 className={styles.footLabel}>{STEP_UI.docs}</h2>
+        <ul className={styles.footDocs}>
+          {step.docs.map((d) => {
+            const { version, doc } = siteDocument(d);
+            return (
+              <li key={`${d.version}/${d.doc}`}>
+                <span className={styles.footDocName}>{`${doc.title}, ${version.school}`}</span>{" "}
+                <PdfLinks refDoc={d} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div className={styles.footGroup}>
+        <h2 className={styles.footLabel}>{STEP_UI.onSite}</h2>
+        <ul className={styles.footLinks}>
+          {step.links.map((l) => (
+            <li key={l.href}>
+              <Link href={l.href}>{`${l.label} →`}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={`${styles.footGroup} ${styles.footNext}`}>
+        <h2 className={styles.footLabel}>{next ? STEP_UI.nextStep : STEP_UI.next}</h2>
+        {next ? (
+          <Link className={styles.nextLink} href={stepHref(next)}>
+            <span className={styles.nextName}>{`Step ${next.number}: ${next.name}`}</span>
+            <span className={styles.nextTitle}>{` ${next.title} →`}</span>
+          </Link>
+        ) : (
+          <Link className={styles.nextLink} href="/contact">
+            <span className={styles.nextName}>{`${STEP_UI.contact} →`}</span>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import { liveProducts } from "@/content/products";
 import { versions } from "@/content/versions";
-import { REDIRECTS } from "./redirects";
+import { CASE_STUDY_REDIRECTS, REDIRECTS } from "./redirects";
+import { caseStudyLive } from "./case-study-hold";
+import { STEPS } from "@/content/case-study";
 
 /* Build-time check (review fix, 2026-09-27; spec S18): every redirect lands
    on a page this build serves. A product page is built only while it has a
@@ -21,13 +23,17 @@ function lands(path: string): boolean {
   // A worked trip's page, a document open, or the password-gated drafts.
   const trip = path.match(/^\/trips\/([^/]+)$/);
   if (trip) return versions.some((v) => v.product === "trip-package" && v.slug === trip[1]);
+  // The Case Study's overview and steps, while it is live.
+  const cs = path.match(/^\/case-study(?:\/([^/]+))?$/);
+  if (cs) return caseStudyLive() && (!cs[1] || STEPS.some((s) => s.id === cs[1]));
   const open = path.match(/^\/open\/([^/]+)\/[^/]+$/);
   if (open) return open[1].startsWith(":") || versions.some((v) => v.slug === open[1]);
   return path.startsWith("/review/");
 }
 
 export function assertRedirectsLand(): void {
-  const broken = REDIRECTS.filter((r) => !/^https?:\/\//.test(r.destination) && !lands(pathOf(r.destination)));
+  const rows = [...REDIRECTS, ...(caseStudyLive() ? CASE_STUDY_REDIRECTS : [])];
+  const broken = rows.filter((r) => !/^https?:\/\//.test(r.destination) && !lands(pathOf(r.destination)));
   if (broken.length > 0) {
     throw new Error(
       `Redirects to pages this build does not serve (point them at "/" with permanent: false until the page is live, spec S18):\n` +

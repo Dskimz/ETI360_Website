@@ -1,18 +1,23 @@
-/* Case Study: the overview (/case-study) and the six steps
-   (/case-study/{step}), a step-by-step guide (Dan, 2026-09-28). Tokens
+/* Case Study: the overview (/case-study) and the four steps
+   (/case-study/{product}), a step-by-step guide (Dan, 2026-09-28). Tokens
    only: the colors, tier colors, type sizes, rules and measure of
-   globals.css. No <section> elements inside the frame, so the site's
-   section padding never reaches it.
-     .shell    the frame: the sticky step bar, the phone step row, and the
-               layout (the sticky step list on the left, the page's column);
-     .overview the overview's column: the disclosure, how the work divides,
-               the year at a glance, who decides, who does the work, notices;
-     .step     a step: its head, the four moves (ETI360's on navy, across
-               the column), the decision table, the pages, the links.
+   globals.css. No <section> elements inside the frame (the site's section
+   padding would reach them); its parts are divs with role="region".
+     .shell    the frame: the fixed step bar, the phone step row and tier
+               disclosure, and the layout (the sticky step list with the
+               tier key on the left, the page's column);
+     .overview the overview's column;
+     .step     a step: head, need, (conversation), receives, how it works
+               (ETI360's move on navy, the strongest block), the Who decides
+               box, the excerpts, (the rest of the year), the foot.
+   Contrast: small uppercase labels on white or parchment use --gold-dark
+   (4.95:1 on white, 4.66:1 on parchment) or navy; plain --gold only on
+   navy. Text on navy is 14px or larger (the 10pt floor for text on dark
+   grounds). Focus rings are navy on light grounds, gold on navy.
    The site header is sticky at the top: 68px tall at 1100px and wider,
-   57px below (globals.css, "Narrow header"); the bar sits just under it,
-   so the two read as one pinned block. Below 1024px the step row pins
-   under the bar too, where the screen is at least 600px tall (--cs-row). */
+   57px below (globals.css, "Narrow header"); the bar sits just under it.
+   Below 1024px the step row pins under the bar too, where the screen is at
+   least 600px tall (--cs-row). */
 
 .shell {
   --cs-top: 67px;
@@ -31,13 +36,10 @@
 }
 .shell [id] { scroll-margin-top: calc(var(--cs-top) + var(--cs-bar) + var(--cs-row) + 16px); }
 
-/* The second skip link (a step page): shown pinned at the top on focus,
-   wherever the page is scrolled. */
+/* The second skip link (a step page): shown pinned at the top on focus. */
 .shell :global(.skip-link):focus { position: fixed; }
 
-/* ── The step bar: fixed under the site header, over a spacer of its own
-   height (sticky would let the footer push it off on phones, where the
-   footer is taller than the screen). ── */
+/* ── The step bar ── */
 .barSpacer { height: var(--cs-bar); }
 .bar {
   position: fixed;
@@ -70,7 +72,7 @@
   color: var(--navy);
 }
 .barLink:hover { color: var(--navy); text-decoration: none; }
-.barLink:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.barLink:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
 .barArrow {
   flex: 0 0 auto;
   width: 40px;
@@ -122,26 +124,24 @@
   text-transform: uppercase;
   color: var(--gold-dark);
 }
-.barSep { margin: 0 8px; color: var(--gold-dark); }
+.barSep { color: var(--gold-dark); white-space: pre; }
 .barName { font-weight: 600; }
 
-/* ── The layout: the step list on the left, the page's column ── */
+/* ── The layout ── */
 .layout {
   max-width: var(--container);
   margin: 0 auto;
   padding: 32px 32px 56px;
   display: grid;
   grid-template-columns: 216px minmax(0, 1fr);
-  gap: 48px;
+  gap: 44px;
   align-items: start;
 }
 .sideCol { min-width: 0; align-self: stretch; }
 .main { min-width: 0; }
 
-/* The step list: a sticky column with a thread through the numbers. Its
-   rows are compact so the whole list (about 430px) fits a 600px-tall
-   screen under the header and the bar; on a shorter screen it scrolls
-   inside its own column rather than running past the bottom. */
+/* The step list: a sticky column with a thread through the numbers, then
+   the tier key. On a short screen it scrolls inside its own column. */
 .side {
   position: sticky;
   top: calc(var(--cs-top) + var(--cs-bar) + 24px);
@@ -177,8 +177,7 @@
   color: var(--navy);
 }
 .sideItem:hover { background: rgba(255, 255, 255, 0.7); color: var(--navy); text-decoration: none; }
-/* Inside the column's own scroll box, so the ring is drawn inward. */
-.sideItem:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.sideItem:focus-visible { outline: 2px solid var(--navy); outline-offset: -2px; }
 .sideItem[aria-current="page"] {
   background: #fff;
   border-color: var(--hairline);
@@ -193,7 +192,7 @@
   place-items: center;
   background: var(--parchment);
   border: 1px solid rgba(13, 53, 88, 0.35);
-  font-size: var(--font-xs);
+  font-size: var(--font-sm);
   font-weight: 600;
   color: var(--navy);
 }
@@ -223,32 +222,76 @@
 }
 .sideItem[aria-current="page"] .sideName { font-weight: 700; }
 
-/* Tier chips, in the tier colors of the product doors. */
+/* Tier chips: a swatch in the tier color beside navy text, so the text
+   passes AA whatever the tier color. */
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 4px 6px;
 }
 .chip {
-  display: inline-block;
-  padding: 1px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 7px 1px 5px;
+  background: #fff;
+  border: 1px solid var(--hairline);
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 1.5;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--navy);
+}
+.swatch {
+  flex: 0 0 auto;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
 }
 .tier1 { background: var(--tier1-band); }
 .tier2 { background: var(--tier2-band); }
 .tier3 { background: var(--tier3-band); }
 
+/* What the tiers mean: under the step list, and in the phone disclosure. */
+.tierKey {
+  margin: 18px 0 0;
+  padding: 14px 0 0 6px;
+  border-top: 1px solid var(--hairline);
+}
+.tierKeyLabel {
+  margin: 0 0 8px;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.tierLines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tierLines li {
+  display: grid;
+  grid-template-columns: 9px minmax(0, 1fr);
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: var(--font-xs);
+  line-height: 1.45;
+  color: var(--ink);
+}
+.tierLines li:last-child { margin-bottom: 0; }
+.tierLines .swatch { margin-top: 3px; }
+.tierLines strong { font-weight: 600; color: var(--navy); }
+.tierPhone { display: none; }
+
 /* The phone step row: hidden where the list shows. */
 .stepRow { display: none; }
 
-/* ── A step ── */
+/* ── A step: the head ── */
 .stepEyebrow {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -256,7 +299,7 @@
   color: var(--gold-dark);
 }
 h1.stepTitle {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-size: var(--font-3xl);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -270,31 +313,24 @@ h1.stepTitle {
   gap: 6px 14px;
   margin: 0;
 }
-.stepLabel {
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--navy-mid);
-}
 .stepMetaText {
   font-size: var(--font-xs);
   color: var(--ink-mid);
 }
-/* The case study's disclosure, under the step's head (ABOUT). */
 .stepAbout {
-  max-width: 760px;
-  margin: 10px 0 0;
-  font-size: var(--font-sm);
+  max-width: 820px;
+  margin: 8px 0 0;
+  font-size: var(--font-xs);
   line-height: 1.55;
   color: var(--ink-mid);
 }
-.need { max-width: 760px; margin-top: 18px; }
-.needLabel {
+.need { max-width: 800px; margin-top: 14px; }
+h2.needLabel {
   margin: 0 0 4px;
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
+  line-height: 1.5;
   text-transform: uppercase;
   color: var(--gold-dark);
 }
@@ -305,28 +341,106 @@ h1.stepTitle {
   color: var(--navy);
 }
 
-/* The four moves: 1 and 2 across the column, 3 and 4 side by side. */
+/* Block heads: a small label, then the block's own title in serif. */
+.blockHead { margin: 0 0 10px; }
+h2.blockLabel {
+  margin: 0;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.blockSub {
+  margin: 2px 0 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: var(--font-xl);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list li {
+  position: relative;
+  margin: 0 0 5px;
+  padding: 0 0 0 16px;
+  font-size: var(--font-sm);
+  line-height: 1.5;
+  color: var(--ink);
+  break-inside: avoid;
+}
+.list li:last-child { margin-bottom: 0; }
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+}
+.listCols { columns: 2; column-gap: 32px; }
+/* The conversation's three lines, side by side on wide screens. */
+.listThree {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px 24px;
+}
+.listThree li { margin: 0; }
+
+/* The first conversation (the Travel Program Review). */
+.conversation {
+  margin-top: 20px;
+  padding: 16px 20px 18px;
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-left: var(--rule) solid var(--gold);
+}
+
+/* What Harborview receives. */
+.receives { margin-top: 24px; }
+.paper {
+  font-size: var(--font-xs);
+  font-weight: 400;
+  color: var(--ink-mid);
+}
+.receivesNote {
+  max-width: 820px;
+  margin: 10px 0 0;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* How it works: 1 and 3 in the left column, ETI360's move on navy beside
+   them, spanning both, as the strongest block; stacked on narrow screens. */
+.how { margin-top: 24px; }
 .moves {
   list-style: none;
-  margin: 24px 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   grid-template-areas:
-    "sends sends"
-    "does does"
-    "receives decides";
+    "sends does"
+    "decides does";
+  grid-template-rows: auto 1fr;
   gap: 12px;
 }
 .move {
   min-width: 0;
-  padding: 16px 22px 18px;
+  padding: 14px 18px 16px;
   background: #fff;
   border: 1px solid var(--hairline);
 }
 .moveSends { grid-area: sends; }
 .moveDoes { grid-area: does; }
-.moveReceives { grid-area: receives; }
 .moveDecides { grid-area: decides; }
 .moveHead {
   display: flex;
@@ -346,7 +460,7 @@ h1.stepTitle {
   font-weight: 600;
   color: var(--navy);
 }
-h2.moveLabel {
+h3.moveLabel {
   margin: 0;
   font-size: var(--font-xs);
   font-weight: 600;
@@ -363,13 +477,11 @@ h2.moveLabel {
   line-height: 1.3;
   color: var(--navy);
 }
-/* ETI360's move: the strongest block on the page. */
 .moveDoes {
-  padding: 20px 26px 22px;
+  padding: 18px 24px 20px;
   background: var(--navy);
   border-color: var(--navy);
   border-top: 3px solid var(--gold);
-  color: var(--parchment);
 }
 .moveDoes .moveNum {
   width: 34px;
@@ -379,133 +491,68 @@ h2.moveLabel {
   color: var(--navy-deep);
   font-size: var(--font-base);
 }
-.moveDoes h2.moveLabel { font-size: var(--font-sm); color: var(--gold); }
+.moveDoes h3.moveLabel { font-size: var(--font-sm); color: var(--gold); }
 .moveDoes .moveTitle { font-size: var(--font-lg); color: var(--parchment); }
-
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.list li {
-  position: relative;
-  margin: 0 0 7px;
-  padding: 0 0 0 16px;
-  font-size: var(--font-sm);
-  line-height: 1.55;
-  color: var(--ink);
-  break-inside: avoid;
-}
-.list li:last-child { margin-bottom: 0; }
-.list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-}
-.listCols { columns: 2; column-gap: 32px; }
-.listCols li:last-child { margin-bottom: 0; }
 .moveDoes .list li { color: var(--parchment); }
 
-/* Who decides, from the document's own text, closing the fourth move. */
+/* The one Who decides box: navy, ETI360's role first; its label beside
+   the text on wide screens. */
 .who {
-  margin: 14px 0 0;
-  padding: 10px 14px 12px;
-  background: var(--gold-surface);
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 4px 16px;
+  align-items: baseline;
+  margin-top: 12px;
+  padding: 14px 22px 15px;
+  background: var(--navy-deep);
   border-left: var(--rule) solid var(--gold);
 }
-.who + .who { margin-top: 8px; }
-/* …or as a row under the third and fourth moves. */
-.whoRow {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 12px;
-  margin-top: 12px;
-}
-.whoRowTwo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.whoRow .who,
-.whoRow .who + .who { margin: 0; }
-.whoLabel {
-  margin: 0 0 3px;
-  font-size: var(--font-xs);
+h2.whoLabel {
+  margin: 0;
+  font-size: var(--font-sm);
   font-weight: 600;
   letter-spacing: 0.12em;
+  line-height: 1.4;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--gold);
 }
 .whoText {
   margin: 0;
-  font-size: var(--font-sm);
-  line-height: 1.55;
-  color: var(--ink);
-}
-.whoSource {
-  margin: 4px 0 0;
-  font-size: var(--font-xs);
-  line-height: 1.45;
-  color: var(--ink-mid);
+  max-width: 820px;
+  font-size: var(--font-base);
+  line-height: 1.6;
+  color: var(--parchment);
 }
 
-/* Block labels (the pages, the decision table). */
-h2.blockLabel {
-  margin: 0 0 12px;
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.5;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-}
-.decisionBlock { margin-top: 28px; }
-.exhibitsBlock { margin-top: 28px; }
-
-/* Another fictional school, said before its pages. */
+/* ── The excerpts: one column of a sample page each, side by side on wide
+   screens with each one's share of the row set by --grow (its width in
+   points over its text size), so every excerpt's text reads at one size. ── */
+.excerpts { margin-top: 24px; }
 .otherSchool {
-  max-width: var(--measure);
-  margin: 0 0 16px;
-  padding: 2px 0 2px 16px;
+  max-width: 820px;
+  margin: 0 0 14px;
+  padding: 2px 0 2px 14px;
   border-left: var(--rule) solid var(--gold);
 }
 .otherSchool > p {
-  margin: 0 0 6px;
-  font-size: var(--font-sm);
-  line-height: 1.6;
-  color: var(--navy);
-}
-
-/* ── The pages: two to a row. A portrait page is a thumbnail with its
-   caption beside it; a wide crop runs across its cell. ── */
-.exhibits {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px 28px;
-  align-items: start;
-}
-/* A section's intro, across the row before that section's pages. */
-.sectionIntro {
-  grid-column: 1 / -1;
-  max-width: var(--measure);
-  margin: 0 0 -8px;
-  font-size: var(--font-sm);
-  line-height: 1.6;
-  color: var(--navy);
-}
-.exPage,
-.exWide {
   margin: 0;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--navy);
+}
+.otherSchool > p.otherNotice { margin-top: 4px; color: var(--ink-mid); }
+.excerptRow {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+.excerpt {
+  flex: var(--grow) 1 0px;
   min-width: 0;
+  margin: 0;
 }
-.exPage {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 16px;
-  align-items: start;
-}
-.figLink { display: block; }
-.figLink img {
+.excerptLink { display: block; }
+.excerptLink img {
   display: block;
   width: 100%;
   height: auto;
@@ -514,16 +561,23 @@ h2.blockLabel {
   box-shadow: 0 1px 4px rgba(13, 53, 88, 0.12);
   transition: box-shadow 0.18s;
 }
-.figLink:hover img,
-.figLink:focus-visible img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
-.figLink:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.exPage figcaption,
-.exWide figcaption {
+.excerptLink:hover img,
+.excerptLink:focus-visible img { box-shadow: 0 10px 30px rgba(13, 53, 88, 0.18); }
+.excerptLink:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+.excerpt figcaption {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+  margin-top: 10px;
 }
-.exWide figcaption { margin-top: 10px; }
+/* One excerpt: its caption beside it. */
+.excerptSingle .excerpt {
+  display: grid;
+  grid-template-columns: minmax(0, 390px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.excerptSingle .excerpt figcaption { margin-top: 0; }
 .caption {
   font-size: var(--font-sm);
   line-height: 1.55;
@@ -534,32 +588,59 @@ h2.blockLabel {
   line-height: 1.45;
   color: var(--ink-mid);
 }
-.exNotes { min-width: 0; }
-.exhibitsBlock > .exNotes { max-width: var(--measure); margin-top: 16px; }
-.note {
-  margin: 0 0 8px;
+.excerptNote {
+  max-width: 820px;
+  margin: 14px 0 0;
   font-size: var(--font-sm);
   line-height: 1.6;
   color: var(--ink);
 }
-.note:last-child { margin-bottom: 0; }
 
-/* ── The step's foot ── */
+/* The rest of the year (the Trip Package). */
+.rest {
+  margin-top: 24px;
+  padding: 16px 20px 18px;
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-top: var(--rule) solid var(--navy);
+}
+.restList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.restText { max-width: 860px; }
+.restList li {
+  margin: 0 0 8px;
+  font-size: var(--font-sm);
+  line-height: 1.55;
+  color: var(--ink);
+}
+.restDecides {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ── The step's foot: documents, pages on this site, the next step ── */
 .stepFoot {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-  gap: 16px 40px;
-  margin-top: 28px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 16px 32px;
+  margin-top: 24px;
   padding-top: 16px;
   border-top: var(--rule) solid var(--gold);
 }
 .footGroup { min-width: 0; }
-.footGroup:only-child { grid-column: 1 / -1; }
-.footLabel {
+h2.footLabel {
   margin: 0 0 8px;
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
+  line-height: 1.5;
   text-transform: uppercase;
   color: var(--gold-dark);
 }
@@ -571,57 +652,82 @@ h2.blockLabel {
 }
 .footDocs li {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 2px 16px;
-  margin: 0 0 6px;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 0 8px;
   font-size: var(--font-sm);
 }
 .footDocName { font-weight: 600; color: var(--navy); }
-.footSchool { font-weight: 400; color: var(--ink-mid); }
-.footLinks li { margin: 0 0 6px; font-size: var(--font-sm); }
+.pdfLinks a,
 .footLinks a,
-.docNames a {
+.docNames a,
+.lifecycle a,
+.meets a {
   font-weight: 600;
   color: var(--gold-dark);
   border-bottom: 1px solid var(--gold);
 }
-.docNames a { color: var(--navy); }
+.docNames a,
+.meets a { color: var(--navy); }
+.pdfLinks a:hover,
 .footLinks a:hover,
-.docNames a:hover {
+.docNames a:hover,
+.lifecycle a:hover,
+.meets a:hover {
   color: var(--navy);
   border-bottom-color: var(--navy);
   text-decoration: none;
 }
+.pdfLinks a:focus-visible,
+.footLinks a:focus-visible,
+.docNames a:focus-visible,
+.lifecycle a:focus-visible,
+.meets a:focus-visible,
+.nextLink:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+.pending { color: var(--ink-mid); }
+.footLinks li { margin: 0 0 6px; font-size: var(--font-sm); }
+.nextLink {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  background: var(--navy);
+  color: var(--parchment);
+}
+.nextLink:hover { background: var(--navy-deep); color: var(--parchment); text-decoration: none; }
+.nextName { font-size: var(--font-base); font-weight: 600; color: var(--gold); }
+.nextTitle { font-size: var(--font-sm); color: var(--parchment); }
 
-.notices p {
-  margin: 0 0 4px;
+p.notices {
+  margin: 0;
   font-size: var(--font-sm);
   line-height: 1.55;
   color: var(--ink-mid);
 }
-.notices p:last-child { margin-bottom: 0; }
+.disclosure > p.notices { margin: 0; font-size: var(--font-sm); color: var(--ink-mid); }
 .stepNotices {
-  max-width: var(--measure);
-  margin-top: 20px;
+  max-width: 820px;
+  margin-top: 16px;
   padding-top: 12px;
   border-top: 1px solid var(--hairline);
 }
 
-/* ── Ruled rows: the year at a glance, the decision table ── */
-.rows { margin-top: 4px; }
+/* ── Ruled rows: the parts summaries, the decision table, the year ── */
+.rows { margin-top: 2px; }
 .rowHead,
 .rowItemLine {
   display: grid;
   gap: 20px;
   align-items: start;
 }
-.glance .rowHead,
-.glance .rowItemLine { grid-template-columns: 28px minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.1fr); }
+.outputs .rowHead,
+.outputs .rowItemLine { grid-template-columns: 176px minmax(0, 1fr); }
 .decisions .rowHead,
 .decisions .rowItemLine { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); }
+.glance .rowHead,
+.glance .rowItemLine { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
 .rowHead {
-  padding: 0 0 8px;
+  padding: 0 0 6px;
   border-bottom: var(--rule) solid var(--gold);
   font-size: var(--font-xs);
   font-weight: 600;
@@ -636,74 +742,58 @@ h2.blockLabel {
 }
 .rowItemLine {
   margin: 0;
-  padding: 14px 0;
+  padding: 9px 0;
   border-bottom: 1px solid var(--hairline);
   font-size: var(--font-sm);
   line-height: 1.55;
   color: var(--ink);
 }
-.decisions .rowItemLine { padding: 10px 0; }
-.rowNum {
-  padding-top: 3px;
-  font-size: var(--font-sm);
-  font-weight: 600;
-  color: var(--gold-dark);
-}
+.glance .rowItemLine { padding: 12px 0; }
 .cell { min-width: 0; }
 .cellLabel { display: none; }
 .meets {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
 }
 .meets a {
   font-family: 'Source Serif 4', Georgia, serif;
   font-size: var(--font-lg);
-  font-weight: 600;
   line-height: 1.3;
-  color: var(--navy);
-  border-bottom: 1px solid var(--gold);
-}
-.meets a:hover { text-decoration: none; border-bottom-color: var(--navy); }
-.meetsLabel {
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  line-height: 1.5;
-  color: var(--gold-dark);
 }
 
 /* ── The overview ── */
-section.hero { padding: 56px 0 60px; }
-/* The button to step 1, in the header so it is on the first screen. */
-.heroStart { margin: 28px 0 0; }
+section.hero { padding: 48px 0 52px; }
+/* The "Case Study" label on navy: 14px, the 10pt floor for text on dark. */
+.hero :global(.label) { font-size: var(--font-sm); }
+.hero h1.heroTitle {
+  max-width: 820px;
+  font-size: var(--font-5xl);
+  line-height: 1.06;
+  margin-bottom: 18px;
+}
+p.heroLede { max-width: 820px; margin-top: 14px; font-size: var(--font-lg); }
+.heroStart { margin: 24px 0 0; }
+.heroStart :global(.cta-button):focus-visible { outline: 2px solid var(--parchment); outline-offset: 3px; }
 .overview > .disclosure { margin-top: 4px; }
 .disclosure {
-  max-width: var(--measure);
+  max-width: 820px;
   border-left: var(--rule) solid var(--gold);
   padding: 2px 0 2px 16px;
 }
 .disclosure > p {
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   font-size: var(--font-base);
   line-height: 1.6;
   color: var(--navy);
 }
-.block { margin-top: 56px; }
+.block { margin-top: 40px; }
 h2.overviewHeading {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   font-size: var(--font-2xl);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--navy);
-}
-.workLead {
-  max-width: 760px;
-  margin: 0 0 20px;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: var(--font-lg);
-  line-height: 1.5;
   color: var(--navy);
 }
 /* How the work divides: the school's two columns light, ETI360's on navy
@@ -715,7 +805,7 @@ h2.overviewHeading {
 }
 .part {
   min-width: 0;
-  padding: 18px 20px 20px;
+  padding: 16px 18px 18px;
   background: #fff;
   border: 1px solid var(--hairline);
   border-top: var(--rule) solid var(--navy);
@@ -734,7 +824,7 @@ h2.overviewHeading {
   text-transform: uppercase;
   color: var(--gold-dark);
 }
-.partEti h3.partLabel { color: var(--gold); }
+.partEti h3.partLabel { font-size: var(--font-sm); color: var(--gold); }
 .part .partText {
   margin: 0;
   font-size: var(--font-sm);
@@ -742,63 +832,43 @@ h2.overviewHeading {
   color: var(--ink);
 }
 .partEti .partText { color: var(--parchment); }
-.reading {
-  max-width: var(--measure);
-  margin: 18px 0 0;
+.lifecycle {
+  max-width: 820px;
+  margin: 14px 0 0;
   font-size: var(--font-sm);
   line-height: 1.65;
-  color: var(--ink-mid);
+  color: var(--ink);
 }
-.heroStart :global(.cta-button):focus-visible { outline: 2px solid var(--parchment); outline-offset: 3px; }
 /* Who decides and who does the work: side by side where the column is
    wide enough, stacked below. */
 .closing {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 36px;
-  margin-top: 56px;
+  gap: 28px;
+  margin-top: 40px;
 }
-.closing :global(.boundary-callout) { margin: 0; }
-.closing :global(.section-heading) { font-size: var(--font-2xl); margin-bottom: 14px; }
+.closing .who { margin: 0; }
+.closing :global(.section-heading) { font-size: var(--font-2xl); margin-bottom: 12px; }
 @media (min-width: 1100px) {
   .closing {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    gap: 40px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 36px;
     align-items: start;
   }
-  .closing :global(.boundary-callout) { max-width: none; padding: 28px 30px; }
 }
-.prose { font-size: var(--font-md); line-height: 1.75; }
+.prose { font-size: var(--font-md); line-height: 1.7; }
 .prose > * { max-width: var(--measure); }
-.about {
-  max-width: var(--measure);
-  margin-top: 40px;
-  padding-top: 16px;
-  border-top: 1px solid var(--hairline);
-}
-.about > p {
-  margin: 0 0 8px;
-  font-size: var(--font-sm);
-  line-height: 1.6;
-  color: var(--ink);
-}
-.about > p.aboutLabel {
-  margin: 0 0 6px;
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-}
 
-/* ── Below 1024px: no left column; the step row sits under the bar ── */
+/* ── Below 1024px: no left column; the step row sits under the bar, the
+   tier disclosure at the top of the column ── */
 @media (max-width: 1023px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
-    padding: 24px 24px 56px;
+    padding: 16px 24px 56px;
   }
   .sideCol { display: none; }
+  .tierPhone { display: block; margin: 0 0 18px; }
 
   .barInner {
     gap: 12px;
@@ -823,8 +893,6 @@ h2.overviewHeading {
     background: var(--parchment);
     border-bottom: 1px solid var(--hairline);
   }
-  /* Scroll padding keeps the current step off the edge, with the end of
-     the step before it showing, so the steps behind it are in view. */
   .stepRowList {
     position: relative;
     display: flex;
@@ -852,7 +920,7 @@ h2.overviewHeading {
     white-space: nowrap;
   }
   .rowItem:hover { color: var(--navy); text-decoration: none; border-color: var(--navy); }
-  .rowItem:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .rowItem:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
   .rowItem .sideBody { padding-top: 0; }
   .rowItem[aria-current="page"] {
     background: var(--navy);
@@ -865,10 +933,51 @@ h2.overviewHeading {
     border-color: var(--gold);
     color: var(--navy-deep);
   }
+  .rowItem[aria-current="page"]:focus-visible { outline-color: var(--gold); }
+
+  /* The tier disclosure, closed by default. */
+  .tierDisclosure {
+    background: #fff;
+    border: 1px solid var(--hairline);
+  }
+  .tierDisclosure summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px;
+    cursor: pointer;
+    list-style: none;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .tierDisclosure summary::-webkit-details-marker { display: none; }
+  .tierDisclosure summary::before {
+    content: "+";
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--navy);
+    font-size: var(--font-sm);
+    line-height: 1;
+  }
+  .tierDisclosure[open] summary::before { content: "−"; }
+  .tierDisclosure summary:focus-visible { outline: 2px solid var(--navy); outline-offset: -2px; }
+  .tierDisclosure .tierLines { padding: 2px 14px 14px; }
+  .tierDisclosure .tierLines li { font-size: var(--font-sm); }
+
+  .moves {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "sends decides"
+      "does does";
+    grid-template-rows: auto auto;
+  }
+  .moveDoes .list { columns: 2; column-gap: 28px; }
 }
 
-/* The step row pins under the bar where the screen has the height for it
-   (not on a phone held sideways). */
 @media (max-width: 1023px) and (min-height: 600px) {
   .stepRow {
     position: sticky;
@@ -879,8 +988,7 @@ h2.overviewHeading {
 }
 
 /* Below 600px the bar shows its arrows; their names stay for screen
-   readers. The last step's Contact keeps its visible label, since it
-   leaves the guide. */
+   readers. The last step's Contact keeps its visible label. */
 @media (max-width: 599px) {
   .barInner { grid-template-columns: auto minmax(0, 1fr) auto; }
   .barText {
@@ -913,48 +1021,64 @@ h2.overviewHeading {
 
 @media (max-width: 860px) {
   .parts { grid-template-columns: minmax(0, 1fr); }
-  .exhibits { grid-template-columns: minmax(0, 1fr); }
-  .whoRowTwo { grid-template-columns: minmax(0, 1fr); }
-  .stepFoot { grid-template-columns: minmax(0, 1fr); }
+  .listThree { grid-template-columns: minmax(0, 1fr); }
+  .excerptSingle .excerpt { grid-template-columns: minmax(0, 1fr); }
+  .excerptSingle .excerpt figcaption { margin-top: 10px; }
+  .stepFoot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .footNext { grid-column: 1 / -1; }
 
   /* Rows stack, each cell with its label. */
   .rowHead { display: none; }
   .rows { border-top: var(--rule) solid var(--gold); }
-  .glance .rowItemLine { grid-template-columns: 24px minmax(0, 1fr); gap: 8px 12px; }
-  .glance .rowItemLine > .cell { grid-column: 2; }
-  .decisions .rowItemLine { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .outputs .rowItemLine,
+  .decisions .rowItemLine,
+  .glance .rowItemLine { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .cellLabel {
     display: block;
-    margin: 0 0 2px;
+    margin: 0 0 1px;
     font-size: var(--font-xs);
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gold-dark);
   }
+  .outputs .cell:first-child .cellLabel,
+  .glance .cell:first-child .cellLabel { display: none; }
 }
 
 @media (max-width: 640px) {
-  .layout { padding: 20px 16px 48px; }
+  .layout { padding: 12px 16px 48px; }
   .barInner { padding: 0 16px; }
   .stepRowList { padding: 8px 16px; }
   h1.stepTitle { font-size: var(--font-2xl); }
   .needText { font-size: var(--font-base); }
+  .blockSub { font-size: var(--font-lg); }
+  .listCols { columns: 1; }
   .moves {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "sends" "does" "receives" "decides";
+    grid-template-areas: "sends" "does" "decides";
   }
   .move { padding: 14px 16px 16px; }
   .moveDoes { padding: 16px 16px 18px; }
-  .listCols { columns: 1; }
-  .exPage { grid-template-columns: 112px minmax(0, 1fr); gap: 12px; }
-  section.hero { padding: 44px 0 48px; }
-  .workLead { font-size: var(--font-md); }
+  .moveDoes .list { columns: 1; }
+  .conversation,
+  .rest { padding: 14px 16px 16px; }
+  .who { grid-template-columns: minmax(0, 1fr); padding: 14px 16px 16px; }
+  /* Excerpts stack, each across the screen edge to edge, so the text in
+     the narrowest crop still reads at about 11px. */
+  .excerptRow { flex-direction: column; gap: 24px; }
+  .excerpt { flex: none; width: 100%; }
+  .excerptLink { margin: 0 -16px; }
+  .excerptLink img { border-left: 0; border-right: 0; }
+  .stepFoot { grid-template-columns: minmax(0, 1fr); }
+  section.hero { padding: 36px 0 40px; }
+  .hero h1.heroTitle { font-size: var(--font-3xl); }
+  p.heroLede { font-size: var(--font-md); }
   h2.overviewHeading { font-size: var(--font-xl); }
-  .block { margin-top: 44px; }
+  .block { margin-top: 36px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .figLink img,
+  .excerptLink img,
   .barArrow { transition: none; }
 }

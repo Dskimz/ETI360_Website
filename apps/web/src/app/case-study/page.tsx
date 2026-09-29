@@ -3,69 +3,57 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import {
-  ALL_NOTICES,
   CASE_STUDY_ON_HOLD,
   caseStudyLive,
-  CHAPTERS,
-  glanceOf,
   INTRO,
+  LIFECYCLE,
   NOTICES,
-  OPENING_PAGES,
-  READING_THE_STEPS,
+  OVERVIEW_DESCRIPTION,
+  STEP_RECEIVES,
   STEP_UI,
   stepHref,
-  WHO_DECIDES_LEAD,
-  WHO_DECIDES_PROVIDERS,
+  STEPS,
   WORK,
-  type Chapter,
 } from "@/content/case-study";
-import { getProduct, tierNames } from "@/content/products";
-import { BRAND_EYEBROW, WHO_DECIDES } from "@/content/voice";
 import headerStyles from "@/components/productheader.module.css";
-import { Notices, Rows } from "./_parts/blocks";
+import { Notices, Rows, TierChips, WhoDecidesBox } from "./_parts/blocks";
 import { HashRedirect } from "./_parts/HashRedirect";
 import { CaseStudyShell } from "./_parts/Shell";
 import styles from "./page.module.css";
 
-/* Case Study, the overview (/case-study; Dan, 2026-09-28: "I was hoping
-   for a website"; "How we work I do not like. I prefer Case Study."; then
-   "That is too much scroll … a step by step guide for each of the
-   products"). One illustrative school year with Harborview International
-   School across the four products, told in six steps, each on its own page
-   (/case-study/{step}). Not a product page: it sits after the four products
-   in the nav, and each step links to its product page and version.
+/* Case Study, the overview (/case-study; Dan, 2026-09-28: "How we work I do
+   not like. I prefer Case Study."; then "a step by step guide for each of
+   the products"). One illustrative school year with Harborview
+   International School across the four products, told in four steps, one
+   per product, each on its own page (/case-study/{product}). Not a product
+   page: it sits after the four products in the nav, and each step links to
+   its product page.
 
-   ON HOLD FOR PUBLISHING until both fictional providers are renamed: see
-   the comment at the top of src/content/case-study.ts, where each provider
-   name lives once.
+   ON HOLD FOR PUBLISHING until both fictional providers are renamed:
+   src/lib/case-study-hold.ts.
 
-   Top to bottom: the header (the brand eyebrow, the h1, the illustrative
-   label, the lede, and the button to step 1, so it shows on the first
-   screen); then the guide's frame (the step bar and the step list,
-   _parts/Shell.tsx) around: the disclosure and the three verbatim notices;
-   how the work divides (the school sends, ETI360 does the reading, the data
-   entry, the research and the writing, the school receives and decides);
-   the year at a glance, one row per step; who decides and who does the
-   work, side by side on wide screens; the notices of the two other
-   fictional schools the steps show (the disclosure already carries the
-   first three). The footer's contact row, with Dan's closing sentence, is
-   the only call to action. Copy: src/content/case-study.ts. */
+   Top to bottom: the header ("Case Study" as its label, the reviewer's
+   opening as the h1 and lede, the illustrative label, and the button to
+   step 1, so it shows on the first screen); then, inside the guide's frame
+   (_parts/Shell.tsx): the samples line and Harborview's notice; how the
+   work divides (the school sends, ETI360 does the reading, the data entry,
+   the research and the writing, the school receives and decides); the year
+   at a glance, one row per step, and one line for the rest of the year;
+   the Who decides box and who does the work, side by side on wide screens.
+   The footer's contact row, with Dan's closing sentence, is the only call
+   to action. Copy: src/content/case-study.ts. */
 
 const TITLE = "Case Study";
 
-// [draft], tone-reviewed 2026-09-28 with the page. Then every notice,
-// verbatim (ADR-023: the disclosure on the page and in its metadata).
-const DESCRIPTION = `An illustrative case study: one school’s year with ETI360 across the Travel Program Review, the Field Trip Package, the Conference Travel Package and the Trip Package. The school sends what it has by email; ETI360 does the reading, the data entry, the research and the writing; the school reviews the documents and makes every decision. ${ALL_NOTICES.join(" ")}`;
-
 export const metadata: Metadata = {
   title: TITLE,
-  description: DESCRIPTION,
+  description: OVERVIEW_DESCRIPTION,
   alternates: { canonical: "/case-study" },
   // Kept out of search engines while the provider-name hold is on.
   robots: CASE_STUDY_ON_HOLD ? { index: false, follow: false } : undefined,
   openGraph: {
     title: `${TITLE} — ETI360`,
-    description: DESCRIPTION,
+    description: OVERVIEW_DESCRIPTION,
     type: "website",
     images: ["/marketing/og-default.png"],
   },
@@ -73,18 +61,13 @@ export const metadata: Metadata = {
 
 const HERO = "/case-study/hero-marina-bay.jpg";
 
-/** The tier label(s) or the chapter's own label. */
-function chapterLabel(ch: Chapter): string {
-  if (ch.product) return tierNames(getProduct(ch.product)).join(" · ");
-  return ch.label ?? "";
-}
-
 export default function CaseStudyPage() {
   if (!caseStudyLive()) notFound();
-  const first = CHAPTERS[0];
+  const first = STEPS[0];
+  const last = STEPS[STEPS.length - 1];
   return (
     <>
-      <HashRedirect ids={CHAPTERS.map((c) => c.id)} />
+      <HashRedirect />
       <CaseStudyShell
         current={null}
         lead={
@@ -93,15 +76,16 @@ export default function CaseStudyPage() {
             style={{ ["--hero-bg" as string]: `url('${HERO}')` } as React.CSSProperties}
           >
             <div className="hero-inner">
-              <p className="label label-light ui">{BRAND_EYEBROW}</p>
-              <h1>{TITLE}</h1>
+              <p className="label label-light ui">{TITLE}</p>
+              <h1 className={styles.heroTitle}>{INTRO.heading}</h1>
               <p className={`${headerStyles.tiers} ui`}>
-                Illustrative case study &middot; Harborview International School &middot; Singapore
+                {`${STEP_UI.illustrative} · Harborview International School · Singapore`}
               </p>
-              <p className={headerStyles.lede}>{INTRO.lede}</p>
+              <p className={`${headerStyles.lede} ${styles.heroLede}`}>{INTRO.lede}</p>
+              <p className={`${headerStyles.lede} ${styles.heroLede}`}>{INTRO.work}</p>
               <p className={styles.heroStart}>
                 <Link className="cta-button ui" href={stepHref(first)}>
-                  {STEP_UI.start}: {first.name} &rarr;
+                  {`${STEP_UI.start}: ${first.name} →`}
                 </Link>
               </p>
             </div>
@@ -110,15 +94,14 @@ export default function CaseStudyPage() {
       >
         <div className={styles.overview}>
           <div className={styles.disclosure}>
-            <p>{INTRO.illustrative}</p>
-            <Notices notices={[NOTICES.harborview, NOTICES.cycling, NOTICES.orienteering]} />
+            <p>{`${INTRO.samples} ${INTRO.dates}`}</p>
+            <Notices notices={[NOTICES.harborview]} />
           </div>
 
           <div className={styles.block}>
             <h2 className={`${styles.overviewHeading} rule-gold`} id="the-work">
               How the work divides
             </h2>
-            <p className={styles.workLead}>{INTRO.work}</p>
             <div className={styles.parts}>
               <div className={styles.part}>
                 <h3 className={`${styles.partLabel} ui`}>Harborview sends</h3>
@@ -141,43 +124,29 @@ export default function CaseStudyPage() {
             </h2>
             <Rows
               variant="glance"
-              ordered
-              labels={["What Harborview needs", "What meets it", "What Harborview receives"]}
-              rows={CHAPTERS.map((ch) => {
-                const g = glanceOf(ch);
-                return {
-                  key: ch.id,
-                  cells: [
-                    <span key="n">{g.need}</span>,
-                    <span key="m" className={styles.meets}>
-                      <Link href={stepHref(ch)}>{g.meets}</Link>
-                      <span className={`${styles.meetsLabel} ui`}>{g.label ?? chapterLabel(ch)}</span>
-                    </span>,
-                    <span key="r">{g.receives}</span>,
-                  ],
-                };
-              })}
+              labels={["Step", "What Harborview receives"]}
+              rows={STEPS.map((s) => ({
+                key: s.id,
+                cells: [
+                  <span key="s" className={styles.meets}>
+                    <Link href={stepHref(s)}>{`${s.number}. ${s.name}`}</Link>{" "}
+                    <TierChips step={s} short />
+                  </span>,
+                  <span key="r">{STEP_RECEIVES[s.id]}</span>,
+                ],
+              }))}
             />
-            <p className={styles.reading}>
-              {READING_THE_STEPS} {OPENING_PAGES}
+            <p className={styles.lifecycle}>
+              {`${LIFECYCLE} `}
+              <Link href={`${stepHref(last)}#rest-of-year`}>{`The rest of the year, in step ${last.number} →`}</Link>
             </p>
           </div>
 
           <div className={styles.closing}>
-            <div className="boundary-callout" id="who-decides">
-              <h3>Who decides</h3>
-              <p>
-                {WHO_DECIDES_LEAD} {WHO_DECIDES} {WHO_DECIDES_PROVIDERS}
-              </p>
-            </div>
+            <WhoDecidesBox />
             <div className={styles.prose}>
               <WhoDoesTheWork />
             </div>
-          </div>
-
-          <div className={styles.about}>
-            <p className={`${styles.aboutLabel} ui`}>About this case study</p>
-            <Notices notices={[NOTICES.wexcombe, NOTICES.horizonRidge]} />
           </div>
         </div>
       </CaseStudyShell>
