@@ -15,7 +15,7 @@ export function CaseStudyLink({ product }: { product: Product }) {
   return (
     <p className={`${styles.line} ui`}>
       {/* [draft], tone-reviewed 2026-09-28 with the Case Study page */}
-      <Link href={href}>{`Case Study: the ${product.name} in one fictional school’s year →`}</Link>
+      <Link href={href}>{`Case Study: the ${product.name} in one school’s year →`}</Link>
     </p>
   );
 }

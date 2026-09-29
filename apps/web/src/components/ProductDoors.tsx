@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { liveProducts, tierNames, type Product } from "@/content/products";
-import { getVersion, versionsOf } from "@/content/versions";
+import { getVersion, publicNotice, versionsOf } from "@/content/versions";
 import styles from "./productdoors.module.css";
 
 /* The four products as the home page's doors (Dan, 2026-09-25): a 2×2 grid
@@ -25,7 +25,7 @@ export function ProductDoors({ products = liveProducts() }: { products?: Product
     new Map(
       leads.filter((l): l is NonNullable<typeof l> => l !== null).map((l) => [l.version.school, l.version.disclosure]),
     ).values(),
-  );
+  ).filter((d) => publicNotice(d) !== null);
   return (
     <div className={styles.wrap}>
       <div className={styles.doors}>

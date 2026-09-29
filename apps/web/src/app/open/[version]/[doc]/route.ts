@@ -62,6 +62,23 @@ function suppressed(req: NextRequest): boolean {
   }
 }
 
+/* The paper when a link names none (Dan, 2026-09-29: one link per document,
+   the edition chosen for the visitor): US Letter where Letter is the office
+   standard (the United States, Canada, Mexico, the Philippines and a few
+   more), A4 everywhere else. The country is Vercel's x-vercel-ip-country;
+   without it (local, or a proxy that strips it) the browser's language
+   region decides, then the version's own paper. */
+const LETTER_COUNTRIES = new Set(["US", "CA", "MX", "PH", "PR", "CL", "CO", "VE", "GT", "CR", "PA", "DO", "SV"]);
+
+function paperFor(req: NextRequest, fallback: "letter" | "a4"): "letter" | "a4" {
+  const country = req.headers.get("x-vercel-ip-country");
+  if (country) return LETTER_COUNTRIES.has(country.toUpperCase()) ? "letter" : "a4";
+  const lang = (req.headers.get("accept-language") ?? "").split(",")[0]?.trim() ?? "";
+  const region = lang.split("-")[1];
+  if (region) return LETTER_COUNTRIES.has(region.toUpperCase()) ? "letter" : "a4";
+  return fallback;
+}
+
 type Resolved = { target: URL; slug: string; product: string; docSlug: string; size: string; page: number | null };
 
 async function resolve(
@@ -73,10 +90,13 @@ async function resolve(
   const doc = version?.documents.find((d) => d.slug === docSlug);
   if (!version || !doc) return new NextResponse("Not found", { status: 404 });
 
-  const size = req.nextUrl.searchParams.get("size") ?? version.paperDefault;
-  if (size !== "letter" && size !== "a4") {
+  const asked = req.nextUrl.searchParams.get("size");
+  if (asked !== null && asked !== "letter" && asked !== "a4") {
     return new NextResponse("Unknown paper size", { status: 400 });
   }
+  let size: "letter" | "a4" = (asked as "letter" | "a4" | null) ?? paperFor(req, version.paperDefault);
+  // A chosen paper not yet built for this document opens the other one.
+  if (!asked && !doc.editions[size]) size = size === "letter" ? "a4" : "letter";
   const file = doc.editions[size];
   if (!file) return new NextResponse("This edition is in preparation", { status: 404 });
 

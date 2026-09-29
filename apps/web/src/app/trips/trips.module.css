@@ -449,3 +449,20 @@
 .wide .tripCard .tripCardTitle::before {
   display: none;
 }
+
+/* The document title is the one link to the document (Dan, 2026-09-29). */
+.wide .card h4 a.docLink {
+  color: inherit;
+  text-decoration: none;
+}
+.wide .card h4 a.docLink:hover,
+.wide .card h4 a.docLink:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* The trip facts without the lede beside them (2026-09-29). */
+.factsAlone {
+  max-width: 760px;
+  margin-bottom: 36px;
+}

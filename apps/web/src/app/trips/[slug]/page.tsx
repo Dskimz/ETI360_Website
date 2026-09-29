@@ -4,12 +4,15 @@ import { notFound } from "next/navigation";
 import { DocCard } from "@/components/TripDocCard";
 import { TripStrip } from "@/components/TripStrip";
 import { getProduct } from "@/content/products";
-import { getTrip, PAPER_NAME, trips } from "@/content/trips";
+import { getTrip, trips } from "@/content/trips";
 import { BRAND_EYEBROW, WHO_DECIDES } from "@/content/voice";
-import { WORKING_FILE_BOUNDARY } from "../boundary";
 import styles from "../trips.module.css";
 
-/* A worked trip: one version of the Trip Package (four-product site spec
+/* 2026-09-29 (Dan): no lede, no fictional-school notice, no paper paragraph,
+   no decision notes, no document blurbs, no page captions; one link per
+   document (the open route picks the paper). The notes below predate that.
+
+   A worked trip: one version of the Trip Package (four-product site spec
    §4.4). The documents one trip receives, decision by decision, each in its
    US Letter and A4 editions (Dan, 2026-09-24). Each document card folds its
    three captioned pages under a closed "Look inside" (spec S8; no
@@ -33,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const trip = getTrip(slug);
   if (!trip) return {};
   const title = `${trip.title} trip documents`;
-  const description = `${trip.summary} ${trip.disclosure}`;
+  const description = trip.summary;
   return {
     title,
     description,
@@ -47,8 +50,6 @@ export default async function TripPage({ params }: Props) {
   const trip = getTrip(slug);
   if (!trip) notFound();
   const product = getProduct("trip-package");
-  const pageEditionName = PAPER_NAME[trip.paperDefault];
-  const hasWorkingFile = trip.documents.some((d) => d.slug === "trip-risk-working-file");
   const others = trips.filter((t) => t.slug !== trip.slug);
 
   return (
@@ -75,36 +76,18 @@ export default async function TripPage({ params }: Props) {
             </ol>
           </nav>
 
-          <div className={styles.intro}>
-            <div>
-              <p className={styles.lede}>{trip.lede}</p>
-              <p className={`${styles.disclosure} ui`}>{trip.disclosure}</p>
-            </div>
-            <dl className={`${styles.facts} ui`} aria-label="Trip facts">
-              {trip.facts.map((f) => (
-                <div key={f.label}>
-                  <dt>{f.label}</dt>
-                  <dd>{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          {/* Facts only (Dan, 2026-09-29: "just gives the information and
+              reports and lets them talk for themselves"). */}
+          <dl className={`${styles.facts} ${styles.factsAlone} ui`} aria-label="Trip facts">
+            {trip.facts.map((f) => (
+              <div key={f.label}>
+                <dt>{f.label}</dt>
+                <dd>{f.value.replace(/,? a fictional school\.?$/, "")}</dd>
+              </div>
+            ))}
+          </dl>
 
-          <h2 id="documents">Decision by decision</h2>
-          <div className={styles.sectionIntro}>
-            <p>
-              Each decision the school makes about the trip, and the documents that support it. Every
-              document is written for the person who uses it, and every one opens in full.{" "}
-              {/* [draft] folded in from the retired "Inside the documents" intro. */}
-              Under each document, Look inside shows three of its pages as the school receives them;
-              select a page to open the {pageEditionName} edition at that page.
-            </p>
-            <p className={`${styles.paper} ui`}>
-              ETI360 builds every document to two paper sizes. The US Letter edition (8.5 &times; 11
-              inches) is the standard in the United States; the A4 edition (210 &times; 297 mm) is the
-              standard in most other countries.
-            </p>
-          </div>
+          <h2 id="documents">The documents</h2>
 
           {trip.decisions.map((decision) => {
             const docs = trip.documents.filter((d) => d.decision === decision.title);
@@ -113,7 +96,6 @@ export default async function TripPage({ params }: Props) {
               <div key={decision.title} className={styles.decision}>
                 <div className={styles.decisionHead}>
                   <h3>{decision.title}</h3>
-                  <p>{decision.note}</p>
                 </div>
                 <div className={styles.cards}>
                   {docs.map((doc) => (
@@ -127,7 +109,6 @@ export default async function TripPage({ params }: Props) {
           <div className="boundary-callout">
             <h3>Who decides</h3>
             <p>{WHO_DECIDES}</p>
-            {hasWorkingFile ? <p className={styles.boundaryNext}>{WORKING_FILE_BOUNDARY}</p> : null}
           </div>
 
           {others.length > 0 ? (

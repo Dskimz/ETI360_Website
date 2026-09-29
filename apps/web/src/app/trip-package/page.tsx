@@ -4,29 +4,21 @@ import { ProductHeader } from "@/components/ProductHeader";
 import { TripCard } from "@/components/TripCard";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct, tierNames } from "@/content/products";
-import { DECISIONS, PAPER_NOTE } from "@/content/services";
+import { DECISIONS } from "@/content/services";
 import { trips } from "@/content/trips";
-import { notices } from "@/content/versions";
 import { WHO_DECIDES } from "@/content/voice";
-import { WORKING_FILE_BOUNDARY } from "../trips/boundary";
 import tripStyles from "../trips/trips.module.css";
 import styles from "./page.module.css";
 
-/* The Trip Package, Tiers 2 and 3 (four-product site spec §4.3; Dan,
-   2026-09-25: each page is one of the four products and shows its
-   versions). Built from the former /trips library, which redirects here.
+/* The Trip Package, Tiers 2 and 3 (four-product site spec §4.3).
 
-   1. What the school receives, decision by decision: text only (the trip
-      cards carry the pictures). Every decision and every document name has
-      an id: the retired solution pages redirect to them (spec §8 rows 5–11),
-      e.g. /for-schools/student-journey → /trip-package#student-journey-guide.
-   2. Worked trips: one card per Trip Package version, each opening
-      /trips/{slug}; only built trips (src/content/trips/index.ts), never a
-      placeholder. Each fictional school's notice once, under the cards.
-   3. How it works, moved from For Schools; who decides; who does the work;
-      the contact band carrying the product.
-   No prices. Lines marked [draft] passed the tone review on 2026-09-27
-   (Stage D) and await Dan's preview. */
+   2026-09-29 (Dan): "scrape out all the AI text ... just give the
+   information and reports and let them talk for themselves", and say how the
+   documents are made for each school. The page is now: the documents by
+   decision (names and readers only; the ids stay, the retired solution pages
+   redirect to them), the worked trips, how the documents are made for the
+   school, how it works in three lines, who decides, who does the work. No
+   fictional-school notices, no paper note (the open route picks the paper). */
 
 const product = getProduct("trip-package");
 
@@ -70,27 +62,7 @@ function anchorOf(title: string): string {
     .replace(/^-|-$/g, "");
 }
 
-// Moved verbatim from the former home page's decision list.
-const DECISIONS_LEAD =
-  "A trip is a run of decisions the school makes, and each person involved needs something different. Every document is written for the person who uses it and names the decision behind it.";
-
-// [draft] Spec §4.3: getting a student to care has no document of its own;
-// this says where it lives. Follows the hospital rule (N4 Option B,
-// 2026-09-25): ETI360 lists; the school confirms which one the group uses.
-const TO_CARE_WHERE =
-  "No document of its own: the emergency departments appear in the Trip Risk Working File, the emergency plan on the Trip Leader Card, and the pocket card. The school confirms which one the group uses.";
-
-// The door sentence, then one [draft] sentence, then each fictional school's
-// notice verbatim (ADR-023: this is the collection page).
-const DESCRIPTION = `The Trip Package (${tierNames(product).join(" · ")}): ${product.door.charAt(0).toLowerCase()}${product.door.slice(1)} Worked trips show every document in full, in US Letter and A4. ${notices(trips)}`;
-
-// [draft] Which part of the package is Tier 3 (review fix, 2026-09-27), from
-// Dan's Tier 3 bullets in the DOCS email (template-v42-docs.html: "Provide
-// trip leaders with practical field and emergency information"; "Organize
-// incident records and feedback into post-trip reports"). The Duty Manager
-// Dashboard stays off the page. Dan to confirm the mapping.
-const TIER_3_LINE =
-  "Tier 3 is what travels with the group and what follows the trip: the Trip Leader Card, the Chaperone Briefing and Pocket Emergency Card, and the Post-Trip Feedback Report.";
+const DESCRIPTION = `The Trip Package (${tierNames(product).join(" · ")}): ${product.door.charAt(0).toLowerCase()}${product.door.slice(1)}`;
 
 export const metadata: Metadata = {
   title: "The Trip Package",
@@ -104,10 +76,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TripPackagePage() {
-  // One notice per fictional school, verbatim from the trip files.
-  const schoolNotices = Array.from(new Set(trips.map((t) => t.disclosure)));
+/** How the documents are made for each school (Dan, 2026-09-29). Tone
+    review 2026-09-29. */
+const MADE_FOR_THE_SCHOOL = [
+  "The school’s name, colors and logo on every document, on US Letter or A4.",
+  "The school’s own trip policy, forms and escalation path.",
+  "Risk documentation in the format the school already uses: a risk assessment, RAMS, emergency action procedures, or the school’s own form.",
+  "The school’s own names for its programs, such as Week Without Walls or service trips.",
+  "Only the documents a trip needs: a day trip gets a shorter set, and walking, cycling and paddling days can add route maps.",
+];
 
+export default function TripPackagePage() {
   return (
     <>
       <ProductHeader product={product} lede={product.door} />
@@ -116,101 +95,62 @@ export default function TripPackagePage() {
         <div className={tripStyles.wide}>
           <div className={styles.top}>
             <h2 id="receives">What the school receives</h2>
-            <p className={styles.lead}>{DECISIONS_LEAD}</p>
-            <p className={styles.lead}>{TIER_3_LINE}</p>
-
             <ol className={styles.decisions}>
               {DECISIONS.map((d) => {
                 const docs = DOCS_BY_DECISION[d.title] ?? [];
+                if (docs.length === 0) return null;
                 return (
                   <li key={d.title}>
                     <h3 id={anchorOf(d.title)} className={styles.decisionTitle}>
                       {d.title}
                     </h3>
-                    <p className={styles.note}>{d.note}</p>
-                    {docs.length > 0 ? (
-                      <ul className={`${styles.docs} ui`}>
-                        {docs.map((doc) => (
-                          <li key={doc.id}>
-                            <span id={doc.id} className={styles.docName}>
-                              {doc.name}
-                            </span>
-                            <span className={styles.docReader}>{readerOf(doc.id)}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className={`${styles.noDoc} ui`}>{TO_CARE_WHERE}</p>
-                    )}
+                    <ul className={`${styles.docs} ui`}>
+                      {docs.map((doc) => (
+                        <li key={doc.id}>
+                          <span id={doc.id} className={styles.docName}>
+                            {doc.name}
+                          </span>
+                          <span className={styles.docReader}>{readerOf(doc.id)}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </li>
                 );
               })}
             </ol>
-
-            {/* [draft] spec §4.3; the redirect target for the retired route and weather pages. */}
-            <p id="outdoor-trips" className={styles.outdoor}>
-              <strong>Outdoor trips</strong> add a day-by-day conditions report (daylight and cover; on
-              the water, tide and exposure) and route pages on the Trip Leader Card.
-            </p>
-            <p className={`${styles.paper} ui`}>{PAPER_NOTE}</p>
           </div>
 
           <div className={styles.block}>
             <h2 id="worked-trips">Worked trips</h2>
-            {/* Moved verbatim from For Schools. */}
-            <p className={styles.lead}>
-              Each worked trip shows the documents prepared for one trip, decision by decision, with
-              every document open in full.
-            </p>
             <div className={tripStyles.library}>
               {trips.map((trip) => (
                 <TripCard key={trip.slug} trip={trip} headingLevel={3} />
               ))}
             </div>
-            <div className={`${tripStyles.libraryNotes} ui`}>
-              {schoolNotices.map((n) => (
-                <p key={n}>{n}</p>
-              ))}
-            </div>
             <CaseStudyLink product={product} />
           </div>
 
-          {/* Moved from For Schools (spec §4.3 item 4). Tone review 2026-09-27:
-              ETI360 in the third person, as on every product page; the
-              emergency departments in the plural (hospital rule); "not a
-              competitor" off. */}
+          <div className={`${styles.block} ${styles.prose}`}>
+            <h2 id="made-for-the-school">Made for the school</h2>
+            <ul>
+              {MADE_FOR_THE_SCHOOL.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+
           <div className={`${styles.block} ${styles.prose}`}>
             <h2 id="how">How it works</h2>
-            <p>
-              The school&rsquo;s trip lead emails ETI360 the itinerary, the provider&rsquo;s documents,
-              and the school&rsquo;s trip policy. ETI360 adds what the group needs to know along the
-              way, such as venue entry rules and the emergency departments for each place with their
-              drive times, and returns the documents in the school&rsquo;s name and branding, each in a
-              US Letter edition and an A4 edition. The school approves the trip.
-            </p>
-            <p>
-              <strong>We book through a provider. What does this add?</strong> The provider&rsquo;s
-              documents are the starting point. ETI360 brings them together with the
-              school&rsquo;s policy and the itinerary, adds what the group needs to know about each
-              place, and prepares the file the school reviews and the card the trip leader carries.
-              Nothing the provider does is replaced.
-            </p>
-            <p>
-              <strong>When the program changes.</strong> A revised date, hotel, transport movement,
-              route or activity can affect several documents. ETI360 updates the confirmed source
-              information and rechecks information that depends on the changed plan.
-            </p>
-            <p>
-              <strong>Student data.</strong> ETI360 does not receive student records or personally
-              identifiable student information. Trip files name places, dates, providers, and staff
-              roles. The school&rsquo;s obligations for student data stay with the school.
-            </p>
+            <ul>
+              <li>The school emails ETI360 the itinerary, the provider&rsquo;s documents and its trip policy.</li>
+              <li>ETI360 returns the documents. When the program changes, ETI360 updates them.</li>
+              <li>ETI360 does not receive student records or personal student information.</li>
+            </ul>
           </div>
 
           <div className="boundary-callout" id="who-decides">
             <h3>Who decides</h3>
             <p>{WHO_DECIDES}</p>
-            <p className={tripStyles.boundaryNext}>{WORKING_FILE_BOUNDARY}</p>
           </div>
 
           <div className={`${styles.block} ${styles.prose}`}>
@@ -218,7 +158,6 @@ export default function TripPackagePage() {
           </div>
         </div>
       </section>
-
     </>
   );
 }

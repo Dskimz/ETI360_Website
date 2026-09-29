@@ -1,5 +1,6 @@
 import Image from "next/image";
 import {
+  openAuto,
   openHref,
   PAPER_NAME,
   thumbEdition,
@@ -80,7 +81,7 @@ export function InsidePages({
           <figure key={pg.page}>
             {edition ? (
               <a
-                href={openHref(version, doc, edition, pg.page)}
+                href={openAuto(version, doc, pg.page)}
                 target="_blank"
                 rel="noopener"
                 aria-label={`Open the ${doc.title} at page ${pg.page} (PDF, opens in a new tab)`}
@@ -90,7 +91,6 @@ export function InsidePages({
             ) : (
               img
             )}
-            <figcaption>{pg.caption}</figcaption>
           </figure>
         );
       })}
@@ -133,7 +133,7 @@ export function DocCard({
       {edition ? (
         <a
           className={styles.cardThumb}
-          href={openHref(version, doc, edition)}
+          href={openAuto(version, doc)}
           target="_blank"
           rel="noopener"
           aria-label={`Open the ${doc.title} (PDF, opens in a new tab)`}
@@ -145,9 +145,15 @@ export function DocCard({
       )}
       <div className={styles.cardBody}>
         <p className={`${styles.reader} ui`}>{doc.reader}</p>
-        <h4>{doc.title}</h4>
-        {doc.blurb ? <p className={styles.blurb}>{doc.blurb}</p> : null}
-        <Editions version={version} doc={doc} />
+        <h4>
+          {edition ? (
+            <a href={openAuto(version, doc)} target="_blank" rel="noopener" className={styles.docLink}>
+              {doc.title}
+            </a>
+          ) : (
+            doc.title
+          )}
+        </h4>
       </div>
       {lookInside && doc.insidePages.length > 0 ? (
         <details className={styles.lookInside} open={insideOpen || undefined}>

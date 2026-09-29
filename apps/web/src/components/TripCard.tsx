@@ -37,7 +37,6 @@ export function TripCard({ trip, headingLevel = 3 }: { trip: Trip; headingLevel?
           {trip.school} &middot; {shortDates(trip)}
         </p>
         <p>{cardSummary(trip)}</p>
-        <PaperLine version={trip} />
         <span className={`${styles.go} ui`}>See the documents &rarr;</span>
       </div>
     </Link>

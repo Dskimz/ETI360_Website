@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { openHref, thumbEdition, type Version } from "@/content/versions";
-import { Editions, InsidePages } from "@/components/TripDocCard";
+import { openAuto, publicNotice, thumbEdition, type Version } from "@/content/versions";
+import { InsidePages } from "@/components/TripDocCard";
 import styles from "./versionblock.module.css";
 
 /* A single-document version shown whole on its product page (spec S9): the
@@ -46,7 +46,7 @@ export function VersionBlock({ version }: { version: Version }) {
               {edition ? (
                 <a
                   className={styles.cover}
-                  href={openHref(version, doc, edition)}
+                  href={openAuto(version, doc)}
                   target="_blank"
                   rel="noopener"
                   aria-label={`Open the ${doc.title} (PDF, opens in a new tab)`}
@@ -58,14 +58,15 @@ export function VersionBlock({ version }: { version: Version }) {
               )}
               <p className={`${styles.reader} ui`}>{doc.reader}</p>
               <p className={styles.docTitle}>{doc.title}</p>
-              <Editions version={version} doc={doc} />
             </div>
             <InsidePages version={version} doc={doc} edition={edition} className={styles.pages} />
           </div>
         );
       })}
 
-      <p className={`${styles.notice} ui`}>{version.disclosure}</p>
+      {publicNotice(version.disclosure) ? (
+        <p className={`${styles.notice} ui`}>{publicNotice(version.disclosure)}</p>
+      ) : null}
     </section>
   );
 }

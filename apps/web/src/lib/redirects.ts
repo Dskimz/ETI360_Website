@@ -57,9 +57,9 @@ export const REDIRECTS: SiteRedirect[] = [
   toTripPackage("/for-schools/trip-risk-documentation", "trip-risk-working-file"),
   toTripPackage("/for-schools/risk-assessment", "trip-risk-working-file"),
   toTripPackage("/for-schools/student-journey", "student-journey-guide"),
-  toTripPackage("/for-schools/route-intelligence", "outdoor-trips"),
-  toTripPackage("/for-schools/weather-brief", "outdoor-trips"),
-  toTripPackage("/for-schools/medical-access", "getting-a-student-to-care"),
+  toTripPackage("/for-schools/route-intelligence", "made-for-the-school"),
+  toTripPackage("/for-schools/weather-brief", "made-for-the-school"),
+  toTripPackage("/for-schools/medical-access", "receives"),
   toTripPackage("/for-schools/location-timeline", "school-trip-record"),
   toTripPackage("/for-schools/standard-documentation"),
   // The Duty Manager Dashboard, the Simulation and Incident Reporting

@@ -113,10 +113,6 @@ export default function ConferenceTravelPackagePage() {
             <h2 className="section-heading rule-gold" id="versions">
               One school&rsquo;s guide
             </h2>
-            <p>
-              The guide prepared for a fictional London school and its conference year, built to A4 and
-              US Letter. Its pages open in the A4 edition, the school&rsquo;s own paper.
-            </p>
           </div>
         </div>
       </section>

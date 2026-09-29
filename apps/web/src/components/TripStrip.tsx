@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cardEyebrow, trips as allTrips, type Trip } from "@/content/trips";
+import { publicNotice } from "@/content/versions/editions";
 import styles from "./tripstrip.module.css";
 
 /* The worked trips as a strip of cards: "Other worked trips" on each
@@ -11,7 +12,9 @@ import styles from "./tripstrip.module.css";
    product page, /trip-package. */
 
 export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
-  const disclosures = Array.from(new Map(trips.map((t) => [t.school, t.disclosure])).values());
+  const disclosures = Array.from(new Map(trips.map((t) => [t.school, t.disclosure])).values()).filter(
+    (d) => publicNotice(d) !== null,
+  );
   return (
     <div className={styles.wrap}>
       <div className={styles.grid}>

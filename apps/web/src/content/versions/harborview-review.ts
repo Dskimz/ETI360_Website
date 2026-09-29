@@ -39,7 +39,7 @@ const harborviewReview: Version = {
   place: "Singapore",
   // [draft]
   summary:
-    "A sample review for a fictional international school: its travel program read path by path, with every finding traced to the document, section, and page it comes from.",
+    "A sample review for an international school: its travel program read path by path, with every finding traced to the document, section, and page it comes from.",
   paperDefault: "a4",
   disclosure:
     "Harborview International School is a fictional school; its location is shown for illustrative purposes.",

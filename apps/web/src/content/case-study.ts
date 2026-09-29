@@ -113,18 +113,18 @@ type OtherSchool = "wexcombe" | "horizonRidge" | "firholm";
 const OTHER_SCHOOLS: Record<OtherSchool, { text: string; notice: string }> = {
   wexcombe: {
     // [draft] 2026-09-28, unchanged.
-    text: "These pages come from samples prepared for another fictional school, Wexcombe International School; Harborview’s edition would take the same form.",
+    text: "These pages come from samples prepared for another school, Wexcombe International School; Harborview’s edition would take the same form.",
     notice: NOTICES.wexcombe,
   },
   horizonRidge: {
     // [draft] 2026-09-28, unchanged.
-    text: "These pages come from samples prepared for another fictional school, Horizon Ridge School of Cleveland, for its Italy trip; Harborview’s edition would take the same form.",
+    text: "These pages come from samples prepared for another school, Horizon Ridge School of Cleveland, for its Italy trip; Harborview’s edition would take the same form.",
     notice: NOTICES.horizonRidge,
   },
   firholm: {
     // [draft] 2026-09-29; the paper named as in the hero facts (review
     // fix, 2026-09-29: the card offers A4 too).
-    text: "The same product for another fictional school, Firholm School in Seattle, in US Letter (Firholm’s paper) and A4.",
+    text: "The same product for another school, Firholm School in Seattle, in US Letter (Firholm’s paper) and A4.",
     notice: NOTICES.firholm,
   },
 };
@@ -141,7 +141,7 @@ export const INTRO = {
   // The reviewer's wording for the old "real samples ETI360 built" line;
   // on the overview's foot since 2026-09-29 (the hero carries HERO_NOTE).
   samples:
-    "The documents are fully developed samples created by ETI360. The school, providers and decisions in this example are fictional.",
+    "The documents are fully developed samples created by ETI360. The providers and decisions in this example are fictional.",
   dates:
     "Each sample was produced on its own date, so the dates printed on the samples do not set the order of this story.",
 };
@@ -153,7 +153,7 @@ export type Fact = { label: string; value: string; phone?: true };
 
 /** The one-line illustrative note along the foot of every hero bar.
     [draft] 2026-09-29 (review fix: one line in place of two sentences). */
-export const HERO_NOTE = "Illustrative case study; the school, providers and decisions are fictional.";
+export const HERO_NOTE = "Illustrative case study; the providers and decisions are fictional.";
 
 /** The paper line of every hero bar: Harborview's own paper first.
     [draft] 2026-09-29 (review fix: one wording everywhere). */
@@ -315,7 +315,7 @@ export const STEPS: Step[] = [
     ],
     links: [{ href: "/travel-program-review", label: "The Travel Program Review" }],
     description:
-      "Illustrative case study with a fictional school, step 1 of 4: the Travel Program Review reads the school’s travel documents path by path, providers included.",
+      "An illustrative case study with Harborview, step 1 of 4: the Travel Program Review reads the school’s travel documents path by path, providers included.",
   },
 
   {
@@ -394,7 +394,7 @@ export const STEPS: Step[] = [
       { href: "/trips/italy", label: "The Italy trip, every document in US Letter and A4" },
     ],
     description:
-      "Illustrative case study with a fictional school, step 2 of 4: the Trip Package prepares one trip’s documents, from approval to the post-trip feedback.",
+      "An illustrative case study with Harborview, step 2 of 4: the Trip Package prepares one trip’s documents, from the approval through to the post-trip feedback.",
   },
 
   {
@@ -442,7 +442,7 @@ export const STEPS: Step[] = [
     ],
     links: [{ href: "/field-trip-package", label: "The Field Trip Package" }],
     description:
-      "Illustrative case study with a fictional school, step 3 of 4: the Field Trip Package documents a year of elementary day trips at once, one page for each trip.",
+      "An illustrative case study with Harborview, step 3 of 4: the Field Trip Package documents a year of elementary day trips at once, one page for each trip.",
   },
 
   {
@@ -479,14 +479,14 @@ export const STEPS: Step[] = [
     ],
     links: [{ href: "/conference-travel-package", label: "The Conference Travel Package" }],
     description:
-      "Illustrative case study with a fictional school, step 4 of 4: the Conference Travel Package gives coaches one guide, with a chapter for every host city.",
+      "An illustrative case study with Harborview, step 4 of 4: the Conference Travel Package gives the coaches one guide, with a chapter for every host city.",
   },
 ];
 
 /** The overview's description (150 to 160 characters, no notices), in the
     steps' order. [draft] */
 export const OVERVIEW_DESCRIPTION =
-  "An illustrative case study with a fictional school: how ETI360 prepares a travel program review, one trip’s documents, a field-trip pack and a conference guide.";
+  "A case study with Harborview: how ETI360 prepares a travel program review, one trip’s documents, a field-trip pack and a guide for athletics conference travel.";
 
 /** One line per step on the overview: what Harborview receives. [draft],
     from the reviewed year at a glance. */

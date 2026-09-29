@@ -17,7 +17,7 @@ import {
 } from "@/content/case-study";
 import { getProduct, type Tier } from "@/content/products";
 import { TIER_NAMES } from "@/content/services";
-import type { Version, VersionDocument } from "@/content/versions";
+import { publicNotice, type Version, type VersionDocument } from "@/content/versions";
 import { DocCard } from "@/components/TripDocCard";
 import tripStyles from "@/app/trips/trips.module.css";
 import styles from "../page.module.css";
@@ -127,6 +127,8 @@ export function Notices({
   className?: string;
   phoneLead?: string;
 }) {
+  // School notices are off the site (Dan, 2026-09-29); provider notices stay.
+  notices = notices.filter((n) => publicNotice(n) !== null);
   if (notices.length === 0) return null;
   return (
     <p className={`${styles.notices}${className ? ` ${className}` : ""} ui`}>
@@ -293,7 +295,7 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
       {note ? (
         <div className={`${styles.otherSchool} ui`}>
           <p>{note.text}</p>
-          <p className={styles.otherNotice}>{note.notice}</p>
+          {publicNotice(note.notice) ? <p className={styles.otherNotice}>{note.notice}</p> : null}
         </div>
       ) : null}
       {group.provider ? (

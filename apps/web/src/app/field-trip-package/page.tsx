@@ -107,11 +107,6 @@ export default function FieldTripPackagePage() {
             <h2 className="section-heading rule-gold" id="versions">
               The pack for two schools
             </h2>
-            <p>
-              The pack, prepared for two fictional schools: a US lower school in Seattle and an
-              international school in Singapore. Each is built to US Letter and A4, and its pages open
-              in the school&rsquo;s own paper.
-            </p>
           </div>
         </div>
       </section>
