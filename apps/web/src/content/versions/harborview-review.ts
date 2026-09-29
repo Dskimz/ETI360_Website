@@ -12,8 +12,9 @@ import type { Version } from "@/content/trips/types";
 
    Images: import-trip.py harborview-review --root versions, from the A4
    edition (the default: Harborview is an international school), pages cover,
-   2, 5 and 18. The provider-section sample (week of Sep 28) joins this same
-   version when it lands.
+   2, 5 and 18. The provider-section sample is a version of its own
+   (line-and-landmark-evaluation.ts), listed after this one on the Travel
+   Program Review page since 2026-09-29.
 
    Copy marked [draft] passed the tone review on 2026-09-27 (Stage D) and
    awaits Dan's preview. */

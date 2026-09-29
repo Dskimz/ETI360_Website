@@ -99,10 +99,10 @@ export type Version = {
   pdfSource?: PdfSource;
   /** false: registered (its documents open through /open, the S3 upload
       carries its PDFs, and the Case Study shows it) but not listed on its
-      product page. The Line & Landmark provider evaluation, 2026-09-29:
-      shown in the Case Study only until it is placed on the Travel Program
-      Review page. */
-  listed?: false;
+      product page. Absent or true: listed. The Line & Landmark provider
+      evaluation was Case Study only until 2026-09-29, when Dan approved
+      listing it on the Travel Program Review page (`listed: true`). */
+  listed?: boolean;
 };
 
 /** A Trip Package version: a worked trip with a page of its own. */

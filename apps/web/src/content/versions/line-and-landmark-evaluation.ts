@@ -8,10 +8,11 @@ import type { Version } from "@/content/trips/types";
    provider's documents and shows what they cover; it never certifies,
    approves, ranks or recommends a provider (CLAUDE.md, 2026-09-25).
 
-   Registered 2026-09-29 for the Case Study's Travel Program Review step.
-   `listed: false`: its PDFs open through /open and go to S3 with the rest,
-   but the Travel Program Review page does not list it yet (its after-line
-   still describes the provider section in words).
+   Registered 2026-09-29 for the Case Study's Travel Program Review step,
+   and listed the same day on the Travel Program Review page (Dan's
+   approval, 2026-09-29), after the Harborview sample, introduced there by
+   the page's provider line. Its PDFs open through /open and go to S3 with
+   the rest.
 
    PDFs: public/docs/provider-evaluation-line-and-landmark-{a4,letter}.pdf,
    15 pages each, the same page on the same page number on both papers.
@@ -24,8 +25,11 @@ import type { Version } from "@/content/trips/types";
    rewritten.
 
    Images: import-trip.py line-and-landmark-evaluation --root versions, from
-   the A4 edition (the default, as for Harborview), 2026-09-29, pages cover,
-   2 (the summary), 6 (Partner Vetting) and 11 (Incident Response).
+   the A4 edition (the default, as for Harborview), pages cover, 2 (the
+   summary), 6 (Partner Vetting) and 11 (Incident Response). Re-rendered
+   2026-09-29 from the revised evaluation (the Line & Landmark voice
+   rewrite): only page 6 changed (one re-quoted proposal line), and its
+   caption still holds.
 
    The name, summary, decision and captions are [draft], tone-reviewed
    2026-09-29. The provider's notice is the brand brief's, verbatim. */
@@ -57,7 +61,7 @@ const lineAndLandmarkEvaluation: Version = {
     "A sample provider evaluation for a fictional cycling-tour provider: its three documents read against the ten areas of the ETI360 Operational Capability Framework, each area with its own state and each line cited to its document and section.",
   paperDefault: "a4",
   disclosure: "Line & Landmark is a fictional trip provider created by ETI360 for demonstration purposes.",
-  listed: false,
+  listed: true,
   documents: [
     {
       slug: DOC,

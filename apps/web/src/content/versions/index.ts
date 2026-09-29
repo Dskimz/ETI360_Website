@@ -10,7 +10,8 @@ import wexcombeMeridian from "./wexcombe-meridian";
    §5, Dan 2026-09-25: each product page shows several versions of that
    product). A version is one product prepared for one fictional school:
      - Travel Program Review: the Harborview sample, and the Line &
-       Landmark provider evaluation (unlisted: the Case Study shows it);
+       Landmark provider evaluation (listed 2026-09-29; the Case Study
+       shows it too);
      - Trip Package: the worked trips (src/content/trips/, each with a page
        at /trips/{slug});
      - Field Trip Package: the Firholm and Harborview annual packs;

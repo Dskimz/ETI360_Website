@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { CaseStudyLink } from "@/components/CaseStudyLink";
 import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
@@ -14,13 +15,17 @@ import styles from "@/components/productpage.module.css";
    framework codes, no standard named. Monday's REVIEW email links here, so
    the address does not move.
 
-   The sample is the version (src/content/versions/harborview-review.ts): the
-   canonical Harborview PDFs that publish_baseline_report.py writes, both
-   papers through /open. It shows the school's side only; the page says so
-   until the provider-section sample joins the same version (week of Sep 28).
+   Two versions, both papers through /open: the Harborview sample
+   (src/content/versions/harborview-review.ts, the canonical PDFs that
+   publish_baseline_report.py writes), the school's side; then the Line &
+   Landmark provider evaluation (line-and-landmark-evaluation.ts), the
+   provider section on its own, listed 2026-09-29 on Dan's approval and
+   introduced by the provider line between the two blocks. Its notice, the
+   brand brief's, verbatim, sits under its block and in the metadata.
 
    Copy marked [draft] passed the tone review on 2026-09-27 (Stage D) and
-   awaits Dan's preview. */
+   awaits Dan's preview; the provider line's new sentences were
+   tone-reviewed on 2026-09-29. */
 
 const PRODUCT = getProduct("travel-program-review");
 
@@ -43,6 +48,10 @@ const STEPS = [
   "ETI360 reads each document, evaluates it against the framework, and writes the report.",
   "The school’s leadership reads the report and decides what, if anything, to change.",
 ];
+
+// The one version the provider line introduces (it follows the Harborview
+// sample).
+const PROVIDER_SAMPLE = "line-and-landmark-evaluation";
 
 const WHO_DECIDES_REVIEW =
   "The school and any provider it works with retain responsibility for decisions and approvals. ETI360 evaluates documents and shows what they cover; it never certifies, approves, ranks, or recommends a provider.";
@@ -90,15 +99,25 @@ export default function TravelProgramReviewPage() {
       <div className={styles.versions}>
         <div className="container">
           {versions.map((v) => (
-            <VersionBlock key={v.slug} version={v} />
+            <Fragment key={v.slug}>
+              {v.slug === PROVIDER_SAMPLE ? (
+                /* The first sentence is the 2026-09-27 review fix (what the
+                   school receives). [draft] 2026-09-29, tone-reviewed: the
+                   lead and the last three sentences, introducing the Line &
+                   Landmark evaluation; its fictional-provider notice is
+                   under its block, verbatim. */
+                <p className={styles.after}>
+                  <strong>Providers.</strong> In a school&rsquo;s report, a provider section follows:
+                  each provider the school uses, in turn, with what its documents cover in each area and
+                  the evidence behind each finding. The evaluation below is that section for one
+                  provider, shown on its own and naming no school. ETI360 shows what each
+                  provider&rsquo;s documents cover; it does not certify, approve, rank, or recommend a
+                  provider. Decisions about each provider stay with the school.
+                </p>
+              ) : null}
+              <VersionBlock version={v} />
+            </Fragment>
           ))}
-          {/* [draft] review fix 2026-09-27: what the school receives, not
-              what the sample lacks. The provider-section pages join this
-              version when the renamed fictional provider's sample lands. */}
-          <p className={styles.after}>
-            In a school&rsquo;s report, a provider section follows: each provider the school uses, in
-            turn, with what its documents cover in each area and the evidence behind each finding.
-          </p>
           <CaseStudyLink product={PRODUCT} />
         </div>
       </div>
