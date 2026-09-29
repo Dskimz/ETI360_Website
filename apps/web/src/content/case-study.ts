@@ -10,7 +10,8 @@ import { getVersion } from "@/content/versions";
    the same four moves: what Harborview sends by email, what ETI360 does
    (the reading, the data entry, the research and the writing), what
    Harborview receives, and what Harborview decides. A step shows the two
-   or three exhibits named in its `show` list; the rest stay listed here
+   or three exhibits named in its `show` list, each run of them under its
+   section's intro; the rest stay listed here
    with their source words, and every document a chapter's exhibits open
    stays linked from its step.
 
@@ -53,7 +54,16 @@ import { getVersion } from "@/content/versions";
    drops every link to it: the menu, the footer, the product pages' lines and
    the sitemap. Local builds and Vercel preview deployments still show the
    page so it can be reviewed. Set CASE_STUDY_ON_HOLD to false in the same
-   edit as the provider rename. */
+   edit as the provider rename.
+
+   What the hold does not cover, stated plainly: the exhibit images in
+   public/case-study/ are static files, so a production deploy still serves
+   each one at its own address (/case-study/{file}.jpg), unlinked. Two of
+   them, dsct-p02-summary.jpg and swot-p01-cover.jpg, show the founders'
+   names as providers, and this file names both providers in its two
+   constants. This repository is public: pushing the branch that carries
+   them publishes both, whatever the hold. The re-cut images and the renamed
+   constants replace them in the rename edit. */
 export const CASE_STUDY_ON_HOLD = true;
 
 /** False on a production deploy while the hold is on; true everywhere else. */
@@ -490,6 +500,16 @@ export const CHAPTERS: Chapter[] = [
             open: { version: "harborview-elementary", doc: "field-trip-risk-assessment-pack", page: 2 },
           },
         ],
+        // The page-2 caption's second half, kept on the step while its page
+        // is not shown (the step already quotes page 2's Who decides). The
+        // lead is [draft], from the caption's own words; tone-reviewed
+        // 2026-09-28 with the stepper's review fixes, no corrections.
+        notes: [
+          {
+            lead: "What in the example is real.",
+            text: "The venues, addresses and emergency departments are real, and each drive is measured on real roads; the dates, class sizes and staff are illustrative.",
+          },
+        ],
       },
     ],
     show: ["ftp-p08-trip.jpg", "ftp-p05-year.jpg"],
@@ -846,9 +866,11 @@ export function glanceOf(ch: Chapter): { need: string; meets: string; label?: st
   return g;
 }
 
-/** Across the four products (source page 14). Not shown in the
-    step-by-step guide, where each product's step carries the same division
-    in full as its four moves; kept here with its source words. */
+/** Across the four products (source page 14). Not shown since the
+    step-by-step guide (2026-09-28), where each product's step carries the
+    same division in full as its four moves; kept here with its source
+    words. The removal awaits Dan's approval; the old /case-study#across
+    link lands on How the work divides (_parts/HashRedirect.tsx). */
 export const ACROSS: { product: ProductSlug; sends: string; does: string; receives: string }[] = [
   {
     product: "travel-program-review",
@@ -940,6 +962,9 @@ export const STEP_UI = {
   next: "Next",
   contact: "Contact",
   start: "Start at step 1",
+  // The second skip link, on a step page: past the bar and the step list.
+  // [draft], tone-reviewed 2026-09-28 with the review fixes, no corrections.
+  skip: "Skip to the step",
   exhibits: "Pages from the samples",
   moves: {
     sends: "What Harborview sends",
@@ -958,6 +983,10 @@ export type ShownExhibits = {
   /** A chapter showing another fictional school: said before its pages. */
   lead?: { text: string; notices: string[] };
   exhibits: Exhibit[];
+  /** The shown pages by the section they come from, in `show` order, each
+      run with its section's intro (said once, before the section's first
+      shown page). */
+  groups: { intro?: string; exhibits: Exhibit[] }[];
   /** The notes of the sections the shown exhibits come from. */
   notes: { lead: string; text: string }[];
 };
@@ -977,9 +1006,22 @@ export function shownExhibits(ch: Chapter): ShownExhibits {
   if (leads.length > 0 && sections.length > 1) {
     throw new Error(`Case Study: ${ch.id} mixes another school's pages with Harborview's`);
   }
+  const groups: ShownExhibits["groups"] = [];
+  const introduced = new Set<ChapterSection>();
+  let last: ChapterSection | null = null;
+  for (const f of found) {
+    if (f.section !== last) {
+      const intro = introduced.has(f.section) ? undefined : f.section.intro;
+      introduced.add(f.section);
+      groups.push({ intro, exhibits: [] });
+      last = f.section;
+    }
+    groups[groups.length - 1].exhibits.push(f.exhibit);
+  }
   return {
     lead: leads[0]?.otherSchool,
     exhibits: found.map((f) => f.exhibit),
+    groups,
     notes: sections.flatMap((s) => s.notes ?? []),
   };
 }

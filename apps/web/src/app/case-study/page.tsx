@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import {
-  ABOUT,
   ALL_NOTICES,
   CASE_STUDY_ON_HOLD,
   caseStudyLive,
@@ -41,14 +40,16 @@ import styles from "./page.module.css";
    name lives once.
 
    Top to bottom: the header (the brand eyebrow, the h1, the illustrative
-   label, the lede); then the guide's frame (the step bar and the step
-   list, _parts/Shell.tsx) around: the disclosure and the three verbatim
-   notices; how the work divides (the school sends, ETI360 does the
-   reading, the data entry, the research and the writing, the school
-   receives and decides); the year at a glance, one row per step, and the
-   button to step 1; who decides; who does the work; every notice. The
-   footer's contact row, with Dan's closing sentence, is the only call to
-   action. Copy: src/content/case-study.ts. */
+   label, the lede, and the button to step 1, so it shows on the first
+   screen); then the guide's frame (the step bar and the step list,
+   _parts/Shell.tsx) around: the disclosure and the three verbatim notices;
+   how the work divides (the school sends, ETI360 does the reading, the data
+   entry, the research and the writing, the school receives and decides);
+   the year at a glance, one row per step; who decides and who does the
+   work, side by side on wide screens; the notices of the two other
+   fictional schools the steps show (the disclosure already carries the
+   first three). The footer's contact row, with Dan's closing sentence, is
+   the only call to action. Copy: src/content/case-study.ts. */
 
 const TITLE = "Case Study";
 
@@ -98,6 +99,11 @@ export default function CaseStudyPage() {
                 Illustrative case study &middot; Harborview International School &middot; Singapore
               </p>
               <p className={headerStyles.lede}>{INTRO.lede}</p>
+              <p className={styles.heroStart}>
+                <Link className="cta-button ui" href={stepHref(first)}>
+                  {STEP_UI.start}: {first.name} &rarr;
+                </Link>
+              </p>
             </div>
           </section>
         }
@@ -155,28 +161,23 @@ export default function CaseStudyPage() {
             <p className={styles.reading}>
               {READING_THE_STEPS} {OPENING_PAGES}
             </p>
-            <p className={styles.startLine}>
-              <Link className={`${styles.start} ui`} href={stepHref(first)}>
-                {STEP_UI.start}: {first.name} &rarr;
-              </Link>
-            </p>
           </div>
 
-          <div className="boundary-callout" id="who-decides">
-            <h3>Who decides</h3>
-            <p>
-              {WHO_DECIDES_LEAD} {WHO_DECIDES} {WHO_DECIDES_PROVIDERS}
-            </p>
-          </div>
-
-          <div className={`${styles.block} ${styles.prose}`}>
-            <WhoDoesTheWork />
+          <div className={styles.closing}>
+            <div className="boundary-callout" id="who-decides">
+              <h3>Who decides</h3>
+              <p>
+                {WHO_DECIDES_LEAD} {WHO_DECIDES} {WHO_DECIDES_PROVIDERS}
+              </p>
+            </div>
+            <div className={styles.prose}>
+              <WhoDoesTheWork />
+            </div>
           </div>
 
           <div className={styles.about}>
             <p className={`${styles.aboutLabel} ui`}>About this case study</p>
-            <p>{ABOUT}</p>
-            <Notices notices={ALL_NOTICES} />
+            <Notices notices={[NOTICES.wexcombe, NOTICES.horizonRidge]} />
           </div>
         </div>
       </CaseStudyShell>

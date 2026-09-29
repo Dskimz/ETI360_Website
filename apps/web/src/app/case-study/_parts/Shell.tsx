@@ -27,13 +27,15 @@ import styles from "../page.module.css";
                     current one marked aria-current="page".
    Every control is a link, so the guide works without JavaScript; StepKeys
    only adds the arrow keys. `current` is the step shown, or null on the
-   overview. */
+   overview. On a step, a second skip link (after the site's own) passes the
+   bar and the step list and lands on the step's h1. */
 
 /** A bar link: its address, its visible name, and the words a screen
     reader hears between "Previous"/"Next" and that name. */
 type Target = { href: string; label: string; sr: string };
 
-function targets(current: Chapter | null): { prev: Target | null; next: Target; keysNext: boolean } {
+/** `exit`: the last step's Next, which leaves the guide for Contact. */
+function targets(current: Chapter | null): { prev: Target | null; next: Target; exit: boolean } {
   const i = current ? CHAPTERS.indexOf(current) : -1;
   const prevCh = i > 0 ? CHAPTERS[i - 1] : null;
   const nextCh = CHAPTERS[i + 1] ?? null;
@@ -45,7 +47,7 @@ function targets(current: Chapter | null): { prev: Target | null; next: Target; 
   const next: Target = nextCh
     ? { href: stepHref(nextCh), label: nextCh.name, sr: `, step ${nextCh.number}: ` }
     : { href: "/contact", label: STEP_UI.contact, sr: ": " };
-  return { prev, next, keysNext: nextCh !== null };
+  return { prev, next, exit: nextCh === null };
 }
 
 function Arrow({ dir }: { dir: "prev" | "next" }) {
@@ -63,7 +65,7 @@ function Arrow({ dir }: { dir: "prev" | "next" }) {
 }
 
 function StepBar({ current }: { current: Chapter | null }) {
-  const { prev, next, keysNext } = targets(current);
+  const { prev, next, exit } = targets(current);
   return (
     <nav className={`${styles.bar} ui`} aria-label={STEP_UI.bar}>
       <div className={styles.barInner}>
@@ -103,9 +105,9 @@ function StepBar({ current }: { current: Chapter | null }) {
           )}
         </p>
         <Link
-          className={`${styles.barLink} ${styles.barNext}`}
+          className={`${styles.barLink} ${styles.barNext}${exit ? ` ${styles.barExit}` : ""}`}
           href={next.href}
-          aria-keyshortcuts={keysNext ? "ArrowRight" : undefined}
+          aria-keyshortcuts={exit ? undefined : "ArrowRight"}
         >
           <span className={styles.barText}>
             <span className={styles.barDir}>
@@ -134,11 +136,6 @@ function Steps({ current, variant }: { current: Chapter | null; variant: "list" 
       aria-label={STEP_UI.steps}
       data-step-row={list ? undefined : ""}
     >
-      {list ? (
-        <p className={styles.sideHead}>
-          <Link href={CASE_STUDY_HREF}>Case Study</Link>
-        </p>
-      ) : null}
       <ol className={list ? styles.sideList : styles.stepRowList}>
         <li>
           <Link
@@ -189,6 +186,11 @@ export function CaseStudyShell({
 }) {
   return (
     <div className={styles.shell}>
+      {current ? (
+        <a className="skip-link" href="#step-title">
+          {STEP_UI.skip}
+        </a>
+      ) : null}
       <div className={styles.barSpacer} aria-hidden="true" />
       <StepBar current={current} />
       {lead}

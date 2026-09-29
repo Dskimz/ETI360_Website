@@ -11,11 +11,13 @@
                the column), the decision table, the pages, the links.
    The site header is sticky at the top: 68px tall at 1100px and wider,
    57px below (globals.css, "Narrow header"); the bar sits just under it,
-   so the two read as one pinned block. */
+   so the two read as one pinned block. Below 1024px the step row pins
+   under the bar too, where the screen is at least 600px tall (--cs-row). */
 
 .shell {
   --cs-top: 67px;
   --cs-bar: 60px;
+  --cs-row: 0px;
   background: var(--parchment);
 }
 @media (max-width: 1099px) {
@@ -24,7 +26,14 @@
 @media (max-width: 1023px) {
   .shell { --cs-bar: 56px; }
 }
-.shell [id] { scroll-margin-top: calc(var(--cs-top) + var(--cs-bar) + 16px); }
+@media (max-width: 1023px) and (min-height: 600px) {
+  .shell { --cs-row: 57px; }
+}
+.shell [id] { scroll-margin-top: calc(var(--cs-top) + var(--cs-bar) + var(--cs-row) + 16px); }
+
+/* The second skip link (a step page): shown pinned at the top on focus,
+   wherever the page is scrolled. */
+.shell :global(.skip-link):focus { position: fixed; }
 
 /* ── The step bar: fixed under the site header, over a spacer of its own
    height (sticky would let the footer push it off on phones, where the
@@ -129,20 +138,18 @@
 .sideCol { min-width: 0; align-self: stretch; }
 .main { min-width: 0; }
 
-/* The step list: a sticky column with a thread through the numbers. */
+/* The step list: a sticky column with a thread through the numbers. Its
+   rows are compact so the whole list (about 430px) fits a 600px-tall
+   screen under the header and the bar; on a shorter screen it scrolls
+   inside its own column rather than running past the bottom. */
 .side {
   position: sticky;
   top: calc(var(--cs-top) + var(--cs-bar) + 24px);
+  max-height: calc(100vh - var(--cs-top) - var(--cs-bar) - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
 }
-.sideHead {
-  margin: 0 0 10px;
-  font-size: var(--font-xs);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.sideHead a { color: var(--gold-dark); }
-.sideHead a:hover { color: var(--navy); text-decoration: none; }
 .sideList {
   position: relative;
   list-style: none;
@@ -152,9 +159,9 @@
 .sideList::before {
   content: "";
   position: absolute;
-  left: 22px;
-  top: 22px;
-  bottom: 22px;
+  left: 21px;
+  top: 20px;
+  bottom: 20px;
   width: 1px;
   background: rgba(13, 53, 88, 0.22);
 }
@@ -165,12 +172,13 @@
   grid-template-columns: 28px minmax(0, 1fr);
   gap: 12px;
   align-items: start;
-  padding: 8px 10px 8px 8px;
+  padding: 5px 8px 5px 6px;
   border: 1px solid transparent;
   color: var(--navy);
 }
 .sideItem:hover { background: rgba(255, 255, 255, 0.7); color: var(--navy); text-decoration: none; }
-.sideItem:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+/* Inside the column's own scroll box, so the ring is drawn inward. */
+.sideItem:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 .sideItem[aria-current="page"] {
   background: #fff;
   border-color: var(--hairline);
@@ -204,7 +212,7 @@
 .sideBody {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
   min-width: 0;
   padding-top: 4px;
 }
@@ -223,10 +231,10 @@
 }
 .chip {
   display: inline-block;
-  padding: 2px 7px;
+  padding: 1px 6px;
   font-size: var(--font-xs);
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   line-height: 1.5;
   text-transform: uppercase;
   color: #fff;
@@ -271,6 +279,14 @@ h1.stepTitle {
 }
 .stepMetaText {
   font-size: var(--font-xs);
+  color: var(--ink-mid);
+}
+/* The case study's disclosure, under the step's head (ABOUT). */
+.stepAbout {
+  max-width: 760px;
+  margin: 10px 0 0;
+  font-size: var(--font-sm);
+  line-height: 1.55;
   color: var(--ink-mid);
 }
 .need { max-width: 760px; margin-top: 18px; }
@@ -468,6 +484,15 @@ h2.blockLabel {
   gap: 24px 28px;
   align-items: start;
 }
+/* A section's intro, across the row before that section's pages. */
+.sectionIntro {
+  grid-column: 1 / -1;
+  max-width: var(--measure);
+  margin: 0 0 -8px;
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--navy);
+}
 .exPage,
 .exWide {
   margin: 0;
@@ -650,7 +675,9 @@ h2.blockLabel {
 }
 
 /* ── The overview ── */
-section.hero { padding: 64px 0 68px; }
+section.hero { padding: 56px 0 60px; }
+/* The button to step 1, in the header so it is on the first screen. */
+.heroStart { margin: 28px 0 0; }
 .overview > .disclosure { margin-top: 4px; }
 .disclosure {
   max-width: var(--measure);
@@ -722,24 +749,30 @@ h2.overviewHeading {
   line-height: 1.65;
   color: var(--ink-mid);
 }
-.startLine { margin: 20px 0 0; }
-.start {
-  display: inline-block;
-  padding: 12px 22px;
-  background: var(--navy);
-  border-bottom: 2px solid var(--gold);
-  font-size: var(--font-sm);
-  font-weight: 700;
-  color: #fff;
+.heroStart :global(.cta-button):focus-visible { outline: 2px solid var(--parchment); outline-offset: 3px; }
+/* Who decides and who does the work: side by side where the column is
+   wide enough, stacked below. */
+.closing {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+  margin-top: 56px;
 }
-.start:hover { background: var(--navy-deep); color: #fff; text-decoration: none; }
-.start:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.overview :global(.boundary-callout) { margin: 56px 0 0; }
+.closing :global(.boundary-callout) { margin: 0; }
+.closing :global(.section-heading) { font-size: var(--font-2xl); margin-bottom: 14px; }
+@media (min-width: 1100px) {
+  .closing {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  .closing :global(.boundary-callout) { max-width: none; padding: 28px 30px; }
+}
 .prose { font-size: var(--font-md); line-height: 1.75; }
 .prose > * { max-width: var(--measure); }
 .about {
   max-width: var(--measure);
-  margin-top: 48px;
+  margin-top: 40px;
   padding-top: 16px;
   border-top: 1px solid var(--hairline);
 }
@@ -768,20 +801,10 @@ h2.overviewHeading {
   .sideCol { display: none; }
 
   .barInner {
-    grid-template-columns: auto minmax(0, 1fr) auto;
     gap: 12px;
     padding: 0 24px;
   }
-  /* The arrows only; their names stay for screen readers. */
-  .barText {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
+  .barLink { gap: 10px; }
   .barNow {
     display: flex;
     flex-direction: column;
@@ -800,16 +823,19 @@ h2.overviewHeading {
     background: var(--parchment);
     border-bottom: 1px solid var(--hairline);
   }
+  /* Scroll padding keeps the current step off the edge, with the end of
+     the step before it showing, so the steps behind it are in view. */
   .stepRowList {
     position: relative;
     display: flex;
     gap: 8px;
     margin: 0;
-    padding: 12px 24px;
+    padding: 8px 24px;
     list-style: none;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
+    scroll-padding-inline: 44px;
     scrollbar-width: thin;
   }
   .stepRowList li { flex: 0 0 auto; scroll-snap-align: start; }
@@ -818,8 +844,8 @@ h2.overviewHeading {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    min-height: 44px;
-    padding: 6px 14px 6px 7px;
+    min-height: 40px;
+    padding: 5px 14px 5px 6px;
     background: #fff;
     border: 1px solid var(--hairline);
     color: var(--navy);
@@ -838,6 +864,50 @@ h2.overviewHeading {
     background: var(--gold);
     border-color: var(--gold);
     color: var(--navy-deep);
+  }
+}
+
+/* The step row pins under the bar where the screen has the height for it
+   (not on a phone held sideways). */
+@media (max-width: 1023px) and (min-height: 600px) {
+  .stepRow {
+    position: sticky;
+    top: calc(var(--cs-top) + var(--cs-bar));
+    z-index: 14;
+    box-shadow: 0 2px 8px rgba(13, 53, 88, 0.05);
+  }
+}
+
+/* Below 600px the bar shows its arrows; their names stay for screen
+   readers. The last step's Contact keeps its visible label, since it
+   leaves the guide. */
+@media (max-width: 599px) {
+  .barInner { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .barText {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .barExit .barText {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+  }
+  .barExit .barDir {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
 
@@ -867,7 +937,7 @@ h2.overviewHeading {
 @media (max-width: 640px) {
   .layout { padding: 20px 16px 48px; }
   .barInner { padding: 0 16px; }
-  .stepRowList { padding: 10px 16px; }
+  .stepRowList { padding: 8px 16px; }
   h1.stepTitle { font-size: var(--font-2xl); }
   .needText { font-size: var(--font-base); }
   .moves {

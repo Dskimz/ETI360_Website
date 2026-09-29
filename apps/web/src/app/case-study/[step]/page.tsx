@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
+  ABOUT,
   CASE_STUDY_ON_HOLD,
   caseStudyLive,
   CHAPTERS,
@@ -15,7 +16,10 @@ import styles from "../page.module.css";
 
 /* One step of the Case Study (/case-study/{step}): one moment in
    Harborview's illustrative year and the product that meets it. Top to
-   bottom: the step's name and title, its tiers, what Harborview needs; the
+   bottom: the step's name and title, its tiers, the case study's own
+   disclosure (ABOUT: the school, its providers and its decisions are
+   invented, and the samples' dates are their production dates; a product
+   page links straight here, past the overview), what Harborview needs; the
    four moves (sends, ETI360 does, receives, decides, with the document's
    own Who decides lines); the Trip Package's decision table where it has
    one; the two or three pages that show the product best; the documents in
@@ -70,7 +74,7 @@ export default async function CaseStudyStepPage({ params }: Props) {
             <span className="sr-only">{stepOfTotal(ch)}: </span>
             {ch.name}
           </p>
-          <h1 id="step-title" className={styles.stepTitle}>
+          <h1 id="step-title" className={styles.stepTitle} tabIndex={-1}>
             {ch.title}
           </h1>
           <p className={`${styles.stepMeta} ui`}>
@@ -79,6 +83,7 @@ export default async function CaseStudyStepPage({ params }: Props) {
               Illustrative case study &middot; Harborview International School &middot; Singapore
             </span>
           </p>
+          <p className={`${styles.stepAbout} ui`}>{ABOUT}</p>
           <div className={styles.need}>
             <p className={`${styles.needLabel} ui`}>What Harborview needs</p>
             <p className={styles.needText}>{ch.need}</p>

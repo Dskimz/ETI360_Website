@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { Editions } from "@/components/TripDocCard";
 import {
   chapterDocuments,
@@ -100,12 +100,20 @@ function ExhibitCard({ ex }: { ex: Exhibit }) {
 }
 
 /** A step's exhibits: another school's lead first, where it applies; the
-    pages two to a row; the sections' notes in the free cell or under. */
+    pages two to a row, each section's run under that section's intro
+    (across the row); the sections' notes in the free cell or under. Where
+    the last row has a free cell, the last section's intro opens it, above
+    the notes, rather than taking a row of its own. */
 export function StepExhibits({ chapter }: { chapter: Chapter }) {
-  const { lead, exhibits, notes } = shownExhibits(chapter);
+  const { lead, groups, notes } = shownExhibits(chapter);
+  const lastGroup = groups[groups.length - 1];
+  // The cell beside the last page, when that row has one free.
+  const noteInGrid = (lastGroup?.exhibits.length ?? 0) % 2 === 1;
+  const sideIntro = noteInGrid ? lastGroup?.intro : undefined;
   const noteBlock =
-    notes.length > 0 ? (
+    notes.length > 0 || sideIntro ? (
       <div className={styles.exNotes}>
+        {sideIntro ? <p className={styles.note}>{sideIntro}</p> : null}
         {notes.map((n) => (
           <p key={n.lead} className={styles.note}>
             <strong>{n.lead}</strong> {n.text}
@@ -113,7 +121,6 @@ export function StepExhibits({ chapter }: { chapter: Chapter }) {
         ))}
       </div>
     ) : null;
-  const noteInGrid = exhibits.length % 2 === 1;
   return (
     <div className={styles.exhibitsBlock}>
       <h2 className={`${styles.blockLabel} ui`}>{STEP_UI.exhibits}</h2>
@@ -124,8 +131,13 @@ export function StepExhibits({ chapter }: { chapter: Chapter }) {
         </div>
       ) : null}
       <div className={styles.exhibits}>
-        {exhibits.map((ex) => (
-          <ExhibitCard key={ex.image} ex={ex} />
+        {groups.map((g) => (
+          <Fragment key={g.exhibits[0].image}>
+            {g.intro && !(g === lastGroup && sideIntro) ? <p className={styles.sectionIntro}>{g.intro}</p> : null}
+            {g.exhibits.map((ex) => (
+              <ExhibitCard key={ex.image} ex={ex} />
+            ))}
+          </Fragment>
         ))}
         {noteInGrid ? noteBlock : null}
       </div>

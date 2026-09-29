@@ -16,10 +16,11 @@ const firmLinksWithConsent = process.env.NEXT_PUBLIC_GA_ID
   ? [...firmLinks, {href: '#cookie-settings', label: 'Cookie settings'}]
   : firmLinks
 
-/* The footer on every page: Dan's contact row, the brand block, the live products and the Case
-   Study (the four products in one illustrative school year), the firm's
-   links, and both postal addresses (Dan, 2026-09-25: "We can put both").
-   Unsubscribe stays out: it is reached from the email only. */
+/* The footer on every page: Dan's contact row, the brand block, the live
+   products, the firm's links, led by the Case Study (the four products in
+   one illustrative school year; not a product, so not under Products), and
+   both postal addresses (Dan, 2026-09-25: "We can put both"). Unsubscribe
+   stays out: it is reached from the email only. */
 export function SiteFooter() {
   const year = new Date().getFullYear()
   const products = liveProducts()
@@ -47,17 +48,17 @@ export function SiteFooter() {
                         <Link href={p.href}>{p.name}</Link>
                       </li>
                     ))}
-                    {caseStudyLive() ? (
-                      <li>
-                        <Link href="/case-study">Case Study</Link>
-                      </li>
-                    ) : null}
                   </ul>
                 </div>
               ) : null}
               <div className="site-footer-col">
                 <h3 className="ui">ETI360</h3>
                 <ul className="ui">
+                  {caseStudyLive() ? (
+                    <li>
+                      <Link href="/case-study">Case Study</Link>
+                    </li>
+                  ) : null}
                   {firmLinksWithConsent.map((link) => (
                     <li key={link.href}>
                       <Link href={link.href}>{link.label}</Link>
