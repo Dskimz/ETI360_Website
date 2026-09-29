@@ -2,23 +2,26 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PRODUCT_SLUGS } from "@/content/products";
 import { CLOSING_SENTENCE, CLOSING_SIGNATURE } from "@/content/voice";
 
 /* The contact row at the top of the footer. It replaces the separate navy
    contact band (Dan, 2026-09-28: one footer, not two bars). On a product page
    the button carries that product to the form (/contact?product={slug},
-   spec S14); trip pages carry the Trip Package. Hidden on /contact itself. */
-function productFor(pathname: string): string | null {
+   spec S14); trip pages carry the Trip Package. Hidden on /contact itself.
+
+   The product slugs come from the server footer as a prop. This is a client
+   component, so importing src/content/products.ts here would pull the whole
+   version registry into the public layout chunk (review fix, 2026-09-29). */
+function productFor(pathname: string, productSlugs: readonly string[]): string | null {
   const first = pathname.split("/")[1] ?? "";
   if (first === "trips" && pathname.split("/")[2]) return "trip-package";
-  return (PRODUCT_SLUGS as string[]).includes(first) ? first : null;
+  return productSlugs.includes(first) ? first : null;
 }
 
-export function FooterContact() {
+export function FooterContact({ productSlugs }: { productSlugs: readonly string[] }) {
   const pathname = usePathname() ?? "/";
   if (pathname.startsWith("/contact")) return null;
-  const product = productFor(pathname);
+  const product = productFor(pathname, productSlugs);
   const href = product ? `/contact?product=${product}` : "/contact";
   return (
     <div className="site-footer-contact">

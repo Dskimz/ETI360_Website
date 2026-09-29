@@ -47,19 +47,26 @@ import styles from "./page.module.css";
 
 const TITLE = "Case Study";
 
-export const metadata: Metadata = {
-  title: TITLE,
-  description: OVERVIEW_DESCRIPTION,
-  alternates: { canonical: "/case-study" },
-  // Kept out of search engines while the provider-name hold is on.
-  robots: CASE_STUDY_ON_HOLD ? { index: false, follow: false } : undefined,
-  openGraph: {
-    title: `${TITLE} — ETI360`,
+/* Under the hold on production the page is a 404 and sets no metadata of
+   its own, so the 404's payload carries the site default, not this page's
+   title, description and canonical address (review fix, 2026-09-29; the
+   steps do the same). */
+export function generateMetadata(): Metadata {
+  if (!caseStudyLive()) return {};
+  return {
+    title: TITLE,
     description: OVERVIEW_DESCRIPTION,
-    type: "website",
-    images: ["/marketing/og-default.png"],
-  },
-};
+    alternates: { canonical: "/case-study" },
+    // Kept out of search engines while the provider-name hold is on.
+    robots: CASE_STUDY_ON_HOLD ? { index: false, follow: false } : undefined,
+    openGraph: {
+      title: `${TITLE} — ETI360`,
+      description: OVERVIEW_DESCRIPTION,
+      type: "website",
+      images: ["/marketing/og-default.png"],
+    },
+  };
+}
 
 export default function CaseStudyPage() {
   if (!caseStudyLive()) notFound();

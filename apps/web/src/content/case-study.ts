@@ -41,7 +41,7 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    The output tables and the text excerpts of 2026-09-28 are gone: the
    thumbnails carry that job. Provider evaluations (2026-09-29): the Line &
    Landmark sample, re-issued under its new name, is shown as its own card
-   under the Travel Program Review, with the provider's notice beside it
+   under the Travel Program Review, with the provider's notice under it
    (src/content/versions/line-and-landmark-evaluation.ts); the orienteering
    provider's is not shown until that provider is renamed. The Providers
    line between the two cards says so.
@@ -56,8 +56,12 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    tone-reviewed as well; its one correction here ("would add") is applied.
    The third pass (the Providers line and the Line & Landmark evaluation's
    card) was tone-reviewed with its captions; its correction here ("not
-   included in this sample") is applied. No prices, no Duty Manager
-   Dashboard or Simulation, no invented quotes, outcomes or metrics.
+   included in this sample") is applied. The second review pass of the same
+   day (the Providers line's "sample edition" clause and the orienteering
+   provider's notice) was tone-reviewed; its one correction ("not included
+   in this example", so "sample" is not said twice) is applied. No prices,
+   no Duty Manager Dashboard or Simulation, no invented quotes, outcomes or
+   metrics.
    "does not certify, approve, rank or recommend" appears once, in the
    Travel Program Review's provider line; a build check holds it there.
 
@@ -75,8 +79,12 @@ export const CYCLING_PROVIDER_SHORT = "Line & Landmark";
 /** The fictional orienteering provider (renamed before publishing). */
 export const ORIENTEERING_PROVIDER = "Seb Wong Orienteering Tours";
 
+/* A provider's notice, in the form of Line & Landmark's (the brand brief's,
+   2026-09-29). [draft] second review pass, 2026-09-29: the earlier "its
+   documents were written for this example" sent a reader looking for
+   documents the step does not show. Revisit with the rename. */
 function providerNotice(name: string): string {
-  return `${name} is a fictional trip provider; its documents were written for this example.`;
+  return `${name} is a fictional trip provider created by ETI360 for demonstration purposes.`;
 }
 
 function requireVersion(slug: string): Version {
@@ -278,12 +286,15 @@ export const STEPS: Step[] = [
         // [draft] 2026-09-29: the one provider line, between the review and
         // the Line & Landmark evaluation; its last two sentences are the
         // reviewed provider row's (the build check below holds them here).
+        // Second review pass, 2026-09-29: the evaluation is said to be a
+        // sample edition, so its own date and the school it does not name
+        // read as intended beside Harborview's review.
         note: {
           lead: "Providers.",
-          text: `The review also evaluates the documents of Harborview’s two providers, ${CYCLING_PROVIDER} and ${ORIENTEERING_PROVIDER}. The evaluation of ${CYCLING_PROVIDER_SHORT}’s documents is shown below; the orienteering provider’s is not included in this sample. ETI360 shows what each provider’s documents cover. It does not certify, approve, rank or recommend providers.`,
+          text: `The review also evaluates the documents of Harborview’s two providers, ${CYCLING_PROVIDER} and ${ORIENTEERING_PROVIDER}. ${CYCLING_PROVIDER_SHORT}’s evaluation is shown below as a sample edition, with its own date and no school named; the orienteering provider’s is not included in this example. ETI360 shows what each provider’s documents cover. It does not certify, approve, rank or recommend providers.`,
         },
       },
-      // The provider section's sample, closed, with its notice beside it.
+      // The provider section's sample, closed, with its notice under it.
       { version: "line-and-landmark-evaluation", docs: ["provider-evaluation"], provider: true },
     ],
     // [draft] shortened from the reviewed lines.

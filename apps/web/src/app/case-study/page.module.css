@@ -407,6 +407,11 @@ h2.blockLabel {
   .docGroupAside > h3,
   .main .docs .docGroupAside > p.groupNote { grid-column: 1 / -1; }
   .docGroupAside > .otherSchool { margin-top: 0; }
+  /* Once its pages are open, the card takes the whole column and the note
+     goes under it, so the pages and their captions are not squeezed beside
+     an empty column (second review pass, 2026-09-29). */
+  .docGroupAside:has(details[open]) { display: block; }
+  .docGroupAside:has(details[open]) > .otherSchool { margin-top: 12px; }
 }
 h3.groupHead {
   margin: 6px 0 10px;
@@ -1073,7 +1078,7 @@ p.notices {
   .layout { padding: 12px 16px 48px; }
   .barInner { padding: 0 16px; }
   .stepRowList { padding: 8px 16px; }
-  .heroBarInner { padding: 16px 16px 12px; gap: 10px; }
+  .heroBarInner { padding: 16px 16px 10px; gap: 10px; }
   .heroBar h1.heroName { font-size: var(--font-2xl); }
   .heroBarOverview h1.heroName { font-size: var(--font-xl); }
   .heroBar p.heroSub { font-size: var(--font-md); }
@@ -1095,19 +1100,32 @@ p.notices {
      2026-09-29). */
   .heroBar p.heroNote { display: none; }
   .phoneOnly { display: inline; }
-  .needText { font-size: var(--font-base); }
-  .main .docs { margin-top: 16px; }
+  .needText { font-size: var(--font-base); line-height: 1.5; }
+  .main .docs { margin-top: 12px; }
   h3.groupHead { margin-top: 2px; }
   /* Another school's six documents: its one-sentence note before the
      grid, so the reader knows whose samples follow; its notice stays under
      the grid, which keeps the first cover on the first screen (review fix,
-     2026-09-29). The note keeps the gold rule of the block it comes from. */
+     2026-09-29). The note keeps the gold rule of the block it comes from.
+     The note names the school and the trip, so the group heading above it
+     (the same school and trip) is kept for screen readers only; with the
+     tighter spacing above, the Trip Package's first cover ends inside a
+     390x844 screen (second review pass, 2026-09-29). */
   .docGroupNoteFirst { display: flex; flex-direction: column; }
-  .docGroupNoteFirst > h3.groupHead { order: -2; }
+  .docGroupNoteFirst > h3.groupHead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
   .docGroupNoteFirst > .otherSchool { display: contents; }
   .main .docGroupNoteFirst > .otherSchool > p:first-child {
     order: -1;
-    margin: 0 0 12px;
+    margin: 4px 0 10px;
     padding: 2px 0 2px 14px;
     border-left: var(--rule) solid var(--gold);
   }

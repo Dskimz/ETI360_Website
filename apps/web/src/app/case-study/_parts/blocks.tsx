@@ -254,7 +254,13 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
   const version = docs[0].version;
   const one = docs.length === 1;
   const note = group.otherSchool ? otherSchoolNote(group.otherSchool) : null;
-  const aside = one && !open && (note !== null || group.provider === true);
+  // Another school's closed sample (Firholm's pack) sits beside its note at
+  // 1100px and wider. A provider's sample (the Line & Landmark evaluation)
+  // takes the one-document card instead, closed, its cover the size of the
+  // review's above it, with its notice under it (second review pass,
+  // 2026-09-29).
+  const provider = one && group.provider === true;
+  const aside = one && !open && note !== null;
   // Several documents from another school (the Trip Package's six from
   // Horizon Ridge): below 641px the one-sentence note comes before the grid,
   // so a phone reader is told whose samples they are before scrolling
@@ -267,7 +273,7 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
   return (
     <div className={cls}>
       <h3 className={`${styles.groupHead} ui`}>{`${version.school} · ${version.title}`}</h3>
-      <div className={gridClass(docs.length, open)}>
+      <div className={provider ? styles.docOne : gridClass(docs.length, open)}>
         {docs.map(({ doc }) => {
           const featured = !one && group.open === doc.slug;
           return (

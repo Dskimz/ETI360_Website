@@ -39,7 +39,7 @@ export type InsidePage = { page: number; caption: string; image: TripImage };
 export type Editions = { letter: string | null; a4: string | null };
 
 /** Where a version's PDFs are built, relative to the V3 repo root
-    (/Users/danskimin/00 - ETI360 - V3, or $ETI360_V3_ROOT); the rebuild repo
+    (the V3 repo, or $ETI360_V3_ROOT); the rebuild repo
     sits beside it, so its builders are reached as ../00 - eti360-rebuild/….
     The sync copies <letterDir>/<file name of editions.letter> and likewise
     for A4, unless the document names its own `source`. */

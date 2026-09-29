@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {liveProducts} from '@/content/products'
+import {liveProducts, PRODUCT_SLUGS} from '@/content/products'
 import {caseStudyLive} from '@/content/case-study'
 import {BRAND_LINE} from '@/content/voice'
 import {FooterContact} from './FooterContact'
@@ -28,7 +28,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer-container">
         <div className="site-footer-bento">
-          <FooterContact />
+          <FooterContact productSlugs={PRODUCT_SLUGS} />
           <div className="site-footer-grid">
             <div className="site-footer-brand">
               {/* The reverse-white logo file, as in the header. */}

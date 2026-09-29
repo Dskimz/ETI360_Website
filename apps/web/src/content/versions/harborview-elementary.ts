@@ -13,7 +13,7 @@ import type { Version } from "@/content/trips/types";
    before a sync on a fresh machine). `--publish` also writes the site copies,
    public/docs/field-trip-risk-assessment-pack-harborview-2026-27-{letter,a4}.pdf.
    The paths below are relative to the V3 root, as sync:trip-pdfs expects;
-   the rebuild repo sits beside V3 (/Users/danskimin/00 - eti360-rebuild).
+   the rebuild repo sits beside V3 (../00 - eti360-rebuild).
 
    Images: import-trip.py harborview-elementary --root versions, from the A4
    clean-web edition of 2026-09-27 20:36 (re-cut the same evening), pages
