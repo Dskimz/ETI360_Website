@@ -114,11 +114,25 @@ export function TierKey({ variant }: { variant: "list" | "disclosure" }) {
 
 /* ── Notices ── */
 
-/** Each fictional name's notice, verbatim, run as one paragraph. */
-export function Notices({ notices, className }: { notices: string[]; className?: string }) {
+/** Each fictional name's notice, verbatim, run as one paragraph. `phoneLead`
+    opens the paragraph below 640px only: a step's hero note, which the hero
+    bar drops on a phone (review fix, 2026-09-29), so the page still says it
+    once, at the foot. */
+export function Notices({
+  notices,
+  className,
+  phoneLead,
+}: {
+  notices: string[];
+  className?: string;
+  phoneLead?: string;
+}) {
   if (notices.length === 0) return null;
   return (
-    <p className={`${styles.notices}${className ? ` ${className}` : ""} ui`}>{notices.join(" ")}</p>
+    <p className={`${styles.notices}${className ? ` ${className}` : ""} ui`}>
+      {phoneLead ? <span className={styles.phoneOnly}>{`${phoneLead} `}</span> : null}
+      {notices.join(" ")}
+    </p>
   );
 }
 
@@ -128,7 +142,8 @@ export function Notices({ notices, className }: { notices: string[]; className?:
    the key facts beside them; the one-line illustrative note along the foot.
    No eyebrow: the pinned bar already says "Step 2 of 4" (review fix,
    2026-09-29). Below 640px only the facts marked `phone` show (at most
-   two), so the first document cover lands on a phone's first screen. ── */
+   two) and the note gives way to the foot, which says the same, so the
+   first document cover lands on a phone's first screen. ── */
 
 export function HeroBar({
   title,
@@ -207,17 +222,19 @@ export function Need({ step }: { step: Step }) {
 
 /** A document as the case study shows it on the trip page's card: its line
     is the decision it supports, its reader line the group's where it sets
-    one, and every image's alt text names the document, the school and the
-    page. */
+    one, and every image's alt text names the document, the school (a
+    provider evaluation: the provider, which its title already names) and
+    the page. */
 function caseStudyDoc(version: Version, doc: VersionDocument, reader?: string): VersionDocument {
+  const name = doc.title.includes(version.school) ? doc.title : `${doc.title}, ${version.school}`;
   return {
     ...doc,
     reader: reader ?? doc.reader,
     blurb: doc.decision,
-    cover: { ...doc.cover, alt: `First page of the ${doc.title}, ${version.school}` },
+    cover: { ...doc.cover, alt: `First page of the ${name}` },
     insidePages: doc.insidePages.map((pg) => ({
       ...pg,
-      image: { ...pg.image, alt: `${doc.title}, ${version.school}, page ${pg.page}` },
+      image: { ...pg.image, alt: `${name}, page ${pg.page}` },
     })),
   };
 }
@@ -237,9 +254,18 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
   const version = docs[0].version;
   const one = docs.length === 1;
   const note = group.otherSchool ? otherSchoolNote(group.otherSchool) : null;
-  const aside = one && !open && note !== null;
+  const aside = one && !open && (note !== null || group.provider === true);
+  // Several documents from another school (the Trip Package's six from
+  // Horizon Ridge): below 641px the one-sentence note comes before the grid,
+  // so a phone reader is told whose samples they are before scrolling
+  // through them, and the notice stays under it; 641px and wider keep both
+  // under the grid (review fix, 2026-09-29).
+  const noteFirst = !one && note !== null;
+  const cls = [styles.docGroup, aside ? styles.docGroupAside : null, noteFirst ? styles.docGroupNoteFirst : null]
+    .filter(Boolean)
+    .join(" ");
   return (
-    <div className={aside ? `${styles.docGroup} ${styles.docGroupAside}` : styles.docGroup}>
+    <div className={cls}>
       <h3 className={`${styles.groupHead} ui`}>{`${version.school} · ${version.title}`}</h3>
       <div className={gridClass(docs.length, open)}>
         {docs.map(({ doc }) => {
@@ -262,6 +288,11 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
         <div className={`${styles.otherSchool} ui`}>
           <p>{note.text}</p>
           <p className={styles.otherNotice}>{note.notice}</p>
+        </div>
+      ) : null}
+      {group.provider ? (
+        <div className={`${styles.otherSchool} ui`}>
+          <p className={styles.otherNotice}>{version.disclosure}</p>
         </div>
       ) : null}
       {group.note ? (

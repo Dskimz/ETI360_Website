@@ -80,7 +80,7 @@ export default async function CaseStudyStepPage({ params }: Props) {
         <HowItWorks step={s} />
         <WhoDecidesBox />
         <StepFoot step={s} />
-        <Notices notices={stepNotices(s)} className={styles.stepNotices} />
+        <Notices notices={stepNotices(s)} className={styles.stepNotices} phoneLead={HERO_NOTE} />
       </div>
     </CaseStudyShell>
   );

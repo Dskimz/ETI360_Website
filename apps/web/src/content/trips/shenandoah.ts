@@ -15,7 +15,15 @@ import type { Trip } from "./types";
    Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
    departments; the school confirms which one the group uses. The pages of
    the School Trip Record, the Working File, the Family Trip Brief and the Trip Leader Card were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
-   and the copy below describes a list, never a choice made by ETI360. */
+   and the copy below describes a list, never a choice made by ETI360.
+
+   Look inside (2026-09-29, review fix, as Italy's): the Working File's, the
+   Chaperone Briefing's, the Daylight and Cover Report's and the Post-Trip
+   Feedback Report's first inside page was page 1, which repeats the cover;
+   each is now a real inside page (pages 3, 3, 2 and 3), rendered from the
+   Letter PDF by scripts/import-trip.py at the standard size, and the
+   Feedback Report's note that its responses are examples moved to its first
+   caption. [draft] captions, tone-reviewed. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "shenandoah",
@@ -125,7 +133,7 @@ const shenandoah: Trip = {
       cover: cover("trip-risk-working-file", "Trip Risk Working File"),
       editions: editions("trip-risk-working-file"),
       insidePages: inside("trip-risk-working-file", "Trip Risk Working File", [
-        [1, "The trip summary the file is built on, and the activity groups from the road to the rock, each with its own section."],
+        [3, "What the school confirms with the coach operator, the guiding company, the lodges, and the park before the trip, and where each decision made on the trip is written down."],
         [13, "Summits and open rock: a fall from the rock and lightning on exposed ground, each with its controls, its emergency actions, and its rating."],
         [16, "The optional Bearfence rock scramble: the emergency department by drive time from the south of the ridge, the live-assessment prompts for the day, and the school's review lines."],
       ]),
@@ -170,8 +178,8 @@ const shenandoah: Trip = {
       cover: cover("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card"),
       editions: editions("chaperone-briefing"),
       insidePages: inside("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card", [
-        [1, "Each chaperone's group, walking party, and role, and the shape of every walking day from breakfast to the corridor check."],
         [2, "Walking, open rock, the optional scramble, the lodge, and the coach, including the rule for thunder on the rock."],
+        [3, "When something goes wrong: a student who cannot continue, an injury, a student out of sight, and the weather, then every working number, above the line each chaperone signs."],
         [4, "The pocket emergency card at finished size: the park's dispatch number and the sequence on one side, the emergency departments, the steps for a student out of sight, and where the coach is on the other."],
       ]),
     },
@@ -185,7 +193,7 @@ const shenandoah: Trip = {
       cover: cover("daylight-and-cover-report", "Daylight and Cover Report"),
       editions: editions("daylight-and-cover-report"),
       insidePages: inside("daylight-and-cover-report", "Daylight and Cover Report", [
-        [1, "The week against the sun: sunrise, sunset, and the margin between each day's planned end and sunset, with the canopy along each route."],
+        [2, "Tuesday, the first walking day: the sun times from first to last light, 4.4 hours between the planned finish and sunset, the climb along the route, and the tree cover over it."],
         [3, "Wednesday, the long day: the sun times for where the group will be, the margin to sunset, and the ground and canopy along the route."],
         [6, "Where each figure comes from, how it is computed, and what the figures do not describe."],
       ]),
@@ -230,8 +238,8 @@ const shenandoah: Trip = {
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What the report looks like, with example responses because the trip has not yet run: the three rated questions for students and parents, the counts at every step, and the moments most raised, each with its day."],
-        [2, "For the school's review: what the answers show, where parents and students differ, and who answered, with no recommendation."],
+        [2, "For the school's review, with example responses because the trip has not yet run: what the answers show, where parents and students differ, and who answered, with no recommendation."],
+        [3, "The three rated questions as each group was asked them, with the answers at each step of the scale; the leaders and the provider appear in the words they chose, and the means are printed only for year-on-year comparison."],
         [4, "The moments people raised, each with its day, whether it points at the plan or at how the day was run, and the words as written."],
       ]),
     },

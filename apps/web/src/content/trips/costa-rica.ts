@@ -14,7 +14,14 @@ import type { Trip } from "./types";
    Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
    departments; the school confirms which one the group uses. The pages of
    the School Trip Record and the Working File were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
-   and the copy below describes a list, never a choice made by ETI360. */
+   and the copy below describes a list, never a choice made by ETI360.
+
+   Look inside (2026-09-29, review fix, as Italy's): the Working File's, the
+   Chaperone Briefing's and the Post-Trip Feedback Report's first inside page
+   was page 1, which repeats the cover; each is now a real inside page
+   (pages 2, 3 and 3), rendered from the Letter PDF by scripts/import-trip.py
+   at the standard size, and the Feedback Report's note that its responses
+   are examples moved to its first caption. [draft] captions, tone-reviewed. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "costa-rica",
@@ -118,7 +125,7 @@ const costaRica: Trip = {
       cover: cover("trip-risk-working-file", "Trip Risk Working File"),
       editions: editions("trip-risk-working-file"),
       insidePages: inside("trip-risk-working-file", "Trip Risk Working File", [
-        [1, "The trip summary, the activity groups, and how the file is used: review, complete, approve, carry."],
+        [2, "The scales every risk is rated on, which the school may replace with its own, the review and sign-off, and what the school confirms with the host operator, the properties, and the insurer before the trip."],
         [11, "The rainforest field study: where the group works, then each risk with its controls, its emergency actions, and a starting rating the school can replace with its own."],
         [20, "Night patrols on the nesting beach: the boat-then-road route to the emergency department, with the travel time, the live-assessment prompts for the day, and the school's review lines."],
       ]),
@@ -163,8 +170,8 @@ const costaRica: Trip = {
       cover: cover("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card"),
       editions: editions("chaperone-briefing"),
       insidePages: inside("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card", [
-        [1, "Each chaperone's group and role, the head-count rule, and what each of the nine days asks of them."],
         [2, "Property, boat, and beach duties, then the four procedures: a separated student, a student hurt or unwell, a security instruction or evacuation, a welfare or conduct concern."],
+        [3, "What each chaperone carries every day, phones and the days without signal, conduct, and the working contacts, above the line each chaperone signs at the briefing on Friday, March 5."],
         [4, "The pocket emergency card at finished size: the 911 sequence and every working number on one side, the three emergency departments and the separated-student steps on the other."],
       ]),
     },
@@ -208,8 +215,8 @@ const costaRica: Trip = {
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What the report looks like, with example responses because the trip has not yet run: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
-        [2, "For the school's review: what the responses show and what in the trip each touches, who answered, and where parents and students differed, with no recommendation."],
+        [2, "For the school's review, with example responses because the trip has not yet run: what the responses show and what in the trip each touches, who answered, and where parents and students differed, with no recommendation."],
+        [3, "The three rated questions as each group was asked them, with the answers at each step of the scale; the leaders and the host operator appear in the words they chose, and the means are printed only for year-on-year comparison."],
         [4, "The moments people raised, each with its day, whether it points at the plan or at how the day was run, and the words as written."],
       ]),
     },

@@ -76,7 +76,9 @@ export type Version = {
   product: ProductSlug;
   /** Short name for cards, blocks, metadata and the sitemap. */
   title: string;
-  /** Fictional school name. */
+  /** Fictional school name. A provider evaluation is prepared for no one
+      school (the sample names none), so it carries its fictional provider's
+      name here, the name the Case Study shows where it would show a school. */
   school: string;
   schoolType: SchoolType;
   /** Where the version is set, e.g. "Washington, DC" or "Singapore". */
@@ -95,6 +97,12 @@ export type Version = {
   /** Absent = not synced by sync:trip-pdfs (the Review sample reaches
       public/docs only through publish_baseline_report.py). */
   pdfSource?: PdfSource;
+  /** false: registered (its documents open through /open, the S3 upload
+      carries its PDFs, and the Case Study shows it) but not listed on its
+      product page. The Line & Landmark provider evaluation, 2026-09-29:
+      shown in the Case Study only until it is placed on the Travel Program
+      Review page. */
+  listed?: false;
 };
 
 /** A Trip Package version: a worked trip with a page of its own. */

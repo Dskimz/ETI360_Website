@@ -39,10 +39,12 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
      who decides    the one decision-ownership line;
      the foot       the pages on this site, then the notices.
    The output tables and the text excerpts of 2026-09-28 are gone: the
-   thumbnails carry that job. Provider evaluations are not shown as images
-   for now (the Line & Landmark sample is re-issued under its new name when
-   Dan's logo arrives; the orienteering provider awaits its rename): one line
-   under the Travel Program Review says the review evaluates them.
+   thumbnails carry that job. Provider evaluations (2026-09-29): the Line &
+   Landmark sample, re-issued under its new name, is shown as its own card
+   under the Travel Program Review, with the provider's notice beside it
+   (src/content/versions/line-and-landmark-evaluation.ts); the orienteering
+   provider's is not shown until that provider is renamed. The Providers
+   line between the two cards says so.
 
    Copy: the words are those of the reviewed web copy (the rebuild repo's
    content/vault/Marketing/ETI360-Case-Study-Web-Copy-2026-09.md) with the
@@ -52,20 +54,21 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    review fixes of the same day's second pass (the hero note, the paper
    facts, the Firholm note, the day-maps line, the two reader lines) were
    tone-reviewed as well; its one correction here ("would add") is applied.
-   No prices, no
-   Duty Manager Dashboard or Simulation, no invented quotes, outcomes or
-   metrics. "does not certify, approve, rank or recommend" appears once, in
-   the Travel Program Review's provider line; a build check holds it there.
+   The third pass (the Providers line and the Line & Landmark evaluation's
+   card) was tone-reviewed with its captions; its correction here ("not
+   included in this sample") is applied. No prices, no Duty Manager
+   Dashboard or Simulation, no invented quotes, outcomes or metrics.
+   "does not certify, approve, rank or recommend" appears once, in the
+   Travel Program Review's provider line; a build check holds it there.
 
    ON HOLD FOR PUBLISHING until the second fictional provider is renamed:
    see src/lib/case-study-hold.ts. The cycling provider was renamed Line &
    Landmark Cycle Travel on 2026-09-29 (Dan's brand brief); the orienteering
-   provider still carries a founder's name. Each provider name lives once,
-   in the constants below. */
+   provider still carries a founder's name, which lives once, in the
+   constant below. */
 
-/** The fictional cycling-tour provider (Dan, 2026-09-29: renamed from Dan
-    Skimin Cycling Tours by his branding brief; internal code LNL, never
-    "L&L" in copy). */
+/** The fictional cycling-tour provider (Dan, 2026-09-29: renamed by his
+    brand brief; internal code LNL, never abbreviated in copy). */
 export const CYCLING_PROVIDER = "Line & Landmark Cycle Travel";
 /** Its display name, where a short form reads better. */
 export const CYCLING_PROVIDER_SHORT = "Line & Landmark";
@@ -82,12 +85,13 @@ function requireVersion(slug: string): Version {
   return v;
 }
 
-/* The fictional names' notices, verbatim: the schools' from the versions
-   they belong to, so the case study and the product pages carry one
-   wording; Line & Landmark's from the brand brief (2026-09-29), exactly. */
+/* The fictional names' notices, verbatim, from the versions they belong
+   to, so the case study and the product pages carry one wording:
+   Line & Landmark's is its evaluation's, the brand brief's (2026-09-29),
+   exactly. */
 export const NOTICES = {
   harborview: requireVersion("harborview-review").disclosure,
-  cycling: "Line & Landmark is a fictional trip provider created by ETI360 for demonstration purposes.",
+  cycling: requireVersion("line-and-landmark-evaluation").disclosure,
   orienteering: providerNotice(ORIENTEERING_PROVIDER),
   wexcombe: requireVersion("wexcombe-meridian").disclosure,
   horizonRidge: requireVersion("italy").disclosure,
@@ -214,6 +218,10 @@ export type DocGroup = {
   /** A card's reader line (who uses it) where the case study needs it more
       exact than the version's own. */
   readers?: Record<string, string>;
+  /** A fictional provider's sample (the Line & Landmark evaluation): its
+      version's notice, the provider's own, verbatim, directly under its
+      documents; the step's foot does not repeat it. */
+  provider?: true;
 };
 
 export type Step = {
@@ -267,13 +275,16 @@ export const STEPS: Step[] = [
       {
         version: "harborview-review",
         docs: ["travel-program-review"],
-        // [draft] The one provider line (no provider-evaluation images for
-        // now); its last two sentences are the reviewed provider row's.
+        // [draft] 2026-09-29: the one provider line, between the review and
+        // the Line & Landmark evaluation; its last two sentences are the
+        // reviewed provider row's (the build check below holds them here).
         note: {
           lead: "Providers.",
-          text: `The review also evaluates the documents of Harborview’s two providers, ${CYCLING_PROVIDER} and ${ORIENTEERING_PROVIDER}. ETI360 shows what each provider’s documents cover. It does not certify, approve, rank or recommend providers.`,
+          text: `The review also evaluates the documents of Harborview’s two providers, ${CYCLING_PROVIDER} and ${ORIENTEERING_PROVIDER}. The evaluation of ${CYCLING_PROVIDER_SHORT}’s documents is shown below; the orienteering provider’s is not included in this sample. ETI360 shows what each provider’s documents cover. It does not certify, approve, rank or recommend providers.`,
         },
       },
+      // The provider section's sample, closed, with its notice beside it.
+      { version: "line-and-landmark-evaluation", docs: ["provider-evaluation"], provider: true },
     ],
     // [draft] shortened from the reviewed lines.
     sends: [
@@ -559,11 +570,15 @@ const NOTICE_NAMES: [string, string][] = [
 ];
 
 /** The notices at the foot of a step: Harborview's always, then those of
-    the providers the step names. Another school's notice is said once,
-    beside its documents. */
+    the providers the step names. Another school's notice, and a provider's
+    whose sample the step shows, is said once, beside its documents. */
 export function stepNotices(s: Step): string[] {
   const text = JSON.stringify(s);
-  return [NOTICES.harborview, ...NOTICE_NAMES.filter(([, name]) => text.includes(name)).map(([n]) => n)];
+  const beside = new Set(s.groups.filter((g) => g.provider).map((g) => requireVersion(g.version).disclosure));
+  return [
+    NOTICES.harborview,
+    ...NOTICE_NAMES.filter(([n, name]) => text.includes(name) && !beside.has(n)).map(([n]) => n),
+  ];
 }
 
 // Fails the build if a description leaves its range, a step is out of

@@ -10,7 +10,14 @@ import type { Trip } from "./types";
    Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
    departments; the school confirms which one the group uses. The pages of
    the Working File were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
-   and the copy below describes a list, never a choice made by ETI360. */
+   and the copy below describes a list, never a choice made by ETI360.
+
+   Look inside (2026-09-29, review fix, as Italy's): the Working File's, the
+   Chaperone Briefing's and the Post-Trip Feedback Report's first inside page
+   was page 1, which repeats the cover; each is now a real inside page
+   (pages 2, 3 and 3), rendered from the Letter PDF by scripts/import-trip.py
+   at the standard size, and the Feedback Report's note that its responses
+   are examples moved to its first caption. [draft] captions, tone-reviewed. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "washington-dc",
@@ -103,7 +110,7 @@ const washingtonDc: Trip = {
       cover: cover("trip-risk-working-file", "Trip Risk Working File"),
       editions: editions("trip-risk-working-file"),
       insidePages: inside("trip-risk-working-file", "Trip Risk Working File", [
-        [1, "The trip summary, the five activity groups, and how the file is used: review, complete, approve, carry."],
+        [2, "The scales every risk is rated on, which the school may replace with its own, the review and sign-off, and what the school confirms with the bus company and the hotel before the trip."],
         [3, "Charter bus travel, one section per activity group: each risk with its controls, its emergency actions, and a rating the school can change."],
         [8, "Hotel overnight stays: the emergency department near the hotel, with the drive time and the route, the live-assessment prompts for the day, and the school's review lines."],
       ]),
@@ -148,8 +155,8 @@ const washingtonDc: Trip = {
       cover: cover("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card"),
       editions: editions("chaperone-briefing"),
       insidePages: inside("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card", [
-        [1, "Each chaperone's group and role, with the corridor and overnight-watch duties, the head-count rule, and the daily rhythm."],
         [2, "Hotel and bus duties, then the four procedures: a separated student, a student hurt or unwell, a security instruction, a behavior or welfare concern."],
+        [3, "Screening and conduct at the sites, phones and messages, what each chaperone carries, and the working contacts, above the line each chaperone signs at the April 9 briefing."],
         [4, "The pocket emergency card at finished size, printed and folded: the 911 sequence and every working number on one side, the emergency departments and the separated-student steps on the other."],
       ]),
     },
@@ -193,8 +200,8 @@ const washingtonDc: Trip = {
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What the report looks like, with example responses because the trip has not yet run: the three rated questions as labeled distributions for each group, and the three most-raised moments with their day and a quote."],
-        [2, "For the school's review: three sentences on what the responses show and what in the trip each touches, with no recommendation."],
+        [2, "For the school's review, with example responses because the trip has not yet run: three sentences on what the responses show and what in the trip each touches, with no recommendation."],
+        [3, "The three rated questions as each group was asked them, with the answers at each step of the scale; the leaders and the bus company appear in the words they chose, and the means are printed only for year-on-year comparison."],
         [4, "The moments people raised, each with its day, whether it points at the plan or at how the day was run, and the words as written."],
       ]),
     },

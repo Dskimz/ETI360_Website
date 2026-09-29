@@ -533,6 +533,10 @@ h3.groupHead {
       "thumb body"
       "thumb inside";
   }
+  /* The card beside the open one (the School Trip Record) keeps its own
+     height, its links right under its name, instead of stretching to the
+     open card's pages (review fix, 2026-09-29). */
+  .docTrio > article:has(+ article.docFeature) { align-self: start; }
 }
 
 /* One document: the cover on the left; the name, then its pages, beside
@@ -728,6 +732,8 @@ p.notices {
   line-height: 1.55;
   color: var(--ink-mid);
 }
+/* The hero note's words at the foot, on a phone only (Notices' phoneLead). */
+.phoneOnly { display: none; }
 .stepNotices {
   max-width: 820px;
   margin-top: 14px;
@@ -1083,9 +1089,34 @@ p.notices {
     padding: 6px 0;
   }
   .heroFacts dd { margin: 0; }
+  /* The one-line hero note gives way on a phone: the foot says the same
+     (the overview's samples line; a step's notices, which open with it
+     below 640px), and the first cover gains the room (review fix,
+     2026-09-29). */
+  .heroBar p.heroNote { display: none; }
+  .phoneOnly { display: inline; }
   .needText { font-size: var(--font-base); }
   .main .docs { margin-top: 16px; }
   h3.groupHead { margin-top: 2px; }
+  /* Another school's six documents: its one-sentence note before the
+     grid, so the reader knows whose samples follow; its notice stays under
+     the grid, which keeps the first cover on the first screen (review fix,
+     2026-09-29). The note keeps the gold rule of the block it comes from. */
+  .docGroupNoteFirst { display: flex; flex-direction: column; }
+  .docGroupNoteFirst > h3.groupHead { order: -2; }
+  .docGroupNoteFirst > .otherSchool { display: contents; }
+  .main .docGroupNoteFirst > .otherSchool > p:first-child {
+    order: -1;
+    margin: 0 0 12px;
+    padding: 2px 0 2px 14px;
+    border-left: var(--rule) solid var(--gold);
+  }
+  .main .docGroupNoteFirst > .otherSchool > p.otherNotice {
+    max-width: 820px;
+    margin: 12px 0 0;
+    padding: 2px 0 2px 14px;
+    border-left: var(--rule) solid var(--gold);
+  }
   .docGrid,
   .docTrio { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .docGrid > article,
