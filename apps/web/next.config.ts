@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Staff door (Dan, 2026-09-29). Sends Dan and Seb to the school
+        // research in the review app, where their own logins and the
+        // campaign grant protect it. Nothing internal lives on this site:
+        // this repo is public. Temporary so the destination can change.
+        source: "/internal",
+        destination: "https://eti360-review.onrender.com/campaign/research",
+        permanent: false,
+      },
+      {
         // Clean entry link for the questions-page drafts. A REDIRECT (not a
         // rewrite) on purpose: the drafts link each other relatively, so
         // the browser must land on the real file path for them to resolve.
