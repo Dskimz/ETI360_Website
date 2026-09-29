@@ -16,8 +16,11 @@ import styles from "../page.module.css";
      the lead       the page's hero bar (_parts/blocks.tsx HeroBar), full
                     width under the bar;
      the step row   below 1024px, the step list as one scrollable row of
-                    buttons under the hero bar, and at the top of the column
-                    a closed "ETI360's 3-Tier Risk Framework" disclosure;
+                    buttons under the hero bar, and at the foot of the
+                    column a closed "ETI360's 3-Tier Risk Framework"
+                    disclosure (moved from the top on 2026-09-29, review
+                    fix, so the first document cover lands on a phone's
+                    first screen; the hero's chips already name the tiers);
      the step list  at 1024px and wider, a sticky column on the left: the
                     overview and the four steps, each with its tier chips,
                     the current one marked aria-current="page", and under
@@ -192,10 +195,10 @@ export function CaseStudyShell({
           <Steps current={current} variant="list" />
         </div>
         <div className={styles.main}>
+          {children}
           <div className={styles.tierPhone}>
             <TierKey variant="disclosure" />
           </div>
-          {children}
         </div>
       </div>
     </div>

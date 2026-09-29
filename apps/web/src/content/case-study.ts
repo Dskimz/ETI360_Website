@@ -22,13 +22,18 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    words and more about the solution."), one sequence on every step:
      the hero bar   (Dan: "a small hero bar on each of the pages. Give the key
                     information"): the product, its tiers, three or four key
-                    facts, and the illustrative line;
+                    facts (two below 640px), and the one-line illustrative
+                    note (HERO_NOTE); no eyebrow, the pinned bar says where
+                    the reader is (review fix, 2026-09-29);
      the need       one sentence;
      the documents  the trip page's document card (src/components/
                     TripDocCard.tsx): cover, who uses it, the name, what it
                     is for (the document's own decision label), A4 and US
                     Letter through the logged /open route, and Look inside
-                    with its three pages (open on a step with one document);
+                    with its three pages (open on a step with one document,
+                    and on the one card a group names in `open`); another
+                    fictional school's note and notice directly under its
+                    documents;
      how it works   one compact row: what Harborview sends, what ETI360 does
                     (navy, the strongest cell), what Harborview decides;
      who decides    the one decision-ownership line;
@@ -43,7 +48,11 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    content/vault/Marketing/ETI360-Case-Study-Web-Copy-2026-09.md) with the
    reviewer's accepted changes, cut down; lines marked [draft] are new or
    shortened (tone-reviewed 2026-09-29 with this revision, the whole text
-   of the five pages in context; its two corrections are applied here). No prices, no
+   of the five pages in context; its two corrections are applied here). The
+   review fixes of the same day's second pass (the hero note, the paper
+   facts, the Firholm note, the day-maps line, the two reader lines) were
+   tone-reviewed as well; its one correction here ("would add") is applied.
+   No prices, no
    Duty Manager Dashboard or Simulation, no invented quotes, outcomes or
    metrics. "does not certify, approve, rank or recommend" appears once, in
    the Travel Program Review's provider line; a build check holds it there.
@@ -101,8 +110,9 @@ const OTHER_SCHOOLS: Record<OtherSchool, { text: string; notice: string }> = {
     notice: NOTICES.horizonRidge,
   },
   firholm: {
-    // [draft] 2026-09-29
-    text: "The same product for another fictional school, Firholm School in Seattle, in US Letter.",
+    // [draft] 2026-09-29; the paper named as in the hero facts (review
+    // fix, 2026-09-29: the card offers A4 too).
+    text: "The same product for another fictional school, Firholm School in Seattle, in US Letter (Firholm’s paper) and A4.",
     notice: NOTICES.firholm,
   },
 };
@@ -116,34 +126,51 @@ export function otherSchoolNote(key: OtherSchool): { text: string; notice: strin
 export const INTRO = {
   // [draft] The overview's h1 (the reviewer's suggestion, adapted).
   heading: "How ETI360 supports one school across a year of travel",
-  // The reviewer's wording for the old "real samples ETI360 built" line.
+  // The reviewer's wording for the old "real samples ETI360 built" line;
+  // on the overview's foot since 2026-09-29 (the hero carries HERO_NOTE).
   samples:
     "The documents are fully developed samples created by ETI360. The school, providers and decisions in this example are fictional.",
   dates:
     "Each sample was produced on its own date, so the dates printed on the samples do not set the order of this story.",
 };
 
-/** A key fact in a hero bar: a short label and its value. */
-export type Fact = { label: string; value: string };
+/** A key fact in a hero bar: a short label and its value. `phone`: one of
+    the (at most two) facts still shown below 640px, so the first document
+    cover lands on a phone's first screen (review fix, 2026-09-29). */
+export type Fact = { label: string; value: string; phone?: true };
 
-/** The overview's hero bar: the school, the four products, who decides,
-    the paper. [draft] labels; the values from the reviewed copy. */
+/** The one-line illustrative note along the foot of every hero bar.
+    [draft] 2026-09-29 (review fix: one line in place of two sentences). */
+export const HERO_NOTE = "Illustrative case study; the school, providers and decisions are fictional.";
+
+/** The paper line of every hero bar: Harborview's own paper first.
+    [draft] 2026-09-29 (review fix: one wording everywhere). */
+const HARBORVIEW_PAPER = "A4 (Harborview’s paper) and US Letter";
+
+/** The overview's hero bar: the school, the four products, the paper.
+    [draft] labels; the values from the reviewed copy. The "Who decides"
+    fact is gone (review fix, 2026-09-29): the Who decides box says it. */
 export const OVERVIEW_FACTS: Fact[] = [
-  { label: "School", value: "Harborview International School, Singapore" },
+  { label: "School", value: "Harborview International School, Singapore", phone: true },
   {
     label: "Four products",
     value: "Travel Program Review, Trip Package, Field Trip Package, Conference Travel Package",
+    phone: true,
   },
-  // INTRO.work's last sentence (reviewed), verbatim.
-  { label: "Who decides", value: "The school reviews the outputs and makes every decision." },
-  { label: "Paper", value: "A4, the school’s own paper, and US Letter" },
+  { label: "Paper", value: HARBORVIEW_PAPER },
 ];
 
-/** How the work divides (source page 2), the absolutes bounded. */
+/** How the work divides (source page 2), the absolutes bounded. ETI360's
+    cell runs as three lines, like the steps' cells (review fix,
+    2026-09-29); the words are the reviewed ones, a sentence to a line. */
 export const WORK = {
   sends:
     "What it already has, by email: policies, calendars, venue lists, provider documents and booking confirmations. It fills in no forms and uploads nothing to a system.",
-  does: "Reads each document supplied in full and enters each trip, stop and statement it contains. Researches and measures, within the agreed scope, what the documents leave out, such as emergency departments, drive times, entry rules and climate, from cited public sources. Writes each document, in A4 and US Letter.",
+  does: [
+    "Reads each document supplied in full and enters each trip, stop and statement it contains.",
+    "Researches and measures, within the agreed scope, what the documents leave out, such as emergency departments, drive times, entry rules and climate, from cited public sources.",
+    "Writes each document, in A4 and US Letter.",
+  ],
   receives:
     "Prepared documents, in its own paper size. The school reviews them; for trip risk documents, it completes, amends and approves them.",
 };
@@ -176,10 +203,17 @@ export const TIER_LINES: Record<1 | 2 | 3, string> = {
 export type DocGroup = {
   version: string;
   docs: string[];
-  /** Another fictional school's samples: its note and notice, once. */
+  /** Another fictional school's samples: its note and notice, once,
+      directly under the documents. */
   otherSchool?: OtherSchool;
   /** A line under the group's documents. */
   note?: { lead: string; text: string };
+  /** In a group of several documents, the one card whose Look inside
+      starts open; it takes two columns and two rows of the grid. */
+  open?: string;
+  /** A card's reader line (who uses it) where the case study needs it more
+      exact than the version's own. */
+  readers?: Record<string, string>;
 };
 
 export type Step = {
@@ -210,6 +244,8 @@ const USED_BY = "Used by";
 const WHEN = "When";
 const RECEIVES = "Harborview receives";
 const PAPER = "Paper";
+/* The paper fact, the same on every step. */
+const PAPER_FACT: Fact = { label: PAPER, value: HARBORVIEW_PAPER };
 
 export const STEPS: Step[] = [
   {
@@ -220,12 +256,12 @@ export const STEPS: Step[] = [
     // The reviewed need's second sentence, verbatim.
     need: "Before planning the year, the leadership team wants one view of the whole program, read the same way path by path, including what its two providers’ own documents cover.",
     facts: [
-      { label: USED_BY, value: "The leadership team" },
+      { label: USED_BY, value: "The leadership team", phone: true },
       // From the reviewed rest of the year ("Every four years … opens the
       // next Travel Program Review with a scoping conversation").
       { label: WHEN, value: "Every four years, opened with a scoping conversation" },
-      { label: RECEIVES, value: "The review of its whole program, with an evaluation of each provider’s documents" },
-      { label: PAPER, value: "A4, its own paper, and US Letter" },
+      { label: RECEIVES, value: "The review of its whole program, with an evaluation of each provider’s documents", phone: true },
+      PAPER_FACT,
     ],
     groups: [
       {
@@ -269,11 +305,11 @@ export const STEPS: Step[] = [
     // display name.
     need: `For a cycling trip in Taiwan from the ${CYCLING_PROVIDER_SHORT} catalog, the Head of School needs the trip’s documents before approving it; the trip leader, chaperones, families and students each need theirs before the group leaves.`,
     facts: [
-      { label: USED_BY, value: "The Head of School, the trip leader, chaperones, families and students" },
+      { label: USED_BY, value: "The Head of School, the trip leader, chaperones, families and students", phone: true },
       { label: WHEN, value: "Before, during and after the trip" },
       // [draft] from the reviewed "The Trip Package, decision by decision".
-      { label: RECEIVES, value: "The documents for one trip, decision by decision" },
-      { label: PAPER, value: "A4, Harborview’s paper, and US Letter" },
+      { label: RECEIVES, value: "The documents for one trip, decision by decision", phone: true },
+      PAPER_FACT,
     ],
     groups: [
       {
@@ -291,6 +327,26 @@ export const STEPS: Step[] = [
           "post-trip-feedback-report",
         ],
         otherSchool: "horizonRidge",
+        // Review fix, 2026-09-29: one card shows its pages.
+        open: "trip-risk-working-file",
+        // Review fix, 2026-09-29: the two "Approving the trip" cards told
+        // apart by who holds them, from the reviewed decision table's "Who
+        // holds them" ("The school office, the Head of School, the trip
+        // leader"). [draft]
+        readers: {
+          "school-trip-record": "School office",
+          "trip-risk-working-file": "Head of School and trip leader",
+        },
+        // Review fix, 2026-09-29: the need is a cycling trip, the samples
+        // Italy's; the reviewed day-maps line ("Day maps. For each riding
+        // day, a pocket route card for the teachers to carry, the full route
+        // pages in the Trip Leader Card, and an online version behind a
+        // password."), shortened; "would add" after the tone review, to
+        // match the note above it ("would take the same form"). [draft]
+        note: {
+          lead: "Day maps.",
+          text: "Harborview’s edition would add, for each riding day, a pocket route card for the teachers to carry and the full route pages in the Trip Leader Card.",
+        },
       },
     ],
     sends: [
@@ -328,12 +384,12 @@ export const STEPS: Step[] = [
     need: "Harborview’s elementary division wants its year of one-day trips prepared at once, with one page per trip, so that every trip reads the same way.",
     facts: [
       // [draft] from the pack's summary.
-      { label: USED_BY, value: "Elementary leaders, teachers and families" },
+      { label: USED_BY, value: "Elementary leaders, teachers and families", phone: true },
       // [draft] from the reviewed rest of the year ("Each August") and the
       // product's door ("Before the school year begins").
       { label: WHEN, value: "Each August, before the school year begins" },
-      { label: RECEIVES, value: "The year’s day trips: one page per trip and a calendar for each month" },
-      { label: PAPER, value: "A4 and US Letter" },
+      { label: RECEIVES, value: "The year’s day trips: one page per trip and a calendar for each month", phone: true },
+      PAPER_FACT,
     ],
     groups: [
       {
@@ -375,11 +431,11 @@ export const STEPS: Step[] = [
     // [draft] the reviewed two sentences in one.
     need: "The Director of Athletics & Activities wants the coaches and advisors who travel with Harborview’s teams and activity groups to carry the same information for every host city.",
     facts: [
-      { label: USED_BY, value: "Coaches and advisors who travel with teams and activity groups" },
+      { label: USED_BY, value: "Coaches and advisors who travel with teams and activity groups", phone: true },
       // From the product's door.
       { label: WHEN, value: "Before the season starts" },
-      { label: RECEIVES, value: "One guide for the conference year, with a chapter for every host city" },
-      { label: PAPER, value: "A4 and US Letter" },
+      { label: RECEIVES, value: "One guide for the conference year, with a chapter for every host city", phone: true },
+      PAPER_FACT,
     ],
     groups: [
       { version: "wexcombe-meridian", docs: ["athletics-activities-trips-guide"], otherSchool: "wexcombe" },
@@ -441,7 +497,6 @@ export const STEP_UI = {
   // Dan, 2026-09-29: "What the tiers mean should be ETI360's 3-Tier Risk
   // Framework".
   tiers: "ETI360’s 3-Tier Risk Framework",
-  illustrative: "Illustrative case study",
   facts: "Key facts",
   need: "What Harborview needs",
   receives: "What Harborview receives",
@@ -513,7 +568,8 @@ export function stepNotices(s: Step): string[] {
 
 // Fails the build if a description leaves its range, a step is out of
 // order, a step's documents are missing from the site, a hero bar has other
-// than three or four facts, or "does not certify, approve, rank or
+// than three or four facts or more than two on a phone, a group opens or
+// renames a document it does not show, or "does not certify, approve, rank or
 // recommend" is said anywhere but once, in the Travel Program Review's
 // provider line.
 for (const d of [OVERVIEW_DESCRIPTION, ...STEPS.map((s) => s.description)]) {
@@ -524,12 +580,19 @@ for (const d of [OVERVIEW_DESCRIPTION, ...STEPS.map((s) => s.description)]) {
 STEPS.forEach((s, i) => {
   if (s.number !== i + 1) throw new Error(`Case Study: ${s.id} is numbered ${s.number} at position ${i + 1}`);
   if (s.facts.length < 3 || s.facts.length > 4) throw new Error(`Case Study: ${s.id} has ${s.facts.length} key facts`);
+  if (s.facts.filter((f) => f.phone).length > 2) throw new Error(`Case Study: ${s.id} shows more than two facts on a phone`);
+  for (const g of s.groups) {
+    if (g.open && !g.docs.includes(g.open)) throw new Error(`Case Study: ${s.id} opens "${g.open}", not in its group`);
+    for (const d of Object.keys(g.readers ?? {})) {
+      if (!g.docs.includes(d)) throw new Error(`Case Study: ${s.id} sets a reader for "${d}", not in its group`);
+    }
+  }
   stepDocuments(s);
 });
 for (const ref of Object.values(STEP_COVER)) siteDocument(ref);
 {
   const BOUNDARY = /does not certify, approve, rank or recommend/gi;
-  const all = JSON.stringify([INTRO, OVERVIEW_FACTS, WORK, LIFECYCLE, WHO_DECIDES_BOX, TIER_LINES, STEP_RECEIVES, STEPS]);
+  const all = JSON.stringify([INTRO, HERO_NOTE, OVERVIEW_FACTS, WORK, LIFECYCLE, WHO_DECIDES_BOX, TIER_LINES, STEP_RECEIVES, STEPS]);
   const line = STEPS.find((s) => s.id === "travel-program-review")?.groups[0]?.note?.text ?? "";
   if ((all.match(BOUNDARY) ?? []).length !== 1 || !BOUNDARY.test(line)) {
     throw new Error("Case Study: the provider boundary must appear once, in the Travel Program Review's provider line");

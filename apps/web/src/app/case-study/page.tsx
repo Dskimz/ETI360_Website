@@ -5,6 +5,7 @@ import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import {
   CASE_STUDY_ON_HOLD,
   caseStudyLive,
+  HERO_NOTE,
   INTRO,
   LIFECYCLE,
   NOTICES,
@@ -31,15 +32,16 @@ import styles from "./page.module.css";
    ON HOLD FOR PUBLISHING until the second fictional provider is renamed:
    src/lib/case-study-hold.ts.
 
-   Top to bottom (2026-09-29, documents first): the hero bar ("Case Study",
-   the reviewer's opening as the h1, the school, the four products, who
-   decides, the paper, and the illustrative line); then, inside the guide's
+   Top to bottom (2026-09-29, documents first): the hero bar (the
+   reviewer's opening as the h1, the school, the four products, the paper,
+   and the one-line illustrative note); then, inside the guide's
    frame (_parts/Shell.tsx): the year at a glance, one card per step with
    its document's cover, the link to step 1, and one line for the rest of
    the year; how the work divides (the school sends, ETI360 does the
-   reading, the data entry, the research and the writing, the school
-   receives and decides); the Who decides line and who does the work, side
-   by side on wide screens; the dates line and the notices. The footer's
+   reading, the data entry, the research and the writing, in three lines
+   like the steps' cells, the school receives and decides); the Who decides
+   line and who does the work, side by side on wide screens; the samples
+   and dates lines and the notices. The footer's
    contact row, with Dan's closing sentence, is the only call to action.
    Copy: src/content/case-study.ts. */
 
@@ -68,13 +70,7 @@ export default function CaseStudyPage() {
       <CaseStudyShell
         current={null}
         lead={
-          <HeroBar
-            eyebrow={TITLE}
-            title={INTRO.heading}
-            facts={OVERVIEW_FACTS}
-            note={`${STEP_UI.illustrative}. ${INTRO.samples}`}
-            overview
-          />
+          <HeroBar title={INTRO.heading} facts={OVERVIEW_FACTS} note={HERO_NOTE} overview />
         }
       >
         <div className={styles.overview}>
@@ -102,7 +98,11 @@ export default function CaseStudyPage() {
               </div>
               <div className={`${styles.part} ${styles.partEti}`}>
                 <h3 className={`${styles.partLabel} ui`}>ETI360 does</h3>
-                <p className={styles.partText}>{WORK.does}</p>
+                <ul className={`${styles.list} ${styles.partList}`}>
+                  {WORK.does.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
               </div>
               <div className={styles.part}>
                 <h3 className={`${styles.partLabel} ui`}>Harborview receives, and decides</h3>
@@ -119,7 +119,7 @@ export default function CaseStudyPage() {
           </div>
 
           <div className={styles.disclosure}>
-            <p>{INTRO.dates}</p>
+            <p>{`${INTRO.samples} ${INTRO.dates}`}</p>
             <Notices notices={[NOTICES.harborview, ...glanceNotices()]} />
           </div>
         </div>

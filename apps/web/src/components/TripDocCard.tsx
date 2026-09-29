@@ -21,7 +21,8 @@ import styles from "@/app/trips/trips.module.css";
    the default edition at that page. No JavaScript. insideOpen starts it
    open (the Case Study, on a step with one document); id replaces the
    card's anchor where two cards on one page show documents with the same
-   slug (the Case Study's two field-trip packs). */
+   slug (the Case Study's two field-trip packs); className adds a class to
+   the card (the Case Study's one open card in a grid of several). */
 
 export function Editions({ version, doc }: { version: Version; doc: VersionDocument }) {
   // The school's own paper first: US Letter for a US school, A4 for an
@@ -104,6 +105,7 @@ export function DocCard({
   lookInside = false,
   insideOpen = false,
   id,
+  className,
 }: {
   version: Version;
   doc: VersionDocument;
@@ -111,6 +113,7 @@ export function DocCard({
   lookInside?: boolean;
   insideOpen?: boolean;
   id?: string;
+  className?: string;
 }) {
   const edition = thumbEdition(version, doc);
   const thumb = (
@@ -123,7 +126,10 @@ export function DocCard({
     />
   );
   return (
-    <article id={id ?? doc.slug} className={solo ? `${styles.card} ${styles.cardSolo}` : styles.card}>
+    <article
+      id={id ?? doc.slug}
+      className={[styles.card, solo ? styles.cardSolo : null, className].filter(Boolean).join(" ")}
+    >
       {edition ? (
         <a
           className={styles.cardThumb}

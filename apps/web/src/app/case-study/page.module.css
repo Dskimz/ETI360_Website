@@ -9,9 +9,11 @@
                with ETI360's 3-Tier Risk Framework on the left, the page's
                column);
      .heroBar  the compact navy band under the bar on every page: the name,
-               its tiers and the key facts;
+               its tiers, the key facts (two on a phone) and the one-line
+               illustrative note;
      .step     a step: the need, the documents (the trip page's document
-               cards, trips.module.css, laid out here), how it works in one
+               cards, trips.module.css, laid out here: one, two to a row, or
+               three to a row with one card open), how it works in one
                row (ETI360's cell on navy, the strongest), the Who decides
                line, the foot;
      .overview the overview's column: the year at a glance as four cards
@@ -301,7 +303,7 @@
 .heroBarInner {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 16px 32px 12px;
+  padding: 14px 32px 10px;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
   gap: 10px 40px;
@@ -309,15 +311,6 @@
 }
 .heroBarOverview .heroBarInner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr); }
 .heroHead { min-width: 0; }
-.heroBar p.heroEyebrow {
-  margin: 0 0 6px;
-  font-size: var(--font-sm);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-  text-transform: uppercase;
-  color: var(--gold);
-}
 .heroBar h1.heroName {
   margin: 0;
   font-size: var(--font-3xl);
@@ -337,6 +330,7 @@
   color: var(--parchment);
 }
 .heroChips { margin-top: 10px; }
+.heroChipsPhone { display: none; }
 .heroFacts {
   margin: 0;
   display: grid;
@@ -365,7 +359,7 @@
 .heroBar p.heroNote {
   grid-column: 1 / -1;
   margin: 0;
-  padding-top: 8px;
+  padding-top: 6px;
   border-top: 1px solid var(--hairline-2);
   font-size: var(--font-sm);
   line-height: 1.5;
@@ -401,6 +395,19 @@ h2.blockLabel {
 }
 .shell .docs [id] { scroll-margin-top: calc(var(--cs-top) + var(--cs-bar) + 16px); }
 .docGroup + .docGroup { margin-top: 20px; }
+/* Another school's closed sample (Firholm's pack): at 1100px and wider its
+   note sits beside its card rather than under it. */
+@media (min-width: 1100px) {
+  .docGroupAside {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 0 20px;
+    align-items: start;
+  }
+  .docGroupAside > h3,
+  .main .docs .docGroupAside > p.groupNote { grid-column: 1 / -1; }
+  .docGroupAside > .otherSchool { margin-top: 0; }
+}
 h3.groupHead {
   margin: 6px 0 10px;
   font-size: var(--font-xs);
@@ -412,7 +419,7 @@ h3.groupHead {
 }
 .otherSchool {
   max-width: 820px;
-  margin: 0 0 12px;
+  margin: 12px 0 0;
   padding: 2px 0 2px 14px;
   border-left: var(--rule) solid var(--gold);
 }
@@ -463,6 +470,71 @@ h3.groupHead {
 /* Once a card's pages are open its row grows; the cards beside it keep
    their own height instead of stretching down the taller row. */
 .docGrid:has(details[open]) { align-items: start; }
+/* Three or more documents (the Trip Package's six): three to a row, each
+   card standing, its cover on top at the trip page's width (150px) or a
+   little more (review fix, 2026-09-29), then who uses it, the name, the
+   decision and the editions. The group's open card (.docFeature) takes two
+   columns and two rows, its cover beside its name and its three pages
+   across the card; auto-placement keeps the reading order (the card
+   before it on the left, the card after it under that one). Another
+   card's pages, once opened, scroll sideways inside it. */
+.docTrio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.docTrio > article {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+}
+.docTrio > article > :nth-child(1) { width: min(100%, 164px); }
+/* .main raises these over trips.module.css's .wide .card rules. */
+.main .docTrio > article h4 { font-size: var(--font-lg); line-height: 1.25; }
+.main .docTrio > article p.blurb { margin-bottom: 10px; }
+.docTrio > article > details { align-self: end; padding-top: 10px; }
+.docTrio > article:not(.docFeature) > details > div {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+.docTrio > article:not(.docFeature) > details > div > figure {
+  flex: 0 0 86%;
+  scroll-snap-align: start;
+}
+.docTrio > article.docFeature {
+  grid-column: span 2;
+  grid-row: span 2;
+  grid-template-columns: 164px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "thumb body"
+    "inside inside";
+  gap: 12px 20px;
+}
+.docTrio > article.docFeature > :nth-child(1) { grid-area: thumb; width: auto; }
+.docTrio > article.docFeature > :nth-child(2) { grid-area: body; }
+.docTrio > article.docFeature > details { grid-area: inside; align-self: start; }
+.main .docTrio > article.docFeature h4 { font-size: var(--font-xl); }
+
+/* At 1100px and wider the column holds four cards of 150px covers: the
+   open card takes three columns of the first row, its pages beside its
+   cover under its name, so the six documents fill two rows. */
+@media (min-width: 1100px) {
+  .docTrio { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .docTrio > article.docFeature {
+    grid-column: span 3;
+    grid-row: auto;
+    grid-template-areas:
+      "thumb body"
+      "thumb inside";
+  }
+}
+
 /* One document: the cover on the left; the name, then its pages, beside
    it, so the document shows whole without a long scroll. */
 .docOne > article {
@@ -520,7 +592,9 @@ h3.groupHead {
   margin: 4px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  /* What Harborview sends is usually the shortest list; a little of its
+     room goes to the other two. */
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr) minmax(0, 1.05fr);
   gap: 10px;
 }
 .move {
@@ -781,6 +855,8 @@ p.notices {
   color: var(--ink);
 }
 .partEti .partText { color: var(--parchment); }
+.partList li { line-height: 1.55; }
+.partEti .partList li { color: var(--parchment); }
 /* Who decides and who does the work: side by side where the column is
    wide enough, stacked below. */
 .closing {
@@ -829,7 +905,7 @@ p.notices {
     padding: 16px 24px 56px;
   }
   .sideCol { display: none; }
-  .tierPhone { display: block; margin: 0 0 18px; }
+  .tierPhone { display: block; margin: 24px 0 0; }
 
   .barInner {
     gap: 12px;
@@ -996,7 +1072,10 @@ p.notices {
   .heroBarOverview h1.heroName { font-size: var(--font-xl); }
   .heroBar p.heroSub { font-size: var(--font-md); }
   .heroChips { margin-top: 8px; }
+  .heroChipsWide { display: none; }
+  .heroChipsPhone { display: block; }
   .heroFacts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .heroFacts > div.heroFactWide { display: none; }
   .heroFacts > div {
     display: grid;
     grid-template-columns: 104px minmax(0, 1fr);
@@ -1005,9 +1084,27 @@ p.notices {
   }
   .heroFacts dd { margin: 0; }
   .needText { font-size: var(--font-base); }
-  .docGrid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .main .docs { margin-top: 16px; }
+  h3.groupHead { margin-top: 2px; }
+  .docGrid,
+  .docTrio { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .docGrid > article,
-  .docClosed > article { grid-template-columns: 96px minmax(0, 1fr); gap: 10px 14px; padding: 14px; }
+  .docClosed > article,
+  .docTrio > article,
+  .docTrio > article.docFeature {
+    grid-column: auto;
+    grid-row: auto;
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "thumb body"
+      "inside inside";
+    gap: 10px 14px;
+    padding: 14px;
+  }
+  .docTrio > article > :nth-child(1) { grid-area: thumb; width: auto; }
+  .docTrio > article > :nth-child(2) { grid-area: body; }
+  .docTrio > article > details { grid-area: inside; padding-top: 12px; }
   .docOne > article {
     grid-template-columns: 96px minmax(0, 1fr);
     grid-template-rows: auto;

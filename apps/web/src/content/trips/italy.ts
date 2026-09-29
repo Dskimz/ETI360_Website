@@ -14,7 +14,14 @@ import type { Trip } from "./types";
    Hospital wording (V3 ADR-025, Dan 2026-09-25): ETI360 lists the emergency
    departments; the school confirms which one the group uses. The pages of
    the Working File, the Trip Leader Card and the Chaperone Briefing were re-cut on 2026-09-27 from the 2026-09-25 re-renders,
-   and the copy below describes a list, never a choice made by ETI360. */
+   and the copy below describes a list, never a choice made by ETI360.
+
+   Look inside (2026-09-29, review fix): the Working File's, the Chaperone
+   Briefing's and the Post-Trip Feedback Report's first inside page was
+   page 1, which repeats the cover; each is now a real inside page (pages 2,
+   3 and 3), rendered from the Letter PDF by scripts/import-trip.py at the
+   standard size, and the Feedback Report's note that its responses are
+   examples moved to its first caption. [draft] captions, tone-reviewed. */
 
 const { base, cover, inside, editions } = tripPaths({
   slug: "italy",
@@ -118,7 +125,7 @@ const italy: Trip = {
       cover: cover("trip-risk-working-file", "Trip Risk Working File"),
       editions: editions("trip-risk-working-file"),
       insidePages: inside("trip-risk-working-file", "Trip Risk Working File", [
-        [1, "The trip summary, the emergency care in each city, and how the file is used: review, complete, approve, carry."],
+        [2, "The nine activity groups, each with its own section, and the scales every risk is rated on; the school may substitute its own."],
         [13, "On foot in crowded cities: a student separated in a crowd and theft from the person, each with its controls, its emergency actions, and a rating the school can change."],
         [26, "Water transport in Venice: the emergency department and the walking route from the hotel, where an ambulance is a boat, then the live-assessment prompts for the day and the school's review lines."],
       ]),
@@ -163,8 +170,8 @@ const italy: Trip = {
       cover: cover("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card"),
       editions: editions("chaperone-briefing"),
       insidePages: inside("chaperone-briefing", "Chaperone Briefing and Pocket Emergency Card", [
-        [1, "Each chaperone's group and role, the head-count rule, and what their five students need from them on each day of the trip."],
         [2, "Hotels and movements, then the four procedures: a student separated, a student hurt or unwell, an evacuation or security instruction, and a behavior or welfare concern."],
+        [3, "Conduct, the working contacts, and what each chaperone carries every day, on a page each chaperone signs at the briefing."],
         [4, "The pocket card at finished size: 112 and the emergency sequence, the emergency departments with their distances and times, the hotels, and a line for the day's regroup point."],
       ]),
     },
@@ -208,8 +215,8 @@ const italy: Trip = {
       cover: cover("post-trip-feedback-report", "Post-Trip Feedback Report"),
       editions: editions("post-trip-feedback-report"),
       insidePages: inside("post-trip-feedback-report", "Post-Trip Feedback Report", [
-        [1, "What the report looks like, with example responses because the trip has not yet run: the rated questions for students and parents, with the count under every answer, and the three moments most people raised, each with its day."],
-        [2, "What the answers show, in three statements that are not recommendations, and the one place parents and students diverge."],
+        [2, "What the answers show, with example responses because the trip has not yet run: three statements that are not recommendations, and the one place parents and students diverge."],
+        [3, "The rated questions as each group was asked them, with how many answered and how many chose the two highest answers; the means are printed only to compare this trip with the next one."],
         [4, "One moment, in their words: the answers to the open question, grouped where people described the same thing, with the day and the part of the plan it belongs to."],
       ]),
     },

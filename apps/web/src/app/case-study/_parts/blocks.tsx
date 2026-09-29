@@ -63,9 +63,25 @@ export function TierChips({ step, short = false }: { step: Step; short?: boolean
   );
 }
 
+/** A step's hero chips: the full canonical names, and below 640px the short
+    "Tier 2" chips (their full names still read to screen readers), so a
+    step with two tiers keeps them on one row of a phone. */
+export function HeroChips({ step }: { step: Step }) {
+  return (
+    <>
+      <span className={styles.heroChipsWide}>
+        <TierChips step={step} />
+      </span>
+      <span className={styles.heroChipsPhone}>
+        <TierChips step={step} short />
+      </span>
+    </>
+  );
+}
+
 /** ETI360's 3-Tier Risk Framework, one line per tier (Dan, 2026-09-28 and
     2026-09-29): under the step list on wide screens, a closed disclosure
-    under the step row below 1024px. */
+    at the foot of the column below 1024px. */
 export function TierKey({ variant }: { variant: "list" | "disclosure" }) {
   const lines = (
     <ul className={styles.tierLines}>
@@ -109,10 +125,12 @@ export function Notices({ notices, className }: { notices: string[]; className?:
 /* ── The hero bar (Dan, 2026-09-29: "a small hero bar on each of the
    pages. Give the key information."): a compact navy band under the pinned
    step bar, full width. The name (the page's h1), its line, the tier chips;
-   the key facts beside them; the illustrative line along the foot. ── */
+   the key facts beside them; the one-line illustrative note along the foot.
+   No eyebrow: the pinned bar already says "Step 2 of 4" (review fix,
+   2026-09-29). Below 640px only the facts marked `phone` show (at most
+   two), so the first document cover lands on a phone's first screen. ── */
 
 export function HeroBar({
-  eyebrow,
   title,
   titleId,
   sub,
@@ -121,7 +139,6 @@ export function HeroBar({
   note,
   overview = false,
 }: {
-  eyebrow: string;
   title: string;
   /** The h1's id: a step's skip link lands on it. */
   titleId?: string;
@@ -136,7 +153,6 @@ export function HeroBar({
     <div className={`${styles.heroBar}${overview ? ` ${styles.heroBarOverview}` : ""}`}>
       <div className={styles.heroBarInner}>
         <div className={styles.heroHead}>
-          <p className={`${styles.heroEyebrow} ui`}>{eyebrow}</p>
           <h1 id={titleId} className={styles.heroName} tabIndex={titleId ? -1 : undefined}>
             {title}
           </h1>
@@ -145,7 +161,7 @@ export function HeroBar({
         </div>
         <dl className={`${styles.heroFacts} ui`}>
           {facts.map((f) => (
-            <div key={f.label}>
+            <div key={f.label} className={f.phone ? undefined : styles.heroFactWide}>
               <dt>{f.label}</dt>
               <dd>{f.value}</dd>
             </div>
@@ -190,11 +206,13 @@ export function Need({ step }: { step: Step }) {
 }
 
 /** A document as the case study shows it on the trip page's card: its line
-    is the decision it supports, and every image's alt text names the
-    document, the school and the page. */
-function caseStudyDoc(version: Version, doc: VersionDocument): VersionDocument {
+    is the decision it supports, its reader line the group's where it sets
+    one, and every image's alt text names the document, the school and the
+    page. */
+function caseStudyDoc(version: Version, doc: VersionDocument, reader?: string): VersionDocument {
   return {
     ...doc,
+    reader: reader ?? doc.reader,
     blurb: doc.decision,
     cover: { ...doc.cover, alt: `First page of the ${doc.title}, ${version.school}` },
     insidePages: doc.insidePages.map((pg) => ({
@@ -204,33 +222,48 @@ function caseStudyDoc(version: Version, doc: VersionDocument): VersionDocument {
   };
 }
 
+/* The grid a group's cards take: one document open (the step's own) or
+   closed; two, side by side; three or more, with covers at the trip page's
+   size or larger, three to a row with the group's `open` card across two
+   columns and two rows, or four to a row at 1100px and wider with the open
+   card across three columns of the first row. */
+function gridClass(count: number, open: boolean): string {
+  if (count === 1) return open ? styles.docOne : styles.docClosed;
+  return count >= 3 ? styles.docTrio : styles.docGrid;
+}
+
 function Group({ group, open }: { group: DocGroup; open: boolean }) {
   const docs = group.docs.map((doc) => siteDocument({ version: group.version, doc }));
   const version = docs[0].version;
   const one = docs.length === 1;
   const note = group.otherSchool ? otherSchoolNote(group.otherSchool) : null;
+  const aside = one && !open && note !== null;
   return (
-    <div className={styles.docGroup}>
+    <div className={aside ? `${styles.docGroup} ${styles.docGroupAside}` : styles.docGroup}>
       <h3 className={`${styles.groupHead} ui`}>{`${version.school} · ${version.title}`}</h3>
+      <div className={gridClass(docs.length, open)}>
+        {docs.map(({ doc }) => {
+          const featured = !one && group.open === doc.slug;
+          return (
+            <DocCard
+              key={doc.slug}
+              id={`${version.slug}-${doc.slug}`}
+              version={version}
+              doc={caseStudyDoc(version, doc, group.readers?.[doc.slug])}
+              solo={one}
+              lookInside
+              insideOpen={one ? open : featured}
+              className={featured ? styles.docFeature : undefined}
+            />
+          );
+        })}
+      </div>
       {note ? (
         <div className={`${styles.otherSchool} ui`}>
           <p>{note.text}</p>
           <p className={styles.otherNotice}>{note.notice}</p>
         </div>
       ) : null}
-      <div className={one ? (open ? styles.docOne : styles.docClosed) : styles.docGrid}>
-        {docs.map(({ doc }) => (
-          <DocCard
-            key={doc.slug}
-            id={`${version.slug}-${doc.slug}`}
-            version={version}
-            doc={caseStudyDoc(version, doc)}
-            solo={one}
-            lookInside
-            insideOpen={open}
-          />
-        ))}
-      </div>
       {group.note ? (
         <p className={styles.groupNote}>
           <Lead lead={group.note.lead} text={group.note.text} />
@@ -242,8 +275,8 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
 
 /** What Harborview receives: the documents, as the trip page shows them.
     A step's first group opens its Look inside when it holds one document
-    (the step's own document, shown whole); every other card starts
-    closed. */
+    (the step's own document, shown whole); a group of several opens the
+    one card it names; every other card starts closed. */
 export function StepDocs({ step }: { step: Step }) {
   return (
     <div role="region" className={`${tripStyles.wide} ${styles.docs}`} aria-labelledby="documents">
@@ -341,7 +374,9 @@ export function GlanceCards() {
         const other = version.school !== "Harborview International School";
         return (
           <li key={s.id} className={styles.glanceCard}>
-            <Link className={styles.glanceThumb} href={href}>
+            {/* The name below is the card's one focus stop (review fix,
+                2026-09-29); the cover repeats its link for the pointer. */}
+            <Link className={styles.glanceThumb} href={href} aria-hidden="true" tabIndex={-1}>
               <Image
                 src={doc.cover.src}
                 width={doc.cover.width}
