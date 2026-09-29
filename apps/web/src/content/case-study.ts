@@ -116,9 +116,9 @@ export const INTRO = {
 export const WORK = {
   sends:
     "What it already has, by email: policies, calendars, venue lists, provider documents and booking confirmations. It fills in no forms and uploads nothing to a system.",
-  does: "Reads each document supplied in full and enters each trip, stop and statement in it. Researches and measures, within the agreed scope, what the documents leave out, such as emergency departments, drive times, entry rules and climate, from cited public sources. Writes each document, in A4 and US Letter.",
+  does: "Reads each document supplied in full and enters each trip, stop and statement it contains. Researches and measures, within the agreed scope, what the documents leave out, such as emergency departments, drive times, entry rules and climate, from cited public sources. Writes each document, in A4 and US Letter.",
   receives:
-    "Prepared documents, in its own paper size. The school reviews them and makes every decision; for trip risk documents, it completes, amends and approves them.",
+    "Prepared documents, in its own paper size. The school reviews them; for trip risk documents, it completes, amends and approves them.",
 };
 
 /** The rest of the year, in one line on the overview. [draft] */
@@ -400,7 +400,7 @@ export const STEPS: Step[] = [
     number: 3,
     name: "Conference Travel Package",
     title: "One guide for the conference year",
-    need: "Harborview’s teams and activity groups travel to other schools in its conference through the year, and Harborview hosts in turn. The Director of Athletics & Activities wants the coaches and advisors who travel with them to carry the same information for every host city.",
+    need: "Harborview’s teams travel to other schools in its athletics conference through the year, and its activity groups travel to their own events; Harborview hosts in turn. The Director of Athletics & Activities wants the coaches and advisors who travel with them to carry the same information for every host city.",
     receives: {
       title: "The Athletics and Activities Trips Guide, in the school’s own name",
       paper: "In A4 and US Letter",
