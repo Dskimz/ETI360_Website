@@ -26,7 +26,6 @@ export function VersionBlock({ version }: { version: Version }) {
         <h3 id={`${version.slug}-title`} className={styles.title}>
           {version.title}
         </h3>
-        <p className={styles.summary}>{version.summary}</p>
       </header>
 
       {version.documents.map((doc) => {

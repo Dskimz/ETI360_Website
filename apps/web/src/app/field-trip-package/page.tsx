@@ -4,7 +4,6 @@ import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
 import { getProduct } from "@/content/products";
 import { notices, versionsOf } from "@/content/versions";
-import { WHO_DECIDES } from "@/content/voice";
 import styles from "@/components/productpage.module.css";
 
 /* The Field Trip Package, Tier 2 (four-product site spec §4.5; Dan,
@@ -134,15 +133,6 @@ export default function FieldTripPackagePage() {
             </p>
           </div>
 
-          <div className="boundary-callout" id="who-decides">
-            <h3>Who decides</h3>
-            <p>{WHO_DECIDES}</p>
-            {/* [draft] Review fix 2026-09-27: the approval boundary once. */}
-            <p className={styles.next}>
-              The pack lists what was prepared for each trip; the school approves each trip on its own
-              terms.
-            </p>
-          </div>
 
         </div>
       </section>

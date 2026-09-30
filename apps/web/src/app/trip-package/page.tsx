@@ -5,7 +5,6 @@ import { TripCard } from "@/components/TripCard";
 import { getProduct, tierNames } from "@/content/products";
 import { DECISIONS } from "@/content/services";
 import { trips } from "@/content/trips";
-import { WHO_DECIDES } from "@/content/voice";
 import tripStyles from "../trips/trips.module.css";
 import styles from "./page.module.css";
 
@@ -147,10 +146,6 @@ export default function TripPackagePage() {
             </ul>
           </div>
 
-          <div className="boundary-callout" id="who-decides">
-            <h3>Who decides</h3>
-            <p>{WHO_DECIDES}</p>
-          </div>
 
           <div className={`${styles.block} ${styles.prose}`}>
             </div>

@@ -4,7 +4,6 @@ import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
 import { getProduct } from "@/content/products";
 import { notices, versionsOf } from "@/content/versions";
-import { WHO_DECIDES } from "@/content/voice";
 import styles from "@/components/productpage.module.css";
 
 /* The Conference Travel Package, Tier 2 (four-product site spec §4.6; Dan,
@@ -139,18 +138,6 @@ export default function ConferenceTravelPackagePage() {
             </p>
           </div>
 
-          <div className="boundary-callout" id="who-decides">
-            <h3>Who decides</h3>
-            <p>{WHO_DECIDES}</p>
-            {/* [draft] The old page's boundary; review fix 2026-09-27: the
-                guide also carries ETI360's own measured distances, so it
-                does more than organize (positioning, 2026-09-22). */}
-            <p className={styles.next}>
-              The guide sets out public information and ETI360&rsquo;s measured distances; the school
-              chooses the hotel, holds the medical summaries and the insurance, and completes every
-              field marked for confirmation.
-            </p>
-          </div>
 
         </div>
       </section>

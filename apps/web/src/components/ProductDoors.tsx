@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { liveProducts, tierNames, type Product } from "@/content/products";
-import { getVersion, publicNotice, versionsOf } from "@/content/versions";
+import { getVersion, publicNotice } from "@/content/versions";
 import styles from "./productdoors.module.css";
 
 /* The four products as the home page's doors (Dan, 2026-09-25): a 2×2 grid
@@ -31,7 +31,6 @@ export function ProductDoors({ products = liveProducts() }: { products?: Product
       <div className={styles.doors}>
         {products.map((p, i) => {
           const lead = leads[i];
-          const names = versionsOf(p.slug).map((v) => v.title);
           return (
             <article key={p.slug} className={styles.door}>
               <div className={styles.text}>
@@ -44,7 +43,6 @@ export function ProductDoors({ products = liveProducts() }: { products?: Product
                 </p>
                 <h3>{p.name}</h3>
                 <p className={styles.body}>{p.door}</p>
-                {names.length > 0 ? <p className={`${styles.versions} ui`}>{names.join(" · ")}</p> : null}
                 <p className={`${styles.link} ui`}>
                   <Link href={p.href} className="cta-link">
                     See the {p.name}&nbsp;&rarr;

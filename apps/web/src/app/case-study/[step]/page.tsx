@@ -9,7 +9,7 @@ import {
   stepNotices,
   STEPS,
 } from "@/content/case-study";
-import { HeroBar, HeroChips, HowItWorks, Need, Notices, StepDocs, StepFoot, WhoDecidesBox } from "../_parts/blocks";
+import { HeroBar, HeroChips, HowItWorks, Need, Notices, StepDocs, StepFoot } from "../_parts/blocks";
 import { CaseStudyShell } from "../_parts/Shell";
 import styles from "../page.module.css";
 
@@ -78,7 +78,6 @@ export default async function CaseStudyStepPage({ params }: Props) {
         <Need step={s} />
         <StepDocs step={s} />
         <HowItWorks step={s} />
-        <WhoDecidesBox />
         <StepFoot step={s} />
         <Notices notices={stepNotices(s)} className={styles.stepNotices} phoneLead={HERO_NOTE} />
       </div>

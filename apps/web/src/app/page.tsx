@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { ProductDoors } from "@/components/ProductDoors";
-import { liveProducts, productCount, siteDescription } from "@/content/products";
+import { liveProducts, siteDescription } from "@/content/products";
 import {
   BRAND_EYEBROW,
   BRAND_LINE,
   WHAT_WE_DO_LINE,
-  WHO_DECIDES,
 } from "@/content/voice";
 import styles from "./home.module.css";
 
@@ -64,21 +63,12 @@ export default function HomePage() {
       {LIVE.length > 0 ? (
         <section id="products" className={styles.doorsBand}>
           <div className="container">
-            <p className="label ui">{productCount(LIVE)}</p>
             <h2 className="section-heading rule-gold">{DOORS_HEADING}</h2>
             <ProductDoors products={LIVE} />
           </div>
         </section>
       ) : null}
 
-      <section className={styles.band}>
-        <div className="container measure">
-          <div className="boundary-callout" id="who-decides">
-            <h3>Who decides</h3>
-            <p>{WHO_DECIDES}</p>
-          </div>
-        </div>
-      </section>
 
     </>
   );

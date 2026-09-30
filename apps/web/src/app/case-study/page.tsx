@@ -15,7 +15,7 @@ import {
   STEPS,
   WORK,
 } from "@/content/case-study";
-import { GlanceCards, glanceNotices, HeroBar, Notices, WhoDecidesBox } from "./_parts/blocks";
+import { GlanceCards, glanceNotices, HeroBar, Notices } from "./_parts/blocks";
 import { HashRedirect } from "./_parts/HashRedirect";
 import { CaseStudyShell } from "./_parts/Shell";
 import styles from "./page.module.css";
@@ -118,7 +118,6 @@ export default function CaseStudyPage() {
           </div>
 
           <div className={styles.closing}>
-            <WhoDecidesBox />
           </div>
 
           <div className={styles.disclosure}>

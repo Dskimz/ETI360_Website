@@ -5,7 +5,7 @@ import { DocCard } from "@/components/TripDocCard";
 import { TripStrip } from "@/components/TripStrip";
 import { getProduct } from "@/content/products";
 import { getTrip, trips } from "@/content/trips";
-import { BRAND_EYEBROW, WHO_DECIDES } from "@/content/voice";
+import { BRAND_EYEBROW } from "@/content/voice";
 import styles from "../trips.module.css";
 
 /* 2026-09-29 (Dan): no lede, no fictional-school notice, no paper paragraph,
@@ -106,10 +106,6 @@ export default async function TripPage({ params }: Props) {
             );
           })}
 
-          <div className="boundary-callout">
-            <h3>Who decides</h3>
-            <p>{WHO_DECIDES}</p>
-          </div>
 
           {others.length > 0 ? (
             <div className={styles.others}>
