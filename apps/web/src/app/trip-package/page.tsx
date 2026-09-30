@@ -62,7 +62,7 @@ function anchorOf(title: string): string {
     .replace(/^-|-$/g, "");
 }
 
-const DESCRIPTION = `The Trip Package (${tierNames(product).join(" · ")}): ${product.door.charAt(0).toLowerCase()}${product.door.slice(1)}`;
+const DESCRIPTION = `${product.door} ${tierNames(product).join(" · ")}.`;
 
 export const metadata: Metadata = {
   title: "The Trip Package",
@@ -79,11 +79,11 @@ export const metadata: Metadata = {
 /** How the documents are made for each school (Dan, 2026-09-29). Tone
     review 2026-09-29. */
 const MADE_FOR_THE_SCHOOL = [
-  "The school’s name, colors and logo on every document, on US Letter or A4.",
-  "The school’s own trip policy, forms and escalation path.",
-  "Risk documentation in the format the school already uses: a risk assessment, RAMS, emergency action procedures, or the school’s own form.",
-  "The school’s own names for its programs, such as Week Without Walls or service trips.",
-  "Only the documents a trip needs: a day trip gets a shorter set, and walking, cycling and paddling days can add route maps.",
+  "Every document carries the school’s name, colors and logo, on US Letter or A4.",
+  "The documents follow the school’s own trip policy, forms and escalation path.",
+  "The risk documentation takes the format the school already uses: a risk assessment, RAMS, emergency action procedures, or the school’s own form.",
+  "The documents use the school’s own names for its programs, such as Week Without Walls or service trips.",
+  "A trip gets only the documents it needs. A day trip gets a shorter set, and walking, cycling and paddling days can add route maps.",
 ];
 
 export default function TripPackagePage() {

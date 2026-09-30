@@ -35,8 +35,8 @@ export const PRODUCTS: Product[] = [
     name: "Travel Program Review",
     h1: "The Travel Program Review",
     tiers: [1],
-    // [draft]
-    door: "When leadership wants to see the whole travel program at once: the school's own policies, program path by program path, and the documents of every provider it uses, in one report every four years.",
+    // Rewritten with verbs (Dan, 2026-09-30: no verbless list sentences). [draft]
+    door: "The Travel Program Review reads the school's travel policies program by program, and the documents of every provider the school uses. The school repeats it every four years.",
     lead: { version: "harborview-review", doc: "travel-program-review" },
   },
   {
@@ -45,8 +45,8 @@ export const PRODUCTS: Product[] = [
     name: "Trip Package",
     h1: "The Trip Package",
     tiers: [2, 3],
-    // The former SERVICES[1].body, verbatim.
-    door: "The documents for one trip, before, during, and after it: the file the school reviews and approves, what families read, what the trip leader and chaperones carry, and the report that closes the trip.",
+    // Rewritten with verbs (Dan, 2026-09-30). [draft]
+    door: "The Trip Package gives each person on one trip the document they use, from the school's approval to the report after the group comes home.",
     lead: { version: "washington-dc", doc: "trip-leader-card" },
   },
   {
@@ -55,8 +55,8 @@ export const PRODUCTS: Product[] = [
     name: "Field Trip Package",
     h1: "The Field Trip Package",
     tiers: [2],
-    // [draft] (Q1 no: no single day trips)
-    door: "Before the school year begins: the lower school's day trips, one page per trip and a calendar for each month.",
+    // Rewritten with verbs (Dan, 2026-09-30). [draft] (Q1 no: no single day trips)
+    door: "The Field Trip Package covers the lower school's day trips for the whole school year, with one page for each trip and a calendar for each month.",
     lead: { version: "firholm-elementary", doc: "field-trip-risk-assessment-pack" },
   },
   {
@@ -65,8 +65,8 @@ export const PRODUCTS: Product[] = [
     name: "Conference Travel Package",
     h1: "The Conference Travel Package",
     tiers: [2],
-    // [draft]
-    door: "Before the season starts: one guide for the coaches and staff who travel with the school's teams and delegations, with a chapter for every host city in the conference year.",
+    // Rewritten with verbs (Dan, 2026-09-30). [draft]
+    door: "The Conference Travel Package gives the coaches and staff who travel with the school's teams one guide for the season, with a chapter for each host city.",
     lead: { version: "wexcombe-meridian", doc: "athletics-activities-trips-guide" },
   },
 ];
@@ -115,5 +115,5 @@ export function productNames(products: Product[] = liveProducts()): string {
 export function siteDescription(): string {
   const live = liveProducts();
   if (live.length === 0) return `${BRAND_LINE} ${WHAT_WE_DO_LINE}`;
-  return `${BRAND_LINE} ${WHAT_WE_DO_LINE} ${productCount(live)} for schools: ${productNames(live)}.`;
+  return `${BRAND_LINE} ${WHAT_WE_DO_LINE} ETI360 prepares ${productCount(live).toLowerCase()} for schools: ${productNames(live)}.`;
 }

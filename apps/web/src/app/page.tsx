@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { ProductDoors } from "@/components/ProductDoors";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
-import { liveProducts, productCount, siteDescription, type Product } from "@/content/products";
-import type { ProductSlug } from "@/content/trips/types";
+import { liveProducts, productCount, siteDescription } from "@/content/products";
 import {
   BRAND_EYEBROW,
   BRAND_LINE,
@@ -23,25 +22,10 @@ const BREAK_AT = BRAND_LINE.indexOf(" for ");
 const BRAND_HEAD = BRAND_LINE.slice(0, BREAK_AT);
 const BRAND_TAIL = BRAND_LINE.slice(BREAK_AT + 1);
 
-// Only live products get a door (S18), so the count and the heading are
-// built from the live list: with all four live, the heading reads "The whole
-// program, one trip, a year of day trips, or a conference year." [draft]
-const PHRASE: Record<ProductSlug, string> = {
-  "travel-program-review": "the whole program",
-  "trip-package": "one trip",
-  "field-trip-package": "a year of day trips",
-  "conference-travel-package": "a conference year",
-};
-function doorsHeading(products: Product[]): string {
-  const text = listOf(products.map((p) => PHRASE[p.slug]));
-  return `${text.charAt(0).toUpperCase()}${text.slice(1)}.`;
-}
-
-function listOf(items: string[]): string {
-  if (items.length <= 1) return items.join("");
-  if (items.length === 2) return `${items[0]} or ${items[1]}`;
-  return `${items.slice(0, -1).join(", ")}, or ${items[items.length - 1]}`;
-}
+// The heading over the product doors is a plain label (Dan, 2026-09-30):
+// the old verbless list ("The whole program, one trip, a year of day trips,
+// or a conference year.") made no sense and is the pattern the copy rules ban.
+const DOORS_HEADING = "What ETI360 prepares";
 
 const LIVE = liveProducts();
 
@@ -82,7 +66,7 @@ export default function HomePage() {
         <section id="products" className={styles.doorsBand}>
           <div className="container">
             <p className="label ui">{productCount(LIVE)}</p>
-            <h2 className="section-heading rule-gold">{doorsHeading(LIVE)}</h2>
+            <h2 className="section-heading rule-gold">{DOORS_HEADING}</h2>
             <ProductDoors products={LIVE} />
           </div>
         </section>
