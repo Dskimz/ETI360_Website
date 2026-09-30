@@ -124,7 +124,7 @@ const OTHER_SCHOOLS: Record<OtherSchool, { text: string; notice: string }> = {
   firholm: {
     // [draft] 2026-09-29; the paper named as in the hero facts (review
     // fix, 2026-09-29: the card offers A4 too).
-    text: "The same product for another school, Firholm School in Seattle, in US Letter (Firholm’s paper) and A4.",
+    text: "Firholm School in Seattle has the same product, in US Letter (Firholm’s paper) and A4.",
     notice: NOTICES.firholm,
   },
 };

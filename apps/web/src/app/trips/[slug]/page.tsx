@@ -60,7 +60,7 @@ export default async function TripPage({ params }: Props) {
       >
         <div className="hero-inner">
           <p className="label label-light ui">{BRAND_EYEBROW}</p>
-          <h1>{trip.h1}</h1>
+          <h1>{trip.h1.replace(/\.$/, "")}</h1>
         </div>
         {trip.heroCredit ? <p className="trip-hero-credit ui">{trip.heroCredit}</p> : null}
       </section>

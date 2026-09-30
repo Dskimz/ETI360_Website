@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import {
   CASE_STUDY_ON_HOLD,
   caseStudyLive,
@@ -120,9 +119,6 @@ export default function CaseStudyPage() {
 
           <div className={styles.closing}>
             <WhoDecidesBox />
-            <div className={styles.prose}>
-              <WhoDoesTheWork />
-            </div>
           </div>
 
           <div className={styles.disclosure}>

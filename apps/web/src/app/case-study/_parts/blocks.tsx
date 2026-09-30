@@ -89,7 +89,7 @@ export function TierKey({ variant }: { variant: "list" | "disclosure" }) {
         <li key={t}>
           <span className={`${styles.swatch} ${TIER_CLASS[t]}`} aria-hidden="true" />
           <span>
-            <strong>{`${TIER_NAMES[t]}.`}</strong>
+            <strong>{`${TIER_NAMES[t]}:`}</strong>
             {` ${TIER_LINES[t]}`}
           </span>
         </li>
@@ -356,7 +356,8 @@ export function HowItWorks({ step }: { step: Step }) {
       <ol className={styles.moves}>
         <li className={`${styles.move} ${styles.moveSends}`}>
           <MoveHead n={1} label={STEP_UI.moves.sends} />
-          <List items={step.sends} />
+          {/* What the school sends is a list of things: labels, no periods (2026-09-30). */}
+          <List items={step.sends.map((s) => s.replace(/\.$/, ""))} />
         </li>
         <li className={`${styles.move} ${styles.moveDoes}`}>
           <MoveHead n={2} label={STEP_UI.moves.does} />

@@ -54,7 +54,8 @@ export function shortDates(trip: Trip): string {
 /** The trip's own first clause, without the repeated list of readers. */
 export function cardSummary(trip: Trip): string {
   const cut = trip.summary.search(/: (the documents for|one page per trip)/);
-  return cut > 0 ? `${trip.summary.slice(0, cut)}.` : trip.summary;
+  // A card line is a label, so it carries no period (2026-09-30).
+  return (cut > 0 ? trip.summary.slice(0, cut) : trip.summary).replace(/\.$/, "");
 }
 
 /** A one-line card eyebrow: "Culture · Europe" rather than "Language and culture · Europe". */

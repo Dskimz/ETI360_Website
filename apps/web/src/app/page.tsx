@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ProductDoors } from "@/components/ProductDoors";
-import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { liveProducts, productCount, siteDescription } from "@/content/products";
 import {
   BRAND_EYEBROW,
@@ -74,7 +73,6 @@ export default function HomePage() {
 
       <section className={styles.band}>
         <div className="container measure">
-          <WhoDoesTheWork />
           <div className="boundary-callout" id="who-decides">
             <h3>Who decides</h3>
             <p>{WHO_DECIDES}</p>

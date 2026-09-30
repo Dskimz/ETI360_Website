@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { CaseStudyLink } from "@/components/CaseStudyLink";
 import { ProductHeader } from "@/components/ProductHeader";
 import { VersionBlock } from "@/components/VersionBlock";
-import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct } from "@/content/products";
 import { notices, versionsOf } from "@/content/versions";
 import { WHO_DECIDES } from "@/content/voice";
@@ -145,9 +144,6 @@ export default function FieldTripPackagePage() {
             </p>
           </div>
 
-          <div className={styles.block}>
-            <WhoDoesTheWork />
-          </div>
         </div>
       </section>
 

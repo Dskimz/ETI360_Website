@@ -40,7 +40,7 @@ const firholmElementary: Version = {
   // [draft] second sentence (review fix, 2026-09-27): what the pack itself
   // carries for each trip (its planning pages), unlike Harborview's.
   summary:
-    "A school year of one-day lower school field trips in and around Seattle: one page per trip and a calendar for each month, for the school's lower school leaders, trip coordinator, teachers, and families. Each trip's planning page, inside the pack, carries its emergency departments and its hazards and controls for the school to review.",
+    "The pack covers a school year of one-day lower school field trips in and around Seattle, with one page per trip and a calendar for each month. Each trip's planning page, inside the pack, carries its emergency departments and its hazards and controls for the school to review.",
   paperDefault: "letter",
   disclosure: "Firholm School is a fictional school; its location is shown for illustrative purposes.",
   documents: [

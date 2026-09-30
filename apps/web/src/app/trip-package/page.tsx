@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { CaseStudyLink } from "@/components/CaseStudyLink";
 import { ProductHeader } from "@/components/ProductHeader";
 import { TripCard } from "@/components/TripCard";
-import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { getProduct, tierNames } from "@/content/products";
 import { DECISIONS } from "@/content/services";
 import { trips } from "@/content/trips";
@@ -154,8 +153,7 @@ export default function TripPackagePage() {
           </div>
 
           <div className={`${styles.block} ${styles.prose}`}>
-            <WhoDoesTheWork />
-          </div>
+            </div>
         </div>
       </section>
     </>

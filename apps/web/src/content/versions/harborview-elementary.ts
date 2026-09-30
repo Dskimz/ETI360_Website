@@ -41,7 +41,7 @@ const harborviewElementary: Version = {
   // [draft] second sentence (review fix, 2026-09-27): what Harborview issues
   // beside the pack (its page 6), which the Firholm pack does not.
   summary:
-    "A school year of one-day elementary field trips in Singapore: one page per trip and a calendar for each month, for the school's elementary leaders, trip coordinators, teachers, and families. Each trip's itinerary, parent letter, risk-assessment working documents, and weather note are issued separately from the pack.",
+    "The pack covers a school year of one-day elementary field trips in Singapore, with one page per trip and a calendar for each month. Each trip's itinerary, parent letter, risk-assessment working documents, and weather note are issued separately from the pack.",
   paperDefault: "a4",
   disclosure:
     "Harborview International School is a fictional school; its location is shown for illustrative purposes.",

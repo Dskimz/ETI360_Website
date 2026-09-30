@@ -49,7 +49,7 @@ const wexcombeMeridian: Version = {
   place: "London",
   // [draft]
   summary:
-    "One guide for the year for the staff who travel with the school's teams and delegations: the conference calendar, then a chapter for every host city.",
+    "The guide gives the staff who travel with the school's teams and delegations the conference calendar and a chapter for every host city.",
   paperDefault: "a4",
   // The guide's own two cover lines, verbatim. Tone review 2026-09-27: the
   // Sep 14 third sentence (the real places, and the directions vendor) came

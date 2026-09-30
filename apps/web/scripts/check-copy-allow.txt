@@ -1,0 +1,10 @@
+# Sentences the copy check (scripts/check-copy.mjs) may pass although they
+# have no verb. One exact sentence per line, with the reason on the line above.
+
+# Dan's approved What-we-do line (voice.ts, 2026-09-24), used unchanged on every surface.
+Decision-ready evidence for every trip.
+
+# Photo and map credits.
+Map data © Mapbox, © OpenStreetMap.
+The Point Overlook on Skyline Drive.
+Highsmith Archive, Library of Congress.
