@@ -80,6 +80,7 @@ export default function CaseStudyPage() {
         }
       >
         <div className={styles.overview}>
+          <p className={styles.partnership}>{INTRO.partnership}</p>
           <div className={styles.glanceBlock}>
             <h2 className={`${styles.blockLabel} ui`} id="the-year">
               The year at a glance

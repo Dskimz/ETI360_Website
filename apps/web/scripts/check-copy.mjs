@@ -67,7 +67,8 @@ const BASE = `accept add adapt affect agree allow answer apply approve arrange a
   weigh sequence rate score rank test launch release ship upload download sort file book confirm route stop
   arrive depart board pick drop fly sail paddle cycle climb hike camp swim eat drink cook clean wash dry
   miss search lock unlock alert warn call text message phone reply respond act ask cause fail succeed
-  improve strengthen close open post publish price quote charge invoice bill welcome thank invite`.split(/\s+/);
+  improve strengthen close open post publish price quote charge invoice bill welcome thank invite
+  gather coordinate`.split(/\s+/);
 
 const DETERMINERS = new Set(
   `the a an its their our your his her my this that these those every each any some no one two three four five six

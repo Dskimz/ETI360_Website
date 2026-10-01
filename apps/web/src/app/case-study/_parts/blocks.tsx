@@ -218,6 +218,7 @@ export function Need({ step }: { step: Step }) {
     <div className={styles.need}>
       <h2 className={`${styles.needLabel} ui`}>{STEP_UI.need}</h2>
       <p className={styles.needText}>{step.need}</p>
+      {step.partnership ? <p className={styles.needText}>{step.partnership}</p> : null}
     </div>
   );
 }

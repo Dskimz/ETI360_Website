@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ProductDoors } from "@/components/ProductDoors";
+import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
+import { AREAS, EVIDENCE, PARTNERSHIP, START, YEAR } from "@/content/partnership";
 import { liveProducts, siteDescription } from "@/content/products";
 import {
   BRAND_EYEBROW,
@@ -8,11 +11,11 @@ import {
 } from "@/content/voice";
 import styles from "./home.module.css";
 
-/* Home (four-product site, spec §4.1 and S19; Dan, 2026-09-25: "each page
-   should be one of the 4 products"). The page only routes: the two brand
-   lines above the fold, one door per live product, who does the work and who
-   decides, then Dan's closing sentence, the only call to action. Its only
-   links in the body are the product pages and the contact band. */
+/* Home, led by the partnership (Dan, 2026-10-01: the home page becomes the
+   consulting page, and the products become evidence of what ETI360
+   produces). Order: the two brand lines, the partnership, where ETI360
+   helps, a travel year, the products as worked examples, who does the work,
+   how a partnership starts. Copy in content/partnership.ts. */
 
 // The h1 is BRAND_LINE split for its line break: "Risk intelligence" /
 // "for school trips." Never retyped (voice.ts).
@@ -20,15 +23,8 @@ const BREAK_AT = BRAND_LINE.indexOf(" for ");
 const BRAND_HEAD = BRAND_LINE.slice(0, BREAK_AT);
 const BRAND_TAIL = BRAND_LINE.slice(BREAK_AT + 1);
 
-// The heading over the product doors is a plain label (Dan, 2026-09-30):
-// the old verbless list ("The whole program, one trip, a year of day trips,
-// or a conference year.") made no sense and is the pattern the copy rules ban.
-const DOORS_HEADING = "What ETI360 prepares";
-
 const LIVE = liveProducts();
 
-// The two brand lines and the live products (products.ts), also the root
-// layout's fallback description.
 const DESCRIPTION = siteDescription();
 
 export const metadata: Metadata = {
@@ -42,6 +38,10 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+function pad(n: number): string {
+  return String(n).padStart(2, "0");
+}
 
 export default function HomePage() {
   return (
@@ -60,16 +60,76 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="partnership" className={styles.partnerBand}>
+        <div className="container">
+          <h2 className="section-heading rule-gold">{PARTNERSHIP.heading}</h2>
+          <p className={styles.lede}>{PARTNERSHIP.lede}</p>
+          <div className={styles.situations}>
+            {PARTNERSHIP.situations.map((s) => (
+              <div key={s.title} className={styles.situation}>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            ))}
+          </div>
+          <p className={styles.close}>{PARTNERSHIP.close.join(" ")}</p>
+        </div>
+      </section>
+
+      <section id="areas" className={styles.band}>
+        <div className="container">
+          <h2 className="section-heading rule-gold">{AREAS.heading}</h2>
+          <p className={styles.lede}>{AREAS.lede}</p>
+          <ol className={styles.areas}>
+            {AREAS.items.map((a, i) => (
+              <li key={a.title}>
+                <span className={styles.num} aria-hidden="true">{pad(i + 1)}</span>
+                <div>
+                  <h3>{a.title}</h3>
+                  <p>{a.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="year" className={styles.partnerBand}>
+        <div className="container">
+          <h2 className="section-heading rule-gold">{YEAR.heading}</h2>
+          <p className={styles.lede}>{YEAR.lede}</p>
+          <ol className={styles.phases}>
+            {YEAR.phases.map((p, i) => (
+              <li key={p.title}>
+                <span className={styles.phaseNum} aria-hidden="true">{i + 1}</span>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {LIVE.length > 0 ? (
         <section id="products" className={styles.doorsBand}>
           <div className="container">
-            <h2 className="section-heading rule-gold">{DOORS_HEADING}</h2>
+            <h2 className="section-heading rule-gold">{EVIDENCE.heading}</h2>
+            <p className={styles.lede}>{EVIDENCE.lede}</p>
             <ProductDoors products={LIVE} />
           </div>
         </section>
       ) : null}
 
-
+      <section className={styles.band}>
+        <div className={`container ${styles.narrow}`}>
+          <WhoDoesTheWork />
+          <h2 className="section-heading rule-gold" id="start">{START.heading}</h2>
+          <p>{START.text}</p>
+          <p>
+            <Link className={styles.cta} href="/contact">{START.cta} &rarr;</Link>
+          </p>
+        </div>
+      </section>
     </>
   );
 }

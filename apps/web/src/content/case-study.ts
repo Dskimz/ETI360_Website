@@ -138,6 +138,10 @@ export function otherSchoolNote(key: OtherSchool): { text: string; notice: strin
 export const INTRO = {
   // [draft] The overview's h1 (the reviewer's suggestion, adapted).
   heading: "How ETI360 supports one school across a year of travel",
+  // Dan, 2026-10-01: the Case Study is told as a partnership year.
+  // Tone-reviewed 2026-10-01.
+  partnership:
+    "Harborview International School runs trips on six program paths, from international multi-day trips to elementary day trips and athletics travel. This case study follows one school year in which ETI360 works with Harborview as a partner across that program. The year begins with the Travel Program Review and the Travel Year Guide, and each trip, day-trip year and conference season builds on them.",
   // The reviewer's wording for the old "real samples ETI360 built" line;
   // on the overview's foot since 2026-09-29 (the hero carries HERO_NOTE).
   samples:
@@ -191,7 +195,7 @@ export const WORK = {
     "rest of the year" block folded in here, 2026-09-29, now that the Trip
     Package is step 2, not the last). [draft] 2026-09-28. */
 export const LIFECYCLE =
-  "Through the rest of the year: a Post-Trip Feedback Report after each trip, next year’s field-trip pages each August, and, every four years, the next Travel Program Review, opened with a scoping conversation.";
+  "At the end of the year, Harborview keeps every document, the Travel Year Guide and the provider evaluations. The next year starts from that record rather than from the beginning, and the Review comes around again in its fourth year.";
 
 /** The one decision-ownership line on every page: ETI360's positive role
     first, then the site's canonical Who decides line (voice.ts). */
@@ -242,6 +246,8 @@ export type Step = {
   title: string;
   /** One sentence. */
   need: string;
+  /** How the step sits in the partnership year (Dan, 2026-10-01). */
+  partnership?: string;
   /** The hero bar's key facts: three or four. */
   facts: Fact[];
   /** The documents, the center of the step. */
@@ -271,6 +277,7 @@ export const STEPS: Step[] = [
     title: "The whole program, read path by path",
     // The reviewed need's second sentence, verbatim.
     need: "Before planning the year, the leadership team wants one view of the whole program, read the same way path by path, including what its two providers’ own documents cover.",
+    partnership: "The Review gives the partnership its starting point, because ETI360 and the school’s travel lead now share one reading of every program path.",
     facts: [
       { label: USED_BY, value: "The leadership team", phone: true },
       // From the reviewed rest of the year ("Every four years … opens the
@@ -326,6 +333,7 @@ export const STEPS: Step[] = [
     // [draft] the reviewed two sentences in one; the trip's provider by its
     // display name.
     need: `For a cycling trip in Taiwan from the ${CYCLING_PROVIDER_SHORT} catalog, the Head of School needs the trip’s documents before approving it; the trip leader, chaperones, families and students each need theirs before the group leaves.`,
+    partnership: "ETI360 prepares each trip’s reports in the same format, so a leader who moves from one trip to the next finds the same documents.",
     facts: [
       { label: USED_BY, value: "The Head of School, the trip leader, chaperones, families and students", phone: true },
       { label: WHEN, value: "Before, during and after the trip" },
@@ -404,6 +412,7 @@ export const STEPS: Step[] = [
     title: "A year of day trips, prepared at once",
     // [draft] the reviewed two sentences in one.
     need: "Harborview’s elementary division wants its year of one-day trips prepared at once, with one page per trip, so that every trip reads the same way.",
+    partnership: "The lower school’s year of day trips sits in the same Travel Year Guide as the international trips, so leadership sees the whole program in one place.",
     facts: [
       // [draft] from the pack's summary.
       { label: USED_BY, value: "Elementary leaders, teachers and families", phone: true },
@@ -452,6 +461,7 @@ export const STEPS: Step[] = [
     title: "One guide for the conference year",
     // [draft] the reviewed two sentences in one.
     need: "The Director of Athletics & Activities wants the coaches and advisors who travel with Harborview’s teams and activity groups to carry the same information for every host city.",
+    partnership: "The coaches receive their guide from the same partnership, so athletics travel follows the same preparation as every other path.",
     facts: [
       { label: USED_BY, value: "Coaches and advisors who travel with teams and activity groups", phone: true },
       // From the product's door.

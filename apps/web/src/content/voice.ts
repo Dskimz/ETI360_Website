@@ -21,14 +21,14 @@ export const CLOSING_SENTENCE =
 /** The founders, always named together. */
 export const FOUNDERS_LINE = "ETI360 was founded by Dan Skimin and Seb Wong.";
 
-/** Dan's track record (Dan, 2026-09-25), verbatim; follows FOUNDERS_LINE.
-    Replaces the retired earlier bio line. */
+/** Dan's bio (Dan, 2026-10-01: fuller bios from the 2023 site; the track
+    record stays credited to his career, never to ETI360 as a company). */
 export const DAN_TRACK_RECORD =
-  "Dan Skimin, Principal Consultant, spent 16 years as an international school athletics director and trip coordinator, coordinating 600 programs for 12,000 students.";
+  "Dan Skimin, Principal Consultant, coordinated 600 programs for 12,000 students over 16 years as an international school athletics director and trip coordinator, including as Interim Semester Coordinator at Singapore American School. He holds a doctorate in educational leadership and administration from the University of Southern California and an MBA in global finance from Thunderbird School of Global Management.";
 
-/** Seb's line (Sales rulings, Dan 2026-09-13: Seb Wong is part of every
-    engagement); follows DAN_TRACK_RECORD in WhoDoesTheWork. [draft] */
-export const SEB_LINE = "Seb Wong, Senior Consultant, is part of every engagement.";
+/** Seb's bio (Dan, 2026-10-01: his title and his SAS work may be named). */
+export const SEB_LINE =
+  "Seb Wong, Senior Consultant, is Senior Manager of Safety, Security, and Operational Risk at Singapore American School. He spent more than a decade in outdoor education leading wilderness expeditions, and he is part of every engagement.";
 
 /** ETI360's positive role, said before WHO_DECIDES wherever the two run as
     one statement (the Case Study's Who decides box). The copy canon's first
