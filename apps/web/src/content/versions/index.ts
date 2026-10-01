@@ -4,6 +4,7 @@ import harborviewReview from "./harborview-review";
 import lineAndLandmarkEvaluation from "./line-and-landmark-evaluation";
 import firholmElementary from "./firholm-elementary";
 import harborviewElementary from "./harborview-elementary";
+import harborviewKyotoVisa from "./harborview-kyoto-visa";
 import wexcombeMeridian from "./wexcombe-meridian";
 
 /* Every version of every product, in display order (four-product site spec
@@ -13,7 +14,8 @@ import wexcombeMeridian from "./wexcombe-meridian";
        Landmark provider evaluation (listed 2026-09-29; the Case Study
        shows it too);
      - Individual Trip Reports: the worked trips (src/content/trips/, each with a page
-       at /trips/{slug});
+       at /trips/{slug}), and Harborview's Japan Entry and Visa Report (not
+       listed; the Case Study shows it, 2026-10-01);
      - Field Trip Reports: the Firholm and Harborview annual packs;
      - Conference Travel Reports: the Wexcombe guide.
    A file that exports null is not built and never appears; only real
@@ -33,6 +35,7 @@ const ordered: (Version | null)[] = [
   harborviewReview,
   lineAndLandmarkEvaluation,
   ...trips,
+  harborviewKyotoVisa,
   firholmElementary,
   harborviewElementary,
   wexcombeMeridian,

@@ -378,6 +378,18 @@ export const STEPS: Step[] = [
           text: "Harborview’s edition would add, for each riding day, a pocket route card for the teachers to carry and the full route pages in the Trip Leader Card.",
         },
       },
+      {
+        // Dan, 2026-10-01: the Kyoto trip's visa report, the cover and one
+        // email only; the school letters with passport details stay off the
+        // site. [draft]
+        version: "harborview-kyoto-visa",
+        docs: ["japan-entry-and-visa-report"],
+        open: "japan-entry-and-visa-report",
+        note: {
+          lead: "Visas.",
+          text: "For Harborview’s Kyoto trip, ETI360 sorted the group by passport, set out which students and teachers need a visa for Japan, and wrote an email for each nationality with the school letters each application needs. The families apply, and the Embassy of Japan decides.",
+        },
+      },
     ],
     sends: [
       "The provider’s proposal and day-by-day itinerary.",
@@ -388,6 +400,8 @@ export const STEPS: Step[] = [
       "Turns the itinerary supplied into a day-by-day record and places each location it names on the map.",
       // [draft] shortened.
       "Lists the emergency departments by drive time from each place the group stays or rides.",
+      // [draft] Dan, 2026-10-01: the Japan Entry and Visa Report.
+      "Checks the entry rules for every passport in the group and prepares the visa emails and school letters.",
       // [draft] two reviewed lines in one.
       "Prepares the Trip Risk Working File, one section for each activity group, and writes each document for the person who uses it.",
     ],
