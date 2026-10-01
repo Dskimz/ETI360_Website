@@ -397,9 +397,8 @@ export const STEPS: Step[] = [
         },
       },
       {
-        // Dan, 2026-10-01: the Kyoto trip's visa report, the cover and one
-        // email only; the school letters with passport details stay off the
-        // site. [draft]
+        // Dan, 2026-10-01: the Kyoto trip's visa report, in full; the
+        // passport numbers read 360-XXXX-XXXX. [draft]
         version: "harborview-kyoto-visa",
         docs: ["japan-entry-and-visa-report"],
         open: "japan-entry-and-visa-report",
