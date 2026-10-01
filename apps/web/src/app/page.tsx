@@ -4,6 +4,7 @@ import { ProductDoors } from "@/components/ProductDoors";
 import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
 import { AREAS, EVIDENCE, PARTNERSHIP, START, YEAR } from "@/content/partnership";
 import { liveProducts, siteDescription } from "@/content/products";
+import { openAuto } from "@/content/versions";
 import {
   BRAND_EYEBROW,
   BRAND_LINE,
@@ -87,6 +88,11 @@ export default function HomePage() {
                 <div>
                   <h3>{a.title}</h3>
                   <p>{a.text}</p>
+                  {"example" in a && a.example ? (
+                    <p className={styles.example}>
+                      <a href={openAuto({ slug: a.example.version }, { slug: a.example.doc })}>{a.example.label} &rarr;</a>
+                    </p>
+                  ) : null}
                 </div>
               </li>
             ))}

@@ -29,6 +29,10 @@ export const PARTNERSHIP = {
   ],
 };
 
+/** A worked example for an area: a version and document on the site,
+    opened through the logged /open route (Dan, 2026-10-01). */
+export type Example = { version: string; doc: string; label: string };
+
 export const AREAS = {
   heading: "Where ETI360 helps",
   lede: "A school travel program depends on the same areas of work wherever it runs. ETI360 groups its work into these eight, and each school chooses the areas it needs.",
@@ -36,10 +40,12 @@ export const AREAS = {
     {
       title: "Policies, procedures and goals",
       text: "ETI360 reads the school's travel policies program by program in the Travel Program Review and prepares the Travel Year Guide, which sets out the school's year of trips in one place.",
+      example: { version: "harborview-travel-year-guide", doc: "travel-year-guide", label: "See Harborview’s Travel Year Guide" } as Example,
     },
     {
       title: "Trip budgets",
       text: "ETI360 sets out each trip's costs from the provider's quote in one format, covering transport, provider fees, insurance and contingency, so leadership can compare trips side by side.",
+      example: { version: "harborview-trip-budgets", doc: "trip-budgets", label: "See Harborview’s Trip Budgets" } as Example,
     },
     {
       title: "Trip providers",
@@ -52,6 +58,7 @@ export const AREAS = {
     {
       title: "Entry requirements and travel documents",
       text: "ETI360 researches each destination's entry rules, including passport validity, visas and the border systems in force, and writes them into the reports for families. The school and families make the applications themselves.",
+      example: { version: "harborview-kyoto-visa", doc: "japan-entry-and-visa-report", label: "See the Japan Entry and Visa Report" } as Example,
     },
     {
       title: "Trip leader preparation",

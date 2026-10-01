@@ -5,6 +5,8 @@ import lineAndLandmarkEvaluation from "./line-and-landmark-evaluation";
 import firholmElementary from "./firholm-elementary";
 import harborviewElementary from "./harborview-elementary";
 import harborviewKyotoVisa from "./harborview-kyoto-visa";
+import harborviewTravelYearGuide from "./harborview-travel-year-guide";
+import harborviewTripBudgets from "./harborview-trip-budgets";
 import wexcombeMeridian from "./wexcombe-meridian";
 
 /* Every version of every product, in display order (four-product site spec
@@ -16,6 +18,9 @@ import wexcombeMeridian from "./wexcombe-meridian";
      - Individual Trip Reports: the worked trips (src/content/trips/, each with a page
        at /trips/{slug}), and Harborview's Japan Entry and Visa Report (not
        listed; the Case Study shows it, 2026-10-01);
+     - partnership work, filed under the Travel Program Review and not
+       listed: Harborview's Travel Year Guide and Trip Budgets (the Case
+       Study's first step and the home page's areas, 2026-10-01);
      - Field Trip Reports: the Firholm and Harborview annual packs;
      - Conference Travel Reports: the Wexcombe guide.
    A file that exports null is not built and never appears; only real
@@ -36,6 +41,8 @@ const ordered: (Version | null)[] = [
   lineAndLandmarkEvaluation,
   ...trips,
   harborviewKyotoVisa,
+  harborviewTravelYearGuide,
+  harborviewTripBudgets,
   firholmElementary,
   harborviewElementary,
   wexcombeMeridian,

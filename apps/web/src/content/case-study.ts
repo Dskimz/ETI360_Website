@@ -303,6 +303,24 @@ export const STEPS: Step[] = [
       },
       // The provider section's sample, closed, with its notice under it.
       { version: "line-and-landmark-evaluation", docs: ["provider-evaluation"], provider: true },
+      // Dan, 2026-10-01: the partnership's planning documents, after the
+      // Review. Tone-reviewed with the partnership copy. [draft]
+      {
+        version: "harborview-travel-year-guide",
+        docs: ["travel-year-guide"],
+        note: {
+          lead: "The year.",
+          text: "After the Review, ETI360 prepares Harborview’s Travel Year Guide, which sets out the school’s year of trips in six phases with the people each step involves. The school sets the dates and changes them as the year moves, and the guide sets no deadlines.",
+        },
+      },
+      {
+        version: "harborview-trip-budgets",
+        docs: ["trip-budgets"],
+        note: {
+          lead: "Budgets.",
+          text: "ETI360 sets out the budget for each of Harborview’s 35 March trips in one format, from the provider’s cost and flights to GST and card fees, so leadership can compare the trips side by side. The school sets its prices.",
+        },
+      },
     ],
     // [draft] shortened from the reviewed lines.
     sends: [

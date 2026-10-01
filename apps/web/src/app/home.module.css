@@ -124,6 +124,9 @@
   margin-bottom: 8px;
 }
 
+.areas p.example { margin-top: 8px; font-size: var(--font-sm); font-weight: 600; }
+.areas p.example a { color: var(--navy); }
+
 .cta {
   font-weight: 600;
   color: var(--navy);
