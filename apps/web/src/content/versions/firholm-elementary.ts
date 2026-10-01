@@ -2,7 +2,7 @@ import { docPaths } from "@/content/trips/helpers";
 import type { Version } from "@/content/trips/types";
 
 /* The Annual Elementary Field Trip Risk Assessment Pack 2026–27 (Firholm
-   School, Magnolia, Seattle), a Field Trip Package version (Dan, 2026-09-25:
+   School, Magnolia, Seattle), a Field Trip Reports version (Dan, 2026-09-25:
    "Lets finish up the Seattle one and the one we have for Singapore"). Twelve
    one-day trips, Kindergarten to Grade 5, one for each grade in each semester.
 

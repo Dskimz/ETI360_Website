@@ -1,6 +1,6 @@
 /* Types for the site's versions: one version is one product prepared for one
    fictional school (Dan, 2026-09-25: each product page shows several versions
-   of that product). A Trip Package version is a worked trip with a page of its
+   of that product). An Individual Trip Reports version is a worked trip with a page of its
    own (/trips/{slug}); every other version is one document shown whole on its
    product page. The registry is src/content/versions/index.ts; the worked trips
    keep their files beside this one, listed in src/content/trips/index.ts.
@@ -105,7 +105,7 @@ export type Version = {
   listed?: boolean;
 };
 
-/** A Trip Package version: a worked trip with a page of its own. */
+/** An Individual Trip Reports version: a worked trip with a page of its own. */
 export type Trip = Version & {
   product: "trip-package";
   h1: string;

@@ -52,7 +52,7 @@ export function tripPaths(opts: {
 }
 
 /** Paths for a single-document version (the Review sample, a Field Trip
-    Package pack, a Conference Travel Package guide). `letter` and `a4` are
+    Package pack, a Conference Travel Reports guide). `letter` and `a4` are
     the published PDF file names under /docs/, or null for an edition still
     in preparation. */
 export function docPaths(opts: {

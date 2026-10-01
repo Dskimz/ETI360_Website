@@ -6,7 +6,7 @@ import { getProduct } from "@/content/products";
 import { notices, versionsOf } from "@/content/versions";
 import styles from "@/components/productpage.module.css";
 
-/* The Conference Travel Package, Tier 2 (four-product site spec §4.6; Dan,
+/* Conference Travel Reports, Tier 2 (four-product site spec §4.6; Dan,
    2026-09-25, Q2: the name and this address). One Athletics and Activities
    Trips Guide for the year (the document keeps the name its PDF carries),
    shown whole for its version: Wexcombe International School in the
@@ -68,14 +68,14 @@ const CLAIMS: { lead: string; body: string }[] = [
 ];
 
 // [draft] Then the notice verbatim (ADR-023).
-const DESCRIPTION = `The Conference Travel Package (Tier 2 Trip Readiness): one Athletics and Activities Trips Guide for the year, for the coaches and staff who travel with a school’s teams and delegations, with a chapter for every host city, in A4 and US Letter. ${notices(versionsOf("conference-travel-package"))}`;
+const DESCRIPTION = `Conference Travel Reports (Tier 2 Trip Readiness): one Athletics and Activities Trips Guide for the year, for the coaches and staff who travel with a school’s teams and delegations, with a chapter for every host city, in A4 and US Letter. ${notices(versionsOf("conference-travel-package"))}`;
 
 export const metadata: Metadata = {
-  title: "The Conference Travel Package",
+  title: "Conference Travel Reports",
   description: DESCRIPTION,
   alternates: { canonical: "/conference-travel-package" },
   openGraph: {
-    title: "The Conference Travel Package — ETI360",
+    title: "Conference Travel Reports — ETI360",
     description: DESCRIPTION,
     type: "website",
     images: ["/marketing/og-default.png"],

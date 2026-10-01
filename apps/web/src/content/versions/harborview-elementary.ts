@@ -2,7 +2,7 @@ import { A4_COVER, A4_PAGE, docPaths } from "@/content/trips/helpers";
 import type { Version } from "@/content/trips/types";
 
 /* The Annual Elementary Field Trip Risk Assessment Pack 2026–27 (Harborview
-   International School, Singapore), a Field Trip Package version: one pack
+   International School, Singapore), a Field Trip Reports version: one pack
    for the school year, one page per trip, a calendar for each month. Formerly
    the /trips/elementary worked trip; moved here on 2026-09-25 (redirects in
    next.config.ts send /trips/elementary/open/* to /open/harborview-elementary/*).

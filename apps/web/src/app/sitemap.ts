@@ -9,7 +9,7 @@ import { CASE_STUDY_HREF, caseStudyLive, STEPS, stepHref } from "@/content/case-
 // search engine should read as our own ranking of them: the home page, each
 // live product page, the Case Study (its overview, then its four steps, one
 // per product, while the provider-name hold allows; the two folded old steps
-// redirect and are never listed), each Trip Package version's page, then
+// redirect and are never listed), each Individual Trip Reports version's page, then
 // contact and privacy. Built from the product registry, so a product without
 // a version (spec S18) and a single-document version (an anchor on its
 // product page) never appear. /open, /review, /guides and /routes are never listed.

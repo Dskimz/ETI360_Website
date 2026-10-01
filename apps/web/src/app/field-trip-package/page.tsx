@@ -6,7 +6,7 @@ import { getProduct } from "@/content/products";
 import { notices, versionsOf } from "@/content/versions";
 import styles from "@/components/productpage.module.css";
 
-/* The Field Trip Package, Tier 2 (four-product site spec §4.5; Dan,
+/* Field Trip Reports, Tier 2 (four-product site spec §4.5; Dan,
    2026-09-25: Q1 no, so no single day trips). One pack for the school year,
    the Annual Elementary Field Trip Risk Assessment Pack, shown whole for each
    version: Firholm School (Seattle, US Letter first) and Harborview
@@ -59,14 +59,14 @@ const DECISIONS: { title: string; note: string }[] = [
 ];
 
 // [draft] Then each school's notice verbatim (ADR-023).
-const DESCRIPTION = `The Field Trip Package (Tier 2 Trip Readiness): the Annual Elementary Field Trip Risk Assessment Pack, a school year of one-day field trips prepared before the year begins, one page per trip and a calendar for each month, in US Letter and A4. ${notices(versionsOf("field-trip-package"))}`;
+const DESCRIPTION = `Field Trip Reports (Tier 2 Trip Readiness): the Annual Elementary Field Trip Risk Assessment Pack, a school year of one-day field trips prepared before the year begins, one page per trip and a calendar for each month, in US Letter and A4. ${notices(versionsOf("field-trip-package"))}`;
 
 export const metadata: Metadata = {
-  title: "The Field Trip Package",
+  title: "Field Trip Reports",
   description: DESCRIPTION,
   alternates: { canonical: "/field-trip-package" },
   openGraph: {
-    title: "The Field Trip Package — ETI360",
+    title: "Field Trip Reports — ETI360",
     description: DESCRIPTION,
     type: "website",
     images: ["/marketing/og-default.png"],

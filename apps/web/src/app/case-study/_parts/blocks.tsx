@@ -263,7 +263,7 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
   // 2026-09-29).
   const provider = one && group.provider === true;
   const aside = one && !open && note !== null;
-  // Several documents from another school (the Trip Package's six from
+  // Several documents from another school (the Individual Trip Reports's six from
   // Horizon Ridge): below 641px the one-sentence note comes before the grid,
   // so a phone reader is told whose samples they are before scrolling
   // through them, and the notice stays under it; 641px and wider keep both

@@ -475,7 +475,7 @@ h3.groupHead {
 /* Once a card's pages are open its row grows; the cards beside it keep
    their own height instead of stretching down the taller row. */
 .docGrid:has(details[open]) { align-items: start; }
-/* Three or more documents (the Trip Package's six): three to a row, each
+/* Three or more documents (the Individual Trip Reports's six): three to a row, each
    card standing, its cover on top at the trip page's width (150px) or a
    little more (review fix, 2026-09-29), then who uses it, the name, the
    decision and the editions. The group's open card (.docFeature) takes two
@@ -1109,7 +1109,7 @@ p.notices {
      2026-09-29). The note keeps the gold rule of the block it comes from.
      The note names the school and the trip, so the group heading above it
      (the same school and trip) is kept for screen readers only; with the
-     tighter spacing above, the Trip Package's first cover ends inside a
+     tighter spacing above, the Individual Trip Reports's first cover ends inside a
      390x844 screen (second review pass, 2026-09-29). */
   .docGroupNoteFirst { display: flex; flex-direction: column; }
   .docGroupNoteFirst > h3.groupHead {

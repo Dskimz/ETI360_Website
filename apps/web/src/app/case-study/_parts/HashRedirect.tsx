@@ -11,7 +11,7 @@ import { useEffect } from "react";
        works, whose ETI360 cell opens with the first conversation
        (2026-09-29: the conversation block folded into it);
      - #through-the-year lands on the overview's line for the rest of the
-       year (2026-09-29: the Trip Package's block folded into it, the Trip
+       year (2026-09-29: the Individual Trip Reports' block folded into it, the Trip
        Package being step 2, no longer the last);
      - #across (the removed Across the four products table) lands on How
        the work divides, which says the same for the whole year;

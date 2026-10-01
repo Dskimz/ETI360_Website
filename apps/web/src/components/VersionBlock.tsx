@@ -4,7 +4,7 @@ import { InsidePages } from "@/components/TripDocCard";
 import styles from "./versionblock.module.css";
 
 /* A single-document version shown whole on its product page (spec S9): the
-   Travel Program Review sample, a Field Trip Package pack, a Conference
+   Travel Program Review sample, a Field Trip Reports pack, a Conference
    Travel Package guide. One anchored block per version (id = the version
    slug, so /{product}#{slug} lands on it):
      - the school and place, the version's title, its one-sentence summary;
@@ -14,7 +14,7 @@ import styles from "./versionblock.module.css";
      - both paper editions through /open ("… edition in preparation" when one
        is not built);
      - the school's notice, verbatim.
-   No detail page: only Trip Package versions get pages of their own. */
+   No detail page: only Individual Trip Reports versions get pages of their own. */
 
 export function VersionBlock({ version }: { version: Version }) {
   return (

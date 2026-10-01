@@ -42,31 +42,31 @@ export const PRODUCTS: Product[] = [
   {
     slug: "trip-package",
     href: "/trip-package",
-    name: "Trip Package",
-    h1: "The Trip Package",
+    name: "Individual Trip Reports",
+    h1: "Individual Trip Reports",
     tiers: [2, 3],
-    // Rewritten with verbs (Dan, 2026-09-30). [draft]
-    door: "The Trip Package gives each person on one trip the document they use, from the school's approval to the report after the group comes home.",
+    // Renamed from Trip Package; Dan approved this text (2026-10-01).
+    door: "For each trip, ETI360 works with the school and the trip provider to prepare a consistently formatted set of reports. The reports account for every day of the itinerary and add what the school may not yet hold, from each location's details to the nearest hospitals and the emergency action procedures. The school chooses which reports each trip needs.",
     lead: { version: "washington-dc", doc: "trip-leader-card" },
   },
   {
     slug: "field-trip-package",
     href: "/field-trip-package",
-    name: "Field Trip Package",
-    h1: "The Field Trip Package",
+    name: "Field Trip Reports",
+    h1: "Field Trip Reports",
     tiers: [2],
     // Rewritten with verbs (Dan, 2026-09-30). [draft] (Q1 no: no single day trips)
-    door: "The Field Trip Package covers the lower school's day trips for the whole school year, with one page for each trip and a calendar for each month.",
+    door: "Field Trip Reports cover the lower school's day trips for the whole school year, with one page for each trip and a calendar for each month.",
     lead: { version: "firholm-elementary", doc: "field-trip-risk-assessment-pack" },
   },
   {
     slug: "conference-travel-package",
     href: "/conference-travel-package",
-    name: "Conference Travel Package",
-    h1: "The Conference Travel Package",
+    name: "Conference Travel Reports",
+    h1: "Conference Travel Reports",
     tiers: [2],
     // Rewritten with verbs (Dan, 2026-09-30). [draft]
-    door: "The Conference Travel Package gives the coaches and staff who travel with the school's teams one guide for the season, with a chapter for each host city.",
+    door: "Conference Travel Reports give the coaches and staff who travel with the school's teams one guide for the season, with a chapter for each host city.",
     lead: { version: "wexcombe-meridian", doc: "athletics-activities-trips-guide" },
   },
 ];
@@ -101,7 +101,7 @@ export function productCount(products: Product[] = liveProducts()): string {
   return COUNT[products.length] ?? `${products.length} products`;
 }
 
-/** "the Travel Program Review, the Trip Package, …, and the Conference Travel Package". */
+/** "the Travel Program Review, the Individual Trip Reports, …, and the Conference Travel Reports". */
 export function productNames(products: Product[] = liveProducts()): string {
   const names = products.map((p) => `the ${p.name}`);
   if (names.length <= 2) return names.join(" and ");

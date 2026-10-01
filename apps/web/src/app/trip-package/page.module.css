@@ -1,4 +1,4 @@
-/* The Trip Package (/trip-package). Tokens only. The page sits in
+/* Individual Trip Reports (/trip-package). Tokens only. The page sits in
    trips.module.css's .wide, like the worked-trip pages, so the trip cards
    keep their type scale and the two pages share one left edge. Selectors
    that style lists and paragraphs carry :global(.article-body) or a second

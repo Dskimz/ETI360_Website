@@ -40,7 +40,7 @@ export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
         ))}
         {trips.length % 4 !== 0 ? (
           <Link href="/trip-package" className={styles.allTile}>
-            <span className={`${styles.allTileText} ui`}>The Trip Package &rarr;</span>
+            <span className={`${styles.allTileText} ui`}>Individual Trip Reports &rarr;</span>
           </Link>
         ) : null}
       </div>

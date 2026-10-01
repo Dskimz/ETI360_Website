@@ -9,7 +9,7 @@
      .rest      an .article-body section with no top padding: how it works,
                 who decides, who does the work.
    The prose is left-aligned in the container at the reading measure, so it
-   lines up with the version blocks and with the Trip Package and
+   lines up with the version blocks and with the Individual Trip Reports and
    worked-trip pages (.container and trips.module.css's .wide share one
    width and gutter).
 

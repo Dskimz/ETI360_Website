@@ -4,7 +4,7 @@ import { cardEyebrow, cardSummary, hasEdition, shortDates, type Trip } from "@/c
 import type { Version } from "@/content/versions";
 import styles from "@/app/trips/trips.module.css";
 
-/* One worked trip as a card (a Trip Package version): photo, trip kind ·
+/* One worked trip as a card (a Individual Trip Reports version): photo, trip kind ·
    region, title, school · dates, the one-line summary, the paper line, and
    "See the documents". Links to /trips/{slug}. Lifted from the trips
    library; wrap the cards in an element with styles.wide and styles.library. */

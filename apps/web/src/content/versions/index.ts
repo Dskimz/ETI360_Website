@@ -12,10 +12,10 @@ import wexcombeMeridian from "./wexcombe-meridian";
      - Travel Program Review: the Harborview sample, and the Line &
        Landmark provider evaluation (listed 2026-09-29; the Case Study
        shows it too);
-     - Trip Package: the worked trips (src/content/trips/, each with a page
+     - Individual Trip Reports: the worked trips (src/content/trips/, each with a page
        at /trips/{slug});
-     - Field Trip Package: the Firholm and Harborview annual packs;
-     - Conference Travel Package: the Wexcombe guide.
+     - Field Trip Reports: the Firholm and Harborview annual packs;
+     - Conference Travel Reports: the Wexcombe guide.
    A file that exports null is not built and never appears; only real
    versions are listed, never placeholders. Coming: the Idaho rail trail
    (src/content/trips/idaho-rail-trail.ts, null until its import lands) and

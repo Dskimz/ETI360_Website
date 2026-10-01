@@ -12,7 +12,7 @@ import styles from "../trips.module.css";
    no decision notes, no document blurbs, no page captions; one link per
    document (the open route picks the paper). The notes below predate that.
 
-   A worked trip: one version of the Trip Package (four-product site spec
+   A worked trip: one version of the Individual Trip Reports (four-product site spec
    §4.4). The documents one trip receives, decision by decision, each in its
    US Letter and A4 editions (Dan, 2026-09-24). Each document card folds its
    three captioned pages under a closed "Look inside" (spec S8; no

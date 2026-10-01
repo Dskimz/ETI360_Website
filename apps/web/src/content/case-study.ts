@@ -10,9 +10,9 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    guide with the left step list and the pinned previous and next bar Dan
    asked for.
 
-   FIVE PAGES, in this order (Dan, 2026-09-29: "Trip Package should be number
-   2"): the overview, then Travel Program Review, Trip Package, Field Trip
-   Package, Conference Travel Package. The addresses of the two old steps
+   FIVE PAGES, in this order (Dan, 2026-09-29: "Individual Trip Reports should be number
+   2"): the overview, then Travel Program Review, Individual Trip Reports, Field Trip
+   Reports, Conference Travel Reports. The addresses of the two old steps
    folded in on 2026-09-28 redirect (src/lib/redirects.ts); the old hash
    anchors land through _parts/HashRedirect.tsx.
 
@@ -166,7 +166,7 @@ export const OVERVIEW_FACTS: Fact[] = [
   { label: "School", value: "Harborview International School, Singapore", phone: true },
   {
     label: "Four products",
-    value: "Travel Program Review, Trip Package, Field Trip Package, Conference Travel Package",
+    value: "Travel Program Review, Individual Trip Reports, Field Trip Reports, Conference Travel Reports",
     phone: true,
   },
   { label: "Paper", value: HARBORVIEW_PAPER },
@@ -187,7 +187,7 @@ export const WORK = {
     "Prepared documents, in its own paper size. The school reviews them; for trip risk documents, it completes, amends and approves them.",
 };
 
-/** The rest of the year, in one line on the overview (the Trip Package's
+/** The rest of the year, in one line on the overview (the Individual Trip Reports's
     "rest of the year" block folded in here, 2026-09-29, now that the Trip
     Package is step 2, not the last). [draft] 2026-09-28. */
 export const LIFECYCLE =
@@ -321,7 +321,7 @@ export const STEPS: Step[] = [
   {
     id: "trip-package",
     number: 2,
-    name: "Trip Package",
+    name: "Individual Trip Reports",
     title: "One trip, from approval to feedback",
     // [draft] the reviewed two sentences in one; the trip's provider by its
     // display name.
@@ -329,7 +329,7 @@ export const STEPS: Step[] = [
     facts: [
       { label: USED_BY, value: "The Head of School, the trip leader, chaperones, families and students", phone: true },
       { label: WHEN, value: "Before, during and after the trip" },
-      // [draft] from the reviewed "The Trip Package, decision by decision".
+      // [draft] from the reviewed "Individual Trip Reports, decision by decision".
       { label: RECEIVES, value: "The documents for one trip, decision by decision", phone: true },
       PAPER_FACT,
     ],
@@ -390,17 +390,17 @@ export const STEPS: Step[] = [
       "The school or the provider designates which emergency department the group uses.",
     ],
     links: [
-      { href: "/trip-package", label: "The Trip Package" },
+      { href: "/trip-package", label: "Individual Trip Reports" },
       { href: "/trips/italy", label: "The Italy trip, every document in US Letter and A4" },
     ],
     description:
-      "An illustrative case study with Harborview, step 2 of 4: the Trip Package prepares one trip’s documents, from the approval through to the post-trip feedback.",
+      "An illustrative case study with Harborview, step 2 of 4: Individual Trip Reports prepare one trip’s documents, from the approval to the post-trip feedback.",
   },
 
   {
     id: "field-trip-package",
     number: 3,
-    name: "Field Trip Package",
+    name: "Field Trip Reports",
     title: "A year of day trips, prepared at once",
     // [draft] the reviewed two sentences in one.
     need: "Harborview’s elementary division wants its year of one-day trips prepared at once, with one page per trip, so that every trip reads the same way.",
@@ -440,15 +440,15 @@ export const STEPS: Step[] = [
       "Each trip and its risk assessment: the school reviews, completes, amends as necessary, and approves them.",
       "Which emergency department each group uses.",
     ],
-    links: [{ href: "/field-trip-package", label: "The Field Trip Package" }],
+    links: [{ href: "/field-trip-package", label: "Field Trip Reports" }],
     description:
-      "An illustrative case study with Harborview, step 3 of 4: the Field Trip Package documents a year of elementary day trips at once, one page for each trip.",
+      "An illustrative case study with Harborview, step 3 of 4: Field Trip Reports document a year of elementary day trips at once, with one page for each trip.",
   },
 
   {
     id: "conference-travel-package",
     number: 4,
-    name: "Conference Travel Package",
+    name: "Conference Travel Reports",
     title: "One guide for the conference year",
     // [draft] the reviewed two sentences in one.
     need: "The Director of Athletics & Activities wants the coaches and advisors who travel with Harborview’s teams and activity groups to carry the same information for every host city.",
@@ -477,9 +477,9 @@ export const STEPS: Step[] = [
       "The Director of Athletics & Activities approves all team and activity travel under the school’s policy.",
       "The school completes the fields marked for confirmation and confirms which emergency department each group uses.",
     ],
-    links: [{ href: "/conference-travel-package", label: "The Conference Travel Package" }],
+    links: [{ href: "/conference-travel-package", label: "Conference Travel Reports" }],
     description:
-      "An illustrative case study with Harborview, step 4 of 4: the Conference Travel Package gives the coaches one guide, with a chapter for every host city.",
+      "An illustrative case study with Harborview, step 4 of 4: Conference Travel Reports give the coaches and staff one guide, with a chapter for every host city.",
   },
 ];
 

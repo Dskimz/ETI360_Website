@@ -1,4 +1,4 @@
-/* Worked trip pages (/trips/{slug}), the Trip Package page's trip cards
+/* Worked trip pages (/trips/{slug}), the Individual Trip Reports page's trip cards
    (/trip-package), and the document card, trip card and version block
    shared by every product page (TripDocCard, TripCard, VersionBlock). Tokens
    only. */
@@ -14,7 +14,7 @@
   scroll-margin-top: 96px;
 }
 
-/* ── Breadcrumb: the trip as one version of the Trip Package ── */
+/* ── Breadcrumb: the trip as one version of the Individual Trip Reports ── */
 .breadcrumb {
   margin-bottom: 28px;
 }
@@ -245,7 +245,7 @@
   .others { margin-top: 56px; }
 }
 
-/* ── Trip cards (the Trip Package page) ── */
+/* ── Trip cards (the Individual Trip Reports page) ── */
 .library {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

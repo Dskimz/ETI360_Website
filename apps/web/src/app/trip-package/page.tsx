@@ -8,7 +8,7 @@ import { trips } from "@/content/trips";
 import tripStyles from "../trips/trips.module.css";
 import styles from "./page.module.css";
 
-/* The Trip Package, Tiers 2 and 3 (four-product site spec §4.3).
+/* Individual Trip Reports, Tiers 2 and 3 (four-product site spec §4.3).
 
    2026-09-29 (Dan): "scrape out all the AI text ... just give the
    information and reports and let them talk for themselves", and say how the
@@ -48,7 +48,7 @@ function readerOf(docId: string): string {
     const d = t.documents.find((x) => x.slug === docId);
     if (d) return d.reader;
   }
-  throw new Error(`Trip Package page lists "${docId}", which no worked trip carries`);
+  throw new Error(`Individual Trip Reports page lists "${docId}", which no worked trip carries`);
 }
 
 /** "Improving next year's trip" → "improving-next-years-trip". */
@@ -63,11 +63,11 @@ function anchorOf(title: string): string {
 const DESCRIPTION = `${product.door} ${tierNames(product).join(" · ")}.`;
 
 export const metadata: Metadata = {
-  title: "The Trip Package",
+  title: "Individual Trip Reports",
   description: DESCRIPTION,
   alternates: { canonical: "/trip-package" },
   openGraph: {
-    title: "The Trip Package — ETI360",
+    title: "Individual Trip Reports — ETI360",
     description: DESCRIPTION,
     type: "website",
     images: ["/marketing/og-default.png"],

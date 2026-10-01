@@ -7,7 +7,7 @@ import { getProduct } from "@/content/products";
 import { versionsOf } from "@/content/versions";
 import styles from "@/components/productpage.module.css";
 
-/* 2026-09-30 (Dan): the same cleanup as the Trip Package page: the header
+/* 2026-09-30 (Dan): the same cleanup as the Individual Trip Reports page: the header
    line, the two samples with titles only, the program paths, how it works in
    three steps. Cut: "What the school receives", the long provider
    paragraph, "Which standard is this against?", Who decides. The provider

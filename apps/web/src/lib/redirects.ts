@@ -27,7 +27,7 @@ const toTripPackage = (source: string, anchor = ""): SiteRedirect => ({
 export const REDIRECTS: SiteRedirect[] = [
   // ── Trips (rows 1–4) ──
   {
-    // The Harborview elementary pack became a Field Trip Package version
+    // The Harborview elementary pack became a Field Trip Reports version
     // (2026-09-25); its version slug changed with it. Before row 2.
     source: "/trips/elementary/open/:doc",
     destination: "/open/harborview-elementary/:doc",
@@ -46,7 +46,7 @@ export const REDIRECTS: SiteRedirect[] = [
     permanent: true,
   },
   {
-    // The library became the Trip Package page's worked trips; the
+    // The library became the Individual Trip Reports page's worked trips; the
     // six /trips/{slug} pages keep their addresses (Monday's emails).
     source: "/trips",
     destination: "/trip-package",
@@ -68,7 +68,7 @@ export const REDIRECTS: SiteRedirect[] = [
   toTripPackage("/for-schools/duty-manager-simulation"),
   toTripPackage("/for-schools/incident-reporting"),
   { source: "/for-schools/field-trips", destination: "/field-trip-package", permanent: true },
-  // Q2 answered (Dan, 2026-09-25: Conference Travel Package), so 308.
+  // Q2 answered (Dan, 2026-09-25: Conference Travel Reports), so 308.
   { source: "/for-schools/conference-visits", destination: "/conference-travel-package", permanent: true },
   { source: "/for-schools/tournament-travel", destination: "/conference-travel-package", permanent: true },
   { source: "/for-schools/travel-program-review", destination: "/travel-program-review", permanent: true },
@@ -190,7 +190,7 @@ export const REDIRECTS: SiteRedirect[] = [
 /* The Case Study's two folded steps (2026-09-28: five pages, not seven):
    the first conversation now opens the ETI360 cell of the Travel Program
    Review's How it works, and the rest of the year is the overview's line
-   for it (2026-09-29, when the Trip Package became step 2). Permanent,
+   for it (2026-09-29, when the Individual Trip Reports became step 2). Permanent,
    each straight to the part it folded into. Only while the case study is
    live: next.config.ts adds these rows unless the publishing hold is on in
    a production build (src/lib/case-study-hold.ts), where every /case-study

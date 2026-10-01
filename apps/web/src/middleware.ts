@@ -119,7 +119,7 @@ function classifyAgent(req: NextRequest) {
 //
 // The limit, accepted (review, 2026-09-27): attribution reaches one step.
 // A campaign visitor who lands on a tagged /trips/italy?utm_… and then
-// follows a plain link to another page (the Trip Package page, another trip)
+// follows a plain link to another page (the Individual Trip Reports page, another trip)
 // carries no tags there, so a document opened from that second page logs no
 // pdf-open row; the [pdf-open] runtime line still records the open. Carrying
 // the tags further would need a session cookie, which the site's cookieless

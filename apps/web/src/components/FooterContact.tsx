@@ -7,7 +7,7 @@ import { CLOSING_SENTENCE, CLOSING_SIGNATURE } from "@/content/voice";
 /* The contact row at the top of the footer. It replaces the separate navy
    contact band (Dan, 2026-09-28: one footer, not two bars). On a product page
    the button carries that product to the form (/contact?product={slug},
-   spec S14); trip pages carry the Trip Package. Hidden on /contact itself.
+   spec S14); trip pages carry the Individual Trip Reports. Hidden on /contact itself.
 
    The product slugs come from the server footer as a prop. This is a client
    component, so importing src/content/products.ts here would pull the whole
