@@ -68,16 +68,17 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
    ON HOLD FOR PUBLISHING until the second fictional provider is renamed:
    see src/lib/case-study-hold.ts. The cycling provider was renamed Line &
    Landmark Cycle Travel on 2026-09-29 (Dan's brand brief); the orienteering
-   provider still carries a founder's name, which lives once, in the
-   constant below. */
+   provider became Northmark Orienteering on 2026-10-01 (Dan: "lets take
+   out SWOT"; name web-checked against real providers). */
 
 /** The fictional cycling-tour provider (Dan, 2026-09-29: renamed by his
     brand brief; internal code LNL, never abbreviated in copy). */
 export const CYCLING_PROVIDER = "Line & Landmark Cycle Travel";
 /** Its display name, where a short form reads better. */
 export const CYCLING_PROVIDER_SHORT = "Line & Landmark";
-/** The fictional orienteering provider (renamed before publishing). */
-export const ORIENTEERING_PROVIDER = "Seb Wong Orienteering Tours";
+/** The fictional orienteering provider (Dan, 2026-10-01: renamed from the
+    founder-named provider before publishing). */
+export const ORIENTEERING_PROVIDER = "Northmark Orienteering";
 
 /* A provider's notice, in the form of Line & Landmark's (the brand brief's,
    2026-09-29). [draft] second review pass, 2026-09-29: the earlier "its

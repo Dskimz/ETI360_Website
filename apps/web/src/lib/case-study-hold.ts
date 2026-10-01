@@ -1,4 +1,6 @@
-/* The Case Study's publishing hold, enforced in code. No imports, so
+/* The Case Study's publishing hold, enforced in code. LIFTED 2026-10-01:
+   the orienteering provider is now Northmark Orienteering (Dan: "lets take
+   out SWOT"). The mechanism stays for any later hold. No imports, so
    next.config.ts can read it too (the Case Study's two old step addresses
    redirect only while the case study is live; see src/lib/redirects.ts).
 
@@ -21,7 +23,7 @@
    constant, so pushing the branch that carries it publishes the name,
    whatever the hold. (The case study's own excerpt images are gone; its
    pages show the site's document images, which name no founder.) */
-export const CASE_STUDY_ON_HOLD = true;
+export const CASE_STUDY_ON_HOLD = false;
 
 /** False on a production deploy while the hold is on; true everywhere else. */
 export function caseStudyLive(): boolean {
