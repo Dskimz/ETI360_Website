@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { versionsOf } from "@/content/versions";
 import { assertRedirectsLand } from "@/lib/redirect-check";
 import { SITE_URL } from "@/lib/site";
+import { INCIDENT_CASE_HREF, incidentCaseLive } from "@/lib/incident-case-hold";
 import { CASE_STUDY_HREF, caseStudyLive, STEPS, stepHref } from "@/content/case-study";
 
 // Every indexable route (four-product site spec §10), with the priority a
@@ -28,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ...STEPS.map((s) => ({ path: stepHref(s), priority: 0.7, changeFrequency: "monthly" as const })),
         ]
       : []),
+    ...(incidentCaseLive() ? [{ path: INCIDENT_CASE_HREF, priority: 0.7, changeFrequency: "monthly" as const }] : []),
     ...versionsOf("trip-package").map((v) => ({
       path: `/trips/${v.slug}`,
       priority: 0.7,
