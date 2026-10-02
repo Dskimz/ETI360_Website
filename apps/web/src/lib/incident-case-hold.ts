@@ -1,4 +1,9 @@
-/* The incident reporting case study's publishing hold (Dan, 2026-10-03: "Lets
+/* LIFTED 2026-10-02 (Dan: option 1, "publish it"): the page now says the
+   system is built to run in the school's account and is installed there at
+   handover, rather than that it runs there today. Restore the plain wording
+   once the clean-Workspace release has run.
+
+   The incident reporting case study's publishing hold (Dan, 2026-10-03: "Lets
    add it to the website also"). No imports, so any module can read it.
 
    ON HOLD until the school release runs with nothing on ETI360's side. The
@@ -14,7 +19,7 @@
    Local builds and Vercel previews show it for review. This repository is
    public, so pushing the branch publishes the copy in source, whatever the
    hold; the copy holds no private data. */
-export const INCIDENT_CASE_ON_HOLD = true;
+export const INCIDENT_CASE_ON_HOLD = false;
 
 /** False on a production deploy while the hold is on; true everywhere else. */
 export function incidentCaseLive(): boolean {
