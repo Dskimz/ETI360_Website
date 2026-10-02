@@ -32,10 +32,10 @@ export const WHO_WE_WORK_WITH = {
       cta: "International examples",
     },
     {
-      title: "US independent schools",
-      text: "ETI360 works with US independent and religious schools on day trips, overnight trips and travel abroad.",
+      title: "Independent schools",
+      text: "ETI360 works with independent and religious schools on day trips, overnight trips and travel abroad.",
       href: "/examples?schools=us",
-      cta: "US examples",
+      cta: "Independent school examples",
     },
   ],
 };
