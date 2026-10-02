@@ -129,9 +129,9 @@ export const CASE_STUDIES: { heading: string; cards: CaseStudyCard[] } = {
     {
       school: "Horizon Ridge School of Cleveland",
       place: "Ohio",
-      audience: "For US schools",
+      audience: "For independent schools",
       // Dan, 2026-10-01: show it as coming; its trips open now.
-      text: "ETI360 is preparing the US case study, and the school’s three trips open in full now.",
+      text: "ETI360 is preparing this case study, and the school’s three trips open in full now.",
       photo: {
         src: "/marketing/case-studies/horizon-ridge-cleveland.jpg",
         width: 800,

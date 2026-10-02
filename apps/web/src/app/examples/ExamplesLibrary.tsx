@@ -41,12 +41,12 @@ export type ExampleArea = {
 const OPTIONS: {value: Filter; label: string}[] = [
   {value: 'all', label: 'All schools'},
   {value: 'International', label: 'International schools'},
-  {value: 'US', label: 'US schools'},
+  {value: 'US', label: 'Independent schools'},
 ]
 
 const OTHER: Record<'International' | 'US', string> = {
-  International: 'This area has US examples only for now; the documents take the same form for an international school.',
-  US: 'This area has international examples only for now; the documents take the same form for a US school.',
+  International: 'This area has independent school examples only for now; the documents take the same form for an international school.',
+  US: 'This area has international examples only for now; the documents take the same form for an independent school.',
 }
 
 function Tile({item}: {item: ExampleItem}) {

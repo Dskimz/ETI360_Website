@@ -11,7 +11,7 @@ import styles from "./examples.module.css";
 
 /* Examples (Dan, 2026-10-01 redesign): one library holding every worked
    document on the site, grouped by the eight areas, with a switch between
-   international and US schools. The four product pages folded in here (Dan's
+   international and independent schools. The four product pages folded in here (Dan's
    answer, 2026-10-01); their old addresses redirect to the matching area
    (src/lib/redirects.ts). Every document opens through the logged /open
    route; a worked trip's documents also link to the trip's own page, which
@@ -20,7 +20,7 @@ import styles from "./examples.module.css";
    library is where every example lives. */
 
 const DESCRIPTION =
-  "Every worked example ETI360 has prepared, grouped by area of work, for international and US schools. Each document opens in full.";
+  "Every worked example ETI360 has prepared, grouped by area of work, for international and independent schools. Each document opens in full.";
 
 export const metadata: Metadata = {
   title: "Examples",
