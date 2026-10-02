@@ -1,40 +1,99 @@
-/* The home page's copy (Dan, 2026-10-01, redesign brief
-   dev/website-outputs/REDESIGN-PROMPT-2026-10-01.md in the rebuild repo):
-   about 400 words, images over prose. The partnership in one paragraph and
-   three points, the eight areas as document tiles (src/content/areas.ts), the
-   travel year in six one-line phases, two case-study cards, who does the
-   work, and one line to start a conversation. The earlier long copy is in
-   the vault draft ETI360-Consulting-and-Partnership-Draft-2026-10 (revision
-   2). No fee on the site: ETI360 scopes and prices each partnership case by
-   case. The Travel Year Guide is a guide the school owns, with its own
-   dates; never deadlines. */
+import type { TileDoc } from "@/content/areas";
 
-export const PARTNERSHIP = {
-  heading: "A partner for the whole travel program",
-  lede: "ETI360 works with schools across the travel year, reviewing the program, preparing each trip and supporting staff while groups are away. The school keeps every decision and approval.",
-  points: [
-    "ETI360’s consultants have run travel programs inside schools.",
-    "ETI360 takes no payment from trip providers, so its evaluation of each provider stays independent.",
-    "The school keeps every document and record when its staff move on.",
+/* The home page's copy (Dan, 2026-10-01, second pass: "less words on the
+   homepage but link to learn more"). Order: what we do in one line with
+   links, who we work with, the solutions as a sideways card row (Where
+   ETI360 helps), Year-Round Travel Support as a second card row with each
+   phase's documents, two case-study cards, About ETI360 as cards, and one
+   line to start a conversation. Areas and their documents live in
+   content/areas.ts. No fee on the site: ETI360 scopes and prices each
+   partnership case by case. The Travel Year Guide is a guide the school
+   owns, with its own dates; never deadlines. */
+
+export const WHAT_WE_DO = {
+  heading: "What we do",
+  // Dan's line, 2026-10-01 ("solution" made plural).
+  line: "ETI360 provides a full suite of customizable solutions to help schools with their educational travel programs.",
+  links: [
+    { href: "#solutions", label: "The solutions" },
+    { href: "#year", label: "Year-round support" },
+    { href: "/examples", label: "Every example" },
+    { href: "/case-study", label: "The case study" },
   ],
 };
 
-export const AREAS_INTRO = {
+export const WHO_WE_WORK_WITH = {
+  heading: "Who we work with",
+  groups: [
+    {
+      title: "International schools",
+      text: "ETI360 works with international schools whose trips cross borders, from Week Without Walls to conference travel.",
+      href: "/examples?schools=international",
+      cta: "International examples",
+    },
+    {
+      title: "US independent schools",
+      text: "ETI360 works with US independent and religious schools on day trips, overnight trips and travel abroad.",
+      href: "/examples?schools=us",
+      cta: "US examples",
+    },
+  ],
+};
+
+export const SOLUTIONS_INTRO = {
   heading: "Where ETI360 helps",
-  lede: "Each school chooses its areas, and every tile opens a real document.",
+  lede: "Each school chooses the solutions it needs.",
 };
 
 export const YEAR = {
-  heading: "A travel year with ETI360",
-  lede: "The school sets its own dates, and the Travel Year Guide keeps them in one place.",
-  guide: { version: "harborview-travel-year-guide", doc: "travel-year-guide" },
+  heading: "Year-Round Travel Support",
+  lede: "The school sets its own dates, and ETI360 prepares the documents each phase needs.",
   phases: [
-    { title: "Review and planning", text: "ETI360 reviews the program and its policies with the school’s leadership." },
-    { title: "Choosing the trips", text: "ETI360 evaluates the providers’ documents and sets out the budgets." },
-    { title: "Preparing families", text: "ETI360 writes the entry requirements and the family reports." },
-    { title: "Preparing the trips", text: "ETI360 prepares each trip’s reports and meets its leaders." },
-    { title: "The trips", text: "Leaders carry their brief, and the school runs its own duty arrangements." },
-    { title: "Feedback and reporting", text: "ETI360 gathers the feedback, and next year’s guide starts from it." },
+    {
+      title: "Review and planning",
+      text: "ETI360 reviews the program and its policies with the school’s leadership.",
+      docs: [
+        { version: "harborview-review", doc: "travel-program-review" },
+        { version: "harborview-travel-year-guide", doc: "travel-year-guide" },
+      ] as TileDoc[],
+    },
+    {
+      title: "Choosing the trips",
+      text: "ETI360 evaluates the providers’ documents and sets out the budgets.",
+      docs: [
+        { version: "line-and-landmark-evaluation", doc: "provider-evaluation" },
+        { version: "harborview-trip-budgets", doc: "trip-budgets" },
+      ] as TileDoc[],
+    },
+    {
+      title: "Preparing families",
+      text: "ETI360 writes the entry requirements and the family reports.",
+      docs: [
+        { version: "harborview-kyoto-visa", doc: "japan-entry-and-visa-report" },
+        { version: "italy", doc: "family-trip-brief" },
+      ] as TileDoc[],
+    },
+    {
+      title: "Preparing the trips",
+      text: "ETI360 prepares each trip’s reports and meets its leaders.",
+      docs: [
+        { version: "washington-dc", doc: "school-trip-record" },
+        { version: "washington-dc", doc: "trip-risk-working-file" },
+      ] as TileDoc[],
+    },
+    {
+      title: "The trips",
+      text: "Leaders carry their brief, and the school runs its own duty arrangements.",
+      docs: [
+        { version: "washington-dc", doc: "trip-leader-card" },
+        { version: "washington-dc", doc: "chaperone-briefing" },
+      ] as TileDoc[],
+    },
+    {
+      title: "Feedback and reporting",
+      text: "ETI360 gathers the feedback, and next year’s guide starts from it.",
+      docs: [{ version: "costa-rica", doc: "post-trip-feedback-report" }] as TileDoc[],
+    },
   ],
 };
 
@@ -86,9 +145,10 @@ export const CASE_STUDIES: { heading: string; cards: CaseStudyCard[] } = {
   ],
 };
 
-/** Who does the work, two lines each, from the approved bios (voice.ts). */
-export const PEOPLE = {
-  heading: "Who does the work",
+/** About ETI360 as cards: the two consultants, from the approved bios
+    (voice.ts), and how ETI360 works. */
+export const ABOUT = {
+  heading: "About ETI360",
   people: [
     {
       name: "Dan Skimin",
@@ -103,6 +163,14 @@ export const PEOPLE = {
       line: "Seb is Senior Manager of Safety, Security, and Operational Risk at Singapore American School, and he is part of every engagement.",
     },
   ],
+  how: {
+    title: "How ETI360 works",
+    lines: [
+      "ETI360 takes no payment from trip providers, so its evaluation of each provider stays independent.",
+      "The school keeps every document and record when its staff move on.",
+      "The school keeps every decision and approval.",
+    ],
+  },
 };
 
 export const START = {

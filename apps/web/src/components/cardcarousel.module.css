@@ -1,0 +1,44 @@
+/* The card carousel (CardCarousel.tsx). Tokens only. */
+.carousel { position: relative; }
+.track {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px 18px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline) transparent;
+}
+.track > li {
+  flex: 0 0 clamp(260px, 26vw, 300px);
+  scroll-snap-align: start;
+  display: flex;
+}
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+.controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--navy);
+  background: #fff;
+  color: var(--navy);
+  font-size: var(--font-lg);
+  line-height: 1;
+  cursor: pointer;
+}
+.controls button:hover:not(:disabled) { background: var(--navy); color: #fff; }
+.controls button:disabled { opacity: 0.3; cursor: default; }
+@media (max-width: 560px) {
+  .track > li { flex-basis: 78vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track { scroll-behavior: auto; }
+}

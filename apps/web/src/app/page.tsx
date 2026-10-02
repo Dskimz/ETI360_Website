@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { AREAS, TIER_TAG, type TileDoc } from "@/content/areas";
-import { AREAS_INTRO, CASE_STUDIES, PARTNERSHIP, PEOPLE, START, YEAR } from "@/content/partnership";
+import { CardCarousel } from "@/components/CardCarousel";
+import { SOLUTION_CARDS, TIER_TAG, type TileDoc } from "@/content/areas";
+import {
+  ABOUT,
+  CASE_STUDIES,
+  SOLUTIONS_INTRO,
+  START,
+  WHAT_WE_DO,
+  WHO_WE_WORK_WITH,
+  YEAR,
+} from "@/content/partnership";
 import { siteDescription } from "@/content/products";
 import { getVersion, openAuto, publicNotice } from "@/content/versions";
 import { BRAND_EYEBROW, BRAND_LINE, WHAT_WE_DO_LINE } from "@/content/voice";
 import styles from "./home.module.css";
 
-/* Services: the home page (Dan, 2026-10-01 redesign brief). About 400 words,
-   images over prose: the Queenstown hero with the two brand lines, the
-   partnership, the eight areas as document tiles, the travel year as a
-   six-phase strip beside the Travel Year Guide, two case-study cards, who
-   does the work, and one line to start a conversation. Copy in
-   content/partnership.ts; areas and tile documents in content/areas.ts. */
+/* Services: the home page (Dan, 2026-10-01, second pass: fewer words, links
+   to learn more, the solutions and the travel year as sideways card rows,
+   case studies and About ETI360 as cards). Copy in content/partnership.ts;
+   the solutions in content/areas.ts. */
 
 // The h1 is BRAND_LINE split for its line break: "Risk intelligence" /
 // "for school trips." Never retyped (voice.ts).
@@ -37,22 +44,25 @@ export const metadata: Metadata = {
 
 const TIER_CLASS = { 1: styles.tier1, 2: styles.tier2, 3: styles.tier3 } as const;
 
-/** A tile document resolved against the registry; a missing one fails the build. */
+/** A document on the site; a missing one fails the build. */
 function resolve(t: TileDoc) {
   const version = getVersion(t.version);
   const doc = version?.documents.find((d) => d.slug === t.doc);
-  if (!version || !doc) throw new Error(`Home tile: ${t.version}/${t.doc} is not on the site`);
-  return { version, doc, caption: t.caption ?? doc.title };
+  if (!version || !doc) throw new Error(`Home: ${t.version}/${t.doc} is not on the site`);
+  return { version, doc };
 }
 
-const TILES = AREAS.map((a) => ({ area: a, docs: a.tile.map(resolve) }));
+const SOLUTIONS = SOLUTION_CARDS.map((c) => ({ ...c, ...resolve(c.doc) }));
+const PHASES = YEAR.phases.map((p) => ({ ...p, resolved: p.docs.map(resolve) }));
 
 /** Each fictional provider's notice once, verbatim, for the covers shown. */
 const NOTICES = Array.from(
-  new Set(TILES.flatMap((t) => t.docs.map((d) => publicNotice(d.version.disclosure))).filter((n): n is string => !!n)),
+  new Set(
+    [...SOLUTIONS.map((s) => s.version), ...PHASES.flatMap((p) => p.resolved.map((r) => r.version))]
+      .map((v) => publicNotice(v.disclosure))
+      .filter((n): n is string => !!n),
+  ),
 );
-
-const GUIDE = resolve(YEAR.guide);
 
 export default function HomePage() {
   return (
@@ -71,99 +81,119 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="partnership" className={styles.partnerBand}>
-        <div className="container">
-          <h2 className="section-heading rule-gold">{PARTNERSHIP.heading}</h2>
-          <p className={styles.lede}>{PARTNERSHIP.lede}</p>
-          <ul className={styles.points}>
-            {PARTNERSHIP.points.map((p) => (
-              <li key={p}>{p}</li>
+      <section id="what-we-do" className={styles.partnerBand}>
+        <div className={`container ${styles.whatGrid}`}>
+          <div>
+            <h2 className="section-heading rule-gold">{WHAT_WE_DO.heading}</h2>
+            <p className={styles.whatLine}>{WHAT_WE_DO.line}</p>
+          </div>
+          <ul className={`${styles.quickLinks} ui`}>
+            {WHAT_WE_DO.links.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href}>{l.label} &rarr;</Link>
+              </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section id="areas" className={styles.band}>
+      <section id="who-we-work-with" className={styles.band}>
         <div className="container">
-          <h2 className="section-heading rule-gold">{AREAS_INTRO.heading}</h2>
-          <p className={styles.lede}>{AREAS_INTRO.lede}</p>
-          <ol className={styles.tiles}>
-            {TILES.map(({ area, docs }, i) => (
-              <li key={area.id} className={styles.tile}>
-                <div className={styles.tileHead}>
-                  <span className={styles.tileNum} aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3>{area.title}</h3>
-                </div>
-                <p className={styles.tileLine}>{area.line}</p>
-                <div className={`${styles.covers} ${docs.length > 1 ? styles.coversMany : ""}`}>
-                  {docs.map(({ version, doc, caption }) => (
-                    <a key={`${version.slug}/${doc.slug}`} href={openAuto(version, doc)} className={styles.cover}>
-                      <Image
-                        src={doc.cover.src}
-                        width={doc.cover.width}
-                        height={doc.cover.height}
-                        alt={`Cover of the ${doc.title}`}
-                        sizes="(max-width: 640px) 40vw, 140px"
-                      />
-                      <span className="ui">{caption}</span>
-                    </a>
-                  ))}
-                </div>
-                <p className={`${styles.tierTag} ${TIER_CLASS[area.tier]} ui`}>{TIER_TAG[area.tier]}</p>
+          <h2 className="section-heading rule-gold">{WHO_WE_WORK_WITH.heading}</h2>
+          <div className={styles.pair}>
+            {WHO_WE_WORK_WITH.groups.map((g) => (
+              <Link key={g.title} href={g.href} className={styles.groupCard}>
+                <span className={styles.groupTitle}>{g.title}</span>
+                <span>{g.text}</span>
+                <span className={`${styles.go} ui`}>{g.cta} &rarr;</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="solutions" className={styles.partnerBand}>
+        <div className="container">
+          <h2 className="section-heading rule-gold">{SOLUTIONS_INTRO.heading}</h2>
+          <p className={styles.lede}>{SOLUTIONS_INTRO.lede}</p>
+          <CardCarousel label="ETI360 solutions">
+            {SOLUTIONS.map((s, i) => (
+              <li key={s.key}>
+                <article className={styles.slide}>
+                  <a href={openAuto(s.version, s.doc)} className={styles.slideCover}>
+                    <Image
+                      src={s.doc.cover.src}
+                      width={s.doc.cover.width}
+                      height={s.doc.cover.height}
+                      alt={`Cover of the ${s.doc.title}`}
+                      sizes="300px"
+                    />
+                  </a>
+                  <div className={styles.slideBody}>
+                    <span className={`${styles.slideNum} ui`}>{String(i + 1).padStart(2, "0")}</span>
+                    <h3>{s.title}</h3>
+                    <p>{s.line}</p>
+                    <p className={`${styles.tierTag} ${TIER_CLASS[s.area.tier]} ui`}>{TIER_TAG[s.area.tier]}</p>
+                    <Link href={s.href} className={`${styles.go} ui`}>
+                      See the examples &rarr;
+                    </Link>
+                  </div>
+                </article>
               </li>
             ))}
-          </ol>
+          </CardCarousel>
+        </div>
+      </section>
+
+      <section id="year" className={styles.band}>
+        <div className="container">
+          <h2 className="section-heading rule-gold">{YEAR.heading}</h2>
+          <p className={styles.lede}>{YEAR.lede}</p>
+          <CardCarousel label="The travel year in six phases">
+            {PHASES.map((p, i) => (
+              <li key={p.title}>
+                <article className={`${styles.slide} ${styles.phaseSlide}`}>
+                  <div className={styles.phaseCovers}>
+                    {p.resolved.map(({ version, doc }) => (
+                      <a key={`${version.slug}/${doc.slug}`} href={openAuto(version, doc)} title={doc.title}>
+                        <Image
+                          src={doc.cover.src}
+                          width={doc.cover.width}
+                          height={doc.cover.height}
+                          alt={`Cover of the ${doc.title}`}
+                          sizes="150px"
+                        />
+                      </a>
+                    ))}
+                  </div>
+                  <div className={styles.slideBody}>
+                    <span className={`${styles.phaseNum} ui`}>{i + 1}</span>
+                    <h3>{p.title}</h3>
+                    <p>{p.text}</p>
+                    <ul className={`${styles.phaseDocs} ui`}>
+                      {p.resolved.map(({ version, doc }) => (
+                        <li key={`${version.slug}/${doc.slug}`}>
+                          <a href={openAuto(version, doc)}>{doc.title}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </CardCarousel>
           {NOTICES.map((n) => (
             <p key={n} className={`${styles.notice} ui`}>
               {n}
             </p>
           ))}
-          <p className={`${styles.more} ui`}>
-            <Link href="/examples" className="cta-link">
-              See every example &rarr;
-            </Link>
-          </p>
         </div>
       </section>
 
-      <section id="year" className={styles.partnerBand}>
-        <div className={`container ${styles.yearGrid}`}>
-          <div>
-            <h2 className="section-heading rule-gold">{YEAR.heading}</h2>
-            <p className={styles.lede}>{YEAR.lede}</p>
-            <ol className={styles.phases}>
-              {YEAR.phases.map((p, i) => (
-                <li key={p.title}>
-                  <span className={styles.phaseNum} aria-hidden="true">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h3>{p.title}</h3>
-                    <p>{p.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <a href={openAuto(GUIDE.version, GUIDE.doc)} className={styles.guide}>
-            <Image
-              src={GUIDE.doc.cover.src}
-              width={GUIDE.doc.cover.width}
-              height={GUIDE.doc.cover.height}
-              alt={`Cover of the ${GUIDE.doc.title}`}
-              sizes="(max-width: 900px) 50vw, 260px"
-            />
-            <span className="ui">{GUIDE.caption}, Harborview &rarr;</span>
-          </a>
-        </div>
-      </section>
-
-      <section id="case-studies" className={styles.band}>
+      <section id="case-studies" className={styles.partnerBand}>
         <div className="container">
           <h2 className="section-heading rule-gold">{CASE_STUDIES.heading}</h2>
-          <div className={styles.cases}>
+          <div className={styles.pair}>
             {CASE_STUDIES.cards.map((c) => (
               <Link key={c.school} href={c.href} className={styles.case}>
                 <span className={styles.casePhoto}>
@@ -183,22 +213,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="who" className={styles.partnerBand}>
+      <section id="about" className={styles.band}>
         <div className="container">
-          <h2 className="section-heading rule-gold">{PEOPLE.heading}</h2>
-          <div className={styles.people}>
-            {PEOPLE.people.map((p) => (
-              <div key={p.name} className={styles.person}>
-                <Image src={p.photo} width={120} height={120} alt={`Portrait of ${p.name}`} className={styles.headshot} />
-                <div>
-                  <h3>
-                    {p.name}
-                    <span className="ui">{p.title}</span>
-                  </h3>
-                  <p>{p.line}</p>
-                </div>
+          <h2 className="section-heading rule-gold">{ABOUT.heading}</h2>
+          <div className={styles.aboutCards}>
+            {ABOUT.people.map((p) => (
+              <div key={p.name} className={styles.aboutCard}>
+                <Image src={p.photo} width={112} height={112} alt={`Portrait of ${p.name}`} className={styles.headshot} />
+                <h3>
+                  {p.name}
+                  <span className="ui">{p.title}</span>
+                </h3>
+                <p>{p.line}</p>
               </div>
             ))}
+            <div className={`${styles.aboutCard} ${styles.howCard}`}>
+              <h3>{ABOUT.how.title}</h3>
+              <ul>
+                {ABOUT.how.lines.map((l) => (
+                  <li key={l}>{l}</li>
+                ))}
+              </ul>
+            </div>
           </div>
           <p className={styles.start}>
             {START.text}{" "}

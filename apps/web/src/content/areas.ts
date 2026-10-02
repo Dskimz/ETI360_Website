@@ -136,3 +136,50 @@ export function areaHref(id: AreaId): string {
 
 /** The tier tag on a tile: the canonical tier name. */
 export const TIER_TAG = TIER_NAMES;
+
+/** One card in the home page's solutions row (Dan, 2026-10-01: "the scroll
+    like we have in the Washington DC page but with all the solutions"). */
+export type SolutionCard = {
+  key: string;
+  area: Area;
+  title: string;
+  line: string;
+  doc: TileDoc;
+  href: string;
+};
+
+/* Trip preparation opens into its three products; every other area is one
+   card. The product lines restate the approved product text briefly. */
+const TRIP_PREP_CARDS: { title: string; line: string; tileIndex: number; anchor: string }[] = [
+  {
+    title: "Individual Trip Reports",
+    line: "ETI360 prepares a consistently formatted set of reports for each trip, with the school and its provider.",
+    tileIndex: 0,
+    anchor: "individual-trips",
+  },
+  {
+    title: "Field Trip Reports",
+    line: "The lower school's day trips for the year sit in one pack, with a page for each trip.",
+    tileIndex: 1,
+    anchor: "field-trips",
+  },
+  {
+    title: "Conference Travel Reports",
+    line: "Coaches and staff who travel with the school's teams carry one guide for the season.",
+    tileIndex: 2,
+    anchor: "conference-travel",
+  },
+];
+
+export const SOLUTION_CARDS: SolutionCard[] = AREAS.flatMap((a) =>
+  a.id === "trip-preparation"
+    ? TRIP_PREP_CARDS.map((c) => ({
+        key: c.anchor,
+        area: a,
+        title: c.title,
+        line: c.line,
+        doc: a.tile[c.tileIndex],
+        href: `/examples#${c.anchor}`,
+      }))
+    : [{ key: a.id, area: a, title: a.title, line: a.line, doc: a.tile[0], href: areaHref(a.id) }],
+);
