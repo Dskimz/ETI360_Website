@@ -42,3 +42,11 @@
 @media (prefers-reduced-motion: reduce) {
   .track { scroll-behavior: auto; }
 }
+.controls button.pause {
+  width: auto;
+  padding: 0 16px;
+  border-radius: 20px;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  margin-right: auto;
+}
