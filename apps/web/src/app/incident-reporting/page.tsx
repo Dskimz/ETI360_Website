@@ -83,10 +83,10 @@ export default function IncidentCaseStudyPage() {
           <div className={styles.measure}>
             <p>
               Schools work under different data protection laws in every country, and Harborview&rsquo;s families come
-              from many of them. So the system runs in the school&rsquo;s own account: the page staff open, the scripts,
-              the AI that drafts each report, and every record. The records sit on Google&rsquo;s servers under
-              Harborview&rsquo;s own agreement with Google, where its IT team already manages access and retention.
-              ETI360 builds the system and never receives the records.
+              from many of them. So the system is built to run in the school&rsquo;s own account: the page staff open, the scripts,
+              the AI that drafts each report, and every record. Once ETI360 installs it there, the records sit on
+              Google&rsquo;s servers under Harborview&rsquo;s own agreement with Google, where its IT team already
+              manages access and retention. ETI360 builds the system and does not receive the records.
             </p>
           </div>
           <div className={styles.divide}>
@@ -108,7 +108,7 @@ export default function IncidentCaseStudyPage() {
             <div className={styles.gets}>
               <h3 className="ui">Harborview receives, and decides</h3>
               <p>
-                Harborview receives the system in its own account. Its staff write every record, and its duty manager
+                Harborview receives the system, installed in its own account at handover. Its staff write every record, and its duty manager
                 confirms every field, closes every record and approves every report.
               </p>
             </div>
@@ -119,12 +119,12 @@ export default function IncidentCaseStudyPage() {
       <section className={styles.plain}>
         <div className="container">
           <span className="label ui">Setup</span>
-          <h2 className="section-heading rule-gold">Built inside the school&rsquo;s account</h2>
+          <h2 className="section-heading rule-gold">Built to run inside the school&rsquo;s account</h2>
           <table className={`${styles.where} ui`}>
             <thead>
               <tr>
                 <th>Part</th>
-                <th>Runs in</th>
+                <th>Installed in</th>
               </tr>
             </thead>
             <tbody>
@@ -137,7 +137,7 @@ export default function IncidentCaseStudyPage() {
             </tbody>
           </table>
           <p className={styles.decides}>
-            ETI360 keeps no copy of the records and has no access to the account after installation. When Harborview
+            After installation, ETI360 keeps no copy of the records and has no access to the account. When Harborview
             wants a change, its IT team grants ETI360 edit access for that change and closes it afterward, because
             anyone who can edit the scripts can read the records.
           </p>
@@ -247,8 +247,9 @@ export default function IncidentCaseStudyPage() {
             for decisions, live assessments, and final approval of every report.
           </p>
           <p className={`${styles.notice} ui`}>
-            An illustrative engagement: the screens and reports shown are the system&rsquo;s own output for the
-            trip&rsquo;s records. {PROVIDER_NOTICE} The same workflow can be built in Microsoft 365 when a school works
+            An illustrative engagement: the screens and reports shown are the output of ETI360&rsquo;s working version
+            of the system for the trip&rsquo;s records, and ETI360 installs the release in a school&rsquo;s own account
+            at handover. {PROVIDER_NOTICE} The same workflow can be built in Microsoft 365 when a school works
             there. <Link href="/case-study">Read the Harborview partnership case study</Link>.
           </p>
         </div>

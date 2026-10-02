@@ -148,7 +148,7 @@ export const CASE_STUDIES: { heading: string; cards: CaseStudyCard[] } = {
       school: "Harborview International School",
       place: "Incident reporting",
       audience: "For international schools",
-      text: "Incident reports, an evening check-in and trip leaders’ feedback, with every record in the school’s own Google Workspace account.",
+      text: "The system records incidents, an evening check-in and trip leaders’ feedback, and ETI360 installs it in the school’s own Google Workspace account.",
       photo: {
         src: "/marketing/case-studies/harborview-incident-nepal.jpg",
         width: 800,
