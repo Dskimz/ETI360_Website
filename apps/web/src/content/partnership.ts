@@ -42,11 +42,11 @@ export const WHO_WE_WORK_WITH = {
 
 export const SOLUTIONS_INTRO = {
   heading: "Where ETI360 helps",
-  lede: "Each school chooses the solutions it needs.",
+  lede: "Each school determines the scope of the work.",
 };
 
 export const YEAR = {
-  heading: "Year-Round Travel Support",
+  heading: "Year-round travel support",
   lede: "The school sets its own dates, and ETI360 prepares the documents each phase needs.",
   phases: [
     {
@@ -183,14 +183,14 @@ export const ABOUT = {
   how: {
     title: "How ETI360 works",
     lines: [
-      "ETI360 takes no payment from trip providers, so its evaluation of each provider stays independent.",
-      "The school keeps every document and record when its staff move on.",
-      "The school keeps every decision and approval.",
+      "ETI360 accepts no payment from trip providers and prepares each evaluation for the school’s review.",
+      "The school retains its documents and records through staff transitions.",
+      "The school retains decision authority and final approval.",
     ],
   },
 };
 
 export const START = {
-  text: "A first conversation covers the school’s program and the trips it runs.",
+  text: "A first conversation covers your school’s program and the trips it runs.",
   cta: "Start a conversation",
 };

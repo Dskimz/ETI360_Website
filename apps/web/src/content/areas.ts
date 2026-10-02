@@ -63,7 +63,7 @@ export const AREAS: Area[] = [
   {
     id: "providers",
     title: "Trip providers",
-    line: "ETI360 evaluates each provider's documents and shows what they cover, and the school chooses.",
+    line: "ETI360 reviews what each provider's documents cover. The school decides which provider to use.",
     tier: 1,
     tile: [{ version: "line-and-landmark-evaluation", doc: "provider-evaluation" }],
     docs: ["provider-evaluation"],
@@ -90,7 +90,7 @@ export const AREAS: Area[] = [
   {
     id: "entry",
     title: "Entry requirements and travel documents",
-    line: "ETI360 researches the entry rules for every passport in the group.",
+    line: "ETI360 researches the published entry requirements for each passport in the group.",
     tier: 2,
     tile: [{ version: "harborview-kyoto-visa", doc: "japan-entry-and-visa-report" }],
     docs: ["japan-entry-and-visa-report"],
@@ -106,7 +106,7 @@ export const AREAS: Area[] = [
   {
     id: "families",
     title: "Communication with families",
-    line: "ETI360 prepares what families and students need to know, in the school's own name.",
+    line: "ETI360 prepares the information the school provides to families and students, in the school's name.",
     tier: 2,
     tile: [{ version: "italy", doc: "family-trip-brief" }],
     docs: ["family-trip-brief", "student-journey-guide", "educational-journey"],
@@ -114,7 +114,7 @@ export const AREAS: Area[] = [
   {
     id: "reporting",
     title: "Feedback and reporting",
-    line: "ETI360 gathers each trip's feedback for next year's planning.",
+    line: "ETI360 gathers the feedback from each trip to support the following year's planning.",
     tier: 3,
     tile: [{ version: "costa-rica", doc: "post-trip-feedback-report" }],
     docs: ["post-trip-feedback-report"],

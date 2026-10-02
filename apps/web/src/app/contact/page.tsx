@@ -36,7 +36,7 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       });
       if (resp.ok) {
-        setStatus({ kind: "ok", msg: "Thank you. Your message has been sent, and we will be in touch." });
+        setStatus({ kind: "ok", msg: "Thank you. Your message has been sent, and Dan will reply by email." });
         form.reset();
       } else {
         const err = await resp.json().catch(() => ({}));
@@ -61,7 +61,7 @@ export default function ContactPage() {
       >
         <div className="hero-inner">
           <p className="label label-light ui">Contact</p>
-          <h1>Contact us.</h1>
+          <h1>Start a conversation.</h1>
           <p className="subhead">{CLOSING_SENTENCE}</p>
           {/* Who "me" is in Dan's sentence (review fix, 2026-09-27). */}
           <p className="hero-signature ui">{CLOSING_SIGNATURE}</p>
@@ -96,9 +96,8 @@ export default function ContactPage() {
             <button type="submit" className="cta-button">Send</button>
 
             <p className="form-consent ui">
-              We use these details only to answer your inquiry. They are sent to us by
-              email and are not added to a mailing list or shared with anyone else.
-              See our <Link href="/privacy">privacy notice</Link>.
+              We use these details to respond to your inquiry and do not add them to a
+              mailing list. See our <Link href="/privacy">privacy notice</Link> for details.
             </p>
           </form>
 
