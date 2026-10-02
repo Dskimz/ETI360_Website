@@ -18,6 +18,8 @@ function under(pathname: string, prefix: string) {
 }
 
 function isActive(pathname: string, item: NavItem) {
+  // Services is the home page: active only there, never as a prefix of every path.
+  if (item.href === '/') return pathname === '/'
   return under(pathname, item.href) || (item.alsoActive ? under(pathname, item.alsoActive) : false)
 }
 

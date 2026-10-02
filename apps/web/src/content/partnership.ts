@@ -1,118 +1,111 @@
-/* The partnership, first on the home page (Dan, 2026-10-01: the home page
-   becomes the consulting page; the products become evidence of the work).
-   Copy from the vault draft ETI360-Consulting-and-Partnership-Draft-2026-10
-   (revision 2), tone-reviewed 2026-10-01. No fee on the site: ETI360 scopes
-   and prices each partnership case by case. The Travel Year Guide is a guide
-   the school owns, with its own dates; never deadlines. */
+/* The home page's copy (Dan, 2026-10-01, redesign brief
+   dev/website-outputs/REDESIGN-PROMPT-2026-10-01.md in the rebuild repo):
+   about 400 words, images over prose. The partnership in one paragraph and
+   three points, the eight areas as document tiles (src/content/areas.ts), the
+   travel year in six one-line phases, two case-study cards, who does the
+   work, and one line to start a conversation. The earlier long copy is in
+   the vault draft ETI360-Consulting-and-Partnership-Draft-2026-10 (revision
+   2). No fee on the site: ETI360 scopes and prices each partnership case by
+   case. The Travel Year Guide is a guide the school owns, with its own
+   dates; never deadlines. */
 
 export const PARTNERSHIP = {
   heading: "A partner for the whole travel program",
-  lede: "ETI360 works with schools across their whole travel program. It reviews the program, prepares each trip with the school and its providers, and supports staff while groups are away. The school keeps every decision and approval.",
-  situations: [
-    {
-      title: "A new program",
-      text: "ETI360 works with the school as it sets out its travel policies and prepares its first trips, so the program starts with a structure the whole staff can use.",
-    },
-    {
-      title: "A growing program",
-      text: "As trips and providers multiply, ETI360 prepares every trip in the same format and evaluates each new provider's documents.",
-    },
-    {
-      title: "An established program",
-      text: "ETI360 reviews what the school already runs, program by program, and prepares the documents that teachers leading trips would otherwise assemble.",
-    },
-  ],
-  close: [
-    "ETI360's consultants bring the experience of hundreds of school trips and many providers to each school.",
-    "It takes no payment from trip providers, so its view of every provider stays independent.",
-    "The program's documents and records stay with the school when staff move on.",
+  lede: "ETI360 works with schools across the travel year, reviewing the program, preparing each trip and supporting staff while groups are away. The school keeps every decision and approval.",
+  points: [
+    "ETI360’s consultants have run travel programs inside schools.",
+    "ETI360 takes no payment from trip providers, so its evaluation of each provider stays independent.",
+    "The school keeps every document and record when its staff move on.",
   ],
 };
 
-/** A worked example for an area: a version and document on the site,
-    opened through the logged /open route (Dan, 2026-10-01). */
-export type Example = { version: string; doc: string; label: string };
-
-export const AREAS = {
+export const AREAS_INTRO = {
   heading: "Where ETI360 helps",
-  lede: "A school travel program depends on the same areas of work wherever it runs. ETI360 groups its work into these eight, and each school chooses the areas it needs.",
-  items: [
-    {
-      title: "Policies, procedures and goals",
-      text: "ETI360 reads the school's travel policies program by program in the Travel Program Review and prepares the Travel Year Guide, which sets out the school's year of trips in one place.",
-      example: { version: "harborview-travel-year-guide", doc: "travel-year-guide", label: "See Harborview’s Travel Year Guide" } as Example,
-    },
-    {
-      title: "Trip budgets",
-      text: "ETI360 sets out each trip's costs from the provider's quote in one format, covering transport, provider fees, insurance and contingency, so leadership can compare trips side by side.",
-      example: { version: "harborview-trip-budgets", doc: "trip-budgets", label: "See Harborview’s Trip Budgets" } as Example,
-    },
-    {
-      title: "Trip providers",
-      text: "ETI360 evaluates the documents of every provider the school uses and of each new provider it considers. ETI360 never ranks, approves or recommends a provider, and the school chooses.",
-    },
-    {
-      title: "Trip preparation",
-      text: "For each trip, ETI360 prepares the Individual Trip Reports with the school and its provider. The reports account for every day of the itinerary, list the nearest hospitals by drive time and set out the emergency action procedures.",
-    },
-    {
-      title: "Entry requirements and travel documents",
-      text: "ETI360 researches each destination's entry rules, including passport validity, visas and the border systems in force, and writes them into the reports for families. The school and families make the applications themselves.",
-      example: { version: "harborview-kyoto-visa", doc: "japan-entry-and-visa-report", label: "See the Japan Entry and Visa Report" } as Example,
-    },
-    {
-      title: "Trip leader preparation",
-      text: "ETI360 runs a session with each trip's leaders before departure, in which they work through their Trip Leaders Brief day by day. New leaders get a longer session.",
-    },
-    {
-      title: "Communication with families",
-      text: "ETI360 prepares the Student and Parent Trip Report, the slides for the parent evening and a packing list built from the trip's own itinerary and weather.",
-    },
-    {
-      title: "Feedback and reporting",
-      text: "ETI360 gathers the feedback after each trip into the Post Trip Report and prepares the Semester Board Report for the school to issue to its Board.",
-    },
-  ],
+  lede: "Each school chooses its areas, and every tile opens a real document.",
 };
 
 export const YEAR = {
   heading: "A travel year with ETI360",
-  lede: "ETI360 works through the whole travel year with the school. The school sets its own dates, and the phases below show how the work usually falls.",
+  lede: "The school sets its own dates, and the Travel Year Guide keeps them in one place.",
+  guide: { version: "harborview-travel-year-guide", doc: "travel-year-guide" },
   phases: [
+    { title: "Review and planning", text: "ETI360 reviews the program and its policies with the school’s leadership." },
+    { title: "Choosing the trips", text: "ETI360 evaluates the providers’ documents and sets out the budgets." },
+    { title: "Preparing families", text: "ETI360 writes the entry requirements and the family reports." },
+    { title: "Preparing the trips", text: "ETI360 prepares each trip’s reports and meets its leaders." },
+    { title: "The trips", text: "Leaders carry their brief, and the school runs its own duty arrangements." },
+    { title: "Feedback and reporting", text: "ETI360 gathers the feedback, and next year’s guide starts from it." },
+  ],
+};
+
+export type CaseStudyCard = {
+  school: string;
+  place: string;
+  audience: string;
+  text: string;
+  photo: { src: string; width: number; height: number; alt: string };
+  href: string;
+  cta: string;
+  /** Shown as a tag while the case study is being written. */
+  status?: string;
+};
+
+export const CASE_STUDIES: { heading: string; cards: CaseStudyCard[] } = {
+  heading: "Case studies",
+  cards: [
     {
-      title: "Review and planning",
-      text: "ETI360 meets the school's leadership to go through the program and its policies. ETI360 prepares the Travel Year Guide for the year ahead.",
+      school: "Harborview International School",
+      place: "Singapore",
+      audience: "For international schools",
+      text: "The case study follows one partnership year, from the Travel Program Review to the reports after the trips.",
+      photo: {
+        src: "/marketing/case-studies/harborview-singapore.jpg",
+        width: 800,
+        height: 500,
+        alt: "The Singapore skyline across Marina Bay.",
+      },
+      href: "/case-study",
+      cta: "Read the case study",
     },
     {
-      title: "Choosing the trips",
-      text: "Trip leaders set out each trip's goals, and providers send their proposals. ETI360 evaluates the providers' documents and sets out the budgets, and the school chooses its trips.",
-    },
-    {
-      title: "Preparing families",
-      text: "ETI360 writes the entry requirements and the Student and Parent Trip Report, and prepares the slides for the parent evening.",
-    },
-    {
-      title: "Preparing the trips",
-      text: "ETI360 prepares each trip's reports, from the risk assessment groundwork to the Trip Leaders Brief, and runs the session with the leaders.",
-    },
-    {
-      title: "The trips",
-      text: "The leaders carry their Trip Leaders Brief, and the school runs its own duty arrangements while groups are away.",
-    },
-    {
-      title: "Feedback and reporting",
-      text: "ETI360 gathers the feedback into the Post Trip Report and prepares the Semester Board Report. The next year's guide starts from what the school learned.",
+      school: "Horizon Ridge School of Cleveland",
+      place: "Ohio",
+      audience: "For US schools",
+      // Dan, 2026-10-01: show it as coming; its trips open now.
+      text: "ETI360 is preparing the US case study, and the school’s three trips open in full now.",
+      photo: {
+        src: "/marketing/case-studies/horizon-ridge-cleveland.jpg",
+        width: 800,
+        height: 500,
+        alt: "The Great Lakes Science Center on the Cleveland lakefront.",
+      },
+      href: "/examples?schools=us#trip-preparation",
+      cta: "See the school’s trips",
+      status: "In preparation",
     },
   ],
 };
 
-export const EVIDENCE = {
-  heading: "What the work looks like",
-  lede: "These are the documents a partnership produces, shown as worked examples that each open in full.",
+/** Who does the work, two lines each, from the approved bios (voice.ts). */
+export const PEOPLE = {
+  heading: "Who does the work",
+  people: [
+    {
+      name: "Dan Skimin",
+      title: "Principal Consultant",
+      photo: "/people/dan-navy.png",
+      line: "Dan coordinated 600 programs for 12,000 students over 16 years, including as Interim Semester Coordinator at Singapore American School.",
+    },
+    {
+      name: "Seb Wong",
+      title: "Senior Consultant",
+      photo: "/people/seb-navy.png",
+      line: "Seb is Senior Manager of Safety, Security, and Operational Risk at Singapore American School, and he is part of every engagement.",
+    },
+  ],
 };
 
 export const START = {
-  heading: "How a partnership starts",
-  text: "A first conversation covers the school's program and the trips it runs. ETI360 then sets out the areas of work the school wants and what they cost, and the Travel Program Review is usually the first piece of work.",
+  text: "A first conversation covers the school’s program and the trips it runs.",
   cta: "Start a conversation",
 };

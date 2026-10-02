@@ -17,6 +17,8 @@ export type Tier = 1 | 2 | 3;
 
 export type Product = {
   slug: ProductSlug;
+  /** Where the product's examples live (Dan, 2026-10-01: the product pages
+      folded into the Examples library; the old addresses redirect there). */
   href: string;
   /** The full product name: nav, footer, doors. Never a short form. */
   name: string;
@@ -31,7 +33,7 @@ export type Product = {
 export const PRODUCTS: Product[] = [
   {
     slug: "travel-program-review",
-    href: "/travel-program-review",
+    href: "/examples#policies",
     name: "Travel Program Review",
     h1: "The Travel Program Review",
     tiers: [1],
@@ -41,7 +43,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "trip-package",
-    href: "/trip-package",
+    href: "/examples#individual-trips",
     name: "Individual Trip Reports",
     h1: "Individual Trip Reports",
     tiers: [2, 3],
@@ -51,7 +53,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "field-trip-package",
-    href: "/field-trip-package",
+    href: "/examples#field-trips",
     name: "Field Trip Reports",
     h1: "Field Trip Reports",
     tiers: [2],
@@ -61,7 +63,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "conference-travel-package",
-    href: "/conference-travel-package",
+    href: "/examples#conference-travel",
     name: "Conference Travel Reports",
     h1: "Conference Travel Reports",
     tiers: [2],

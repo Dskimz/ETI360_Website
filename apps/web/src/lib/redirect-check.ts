@@ -1,4 +1,3 @@
-import { liveProducts } from "@/content/products";
 import { versions } from "@/content/versions";
 import { CASE_STUDY_REDIRECTS, REDIRECTS } from "./redirects";
 import { caseStudyLive } from "./case-study-hold";
@@ -11,7 +10,7 @@ import { STEPS } from "@/content/case-study";
    returns; this throws, and `next build` fails, if one still points at it.
    Called from src/app/sitemap.ts, which is generated at build time. */
 
-const STATIC_PAGES = new Set(["/", "/contact", "/privacy", "/unsubscribe"]);
+const STATIC_PAGES = new Set(["/", "/examples", "/contact", "/privacy", "/unsubscribe"]);
 
 function pathOf(destination: string): string {
   return destination.split("#")[0].split("?")[0];
@@ -19,7 +18,6 @@ function pathOf(destination: string): string {
 
 function lands(path: string): boolean {
   if (STATIC_PAGES.has(path)) return true;
-  if (liveProducts().some((p) => p.href === path)) return true;
   // A worked trip's page, a document open, or the password-gated drafts.
   const trip = path.match(/^\/trips\/([^/]+)$/);
   if (trip) return versions.some((v) => v.product === "trip-package" && v.slug === trip[1]);

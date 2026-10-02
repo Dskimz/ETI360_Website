@@ -1,20 +1,14 @@
-import {liveProducts} from '@/content/products'
 import {caseStudyLive} from '@/content/case-study'
 import {SiteHeaderBar, type NavItem} from './SiteHeaderBar'
 
-/* The primary nav (four-product site, Dan 2026-09-25): the four products by
-   their full names, in tier order, then the Case Study (Dan, 2026-09-28: one
-   illustrative school year across the four products), then Contact. Flat:
-   no dropdown, no audience entries. Only live products appear (spec S18: a
-   product is live once it has a version). */
+/* The primary nav (Dan, 2026-10-01 redesign): Services (the home page),
+   Case Studies, Examples (every worked document, which absorbed the four
+   product pages; the worked trips under /trips/* mark it active), Contact. */
 export function SiteHeader() {
   const items: NavItem[] = [
-    ...liveProducts().map((p) => ({
-      href: p.href,
-      label: p.name,
-      alsoActive: p.slug === 'trip-package' ? '/trips' : undefined,
-    })),
-    ...(caseStudyLive() ? [{href: '/case-study', label: 'Case Study'}] : []),
+    {href: '/', label: 'Services'},
+    ...(caseStudyLive() ? [{href: '/case-study', label: 'Case Studies'}] : []),
+    {href: '/examples', label: 'Examples', alsoActive: '/trips'},
     {href: '/contact', label: 'Contact'},
   ]
   return <SiteHeaderBar items={items} />

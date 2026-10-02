@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { liveProducts } from "@/content/products";
 import { versionsOf } from "@/content/versions";
 import { assertRedirectsLand } from "@/lib/redirect-check";
 import { SITE_URL } from "@/lib/site";
@@ -22,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const routes: Route[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
-    ...liveProducts().map((p) => ({ path: p.href, priority: 0.9, changeFrequency: "monthly" as const })),
+    { path: "/examples", priority: 0.9, changeFrequency: "monthly" },
     ...(caseStudyLive()
       ? [
           { path: CASE_STUDY_HREF, priority: 0.8, changeFrequency: "monthly" as const },

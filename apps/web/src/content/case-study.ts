@@ -339,7 +339,7 @@ export const STEPS: Step[] = [
       // [draft] shortened.
       "How to weigh and sequence the open items.",
     ],
-    links: [{ href: "/travel-program-review", label: "The Travel Program Review" }],
+    links: [{ href: "/examples#policies", label: "The Travel Program Review examples" }],
     description:
       "An illustrative case study with Harborview, step 1 of 4: the Travel Program Review reads the school’s travel documents path by path, providers included.",
   },
@@ -430,7 +430,7 @@ export const STEPS: Step[] = [
       "The school or the provider designates which emergency department the group uses.",
     ],
     links: [
-      { href: "/trip-package", label: "Individual Trip Reports" },
+      { href: "/examples#individual-trips", label: "Individual Trip Reports examples" },
       { href: "/trips/italy", label: "The Italy trip, every document in US Letter and A4" },
     ],
     description:
@@ -481,7 +481,7 @@ export const STEPS: Step[] = [
       "Each trip and its risk assessment: the school reviews, completes, amends as necessary, and approves them.",
       "Which emergency department each group uses.",
     ],
-    links: [{ href: "/field-trip-package", label: "Field Trip Reports" }],
+    links: [{ href: "/examples#field-trips", label: "Field Trip Reports examples" }],
     description:
       "An illustrative case study with Harborview, step 3 of 4: Field Trip Reports document a year of elementary day trips at once, with one page for each trip.",
   },
@@ -519,7 +519,7 @@ export const STEPS: Step[] = [
       "The Director of Athletics & Activities approves all team and activity travel under the school’s policy.",
       "The school completes the fields marked for confirmation and confirms which emergency department each group uses.",
     ],
-    links: [{ href: "/conference-travel-package", label: "Conference Travel Reports" }],
+    links: [{ href: "/examples#conference-travel", label: "Conference Travel Reports examples" }],
     description:
       "An illustrative case study with Harborview, step 4 of 4: Conference Travel Reports give the coaches and staff one guide, with a chapter for every host city.",
   },

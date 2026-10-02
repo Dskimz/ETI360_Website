@@ -9,7 +9,7 @@ import styles from "./tripstrip.module.css";
    §4.4). Each card names its fictional school; the disclosure for every
    school shown sits under the strip, once per school, verbatim from the trip
    file. When the last row has room, a navy tile ends it with a link to the
-   product page, /trip-package. */
+   product page, now the Examples library (/examples#individual-trips). */
 
 export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
   const disclosures = Array.from(new Map(trips.map((t) => [t.school, t.disclosure])).values()).filter(
@@ -39,7 +39,7 @@ export function TripStrip({ trips = allTrips }: { trips?: Trip[] }) {
           </Link>
         ))}
         {trips.length % 4 !== 0 ? (
-          <Link href="/trip-package" className={styles.allTile}>
+          <Link href="/examples#individual-trips" className={styles.allTile}>
             <span className={`${styles.allTileText} ui`}>Individual Trip Reports &rarr;</span>
           </Link>
         ) : null}

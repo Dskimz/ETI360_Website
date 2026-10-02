@@ -18,9 +18,21 @@
 
 export type SiteRedirect = { source: string; destination: string; permanent: boolean };
 
+/* The four product pages folded into the Examples library (Dan,
+   2026-10-01). Rows that landed on a line of the Individual Trip Reports page
+   now land on the matching area or group of /examples, still in one hop. */
+const OLD_TRIP_ANCHOR: Record<string, string> = {
+  "": "individual-trips",
+  receives: "individual-trips",
+  "trip-risk-working-file": "trip-preparation",
+  "school-trip-record": "trip-preparation",
+  "student-journey-guide": "families",
+  "made-for-the-school": "made-for-the-school",
+};
+
 const toTripPackage = (source: string, anchor = ""): SiteRedirect => ({
   source,
-  destination: `/trip-package${anchor ? `#${anchor}` : ""}`,
+  destination: `/examples#${OLD_TRIP_ANCHOR[anchor] ?? "individual-trips"}`,
   permanent: true,
 });
 
@@ -42,16 +54,22 @@ export const REDIRECTS: SiteRedirect[] = [
   },
   {
     source: "/trips/elementary",
-    destination: "/field-trip-package#harborview-elementary",
+    destination: "/examples#field-trips",
     permanent: true,
   },
   {
-    // The library became the Individual Trip Reports page's worked trips; the
-    // six /trips/{slug} pages keep their addresses (Monday's emails).
+    // The library became the Examples page's worked trips (2026-10-01); the
+    // six /trips/{slug} pages keep their addresses (the campaign emails).
     source: "/trips",
-    destination: "/trip-package",
+    destination: "/examples#worked-trips",
     permanent: true,
   },
+
+  // ── The four product pages, folded into Examples (Dan, 2026-10-01) ──
+  { source: "/travel-program-review", destination: "/examples#policies", permanent: true },
+  { source: "/trip-package", destination: "/examples#individual-trips", permanent: true },
+  { source: "/field-trip-package", destination: "/examples#field-trips", permanent: true },
+  { source: "/conference-travel-package", destination: "/examples#conference-travel", permanent: true },
 
   // ── The retired solution pages land on their line of a product page (rows 5–19) ──
   toTripPackage("/for-schools/trip-risk-documentation", "trip-risk-working-file"),
@@ -67,11 +85,11 @@ export const REDIRECTS: SiteRedirect[] = [
   toTripPackage("/for-schools/duty-manager"),
   toTripPackage("/for-schools/duty-manager-simulation"),
   toTripPackage("/for-schools/incident-reporting"),
-  { source: "/for-schools/field-trips", destination: "/field-trip-package", permanent: true },
+  { source: "/for-schools/field-trips", destination: "/examples#field-trips", permanent: true },
   // Q2 answered (Dan, 2026-09-25: Conference Travel Reports), so 308.
-  { source: "/for-schools/conference-visits", destination: "/conference-travel-package", permanent: true },
-  { source: "/for-schools/tournament-travel", destination: "/conference-travel-package", permanent: true },
-  { source: "/for-schools/travel-program-review", destination: "/travel-program-review", permanent: true },
+  { source: "/for-schools/conference-visits", destination: "/examples#conference-travel", permanent: true },
+  { source: "/for-schools/tournament-travel", destination: "/examples#conference-travel", permanent: true },
+  { source: "/for-schools/travel-program-review", destination: "/examples#policies", permanent: true },
   {
     // Row 20, after rows 5–19. Also matches /for-schools itself (Dan:
     // "Everything is for the school").
@@ -106,23 +124,23 @@ export const REDIRECTS: SiteRedirect[] = [
   // ── Retired PDFs, each by exact path (rows 31–33) ──
   {
     source: "/docs/organizational-baseline-evaluation-v2.pdf",
-    destination: "/travel-program-review#harborview-review",
+    destination: "/examples#policies",
     permanent: true,
   },
   {
     source: "/docs/organizational-baseline-evaluation-v4.pdf",
-    destination: "/travel-program-review#harborview-review",
+    destination: "/examples#policies",
     permanent: true,
   },
-  { source: "/docs/conference-visits-guide-wexcombe.pdf", destination: "/conference-travel-package", permanent: true },
-  { source: "/docs/tournament-travel-guide.pdf", destination: "/conference-travel-package", permanent: true },
+  { source: "/docs/conference-visits-guide-wexcombe.pdf", destination: "/examples#conference-travel", permanent: true },
+  { source: "/docs/tournament-travel-guide.pdf", destination: "/examples#conference-travel", permanent: true },
   // Superseded single-paper editions (2026-09-25 rebuilds; spec S16):
   // the Sep 14 Wexcombe guide without the notice, and the Harborview
   // pack before its fixes.
-  { source: "/docs/athletics-activities-trips-guide-wexcombe.pdf", destination: "/conference-travel-package", permanent: true },
+  { source: "/docs/athletics-activities-trips-guide-wexcombe.pdf", destination: "/examples#conference-travel", permanent: true },
   {
     source: "/docs/field-trip-risk-assessment-pack-harborview-2026-27.pdf",
-    destination: "/field-trip-package#harborview-elementary",
+    destination: "/examples#field-trips",
     permanent: true,
   },
   // Four more PDFs production served before trip-pages removed them in
@@ -130,22 +148,22 @@ export const REDIRECTS: SiteRedirect[] = [
   // register editions and two earlier baseline samples.
   {
     source: "/docs/field-trip-register-harborview-2026-27.pdf",
-    destination: "/field-trip-package#harborview-elementary",
+    destination: "/examples#field-trips",
     permanent: true,
   },
   {
     source: "/docs/field-trip-register-harborview-2026-27-v2.pdf",
-    destination: "/field-trip-package#harborview-elementary",
+    destination: "/examples#field-trips",
     permanent: true,
   },
   {
     source: "/docs/organizational-baseline-evaluation-v3.pdf",
-    destination: "/travel-program-review#harborview-review",
+    destination: "/examples#policies",
     permanent: true,
   },
   {
     source: "/docs/organizational-baseline-evaluation.pdf",
-    destination: "/travel-program-review#harborview-review",
+    destination: "/examples#policies",
     permanent: true,
   },
   // Legacy Tokyo and Kathmandu material.

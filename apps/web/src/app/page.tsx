@@ -1,30 +1,25 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ProductDoors } from "@/components/ProductDoors";
-import { WhoDoesTheWork } from "@/components/WhoDoesTheWork";
-import { AREAS, EVIDENCE, PARTNERSHIP, START, YEAR } from "@/content/partnership";
-import { liveProducts, siteDescription } from "@/content/products";
-import { openAuto } from "@/content/versions";
-import {
-  BRAND_EYEBROW,
-  BRAND_LINE,
-  WHAT_WE_DO_LINE,
-} from "@/content/voice";
+import { AREAS, TIER_TAG, type TileDoc } from "@/content/areas";
+import { AREAS_INTRO, CASE_STUDIES, PARTNERSHIP, PEOPLE, START, YEAR } from "@/content/partnership";
+import { siteDescription } from "@/content/products";
+import { getVersion, openAuto, publicNotice } from "@/content/versions";
+import { BRAND_EYEBROW, BRAND_LINE, WHAT_WE_DO_LINE } from "@/content/voice";
 import styles from "./home.module.css";
 
-/* Home, led by the partnership (Dan, 2026-10-01: the home page becomes the
-   consulting page, and the products become evidence of what ETI360
-   produces). Order: the two brand lines, the partnership, where ETI360
-   helps, a travel year, the products as worked examples, who does the work,
-   how a partnership starts. Copy in content/partnership.ts. */
+/* Services: the home page (Dan, 2026-10-01 redesign brief). About 400 words,
+   images over prose: the Queenstown hero with the two brand lines, the
+   partnership, the eight areas as document tiles, the travel year as a
+   six-phase strip beside the Travel Year Guide, two case-study cards, who
+   does the work, and one line to start a conversation. Copy in
+   content/partnership.ts; areas and tile documents in content/areas.ts. */
 
 // The h1 is BRAND_LINE split for its line break: "Risk intelligence" /
 // "for school trips." Never retyped (voice.ts).
 const BREAK_AT = BRAND_LINE.indexOf(" for ");
 const BRAND_HEAD = BRAND_LINE.slice(0, BREAK_AT);
 const BRAND_TAIL = BRAND_LINE.slice(BREAK_AT + 1);
-
-const LIVE = liveProducts();
 
 const DESCRIPTION = siteDescription();
 
@@ -40,16 +35,31 @@ export const metadata: Metadata = {
   },
 };
 
-function pad(n: number): string {
-  return String(n).padStart(2, "0");
+const TIER_CLASS = { 1: styles.tier1, 2: styles.tier2, 3: styles.tier3 } as const;
+
+/** A tile document resolved against the registry; a missing one fails the build. */
+function resolve(t: TileDoc) {
+  const version = getVersion(t.version);
+  const doc = version?.documents.find((d) => d.slug === t.doc);
+  if (!version || !doc) throw new Error(`Home tile: ${t.version}/${t.doc} is not on the site`);
+  return { version, doc, caption: t.caption ?? doc.title };
 }
+
+const TILES = AREAS.map((a) => ({ area: a, docs: a.tile.map(resolve) }));
+
+/** Each fictional provider's notice once, verbatim, for the covers shown. */
+const NOTICES = Array.from(
+  new Set(TILES.flatMap((t) => t.docs.map((d) => publicNotice(d.version.disclosure))).filter((n): n is string => !!n)),
+);
+
+const GUIDE = resolve(YEAR.guide);
 
 export default function HomePage() {
   return (
     <>
       <section
-        className="hero hero-compact"
-        style={{ ["--hero-bg" as string]: "url('/trips/washington-dc/hero-capitol.jpg')" } as React.CSSProperties}
+        className={`hero hero-compact ${styles.hero}`}
+        style={{ ["--hero-bg" as string]: "url('/marketing/hero/queenstown-remarkables.jpg')" } as React.CSSProperties}
       >
         <div className="hero-inner">
           <h1>
@@ -57,7 +67,7 @@ export default function HomePage() {
             <br />
             <em>{BRAND_TAIL}</em>
           </h1>
-          <p className={`hero-line ${styles.heroLine}`}>{WHAT_WE_DO_LINE}</p>
+          <p className={styles.heroLine}>{WHAT_WE_DO_LINE}</p>
         </div>
       </section>
 
@@ -65,74 +75,136 @@ export default function HomePage() {
         <div className="container">
           <h2 className="section-heading rule-gold">{PARTNERSHIP.heading}</h2>
           <p className={styles.lede}>{PARTNERSHIP.lede}</p>
-          <div className={styles.situations}>
-            {PARTNERSHIP.situations.map((s) => (
-              <div key={s.title} className={styles.situation}>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
+          <ul className={styles.points}>
+            {PARTNERSHIP.points.map((p) => (
+              <li key={p}>{p}</li>
             ))}
-          </div>
-          <p className={styles.close}>{PARTNERSHIP.close.join(" ")}</p>
+          </ul>
         </div>
       </section>
 
       <section id="areas" className={styles.band}>
         <div className="container">
-          <h2 className="section-heading rule-gold">{AREAS.heading}</h2>
-          <p className={styles.lede}>{AREAS.lede}</p>
-          <ol className={styles.areas}>
-            {AREAS.items.map((a, i) => (
-              <li key={a.title}>
-                <span className={styles.num} aria-hidden="true">{pad(i + 1)}</span>
-                <div>
-                  <h3>{a.title}</h3>
-                  <p>{a.text}</p>
-                  {"example" in a && a.example ? (
-                    <p className={styles.example}>
-                      <a href={openAuto({ slug: a.example.version }, { slug: a.example.doc })}>{a.example.label} &rarr;</a>
-                    </p>
-                  ) : null}
+          <h2 className="section-heading rule-gold">{AREAS_INTRO.heading}</h2>
+          <p className={styles.lede}>{AREAS_INTRO.lede}</p>
+          <ol className={styles.tiles}>
+            {TILES.map(({ area, docs }, i) => (
+              <li key={area.id} className={styles.tile}>
+                <div className={styles.tileHead}>
+                  <span className={styles.tileNum} aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3>{area.title}</h3>
                 </div>
+                <p className={styles.tileLine}>{area.line}</p>
+                <div className={`${styles.covers} ${docs.length > 1 ? styles.coversMany : ""}`}>
+                  {docs.map(({ version, doc, caption }) => (
+                    <a key={`${version.slug}/${doc.slug}`} href={openAuto(version, doc)} className={styles.cover}>
+                      <Image
+                        src={doc.cover.src}
+                        width={doc.cover.width}
+                        height={doc.cover.height}
+                        alt={`Cover of the ${doc.title}`}
+                        sizes="(max-width: 640px) 40vw, 140px"
+                      />
+                      <span className="ui">{caption}</span>
+                    </a>
+                  ))}
+                </div>
+                <p className={`${styles.tierTag} ${TIER_CLASS[area.tier]} ui`}>{TIER_TAG[area.tier]}</p>
               </li>
             ))}
           </ol>
+          {NOTICES.map((n) => (
+            <p key={n} className={`${styles.notice} ui`}>
+              {n}
+            </p>
+          ))}
+          <p className={`${styles.more} ui`}>
+            <Link href="/examples" className="cta-link">
+              See every example &rarr;
+            </Link>
+          </p>
         </div>
       </section>
 
       <section id="year" className={styles.partnerBand}>
-        <div className="container">
-          <h2 className="section-heading rule-gold">{YEAR.heading}</h2>
-          <p className={styles.lede}>{YEAR.lede}</p>
-          <ol className={styles.phases}>
-            {YEAR.phases.map((p, i) => (
-              <li key={p.title}>
-                <span className={styles.phaseNum} aria-hidden="true">{i + 1}</span>
-                <h3>{p.title}</h3>
-                <p>{p.text}</p>
-              </li>
-            ))}
-          </ol>
+        <div className={`container ${styles.yearGrid}`}>
+          <div>
+            <h2 className="section-heading rule-gold">{YEAR.heading}</h2>
+            <p className={styles.lede}>{YEAR.lede}</p>
+            <ol className={styles.phases}>
+              {YEAR.phases.map((p, i) => (
+                <li key={p.title}>
+                  <span className={styles.phaseNum} aria-hidden="true">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3>{p.title}</h3>
+                    <p>{p.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <a href={openAuto(GUIDE.version, GUIDE.doc)} className={styles.guide}>
+            <Image
+              src={GUIDE.doc.cover.src}
+              width={GUIDE.doc.cover.width}
+              height={GUIDE.doc.cover.height}
+              alt={`Cover of the ${GUIDE.doc.title}`}
+              sizes="(max-width: 900px) 50vw, 260px"
+            />
+            <span className="ui">{GUIDE.caption}, Harborview &rarr;</span>
+          </a>
         </div>
       </section>
 
-      {LIVE.length > 0 ? (
-        <section id="products" className={styles.doorsBand}>
-          <div className="container">
-            <h2 className="section-heading rule-gold">{EVIDENCE.heading}</h2>
-            <p className={styles.lede}>{EVIDENCE.lede}</p>
-            <ProductDoors products={LIVE} />
+      <section id="case-studies" className={styles.band}>
+        <div className="container">
+          <h2 className="section-heading rule-gold">{CASE_STUDIES.heading}</h2>
+          <div className={styles.cases}>
+            {CASE_STUDIES.cards.map((c) => (
+              <Link key={c.school} href={c.href} className={styles.case}>
+                <span className={styles.casePhoto}>
+                  <Image src={c.photo.src} alt={c.photo.alt} fill sizes="(max-width: 900px) 100vw, 540px" />
+                  {c.status ? <span className={`${styles.status} ui`}>{c.status}</span> : null}
+                </span>
+                <span className={styles.caseBody}>
+                  <span className={`${styles.audience} ui`}>{c.audience}</span>
+                  <span className={styles.caseTitle}>{c.school}</span>
+                  <span className={`${styles.place} ui`}>{c.place}</span>
+                  <span className={styles.caseText}>{c.text}</span>
+                  <span className={`${styles.go} ui`}>{c.cta} &rarr;</span>
+                </span>
+              </Link>
+            ))}
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
 
-      <section className={styles.band}>
-        <div className={`container ${styles.narrow}`}>
-          <WhoDoesTheWork />
-          <h2 className="section-heading rule-gold" id="start">{START.heading}</h2>
-          <p>{START.text}</p>
-          <p>
-            <Link className={styles.cta} href="/contact">{START.cta} &rarr;</Link>
+      <section id="who" className={styles.partnerBand}>
+        <div className="container">
+          <h2 className="section-heading rule-gold">{PEOPLE.heading}</h2>
+          <div className={styles.people}>
+            {PEOPLE.people.map((p) => (
+              <div key={p.name} className={styles.person}>
+                <Image src={p.photo} width={120} height={120} alt={`Portrait of ${p.name}`} className={styles.headshot} />
+                <div>
+                  <h3>
+                    {p.name}
+                    <span className="ui">{p.title}</span>
+                  </h3>
+                  <p>{p.line}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className={styles.start}>
+            {START.text}{" "}
+            <Link className={styles.cta} href="/contact">
+              {START.cta} &rarr;
+            </Link>
           </p>
         </div>
       </section>

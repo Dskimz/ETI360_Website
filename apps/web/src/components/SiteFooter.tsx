@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {liveProducts, PRODUCT_SLUGS} from '@/content/products'
+import {PRODUCT_SLUGS} from '@/content/products'
 import {caseStudyLive} from '@/content/case-study'
 import {BRAND_LINE} from '@/content/voice'
 import {FooterContact} from './FooterContact'
@@ -16,14 +16,13 @@ const firmLinksWithConsent = process.env.NEXT_PUBLIC_GA_ID
   ? [...firmLinks, {href: '#cookie-settings', label: 'Cookie settings'}]
   : firmLinks
 
-/* The footer on every page: Dan's contact row, the brand block, the live
-   products, the firm's links, led by the Case Study (the four products in
-   one illustrative school year; not a product, so not under Products), and
+/* The footer on every page: Dan's contact row, the brand block, the site's
+   three sections (Services, Case Studies, Examples; Dan, 2026-10-01), the
+   firm's links, and
    both postal addresses (Dan, 2026-09-25: "We can put both"). Unsubscribe
    stays out: it is reached from the email only. */
 export function SiteFooter() {
   const year = new Date().getFullYear()
-  const products = liveProducts()
   return (
     <footer className="site-footer">
       <div className="site-footer-container">
@@ -39,26 +38,25 @@ export function SiteFooter() {
               <p className="site-footer-desc">{BRAND_LINE}</p>
             </div>
             <div className="site-footer-cols">
-              {products.length > 0 ? (
-                <div className="site-footer-col">
-                  <h3 className="ui">Products</h3>
-                  <ul className="ui">
-                    {products.map((p) => (
-                      <li key={p.slug}>
-                        <Link href={p.href}>{p.name}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
+              <div className="site-footer-col">
+                <h3 className="ui">Services</h3>
+                <ul className="ui">
+                  <li>
+                    <Link href="/">Services</Link>
+                  </li>
+                  {caseStudyLive() ? (
+                    <li>
+                      <Link href="/case-study">Case Studies</Link>
+                    </li>
+                  ) : null}
+                  <li>
+                    <Link href="/examples">Examples</Link>
+                  </li>
+                </ul>
+              </div>
               <div className="site-footer-col">
                 <h3 className="ui">ETI360</h3>
                 <ul className="ui">
-                  {caseStudyLive() ? (
-                    <li>
-                      <Link href="/case-study">Case Study</Link>
-                    </li>
-                  ) : null}
                   {firmLinksWithConsent.map((link) => (
                     <li key={link.href}>
                       <Link href={link.href}>{link.label}</Link>
