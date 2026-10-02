@@ -87,8 +87,20 @@
   font-weight: 600;
   color: var(--navy);
 }
-.groupCard:hover .go,
-.case:hover .go { text-decoration: underline; }
+/* Hover (Dan, 2026-10-02): the whole card turns slightly beige; nothing in
+   it is underlined. */
+.groupCard,
+.case { transition: background-color 0.15s ease; }
+.groupCard:hover,
+.groupCard:focus-visible,
+.case:hover,
+.case:focus-visible { background: var(--gold-surface); }
+.groupCard:hover,
+.groupCard:hover *,
+.case:hover,
+.case:hover * { text-decoration: none; }
+.groupCard:hover,
+.case:hover { color: var(--ink); }
 .go { margin-top: auto; padding-top: 8px; font-weight: 600; color: var(--navy); font-size: var(--font-sm); }
 
 /* ── Carousel slides ── */
