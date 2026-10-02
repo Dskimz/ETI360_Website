@@ -89,7 +89,7 @@ const MADE_FOR_THE_SCHOOL = [
   "The documents follow the school’s own trip policy, forms and escalation path.",
   "The risk documentation takes the format the school already uses: a risk assessment, RAMS, emergency action procedures, or the school’s own form.",
   "The documents use the school’s own names for its programs, such as Week Without Walls or service trips.",
-  "A trip gets only the documents it needs. A day trip gets a shorter set, and walking, cycling and paddling days can add route maps.",
+  "The school and ETI360 scope the documents for each trip. Day trips use a shorter set, and walking, cycling and paddling days can add route maps.",
 ];
 
 export default function ExamplesPage() {
@@ -100,7 +100,7 @@ export default function ExamplesPage() {
           <p className={`${styles.eyebrow} ui`}>Examples</p>
           <h1>Every document opens in full.</h1>
           <p className={styles.lede}>
-            ETI360 prepared these worked examples for its sample schools. A school receives the same documents in its own name.
+            These worked examples show the form and level of detail ETI360 prepares. Each school’s documents reflect its name, policies and trip context.
           </p>
         </div>
       </header>

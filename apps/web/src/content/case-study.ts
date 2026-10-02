@@ -142,7 +142,7 @@ export const INTRO = {
   // Dan, 2026-10-01: the Case Study is told as a partnership year.
   // Tone-reviewed 2026-10-01.
   partnership:
-    "Harborview International School runs trips on six program paths, from international multi-day trips to elementary day trips and athletics travel. This case study follows one school year in which ETI360 works with Harborview as a partner across that program. The year begins with the Travel Program Review and the Travel Year Guide, and each trip, day-trip year and conference season builds on them.",
+    "Harborview International School runs trips on six program paths, from international multi-day trips to elementary day trips and athletics travel. This case study follows one partnership year, in which ETI360 reviews and prepares Harborview’s documentation across that program. The year begins with the Travel Program Review and the Travel Year Guide, and each trip, day-trip year and conference season builds on them.",
   // The reviewer's wording for the old "real samples ETI360 built" line;
   // on the overview's foot since 2026-09-29 (the hero carries HERO_NOTE).
   samples:
@@ -182,21 +182,21 @@ export const OVERVIEW_FACTS: Fact[] = [
     2026-09-29); the words are the reviewed ones, a sentence to a line. */
 export const WORK = {
   sends:
-    "What it already has, by email: policies, calendars, venue lists, provider documents and booking confirmations. It fills in no forms and uploads nothing to a system.",
+    "Harborview emails the materials it already holds: policies, calendars, venue lists, provider documents and booking confirmations. It fills in no forms and uploads nothing to a system.",
   does: [
     "Reads each document supplied in full and enters each trip, stop and statement it contains.",
     "Researches and measures, within the agreed scope, what the documents leave out, such as emergency departments, drive times, entry rules and climate, from cited public sources.",
     "Writes each document, in A4 and US Letter.",
   ],
   receives:
-    "Prepared documents, in its own paper size. The school reviews them; for trip risk documents, it completes, amends and approves them.",
+    "Harborview receives the prepared documents in its own paper size. The school reviews them; for trip risk documents, it completes, amends and approves them.",
 };
 
 /** The rest of the year, in one line on the overview (the Individual Trip Reports's
     "rest of the year" block folded in here, 2026-09-29, now that the Trip
     Package is step 2, not the last). [draft] 2026-09-28. */
 export const LIFECYCLE =
-  "At the end of the year, Harborview keeps every document, the Travel Year Guide and the provider evaluations. The next year starts from that record rather than from the beginning, and the Review comes around again in its fourth year.";
+  "At the end of the year, Harborview keeps every document, the Travel Year Guide and the provider evaluations. That record becomes the starting point for the following year, and the Travel Program Review returns in its fourth year.";
 
 /** The one decision-ownership line on every page: ETI360's positive role
     first, then the site's canonical Who decides line (voice.ts). */
@@ -208,9 +208,9 @@ export const WHO_DECIDES_BOX = `${WHO_PREPARES} ${WHO_DECIDES}`;
     template-v42-docs.html). [draft], tone-reviewed 2026-09-28. Shown under
     the heading "ETI360’s 3-Tier Risk Framework" (Dan, 2026-09-29). */
 export const TIER_LINES: Record<1 | 2 | 3, string> = {
-  1: "The school-wide review of travel policies and procedures, prepared for leadership review.",
-  2: "Each trip’s documents, prepared for review before departure.",
-  3: "Field and emergency information for trip leaders while the group is away, and the report after the trip.",
+  1: "ETI360 prepares a school-wide review of travel policies and procedures for leadership.",
+  2: "ETI360 prepares each trip’s documents for review before departure.",
+  3: "Trip leaders use field and emergency information while the group is away, and leadership reviews the report after the trip.",
 };
 
 /* ── The steps ── */
@@ -278,7 +278,7 @@ export const STEPS: Step[] = [
     title: "The whole program, read path by path",
     // The reviewed need's second sentence, verbatim.
     need: "Before planning the year, the leadership team wants one view of the whole program, read the same way path by path, including what its two providers’ own documents cover.",
-    partnership: "The Review gives the partnership its starting point, because ETI360 and the school’s travel lead now share one reading of every program path.",
+    partnership: "The Review establishes a shared starting point. ETI360 and Harborview’s travel lead work from the same documented view of each program path.",
     facts: [
       { label: USED_BY, value: "The leadership team", phone: true },
       // From the reviewed rest of the year ("Every four years … opens the
@@ -298,7 +298,7 @@ export const STEPS: Step[] = [
         // sample edition, so its own date and the school it does not name
         // read as intended beside Harborview's review.
         note: {
-          lead: "Providers.",
+          lead: "Providers:",
           text: `The review also evaluates the documents of Harborview’s two providers, ${CYCLING_PROVIDER} and ${ORIENTEERING_PROVIDER}. ${CYCLING_PROVIDER_SHORT}’s evaluation is shown below as a sample edition, with its own date and no school named; the orienteering provider’s is not included in this example. ETI360 shows what each provider’s documents cover. It does not certify, approve, rank or recommend providers.`,
         },
       },
@@ -310,7 +310,7 @@ export const STEPS: Step[] = [
         version: "harborview-travel-year-guide",
         docs: ["travel-year-guide"],
         note: {
-          lead: "The year.",
+          lead: "The year:",
           text: "After the Review, ETI360 prepares Harborview’s Travel Year Guide, which sets out the school’s year of trips in six phases with the people each step involves. The school sets the dates and changes them as the year moves, and the guide sets no deadlines.",
         },
       },
@@ -318,7 +318,7 @@ export const STEPS: Step[] = [
         version: "harborview-trip-budgets",
         docs: ["trip-budgets"],
         note: {
-          lead: "Budgets.",
+          lead: "Budgets:",
           text: "ETI360 sets out the budget for each of Harborview’s 35 March trips in one format, from the provider’s cost and flights to GST and card fees, so leadership can compare the trips side by side. The school sets its prices.",
         },
       },
@@ -335,9 +335,9 @@ export const STEPS: Step[] = [
       "Reads each program path, and each provider’s documents, against the ten areas of the ETI360 Operational Capability Framework.",
     ],
     decides: [
-      "Which program paths are in scope and which providers to include.",
+      "Harborview sets the program paths in scope and identifies the providers to include.",
       // [draft] shortened.
-      "How to weigh and sequence the open items.",
+      "Harborview determines which findings to address first.",
     ],
     links: [{ href: "/examples#policies", label: "The Travel Program Review examples" }],
     description:
@@ -351,7 +351,7 @@ export const STEPS: Step[] = [
     title: "One trip, from approval to feedback",
     // [draft] the reviewed two sentences in one; the trip's provider by its
     // display name.
-    need: `For a cycling trip in Taiwan from the ${CYCLING_PROVIDER_SHORT} catalog, the Head of School needs the trip’s documents before approving it; the trip leader, chaperones, families and students each need theirs before the group leaves.`,
+    need: `For a cycling trip in Taiwan from the ${CYCLING_PROVIDER_SHORT} catalog, the Head of School needs the trip’s documents before approving it. Before departure, the trip leader, chaperones, families and students each need the information prepared for their role.`,
     partnership: "ETI360 prepares each trip’s reports in the same format, so a leader who moves from one trip to the next finds the same documents.",
     facts: [
       { label: USED_BY, value: "The Head of School, the trip leader, chaperones, families and students", phone: true },
@@ -393,7 +393,7 @@ export const STEPS: Step[] = [
         // password."), shortened; "would add" after the tone review, to
         // match the note above it ("would take the same form"). [draft]
         note: {
-          lead: "Day maps.",
+          lead: "Day maps:",
           text: "Harborview’s edition would add, for each riding day, a pocket route card for the teachers to carry and the full route pages in the Trip Leader Card.",
         },
       },
@@ -404,7 +404,7 @@ export const STEPS: Step[] = [
         docs: ["japan-entry-and-visa-report"],
         open: "japan-entry-and-visa-report",
         note: {
-          lead: "Visas.",
+          lead: "Visas:",
           text: "For Harborview’s Kyoto trip, ETI360 sorted the group by passport, set out which students and teachers need a visa for Japan, and wrote an email for each nationality with the school letters each application needs. The families apply, and the Embassy of Japan decides.",
         },
       },
@@ -460,8 +460,8 @@ export const STEPS: Step[] = [
         docs: ["field-trip-risk-assessment-pack"],
         // The reviewed page-2 caption's second half; the lead is [draft].
         note: {
-          lead: "What in the example is real.",
-          text: "The venues, addresses and emergency departments are real, and each drive is measured on real roads; the dates, class sizes and staff are illustrative.",
+          lead: "What the example reflects:",
+          text: "The example uses real venues, addresses, emergency departments and road routes. The dates, class sizes and staff are illustrative.",
         },
       },
       { version: "firholm-elementary", docs: ["field-trip-risk-assessment-pack"], otherSchool: "firholm" },
@@ -478,8 +478,8 @@ export const STEPS: Step[] = [
       "Writes each trip page, a calendar for each month and the year at a glance.",
     ],
     decides: [
-      "Each trip and its risk assessment: the school reviews, completes, amends as necessary, and approves them.",
-      "Which emergency department each group uses.",
+      "The school reviews, completes, amends as necessary, and approves each trip and its risk assessment.",
+      "The school confirms which emergency department each group uses.",
     ],
     links: [{ href: "/examples#field-trips", label: "Field Trip Reports examples" }],
     description:
@@ -493,7 +493,7 @@ export const STEPS: Step[] = [
     title: "One guide for the conference year",
     // [draft] the reviewed two sentences in one.
     need: "The Director of Athletics & Activities wants the coaches and advisors who travel with Harborview’s teams and activity groups to carry the same information for every host city.",
-    partnership: "The coaches receive their guide from the same partnership, so athletics travel follows the same preparation as every other path.",
+    partnership: "ETI360 prepares the coaches’ guide through the same review process, so athletics travel follows the same documentation structure as every other program path.",
     facts: [
       { label: USED_BY, value: "Coaches and advisors who travel with teams and activity groups", phone: true },
       // From the product's door.
@@ -512,7 +512,7 @@ export const STEPS: Step[] = [
       // [draft] shortened.
       "Reads the athletics and activities travel policy first, so the guide follows it.",
       // [draft] two reviewed lines in one.
-      "Researches each host city once, from cited public sources, and lists the emergency departments by drive time, shortest first.",
+      "Researches each host city using cited public sources and lists the emergency departments by drive time, shortest first.",
       "Writes a chapter for each host city in the same order, and a page of items to confirm before travel.",
     ],
     decides: [

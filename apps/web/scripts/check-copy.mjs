@@ -68,7 +68,7 @@ const BASE = `accept add adapt affect agree allow answer apply approve arrange a
   arrive depart board pick drop fly sail paddle cycle climb hike camp swim eat drink cook clean wash dry
   miss search lock unlock alert warn call text message phone reply respond act ask cause fail succeed
   improve strengthen close open post publish price quote charge invoice bill welcome thank invite
-  gather coordinate`.split(/\s+/);
+  gather coordinate establish determine reflect scope retain`.split(/\s+/);
 
 const DETERMINERS = new Set(
   `the a an its their our your his her my this that these those every each any some no one two three four five six

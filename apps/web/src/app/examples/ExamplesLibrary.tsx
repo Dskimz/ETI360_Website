@@ -45,8 +45,8 @@ const OPTIONS: {value: Filter; label: string}[] = [
 ]
 
 const OTHER: Record<'International' | 'US', string> = {
-  International: 'This area has independent school examples only for now; the documents take the same form for an international school.',
-  US: 'This area has international examples only for now; the documents take the same form for an independent school.',
+  International: 'This area currently has examples for independent schools only. International schools use the same document type, adapted to their context.',
+  US: 'This area currently has examples for international schools only. Independent schools use the same document type, adapted to their context.',
 }
 
 function Tile({item}: {item: ExampleItem}) {
