@@ -296,3 +296,10 @@
 @media (max-width: 600px) {
   .aboutCards { grid-template-columns: 1fr; }
 }
+
+/* Solution slides (Dan, 2026-10-02): the tier tag and the link sit at the
+   foot of every card, so the tags line up across the row whatever the
+   length of the title and line above them. */
+.slideBody .tierTag { margin-top: auto; }
+.slideBody h3 + p { margin-bottom: 16px; }
+.slideBody .go { margin-top: 12px; padding-top: 0; }
