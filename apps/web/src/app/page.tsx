@@ -1,3 +1,4 @@
+import { incidentCaseLive } from "@/lib/incident-case-hold";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -194,8 +195,8 @@ export default function HomePage() {
         <div className="container">
           <h2 className="section-heading rule-gold">{CASE_STUDIES.heading}</h2>
           <div className={styles.pair}>
-            {CASE_STUDIES.cards.map((c) => (
-              <Link key={c.school} href={c.href} className={styles.case}>
+            {CASE_STUDIES.cards.filter((c) => !c.incidentHold || incidentCaseLive()).map((c) => (
+              <Link key={c.href} href={c.href} className={styles.case}>
                 <span className={styles.casePhoto}>
                   <Image src={c.photo.src} alt={c.photo.alt} fill sizes="(max-width: 900px) 100vw, 540px" />
                   {c.status ? <span className={`${styles.status} ui`}>{c.status}</span> : null}

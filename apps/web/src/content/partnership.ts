@@ -107,6 +107,8 @@ export type CaseStudyCard = {
   cta: string;
   /** Shown as a tag while the case study is being written. */
   status?: string;
+  /** Behind the incident case study's publishing hold (src/lib/incident-case-hold.ts). */
+  incidentHold?: boolean;
 };
 
 export const CASE_STUDIES: { heading: string; cards: CaseStudyCard[] } = {
@@ -141,6 +143,21 @@ export const CASE_STUDIES: { heading: string; cards: CaseStudyCard[] } = {
       href: "/examples?schools=us#trip-preparation",
       cta: "See the school’s trips",
       status: "In preparation",
+    },
+    {
+      school: "Harborview International School",
+      place: "Incident reporting",
+      audience: "For international schools",
+      text: "Incident reports, an evening check-in and trip leaders’ feedback, with every record in the school’s own Google Workspace account.",
+      photo: {
+        src: "/marketing/case-studies/harborview-incident-nepal.jpg",
+        width: 800,
+        height: 500,
+        alt: "Machapuchare at sunrise from Sarangkot, above Pokhara.",
+      },
+      href: "/incident-reporting",
+      cta: "Read the case study",
+      incidentHold: true,
     },
   ],
 };
