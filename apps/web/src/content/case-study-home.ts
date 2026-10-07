@@ -12,7 +12,7 @@ import { stepHref } from "@/content/case-study";
    Build as needed (Dan, 2026-10-07): the home comes first; each point's
    page is built when its turn comes. A point with no page yet shows
    "Page in preparation". Pages that still show another school's example
-   (Individual Trip Reports, team travel) say so.
+   (Individual Trip Reports, sports and cultural exchange trips) say so.
 
    Voice: "we" for ETI360, professional Dan (docs/ETI360_TONE_AND_VOICE.md
    § Dan's Voice in the rebuild repo). Document names follow the Sep 29
@@ -155,13 +155,13 @@ export const POINTS: Point[] = [
     href: null,
   },
   {
-    id: "preparing-for-team-travel",
-    label: "Preparing for team travel",
+    id: "preparing-for-sports-and-cultural-exchange-trips",
+    label: "Preparing for sports and cultural exchange trips",
     tier: 2,
     problem:
-      "Teams travel to fixtures and tournaments through the season, and coaches need the same information for every trip.",
+      "Harborview’s teams and activity groups travel to fixtures, tournaments and festivals through the year, and coaches and sponsors need the same information for every trip.",
     prepared: ["Conference Travel Reports"],
-    lead: "We recommend this before the season starts.",
+    lead: "We recommend this before the season or the event calendar starts.",
     href: stepHref({ id: "conference-travel-package" }),
     status: "This page shows another school’s guide while Harborview’s own is prepared.",
   },
