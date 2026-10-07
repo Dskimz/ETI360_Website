@@ -81,7 +81,6 @@ export const CYCLE: { label: string; text: string }[] = [
   },
 ];
 
-const TPR = stepHref({ id: "travel-program-review" });
 
 export const POINTS: Point[] = [
   {
@@ -102,7 +101,7 @@ export const POINTS: Point[] = [
       "The school wants every trip in one place with its own dates, and leadership wants to compare what each trip costs.",
     prepared: ["Travel Year Guide", "Trip Budgets"],
     lead: "We recommend this as trips are chosen, about a year ahead.",
-    href: TPR,
+    href: "/case-study/laying-out-the-year",
   },
   {
     id: "preparing-each-trip",

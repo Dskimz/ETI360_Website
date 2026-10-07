@@ -17,7 +17,7 @@ export type PointPage = {
   did: string[];
   /** The documents, as a Step whose groups the cards render. */
   docs: Step;
-  docsNote: string;
+  docsNote?: string;
   decides: string[];
   boundary: string;
   lead: string;
@@ -60,5 +60,36 @@ export const UNDERSTANDING: PointPage = {
   boundary:
     "We show what each provider’s documents cover, and we never certify, approve, rank or recommend a provider. Harborview keeps every decision.",
   lead: "We recommend this before the next year’s trips are planned, because everything else in the year builds on it.",
-  next: { label: "Laying out the year", href: null },
+  next: { label: "Laying out the year", href: "/case-study/laying-out-the-year" },
+};
+
+/* The Travel Year Guide and the trip budgets, without the step page's
+   notes (the page says the same in its own copy, in "we"). */
+const layingOutDocs: Step = {
+  ...tpr,
+  groups: tpr.groups.slice(2, 4).map((g) => ({ ...g, note: undefined })),
+};
+
+export const LAYING_OUT: PointPage = {
+  id: "laying-out-the-year",
+  label: "Laying out the year",
+  tier: "Tier 1 Organizational Readiness",
+  description:
+    "How we set out Harborview International School’s year of trips in one guide, and each trip’s budget in one format.",
+  problem: [
+    "Once Harborview knew what its policies covered, the next question was the year itself. Its trips were planned in different places, and each trip’s costs arrived in a different form, from provider quotes to flight bookings.",
+    "Leadership wanted the whole year in one place, and a way to compare what each trip costs.",
+  ],
+  did: [
+    "We prepared Harborview’s Travel Year Guide. It sets out the school’s year of trips in six phases and names the people each phase involves. The school sets the dates and changes them as the year moves, and the guide sets no deadlines.",
+    "We set out the budget for each of Harborview’s 35 March trips in one format, from the provider’s cost and flights to GST and card fees, so leadership can compare the trips side by side.",
+  ],
+  docs: layingOutDocs,
+  decides: [
+    "Harborview sets the dates for every phase and changes them as the year moves.",
+    "Harborview decides which trips run and sets what each one costs families.",
+  ],
+  boundary: "We prepare the guide and the budgets, and Harborview owns both. The school makes every decision about its year.",
+  lead: "We recommend this as trips are chosen, about a year ahead.",
+  next: { label: "Preparing each trip", href: null },
 };

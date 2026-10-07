@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/content/case-study";
-import { UNDERSTANDING as P } from "@/content/case-study-points";
+import { LAYING_OUT as P } from "@/content/case-study-points";
 import { PointView } from "../_parts/PointView";
 
-/* Case Study point: Understanding the program. Copy: src/content/case-study-points.ts. A static
+/* Case Study point: Laying out the year. Copy: src/content/case-study-points.ts. A static
    route, so it wins over /case-study/[step]. */
 
 export function generateMetadata(): Metadata {
@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default function UnderstandingTheProgramPage() {
+export default function LayingOutTheYearPage() {
   if (!caseStudyLive()) notFound();
   return <PointView p={P} />;
 }
