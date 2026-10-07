@@ -1,9 +1,9 @@
-import queenstown from "@/content/trips/queenstown";
+import queenstown from "@/content/versions/queenstown";
 import type { DocGroup } from "@/content/case-study";
 
 /* Which trip set the Case Study shows (Dan, 2026-10-07: "Build Harborview's
    own trip set for the covers"). Harborview's own Queenstown set
-   (src/content/trips/queenstown.ts) once its V3 import lands; until then,
+   (src/content/versions/queenstown.ts) once its V3 import lands; until then,
    Horizon Ridge's Italy set under its earlier document names, with the
    other school's note. Every Case Study reference to a trip document goes
    through here, by its Sep 29 name, so the switch is one flag in

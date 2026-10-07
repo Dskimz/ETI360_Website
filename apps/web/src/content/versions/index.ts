@@ -7,6 +7,7 @@ import harborviewElementary from "./harborview-elementary";
 import harborviewKyotoVisa from "./harborview-kyoto-visa";
 import harborviewTravelYearGuide from "./harborview-travel-year-guide";
 import harborviewTripBudgets from "./harborview-trip-budgets";
+import queenstown from "./queenstown";
 import wexcombeMeridian from "./wexcombe-meridian";
 
 /* Every version of every product, in display order (four-product site spec
@@ -26,7 +27,8 @@ import wexcombeMeridian from "./wexcombe-meridian";
    A file that exports null is not built and never appears; only real
    versions are listed, never placeholders. Coming: the Idaho rail trail
    (src/content/trips/idaho-rail-trail.ts, null until its import lands) and
-   Japan (Harborview, not built).
+   Japan (Harborview, not built). Harborview's Queenstown set is Case Study
+   only (`caseStudyOnly`, Dan 2026-10-07): never on Examples or a trip page.
 
    Version slugs are unique across the site: each is the /open/{slug}/
    segment and, for a single-document version, the anchor on its product
@@ -43,6 +45,7 @@ const ordered: (Version | null)[] = [
   harborviewKyotoVisa,
   harborviewTravelYearGuide,
   harborviewTripBudgets,
+  queenstown, // Case Study only; null until the V3 import lands
   firholmElementary,
   harborviewElementary,
   wexcombeMeridian,

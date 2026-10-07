@@ -12,10 +12,11 @@ its Sep 29 name or its earlier name, copies both editions into
 apps/web/public/trips/queenstown/{letter,a4}/ under the published names
 (his-t07-queenstown-<doc>.pdf), then runs scripts/import-trip.py to render
 the cover and pages 2 and 3 of each document from the A4 edition (an
-international school's default) and the hero.
+international school's default), and the hero if one is passed (unused while
+Queenstown is Case Study only).
 
 Afterwards: check the inside pages, set the page numbers and captions in
-apps/web/src/content/trips/queenstown.ts, fill its V3: placeholders, set
+apps/web/src/content/versions/queenstown.ts, fill its V3 placeholders, set
 the `source` of any document whose V3 file name differs from its published
 name (this script prints the lines), set READY = true, and build.
 """

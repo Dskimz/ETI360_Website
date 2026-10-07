@@ -103,6 +103,9 @@ export type Version = {
       evaluation was Case Study only until 2026-09-29, when Dan approved
       listing it on the Travel Program Review page (`listed: true`). */
   listed?: boolean;
+  /** Shown only on the Case Study (Dan, 2026-10-07: "Keep Queenstown on the
+      case study only"): left out of the Examples library as well. */
+  caseStudyOnly?: true;
 };
 
 /** An Individual Trip Reports version: a worked trip with a page of its own. */

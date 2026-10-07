@@ -1,5 +1,5 @@
-import { A4_COVER, A4_PAGE, tripPaths } from "./helpers";
-import type { Trip } from "./types";
+import { A4_COVER, A4_PAGE, tripPaths } from "@/content/trips/helpers";
+import type { Version } from "@/content/trips/types";
 
 /* Queenstown (Harborview International School, trip HIS-T07): Harborview's
    own trip set, built in V3 (customers/his/trips/queenstown-2027/; the
@@ -7,12 +7,19 @@ import type { Trip } from "./types";
    Ridge's Italy set on the Case Study (Dan, 2026-10-07: "Build Harborview's
    own trip set for the covers"; port from V3, not a rebuild).
 
+   Case Study only (Dan, 2026-10-07: "Keep Queenstown on the case study
+   only"): registered so its documents open through /open and the S3 upload
+   and sync carry its PDFs, but `listed: false` and `caseStudyOnly` keep it
+   off the Examples library, the sitemap and the worked trips, so it has no
+   /trips/queenstown page. Its files still live under /trips/queenstown/,
+   where scripts/import-queenstown.py writes them.
+
    PORT STATE: the structure is ready, the files are not. This version
    exports null, so nothing on the site changes, until a session on Dan's
    Mac (which reaches V3) has:
-     1. run scripts/import-queenstown.py (covers, inside pages, hero, PDFs);
-     2. replaced every V3: placeholder below from the V3 trip record and
-        checked each blurb and caption against the PDFs;
+     1. run scripts/import-queenstown.py (covers, inside pages, PDFs);
+     2. replaced every V3: placeholder below and checked each blurb and
+        caption against the PDFs;
      3. set READY to true and run the build.
    The Case Study switches to these documents on its own once READY is
    true (src/content/case-study-trip.ts). Handoff:
@@ -25,68 +32,27 @@ import type { Trip } from "./types";
 
 const READY = false;
 
-const { base, cover, inside, editions } = tripPaths({
+const { cover, inside, editions } = tripPaths({
   slug: "queenstown",
   filePrefix: "his-t07-queenstown",
   coverSize: A4_COVER,
   pageSize: A4_PAGE,
 });
 
-const queenstown: Trip = {
+const queenstown: Version = {
   slug: "queenstown",
   product: "trip-package",
   title: "Queenstown",
-  h1: "The documents for a week in Queenstown.",
   school: "Harborview International School",
   schoolType: "International",
-  tripKind: "Outdoor",
-  tripType: "V3: e.g. Overnight trip, eight days",
-  region: "New Zealand",
   place: "Queenstown, New Zealand",
-  dates: "V3: e.g. Saturday, March 13 to Saturday, March 20, 2027",
-  group: "V3: students, grades and staff",
   paperDefault: "a4",
-  lede: "V3: one paragraph from the trip record, in the shape of italy.ts.",
   summary:
-    "V3: one sentence, e.g. An eight-day outdoor trip to Queenstown: the documents for the office, the trip leaders, families, students, and next year's planning.",
-  facts: [
-    { label: "Trip", value: "V3" },
-    { label: "Group", value: "V3" },
-    { label: "Program", value: "V3" },
-    { label: "Travel", value: "V3" },
-    { label: "Lodging", value: "V3" },
-    { label: "School", value: "Harborview International School" },
-  ],
-  hero: {
-    src: `${base}/hero-queenstown.jpg`,
-    width: 1400,
-    height: 656,
-    alt: "V3: describe the hero photo",
-  },
+    "V3: one sentence, e.g. Harborview's outdoor week in Queenstown, with the documents for the office, the trip leaders, families, students, and next year's planning.",
   disclosure:
     "Harborview International School is a fictional school; its location is shown for illustrative purposes.",
-  decisions: [
-    {
-      title: "Approving the trip",
-      note: "The record the office files, and the Risk Assessment Report for the school to review, complete, and approve.",
-    },
-    {
-      title: "Telling families",
-      note: "The report for students and parents, with the days at a glance and the forms that come back to the office.",
-    },
-    {
-      title: "Preparing the trip leaders",
-      note: "One page for each day of the trip, the procedures, and the emergency departments by travel time from each place.",
-    },
-    {
-      title: "Connecting the trip to learning",
-      note: "The fieldbook students carry from the classroom to Queenstown and back.",
-    },
-    {
-      title: "Improving next year's trip",
-      note: "What students, families, the leaders, and the provider said, set out for the school's review.",
-    },
-  ],
+  listed: false,
+  caseStudyOnly: true,
   documents: [
     {
       slug: "off-campus-travel-report",
@@ -179,6 +145,12 @@ const queenstown: Trip = {
     a4Dir: "customers/his/outputs/pdf/a4",
   },
 };
+
+// A V3: placeholder (or a bare "V3" caption) left in the data fails the
+// build once READY is true, since no trip page exposes it to the copy check.
+if (READY && /"V3[:"]/.test(JSON.stringify(queenstown))) {
+  throw new Error("Queenstown: replace every V3 placeholder in src/content/versions/queenstown.ts before READY");
+}
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default READY ? queenstown : null;

@@ -44,7 +44,10 @@ const GROUP_OF_PRODUCT: Record<string, { id: string; label: string }> = {
 
 const TRIP_SLUGS = new Set(trips.map((t) => t.slug));
 
-const ITEMS: ExampleItem[] = versions.flatMap((v) =>
+/** Every version but those shown only on the Case Study (Queenstown). */
+const LIBRARY = versions.filter((v) => !v.caseStudyOnly);
+
+const ITEMS: ExampleItem[] = LIBRARY.flatMap((v) =>
   v.documents.map((d) => {
     const area = areaOfDoc(d.slug);
     const group = area.id === "trip-preparation" ? GROUP_OF_PRODUCT[v.product] : undefined;
@@ -67,7 +70,7 @@ const ITEMS: ExampleItem[] = versions.flatMap((v) =>
 );
 
 const AREA_LIST: ExampleArea[] = AREAS.map((a) => {
-  const shown = versions.filter((v) => v.documents.some((d) => a.docs.includes(d.slug)));
+  const shown = LIBRARY.filter((v) => v.documents.some((d) => a.docs.includes(d.slug)));
   return {
     id: a.id,
     title: a.title,

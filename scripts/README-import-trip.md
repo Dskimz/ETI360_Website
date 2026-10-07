@@ -116,7 +116,8 @@ names; some files may still carry the earlier names.
 V3 Letter and A4 folders, copies both editions under the published names,
 renders the cover and pages 2 and 3 from the A4 edition, and prints the
 `source` lines for any file whose V3 name differs. Then fill the `V3:`
-placeholders in `src/content/trips/queenstown.ts` and set `READY = true`;
+placeholders in `src/content/versions/queenstown.ts` and set `READY = true`;
 the Case Study switches from Italy to Queenstown on its own
-(`src/content/case-study-trip.ts`). The copy check fails the build while a
-`V3:` placeholder remains.
+(`src/content/case-study-trip.ts`). The build fails while a
+`V3` placeholder remains. Queenstown is Case Study only (Dan, 2026-10-07): no
+/trips/queenstown page, not on Examples or in the sitemap.

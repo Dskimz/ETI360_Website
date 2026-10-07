@@ -6,7 +6,6 @@ import shenandoah from "./shenandoah";
 import idahoRailTrail from "./idaho-rail-trail";
 import whiteMountains from "./white-mountains";
 import cascoBay from "./casco-bay";
-import queenstown from "./queenstown";
 
 /* Worked trips, the Individual Trip Reports's versions: one content file per trip, in
    the order the Individual Trip Reports page shows them. A file that exports null is not
@@ -26,7 +25,6 @@ const ordered: (Trip | null)[] = [
   idahoRailTrail, // null until the Idaho rail trail import lands
   whiteMountains,
   cascoBay,
-  queenstown, // Harborview's own trip; null until the V3 import lands
 ];
 
 /** Live trips, in the order the Individual Trip Reports page shows them. */
