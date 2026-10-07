@@ -11,15 +11,20 @@ import { STEPS, type Step } from "@/content/case-study";
 export type PointPage = {
   id: string;
   label: string;
+  /** The tier's name; empty for a point outside the tiers (the hero shows
+      no tier line). */
   tier: string;
   /** The tier number, for the lead-time box color. */
   tierNum: 1 | 2 | 3;
   description: string;
   problem: string[];
   did: string[];
-  /** The documents, as a Step whose groups the cards render. */
-  docs: Step;
+  /** The documents, as a Step whose groups the cards render; a point with
+      no documents of its own (During trips, The next year) leaves it out. */
+  docs?: Step;
   docsNote?: string;
+  /** Links under "What we did", for a point whose solution has its own page. */
+  links?: { label: string; href: string }[];
   decides: string[];
   boundary: string;
   lead: string;
@@ -192,5 +197,216 @@ export const FAMILIES: PointPage = {
   ],
   boundary: "We prepare the information, and Harborview and its families make every decision and application.",
   lead: "The best time is three to six months before departure, ahead of the parent meeting.",
-  next: { label: "Preparing trip leaders", href: null },
+  next: { label: "Preparing trip leaders", href: "/case-study/preparing-trip-leaders" },
+};
+
+/* The leader card from Horizon Ridge's Italy set, with the other school's
+   note the step page already carries. */
+const leadersDocs: Step = {
+  ...trip,
+  groups: [
+    {
+      ...trip.groups[0],
+      docs: ["trip-leader-card"],
+      open: "trip-leader-card",
+      note: undefined,
+    },
+  ],
+};
+
+export const TRIP_LEADERS: PointPage = {
+  id: "preparing-trip-leaders",
+  label: "Preparing trip leaders",
+  tier: "Tier 2 Trip Readiness",
+  tierNum: 2,
+  description:
+    "How we prepare the brief Harborview International School’s trip leaders carry, with each day laid out and what to do if something goes wrong.",
+  problem: [
+    "Harborview’s trip leaders are teachers. On a trip, their attention belongs with the students, and they have little time to search through documents.",
+    "They need each day laid out in one place, with what to do if something goes wrong.",
+  ],
+  did: [
+    "We prepare the Trip Leaders Brief from the same information as the trip reports. It gives one page for each day, with the plan for that day and what to do if something goes wrong. The chaperones receive the same brief.",
+    "We do not meet trip leaders or run sessions with them. The brief carries what they need, so they can focus on the students.",
+    "We talk to a teacher only when that teacher is the only source of information, for example on a trip that runs without a provider.",
+  ],
+  docs: leadersDocs,
+  docsNote:
+    "This document still carries its earlier name. The Trip Leader Card is now the Trip Leaders Brief, with one page for each day.",
+  decides: [
+    "The school sends the brief to its trip leaders.",
+    "Trip leaders lead the trip and make the live assessment as conditions change.",
+  ],
+  boundary: "We prepare the brief, and Harborview and its trip leaders make every decision before and during the trip.",
+  lead: "We prepare it with the trip reports and send the final version a few weeks before departure.",
+  next: { label: "Preparing for field trips", href: "/case-study/preparing-for-field-trips" },
+};
+
+const fieldTrips = STEPS.find((s) => s.id === "field-trip-package");
+if (!fieldTrips) throw new Error("Case Study: the Field Trip Reports step is missing");
+
+/* Harborview's own pack, with the note on what the example reflects, and
+   Firholm's, with the other school's note the step page already carries. */
+const fieldTripDocs: Step = { ...fieldTrips };
+
+export const FIELD_TRIPS: PointPage = {
+  id: "preparing-for-field-trips",
+  label: "Preparing for field trips",
+  tier: "Tier 2 Trip Readiness",
+  tierNum: 2,
+  description:
+    "How we prepare Harborview International School’s year of elementary day trips in one pack, with a page for each trip and a calendar for each month.",
+  problem: [
+    "Harborview’s elementary school runs many day trips through the year, to venues across Singapore.",
+    "The school wants the same care for each one without a long document every time.",
+  ],
+  did: [
+    "We prepare one pack for the school year, with a page for each trip and a calendar for each month.",
+    "Each grade team sends us its venues, its class sizes and the adults going on each trip. We set out each trip with its date, its schedule and each stop.",
+    "We measure the drive by road from each stop to Singapore’s public emergency departments.",
+  ],
+  docs: fieldTripDocs,
+  decides: [
+    "The school reviews, completes, amends as necessary, and approves each trip and its risk assessment.",
+    "The school confirms which emergency department each group uses.",
+  ],
+  boundary: "We prepare the pack, and Harborview makes every decision about its day trips.",
+  lead: "We recommend this before the school year starts.",
+  next: {
+    label: "Preparing for sports and cultural exchange trips",
+    href: "/case-study/preparing-for-sports-and-cultural-exchange-trips",
+  },
+};
+
+const conference = STEPS.find((s) => s.id === "conference-travel-package");
+if (!conference) throw new Error("Case Study: the Conference Travel Reports step is missing");
+
+/* Wexcombe's guide, with the other school's note the step page already
+   carries. */
+const conferenceDocs: Step = { ...conference };
+
+export const SPORTS_EXCHANGE: PointPage = {
+  id: "preparing-for-sports-and-cultural-exchange-trips",
+  label: "Preparing for sports and cultural exchange trips",
+  tier: "Tier 2 Trip Readiness",
+  tierNum: 2,
+  description:
+    "How we prepare one guide for the season that Harborview International School’s coaches and sponsors carry, with a chapter for each host city.",
+  problem: [
+    "Harborview’s teams and activity groups travel to fixtures, tournaments and festivals through the year.",
+    "The coaches and sponsors who travel with them need the same information for every trip.",
+  ],
+  did: [
+    "We read the school’s athletics and activities travel policy first, so the guide follows it.",
+    "We prepare one guide for the season, with a chapter for each host city in the same order. We research each city from cited public sources and list its emergency departments by drive time, shortest first.",
+    "A page at the end of the guide lists the items the school confirms before each trip.",
+  ],
+  docs: conferenceDocs,
+  docsNote: "Harborview’s own guide is in preparation.",
+  decides: [
+    "The Director of Athletics & Activities approves all team and activity travel under the school’s policy.",
+    "The school completes the fields marked for confirmation and confirms which emergency department each group uses.",
+  ],
+  boundary: "We prepare the guide, and Harborview approves every trip and makes every decision while its groups travel.",
+  lead: "We recommend this before the season or the event calendar starts.",
+  next: { label: "During trips", href: "/case-study/during-trips" },
+};
+
+/* No document cards: the system is shown on its own case study page,
+   /incident-reporting. The copy says the system is built to run in the
+   school's Workspace and is installed there at handover, never that it
+   runs there today (CLAUDE.md, Incident Reporting). */
+export const DURING_TRIPS: PointPage = {
+  id: "during-trips",
+  label: "During trips",
+  tier: "Tier 3 Incident Reporting and Feedback",
+  tierNum: 3,
+  description:
+    "How we help Harborview International School set up its own incident reporting before the first trip, for the school to run while groups are away.",
+  problem: [
+    "When something happens on a trip, the school needs to record it properly and in one place.",
+    "The school also wants to hear from its trip leaders while groups are away.",
+  ],
+  did: [
+    "The school runs its own incident reporting while groups are away. We help set it up with the school’s IT before the first trip.",
+    "The Educational Travel Incident Reporting System is built to run in the school’s own Google Workspace. It is installed there at handover.",
+    "We take no part in decisions during a trip, and we have no contact with trip leaders while they are away. In an emergency, the school calls on its own risk and security advisers.",
+  ],
+  links: [{ label: "See the incident reporting case study", href: "/incident-reporting" }],
+  decides: [
+    "The school decides how incidents are reported and who receives each report.",
+    "Trip leaders and the school’s own staff handle each incident as it happens.",
+    "The school’s own risk and security advisers handle emergencies.",
+  ],
+  boundary: "We help build the system, and the school runs it and makes every decision while groups are away.",
+  lead: "We set it up with the school before the first trip.",
+  next: { label: "After the trips", href: "/case-study/after-the-trips" },
+};
+
+/* The feedback report from Horizon Ridge's Italy set, with the other
+   school's note the step page already carries. The Semester Board Report
+   is in preparation and is not shown. */
+const afterDocs: Step = {
+  ...trip,
+  groups: [
+    {
+      ...trip.groups[0],
+      docs: ["post-trip-feedback-report"],
+      open: "post-trip-feedback-report",
+      note: undefined,
+    },
+  ],
+};
+
+export const AFTER_TRIPS: PointPage = {
+  id: "after-the-trips",
+  label: "After the trips",
+  tier: "Tier 3 Incident Reporting and Feedback",
+  tierNum: 3,
+  description:
+    "How we turn Harborview International School’s trip records and feedback into the Post Trip Report, and prepare a short report each semester for its Board.",
+  problem: [
+    "After each trip, the school wants to know what worked and what to change.",
+    "Its Board wants a short account of the program each semester.",
+  ],
+  did: [
+    "After each trip, we turn the records and feedback the school shares with us into the Post Trip Report. It becomes the starting point when the trip is planned again next year.",
+    "If the school asks, we gather feedback from families as well.",
+    "At the end of each semester, we prepare a Semester Board Report, which the school issues to its own Board. Harborview’s first report is in preparation.",
+  ],
+  docs: afterDocs,
+  docsNote:
+    "This document still carries its earlier name. The Post-Trip Feedback Report is now the Post Trip Report.",
+  decides: [
+    "The school decides what to change for the next trip.",
+    "The school issues the Semester Board Report to its Board under its own name.",
+  ],
+  boundary: "We prepare the reports from what the school shares with us, and Harborview decides what changes.",
+  lead: "We prepare these after each trip and at the end of each semester.",
+  next: { label: "The next year", href: "/case-study/the-next-year" },
+};
+
+export const NEXT_YEAR: PointPage = {
+  id: "the-next-year",
+  label: "The next year",
+  tier: "",
+  tierNum: 1,
+  description:
+    "What changes in Harborview International School’s second year, from updated dates and risk documents to new trips and a second program review.",
+  problem: [
+    "The school wants to know what changes in year two, and how much of the first year’s work carries forward.",
+  ],
+  did: [
+    "Year two is smoother, because most of the first year’s work carries forward.",
+    "We update the dates and seasons, touch up the risk documents from what the school learned, and add new trips and providers.",
+    "Trips can drift from their goals over time. Sometimes a trip goes back to the start.",
+    "The program review runs again at the end of the first year, so the school can see what has changed.",
+  ],
+  decides: [
+    "Harborview decides which trips continue, which change and which go back to the start.",
+    "Harborview decides when to review the program again.",
+  ],
+  boundary: "We prepare the updates, and Harborview makes every decision about its program.",
+  lead: "The best time to review the program again is the end of the first year.",
+  next: { label: "The case study home", href: "/case-study" },
 };

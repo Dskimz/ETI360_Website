@@ -22,7 +22,7 @@ export function PointView({ p: P }: { p: PointPage }) {
             · Harborview International School
           </p>
           <h1 className={styles.h1}>{P.label}</h1>
-          <p className={`${styles.heroTier} ui`}>{P.tier}</p>
+          {P.tier ? <p className={`${styles.heroTier} ui`}>{P.tier}</p> : null}
         </div>
       </div>
 
@@ -40,12 +40,23 @@ export function PointView({ p: P }: { p: PointPage }) {
             {P.did.map((t) => (
               <p key={t} className={styles.text}>{t}</p>
             ))}
+            {P.links?.length ? (
+              <ul className={`${styles.textList} ui`}>
+                {P.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
 
-          <div className={`${styles.section} ${stepStyles.step}`}>
-            <StepDocs step={P.docs} />
-            {P.docsNote ? <p className={`${styles.text} ${styles.small}`}>{P.docsNote}</p> : null}
-          </div>
+          {P.docs ? (
+            <div className={`${styles.section} ${stepStyles.step}`}>
+              <StepDocs step={P.docs} />
+              {P.docsNote ? <p className={`${styles.text} ${styles.small}`}>{P.docsNote}</p> : null}
+            </div>
+          ) : null}
 
           <div className={styles.section} role="region" aria-labelledby="decides">
             <h2 className={styles.h2} id="decides">What Harborview decides</h2>
