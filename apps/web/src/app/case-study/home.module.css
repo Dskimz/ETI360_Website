@@ -177,3 +177,5 @@
   font-size: 15px;
 }
 .pager a { color: var(--navy); font-weight: 600; }
+.leadT2 { border-left-color: var(--tier2-band); }
+.leadT3 { border-left-color: var(--tier3-band); }

@@ -57,7 +57,7 @@ export function PointView({ p: P }: { p: PointPage }) {
             <p className={styles.text}>{P.boundary}</p>
           </div>
 
-          <div className={styles.leadBox}>
+          <div className={`${styles.leadBox} ${P.tierNum === 2 ? styles.leadT2 : P.tierNum === 3 ? styles.leadT3 : ""}`}>
             <span className={`${styles.k} ui`}>Lead time</span>
             <p>{P.lead}</p>
           </div>

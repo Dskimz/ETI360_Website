@@ -12,6 +12,8 @@ export type PointPage = {
   id: string;
   label: string;
   tier: string;
+  /** The tier number, for the lead-time box color. */
+  tierNum: 1 | 2 | 3;
   description: string;
   problem: string[];
   did: string[];
@@ -39,6 +41,7 @@ export const UNDERSTANDING: PointPage = {
   id: "understanding-the-program",
   label: "Understanding the program",
   tier: "Tier 1 Organizational Readiness",
+  tierNum: 1,
   description:
     "How we read Harborview International School’s travel policies one program path at a time, along with the documents of the providers it uses.",
   problem: [
@@ -74,6 +77,7 @@ export const LAYING_OUT: PointPage = {
   id: "laying-out-the-year",
   label: "Laying out the year",
   tier: "Tier 1 Organizational Readiness",
+  tierNum: 1,
   description:
     "How we set out Harborview International School’s year of trips in one guide, and each trip’s budget in one format.",
   problem: [
@@ -91,5 +95,53 @@ export const LAYING_OUT: PointPage = {
   ],
   boundary: "We prepare the guide and the budgets, and Harborview owns both. The school makes every decision about its year.",
   lead: "We recommend this as trips are chosen, about a year ahead.",
-  next: { label: "Preparing each trip", href: null },
+  next: { label: "Preparing each trip", href: "/case-study/preparing-each-trip" },
+};
+
+const trip = STEPS.find((s) => s.id === "trip-package");
+if (!trip) throw new Error("Case Study: the Individual Trip Reports step is missing");
+
+/* Horizon Ridge's Italy set, the two documents that support the approval
+   (Dan, 2026-10-07: "Build it now with the Italy documents"), with the
+   other school's note and notice the step page already carries. The family
+   report and the leader card belong to the next two points. */
+const eachTripDocs: Step = {
+  ...trip,
+  groups: [
+    {
+      ...trip.groups[0],
+      docs: ["school-trip-record", "trip-risk-working-file"],
+      open: "trip-risk-working-file",
+      note: undefined,
+    },
+  ],
+};
+
+export const EACH_TRIP: PointPage = {
+  id: "preparing-each-trip",
+  label: "Preparing each trip",
+  tier: "Tier 2 Trip Readiness",
+  tierNum: 2,
+  description:
+    "How we prepare each of Harborview International School’s trips in the same format, with the groundwork for its risk assessment, before the school approves it.",
+  problem: [
+    "Each of Harborview’s trips arrives as a provider’s proposal, a day-by-day itinerary and a set of booking confirmations, each in its own format.",
+    "Before the Head of School approves a trip, the school needs to see the whole trip in one place, with the risks of each activity laid out.",
+  ],
+  did: [
+    "We turn the itinerary into a day-by-day record and place every location it names on a map. Where the itinerary leaves a gap, such as the hotel on day three or the route for a riding day, we go back to the provider and ask.",
+    "We list the nearest emergency departments by drive time from each place the group stays, with what each one can treat.",
+    "We prepare the groundwork for the school’s risk assessment, with one section for each activity group, so the school can review, complete and approve it.",
+  ],
+  docs: eachTripDocs,
+  docsNote:
+    "These two documents still carry their earlier names. The School Trip Record is now the Off Campus Travel Report, and the Trip Risk Working File is now the Risk Assessment Report.",
+  decides: [
+    "The Head of School approves the trip under the school’s trips policy.",
+    "The school reviews, completes, amends and approves its risk assessment, and the trip leader makes the live assessment during the trip.",
+    "The school or the provider designates which emergency department the group uses.",
+  ],
+  boundary: "We prepare the information and the groundwork, and Harborview makes every decision about the trip.",
+  lead: "The best time to start is about six months before departure.",
+  next: { label: "Preparing families", href: null },
 };

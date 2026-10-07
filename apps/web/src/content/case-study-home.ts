@@ -111,7 +111,7 @@ export const POINTS: Point[] = [
       "Each trip’s information arrives in a different format, and the risks on each trip need identifying before the school approves it.",
     prepared: ["Individual Trip Reports", "Risk Assessment Report"],
     lead: "The best time to start is about six months before departure.",
-    href: stepHref({ id: "trip-package" }),
+    href: "/case-study/preparing-each-trip",
     status: "This page shows another school’s trip while Harborview’s own trip is prepared.",
   },
   {
