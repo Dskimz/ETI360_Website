@@ -1,13 +1,12 @@
 import { siteDocument } from "@/content/case-study";
-import { TIER_NAMES, type TierKey, type TimelineImage } from "@/content/case-study-home";
+import { TIER_NAMES, type TierKey, type CoverImage } from "@/content/case-study-home";
 
-/* MOCKUP (Dan, 2026-10-07: "Quick Mock up both A and C"). The Case Study
-   home cut to five stages of the 360, each with its one-line problem, the
-   real document covers it produces and the point pages inside it. Used by
-   /case-study/mock-a (the 360 dial) and /case-study/mock-c (the fanned
-   document desk). [draft] copy for Dan's markup. */
+/* The Case Study home (/case-study; Dan, 2026-10-07): the year cut to five
+   stages of the 360, each with its one-line problem, the real document
+   covers it produces and the point pages inside it, shown as the fanned
+   document desk (_parts/Desk.tsx). [draft] copy for Dan's markup. */
 
-export type StageDoc = TimelineImage & { href: string; name: string };
+export type StageDoc = CoverImage & { href: string; name: string };
 export type StageLink = { label: string; href: string };
 export type Stage = {
   id: string;

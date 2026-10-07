@@ -4,7 +4,7 @@
    globals.css colors, tier colors, type sizes and measure. Text on navy is
    14px or larger; small labels on parchment use --gold-dark or navy. */
 
-.page { background: var(--parchment); }
+.page { background: var(--parchment); display: flow-root; }
 
 .hero {
   background: var(--navy);
@@ -180,7 +180,7 @@
 .leadT2 { border-left-color: var(--tier2-band); }
 .leadT3 { border-left-color: var(--tier3-band); }
 
-/* Case Study home, timeline layout (Dan, 2026-10-07). */
+/* Case Study home, hero intro and closing (Dan, 2026-10-07). */
 .heroIntro { color: #fff; font-size: var(--font-lg); max-width: 640px; margin: 0; opacity: 0.92; }
-.timelineWrap { padding: 48px 0 8px; max-width: 1040px; margin: 0 auto; }
+
 .closingCentered { max-width: 760px; margin: 40px auto 72px; text-align: center; border-left: 1px solid var(--hairline); border-top: 4px solid var(--gold); }

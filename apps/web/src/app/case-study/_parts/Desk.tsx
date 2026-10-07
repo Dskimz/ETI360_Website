@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Stage } from "@/content/case-study-stages";
-import styles from "../mock-c/desk.module.css";
+import styles from "../desk.module.css";
 
-/* MOCKUP C, the fanned document desk (Dan, 2026-10-07). Each stage is a
+/* The Case Study home's document desk (Dan, 2026-10-07: "I think this is
+   the best view. I like it.", chosen over the timeline and the 360 dial). Each stage is a
    stack of its real document covers on the parchment ground, joined by a
    gold thread. Hover opens the fan; a click on a cover opens that point's
    page. CSS only, no client JavaScript. */
@@ -34,7 +35,7 @@ export function Desk({ stages }: { stages: Stage[] }) {
             <ul className={`${styles.links} ui`}>
               {s.links.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href}>{l.label} →</Link>
+                  <Link href={l.href}>{`${l.label}\u00a0→`}</Link>
                 </li>
               ))}
             </ul>

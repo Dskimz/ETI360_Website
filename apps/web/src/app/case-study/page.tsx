@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/content/case-study";
-import { HOME, POINTS, TIER_NAMES } from "@/content/case-study-home";
+import { HOME } from "@/content/case-study-home";
+import { STAGES } from "@/content/case-study-stages";
 import { HashRedirect } from "./_parts/HashRedirect";
-import { Timeline } from "./_parts/Timeline";
+import { Desk } from "./_parts/Desk";
 import styles from "./home.module.css";
 
-/* Case Study home (/case-study; Dan, 2026-10-07: "the first page should be
-   a timeline of the engagement"). The hero, one line of introduction, the
-   timeline of the points in Harborview's process (each a card with two
-   short sentences, the document's image and a link to its page) and the
-   closing. Copy: src/content/case-study-home.ts. */
+/* Case Study home (/case-study; Dan, 2026-10-07: "I think this is the best
+   view. I like it."). The hero, one line of introduction, the year as five
+   fanned stacks of real document covers on a gold thread (each with its
+   tier, one line and links to its point pages) and the closing. Copy:
+   src/content/case-study-home.ts and case-study-stages.ts. */
 
 export function generateMetadata(): Metadata {
   if (!caseStudyLive()) return {};
@@ -44,8 +45,8 @@ export default function CaseStudyPage() {
         </div>
 
         <div className="container">
-          <div className={styles.timelineWrap} role="region" aria-label="The year, step by step">
-            <Timeline points={POINTS.map((p) => ({ ...p, tierName: p.tier ? TIER_NAMES[p.tier] : null }))} />
+          <div role="region" aria-label="The year, stage by stage">
+            <Desk stages={STAGES} />
           </div>
 
           <div className={`${styles.closing} ${styles.closingCentered}`}>
