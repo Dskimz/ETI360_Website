@@ -107,3 +107,16 @@ $PY scripts/import-trip.py harborview-review --root versions \
 Render from the version's default edition (US Letter for a US school, A4 for
 an international school), and copy the reported sizes into the content file
 (`A4_COVER`/`A4_PAGE` in `helpers.ts` for A4).
+
+## Harborview's Queenstown set (`import-queenstown.py`)
+
+Harborview's own trip (HIS-T07) was built in V3 under the Sep 29 document
+names; some files may still carry the earlier names.
+`scripts/import-queenstown.py` finds each document under either name in the
+V3 Letter and A4 folders, copies both editions under the published names,
+renders the cover and pages 2 and 3 from the A4 edition, and prints the
+`source` lines for any file whose V3 name differs. Then fill the `V3:`
+placeholders in `src/content/trips/queenstown.ts` and set `READY = true`;
+the Case Study switches from Italy to Queenstown on its own
+(`src/content/case-study-trip.ts`). The copy check fails the build while a
+`V3:` placeholder remains.

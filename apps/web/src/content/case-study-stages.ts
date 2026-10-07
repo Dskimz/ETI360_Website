@@ -1,5 +1,6 @@
 import { siteDocument } from "@/content/case-study";
 import { TIER_NAMES, type TierKey, type CoverImage } from "@/content/case-study-home";
+import { tripDoc, type TripDocSlug } from "@/content/case-study-trip";
 
 /* The Case Study home (/case-study; Dan, 2026-10-07): the year cut to five
    stages of the 360, each with its one-line problem, the real document
@@ -20,6 +21,13 @@ export type Stage = {
 };
 
 const page = (id: string) => `/case-study/${id}`;
+
+/** A Harborview trip document by its Sep 29 name (Queenstown once imported,
+    Italy until then; case-study-trip.ts). */
+function tdoc(slug: TripDocSlug, name: string, href: string): StageDoc {
+  const r = tripDoc(slug);
+  return doc(r.version, r.doc, name, href);
+}
 
 function doc(version: string, slug: string, name: string, href: string): StageDoc {
   const d = siteDocument({ version, doc: slug }).doc;
@@ -46,9 +54,9 @@ const RAW: Omit<Stage, "n" | "tierName">[] = [
     id: "as-trips-are-planned",
     label: "As trips are planned",
     tier: 2,
-    line: "Every trip arrives in its own format. We prepare each one the same way, from a week in Italy to the elementary day trips and the season’s fixtures.",
+    line: "Every trip arrives in its own format. We prepare each one the same way, from a week away to the elementary day trips and the season’s fixtures.",
     docs: [
-      doc("italy", "trip-risk-working-file", "Risk Assessment Report", page("preparing-each-trip")),
+      tdoc("risk-assessment-report", "Risk Assessment Report", page("preparing-each-trip")),
       doc("harborview-elementary", "field-trip-risk-assessment-pack", "Field Trip Risk Assessment Pack", page("preparing-for-field-trips")),
       doc("wexcombe-meridian", "athletics-activities-trips-guide", "Conference travel guide", page("preparing-for-sports-and-cultural-exchange-trips")),
     ],
@@ -64,9 +72,9 @@ const RAW: Omit<Stage, "n" | "tierName">[] = [
     tier: 2,
     line: "Families want one clear report, and trip leaders need each day laid out. We prepare both before the group leaves.",
     docs: [
-      doc("italy", "family-trip-brief", "Student and Parent Trip Report", page("preparing-families")),
+      tdoc("student-and-parent-trip-report", "Student and Parent Trip Report", page("preparing-families")),
       doc("harborview-kyoto-visa", "japan-entry-and-visa-report", "Entry and visa report", page("preparing-families")),
-      doc("italy", "trip-leader-card", "Trip Leaders Brief", page("preparing-trip-leaders")),
+      tdoc("trip-leaders-brief", "Trip Leaders Brief", page("preparing-trip-leaders")),
     ],
     links: [
       { label: "Preparing families", href: page("preparing-families") },
@@ -96,8 +104,8 @@ const RAW: Omit<Stage, "n" | "tierName">[] = [
     tier: 3,
     line: "Records and feedback come back from every trip. They become the starting point for next year.",
     docs: [
-      doc("italy", "post-trip-feedback-report", "Post Trip Report", page("after-the-trips")),
-      doc("italy", "school-trip-record", "Off Campus Travel Report", page("after-the-trips")),
+      tdoc("post-trip-report", "Post Trip Report", page("after-the-trips")),
+      tdoc("off-campus-travel-report", "Off Campus Travel Report", page("after-the-trips")),
     ],
     links: [
       { label: "After the trips", href: page("after-the-trips") },

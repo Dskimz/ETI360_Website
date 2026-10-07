@@ -81,6 +81,8 @@ export const AREAS: Area[] = [
     docs: [
       "school-trip-record",
       "trip-risk-working-file",
+      "off-campus-travel-report", // Sep 29 names (Harborview's Queenstown set)
+      "risk-assessment-report",
       "daylight-and-cover-report",
       "daylight-tide-and-exposure-report",
       "field-trip-risk-assessment-pack",
@@ -101,7 +103,7 @@ export const AREAS: Area[] = [
     line: "ETI360 works through the day-by-day brief with each trip's leaders before they depart.",
     tier: 3,
     tile: [{ version: "washington-dc", doc: "trip-leader-card" }],
-    docs: ["trip-leader-card", "chaperone-briefing"],
+    docs: ["trip-leader-card", "chaperone-briefing", "trip-leaders-brief"],
   },
   {
     id: "families",
@@ -109,7 +111,7 @@ export const AREAS: Area[] = [
     line: "ETI360 prepares the information the school provides to families and students, in the school's name.",
     tier: 2,
     tile: [{ version: "italy", doc: "family-trip-brief" }],
-    docs: ["family-trip-brief", "student-journey-guide", "educational-journey"],
+    docs: ["family-trip-brief", "student-journey-guide", "educational-journey", "student-and-parent-trip-report", "educational-travel-fieldbook"],
   },
   {
     id: "reporting",
@@ -117,7 +119,7 @@ export const AREAS: Area[] = [
     line: "ETI360 gathers the feedback from each trip to support the following year's planning.",
     tier: 3,
     tile: [{ version: "costa-rica", doc: "post-trip-feedback-report" }],
-    docs: ["post-trip-feedback-report"],
+    docs: ["post-trip-feedback-report", "post-trip-report"],
   },
 ];
 

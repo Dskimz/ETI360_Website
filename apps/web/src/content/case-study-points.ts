@@ -1,4 +1,5 @@
 import { STEPS, type Step } from "@/content/case-study";
+import { tripGroup, whileItaly } from "@/content/case-study-trip";
 
 /* The Case Study's point pages (Dan, 2026-10-07: "build as needed"), one per
    point on the Case Study home (src/content/case-study-home.ts), each told
@@ -106,19 +107,15 @@ export const LAYING_OUT: PointPage = {
 const trip = STEPS.find((s) => s.id === "trip-package");
 if (!trip) throw new Error("Case Study: the Individual Trip Reports step is missing");
 
-/* Horizon Ridge's Italy set, the two documents that support the approval
+/* Harborview's Queenstown set (Horizon Ridge's Italy set until the V3 import
+   lands; src/content/case-study-trip.ts), the two documents that support the approval
    (Dan, 2026-10-07: "Build it now with the Italy documents"), with the
    other school's note and notice the step page already carries. The family
    report and the leader card belong to the next two points. */
 const eachTripDocs: Step = {
   ...trip,
   groups: [
-    {
-      ...trip.groups[0],
-      docs: ["school-trip-record", "trip-risk-working-file"],
-      open: "trip-risk-working-file",
-      note: undefined,
-    },
+    tripGroup(trip.groups[0], ["off-campus-travel-report", "risk-assessment-report"], "risk-assessment-report"),
   ],
 };
 
@@ -139,8 +136,9 @@ export const EACH_TRIP: PointPage = {
     "We prepare the groundwork for the school’s risk assessment, with one section for each activity group, so the school can review, complete and approve it.",
   ],
   docs: eachTripDocs,
-  docsNote:
+  docsNote: whileItaly(
     "These two documents still carry their earlier names. The School Trip Record is now the Off Campus Travel Report, and the Trip Risk Working File is now the Risk Assessment Report.",
+  ),
   decides: [
     "The Head of School approves the trip under the school’s trips policy.",
     "The school reviews, completes, amends and approves its risk assessment, and the trip leader makes the live assessment during the trip.",
@@ -151,7 +149,7 @@ export const EACH_TRIP: PointPage = {
   next: { label: "Preparing families", href: "/case-study/preparing-families" },
 };
 
-/* The family report from Horizon Ridge's Italy set, with the other school's
+/* The family report from Harborview's trip set (case-study-trip.ts), with the other school's
    note the step page already carries, and Harborview's own Japan Entry and
    Visa Report for its Kyoto trip. The Visas note moves into the page's own
    copy, in "we". */
@@ -161,12 +159,7 @@ if (!visaGroup) throw new Error("Case Study: the Kyoto visa group is missing");
 const familiesDocs: Step = {
   ...trip,
   groups: [
-    {
-      ...trip.groups[0],
-      docs: ["family-trip-brief"],
-      open: "family-trip-brief",
-      note: undefined,
-    },
+    tripGroup(trip.groups[0], ["student-and-parent-trip-report"], "student-and-parent-trip-report"),
     { ...visaGroup, note: undefined },
   ],
 };
@@ -188,8 +181,9 @@ export const FAMILIES: PointPage = {
     "We wrote an email for each nationality, with the school letters each application needs.",
   ],
   docs: familiesDocs,
-  docsNote:
+  docsNote: whileItaly(
     "The family document still carries its earlier name. The Family Trip Brief is now the Student and Parent Trip Report.",
+  ),
   decides: [
     "The school sends the report to families under its own name.",
     "Families make the visa applications and pay for them.",
@@ -200,17 +194,12 @@ export const FAMILIES: PointPage = {
   next: { label: "Preparing trip leaders", href: "/case-study/preparing-trip-leaders" },
 };
 
-/* The leader card from Horizon Ridge's Italy set, with the other school's
+/* The leader brief from Harborview's trip set (case-study-trip.ts), with the other school's
    note the step page already carries. */
 const leadersDocs: Step = {
   ...trip,
   groups: [
-    {
-      ...trip.groups[0],
-      docs: ["trip-leader-card"],
-      open: "trip-leader-card",
-      note: undefined,
-    },
+    tripGroup(trip.groups[0], ["trip-leaders-brief"], "trip-leaders-brief"),
   ],
 };
 
@@ -231,8 +220,9 @@ export const TRIP_LEADERS: PointPage = {
     "We talk to a teacher only when that teacher is the only source of information, for example on a trip that runs without a provider.",
   ],
   docs: leadersDocs,
-  docsNote:
+  docsNote: whileItaly(
     "This document still carries its earlier name. The Trip Leader Card is now the Trip Leaders Brief, with one page for each day.",
+  ),
   decides: [
     "The school sends the brief to its trip leaders.",
     "Trip leaders lead the trip and make the live assessment as conditions change.",
@@ -343,18 +333,13 @@ export const DURING_TRIPS: PointPage = {
   next: { label: "After the trips", href: "/case-study/after-the-trips" },
 };
 
-/* The feedback report from Horizon Ridge's Italy set, with the other
+/* The feedback report from Harborview's trip set (case-study-trip.ts), with the other
    school's note the step page already carries. The Semester Board Report
    is in preparation and is not shown. */
 const afterDocs: Step = {
   ...trip,
   groups: [
-    {
-      ...trip.groups[0],
-      docs: ["post-trip-feedback-report"],
-      open: "post-trip-feedback-report",
-      note: undefined,
-    },
+    tripGroup(trip.groups[0], ["post-trip-report"], "post-trip-report"),
   ],
 };
 
@@ -375,8 +360,9 @@ export const AFTER_TRIPS: PointPage = {
     "At the end of each semester, we prepare a Semester Board Report, which the school issues to its own Board. Harborview’s first report is in preparation.",
   ],
   docs: afterDocs,
-  docsNote:
+  docsNote: whileItaly(
     "This document still carries its earlier name. The Post-Trip Feedback Report is now the Post Trip Report.",
+  ),
   decides: [
     "The school decides what to change for the next trip.",
     "The school issues the Semester Board Report to its Board under its own name.",
