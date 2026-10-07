@@ -145,16 +145,6 @@ export const POINTS: Point[] = [
     href: stepHref({ id: "field-trip-package" }),
   },
   {
-    id: "preparing-for-exchanges",
-    label: "Preparing for exchanges",
-    tier: 2,
-    problem:
-      "Harborview’s teams sometimes stay with host families at tournaments, and the school has no separate policy for exchanges and homestays yet.",
-    prepared: [],
-    lead: "We recommend starting before host families are matched.",
-    href: null,
-  },
-  {
     id: "preparing-for-sports-and-cultural-exchange-trips",
     label: "Preparing for sports and cultural exchange trips",
     tier: 2,
