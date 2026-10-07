@@ -52,6 +52,13 @@ export function Editions({ version, doc }: { version: Version; doc: VersionDocum
   );
 }
 
+/** The link for a document: the fixed paper when the page asks for one and
+    that edition is built (the Case Study shows Harborview in A4 only, Dan,
+    2026-10-07), else the open route's choice by the visitor's country. */
+function docHref(version: Version, doc: VersionDocument, paper?: Paper, page?: number): string {
+  return paper && doc.editions[paper] ? openHref(version, doc, paper, page) : openAuto(version, doc, page);
+}
+
 /** A document's captioned inside pages, each opening `edition` at that page
     (or a plain image when no edition is built). */
 export function InsidePages({
@@ -59,11 +66,13 @@ export function InsidePages({
   doc,
   edition,
   className,
+  paper,
 }: {
   version: Version;
   doc: VersionDocument;
   edition: Paper | null;
   className?: string;
+  paper?: Paper;
 }) {
   return (
     <div className={className ?? styles.pages}>
@@ -81,7 +90,7 @@ export function InsidePages({
           <figure key={pg.page}>
             {edition ? (
               <a
-                href={openAuto(version, doc, pg.page)}
+                href={docHref(version, doc, paper, pg.page)}
                 target="_blank"
                 rel="noopener"
                 aria-label={`Open the ${doc.title} at page ${pg.page} (PDF, opens in a new tab)`}
@@ -106,6 +115,7 @@ export function DocCard({
   insideOpen = false,
   id,
   className,
+  paper,
 }: {
   version: Version;
   doc: VersionDocument;
@@ -114,6 +124,7 @@ export function DocCard({
   insideOpen?: boolean;
   id?: string;
   className?: string;
+  paper?: Paper;
 }) {
   const edition = thumbEdition(version, doc);
   const thumb = (
@@ -133,7 +144,7 @@ export function DocCard({
       {edition ? (
         <a
           className={styles.cardThumb}
-          href={openAuto(version, doc)}
+          href={docHref(version, doc, paper)}
           target="_blank"
           rel="noopener"
           aria-label={`Open the ${doc.title} (PDF, opens in a new tab)`}
@@ -147,7 +158,7 @@ export function DocCard({
         <p className={`${styles.reader} ui`}>{doc.reader}</p>
         <h4>
           {edition ? (
-            <a href={openAuto(version, doc)} target="_blank" rel="noopener" className={styles.docLink}>
+            <a href={docHref(version, doc, paper)} target="_blank" rel="noopener" className={styles.docLink}>
               {doc.title}
             </a>
           ) : (
@@ -158,7 +169,7 @@ export function DocCard({
       {lookInside && doc.insidePages.length > 0 ? (
         <details className={styles.lookInside} open={insideOpen || undefined}>
           <summary className="ui">Look inside</summary>
-          <InsidePages version={version} doc={doc} edition={edition} className={styles.lookInsidePages} />
+          <InsidePages version={version} doc={doc} edition={edition} className={styles.lookInsidePages} paper={paper} />
         </details>
       ) : null}
     </article>

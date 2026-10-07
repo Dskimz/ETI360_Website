@@ -351,7 +351,9 @@ export const STEPS: Step[] = [
     title: "One trip, from approval to feedback",
     // [draft] the reviewed two sentences in one; the trip's provider by its
     // display name.
-    need: `For a cycling trip in Taiwan from the ${CYCLING_PROVIDER_SHORT} catalog, the Head of School needs the trip’s documents before approving it. Before departure, the trip leader, chaperones, families and students each need the information prepared for their role.`,
+    // Dan, 2026-10-07: the step shows Harborview's own Queenstown trip
+    // (HIS-T07) in place of Horizon Ridge's Italy samples.
+    need: "For Harborview’s Grade 10 outdoor week in Queenstown, the Head of School needs the trip’s documents before approving it. Before departure, the trip leader, chaperones, families and students each need the information prepared for their role.",
     partnership: "ETI360 prepares each trip’s reports in the same format, so a leader who moves from one trip to the next finds the same documents.",
     facts: [
       { label: USED_BY, value: "The Head of School, the trip leader, chaperones, families and students", phone: true },
@@ -362,39 +364,22 @@ export const STEPS: Step[] = [
     ],
     groups: [
       {
-        version: "italy",
-        // The documents of the reviewed decision table, one per decision
-        // where it named two (Dan's brief, 2026-09-29): the record, the
-        // working file, the family brief, the leader card, the student
-        // guide, the feedback report. Each card's line is its decision.
+        version: "queenstown",
+        // The Sep 29 trip set, one document per decision.
         docs: [
-          "school-trip-record",
-          "trip-risk-working-file",
-          "family-trip-brief",
-          "trip-leader-card",
-          "student-journey-guide",
-          "post-trip-feedback-report",
+          "off-campus-travel-report",
+          "risk-assessment-report",
+          "student-and-parent-trip-report",
+          "trip-leaders-brief",
+          "educational-travel-fieldbook",
+          "post-trip-report",
         ],
-        otherSchool: "horizonRidge",
-        // Review fix, 2026-09-29: one card shows its pages.
-        open: "trip-risk-working-file",
-        // Review fix, 2026-09-29: the two "Approving the trip" cards told
-        // apart by who holds them, from the reviewed decision table's "Who
-        // holds them" ("The school office, the Head of School, the trip
-        // leader"). [draft]
-        readers: {
-          "school-trip-record": "School office",
-          "trip-risk-working-file": "Head of School and trip leader",
-        },
-        // Review fix, 2026-09-29: the need is a cycling trip, the samples
-        // Italy's; the reviewed day-maps line ("Day maps. For each riding
-        // day, a pocket route card for the teachers to carry, the full route
-        // pages in the Trip Leader Card, and an online version behind a
-        // password."), shortened; "would add" after the tone review, to
-        // match the note above it ("would take the same form"). [draft]
+        open: "risk-assessment-report",
+        // HIS-T07's pocket route cards (V3, A5 and half-letter) and the
+        // Brief's route maps. [draft]
         note: {
           lead: "Day maps:",
-          text: "Harborview’s edition would add, for each riding day, a pocket route card for the teachers to carry and the full route pages in the Trip Leader Card.",
+          text: "The teachers carry a pocket route card for each walking and riding day, and the Trip Leaders Brief shows each route on a map.",
         },
       },
       {
@@ -421,7 +406,7 @@ export const STEPS: Step[] = [
       // [draft] Dan, 2026-10-01: the Japan Entry and Visa Report.
       "Checks the entry rules for every passport in the group and prepares the visa emails and school letters.",
       // [draft] two reviewed lines in one.
-      "Prepares the Trip Risk Working File, one section for each activity group, and writes each document for the person who uses it.",
+      "Prepares the Risk Assessment Report, one section for each activity group, and writes each document for the person who uses it.",
     ],
     decides: [
       // [draft] shortened.
@@ -431,7 +416,6 @@ export const STEPS: Step[] = [
     ],
     links: [
       { href: "/examples#individual-trips", label: "Individual Trip Reports examples" },
-      { href: "/trips/italy", label: "The Italy trip, every document in US Letter and A4" },
     ],
     description:
       "An illustrative case study with Harborview, step 2 of 4: Individual Trip Reports prepare one trip’s documents, from the approval to the post-trip feedback.",
@@ -542,7 +526,7 @@ export const STEP_RECEIVES: Record<ProductSlug, string> = {
 /** The document each step's card on the overview shows. */
 export const STEP_COVER: Record<ProductSlug, { version: string; doc: string }> = {
   "travel-program-review": { version: "harborview-review", doc: "travel-program-review" },
-  "trip-package": { version: "italy", doc: "trip-leader-card" },
+  "trip-package": { version: "queenstown", doc: "trip-leaders-brief" },
   "field-trip-package": { version: "harborview-elementary", doc: "field-trip-risk-assessment-pack" },
   "conference-travel-package": { version: "wexcombe-meridian", doc: "athletics-activities-trips-guide" },
 };

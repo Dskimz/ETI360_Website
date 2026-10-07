@@ -19,6 +19,8 @@ import { getProduct, type Tier } from "@/content/products";
 import { TIER_NAMES } from "@/content/services";
 import { publicNotice, type Version, type VersionDocument } from "@/content/versions";
 import { DocCard } from "@/components/TripDocCard";
+
+const HARBORVIEW = "Harborview International School";
 import tripStyles from "@/app/trips/trips.module.css";
 import styles from "../page.module.css";
 
@@ -289,6 +291,9 @@ function Group({ group, open }: { group: DocGroup; open: boolean }) {
               lookInside
               insideOpen={one ? open : featured}
               className={featured ? styles.docFeature : undefined}
+              // Harborview's documents open in A4 only (Dan, 2026-10-07);
+              // other schools' samples keep the visitor's paper.
+              paper={version.school === HARBORVIEW ? "a4" : undefined}
             />
           );
         })}
