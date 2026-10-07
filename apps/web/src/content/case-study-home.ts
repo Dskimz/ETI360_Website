@@ -92,7 +92,7 @@ export const POINTS: Point[] = [
       "Harborview wants to know what its travel policies cover, one program path at a time, and whether its providers’ own procedures match them.",
     prepared: ["Travel Program Review", "Provider Evaluation"],
     lead: "We recommend this before the next year’s trips are planned.",
-    href: TPR,
+    href: "/case-study/understanding-the-program",
   },
   {
     id: "laying-out-the-year",
