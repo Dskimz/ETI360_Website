@@ -14,15 +14,10 @@ import type { Version } from "@/content/trips/types";
    /trips/queenstown page. Its files still live under /trips/queenstown/,
    where scripts/import-queenstown.py writes them.
 
-   PORT STATE: the structure is ready, the files are not. This version
-   exports null, so nothing on the site changes, until a session on Dan's
-   Mac (which reaches V3) has:
-     1. run scripts/import-queenstown.py (covers, inside pages, PDFs);
-     2. replaced every V3: placeholder below and checked each blurb and
-        caption against the PDFs;
-     3. set READY to true and run the build.
-   The Case Study switches to these documents on its own once READY is
-   true (src/content/case-study-trip.ts). Handoff:
+   PORT STATE: ported 2026-10-07 on Dan's Mac by scripts/import-queenstown.py
+   from the V3-queenstown worktree (branch harborview-queenstown-2027). The
+   Case Study switches to these documents through
+   src/content/case-study-trip.ts. Handoff:
    ETI360-New dev/website-outputs/queenstown-port/HANDOFF.md.
 
    Document names: the Sep 29 trip set (CLAUDE.md, Trip document names).
@@ -30,13 +25,23 @@ import type { Version } from "@/content/trips/types";
    earlier names. An international school, so A4 is the default edition and
    the images are rendered from the A4 PDFs. [draft] blurbs. */
 
-const READY = false;
+const READY = true;
 
 const { cover, inside, editions } = tripPaths({
   slug: "queenstown",
   filePrefix: "his-t07-queenstown",
   coverSize: A4_COVER,
   pageSize: A4_PAGE,
+});
+
+const V3Q = "../00 - ETI360 - V3-queenstown/customers/his/outputs/pdf";
+
+/* The V3 builders still write the earlier file names; `source` maps each
+   published slug to its V3 file (the Trip Leaders Brief is the day book,
+   never the retired trip-leader-card). */
+const src = (file: string) => ({
+  letter: `${V3Q}/his-t07-queenstown-${file}.pdf`,
+  a4: `${V3Q}/a4/his-t07-queenstown-${file}.pdf`,
 });
 
 const queenstown: Version = {
@@ -48,7 +53,7 @@ const queenstown: Version = {
   place: "Queenstown, New Zealand",
   paperDefault: "a4",
   summary:
-    "V3: one sentence, e.g. Harborview's outdoor week in Queenstown, with the documents for the office, the trip leaders, families, students, and next year's planning.",
+    "Harborview's Grade 10 spends September 24 to October 1, 2027 in Queenstown, New Zealand, and its reports serve the school office, the Head of School, families, the trip leaders, the students and next year's planning.",
   disclosure:
     "Harborview International School is a fictional school; its location is shown for illustrative purposes.",
   listed: false,
@@ -60,14 +65,14 @@ const queenstown: Version = {
       reader: "School office",
       decision: "Approving the trip",
       blurb:
-        "Trip facts and contacts, passports, entry, and insurance, then the reservations, the trip calendar, and the flights and transfers. The school files it with its contracts, roster, and signed permission forms.",
+        "The report sets out who goes, where and when, what the trip costs and covers, and whom to call. It then lists the reservations, the flights and the calendar the school office works to, and the Head of School signs the approval.",
       cover: cover("off-campus-travel-report", "Off Campus Travel Report"),
       editions: editions("off-campus-travel-report"),
       insidePages: inside("off-campus-travel-report", "Off Campus Travel Report", [
-        // V3: confirm each page number and caption against the A4 PDF.
-        [2, "V3"],
-        [3, "V3"],
+        [2, "The trip facts, everyone on the trip with a phone number, and the approval the Head of School signs."],
+        [3, "The reservations, the flights, the calendar the office works to, and what the trip price covers."],
       ]),
+      source: src("school-trip-record"),
     },
     {
       slug: "risk-assessment-report",
@@ -75,13 +80,14 @@ const queenstown: Version = {
       reader: "Head of School and trip leader",
       decision: "Approving the trip",
       blurb:
-        "Hazards, controls, and emergency actions organized one section per activity group, with the emergency care for each group and the prompts for the trip leader's live assessment. The school reviews, completes, amends, and approves it.",
+        "The report gives each of the trip's nine activity groups its own section, with the hazards, the controls, what happens if something goes wrong and the emergency care for that group. It closes with the confirmations from the providers and the prompts for the trip leader's live assessment, and the school reviews, completes, amends and approves it.",
       cover: cover("risk-assessment-report", "Risk Assessment Report"),
       editions: editions("risk-assessment-report"),
       insidePages: inside("risk-assessment-report", "Risk Assessment Report", [
-        [2, "V3"],
-        [3, "V3"],
+        [7, "The Routeburn Track: the turnaround, avalanche terrain and swing bridges, each with its controls, and the route on a map."],
+        [9, "Milford Sound by coach and cruise: the avalanche zone on the Milford Road and the distance from help, with the emergency care for the day."],
       ]),
+      source: src("trip-risk-working-file"),
     },
     {
       slug: "student-and-parent-trip-report",
@@ -89,13 +95,14 @@ const queenstown: Version = {
       reader: "Families",
       decision: "Telling families",
       blurb:
-        "The letter home, passports, insurance, and health, the days at a glance, how to reach the group, the packing list, and the forms that come back to the school office.",
+        "The report opens with the letter home and walks families through the week, the lodge and how to reach the group. It then gives the packing list, the fitness check and the student agreement, and it ends with the consent and health form that comes back to the school office.",
       cover: cover("student-and-parent-trip-report", "Student and Parent Trip Report"),
       editions: editions("student-and-parent-trip-report"),
       insidePages: inside("student-and-parent-trip-report", "Student and Parent Trip Report", [
-        [2, "V3"],
-        [3, "V3"],
+        [2, "The letter to families, with the deposit, balance and departure dates across the top."],
+        [3, "The week day by day, the lodge, supervision, medical care, and how families stay in touch."],
       ]),
+      source: src("family-trip-brief"),
     },
     {
       slug: "trip-leaders-brief",
@@ -103,26 +110,29 @@ const queenstown: Version = {
       reader: "Trip leaders and chaperones",
       decision: "Preparing the trip leaders",
       blurb:
-        "One page for each day of the trip, with the plan for the day, the contacts, and what to do if something goes wrong. The chaperones carry the same brief.",
+        "The brief gives each day of the trip its own page, with the timetable, the counts, what students carry and what to do if the day runs late. It closes with the Emergency Plan and a pocket emergency card, and the chaperones carry the same brief.",
       cover: cover("trip-leaders-brief", "Trip Leaders Brief"),
       editions: editions("trip-leaders-brief"),
       insidePages: inside("trip-leaders-brief", "Trip Leaders Brief", [
-        [2, "V3"],
-        [3, "V3"],
+        [8, "The Milford Sound day: the timetable from the 7:00 coach to the 21:00 return, and what to do if the day runs late."],
+        [12, "The Emergency Plan: call 111 first, then the order of calls, the contacts, and the nearest emergency departments on a map."],
       ]),
+      source: src("trip-leader-day-book"),
     },
     {
       slug: "educational-travel-fieldbook",
       title: "Educational Travel Fieldbook",
       reader: "Students",
       decision: "Connecting the trip to learning",
-      blurb: "V3: what the fieldbook asks of students, day by day.",
+      blurb:
+        "The fieldbook asks students one question for the week: how does a landscape made by ice decide how people live in it? Students carry it on the three route days, write in its journal each route evening, and answer the question in a response after the trip.",
       cover: cover("educational-travel-fieldbook", "Educational Travel Fieldbook"),
       editions: editions("educational-travel-fieldbook"),
       insidePages: inside("educational-travel-fieldbook", "Educational Travel Fieldbook", [
-        [2, "V3"],
-        [3, "V3"],
+        [4, "The three route days, each with its map, its distance and climb, and the numbered places where students stop to look."],
+        [5, "The journal students fill in each route evening, and the response that answers the week's question."],
       ]),
+      source: src("student-journey-guide"),
     },
     {
       slug: "post-trip-report",
@@ -130,19 +140,18 @@ const queenstown: Version = {
       reader: "School",
       decision: "Improving next year's trip",
       blurb:
-        "What students, families, the leaders, and the provider said after the trip, set out for the school's review and for planning the trip again next year.",
+        "The report sets out what students, families, the trip leaders and the provider said after the trip. It names three things to look at and what went well, so the school can review the trip before it runs again next year.",
       cover: cover("post-trip-report", "Post Trip Report"),
       editions: editions("post-trip-report"),
       insidePages: inside("post-trip-report", "Post Trip Report", [
-        [2, "V3"],
-        [3, "V3"],
+        [2, "Who answered, and how students, parents, the trip leaders and the provider rated the trip, the plan and the days."],
       ]),
+      source: src("post-trip-feedback-report"),
     },
   ],
   pdfSource: {
-    // V3: confirm both folders; the import prints the ones it used.
-    letterDir: "customers/his/outputs/pdf",
-    a4Dir: "customers/his/outputs/pdf/a4",
+    letterDir: V3Q,
+    a4Dir: `${V3Q}/a4`,
   },
 };
 

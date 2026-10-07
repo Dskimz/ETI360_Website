@@ -39,7 +39,7 @@ DOCS: dict[str, list[str]] = {
     "off-campus-travel-report": ["school-trip-record"],
     "risk-assessment-report": ["trip-risk-working-file", "rams-report"],
     "student-and-parent-trip-report": ["family-trip-brief"],
-    "trip-leaders-brief": ["trip-leader-card"],
+    "trip-leaders-brief": ["trip-leader-day-book"],  # trip-leader-card is the retired card
     "educational-travel-fieldbook": ["student-journey-guide"],
     "post-trip-report": ["post-trip-feedback-report"],
 }
