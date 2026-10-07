@@ -143,5 +143,54 @@ export const EACH_TRIP: PointPage = {
   ],
   boundary: "We prepare the information and the groundwork, and Harborview makes every decision about the trip.",
   lead: "The best time to start is about six months before departure.",
-  next: { label: "Preparing families", href: null },
+  next: { label: "Preparing families", href: "/case-study/preparing-families" },
+};
+
+/* The family report from Horizon Ridge's Italy set, with the other school's
+   note the step page already carries, and Harborview's own Japan Entry and
+   Visa Report for its Kyoto trip. The Visas note moves into the page's own
+   copy, in "we". */
+const visaGroup = trip.groups.find((g) => g.version === "harborview-kyoto-visa");
+if (!visaGroup) throw new Error("Case Study: the Kyoto visa group is missing");
+
+const familiesDocs: Step = {
+  ...trip,
+  groups: [
+    {
+      ...trip.groups[0],
+      docs: ["family-trip-brief"],
+      open: "family-trip-brief",
+      note: undefined,
+    },
+    { ...visaGroup, note: undefined },
+  ],
+};
+
+export const FAMILIES: PointPage = {
+  id: "preparing-families",
+  label: "Preparing families",
+  tier: "Tier 2 Trip Readiness",
+  tierNum: 2,
+  description:
+    "How we prepare the report Harborview International School sends to families, and the visa information some students need before they travel.",
+  problem: [
+    "Families want to know what to expect on the trip. They want it in one clear report rather than a series of emails.",
+    "Some students need visas before they can travel, and each nationality has different rules.",
+  ],
+  did: [
+    "We prepare the Student and Parent Trip Report in the school’s own name. It shows the days at a glance and sets out what families need to send back to the school.",
+    "For Harborview’s Kyoto trip, we sorted the group by passport and set out which students and teachers need a visa for Japan.",
+    "We wrote an email for each nationality, with the school letters each application needs.",
+  ],
+  docs: familiesDocs,
+  docsNote:
+    "The family document still carries its earlier name. The Family Trip Brief is now the Student and Parent Trip Report.",
+  decides: [
+    "The school sends the report to families under its own name.",
+    "Families make the visa applications and pay for them.",
+    "The Embassy of Japan decides each application.",
+  ],
+  boundary: "We prepare the information, and Harborview and its families make every decision and application.",
+  lead: "The best time is three to six months before departure, ahead of the parent meeting.",
+  next: { label: "Preparing trip leaders", href: null },
 };

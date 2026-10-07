@@ -122,7 +122,7 @@ export const POINTS: Point[] = [
       "Families want to know what to expect on the trip, and some students need visas before they can travel.",
     prepared: ["Student and Parent Trip Report", "Entry and Visa Report"],
     lead: "The best time is three to six months before departure, ahead of the parent meeting.",
-    href: null,
+    href: "/case-study/preparing-families",
   },
   {
     id: "preparing-trip-leaders",
