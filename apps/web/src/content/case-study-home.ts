@@ -1,24 +1,16 @@
-import { stepHref } from "@/content/case-study";
+import { siteDocument } from "@/content/case-study";
 
-/* The Case Study home (/case-study; Dan, 2026-10-07, plan revision 3 in the
-   rebuild repo: content/vault/Marketing/ETI360-Website-and-Case-Study-
-   Plan-Rev3-2026-10.html). The case study is a series: this page walks
-   through the points in a school's process where a need comes up, and each
-   point links to the page that shows the solution. It is organized by the
-   work, never by month (Dan: some trips run early in the year, so their
-   work happens the year before); each point carries a recommended lead
-   time instead.
+/* The Case Study home (/case-study; Dan, 2026-10-07): a timeline of one
+   school's engagement with ETI360 (Dan: "a timeline of the engagement with
+   maybe a line going down the middle with bubbles bouncing out with a card
+   with a short very short overview of the issue and then a link to learn
+   more. Maybe an image of the document."). One card per point in the
+   school's process, organized by the work, never by month. Each card has
+   two short sentences, an image of the point's document and a link to the
+   point's page (src/content/case-study-points.ts).
 
-   Build as needed (Dan, 2026-10-07): the home comes first; each point's
-   page is built when its turn comes. A point with no page yet shows
-   "Page in preparation". Pages that still show another school's example
-   (Individual Trip Reports, sports and cultural exchange trips) say so.
-
-   Voice: "we" for ETI360, professional Dan (docs/ETI360_TONE_AND_VOICE.md
-   § Dan's Voice in the rebuild repo). Document names follow the Sep 29
-   rulings. Tier 3 is "Incident Reporting and Feedback" (Dan, 2026-10-07).
-   No prices, no invented quotes, outcomes or metrics. [draft] throughout,
-   for Dan's markup. */
+   Voice: "we" for ETI360, professional Dan. Tier 3 is "Incident Reporting
+   and Feedback" (Dan, 2026-10-07). [draft] throughout, for Dan's markup. */
 
 export type TierKey = 1 | 2 | 3;
 
@@ -28,159 +20,120 @@ export const TIER_NAMES: Record<TierKey, string> = {
   3: "Tier 3 Incident Reporting and Feedback",
 };
 
+export type TimelineImage = { src: string; width: number; height: number; alt: string };
+
 export type Point = {
   id: string;
   label: string;
   tier: TierKey | null;
-  problem: string;
-  prepared: string[];
-  lead: string;
-  href: string | null;
-  /** A short line under the link when the page is not yet Harborview's own. */
-  status?: string;
+  /** Two very short sentences: the issue, then what we do. */
+  short: string;
+  image: TimelineImage | null;
+  href: string;
 };
+
+function cover(version: string, doc: string): TimelineImage {
+  const d = siteDocument({ version, doc }).doc;
+  return { src: d.cover.src, width: d.cover.width, height: d.cover.height, alt: d.cover.alt };
+}
 
 export const HOME = {
   title: "Case Study: Harborview International School",
   description:
-    "How we work with Harborview International School across its travel program, from understanding the program to preparing each trip and looking back afterwards.",
+    "One school’s year with ETI360, from understanding its travel program to preparing each trip and looking back afterwards.",
   heading: "A year of school travel with Harborview International School",
-  facts: [
-    { label: "School", value: "Harborview International School, Singapore" },
-    { label: "Program", value: "Six program paths" },
-    { label: "Paper", value: "A4 and US Letter" },
-  ],
   intro:
-    "Harborview International School sends students off campus in several ways, from week-long international trips to elementary field trips and away fixtures. Whatever the trip, the same needs come up at the same points: understanding the program, laying out the year, preparing each trip with its families and leaders, and looking back afterwards. This case study follows Harborview through each of those points and shows what we prepared.",
-  leadNote:
-    "Some of Harborview’s trips run early in the school year, so their preparation happens in the year before. Each point gives a recommended lead time rather than a month.",
+    "Follow one school’s year with us. Each step opens a page that shows the work and the documents Harborview received.",
   closing:
     "Harborview keeps every decision and every record, and the school reviews and approves the documents we prepare.",
 };
 
-export const CYCLE: { label: string; text: string }[] = [
-  {
-    label: "Before the year begins",
-    text: "We read your travel policies and your providers’ procedures side by side, so any gaps show up before a trip does.",
-  },
-  {
-    label: "As trips are planned",
-    text: "Each trip’s documents come together in the same format, and we go back to providers for what’s missing, like the hotel on day three or the route for the cycling day.",
-  },
-  {
-    label: "Before each departure",
-    text: "Families receive a clear report about the trip, and trip leaders receive a brief for every day.",
-  },
-  {
-    label: "During trips",
-    text: "Your school runs its own incident reporting, which we help you set up.",
-  },
-  {
-    label: "When groups come home",
-    text: "The records and feedback become next year’s starting point, and the year comes back around.",
-  },
-];
-
+const page = (id: string) => `/case-study/${id}`;
 
 export const POINTS: Point[] = [
   {
     id: "understanding-the-program",
     label: "Understanding the program",
     tier: 1,
-    problem:
-      "Harborview wants to know what its travel policies cover, one program path at a time, and whether its providers’ own procedures match them.",
-    prepared: ["Travel Program Review", "Provider Evaluation"],
-    lead: "We recommend this before the next year’s trips are planned.",
-    href: "/case-study/understanding-the-program",
+    short: "Harborview’s trip rules sit in nine documents. We read them one program path at a time.",
+    image: cover("harborview-review", "travel-program-review"),
+    href: page("understanding-the-program"),
   },
   {
     id: "laying-out-the-year",
     label: "Laying out the year",
     tier: 1,
-    problem:
-      "The school wants every trip in one place with its own dates, and leadership wants to compare what each trip costs.",
-    prepared: ["Travel Year Guide", "Trip Budgets"],
-    lead: "We recommend this as trips are chosen, about a year ahead.",
-    href: "/case-study/laying-out-the-year",
+    short: "Trips and costs arrive from many places. We put the year in one guide.",
+    image: cover("harborview-travel-year-guide", "travel-year-guide"),
+    href: page("laying-out-the-year"),
   },
   {
     id: "preparing-each-trip",
     label: "Preparing each trip",
     tier: 2,
-    problem:
-      "Each trip’s information arrives in a different format, and the risks on each trip need identifying before the school approves it.",
-    prepared: ["Individual Trip Reports", "Risk Assessment Report"],
-    lead: "The best time to start is about six months before departure.",
-    href: "/case-study/preparing-each-trip",
-    status: "This page shows another school’s trip while Harborview’s own trip is prepared.",
+    short: "Every trip arrives in its own format. We prepare each one the same way.",
+    image: cover("italy", "trip-risk-working-file"),
+    href: page("preparing-each-trip"),
   },
   {
     id: "preparing-families",
     label: "Preparing families",
     tier: 2,
-    problem:
-      "Families want to know what to expect on the trip, and some students need visas before they can travel.",
-    prepared: ["Student and Parent Trip Report", "Entry and Visa Report"],
-    lead: "The best time is three to six months before departure, ahead of the parent meeting.",
-    href: "/case-study/preparing-families",
+    short: "Families want one clear report, and some students need visas.",
+    image: cover("harborview-kyoto-visa", "japan-entry-and-visa-report"),
+    href: page("preparing-families"),
   },
   {
     id: "preparing-trip-leaders",
     label: "Preparing trip leaders",
     tier: 2,
-    problem: "Trip leaders need each day laid out, with what to do if something goes wrong.",
-    prepared: ["Trip Leaders Brief"],
-    lead: "We prepare it with the trip reports and send the final version a few weeks before departure.",
-    href: null,
+    short: "Trip leaders need each day laid out. We prepare a brief for every day.",
+    image: cover("italy", "trip-leader-card"),
+    href: page("preparing-trip-leaders"),
   },
   {
     id: "preparing-for-field-trips",
     label: "Preparing for field trips",
     tier: 2,
-    problem:
-      "The elementary school runs many day trips, and the school wants the same care for each one without a long document every time.",
-    prepared: ["Field Trip Reports"],
-    lead: "We recommend this before the school year starts.",
-    href: stepHref({ id: "field-trip-package" }),
+    short: "Day trips need the same care. One pack covers the whole year.",
+    image: cover("harborview-elementary", "field-trip-risk-assessment-pack"),
+    href: page("preparing-for-field-trips"),
   },
   {
     id: "preparing-for-sports-and-cultural-exchange-trips",
     label: "Preparing for sports and cultural exchange trips",
     tier: 2,
-    problem:
-      "Harborview’s teams and activity groups travel to fixtures, tournaments and festivals through the year, and coaches and sponsors need the same information for every trip.",
-    prepared: ["Conference Travel Reports"],
-    lead: "We recommend this before the season or the event calendar starts.",
-    href: stepHref({ id: "conference-travel-package" }),
-    status: "This page shows another school’s guide while Harborview’s own is prepared.",
+    short: "Teams and groups travel all season. Coaches get one guide for every trip.",
+    image: cover("wexcombe-meridian", "athletics-activities-trips-guide"),
+    href: page("preparing-for-sports-and-cultural-exchange-trips"),
   },
   {
     id: "during-trips",
     label: "During trips",
     tier: 3,
-    problem: "When something happens on a trip, the school needs to record it properly and in one place.",
-    prepared: ["Educational Travel Incident Reporting System"],
-    lead: "We set it up with the school before the first trip.",
-    href: "/incident-reporting",
+    short: "Harborview runs its own incident reporting, and we help set it up.",
+    image: {
+      src: "/marketing/case-studies/incident-reporting/incident-p1.jpg",
+      width: 900,
+      height: 1273,
+      alt: "The first page of an incident report from Harborview’s incident reporting system",
+    },
+    href: page("during-trips"),
   },
   {
     id: "after-the-trips",
     label: "After the trips",
     tier: 3,
-    problem:
-      "The school wants to know what worked and what to change, and its Board wants a short account of the program.",
-    prepared: ["Post Trip Report", "Semester Board Report"],
-    lead: "We prepare these after each trip and at the end of each semester.",
-    href: null,
+    short: "Records and feedback become next year’s starting point.",
+    image: cover("italy", "post-trip-feedback-report"),
+    href: page("after-the-trips"),
   },
   {
     id: "the-next-year",
     label: "The next year",
     tier: null,
-    problem:
-      "The school wants to know what changes in year two. We update the dates and seasons, touch up the risk documents from what the school learned, and add new trips and providers.",
-    prepared: [],
-    lead: "The best time to review the program again is the end of the first year.",
-    href: null,
+    short: "Year two starts from everything the school already holds.",
+    image: null,
+    href: page("the-next-year"),
   },
 ];

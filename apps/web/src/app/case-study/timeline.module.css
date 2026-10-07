@@ -1,0 +1,140 @@
+/* Case Study home timeline (Dan, 2026-10-07). Tokens only (globals.css).
+   The line runs down the middle at 900px and wider, with cards alternating
+   left and right; below 900px it runs down the left and every card sits to
+   its right. Tier colors mark each bubble and the card's top rule. */
+
+.timeline {
+  --line-x: 50%;
+  --bubble: 44px;
+  position: relative;
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 8px 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--line-x);
+  width: 2px;
+  transform: translateX(-1px);
+  background: var(--navy);
+  opacity: 0.25;
+}
+
+.item {
+  position: relative;
+  width: 50%;
+  padding: 18px 0;
+  --tier: var(--navy);
+}
+.t1 { --tier: var(--tier1-band); }
+.t2 { --tier: var(--tier2-band); }
+.t3 { --tier: var(--tier3-band); }
+.t0 { --tier: var(--gold-dark); }
+
+.left { padding-right: calc(var(--bubble) / 2 + 28px); }
+.right { margin-left: 50%; padding-left: calc(var(--bubble) / 2 + 28px); }
+
+.bubble {
+  position: absolute;
+  top: 34px;
+  width: var(--bubble);
+  height: var(--bubble);
+  border-radius: 50%;
+  background: var(--tier);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 5px var(--parchment);
+  z-index: 1;
+}
+.left .bubble { right: calc(var(--bubble) / -2); }
+.right .bubble { left: calc(var(--bubble) / -2); }
+
+/* The short connector from the line to the card. */
+.item::after {
+  content: "";
+  position: absolute;
+  top: 55px;
+  width: 22px;
+  height: 2px;
+  background: var(--tier);
+  opacity: 0.6;
+}
+.left::after { right: calc(var(--bubble) / 2 + 6px); }
+.right::after { left: calc(var(--bubble) / 2 + 6px); }
+
+.card {
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-top: 3px solid var(--tier);
+  box-shadow: 0 6px 18px rgba(13, 53, 88, 0.07);
+  padding: 18px 20px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.cardText { flex: 1; min-width: 0; }
+.tier {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  margin: 0 0 4px;
+}
+.title { font-size: var(--font-xl); margin: 0 0 8px; }
+.short { font-size: 15px; margin: 0 0 10px; color: var(--ink); }
+.more { margin: 0; font-size: 14px; }
+.more a { color: var(--navy); font-weight: 600; }
+
+.thumb {
+  flex: 0 0 96px;
+  display: block;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 3px 10px rgba(13, 53, 88, 0.12);
+  background: #fff;
+  transform: rotate(2deg);
+  transition: transform 0.25s ease;
+}
+.left .thumb { transform: rotate(-2deg); }
+.card:hover .thumb { transform: rotate(0deg) scale(1.04); }
+.thumb img { display: block; width: 100%; height: auto; }
+
+/* Motion: pop in with a small overshoot as each point scrolls into view. */
+.waiting .bubble { transform: scale(0); }
+.waiting .card { opacity: 0; transform: translateY(18px) scale(0.96); }
+.waiting::after { opacity: 0; }
+.in .bubble { animation: pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.in .card { animation: rise 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) 0.12s both; }
+@keyframes pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .waiting .bubble, .waiting .card { opacity: 1; transform: none; }
+  .in .bubble, .in .card { animation: none; }
+}
+
+/* Phones and narrow tablets: the line on the left, cards to its right. */
+@media (max-width: 899px) {
+  .timeline { --line-x: 22px; --bubble: 38px; }
+  .item, .left, .right {
+    width: auto;
+    margin-left: 0;
+    padding: 14px 0 14px calc(22px + var(--bubble) / 2 + 20px);
+  }
+  .left .bubble, .right .bubble { left: calc(22px - var(--bubble) / 2); right: auto; top: 28px; }
+  .left::after, .right::after { left: calc(22px + var(--bubble) / 2 + 2px); right: auto; top: 46px; width: 14px; }
+  .card { padding: 16px; gap: 14px; }
+  .thumb { flex-basis: 72px; }
+}
