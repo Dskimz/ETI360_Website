@@ -954,99 +954,73 @@ section.tight { padding: 72px 0; }
   padding: 72px 0 96px;
 }
 
-/* ── Footer (bento) ── */
-/* Full-bleed navy band with a 2px gold top rule (Website v1 review). */
+/* ── Footer ── */
+/* Full-bleed navy band with a 2px gold top rule; one compact row of brand,
+   links and contact (Dan, 2026-10-08: "make it smaller"). */
 .site-footer {
   background: var(--navy-deep);
   border-top: 2px solid var(--gold);
   margin-top: 0;
-  padding: 48px 0 28px;
+  padding: 30px 0 16px;
   font-size: var(--font-sm);
-  color: var(--muted-light);
+  color: rgba(250, 248, 243, .7);
 }
 .site-footer-container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
 .site-footer-bento { padding: 0; }
-.site-footer .brand-mark img { height: 22px; }
+.site-footer .brand-mark img { height: 18px; width: auto; }
 .site-footer a.brand-mark:hover { border-bottom: 0; }
-.site-footer a { color: rgba(250, 248, 243, .85); }
+.site-footer a { color: rgba(250, 248, 243, .88); }
 .site-footer a:hover { color: var(--parchment); text-decoration: none; border-bottom: 1px solid var(--gold); }
 .site-footer-grid {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 40px;
+  gap: 32px;
   flex-wrap: wrap;
 }
-.site-footer-brand { max-width: 300px; }
-.site-footer-name {
-  margin: 8px 0 6px;
-  color: var(--parchment);
+.site-footer-brand { max-width: 260px; }
+.site-footer-desc { margin: 8px 0 0; line-height: 1.5; font-size: 12px; color: rgba(250, 248, 243, .7); }
+.site-footer-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+.site-footer-col h3 {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-}
-.site-footer-desc { margin: 0; line-height: 1.5; font-size: 12.5px; color: rgba(250, 248, 243, .7); }
-.site-footer-cols { display: flex; gap: 64px; flex-wrap: wrap; }
-.site-footer-col h3 {
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 .site-footer ul { list-style: none; }
 .site-footer-col ul { display: block; }
-.site-footer-col li { margin-bottom: 5px; }
-.site-footer-col a { font-size: 13px; }
-/* The contact row: Dan's sentence and the one button, above the links
-   (replaces the separate contact band, Dan 2026-09-28). */
-.site-footer-contact {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
-  padding-bottom: 36px;
-  margin-bottom: 36px;
-  border-bottom: 1px solid var(--hairline-2);
-}
-.site-footer-contact-copy { max-width: 64ch; }
-.site-footer-contact h2 {
-  margin: 0 0 10px;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 28px;
+.site-footer-col li { margin-bottom: 3px; }
+.site-footer-col a { font-size: 12.5px; }
+.site-footer a.site-footer-email { font-size: 13px; font-weight: 500; color: var(--parchment); }
+.site-footer-who { margin: 2px 0 8px; font-size: 11.5px; }
+.site-footer-offices { display: flex; gap: 24px; white-space: nowrap; }
+.site-footer-offices address { font-style: normal; font-size: 11.5px; line-height: 1.45; }
+.site-footer-offices b {
+  display: block;
+  margin-bottom: 1px;
+  font-size: 10px;
   font-weight: 600;
-  line-height: 1.14;
-  letter-spacing: -0.01em;
-  color: #fff;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: rgba(250, 248, 243, .88);
 }
-.site-footer-contact p { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(250, 248, 243, .85); }
-.site-footer-contact p.site-footer-contact-sig { margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--gold); }
-.site-footer a.site-footer-contact-btn {
-  flex-shrink: 0;
-  background: var(--gold);
-  color: var(--navy-deep);
-  font-weight: 700;
-  font-size: 14px;
-  padding: 11px 22px;
-  border-bottom: 0;
-}
-.site-footer a.site-footer-contact-btn:hover { background: #d8b262; color: var(--navy-deep); border-bottom: 0; }
-@media (max-width: 640px) {
-  .site-footer-container { padding: 0 16px; }
-  .site-footer-contact { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .site-footer-contact h2 { font-size: 24px; }
-}
-.site-footer-rule { border-top: 1px solid var(--hairline-2); margin: 16px 0 10px; }
-/* Three lines: the copyright, the Singapore company, the US office. */
+.site-footer-rule { border-top: 1px solid var(--hairline-2); margin: 20px 0 10px; }
 .site-footer-small {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-size: 11px;
-  color: rgba(250, 248, 243, .55);
+  justify-content: space-between;
+  gap: 4px 16px;
+  flex-wrap: wrap;
+  font-size: 10.5px;
+  color: rgba(250, 248, 243, .5);
   line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .site-footer-container { padding: 0 16px; }
+  .site-footer-cols { gap: 24px 40px; }
+  .site-footer-contact { flex-basis: 100%; }
+  .site-footer-small { flex-direction: column; }
 }
 
 /* ── Home: hero grid + mini-loop ── */
