@@ -17,7 +17,7 @@ import styles from "./page.module.css";
 
 const TITLE = "Case Study: Incident Reporting";
 const DESCRIPTION =
-  "An illustrative engagement with Harborview International School: incident reports, an evening check-in and trip leaders' feedback, with every record in the school's own Google Workspace account.";
+  "How Harborview International School records incident reports, an evening check-in and trip leaders' feedback, with every record in the school's own Google Workspace account.";
 const IMG = "/marketing/case-studies/incident-reporting";
 const PROVIDER_NOTICE = "Crossfell Expeditions is a fictional trip provider; its trip was written for this example.";
 
@@ -64,7 +64,7 @@ export default function IncidentCaseStudyPage() {
     <>
       <section className={styles.hero}>
         <div className="container">
-          <span className="label label-light ui">Case study · Illustrative engagement</span>
+          <span className="label label-light ui">Case study · Harborview International School</span>
           <h1 className={styles.h1}>Records that stay with the school</h1>
           <p className={styles.lede}>
             Harborview International School asked ETI360 for one way to record incidents, near misses and trip
@@ -247,7 +247,7 @@ export default function IncidentCaseStudyPage() {
             for decisions, live assessments, and final approval of every report.
           </p>
           <p className={`${styles.notice} ui`}>
-            An illustrative engagement: the screens and reports shown are the output of ETI360&rsquo;s working version
+            The screens and reports shown are the output of ETI360&rsquo;s working version
             of the system for the trip&rsquo;s records, and ETI360 installs the release in a school&rsquo;s own account
             at handover. {PROVIDER_NOTICE} The same workflow can be built in Microsoft 365 when a school works
             there. <Link href="/case-study">Read the Harborview partnership case study</Link>.
