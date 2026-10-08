@@ -84,7 +84,7 @@ export const TIERS: Tier[] = [
         label: "Trip providers",
         reports: [
           {
-            name: "Trip Provider SOP Review",
+            name: "Trip Provider Review",
             label: "Provider operating procedures",
             overview:
               "ETI360 reviews each provider’s documented standard operating procedures against the same ten areas and shows what is at standard, progressing or not evidenced.",
@@ -128,7 +128,7 @@ export const TIERS: Tier[] = [
             name: "Duty Manager Trip Brief",
             label: "Duty manager",
             overview:
-              "The brief gives the school’s duty holder the trip’s schedule, contacts and nearest hospitals, and ETI360 calls each number in the duty chain before departure to confirm that it connects.",
+              "The brief gives the school’s duty holder the trip’s schedule, the duty chain’s contacts and the nearest hospitals in one place.",
           },
         ],
         href: cs("preparing-each-trip"),
@@ -215,7 +215,7 @@ export const TIERS: Tier[] = [
             name: "Incident Report System",
             label: "Incident reports",
             overview:
-              "Staff record incidents the same way on every trip, from a phone, in a system built to run in the school’s own Google Workspace.",
+              "Staff record incidents the same way on every trip, from a phone, in a system built to run in the school’s own Google Workspace or Microsoft 365.",
           },
         ],
         href: cs("during-trips"),

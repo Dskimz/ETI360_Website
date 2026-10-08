@@ -6,6 +6,8 @@ import { HOME } from "@/content/case-study-home";
 import { STAGES } from "@/content/case-study-stages";
 import { HashRedirect } from "./_parts/HashRedirect";
 import { Desk } from "./_parts/Desk";
+import { TierHead } from "./_parts/TierHead";
+import { HARBORVIEW_MAP } from "@/content/case-study-map";
 import styles from "./home.module.css";
 
 /* Case Study home (/case-study; Dan, 2026-10-07: "I think this is the best
@@ -42,6 +44,13 @@ export default function CaseStudyPage() {
             <h1 className={styles.h1}>{HOME.heading}</h1>
             <p className={styles.heroIntro}>{HOME.intro}</p>
           </div>
+        </div>
+
+        <div className={styles.tierHead}>
+          <TierHead
+            map={HARBORVIEW_MAP}
+            ariaLabel="The documents ETI360 prepared for Harborview, by tier"
+          />
         </div>
 
         <div className="container">

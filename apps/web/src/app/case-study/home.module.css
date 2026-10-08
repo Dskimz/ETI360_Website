@@ -187,3 +187,10 @@
 .heroIntro { color: #fff; font-size: var(--font-lg); max-width: 640px; margin: 0; opacity: 0.92; }
 
 .closingCentered { max-width: 760px; margin: 40px auto 72px; text-align: center; border-left: 1px solid var(--hairline); border-top: 4px solid var(--gold); }
+
+/* The tier head (Dan, 2026-10-08) sits under the hero, above the desk. */
+.tierHead {
+  max-width: 1320px;
+  margin: 40px auto 16px;
+  padding-inline: 16px;
+}
