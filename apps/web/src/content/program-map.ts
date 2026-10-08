@@ -42,6 +42,7 @@ export const TIERS: Tier[] = [
     key: 1,
     name: "Organizational Readiness",
     short: "Organization",
+    lines: ["Organizational", "Readiness"],
     purpose: "The school sets its travel policies and chooses its providers.",
     branches: [
       {
@@ -61,6 +62,7 @@ export const TIERS: Tier[] = [
     key: 2,
     name: "Trip Readiness",
     short: "Trip",
+    lines: ["Trip", "Readiness"],
     purpose: "Each trip’s reports are prepared with the school and its provider.",
     branches: [
       {
