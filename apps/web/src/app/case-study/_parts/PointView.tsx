@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { PointPage } from "@/content/case-study-points";
 import { StepDocs } from "./blocks";
+import { HeroStack, StageStrip } from "./PointStage";
 import styles from "../home.module.css";
 import stepStyles from "../page.module.css";
 
@@ -14,7 +15,8 @@ export function PointView({ p: P }: { p: PointPage }) {
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
-        <div className="container">
+        <div className={`container ${styles.heroRow}`}>
+          <div>
           <p className={`${styles.eyebrow} ui`}>
             <Link className={styles.crumb} href="/case-study">
               Case Study
@@ -23,7 +25,12 @@ export function PointView({ p: P }: { p: PointPage }) {
           </p>
           <h1 className={styles.h1}>{P.label}</h1>
           {P.tier ? <p className={`${styles.heroTier} ui`}>{P.tier}</p> : null}
+          </div>
+          <HeroStack p={P} />
         </div>
+      </div>
+      <div className="container">
+        <StageStrip id={P.id} />
       </div>
 
       <div className="container">
@@ -52,7 +59,7 @@ export function PointView({ p: P }: { p: PointPage }) {
           </div>
 
           {P.docs ? (
-            <div className={`${styles.section} ${stepStyles.step}`}>
+            <div id="documents" className={`${styles.section} ${stepStyles.step}`}>
               <StepDocs step={P.docs} />
               {P.docsNote ? <p className={`${styles.text} ${styles.small}`}>{P.docsNote}</p> : null}
             </div>
@@ -86,7 +93,7 @@ export function PointView({ p: P }: { p: PointPage }) {
             <p>If this way of working may be useful for your school, we would be glad to hear about your program.</p>
             <p className="ui">
               <Link className={styles.cta} href="/contact">
-                Start a conversation
+                Contact
               </Link>
             </p>
           </div>

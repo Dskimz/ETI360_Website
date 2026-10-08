@@ -22,7 +22,7 @@ export function Desk({ stages }: { stages: Stage[] }) {
             <div className={styles.stack}>
               {s.docs.map((d, i) => (
                 <Link key={d.src + i} href={d.href} className={styles.cover} style={{ ["--i" as string]: i - (s.docs.length - 1) / 2 }} aria-label={d.name}>
-                  <Image src={d.src} width={d.width} height={d.height} alt="" sizes="132px" />
+                  <Image src={d.src} width={d.width} height={d.height} alt="" sizes="132px" loading="eager" />
                 </Link>
               ))}
             </div>

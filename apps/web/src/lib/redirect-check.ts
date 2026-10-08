@@ -1,7 +1,7 @@
 import { versions } from "@/content/versions";
 import { CASE_STUDY_REDIRECTS, REDIRECTS } from "./redirects";
 import { caseStudyLive } from "./case-study-hold";
-import { STEPS } from "@/content/case-study";
+import { STAGES } from "@/content/case-study-stages";
 
 /* Build-time check (review fix, 2026-09-27; spec S18): every redirect lands
    on a page this build serves. A product page is built only while it has a
@@ -23,7 +23,8 @@ function lands(path: string): boolean {
   if (trip) return versions.some((v) => v.product === "trip-package" && v.slug === trip[1]);
   // The Case Study's overview and steps, while it is live.
   const cs = path.match(/^\/case-study(?:\/([^/]+))?$/);
-  if (cs) return caseStudyLive() && (!cs[1] || STEPS.some((s) => s.id === cs[1]));
+  // The overview and the point pages (the step pages redirect, 2026-10-08).
+  if (cs) return caseStudyLive() && (!cs[1] || STAGES.some((s) => s.links.some((l) => l.href === `/case-study/${cs[1]}`)));
   const open = path.match(/^\/open\/([^/]+)\/[^/]+$/);
   if (open) return open[1].startsWith(":") || versions.some((v) => v.slug === open[1]);
   return path.startsWith("/review/");

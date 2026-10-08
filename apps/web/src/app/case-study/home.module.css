@@ -154,6 +154,9 @@
 .crumb { color: var(--gold); text-decoration: underline; }
 .crumb:hover { color: #fff; }
 .heroTier { color: #fff; font-size: 15px; margin: 0; opacity: 0.9; }
+/* Point pages: the title beside the fanned stack of the point's covers. */
+.heroRow { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.heroRow > div:first-child { min-width: 0; }
 .section { margin-top: 40px; }
 .text { max-width: var(--measure); font-size: 16px; }
 .small { font-size: 14px; color: var(--ink-mid); margin-top: 12px; }

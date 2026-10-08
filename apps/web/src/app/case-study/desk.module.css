@@ -27,7 +27,9 @@
   top: 20px;
   width: 132px;
   margin-left: -66px;
-  background: #fff;
+  /* Paper tint while the cover loads, so the stack never shows an empty
+     white box (Dan, 2026-10-08). */
+  background: var(--parchment-2);
   box-shadow: 0 4px 14px rgba(13, 53, 88, 0.22);
   transform: translateX(calc(var(--i) * 10px)) rotate(calc(var(--i) * 4deg));
   transform-origin: 50% 110%;
@@ -67,6 +69,78 @@
   .cover { width: 110px; margin-left: -55px; transform: translateX(calc(var(--i) * 52px)) rotate(calc(var(--i) * 9deg)); }
   .line { max-width: 360px; }
 }
+
+
+/* Point pages (_parts/PointStage.tsx, Dan, 2026-10-08): the hero's fanned
+   stack of the point's own covers, and the stage strip in place of the old
+   step pages' left bar. */
+.heroStack { position: relative; width: 260px; height: 200px; flex: none; }
+.heroCover {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 120px;
+  margin-left: -60px;
+  background: var(--parchment-2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transform: translateX(calc(var(--i) * 30px)) rotate(calc(var(--i) * 7deg));
+  transform-origin: 50% 110%;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+}
+.heroCover img { display: block; width: 100%; height: auto; }
+.heroStack:hover .heroCover, .heroStack:focus-within .heroCover {
+  transform: translateX(calc(var(--i) * 62px)) rotate(calc(var(--i) * 12deg));
+}
+a.heroCover:hover, a.heroCover:focus-visible {
+  transform: translateX(calc(var(--i) * 62px)) translateY(-12px) rotate(0deg);
+  z-index: 3;
+}
+
+.strip { border-bottom: 1px solid var(--hairline); background: var(--parchment); }
+.strip ol {
+  position: relative;
+  list-style: none;
+  margin: 0 auto;
+  padding: 18px 0 14px;
+  max-width: var(--container, 1200px);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+.strip ol::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 34px;
+  border-top: 2px dashed var(--gold);
+}
+.strip li { position: relative; text-align: center; }
+.strip a { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--ink-mid); font-size: 13px; font-weight: 600; text-decoration: none; }
+.strip a:hover .stripLabel { color: var(--navy); text-decoration: underline; }
+.stripPin {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: "Source Serif 4", serif; font-weight: 600; font-size: 16px;
+  color: #fff; border: 3px solid var(--parchment);
+  opacity: 0.55;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.strip a:hover .stripPin { opacity: 0.85; }
+.stripHere .stripPin { opacity: 1; transform: scale(1.18); box-shadow: 0 0 0 2px var(--gold); }
+.stripHere .stripLabel { color: var(--navy); }
+.stripLabel { line-height: 1.3; }
+
+@media (max-width: 1099px) {
+  .heroStack { display: none; }
+}
+@media (max-width: 640px) {
+  .strip ol { gap: 2px; padding: 14px 4px 10px; }
+  .strip ol::before { top: 30px; }
+  .stripLabel { display: none; }
+  .stripHere .stripLabel { display: block; position: absolute; top: 46px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12px; }
+  .strip:has(.stripHere) ol { padding-bottom: 30px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .cover { transition: none; }
+  .cover, .heroCover, .stripPin { transition: none; }
 }

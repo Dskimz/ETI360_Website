@@ -216,14 +216,16 @@ export const REDIRECTS: SiteRedirect[] = [
    The old hash anchors (/case-study#…) are handled on the page
    (src/app/case-study/_parts/HashRedirect.tsx). */
 export const CASE_STUDY_REDIRECTS: SiteRedirect[] = [
+  /* The four step pages and their left bar are retired (Dan, 2026-10-08):
+     each opens the point page that now carries its documents. */
+  { source: "/case-study/travel-program-review", destination: "/case-study/understanding-the-program", permanent: true },
+  { source: "/case-study/trip-package", destination: "/case-study/preparing-each-trip", permanent: true },
+  { source: "/case-study/field-trip-package", destination: "/case-study/preparing-for-field-trips", permanent: true },
   {
-    source: "/case-study/first-conversation",
-    destination: "/case-study/travel-program-review#how",
+    source: "/case-study/conference-travel-package",
+    destination: "/case-study/preparing-for-sports-and-cultural-exchange-trips",
     permanent: true,
   },
-  {
-    source: "/case-study/through-the-year",
-    destination: "/case-study#rest-of-year",
-    permanent: true,
-  },
+  { source: "/case-study/first-conversation", destination: "/case-study/understanding-the-program", permanent: true },
+  { source: "/case-study/through-the-year", destination: "/case-study", permanent: true },
 ];

@@ -17,11 +17,13 @@ import { useEffect } from "react";
        the work divides, which says the same for the whole year;
      - #the-work, #the-year and #who-decides are still on the overview. */
 const STEP_ANCHORS: Record<string, string> = {
-  "travel-program-review": "/case-study/travel-program-review",
-  "field-trip-package": "/case-study/field-trip-package",
-  "conference-travel-package": "/case-study/conference-travel-package",
-  "trip-package": "/case-study/trip-package",
-  "first-conversation": "/case-study/travel-program-review#how",
+  // The step pages are retired (Dan, 2026-10-08); their anchors open the
+  // point pages that carry their documents.
+  "travel-program-review": "/case-study/understanding-the-program",
+  "field-trip-package": "/case-study/preparing-for-field-trips",
+  "conference-travel-package": "/case-study/preparing-for-sports-and-cultural-exchange-trips",
+  "trip-package": "/case-study/preparing-each-trip",
+  "first-conversation": "/case-study/understanding-the-program",
 };
 const MOVED: Record<string, string> = { across: "the-work", "through-the-year": "rest-of-year" };
 

@@ -3,7 +3,8 @@ import { versionsOf } from "@/content/versions";
 import { assertRedirectsLand } from "@/lib/redirect-check";
 import { SITE_URL } from "@/lib/site";
 import { INCIDENT_CASE_HREF, incidentCaseLive } from "@/lib/incident-case-hold";
-import { CASE_STUDY_HREF, caseStudyLive, STEPS, stepHref } from "@/content/case-study";
+import { CASE_STUDY_HREF, caseStudyLive } from "@/content/case-study";
+import { STAGES } from "@/content/case-study-stages";
 
 // Every indexable route (four-product site spec §10), with the priority a
 // search engine should read as our own ranking of them: the home page, each
@@ -26,7 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...(caseStudyLive()
       ? [
           { path: CASE_STUDY_HREF, priority: 0.8, changeFrequency: "monthly" as const },
-          ...STEPS.map((s) => ({ path: stepHref(s), priority: 0.7, changeFrequency: "monthly" as const })),
+          // The point pages, once each (the step pages redirect, Dan, 2026-10-08).
+          ...[...new Set(STAGES.flatMap((s) => s.links.map((l) => l.href)))].map((path) => ({
+            path,
+            priority: 0.7,
+            changeFrequency: "monthly" as const,
+          })),
         ]
       : []),
     ...(incidentCaseLive() ? [{ path: INCIDENT_CASE_HREF, priority: 0.7, changeFrequency: "monthly" as const }] : []),

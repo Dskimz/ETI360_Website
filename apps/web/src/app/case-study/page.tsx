@@ -53,7 +53,7 @@ export default function CaseStudyPage() {
             <p>{HOME.closing}</p>
             <p className="ui">
               <Link className={styles.cta} href="/contact">
-                Start a conversation
+                Contact
               </Link>
             </p>
           </div>
