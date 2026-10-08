@@ -9,10 +9,16 @@
 
 export type TierKey = 1 | 2 | 3;
 
+export type Report = {
+  name: string;
+  /** One sentence for the hover box; the school stays the decider. */
+  overview: string;
+};
+
 export type Branch = {
   id: string;
   label: string;
-  reports: string[];
+  reports: Report[];
   href?: string;
 };
 
@@ -39,13 +45,13 @@ export const TIERS: Tier[] = [
       {
         id: "school-program",
         label: "The school’s travel program",
-        reports: ["Travel Program Review, path by path", "Travel Year Guide", "Trip Budgets", "Semester Board Report"],
+        reports: [{ name: "Travel Program Review", overview: "ETI360 reads the school’s travel policies path by path and shows what each area of the framework covers." }, { name: "Travel Year Guide", overview: "The guide lays out the school’s travel year on its own calendar and with its own dates." }, { name: "Trip Budgets", overview: "Each page budgets one trip, so the school can see the year’s costs side by side." }, { name: "Semester Board Report", overview: "The school issues this short report to its Board and Risk Committee each semester." }],
         href: cs("understanding-the-program"),
       },
       {
         id: "trip-providers",
         label: "Trip provider 1, 2, 3…",
-        reports: ["One provider evaluation each"],
+        reports: [{ name: "Provider Evaluations", overview: "ETI360 evaluates the documents of each provider the school uses and shows what they cover, and the school decides." }],
       },
     ],
   },
@@ -58,36 +64,36 @@ export const TIERS: Tier[] = [
       {
         id: "itinerary",
         label: "Itinerary",
-        reports: ["Off Campus Travel Report"],
+        reports: [{ name: "Off Campus Travel Report", overview: "The report accounts for every day and hour of the itinerary, from departure to return." }],
         href: cs("preparing-each-trip"),
       },
       {
         id: "risk-reports",
         label: "Risk reports",
-        reports: ["Risk Assessment Report", "Duty Manager Trip Brief"],
+        reports: [{ name: "Risk Assessment Report", overview: "ETI360 prepares the information behind each activity group’s risk assessment, and the school writes and approves it." }, { name: "Duty Manager Trip Brief", overview: "The brief gives the duty holder the trip’s contacts and checks before departure that every number in the duty chain connects." }],
         href: cs("preparing-each-trip"),
       },
       {
         id: "parent-documents",
         label: "Parent documents",
-        reports: ["Student and Parent Trip Report"],
+        reports: [{ name: "Student and Parent Trip Report", overview: "Families receive one report with the days at a glance, the letter home and the packing list." }],
         href: cs("preparing-families"),
       },
       {
         id: "trip-leaders",
         label: "Trip leaders",
-        reports: ["Trip Leaders Brief", "day maps"],
+        reports: [{ name: "Trip Leaders Brief", overview: "Trip leaders and chaperones carry one page for each day of the trip." }, { name: "Day maps", overview: "Each mapped outdoor day gets a pocket route card and a private online version." }],
         href: cs("preparing-trip-leaders"),
       },
       {
         id: "students",
         label: "Students",
-        reports: ["Educational Travel Fieldbook"],
+        reports: [{ name: "Educational Travel Fieldbook", overview: "Students follow the learning purpose of each day in their own fieldbook." }],
       },
       {
         id: "other-trips",
         label: "Other types of trips",
-        reports: ["Field Trip Reports", "Conference Travel Reports"],
+        reports: [{ name: "Field Trip Reports", overview: "One annual pack covers the school’s day trips, with a page for each trip and a calendar for each month." }, { name: "Conference Travel Reports", overview: "A season guide covers a conference’s athletics and activities travel." }],
         href: cs("preparing-for-field-trips"),
       },
     ],
@@ -102,13 +108,13 @@ export const TIERS: Tier[] = [
       {
         id: "incident-reports",
         label: "Incident reports",
-        reports: ["Educational Travel Incident Reporting System"],
+        reports: [{ name: "Educational Travel Incident Reporting System", overview: "Staff report incidents from a phone into a system built to run in the school’s own Google Workspace or Microsoft 365." }],
         href: cs("during-trips"),
       },
       {
         id: "feedback",
         label: "Feedback",
-        reports: ["Post Trip Report"],
+        reports: [{ name: "Post Trip Report", overview: "The report gathers the leader’s notes and the feedback from students and families while the trip is still fresh." }],
         href: cs("after-the-trips"),
       },
     ],

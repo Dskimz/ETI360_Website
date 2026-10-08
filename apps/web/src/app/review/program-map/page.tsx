@@ -23,18 +23,12 @@ export default function ProgramMapReview() {
       <h1 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", marginBottom: 32 }}>
         The Program Map
       </h1>
-      <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "0 0 24px" }}>
-        Rule below the titles
-      </h2>
-      <section><ProgramMap rule="below" /></section>
+      <p style={{ fontSize: "var(--font-sm)", color: "var(--ink-mid)", marginBottom: 24 }}>
+        Hover over a report, or tap it on a phone, to see its overview.
+      </p>
+      <section><ProgramMap /></section>
       <div style={{ height: 40 }} />
-      <section><ProgramMap rule="below" current="risk-reports" /></section>
-      <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "64px 0 24px" }}>
-        Rule above the titles
-      </h2>
-      <section><ProgramMap rule="top" /></section>
-      <div style={{ height: 40 }} />
-      <section><ProgramMap rule="top" current="risk-reports" /></section>
+      <section><ProgramMap current="risk-reports" /></section>
       <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "64px 0 24px" }}>
         The You-are-here strip
       </h2>

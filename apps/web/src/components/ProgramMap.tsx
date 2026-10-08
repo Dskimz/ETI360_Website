@@ -17,12 +17,13 @@ const TIER_COLOR: Record<TierKey, string> = {
 const color = (key: TierKey) => ({ "--c": TIER_COLOR[key] }) as CSSProperties;
 const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(" ");
 
-/** The full map. Pass `current` (a branch id) to light one item and turn
-    the map into the you-are-here view on pages with room for it. `rule`
-    sets the tier-color rule above or below each tier's heading. */
+/** The full map. Each report is one line; hovering or focusing it opens a
+    box with its branch and a one-sentence overview (Dan, 2026-10-08: less
+    text on the map). Pass `current` (a branch id) to light that branch's
+    reports. `rule` sets the tier-color rule above (default) or below. */
 export function ProgramMap({
   current,
-  rule = "below",
+  rule = "top",
   className,
 }: {
   current?: string;
@@ -39,7 +40,14 @@ export function ProgramMap({
       {TIERS.map((tier) => {
         const dimTier = !!found && found.tier.key !== tier.key;
         return (
-          <div key={tier.key} className={cx(styles.col, dimTier && styles.dim, tier.key === 2 && styles.wide)} style={color(tier.key)}>
+          <div
+            key={tier.key}
+            className={cx(styles.col, dimTier && styles.dim, tier.key === 2 && styles.wide)}
+            style={{
+              ...color(tier.key),
+              ["--rows" as string]: Math.ceil(tier.branches.reduce((n, b) => n + b.reports.length, 0) / 2),
+            }}
+          >
             <div className={styles.head}>
               <span className={styles.tierNo}>Tier {tier.key}</span>
               <span className={styles.tierName}>{tier.name}</span>
@@ -47,25 +55,33 @@ export function ProgramMap({
             </div>
             <div className={styles.body}>
               <ul className={styles.branches}>
-                {tier.branches.map((b) => {
-                  const lit = found?.branch.id === b.id;
-                  return (
-                    <li
-                      key={b.id}
-                      className={cx(lit && styles.lit, found && !dimTier && !lit && styles.dimItem)}
-                      aria-current={lit ? "true" : undefined}
-                    >
-                      {b.href ? (
-                        <Link href={b.href} className={styles.branchLabel}>
-                          {b.label}
-                        </Link>
-                      ) : (
-                        <span className={styles.branchLabel}>{b.label}</span>
-                      )}
-                      <span className={styles.reports}>{b.reports.join(" · ")}</span>
-                    </li>
-                  );
-                })}
+                {tier.branches.flatMap((b) =>
+                  b.reports.map((r) => {
+                    const lit = found?.branch.id === b.id;
+                    const tipId = `pm-${b.id}-${r.name.toLowerCase().replace(/[^a-z]+/g, "-")}`;
+                    return (
+                      <li
+                        key={r.name}
+                        className={cx(styles.item, lit && styles.lit, found && !dimTier && !lit && styles.dimItem)}
+                        aria-current={lit ? "true" : undefined}
+                      >
+                        {b.href ? (
+                          <Link href={b.href} className={styles.reports} aria-describedby={tipId}>
+                            {r.name}
+                          </Link>
+                        ) : (
+                          <span className={styles.reports} tabIndex={0} aria-describedby={tipId}>
+                            {r.name}
+                          </span>
+                        )}
+                        <span role="tooltip" id={tipId} className={styles.tip}>
+                          <span className={styles.tipLabel}>{b.label}</span>
+                          {r.overview}
+                        </span>
+                      </li>
+                    );
+                  }),
+                )}
               </ul>
               {tier.note ? <p className={styles.note}>{tier.note}</p> : null}
             </div>
@@ -93,7 +109,7 @@ export function YouAreHere({
   const found = findBranch(branch);
   if (!found) return null;
   const { tier, branch: b } = found;
-  const docName = doc ?? b.reports.join(" · ");
+  const docName = doc ?? b.reports.map((r) => r.name).join(" · ");
   if (variant === "boxes") {
     return (
       <div className={styles.boxStrip} role="group" aria-label="Where this sits in the Program Map">
