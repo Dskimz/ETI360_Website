@@ -19,6 +19,8 @@ export type Tier = {
   key: TierKey;
   name: string;
   short: string;
+  /** One sentence under the tier name; the school is the subject. */
+  purpose: string;
   branches: Branch[];
 };
 
@@ -29,6 +31,7 @@ export const TIERS: Tier[] = [
     key: 1,
     name: "Organizational Readiness",
     short: "Organization",
+    purpose: "The school sets its travel policies and chooses its providers.",
     branches: [
       {
         id: "travel-policies",
@@ -58,6 +61,7 @@ export const TIERS: Tier[] = [
     key: 2,
     name: "Trip Readiness",
     short: "Trip",
+    purpose: "Each trip’s reports are prepared with the school and its provider.",
     branches: [
       {
         id: "itinerary",
@@ -100,6 +104,7 @@ export const TIERS: Tier[] = [
     key: 3,
     name: "Incident Reporting and Feedback",
     short: "Incidents and Feedback",
+    purpose: "Staff record what happens, and each trip’s lessons shape the next.",
     branches: [
       {
         id: "incident-reports",

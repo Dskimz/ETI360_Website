@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const STRIPS: { note: string; branch: string }[] = [
-  { note: "The Travel Program Review page shows this strip.", branch: "travel-policies" },
-  { note: "The Student and Parent Trip Report page shows this strip.", branch: "parent-documents" },
-  { note: "The Post Trip Report page shows this strip.", branch: "feedback" },
+const STRIPS: { note: string; branch: string; doc: string }[] = [
+  { note: "The Travel Program Review page shows this strip.", branch: "travel-policies", doc: "Travel Program Review" },
+  { note: "The Student and Parent Trip Report page shows this strip.", branch: "parent-documents", doc: "Student and Parent Trip Report" },
+  { note: "The Post Trip Report page shows this strip.", branch: "feedback", doc: "Post Trip Report" },
 ];
 
 export default function ProgramMapReview() {
@@ -31,10 +31,14 @@ export default function ProgramMapReview() {
         {STRIPS.map((s) => (
           <div key={s.branch}>
             <p style={{ fontSize: "var(--font-sm)", color: "var(--ink-mid)", marginBottom: 12 }}>{s.note}</p>
-            <YouAreHere branch={s.branch} />
+            <YouAreHere branch={s.branch} doc={s.doc} />
           </div>
         ))}
       </div>
+      <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "64px 0 24px" }}>
+        The full map as the you-are-here view
+      </h2>
+      <ProgramMap current="feedback" />
       </div>
     </main>
   );
