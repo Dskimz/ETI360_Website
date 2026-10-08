@@ -23,7 +23,7 @@ export { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/lib/case-study-hold";
      the hero bar   (Dan: "a small hero bar on each of the pages. Give the key
                     information"): the product, its tiers, three or four key
                     facts (two below 640px), and the one-line illustrative
-                    note (HERO_NOTE); no eyebrow, the pinned bar says where
+                    note (removed 2026-10-08); no eyebrow, the pinned bar says where
                     the reader is (review fix, 2026-09-29);
      the need       one sentence;
      the documents  the trip page's document card (src/components/
@@ -144,9 +144,10 @@ export const INTRO = {
   partnership:
     "Harborview International School runs trips on six program paths, from international multi-day trips to elementary day trips and athletics travel. This case study follows one partnership year, in which ETI360 reviews and prepares Harborview’s documentation across that program. The year begins with the Travel Program Review and the Travel Year Guide, and each trip, day-trip year and conference season builds on them.",
   // The reviewer's wording for the old "real samples ETI360 built" line;
-  // on the overview's foot since 2026-09-29 (the hero carries HERO_NOTE).
+  // on the overview's foot since 2026-09-29. The fictional line is removed
+  // (Dan, 2026-10-08).
   samples:
-    "The documents are fully developed samples created by ETI360. The providers and decisions in this example are fictional.",
+    "The documents are fully developed samples created by ETI360.",
   dates:
     "Each sample was produced on its own date, so the dates printed on the samples do not set the order of this story.",
 };
@@ -156,9 +157,6 @@ export const INTRO = {
     cover lands on a phone's first screen (review fix, 2026-09-29). */
 export type Fact = { label: string; value: string; phone?: true };
 
-/** The one-line illustrative note along the foot of every hero bar.
-    [draft] 2026-09-29 (review fix: one line in place of two sentences). */
-export const HERO_NOTE = "Illustrative case study; the providers and decisions are fictional.";
 
 /** The paper line of every hero bar: Harborview's own paper first.
     [draft] 2026-09-29 (review fix: one wording everywhere). */
@@ -644,7 +642,7 @@ STEPS.forEach((s, i) => {
 for (const ref of Object.values(STEP_COVER)) siteDocument(ref);
 {
   const BOUNDARY = /does not certify, approve, rank or recommend/gi;
-  const all = JSON.stringify([INTRO, HERO_NOTE, OVERVIEW_FACTS, WORK, LIFECYCLE, WHO_DECIDES_BOX, TIER_LINES, STEP_RECEIVES, STEPS]);
+  const all = JSON.stringify([INTRO, OVERVIEW_FACTS, WORK, LIFECYCLE, WHO_DECIDES_BOX, TIER_LINES, STEP_RECEIVES, STEPS]);
   const line = STEPS.find((s) => s.id === "travel-program-review")?.groups[0]?.note?.text ?? "";
   if ((all.match(BOUNDARY) ?? []).length !== 1 || !BOUNDARY.test(line)) {
     throw new Error("Case Study: the provider boundary must appear once, in the Travel Program Review's provider line");
