@@ -6,7 +6,7 @@
 export const TIER_NAMES = {
   1: "Tier 1 Organizational Readiness",
   2: "Tier 2 Trip Readiness",
-  3: "Tier 3 Live Trip Support and Review",
+  3: "Tier 3 Incident Reporting and Feedback",
 } as const;
 
 /** The decisions a trip's documents are tied to, in the order a trip meets them. */

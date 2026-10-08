@@ -72,7 +72,7 @@ export default function IncidentCaseStudyPage() {
             Workspace account rather than in an outside system.
           </p>
           <p className={`${styles.facts} ui`}>
-            Educational Travel Incident Reporting System · Tier 3 Live Trip Support and Review · The trip shown:
+            Educational Travel Incident Reporting System · Tier 3 Incident Reporting and Feedback · The trip shown:
             Nepal Himalaya Trek, 5 to 12 September 2026
           </p>
         </div>
