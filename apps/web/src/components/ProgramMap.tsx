@@ -18,9 +18,10 @@ const color = (key: TierKey) => ({ "--c": TIER_COLOR[key] }) as CSSProperties;
 const cx = (...c: (string | false | undefined)[]) =>
   c.filter(Boolean).join(" ");
 
-/** The full map. Each report is one line; hovering or focusing it opens a
-    box with its branch and a one-sentence overview (Dan, 2026-10-08: less
-    text on the map). Pass `current` (a branch id) to light that branch's
+/** The full map. Each tier heading and each report is one line with a
+    gold plus; hovering, tapping or focusing it opens a box with the tier's
+    purpose or the report's overview (Dan, 2026-10-08: less text, four
+    equal columns, a full-width tier bar, no numerals, no loop note). Pass `current` (a branch id) to light that branch's
     reports. `theme` sets the light panel (default) or the navy one. */
 export function ProgramMap({
   current,
@@ -54,12 +55,29 @@ export function ProgramMap({
               style={color(tier.key)}
             >
               <div className={styles.head}>
-                <span className={styles.num} aria-hidden="true">
-                  {tier.key}
-                </span>
                 <span className={styles.tierNo}>Tier {tier.key}</span>
-                <span className={styles.tierName}>{tier.name}</span>
-                <p className={styles.purpose}>{tier.purpose}</p>
+                <span
+                  className={styles.nameRow}
+                  tabIndex={0}
+                  aria-describedby={`pm-tier-${tier.key}`}
+                >
+                  <span className={styles.tierName}>
+                    {(tier.lines ?? [tier.name]).map((l, i) => (
+                      <span key={l} className={styles.nameLine}>
+                        {i > 0 ? " " : null}
+                        {l}
+                      </span>
+                    ))}
+                  </span>
+                  <span
+                    role="tooltip"
+                    id={`pm-tier-${tier.key}`}
+                    className={styles.tip}
+                  >
+                    <span className={styles.tipLabel}>Tier {tier.key}</span>
+                    {tier.purpose}
+                  </span>
+                </span>
               </div>
               <div className={styles.body}>
                 {(() => {
@@ -119,7 +137,6 @@ export function ProgramMap({
                     </div>
                   );
                 })()}
-                {tier.note ? <p className={styles.note}>{tier.note}</p> : null}
               </div>
             </div>
           );

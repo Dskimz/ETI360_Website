@@ -26,7 +26,9 @@ export type Tier = {
   key: TierKey;
   name: string;
   short: string;
-  /** One sentence under the tier name; the school is the subject. */
+  /** Where the heading breaks, when it should break at a set place. */
+  lines?: string[];
+  /** One sentence in the heading's hover box; the school is the subject. */
   purpose: string;
   /** An optional closing line under the branches. */
   note?: string;
@@ -102,13 +104,14 @@ export const TIERS: Tier[] = [
     key: 3,
     name: "Incident Reporting and Feedback",
     short: "Incidents and Feedback",
+    lines: ["Incident Reporting", "and Feedback"],
     purpose: "Staff record what happens, and each trip’s lessons shape the next.",
     note: "Each trip’s feedback feeds next year’s Organizational Readiness.",
     branches: [
       {
         id: "incident-reports",
         label: "Incident reports",
-        reports: [{ name: "Educational Travel Incident Reporting System", overview: "Staff report incidents from a phone into a system built to run in the school’s own Google Workspace or Microsoft 365." }],
+        reports: [{ name: "Incident Report System", overview: "Staff report incidents from a phone into a system built to run in the school’s own Google Workspace or Microsoft 365." }],
         href: cs("during-trips"),
       },
       {
