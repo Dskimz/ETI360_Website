@@ -8,7 +8,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 // yes (Dan, 2026-09-09). Vercel Analytics is cookieless and stays outside this
 // gate, which keeps the page-view baseline independent of anyone's choice.
 //
-// The notice never appears on /unsubscribe: someone who came to opt out should
+// The notice is a thin beige strip after the footer, in the page flow, so it
+// never covers any text (Dan, 2026-10-08). The notice never appears on /unsubscribe: someone who came to opt out should
 // not be asked for anything. "Cookie settings" in the footer reopens it through
 // the #cookie-settings hash, so a choice can be withdrawn as easily as given.
 
@@ -115,22 +116,20 @@ export function AnalyticsConsent({ gaId }: { gaId: string }) {
     <>
       {choice === "granted" ? <GoogleAnalytics gaId={gaId} /> : null}
       {showNotice ? (
-        <div role="dialog" aria-label="Analytics cookies" style={shell}>
+        <div role="region" aria-label="Analytics cookies" style={shell}>
           <div style={inner}>
             <p style={copy}>
-              We use Google Analytics to see which material is read and roughly where our
-              visitors are, so we know what is worth producing. It sets cookies in your
-              browser. Declining changes nothing about how this site works, and our cookieless
-              page count runs either way.{" "}
+              <strong style={title}>Analytics cookies</strong> Google Analytics shows us which
+              pages are read. Declining changes nothing on the site.{" "}
               <a href="/privacy" style={link}>
                 Privacy notice
               </a>
             </p>
             <div style={buttons}>
-              <button type="button" onClick={() => decide("granted")} style={accept}>
-                Accept analytics
+              <button type="button" onClick={() => decide("granted")} style={control}>
+                Accept
               </button>
-              <button type="button" onClick={() => decide("denied")} style={decline}>
+              <button type="button" onClick={() => decide("denied")} style={control}>
                 Decline
               </button>
             </div>
@@ -142,56 +141,51 @@ export function AnalyticsConsent({ gaId }: { gaId: string }) {
 }
 
 const shell: React.CSSProperties = {
-  position: "fixed",
-  insetInline: 0,
-  bottom: 0,
-  zIndex: 60,
-  background: "var(--navy)",
-  borderTop: "2px solid var(--gold)",
-  padding: "18px 20px",
+  background: "#f5edda",
+  borderTop: "1px solid rgba(138, 108, 31, .35)",
 };
 
 const inner: React.CSSProperties = {
   maxWidth: "var(--container)",
   margin: "0 auto",
+  padding: "8px clamp(16px, 4vw, 32px)",
   display: "flex",
   flexWrap: "wrap",
-  gap: "18px",
+  gap: "6px 14px",
   alignItems: "center",
-  justifyContent: "space-between",
+  justifyContent: "flex-end",
 };
 
 const copy: React.CSSProperties = {
   margin: 0,
-  flex: "1 1 380px",
-  color: "var(--muted-light)",
+  color: "var(--ink)",
   fontFamily: "var(--font-sans)",
-  fontSize: "var(--font-sm)",
-  lineHeight: 1.6,
+  fontSize: "11.5px",
+  lineHeight: 1.5,
 };
 
+const title: React.CSSProperties = { color: "var(--navy)", fontWeight: 600 };
+
 const link: React.CSSProperties = {
-  color: "var(--gold)",
+  color: "var(--navy)",
   textDecoration: "underline",
-  textUnderlineOffset: "3px",
+  textUnderlineOffset: "2px",
   whiteSpace: "nowrap",
 };
 
-const buttons: React.CSSProperties = { display: "flex", gap: "12px", flex: "0 0 auto" };
+const buttons: React.CSSProperties = { display: "flex", gap: "6px", flex: "0 0 auto" };
 
 // Both controls carry the same size and weight on purpose: declining has to be
 // as easy to find as accepting.
 const control: React.CSSProperties = {
   fontFamily: "var(--font-sans)",
-  fontSize: "var(--font-sm)",
+  fontSize: "11px",
   fontWeight: 600,
-  letterSpacing: "0.01em",
-  padding: "11px 22px",
-  border: "1px solid var(--gold)",
-  borderRadius: 0,
+  padding: "3px 14px",
+  border: "1px solid var(--navy)",
+  borderRadius: "3px",
+  background: "transparent",
+  color: "var(--navy)",
   cursor: "pointer",
-  lineHeight: 1.2,
+  lineHeight: 1.4,
 };
-
-const accept: React.CSSProperties = { ...control, background: "var(--gold)", color: "var(--navy)" };
-const decline: React.CSSProperties = { ...control, background: "transparent", color: "var(--gold)" };

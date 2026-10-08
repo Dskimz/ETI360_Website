@@ -44,3 +44,6 @@ export const WHO_DECIDES =
 /** Who the closing sentence's "me" is: shown under it in the contact band
     and on /contact (review fix, 2026-09-27). */
 export const CLOSING_SIGNATURE = "Dan Skimin, Principal Consultant";
+
+/** The site's contact address, shown in the footer (Dan, 2026-10-05). */
+export const CONTACT_EMAIL = "danskimin@eti360.com";
