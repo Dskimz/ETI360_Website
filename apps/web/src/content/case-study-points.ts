@@ -45,7 +45,7 @@ const understandingDocs: Step = {
 
 export const UNDERSTANDING: PointPage = {
   id: "understanding-the-program",
-  label: "Understanding the program",
+  label: "The school’s travel policies",
   tier: "Tier 1 Organizational Readiness",
   tierNum: 1,
   description:
@@ -69,7 +69,7 @@ export const UNDERSTANDING: PointPage = {
   boundary:
     "We show what each provider’s documents cover, and we never certify, approve, rank or recommend a provider. Harborview keeps every decision.",
   lead: "We recommend this before the next year’s trips are planned, because everything else in the year builds on it.",
-  next: { label: "Laying out the year", href: "/case-study/laying-out-the-year" },
+  next: { label: "The year ahead", href: "/case-study/laying-out-the-year" },
 };
 
 /* The Travel Year Guide and the trip budgets, without the step page's
@@ -81,7 +81,7 @@ const layingOutDocs: Step = {
 
 export const LAYING_OUT: PointPage = {
   id: "laying-out-the-year",
-  label: "Laying out the year",
+  label: "The year ahead",
   tier: "Tier 1 Organizational Readiness",
   tierNum: 1,
   description:
@@ -101,7 +101,7 @@ export const LAYING_OUT: PointPage = {
   ],
   boundary: "We prepare the guide and the budgets, and Harborview owns both. The school makes every decision about its year.",
   lead: "We recommend this as trips are chosen, about a year ahead.",
-  next: { label: "Preparing each trip", href: "/case-study/preparing-each-trip" },
+  next: { label: "Itinerary and risk reports", href: "/case-study/preparing-each-trip" },
 };
 
 const trip = STEPS.find((s) => s.id === "trip-package");
@@ -121,7 +121,7 @@ const eachTripDocs: Step = {
 
 export const EACH_TRIP: PointPage = {
   id: "preparing-each-trip",
-  label: "Preparing each trip",
+  label: "Itinerary and risk reports",
   tier: "Tier 2 Trip Readiness",
   tierNum: 2,
   description:
@@ -146,7 +146,7 @@ export const EACH_TRIP: PointPage = {
   ],
   boundary: "We prepare the information and the groundwork, and Harborview makes every decision about the trip.",
   lead: "The best time to start is about six months before departure.",
-  next: { label: "Preparing families", href: "/case-study/preparing-families" },
+  next: { label: "Parent documents", href: "/case-study/preparing-families" },
 };
 
 /* The family report from Harborview's trip set (case-study-trip.ts), with the other school's
@@ -166,7 +166,7 @@ const familiesDocs: Step = {
 
 export const FAMILIES: PointPage = {
   id: "preparing-families",
-  label: "Preparing families",
+  label: "Parent documents",
   tier: "Tier 2 Trip Readiness",
   tierNum: 2,
   description:
@@ -191,7 +191,7 @@ export const FAMILIES: PointPage = {
   ],
   boundary: "We prepare the information, and Harborview and its families make every decision and application.",
   lead: "The best time is three to six months before departure, ahead of the parent meeting.",
-  next: { label: "Preparing trip leaders", href: "/case-study/preparing-trip-leaders" },
+  next: { label: "Trip leaders", href: "/case-study/preparing-trip-leaders" },
 };
 
 /* The leader brief from Harborview's trip set (case-study-trip.ts), with the other school's
@@ -205,7 +205,7 @@ const leadersDocs: Step = {
 
 export const TRIP_LEADERS: PointPage = {
   id: "preparing-trip-leaders",
-  label: "Preparing trip leaders",
+  label: "Trip leaders",
   tier: "Tier 2 Trip Readiness",
   tierNum: 2,
   description:
@@ -229,7 +229,7 @@ export const TRIP_LEADERS: PointPage = {
   ],
   boundary: "We prepare the brief, and Harborview and its trip leaders make every decision before and during the trip.",
   lead: "We prepare it with the trip reports and send the final version a few weeks before departure.",
-  next: { label: "Preparing for field trips", href: "/case-study/preparing-for-field-trips" },
+  next: { label: "Field trips", href: "/case-study/preparing-for-field-trips" },
 };
 
 const fieldTrips = STEPS.find((s) => s.id === "field-trip-package");
@@ -241,7 +241,7 @@ const fieldTripDocs: Step = { ...fieldTrips };
 
 export const FIELD_TRIPS: PointPage = {
   id: "preparing-for-field-trips",
-  label: "Preparing for field trips",
+  label: "Field trips",
   tier: "Tier 2 Trip Readiness",
   tierNum: 2,
   description:
@@ -263,7 +263,7 @@ export const FIELD_TRIPS: PointPage = {
   boundary: "We prepare the pack, and Harborview makes every decision about its day trips.",
   lead: "We recommend this before the school year starts.",
   next: {
-    label: "Preparing for sports and cultural exchange trips",
+    label: "Sports and exchange trips",
     href: "/case-study/preparing-for-sports-and-cultural-exchange-trips",
   },
 };
@@ -277,7 +277,7 @@ const conferenceDocs: Step = { ...conference };
 
 export const SPORTS_EXCHANGE: PointPage = {
   id: "preparing-for-sports-and-cultural-exchange-trips",
-  label: "Preparing for sports and cultural exchange trips",
+  label: "Sports and exchange trips",
   tier: "Tier 2 Trip Readiness",
   tierNum: 2,
   description:
@@ -299,7 +299,7 @@ export const SPORTS_EXCHANGE: PointPage = {
   ],
   boundary: "We prepare the guide, and Harborview approves every trip and makes every decision while its groups travel.",
   lead: "We recommend this before the season or the event calendar starts.",
-  next: { label: "During trips", href: "/case-study/during-trips" },
+  next: { label: "Incident reports", href: "/case-study/during-trips" },
 };
 
 /* No document cards: the system is shown on its own case study page,
@@ -308,7 +308,7 @@ export const SPORTS_EXCHANGE: PointPage = {
    runs there today (CLAUDE.md, Incident Reporting). */
 export const DURING_TRIPS: PointPage = {
   id: "during-trips",
-  label: "During trips",
+  label: "Incident reports",
   tier: "Tier 3 Incident Reporting and Feedback",
   tierNum: 3,
   description:
@@ -330,7 +330,7 @@ export const DURING_TRIPS: PointPage = {
   ],
   boundary: "We help build the system, and the school runs it and makes every decision while groups are away.",
   lead: "We set it up with the school before the first trip.",
-  next: { label: "After the trips", href: "/case-study/after-the-trips" },
+  next: { label: "Feedback", href: "/case-study/after-the-trips" },
 };
 
 /* The feedback report from Harborview's trip set (case-study-trip.ts), with the other
@@ -345,7 +345,7 @@ const afterDocs: Step = {
 
 export const AFTER_TRIPS: PointPage = {
   id: "after-the-trips",
-  label: "After the trips",
+  label: "Feedback",
   tier: "Tier 3 Incident Reporting and Feedback",
   tierNum: 3,
   description:
@@ -375,8 +375,8 @@ export const AFTER_TRIPS: PointPage = {
 export const NEXT_YEAR: PointPage = {
   id: "the-next-year",
   label: "The next year",
-  tier: "",
-  tierNum: 1,
+  tier: "Tier 3 Incident Reporting and Feedback",
+  tierNum: 3,
   description:
     "What changes in Harborview International School’s second year, from updated dates and risk documents to new trips and a second program review.",
   problem: [

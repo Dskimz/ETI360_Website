@@ -200,3 +200,89 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Point pages: the chapter strip (Dan, 2026-10-08) ── */
+.cstrip {
+  --gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--gap);
+  padding: 22px 0 18px;
+  border-bottom: 1px solid var(--hairline);
+}
+.cstripCell {
+  min-width: 0;
+  border-top: 6px solid var(--c);
+  padding-top: 10px;
+  opacity: 0.45;
+  transition: opacity 0.15s ease;
+}
+.cstripCell:hover,
+.cstripOn {
+  opacity: 1;
+}
+.cstripHead {
+  display: grid;
+  gap: 2px;
+  color: var(--navy);
+  text-decoration: none !important;
+}
+.cstripTier {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.cstripTitle {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  font-size: var(--font-lg);
+  line-height: 1.2;
+}
+.cstripLinks {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  font-size: var(--font-sm);
+}
+.cstripLinks a {
+  color: var(--ink-mid);
+  font-weight: 500;
+}
+.cstripLinks a.cstripHere {
+  color: var(--navy);
+  font-weight: 600;
+  position: relative;
+  padding-left: 13px;
+}
+.cstripLinks a.cstripHere::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .cstrip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 10px;
+  }
+  .cstrip .wide {
+    grid-column: auto;
+  }
+  .cstripTitle {
+    font-size: var(--font-sm);
+  }
+  .cstripLinks {
+    display: none;
+  }
+}

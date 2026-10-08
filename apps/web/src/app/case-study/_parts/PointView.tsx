@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { PointPage } from "@/content/case-study-points";
 import { StepDocs } from "./blocks";
-import { HeroStack, StageStrip } from "./PointStage";
+import { HeroStack } from "./PointStage";
+import { ChapterStrip } from "./ChapterStrip";
 import styles from "../home.module.css";
 import stepStyles from "../page.module.css";
 
@@ -17,35 +18,49 @@ export function PointView({ p: P }: { p: PointPage }) {
       <div className={styles.hero}>
         <div className={`container ${styles.heroRow}`}>
           <div>
-          <p className={`${styles.eyebrow} ui`}>
-            <Link className={styles.crumb} href="/case-study">
-              Case Study
-            </Link>{" "}
-            · Harborview International School
-          </p>
-          <h1 className={styles.h1}>{P.label}</h1>
-          {P.tier ? <p className={`${styles.heroTier} ui`}>{P.tier}</p> : null}
+            <p className={`${styles.eyebrow} ui`}>
+              <Link className={styles.crumb} href="/case-study">
+                Case Study
+              </Link>{" "}
+              · Harborview International School
+            </p>
+            <h1 className={styles.h1}>{P.label}</h1>
+            {P.tier ? (
+              <p className={`${styles.heroTier} ui`}>{P.tier}</p>
+            ) : null}
           </div>
           <HeroStack p={P} />
         </div>
       </div>
       <div className="container">
-        <StageStrip id={P.id} />
+        <ChapterStrip id={P.id} />
       </div>
 
       <div className="container">
         <div className={styles.body}>
-          <div className={styles.section} role="region" aria-labelledby="problem">
-            <h2 className={styles.h2} id="problem">What Harborview needed</h2>
+          <div
+            className={styles.section}
+            role="region"
+            aria-labelledby="problem"
+          >
+            <h2 className={styles.h2} id="problem">
+              What Harborview needed
+            </h2>
             {P.problem.map((t) => (
-              <p key={t} className={styles.text}>{t}</p>
+              <p key={t} className={styles.text}>
+                {t}
+              </p>
             ))}
           </div>
 
           <div className={styles.section} role="region" aria-labelledby="did">
-            <h2 className={styles.h2} id="did">What we did</h2>
+            <h2 className={styles.h2} id="did">
+              What we did
+            </h2>
             {P.did.map((t) => (
-              <p key={t} className={styles.text}>{t}</p>
+              <p key={t} className={styles.text}>
+                {t}
+              </p>
             ))}
             {P.links?.length ? (
               <ul className={`${styles.textList} ui`}>
@@ -59,14 +74,25 @@ export function PointView({ p: P }: { p: PointPage }) {
           </div>
 
           {P.docs ? (
-            <div id="documents" className={`${styles.section} ${stepStyles.step}`}>
+            <div
+              id="documents"
+              className={`${styles.section} ${stepStyles.step}`}
+            >
               <StepDocs step={P.docs} />
-              {P.docsNote ? <p className={`${styles.text} ${styles.small}`}>{P.docsNote}</p> : null}
+              {P.docsNote ? (
+                <p className={`${styles.text} ${styles.small}`}>{P.docsNote}</p>
+              ) : null}
             </div>
           ) : null}
 
-          <div className={styles.section} role="region" aria-labelledby="decides">
-            <h2 className={styles.h2} id="decides">What Harborview decides</h2>
+          <div
+            className={styles.section}
+            role="region"
+            aria-labelledby="decides"
+          >
+            <h2 className={styles.h2} id="decides">
+              What Harborview decides
+            </h2>
             <ul className={styles.textList}>
               {P.decides.map((t) => (
                 <li key={t}>{t}</li>
@@ -75,7 +101,9 @@ export function PointView({ p: P }: { p: PointPage }) {
             <p className={styles.text}>{P.boundary}</p>
           </div>
 
-          <div className={`${styles.leadBox} ${P.tierNum === 2 ? styles.leadT2 : P.tierNum === 3 ? styles.leadT3 : ""}`}>
+          <div
+            className={`${styles.leadBox} ${P.tierNum === 2 ? styles.leadT2 : P.tierNum === 3 ? styles.leadT3 : ""}`}
+          >
             <span className={`${styles.k} ui`}>Lead time</span>
             <p>{P.lead}</p>
           </div>
@@ -85,12 +113,17 @@ export function PointView({ p: P }: { p: PointPage }) {
             {P.next.href ? (
               <Link href={P.next.href}>{`Next: ${P.next.label} →`}</Link>
             ) : (
-              <span className={styles.soon}>{`Next: ${P.next.label}, page in preparation`}</span>
+              <span
+                className={styles.soon}
+              >{`Next: ${P.next.label}, page in preparation`}</span>
             )}
           </nav>
 
           <div className={styles.closing}>
-            <p>If this way of working may be useful for your school, we would be glad to hear about your program.</p>
+            <p>
+              If this way of working may be useful for your school, we would be
+              glad to hear about your program.
+            </p>
             <p className="ui">
               <Link className={styles.cta} href="/contact">
                 Contact
