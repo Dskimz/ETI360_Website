@@ -11,6 +11,8 @@ export type TierKey = 1 | 2 | 3;
 
 export type Report = {
   name: string;
+  /** The gold label in the hover box; the branch label when absent. */
+  label?: string;
   /** One sentence for the hover box; the school stays the decider. */
   overview: string;
 };
@@ -43,18 +45,51 @@ export const TIERS: Tier[] = [
     name: "Organizational Readiness",
     short: "Organization",
     lines: ["Organizational", "Readiness"],
-    purpose: "The school sets its travel policies and chooses its providers.",
+    purpose:
+      "ETI360 reviews the school’s travel documentation and its providers’ procedures, so leadership can oversee the whole travel program.",
     branches: [
       {
         id: "school-program",
         label: "The school’s travel program",
-        reports: [{ name: "Travel Program Review", overview: "ETI360 reads the school’s travel policies path by path and shows what each area of the framework covers." }, { name: "Travel Year Guide", overview: "The guide lays out the school’s travel year on its own calendar and with its own dates." }, { name: "Trip Budgets", overview: "Each page budgets one trip, so the school can see the year’s costs side by side." }, { name: "Semester Board Report", overview: "The school issues this short report to its Board and Risk Committee each semester." }],
+        reports: [
+          {
+            name: "Travel Program Review",
+            label: "School travel policies",
+            overview:
+              "ETI360 reviews the school’s travel policies and procedures for each type of trip against the ten areas of its Operational Capability Framework and shows where the documents are at standard, progressing or not yet evidenced.",
+          },
+          {
+            name: "Travel Year Guide",
+            label: "The year ahead",
+            overview:
+              "The guide sets the school’s trips and preparation on its own calendar, so leaders can plan and oversee the travel year.",
+          },
+          {
+            name: "Trip Budgets",
+            label: "The year ahead",
+            overview:
+              "Each trip’s costs are set out in the same format, so the school can compare trips and plan the year’s spending.",
+          },
+          {
+            name: "Semester Board Report",
+            label: "Board reporting",
+            overview:
+              "ETI360 summarizes the semester’s trips, risk documentation, incident record counts and Travel Program Review standing in a short report that the school issues to its Board.",
+          },
+        ],
         href: cs("understanding-the-program"),
       },
       {
         id: "trip-providers",
-        label: "Trip provider 1, 2, 3…",
-        reports: [{ name: "Provider Evaluations", overview: "ETI360 evaluates the documents of each provider the school uses and shows what they cover, and the school decides." }],
+        label: "Trip providers",
+        reports: [
+          {
+            name: "Trip Provider SOP Review",
+            label: "Provider operating procedures",
+            overview:
+              "ETI360 reviews each provider’s documented standard operating procedures against the same ten areas and shows what is at standard, progressing or not evidenced.",
+          },
+        ],
       },
     ],
   },
@@ -63,41 +98,102 @@ export const TIERS: Tier[] = [
     name: "Trip Readiness",
     short: "Trip",
     lines: ["Trip", "Readiness"],
-    purpose: "Each trip’s reports are prepared with the school and its provider.",
+    purpose:
+      "ETI360 prepares each trip’s reports with the school and its provider, so everyone has what they need before departure and while the group is away.",
     branches: [
       {
         id: "itinerary",
         label: "Itinerary",
-        reports: [{ name: "Off Campus Travel Report", overview: "The report accounts for every day and hour of the itinerary, from departure to return." }],
+        reports: [
+          {
+            name: "Off Campus Travel Report",
+            label: "Trip approval",
+            overview:
+              "ETI360 sets out who is going, where and when, the cost, the bookings and the flights in one record that the school uses to approve the trip.",
+          },
+        ],
         href: cs("preparing-each-trip"),
       },
       {
         id: "risk-reports",
         label: "Risk reports",
-        reports: [{ name: "Risk Assessment Report", overview: "ETI360 prepares the information behind each activity group’s risk assessment, and the school writes and approves it." }, { name: "Duty Manager Trip Brief", overview: "The brief gives the duty holder the trip’s contacts and checks before departure that every number in the duty chain connects." }],
+        reports: [
+          {
+            name: "Risk Assessment Report",
+            label: "Risk reports",
+            overview:
+              "ETI360 organizes the itinerary facts, hazards, questions for the provider and nearest emergency care for each activity group, and the school and provider write, complete and approve the assessment.",
+          },
+          {
+            name: "Duty Manager Trip Brief",
+            label: "Duty manager",
+            overview:
+              "The brief gives the school’s duty holder the trip’s schedule, contacts and nearest hospitals, and ETI360 calls each number in the duty chain before departure to confirm that it connects.",
+          },
+        ],
         href: cs("preparing-each-trip"),
       },
       {
         id: "parent-documents",
         label: "Parent documents",
-        reports: [{ name: "Student and Parent Trip Report", overview: "Families receive one report with the days at a glance, the letter home and the packing list." }],
+        reports: [
+          {
+            name: "Student and Parent Trip Report",
+            label: "Families",
+            overview:
+              "Families receive one report that explains the trip and how to prepare for it, with the days at a glance, the letter home and the packing list.",
+          },
+        ],
         href: cs("preparing-families"),
       },
       {
         id: "trip-leaders",
         label: "Trip leaders",
-        reports: [{ name: "Trip Leaders Brief", overview: "Trip leaders and chaperones carry one page for each day of the trip." }, { name: "Day maps", overview: "Each mapped outdoor day gets a pocket route card and a private online version." }],
+        reports: [
+          {
+            name: "Trip Leaders Brief",
+            label: "Trip leaders",
+            overview:
+              "Trip leaders and chaperones carry each day’s plan, contacts and emergency information on one page per day.",
+          },
+          {
+            name: "Day maps",
+            label: "Outdoor days",
+            overview:
+              "A mapped route for each outdoor day helps leaders plan and follow it, on a pocket card and a private online page.",
+          },
+        ],
         href: cs("preparing-trip-leaders"),
       },
       {
         id: "students",
         label: "Students",
-        reports: [{ name: "Educational Travel Fieldbook", overview: "Students follow the learning purpose of each day in their own fieldbook." }],
+        reports: [
+          {
+            name: "Educational Travel Fieldbook",
+            label: "Students",
+            overview:
+              "Students use the fieldbook to connect each day’s places and activities to what they are learning.",
+          },
+        ],
       },
       {
         id: "other-trips",
         label: "Other types of trips",
-        reports: [{ name: "Field Trip Reports", overview: "One annual pack covers the school’s day trips, with a page for each trip and a calendar for each month." }, { name: "Conference Travel Reports", overview: "A season guide covers a conference’s athletics and activities travel." }],
+        reports: [
+          {
+            name: "Field Trip Reports",
+            label: "Day trips",
+            overview:
+              "One annual pack helps the school plan and prepare its year of day trips, with a page for each trip and a calendar for each month.",
+          },
+          {
+            name: "Conference Travel Reports",
+            label: "Athletics and activities",
+            overview:
+              "A season guide helps the school and its coaches plan and coordinate a conference’s athletics and activities travel.",
+          },
+        ],
         href: cs("preparing-for-field-trips"),
       },
     ],
@@ -107,19 +203,34 @@ export const TIERS: Tier[] = [
     name: "Incident Reporting and Feedback",
     short: "Incidents and Feedback",
     lines: ["Incident Reporting", "and Feedback"],
-    purpose: "Staff record what happens, and each trip’s lessons shape the next.",
+    purpose:
+      "Staff record what happens on each trip, and the feedback informs how the school prepares the next one.",
     note: "Each trip’s feedback feeds next year’s Organizational Readiness.",
     branches: [
       {
         id: "incident-reports",
         label: "Incident reports",
-        reports: [{ name: "Incident Report System", overview: "Staff report incidents from a phone into a system built to run in the school’s own Google Workspace or Microsoft 365." }],
+        reports: [
+          {
+            name: "Incident Report System",
+            label: "Incident reports",
+            overview:
+              "Staff record incidents the same way on every trip, from a phone, in a system built to run in the school’s own Google Workspace.",
+          },
+        ],
         href: cs("during-trips"),
       },
       {
         id: "feedback",
         label: "Feedback",
-        reports: [{ name: "Post Trip Report", overview: "The report gathers the leader’s notes and the feedback from students and families while the trip is still fresh." }],
+        reports: [
+          {
+            name: "Post Trip Report",
+            label: "Feedback",
+            overview:
+              "The report gathers the leader’s notes and the feedback from students and families, so the school can review the trip and prepare the next one.",
+          },
+        ],
         href: cs("after-the-trips"),
       },
     ],
@@ -127,7 +238,9 @@ export const TIERS: Tier[] = [
 ];
 
 /** The tier and branch a page or post sits on, for YouAreHere. */
-export function findBranch(branchId: string): { tier: Tier; branch: Branch } | undefined {
+export function findBranch(
+  branchId: string,
+): { tier: Tier; branch: Branch } | undefined {
   for (const tier of TIERS) {
     const branch = tier.branches.find((b) => b.id === branchId);
     if (branch) return { tier, branch };

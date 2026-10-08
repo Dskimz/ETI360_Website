@@ -117,7 +117,9 @@ export function ProgramMap({
                             id={tipId}
                             className={styles.tip}
                           >
-                            <span className={styles.tipLabel}>{b.label}</span>
+                            <span className={styles.tipLabel}>
+                              {r.label ?? b.label}
+                            </span>
                             {r.overview}
                           </span>
                         </li>
