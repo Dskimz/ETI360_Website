@@ -1,6 +1,6 @@
 'use client'
 
-import {useCallback, useEffect, useRef, useState, type ReactNode} from 'react'
+import {useCallback, useEffect, useRef, useState, useSyncExternalStore, type ReactNode} from 'react'
 import styles from './cardcarousel.module.css'
 
 /* A sideways row of cards that snaps card by card, like the document pages
@@ -18,13 +18,22 @@ import styles from './cardcarousel.module.css'
 
 const ADVANCE_MS = 6000
 
+const REDUCED = '(prefers-reduced-motion: reduce)'
+function onReducedChange(cb: () => void) {
+  const mq = window.matchMedia(REDUCED)
+  mq.addEventListener('change', cb)
+  return () => mq.removeEventListener('change', cb)
+}
+
 export function CardCarousel({label, children}: {label: string; children: ReactNode}) {
   const root = useRef<HTMLDivElement>(null)
   const track = useRef<HTMLUListElement>(null)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
   const [paused, setPaused] = useState(false)
-  const [reduced, setReduced] = useState(false)
+  // The reader's reduced-motion setting, kept current; the server assumes
+  // motion is allowed, and the timer only starts in the browser anyway.
+  const reduced = useSyncExternalStore(onReducedChange, () => window.matchMedia(REDUCED).matches, () => false)
   // Holds that clear on their own: pointer over the row, focus inside it,
   // the row off screen, the reader just moved it.
   const hold = useRef({hover: false, focus: false, hidden: true, touched: false})
@@ -47,14 +56,6 @@ export function CardCarousel({label, children}: {label: string; children: ReactN
     hold.current.touched = true
     track.current?.scrollBy({left: dir * step(), behavior: 'smooth'})
   }
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setReduced(mq.matches)
-    const onChange = () => setReduced(mq.matches)
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
-  }, [])
 
   useEffect(() => {
     update()

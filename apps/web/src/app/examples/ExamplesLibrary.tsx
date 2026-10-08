@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useSyncExternalStore} from 'react'
 import styles from './examples.module.css'
 
 /* The Examples library's switch and tiles. The page builds every item on
@@ -71,13 +71,21 @@ function Tile({item}: {item: ExampleItem}) {
   )
 }
 
+/* The filter a link asked for (?schools=us|international), read from the
+   address without a render in an effect; the server and the first paint show
+   every example. */
+function filterFromUrl(): Filter {
+  const q = new URLSearchParams(window.location.search).get('schools')
+  return q === 'us' ? 'US' : q === 'international' ? 'International' : 'all'
+}
+const noSubscribe = () => () => {}
+
 export function ExamplesLibrary({areas, items}: {areas: ExampleArea[]; items: ExampleItem[]}) {
-  const [filter, setFilter] = useState<Filter>('all')
+  const urlFilter = useSyncExternalStore(noSubscribe, filterFromUrl, (): Filter => 'all')
+  const [picked, setFilter] = useState<Filter | null>(null)
+  const filter = picked ?? urlFilter
 
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get('schools')
-    if (q === 'us') setFilter('US')
-    else if (q === 'international') setFilter('International')
     if (window.location.hash) {
       const el = document.getElementById(window.location.hash.slice(1))
       if (el) requestAnimationFrame(() => el.scrollIntoView())

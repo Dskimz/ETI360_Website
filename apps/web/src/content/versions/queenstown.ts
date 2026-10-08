@@ -161,5 +161,4 @@ if (READY && /"V3[:"]/.test(JSON.stringify(queenstown))) {
   throw new Error("Queenstown: replace every V3 placeholder in src/content/versions/queenstown.ts before READY");
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default READY ? queenstown : null;
