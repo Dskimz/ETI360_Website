@@ -440,10 +440,11 @@ export const STEPS: Step[] = [
       {
         version: "harborview-elementary",
         docs: ["field-trip-risk-assessment-pack"],
-        // The reviewed page-2 caption's second half; the lead is [draft].
+        // The reviewed page-2 caption's second half; the lead is [draft]. The
+        // "illustrative" sentence is removed (Dan, 2026-10-08).
         note: {
           lead: "What the example reflects:",
-          text: "The example uses real venues, addresses, emergency departments and road routes. The dates, class sizes and staff are illustrative.",
+          text: "The example uses real venues, addresses, emergency departments and road routes.",
         },
       },
       { version: "firholm-elementary", docs: ["field-trip-risk-assessment-pack"], otherSchool: "firholm" },
