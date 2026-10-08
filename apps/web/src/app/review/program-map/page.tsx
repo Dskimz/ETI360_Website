@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ProgramMap, YouAreHere } from "@/components/ProgramMap";
+import { ProgramMapOption } from "@/components/ProgramMapOptions";
 
 /* Unlisted review page for the Program Map components (Dan, 2026-10-08).
    It sits behind the /review password and shows the full map and the
@@ -23,6 +24,29 @@ export default function ProgramMapReview() {
       <h1 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", marginBottom: 32 }}>
         The Program Map
       </h1>
+      <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "0 0 8px" }}>
+        Options A to E
+      </h2>
+      <p style={{ fontSize: "var(--font-sm)", color: "var(--ink-mid)", marginBottom: 32 }}>
+        Each option lights Feedback, as the screenshot did, and a second copy lights Risk reports.
+      </p>
+      {([
+        ["a", "A · Tight columns: the same shape with everything closer and the report on the label’s line"],
+        ["b", "B · Document-led: the report is the line, and the branch becomes a small gold label above it"],
+        ["c", "C · Rows: one band per tier, with the reports flowing across in three columns"],
+        ["d", "D · Balanced: Trip Readiness takes two columns, so the three tiers end at about the same height"],
+        ["e", "E · Balanced and document-led: D’s layout with B’s report lines"],
+      ] as const).map(([k, title]) => (
+        <section key={k} style={{ marginBottom: 72 }}>
+          <h3 style={{ fontSize: "var(--font-md)", fontWeight: 600, color: "var(--navy)", marginBottom: 20 }}>{title}</h3>
+          <ProgramMapOption option={k} current="feedback" />
+          <div style={{ height: 40 }} />
+          <ProgramMapOption option={k} current="risk-reports" />
+        </section>
+      ))}
+      <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "0 0 24px" }}>
+        The current map (revision 2)
+      </h2>
       <ProgramMap />
       <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "64px 0 24px" }}>
         The You-are-here strip
