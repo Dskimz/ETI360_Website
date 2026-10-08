@@ -29,6 +29,10 @@ export default function ProgramMapReview() {
       <section><ProgramMap /></section>
       <div style={{ height: 40 }} />
       <section><ProgramMap current="risk-reports" /></section>
+      <div style={{ height: 40 }} />
+      <section><ProgramMap theme="navy" /></section>
+      <div style={{ height: 40 }} />
+      <section><ProgramMap theme="navy" current="feedback" /></section>
       <h2 style={{ fontFamily: "'Source Serif 4', Georgia, serif", color: "var(--navy)", margin: "64px 0 24px" }}>
         The You-are-here strip
       </h2>
