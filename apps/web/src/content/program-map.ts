@@ -4,7 +4,8 @@
    YouAreHere (the strip with one tier lit and the branch named under it).
    Tier 3 is "Incident Reporting and Feedback" (D1); the Trip Leaders Brief
    sits in Trip Readiness (D2). Branch labels are the plain nouns from the
-   sketch; the reports run under them in grey. */
+   sketch; the reports run under them. Tier 1 holds two branches, the school
+   and its providers, as in the sketch (Dan, 2026-10-08). */
 
 export type TierKey = 1 | 2 | 3;
 
@@ -21,6 +22,8 @@ export type Tier = {
   short: string;
   /** One sentence under the tier name; the school is the subject. */
   purpose: string;
+  /** An optional closing line under the branches. */
+  note?: string;
   branches: Branch[];
 };
 
@@ -34,26 +37,15 @@ export const TIERS: Tier[] = [
     purpose: "The school sets its travel policies and chooses its providers.",
     branches: [
       {
-        id: "travel-policies",
-        label: "The school’s travel policies",
-        reports: ["Travel Program Review, path by path"],
+        id: "school-program",
+        label: "The school’s travel program",
+        reports: ["Travel Program Review, path by path", "Travel Year Guide", "Trip Budgets", "Semester Board Report"],
         href: cs("understanding-the-program"),
       },
       {
         id: "trip-providers",
         label: "Trip provider 1, 2, 3…",
         reports: ["One provider evaluation each"],
-      },
-      {
-        id: "year-ahead",
-        label: "The year ahead",
-        reports: ["Travel Year Guide", "Trip Budgets"],
-        href: cs("laying-out-the-year"),
-      },
-      {
-        id: "board-reporting",
-        label: "Board reporting",
-        reports: ["Semester Board Report"],
       },
     ],
   },
@@ -105,6 +97,7 @@ export const TIERS: Tier[] = [
     name: "Incident Reporting and Feedback",
     short: "Incidents and Feedback",
     purpose: "Staff record what happens, and each trip’s lessons shape the next.",
+    note: "Each trip’s feedback feeds next year’s Organizational Readiness.",
     branches: [
       {
         id: "incident-reports",

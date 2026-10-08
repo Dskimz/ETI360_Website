@@ -51,6 +51,7 @@ export function ProgramMap({ current, className }: { current?: string; className
                 );
               })}
             </ul>
+            {tier.note ? <p className={styles.note}>{tier.note}</p> : null}
           </div>
         );
       })}
@@ -58,18 +59,48 @@ export function ProgramMap({ current, className }: { current?: string; className
   );
 }
 
-/** The strip. The document is the headline; the tier and branch sit above
-    it, and three equal segments below show where it falls in the year. */
-export function YouAreHere({ branch, doc }: { branch: string; doc?: string }) {
+/** The strip. "bar" (the website): the document is the headline, the tier
+    and branch sit above it, and three equal segments below show where it
+    falls. "boxes" (the social carousels, read at thumbnail size): three
+    equal boxes on the gold line, the lit box carrying the branch and the
+    document in large type beneath it, as in Dan's sketch. */
+export function YouAreHere({
+  branch,
+  doc,
+  variant = "bar",
+}: {
+  branch: string;
+  doc?: string;
+  variant?: "bar" | "boxes";
+}) {
   const found = findBranch(branch);
   if (!found) return null;
   const { tier, branch: b } = found;
+  const docName = doc ?? b.reports.join(" · ");
+  if (variant === "boxes") {
+    return (
+      <div className={styles.boxStrip} role="group" aria-label="Where this sits in the Program Map">
+        {TIERS.map((t) => (
+          <div key={t.key} className={cx(styles.boxCell, t.key === tier.key && styles.boxOn)} style={color(t.key)}>
+            <div className={styles.box}>
+              <span className={styles.boxTier}>Tier {t.key}</span>
+              <span className={styles.boxName}>{t.name}</span>
+            </div>
+          </div>
+        ))}
+        <div className={styles.boxHere} data-tier={tier.key}>
+          <span className={styles.boxBranch}>{b.label}</span>
+          <span className={styles.boxDoc}>{docName}</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className={styles.strip} style={color(tier.key)}>
       <span className={styles.where}>
         Tier {tier.key} · {tier.name} · {b.label}
       </span>
-      <span className={styles.doc}>{doc ?? b.reports.join(" · ")}</span>
+      <span className={styles.doc}>{docName}</span>
       <div className={styles.bar} role="group" aria-label="Where this sits in the Program Map">
         {TIERS.map((t) => (
           <div key={t.key} className={cx(styles.seg, t.key === tier.key && styles.segOn)} style={color(t.key)}>
