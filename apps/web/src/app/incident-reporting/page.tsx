@@ -19,7 +19,7 @@ const TITLE = "Case Study: Incident Reporting";
 const DESCRIPTION =
   "How Harborview International School records incident reports, an evening check-in and trip leaders' feedback, with every record in the school's own Google Workspace account.";
 const IMG = "/marketing/case-studies/incident-reporting";
-const PROVIDER_NOTICE = "Crossfell Expeditions is a fictional trip provider; its trip was written for this example.";
+const PROVIDER_NOTICE = "Tarahill Expeditions is a fictional trip provider; its trip was written for this example.";
 
 export function generateMetadata(): Metadata {
   if (!incidentCaseLive()) return {};
