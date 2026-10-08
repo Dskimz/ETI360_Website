@@ -44,7 +44,7 @@ export function HeroStack({ p }: { p: PointPage }) {
   return (
     <div className={styles.heroStack}>
       {covers.map((c, i) => {
-        const img = <Image src={c.src} width={c.width} height={c.height} alt="" sizes="120px" loading="eager" />;
+        const img = <Image src={c.src} width={c.width} height={c.height} alt="" sizes="172px" loading="eager" />;
         const style = { ["--i" as string]: i - mid };
         return p.docs ? (
           <a key={c.src + i} href="#documents" className={styles.heroCover} style={style} aria-label={`${c.name}, in the documents below`}>

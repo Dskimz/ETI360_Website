@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const DESCRIPTION = "Start a conversation about your school's trips.";
+const DESCRIPTION = "Contact ETI360 about your school's trips.";
 
 export const metadata: Metadata = {
   title: "Contact",

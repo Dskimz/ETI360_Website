@@ -61,7 +61,7 @@ export default function ContactPage() {
       >
         <div className="hero-inner">
           <p className="label label-light ui">Contact</p>
-          <h1>Start a conversation.</h1>
+          <h1>Contact us</h1>
           <p className="subhead">{CLOSING_SENTENCE}</p>
           {/* Who "me" is in Dan's sentence (review fix, 2026-09-27). */}
           <p className="hero-signature ui">{CLOSING_SIGNATURE}</p>

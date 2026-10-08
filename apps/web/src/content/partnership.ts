@@ -192,5 +192,5 @@ export const ABOUT = {
 
 export const START = {
   text: "A first conversation covers your school’s program and the trips it runs.",
-  cta: "Start a conversation",
+  cta: "Contact",
 };
