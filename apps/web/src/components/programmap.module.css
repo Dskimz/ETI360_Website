@@ -3,39 +3,37 @@
    read. Each tier opens on a rule in its tier color, joined to the next by
    the gold line from the sketch. Tokens only. */
 
-/* ── Full map ── */
+/* ── Full map (option E, Dan 2026-10-08) ──
+   Trip Readiness takes two columns so the three tiers end at about the
+   same height. The report is the readable line; the branch is a small
+   gold label above it. The header row is a subgrid, so the tier rules
+   line up across the three columns whether they sit above or below. */
 .map {
-  --gap: 40px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: var(--gap);
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 36px;
 }
 .col {
-  position: relative;
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
   min-width: 0;
-  padding-top: 22px;
 }
-/* The tier-color rule over each column and the gold line joining them. */
-.col::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: var(--c);
+.head {
+  display: grid;
+  align-content: start;
+  gap: 2px;
 }
-.col:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 100%;
-  width: var(--gap);
-  height: var(--rule);
-  background: var(--gold);
+.ruleTop .head {
+  border-top: 3px solid var(--c);
+  padding-top: 10px;
+}
+.ruleBelow .head {
+  border-bottom: 3px solid var(--c);
+  padding-bottom: 12px;
 }
 .tierNo {
-  display: block;
   font-size: var(--font-xs);
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -43,85 +41,98 @@
   color: var(--gold-dark);
 }
 .tierName {
-  display: block;
-  margin-top: 4px;
   font-family: "Source Serif 4", Georgia, serif;
   font-weight: 600;
-  font-size: var(--font-2xl);
+  font-size: var(--font-xl);
   line-height: 1.15;
   color: var(--navy);
   text-wrap: balance;
 }
 .purpose {
-  margin: 8px 0 0;
-  font-size: var(--font-base);
-  line-height: 1.45;
+  margin: 4px 0 0;
+  font-size: var(--font-sm);
+  line-height: 1.4;
   color: var(--ink-mid);
+}
+.body {
+  padding-top: 12px;
+  min-width: 0;
 }
 .branches {
   list-style: none;
-  margin: 22px 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  gap: 14px;
+  gap: 10px;
 }
-.branch {
-  padding: 8px 10px;
-  margin: 0 -10px;
+.wide .branches {
+  display: block;
+  columns: 2;
+  column-gap: 28px;
+}
+.wide .branches li {
+  break-inside: avoid;
+  margin-bottom: 10px;
 }
 .branchLabel {
   display: block;
+  font-size: 11px;
   font-weight: 600;
-  font-size: var(--font-md);
-  line-height: 1.3;
-  color: var(--navy);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
 }
 a.branchLabel:hover,
 a.branchLabel:focus-visible {
   text-decoration: underline;
-  text-decoration-color: var(--gold);
 }
 .reports {
   display: block;
-  margin-top: 2px;
-  font-size: var(--font-base);
-  line-height: 1.4;
-  color: var(--ink);
+  font-size: var(--font-md);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--navy);
 }
-/* With a current branch, the map becomes the you-are-here view: the lit
-   item sits on the gold surface and everything else steps back. */
-.dim .tierName,
-.dim .purpose,
-.dim .branchLabel,
-.dim .reports,
-.dimItem .branchLabel,
-.dimItem .reports {
-  color: rgba(31, 39, 50, 0.42);
-}
-.lit {
-  background: var(--gold-surface);
-}
-
 .note {
-  margin: 22px 0 0;
-  padding-top: 12px;
-  border-top: var(--rule) solid var(--gold);
-  font-size: var(--font-base);
-  line-height: 1.45;
-  color: var(--gold-dark);
+  margin: 12px 0 0;
+  font-size: var(--font-sm);
   font-weight: 600;
+  line-height: 1.4;
+  color: var(--gold-dark);
 }
-.dim .note {
-  color: rgba(31, 39, 50, 0.42);
+/* With a current branch the map becomes the you-are-here view: the lit
+   item keeps full color behind a small gold dot, everything else fades. */
+.dim,
+.dim *,
+.dimItem,
+.dimItem * {
+  color: rgba(31, 39, 50, 0.38) !important;
+}
+.lit .branchLabel {
+  color: var(--navy);
+}
+.lit .branchLabel::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin: 0 7px 1px -14px;
+  vertical-align: middle;
 }
 
 @media (max-width: 820px) {
   .map {
     grid-template-columns: 1fr;
-    row-gap: 40px;
+    row-gap: 28px;
   }
-  .col:not(:last-child)::after {
-    display: none;
+  .col {
+    grid-row: auto;
+    grid-template-rows: auto auto;
+  }
+  .wide .branches {
+    columns: 1;
   }
 }
 

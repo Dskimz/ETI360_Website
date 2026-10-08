@@ -18,40 +18,57 @@ const color = (key: TierKey) => ({ "--c": TIER_COLOR[key] }) as CSSProperties;
 const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(" ");
 
 /** The full map. Pass `current` (a branch id) to light one item and turn
-    the map into the you-are-here view on pages with room for it. */
-export function ProgramMap({ current, className }: { current?: string; className?: string }) {
+    the map into the you-are-here view on pages with room for it. `rule`
+    sets the tier-color rule above or below each tier's heading. */
+export function ProgramMap({
+  current,
+  rule = "below",
+  className,
+}: {
+  current?: string;
+  rule?: "top" | "below";
+  className?: string;
+}) {
   const found = current ? findBranch(current) : undefined;
   return (
-    <div className={cx(styles.map, className)} role="group" aria-label="The ETI360 Program Map: three tiers and the reports under each">
+    <div
+      className={cx(styles.map, rule === "top" ? styles.ruleTop : styles.ruleBelow, className)}
+      role="group"
+      aria-label="The ETI360 Program Map: three tiers and the reports under each"
+    >
       {TIERS.map((tier) => {
-        const dimTier = found && found.tier.key !== tier.key;
+        const dimTier = !!found && found.tier.key !== tier.key;
         return (
-          <div key={tier.key} className={cx(styles.col, dimTier && styles.dim)} style={color(tier.key)}>
-            <span className={styles.tierNo}>Tier {tier.key}</span>
-            <span className={styles.tierName}>{tier.name}</span>
-            <p className={styles.purpose}>{tier.purpose}</p>
-            <ul className={styles.branches}>
-              {tier.branches.map((b) => {
-                const lit = found?.branch.id === b.id;
-                return (
-                  <li
-                    key={b.id}
-                    className={cx(styles.branch, lit && styles.lit, found && !dimTier && !lit && styles.dimItem)}
-                    aria-current={lit ? "true" : undefined}
-                  >
-                    {b.href ? (
-                      <Link href={b.href} className={styles.branchLabel}>
-                        {b.label}
-                      </Link>
-                    ) : (
-                      <span className={styles.branchLabel}>{b.label}</span>
-                    )}
-                    <span className={styles.reports}>{b.reports.join(" · ")}</span>
-                  </li>
-                );
-              })}
-            </ul>
-            {tier.note ? <p className={styles.note}>{tier.note}</p> : null}
+          <div key={tier.key} className={cx(styles.col, dimTier && styles.dim, tier.key === 2 && styles.wide)} style={color(tier.key)}>
+            <div className={styles.head}>
+              <span className={styles.tierNo}>Tier {tier.key}</span>
+              <span className={styles.tierName}>{tier.name}</span>
+              <p className={styles.purpose}>{tier.purpose}</p>
+            </div>
+            <div className={styles.body}>
+              <ul className={styles.branches}>
+                {tier.branches.map((b) => {
+                  const lit = found?.branch.id === b.id;
+                  return (
+                    <li
+                      key={b.id}
+                      className={cx(lit && styles.lit, found && !dimTier && !lit && styles.dimItem)}
+                      aria-current={lit ? "true" : undefined}
+                    >
+                      {b.href ? (
+                        <Link href={b.href} className={styles.branchLabel}>
+                          {b.label}
+                        </Link>
+                      ) : (
+                        <span className={styles.branchLabel}>{b.label}</span>
+                      )}
+                      <span className={styles.reports}>{b.reports.join(" · ")}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              {tier.note ? <p className={styles.note}>{tier.note}</p> : null}
+            </div>
           </div>
         );
       })}
