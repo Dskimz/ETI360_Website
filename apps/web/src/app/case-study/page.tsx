@@ -3,18 +3,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CASE_STUDY_ON_HOLD, caseStudyLive } from "@/content/case-study";
 import { HOME } from "@/content/case-study-home";
-import { STAGES } from "@/content/case-study-stages";
 import { HashRedirect } from "./_parts/HashRedirect";
-import { Desk } from "./_parts/Desk";
+import { Chapters } from "./_parts/Chapters";
 import { TierHead } from "./_parts/TierHead";
-import { HARBORVIEW_MAP } from "@/content/case-study-map";
+import { HARBORVIEW_CHAPTERS, HARBORVIEW_MAP } from "@/content/case-study-map";
 import styles from "./home.module.css";
 
-/* Case Study home (/case-study; Dan, 2026-10-07: "I think this is the best
-   view. I like it."). The hero, one line of introduction, the year as five
-   fanned stacks of real document covers on a gold thread (each with its
-   tier, one line and links to its point pages) and the closing. Copy:
-   src/content/case-study-home.ts and case-study-stages.ts. */
+/* Case Study home (/case-study). The hero, the tier head (Dan, 2026-10-08:
+   the Program Map's four columns filled with the covers of the documents
+   ETI360 prepared for Harborview), the three chapters under it (D3, which
+   replaced the five-stage desk) and the closing. Copy:
+   src/content/case-study-home.ts and case-study-map.ts. */
 
 export function generateMetadata(): Metadata {
   if (!caseStudyLive()) return {};
@@ -51,13 +50,10 @@ export default function CaseStudyPage() {
             map={HARBORVIEW_MAP}
             ariaLabel="The documents ETI360 prepared for Harborview, by tier"
           />
+          <Chapters chapters={HARBORVIEW_CHAPTERS} />
         </div>
 
         <div className="container">
-          <div role="region" aria-label="The year, stage by stage">
-            <Desk stages={STAGES} />
-          </div>
-
           <div className={`${styles.closing} ${styles.closingCentered}`}>
             <p>{HOME.closing}</p>
             <p className="ui">

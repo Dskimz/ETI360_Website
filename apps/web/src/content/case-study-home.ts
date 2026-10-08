@@ -22,7 +22,7 @@ export const HOME = {
     "One school’s year with ETI360, from understanding its travel program to preparing each trip and looking back afterwards.",
   heading: "A year of school travel with Harborview International School",
   intro:
-    "Follow one school’s year with us. Each step opens a page that shows the work and the documents Harborview received.",
+    "Follow one school’s year with us. The map below shows the documents we prepared for Harborview in each tier, and each chapter opens the pages that show the work.",
   closing:
     "Harborview keeps every decision and every record, and the school reviews and approves the documents we prepare.",
 };

@@ -130,3 +130,57 @@ export const HARBORVIEW_MAP: SchoolMap = {
     },
   ],
 };
+
+/* The three chapters under the head (Dan, 2026-10-08, D3: the five stages
+   regrouped by tier). Each names when it happens, what the school was
+   doing and what we prepared, then links to its point pages under the
+   branch names from the Program Map. Voice: "we" for ETI360. */
+export type Chapter = {
+  when: string;
+  title: string;
+  line: string;
+  links: { label: string; href: string }[];
+};
+
+export const HARBORVIEW_CHAPTERS: Record<TierKey, Chapter> = {
+  1: {
+    when: "Before the year begins",
+    title: "The program",
+    line: "Harborview’s trip rules and its providers’ procedures sit in many places. We review them against one framework and lay out the year in one guide.",
+    links: [
+      {
+        label: "The school’s travel policies",
+        href: page("understanding-the-program"),
+      },
+      { label: "The year ahead", href: page("laying-out-the-year") },
+    ],
+  },
+  2: {
+    when: "From planning to departure",
+    title: "Each trip",
+    line: "Every trip arrives in its own format. We prepare each one the same way, from a week away to the elementary day trips, so families and trip leaders have what they need before the group leaves.",
+    links: [
+      {
+        label: "Itinerary and risk reports",
+        href: page("preparing-each-trip"),
+      },
+      { label: "Parent documents", href: page("preparing-families") },
+      { label: "Trip leaders", href: page("preparing-trip-leaders") },
+      { label: "Field trips", href: page("preparing-for-field-trips") },
+      {
+        label: "Sports and exchange trips",
+        href: page("preparing-for-sports-and-cultural-exchange-trips"),
+      },
+    ],
+  },
+  3: {
+    when: "While groups are away, and after",
+    title: "The record",
+    line: "Harborview records incidents in its own system while groups are away. The records and feedback from every trip become the starting point for next year.",
+    links: [
+      { label: "Incident reports", href: page("during-trips") },
+      { label: "Feedback", href: page("after-the-trips") },
+      { label: "The next year", href: page("the-next-year") },
+    ],
+  },
+};

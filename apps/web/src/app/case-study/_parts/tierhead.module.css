@@ -137,3 +137,66 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── The three chapters (Dan, 2026-10-08) ── */
+.chapters {
+  --gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 36px 40px 8px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+.chapter {
+  min-width: 0;
+  padding-top: 14px;
+  border-top: 2px solid var(--c);
+}
+.when {
+  margin: 0 0 6px;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.chapterTitle {
+  margin: 0 0 8px;
+  font-size: var(--font-2xl);
+  line-height: 1.15;
+}
+.chapterLine {
+  margin: 0 0 14px;
+  font-size: var(--font-base);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 46ch;
+}
+.chapterLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: var(--font-sm);
+}
+.chapterLinksWide {
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--gap);
+}
+.chapterLinks a {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+@media (max-width: 900px) {
+  .chapters {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+    padding: 28px 22px 8px;
+  }
+  .chapterLinksWide {
+    grid-template-columns: 1fr;
+  }
+}
